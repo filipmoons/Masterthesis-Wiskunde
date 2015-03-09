@@ -1,0 +1,27 @@
+\select@language {dutch}
+\contentsline {section}{\numberline {1}Inleiding}{2}
+\contentsline {subsection}{\numberline {1.1}Persoonlijke voorstelling}{2}
+\contentsline {subsubsection}{\numberline {1.1.1}Levensloop}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}Motivatie voor een onderwijsloopbaan}{2}
+\contentsline {section}{\numberline {2}Stage}{3}
+\contentsline {subsection}{\numberline {2.1}Stageschool}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Korte omschrijving klasgroepen}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Schoolcultuur}{3}
+\contentsline {subsection}{\numberline {2.2}Stageplanning}{3}
+\contentsline {section}{\numberline {3}Supervisiesessies}{4}
+\contentsline {subsection}{\numberline {3.1}Werkzorgen}{4}
+\contentsline {subsubsection}{\numberline {3.1.1}07/10/2014: \emph {Aporie in alle dingen}}{4}
+\contentsline {subsubsection}{\numberline {3.1.2}14/10/2014: \emph {Het `Ik Ben Een Goede Leerkracht'-syndroom}}{5}
+\contentsline {subsubsection}{\numberline {3.1.3}21/10/2014: \emph {De paradox van het onderwijsleergesprek}}{6}
+\contentsline {subsubsection}{\numberline {3.1.4}04/11/2014: \emph {Privacy: wat deel je met je leerlingen?}}{6}
+\contentsline {subsubsection}{\numberline {3.1.5}18/11/2014: \emph {Grenzen aan de groei}}{7}
+\contentsline {subsubsection}{\numberline {3.1.6}25/11/2014 \& 9/12/2014: \emph {Hoe artificieel is een stagecontext?}}{7}
+\contentsline {subsection}{\numberline {3.2}Reflectieverslagen}{9}
+\contentsline {subsection}{\numberline {3.3}Extra opdrachten}{9}
+\contentsline {subsubsection}{\numberline {3.3.1}Nachtmerrie in de stagecontext: \emph {Over Keizer Nero, de schrik der leegte \& nonchalance}}{9}
+\contentsline {section}{\numberline {4}Handelingsonderzoek}{12}
+\contentsline {subsection}{\numberline {4.1}Motivatie}{12}
+\contentsline {subsection}{\numberline {4.2}}{12}
+\contentsline {section}{\numberline {5}Slotreflectie}{12}
+\contentsline {subsection}{\numberline {5.1}SWOT-analyse}{12}
+\contentsline {subsection}{\numberline {5.2}meta-kernreflectie}{12}

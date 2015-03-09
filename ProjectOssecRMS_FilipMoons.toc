@@ -1,0 +1,28 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Real-time operating systems}{3}{section.2}
+\contentsline {section}{\numberline {3}Scheduling}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Definitions}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Sheduling algorithms}{4}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Static priority scheduling algorithms}{4}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Dynamic priority scheduling algorithms}{4}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Preemptive priority scheduling algorithms}{5}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Rate-monotonic scheduling}{5}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3}Schedulability tests}{5}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Liu \& Layland lower bound}{5}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Response time (RT) test}{7}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Time-Demand function}{7}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Dynamic scheduling variant of RMS}{9}{subsection.3.5}
+\contentsline {section}{\numberline {4}Extensions}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Non-periodic services}{11}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Sporadic service}{11}{subsubsection.4.1.1}
+\contentsline {subsection}{\numberline {4.2}Priority ceiling protocol}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Priority inversion}{12}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}The protocol}{12}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Tasks with $D_i \leq T_i$}{14}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Other extensions}{14}{subsection.4.4}
+\contentsline {section}{\numberline {5}Simulations using the schedulability analysis tool Cheddar}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}What is Cheddar?}{15}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Configuration}{15}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Simulation of RMS of example \ref {goei}}{15}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{16}{section.6}

@@ -1,0 +1,86 @@
+% Author: Toon Verwaest
+
+\usepackage{graphicx}
+
+\gdef\@promotortitle{Promotor}
+\gdef\@begeleider{Promotor}
+\gdef\@advisortitle{Advisor}
+\gdef\@promotor{Set promotor}
+\gdef\@advisors{Set advisors}
+\gdef\@faculty{Faculty of Science}
+\gdef\@department{Department of Computer Science and Applied Computer Science}
+\gdef\@reason{Dissertation for the degree of Computer Science}
+
+\newenvironment{multiline}{\verbatim}{\verbatim}%
+
+\def\promotor#1{\gdef\@promotor{#1}}
+\def\advisors#1{\gdef\@advisors{#1}}
+\def\begeleider#1{\gdef\@begeleider{#1}}
+\def\faculty#1{\gdef\@faculty{#1}}
+\def\department#1{\gdef\@department{#1}}
+\def\reason#1{\gdef\@reason{#1}}
+\def\advisortitle#1{\gdef\@advisortitle{#1}}
+\def\promotortitle#1{\gdef\@promotortitle{#1}}
+
+\def\maketitlepage{
+\begin{titlepage}
+\enlargethispage*{1000pt}
+
+\vspace*{-36.6mm}{
+  \hspace*{-24.75mm}{
+    \includegraphics[width=75.5mm,height=15.25mm]{VUB_logo}
+  }
+}
+
+\vspace*{-2.5mm}{
+  \hspace*{-3.5mm}{
+    \begin{tabular}{l|l}
+      
+                    % Faculty
+      & \parbox[t]{240pt}{\normalsize{\parbox[t]{240pt}{\@faculty}}\\
+                                        % Department
+                          \footnotesize{\parbox[t]{240pt}{\@department}}
+        } \\
+
+        \rule{0pt}{100mm}
+      
+      & \rule{6pt}{0mm}
+                % Title
+          \LARGE\Huge{\parbox[b]{400pt}{\@title}}\\
+          \rule{0pt}{5mm}\\
+        
+      \cline{2-2}
+      
+      \rule{0pt}{14mm}
+      
+      & \rule{6pt}{0mm}\begin{tabular}{l}
+                        % Reason
+          \small{\parbox[t]{450pt}{\@reason}}\\
+
+                                % Author
+          \rule{0pt}{7mm}\LARGE{\parbox[t]{450pt}{\@author}}\\
+          \\
+        \end{tabular}\\
+      \cline{2-2}
+      & \rule{6pt}{0mm}\begin{tabular}{rl}
+          \rule{0pt}{5mm}\\
+
+                      % Promotor(s)
+          \@promotortitle: & \parbox[t]{220pt}{\@promotor} \\
+  
+                      % Advisor(s)
+                             Stagebegeleider: & \parbox[t]{220pt}{\@begeleider\\}\\
+                             
+         Stagementor: & \parbox[t]{220pt}{\@advisors}\\
+        \end{tabular} \\
+      \rule{0pt}{60mm} \\
+
+        % Date
+      & \rule{6pt}{0mm} \begin{tabular}{llr}
+          \small{\@date} & \rule{230pt}{0mm} & \includegraphics[width=43mm,height=43mm]{VUB_schild}
+        \end{tabular}
+    \end{tabular}
+  }
+}
+\end{titlepage}
+}

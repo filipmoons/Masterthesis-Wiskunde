@@ -1,0 +1,8 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Makespan scheduling on uniformly related machines}{2}
+\contentsline {subsection}{\numberline {1.2}Import results from Game Theory}{2}
+\contentsline {subsubsection}{\numberline {1.2.1}Congestion games}{3}
+\contentsline {subsubsection}{\numberline {1.2.2}Nash Equilibra in congestion games}{3}
+\contentsline {subsubsection}{\numberline {1.2.3}Load balancing games}{5}
+\contentsline {section}{\numberline {2}References}{5}

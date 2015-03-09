@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.26pt}
+\beamer@sectionintoc {1}{Tasks}{3}{0}{1}
+\beamer@sectionintoc {2}{The algorithm}{5}{0}{2}
+\beamer@sectionintoc {3}{Schedulability tests}{6}{0}{3}
+\beamer@sectionintoc {4}{Example}{9}{0}{4}

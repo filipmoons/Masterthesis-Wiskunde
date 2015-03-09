@@ -1,0 +1,392 @@
+% $Id: $
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide}
+\usepackage{enumerate}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsfonts}
+% The following makes latex use nicer postscript fonts.
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{datatool}
+\usepackage[utf8]{inputenc}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{epigraph}
+
+\usepackage[dutch]{babel}
+\usepackage{tikz}
+
+%\usepackage[colorlinks,urlcolor=blue,linkcolor=blue]{hyperref}
+\pagestyle{headings}
+\newcommand{\upuparrow}{\mathrel{\reflectbox{\rotatebox[origin=c]{90}{$\twoheadrightarrow$}}}}
+\newcommand{\downdownarrow}{\mathrel{\reflectbox{\rotatebox[origin=c]{90}{$\twoheadleftarrow$}}}}
+\usepackage{vubtitlepage}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\usepackage[geometry]{ifsym}
+%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\author{Filip Moons}
+\title{Stagemep}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newcommand{\tussen}[1]{\paragraph*{#1}\mbox{}\\}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{notation}[theorem]{Notation}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+
+\setcounter{tocdepth}{5}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\HQ}{{\mathbb H}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\cost}{\text{cost}}
+\newcommand{\Nash}{\text{Nash}}
+\newcommand{\Tau}{\mathrm{\tau}}
+\newcommand{\nash}{\text{nash}}
+\newcommand{\opt}{\text{opt}}
+\newcommand{\LFP}{\text{LFP}}
+\renewcommand{\int}{\text{int}}
+\newcommand{\enquote}[1]{`#1'}
+%\newenvironment{proof}{\noindent{\bf Bewijs.}}{{\hfill $ \ Box $}\vskip 4mm}
+
+\promotortitle{Titularissen}
+\promotor{Stagebegeleider Sophie Allein \\ Prof. Dr. B. Windels}
+\advisors{}
+\advisortitle{}
+\addto\captionsenglish{\renewcommand*\abstractname{Abstract for non-mathematicians}}
+\date{MEI 2006}
+\faculty{Specifieke lerarenopleiding}
+\advisortitle{}
+\department{Wetenschappen \& Ingenieurswetenschappen}
+\reason{Productevaluatie van het vak `Reflecterend \& Onderzoekend handelen'}
+
+\date{December 2014}
+
+
+\begin{document}
+% Then english TitlePage
+\maketitlepage
+
+
+\tableofcontents
+\newpage
+\section{Inleiding}
+\subsection{Persoonlijke voorstelling}
+\subsubsection{Levensloop}
+\subsubsection{Motivatie voor een onderwijsloopbaan}
+\newpage
+\section{Stage}
+\subsection{Stageschool}
+\subsubsection{Korte omschrijving klasgroepen}
+\subsubsection{Schoolcultuur}
+\subsection{Stageplanning}
+
+\newpage
+\section{Supervisiesessies}
+\subsection{Werkzorgen}
+\subsubsection{07/10/2014: \emph{Aporie in alle dingen}}
+\tussen{Situatieschets}
+We schrijven dinsdag 30 september 2014, het tweede lesuur. De zesdes die 8u wiskunde per week volgen aan het Koninklijk Atheneum van Etterbeek worden door mij getrakteerd op mijn tweede stageles. 
+Mijn eerste les was over het algemeen vrij goed verlopen, maar deze les kondigt zich aan als lastiger: we hebben het vandaag immers over herhalingscombinaties en willen via een codering naar bolletjes en streepjes, de algemene formule afleiden dat herhalingscombinaties terug reduceert naar gewone combinaties zonder herhaling. Geen gemakkelijke leerstof, dat werd me zelf vorig jaar tijdens de lessen vakdidactiek al op het hart gedrukt. Nu ja, voor mij was het allemaal duidelijk en de lesvoorbereiding zou voldoende houvast moeten bieden. Daarvoor dienen die dingen, toch? En dan komt ze, die ene vraag waarvan al je haren op je lichaam ineens rechtop gaan staan, waarbij het hart sneller gaat bonzen en je slechts één ding wil: weglopen, dit had ik immers niet zien aankomen. Die ene vraag was van de hand van een pientere leerlinge: 
+`Waarom meneer, is die codering met bolletjes en streepjes een combinatie en geen variatie?'. Uiteraard kon ik mij aan die vraag verwachten, uiteraard had ik die moeten voorbereiden in mijn lesvoorbereiding, maar op dat moment was ik met verstomming geslagen. Vrij gênant als de leraar het ineens zelf niet meer klaar ziet. Zeker als stagiair, want die moeten zich dubbel bewijzen. Uiteindelijk schiet mijn mentor me vlug even ter hulp en kan ik de meubels nog enigszins redden. De vraag van de pientere leerlinge zal echter pas de volgende les een duidelijk en goed voorbereid antwoord krijgen, op dat moment kon ik dat onmogelijk uit mijn mouw schudden.
+\tussen{Interpretatie van de feiten}
+Deze situatie is het archetype van gebeurtenissen die mijn stage tot nu toe kenmerken: na 5 jaar studie ben ik wel helemaal klaar om die wiskundeleerstof de baas te kunnen, maar om die hapklaar aan leerlingen aan te bieden en op al hun vragen meteen
+ een duidelijk antwoord te formuleren, is toch nog iets helemaal anders. Ik ontbreek nog een goed empathisch vermogen én de ervaring om mij volledig in de leefwereld van de leerlingen te verplaatsen: dingen die voor mij zo logisch zijn, zijn dat voor leerlingen vaak niet. Doordat gebrek aan een goed ontwikkeld empathisch vermogen, je kan het ook leservaring noemen, vind ik het dan ook niet altijd eenvoudig om in te zien waar het precies misgaat in hun redenering. Bovendien, en dat is misschien nog wel het belangrijkste, vind ik het ook helemaal niet makkelijk om te redeneren vooraan, als alle ogen op jou gericht zijn. Moest ik gewoon kalm en rustig terug geredeneerd hebben waarom we hier met een combinatie dan wel met een variatie te maken hebben, had er allicht wel een antwoord op de vraag kunnen komen en was ik niet in totale aporie geraakt. Hoewel ik eigenlijk geen stress heb als ik voor de klas sta, kan er op zo'n moment wel een moment van intense stress ontstaan.
+
+\paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe ontwikkel ik meer empathie voor de gedachtenwereld van de leerling zodat ik geen stappen oversla en zodat alles wat voor mij logisch is, ook voor hen logisch is?
+  \item Hoe blijf je kalm als je een vraag krijgt waarbij je moet redeneren voor de klas?
+\item Stel dat je, zoals in deze situatie, je er toch niet uitgeraakt en je in aporie blijft zitten, hoe los je dat dan op? Hoe communiceer je dit naar leerlingen zonder al te veel gezichtsverlies?
+\end{itemize}
+
+
+
+
+
+
+
+\subsubsection{14/10/2014: \emph{Het `Ik Ben Een Goede Leerkracht'-syndroom}}
+\tussen{Situatieschets}
+Het is 9 oktober, ik heb net mijn laatste lesuur van twee lesuren die dag gegeven aan de 8 uurs Wiskunde 
+van het vijfde jaar. De les was niet super vlot verlopen, maar slecht was ze ook 
+bezwaarlijk te noemen. Bij de evaluatie op papier stond te lezen dat de mentor vind dat ik mijn bordschrift nog 
+meer moet verzorgen en minder abstract mijn uitleg moet geven. Een objectieve 
+beoordeling dus met werkpuntjes die voor iedere stagiair allicht herkenbaar en ook goed verteerbaar zijn. 
+Iets waar ik ook helemaal mee kan leven en ik ben dan ook absoluut bereid om met deze werkpuntjes aan de slag te gaan en eraan te werken. Wanneer ze mij die evaluatie mondeling uit de doeken doet laat ze echter 
+niet na om haar feedback te doorspekken met venijnige opmerkingen zoals `Heb je het gehoord? 
+Kathleen (\emph{Leerling in de klas, nvdr.}) vroeg aan mij of ik het allemaal nog eens opnieuw ga uitleggen.' of 
+nog een klassieker: `Ze waren weer totaal niet mee hé'. Opmerkingen waarmee elke stagiair geconfronteerd wordt maar waar je echt geen kant mee op kan. Tijdens de les vormt ze ook een soort geheime genootschap met de leerlingen:  
+haar lichaamstaal doet vermoeden dat ze nooit echt onder de indruk is, waarmee ze de leerlingen vaak (onbedoeld?) ophitst tegen mij. 
+Ik blijf ook consequent `de stagiair' genoemd worden.
+Als je echter de offficiële
+evaluatieformulieren documenten erop naleest is ze echter wel objectief en ook mijn persoonlijk aanvoelen 
+doet vermoeden dat ik helemaal niet zo slecht bezig ben.
+\tussen{Interpretatie van de feiten}
+Ergens denk ik dat de leerkracht aan het `Ik Ben Een Goede Leerkracht'-syndroom 
+lijdt, een door mezelf uitgevonden syndroom dat ik ook reeds bij andere 
+leerkrachten in het verleden meende te ontwarren. Het `IBEGL'-syndroom houdt in dat sommige leerkrachten
+echt actief opzoek gaan naar de bevestiging dat zij als goede leerkracht functioneren. Dat houdt bij haar concreet in 
+dat dooddoeners, zoals een leerling die vraagt of zij de hele uitleg van de stagiair nog  
+eens zou overdoen, als een persoonlijk compliment ziet en mijn leerproces als 
+stagiair percipieert als een zelfbevestiging dat zij een goede leerkracht is. Daarbij is ze zeer gelukkig dat mijn 
+soms andere aanpak niet altijd gesmaakt wordt door de leerlingen. Gelukkig 
+glijden die venijnige randopmerkingen vrij snel van mij af: ik kan immers tegen 
+een stootje en bovendien kan ik er geen kant mee op. Toch belemmeren ze mij om zeer 
+zelfzeker voor die klas te gaan staan (ik heb voor alle duidelijkheid ook nog een andere 
+mentor).
+
+
+\paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe laat ik die venijnige randopmerkingen nog meer voor wat ze zijn en sta ik dus 
+  zelfzekerder voor die klas?
+  \item Hoe reageer ik het best op zo'n opmerkingen? \end{itemize}
+
+\subsubsection{21/10/2014: \emph{De paradox van het onderwijsleergesprek}}
+\tussen{Situatieschets}
+Uitgelaten sfeer en gezellige drukte in de klas afgelopen week. Ik voer tijdens 
+de lessen over combinatoriek de keuzes met herhaling in: herhalingsvariaties, 
+herhalingspermutaties, herhalingscombinaties: allemaal moeten ze eraan geloven. Via het 
+onderwijsleergesprek loopt de les lekker vlot en komt er veel input van de 
+leerlingen. Maar toch, maar toch: meestal weet ik perfect welk antwoord ik wil 
+horen en alles wat daar ook maar het minste van afwijkt wordt vaak op een 
+afwijziging getrakteerd, `Ja oké, maar bedoel je dat niet?' is al snel de 
+reactie. Mijn mentor maakt er zeer terecht opmerkingen over en ik zit met mijn 
+handen in het haar: `Miljaar, uiteraard had ze gelijk, maar zo had ik het niet 
+begrepen'. Positieve bekrachtiging en geven van zelfvertrouwen zijn inderdaad 
+sleutelbegrippen, maar moeilijk om mee aan de slag te gaan als je niet doorhad dat een 
+leerling juist antwoordde.
+\tussen{Interpretatie van de feiten}
+Het onderwijsleergesprek liegt je eigenlijk voor: zogzegd bedoeld om voorkennis mee naar boven te halen en op die manieren nieuwe verbanden en ideeÃ«n te laten opbroeden, 
+maar in realiteit is alles lekker voorgekauwd: zowel de te stellen vraagjes als de nodige antwoorden moeten op het lesvoorbereidingsformulier. Vaak moet je er ook wat haast achter zetten en dan loop je soms tegen de grenzen van 
+begrip aan. Leerlingen die het goed hebben worden verkeerd geïnterpreteerd als het antwoord wat afwijkt van het antwoord op het lesvoorbereidingsformulier. 
+Een werkpunt, zowaar.
+\paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe weet ik wanneer leerlingen correct antwoorden op vragen? \end{itemize}
+  
+\subsubsection{04/11/2014: \emph{Privacy: wat deel je met je leerlingen?}}
+\tussen{Situatieschets}
+Tijdens bijzonder hartelijke informele gesprekken met leerlingen van het zesdejaar gaat het vaak over hun toekomst. 
+Wat willen ze gaan doen en bij sommigen: waar staan ze bij de voorbereiding van hun ingangsexamen geneeskunde? Daar mijn vriend ook geneeskunde 
+studeert, kan ik daar uiteraard een hartelijk woordje over meepraten. Om het toch maar niet over mijn privéleven te hebben, vertel ik dan meestal dat mijn beste vriend ook geneeskunde aan de Vrije Universiteit Brussel studeert. 
+Dat doe ik vooral om de focus op wat de leerlingen vertellen te houden en lastige vragen te vermijden. Mijn privéleven vind ik op zo’n moment irrelevant.
+\tussen{Interpretatie van de feiten}
+Voor alle duidelijkheid: deze werkzorg heeft niets met de huidige stage te maken.
+ Als stagiair vind ik het allesbehalve gepast om meteen je hele privésfeer met leerlingen te delen tijdens informele gesprekken. Komt ook weinig professioneel en zelfs vreemd over denk ik. 
+ Maar wat als je wel als `volwaardig' leerkracht voor de klas staat? Dan ga je ook op schooluitstap met leerlingen, moet je ze coachen,...: allerlei momenten waarop gezellige informele gesprekken ontstaan. 
+ Maar hoe ver ga je met persoonlijke feiten te vertellen? Is er een grens tussen toelaatbaar en ontoelaatbaar? Waar ergens verlies je in zekere zin je professionaliteit als leerkracht? Welke afstand leerling-leerkracht is werkbaar?.
+ \paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe ver ga je met persoonlijke feiten te vertellen?
+\item Is er een grens tussen toelaatbaar en ontoelaatbaar?
+\item Wanneer heb je te veel vertelt en verlies je je professionaliteit als leerkracht?
+\item Welke afstand leerling-leerkracht is werkbaar?
+\end{itemize}   
+
+\subsubsection{18/11/2014: \emph{Grenzen aan de groei}}
+\tussen{Situatieschets}
+De stage loopt op zijn einde, de mentoren lopen zenuwachtiger dan gemiddeld 
+rond: de tijd tot de examens wordt ineens wel heel kort. Wanneer er dan ook nog 
+eens lessen wegvallen, deelt de stagiair in de klappen: 'Heb je al genoeg uren? 
+Kan die les wegvallen? Ik zou mijn klas liever niet meer afgeven.' Een blik op de stageplanning maakt dan meestal
+wel duidelijk dat één à twee uurtjes zonder meer kunnen wegvallen en dat we met wat goede wil inderdaad
+wel aan 40 lesuren geraken. Ik heb in elk geval al meer dan genoeg materiaal voor in mijn 
+stagemap, dus die zaak is ook al opgelost. Meestal vind ik het dan ook helemaal niet zo erg
+dat enkele laatste lessen wegvallen, het is een teken dat het langzaam op zijn 
+einde loopt en geeft me de kans om me terug meer op het thesissen te richten.
+
+\tussen{Interpretatie van de feiten}
+De reden waarom ik het niet erg vind, is omdat ik een aaneengesloten periode van 
+40 uren (20 begeleide, 20 zelfstandige uren) wel erg lang vind. Ook mijn mentoren klagen hierover. Er is een 
+gigantische evolutie merkbaar in mijn lesgeefcapaciteiten vanaf het begin van de stage tot nu, maar als je 
+bijvoorbeeld op de laatste twee stageweken zou inzoomen en hiervan de eerste les 
+met de laatste les zou vergelijken, zou je merken dat er nauwelijks nog verbetering 
+inzit. Ook geen verslechtering, maar een onvermijdelijk status quo dus. Het voelt aan alsof ik voor deze 
+lesgeefperiode een plafond bereikt heb voor groei: ik heb veel geleerd, maar nu 
+stagneert het. De periode is te kort en alles teveel na elkaar waardoor nu nog 
+groeien niet meer mogelijk is. Er is wel nog ruimte voor verbetering en groei, 
+maar die ruimte zal pas later opgevuld worden, binnen enkele maanden als ikzelf 
+voor de klas sta, bijvoorbeeld.
+\paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe kan ik toch nog verder groeien?  
+  \end{itemize}
+   
+ 
+   
+\subsubsection{25/11/2014 \& 9/12/2014: \emph{Hoe artificieel is een stagecontext?}}
+
+\tussen{Situatieschets}
+De stage zit erop. De pralines zijn aan de mentoren uitgedeeld. De laatste taken en toetsen zijn verbeterd. Tijd voor een terugkeer naar een stageloos, normaal leven. Een pak ervaringen rijker & enkele illusies armer trek ik de deuren van de schoolpoort even achter mij dicht, tot september, denk ik. Ook enkele vragen: 'Wat moest ik hiervan denken?' neem ik mee. Zo had ik bijvoorbeeld een bijzonder moeilijk beheersbare klas en had ik daar moeite met klasmanagement, terwijl het in de andere klassen werkelijk vlekkeloos verliep.
+
+\tussen{Interpretatie van de feiten}
+Tijdens de stage gebeuren allerlei zaken die inherent zijn aan de stagecontext en die in een werkelijke situatie zich nauwelijks zouden voordoen. Neem nu die moeilijke klas met mijn lamentabel klasmanagement: de desbetreffende mentor had tijdens mijn observatieuurtjes zelf de grootste moeite met die klas een beetje onder controle te houden. Hoe zou ik als weerloze stagiair het ooit beter kunnen doen? Ik ben er ergens zeker van dat die klas wel beheersbaar is als je de échte leraar bent die van in het begin voor die klas stond. Daarom vraag ik mij soms af in welke mate ik mezelf moet in vraag stellen want zijn die ervaringen niet inherent aan de stagecontext? Zouden deze problemen zich werkelijk voordoen moest ik de leraar geweest zijn? Heb ik in deze niet gewoon de klasmanagementproblemen van de mentor overgeërfd?  
+\paragraph*{Leervragen}
+\begin{itemize}
+  \item Hoe kan ik ervaringen opdelen in twee categorieën: een categorie 'uitsluitend voorkomend tijdens de stage' en een categorie 'kan ook in werkelijkheid voorkomen'? Om zo te kunnen bepalen welke ervaringen de moeite waard zijn om lang bij stil te staan, en welke niet?    
+ \end{itemize}
+
+ 
+
+
+
+
+
+\newpage
+\subsection{Reflectieverslagen}
+\subsection{Extra opdrachten}
+\subsubsection{Nachtmerrie in de stagecontext: \emph{Over Keizer Nero, de schrik der leegte \& nonchalance}}
+\tussen{De troost van de eindigheid: waarom concrete angsten fundamenteel oninteressant zijn}
+In mijn leven heb ik zelden nachtmerries voor concrete dingen die bovendien in 
+tijd beperkt zijn, laten we ze vanaf nu concrete angsten noemen. 
+Een stage is inherent iets heel concreet en inherent ook in tijd beperkt.
+Bijgevolg kan ik me dus niet echt een concrete angst in de stagecontext voor de 
+geest halen. Immers: zelf moest een stage volledig mislukken, tegenvallen, 
+buitengewoon oninteressant zijn,... dan nog biedt de troost van de eindigheid een 
+uitweg. Na 8 weken is het immers voorbij, gedaan, kan je naar een volgend 
+hoofdstuk in het leven. Zelf een  klas vol oproerkraaiers, een
+boze mentor, een kwade opmerking van een directeur,... zouden me nog niet uit mijn slaap houden.  
+Deze opstelling heeft uiteraard rechtstreeks betrekking op mijn kernkwaliteit: 
+het kunnen loslaten. Concrete angsten kan je per definitie niet loslaten, anders zijn het geen concrete angsten.
+Vermits ik ook tijdens mijn stageperiode deze kernkwaliteit volop heb ervaren, 
+kan ik dus besluiten: ik had geen concrete angsten tijdens mijn stageperiode. In 
+de volgende paragraaf leg ik uit waarom ik de afwezigheid van concrete angsten 
+ook absoluut niet betreur.\\
+
+ 
+Het leven is te kort om te lang stil te staan bij zeer concrete angsten. In dat opzicht kan ik me dan ook
+volledig vinden in de leer van de stoïcijnse filosofie van o.a. Seneca, Epicetetus en Marcus Arelius,... die stellen
+dat het leven nooit meer te verduren geeft dan we aankunnen. Met zelfmoord als ultieme sluipweg. Hoewel dit
+voor de meeste mensen veel te luguber klinkt, vind ik een ongelooflijke rust in die gedachte van eindigheid. Welke mesthoop je ook
+van je leven maakt, jij - en jij alleen! - kan beslissen de uitgang te nemen. Begrijp me niet verkeerd: ik heb
+nog nooit zelfmoordpogingen ondernomen of zelf ook maar concrete dingen in die richting gedacht, 
+maar de verlossende
+kracht die deze leerstelling van de stoïcijnen biedt, ervaar ik als overweldigend. 
+Hierbij is zelfmoord niet meer dan een abstracte verwijzing naar dé uitweg, de 
+ultieme verlossing, het magnus opus van de gave van het loslaten zelfs.\\
+
+
+Dit indachtig, wil ik me zelf dus zelfs niet bezighouden met concrete angsten. Concrete angsten 
+zijn slechte raadgevers die bovendien erg verlammend op je dagelijks doen en laten werken. Waarom zou je er 
+dan zelf tijd in willen investeren? Een concrete angst is een rariteit dat zich 
+voordoet in een periode van maximaal enkele maanden, waardoor ze buitengewoon 
+specifiek zijn en geen veralgemening toelaten. Hoewel er altijd wel een concrete
+angst laten aanwezig is, zijn dit soort angsten daardoor fundamenteel 
+oninteressant. Het zijn de patronen, die grotere angsten die de aandacht 
+verdienen en die het leven sturen. Vergelijk het met een razendsuccesvol boek: 
+mensen gaan zich niet weerhouden om het aan te schaffen als enkele hoofdstukken 
+wat minder zijn, het gaat erom dat het globale plaatje van het boek klopt en een 
+mooi, vlot leesbaar, samenhangend geheel vormt. Het leven is net zo. Je kan pas 
+op je sterfbed besluiten of je finaal gelukkig bent geweest, het is pas dan dat 
+jouw boek des leven zich finaal aan jou - en jou alleen! - openbaart. Niet toevallig dat zowat elke godsdienst
+één of andere vorm van \emph{de dag des oordeels} incorporeert. Het is ook 
+op dat niveau, op dat globale plaatje, dat de diepste angsten zich voltrekken die 
+wel je aandacht verdienen. Welke idioot is op zijn sterfbed immers nog bezig met een concrete 
+angst over een lerarenstage tientallen jaren geleden? Concrete angsten bevinden zich zelfs niet op het niveau
+van de hoofdstukken in het boek des levens, maar op het niveau van de passages en de voetnoten. 
+Zij zorgen meestal ook voor passages die niet geschreven konden worden, omdat 
+de concrete angst te allesomvattend was, waardoor de moed ontbrak om de gebeurtenissen - beschreven in de niet 
+geschreven passage - te laten gebeuren. Willen we dus een bestseller maken van 
+ons boek des levens, wat concreet een zoektocht naar het volmaakte geluk inhoudt 
+me als resultaat een prachtig verhaal met verschillende (goede en minder goede) 
+hoofdstukken, dan blijven we best ver weg van langgerekte reflecties op concrete 
+angsten. Ik weiger dan ook op het aanbod van deze opdracht in te gaan, maar wijzig de opdracht:
+zijn er diepe angsten die een gelukkig leven als toekomstig leraar in de weg staan? Heb ik kernkwaliteiten
+om een antwoord te geven aan deze diepe angsten?\\
+ 
+Tot slot: een aandachtige lezer meent allicht een reuzengrote paradox in mijn betoog om een onderscheid
+te maken tussen concrete angsten en diepe angsten te ontwarren. Inderdaad, wie de 
+stoïcijnse filosofie aanhangt die zelfmoord tot ultieme sluipweg promoveert, 
+verheft eindigheid tot een ultiem middel van troost. Daarbij komt vervolgens het besef dat in het licht van 
+de eeuwigheid een mensenleven als een 
+schaduw voorbij raast. Ook diepe angsten van mensen laten zich dus - net als concrete angsten - kenmerken door 
+een manifeste eindigheid, ze verliezen hun diepe karakter bij de dood. 
+In het licht van de eeuwigheid zijn diepe angsten daarom gelijk aan concrete 
+angsten, diepe angsten gaan wel een heel mensenleven mee en concrete angsten 
+slechts enkele maanden, maar dat tijdsverschil is in het licht van de eeuwigheid
+zonder meer verwaarloosbaar. Dit is zonder meer waar. De reden waarom deze 
+redenering toch niet haaks staat op het gemaakte onderscheid tussen concrete en 
+diepe angsten is zeer eenvoudig: het onderscheid geldt gedurende de afgebakende periode van een 
+mensenleven, daarna vallen concrete en diepe angsten inderdaad samen, de persoon 
+wie de angsten aanbelangde is immers niet meer, dus niemand zal nog enige 
+interesse in deze angsten vertonen. Zelf het onderscheid tussen concrete angsten 
+als fundamenteel oninteressant en diepe angsten als stuurders van een 
+mensenleven heeft op dat moment alle relevantie verloren, het mensenleven valt 
+niet meer te sturen, het is voorbij, de eindigheid heeft gezegevierd.
+ \tussen{De angst der leegte}
+ \setlength{\epigraphwidth}{0.8\textwidth}
+ \epigraph{``Anyone whose goal is `something higher' must expect someday to suffer vertigo. What is vertigo? Fear of falling? 
+ No, Vertigo is something other than fear of falling. It is the voice of the emptiness below us which tempts and lures us, 
+ it is the desire to fall, against which, terrified, we defend ourselves.''}{Milan Kundera, \emph{The Unbearable Lightness of Being}}
+
+ Als er één diepe angst is die mijn vooruitzicht naar een leven als leerkracht 
+ wiskunde bedoezelt, dan is het wel de angst van de leegte. Het na een tijdje niet meer weten waarom je nu eigenlijk
+ voor de klas wou gaan staan om leerlingen de schoonheid van de wiskunde te laten ervaren. Als ik denk aan leegte,
+ denk ik ook aan Keizer Nero die een hymne zong toen Rome in brand stond en leg ik ook meteen een associatie naar nonchalance.
+ Deze twee zaken werk ik verderop uit, maar laten we eerst even stilstaan bij leegte en 
+doelloosheid.\\
+
+ In het licht van de  eeuwigheid is elk leven finaal doelloos maar net zoals er een onderscheid kan gemaakt
+ worden tussen concrete en diepe angsten in een mensenleven, kunnen wij bewust proberen om die 
+ onomkombare doelloosheid uit het mensenleven te verbannen. Volgens mij is de zoektocht naar het volmaakte geluk synoniem voor het 
+levenslang gevecht van de mens tegen de manifeste doelloosheid van het leven. 
+Een gevecht dat ook hier finaal beslecht wordt door eindigheid - de dood - waardoor de doelloosheid finaal victorie kraait. \\
+
+Hoewel dit een sombere levensopvatting lijkt, is het dat net allerminst. Wie 
+leeft in het volle besef dat het leven finaal doelloos is, wil zelfs niet eens 
+meer stilstaan bij concrete angsten. Je hoeft geen fantast te zijn om in te zien dat zoiets het leven al een heel pak mooier maakt.
+Het besef dat het leven finaal doelloos is en het onderscheid tussen concrete angsten en diepe angsten
+gaan hand in hand, het één is het gevolg van het ander en omgekeerd. Welke concrete angst weegt immers zwaar genoeg 
+om het op een weegschaal te halen van de finale doelloosheid van het bestaan?  Eindigheid werd in de vorige sectie omarmt als een troost. Vermits 
+het net de eindigheid is die een mensenleven finaal doelloos maakt, ervaar ik 
+eveneens de finale doelloosheid van het bestaan als een troost. Een zelfde type 
+troost, misschien zelf helemaal dezelfde troost, als de troost van de 
+eindigheid. Immers: wie de finale doelloosheid als troost omarmt, transcendeert 
+automatisch naar een hoger bewustzijnsniveau. Een bewustzijnsniveau waarin de 
+vrije keuze de koning ter rijk is, een bewustzijnsniveau waarin het mogelijk is 
+levenskeuzes te maken die niet afhangen van concrete angsten (zoals bv. statusangst), waarin enkel de 
+hoogstpersoonlijke zingeving als maatstaf geldt. Elke andere maatstaf weegt een 
+pak lichter samen op de weegschaal met de finale doelloosheid van het bestaan en 
+heeft dus geen plaats in dit bewustzijnsniveau.\\
+
+Slotsom van deze sectie: ik omarm met gulzigheid de finale doelloosheid van het 
+bestaan. Die omarming brengt mij op een bewustzijnsniveau die de keuze voor een 
+leven als leerkracht rechtvaardigt: statusangst, angst om te weinig ambitieus 
+gevonden te worden, angst voor het financiële (ik zou met mijn diploma immers vetbetaalde beroepen kunnen 
+uitoefenen),... zijn allemaal concrete angsten die mijn keuze allesbehalve in de 
+weg staan. De omarming van de finale doelloosheid zorgt er écht voor dat het 
+worden van een leraar wiskunde een échte persoonlijke, vrije keuze is, een keuze die de 
+toets van de hoogstpersoonlijke zingeving als enige maatstaf perfect doorstaat. 
+Toch blijft die diepe angst van de leegte. Zal mijn keuze voor het leraarschap de 
+toets van de hoogstpersoonlijke zingeving als enige maatstaf mijn hele 
+mensenleven lang blijven doorstaan? Zo nee: wat gebeurt er dan? Komen we dan in 
+zoiets als een nachtmerrie terecht?
+
+\tussen{Wordt vervolgd...}
+
+\section{Handelingsonderzoek}
+\subsection{Motivatie}
+\subsection{}
+\section{Slotreflectie}
+\subsection{SWOT-analyse}
+\subsection{meta-kernreflectie}
+
+ \end{document}
+

@@ -1,0 +1,29 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {subsection}{\numberline {1.1}Why we need Game Theory}{3}
+\contentsline {section}{\numberline {2}Introducing Load Balancing Games}{3}
+\contentsline {subsection}{\numberline {2.1}Strategic games}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Defenition}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Mixed and pure strategies}{4}
+\contentsline {subsubsection}{\numberline {2.1.3}Nash Equilibra}{5}
+\contentsline {subsubsection}{\numberline {2.1.4}Theorem of Nash}{5}
+\contentsline {subsection}{\numberline {2.2}Congestion games}{7}
+\contentsline {subsubsection}{\numberline {2.2.1}Definition}{7}
+\contentsline {subsubsection}{\numberline {2.2.2}The existence of a pure Nash equilbrum}{8}
+\contentsline {subsection}{\numberline {2.3}Load balancing games}{10}
+\contentsline {subsubsection}{\numberline {2.3.1}Definition}{10}
+\contentsline {section}{\numberline {3}Linear cost functions in Load Balancing Games}{10}
+\contentsline {subsection}{\numberline {3.1}Payoffs and makespan}{10}
+\contentsline {subsubsection}{\numberline {3.1.1}Pure strategies}{10}
+\contentsline {subsubsection}{\numberline {3.1.2}Mixed strategies}{11}
+\contentsline {subsection}{\numberline {3.2}An example of a Load Balancing Game with linear costs}{12}
+\contentsline {subsection}{\numberline {3.3}The Price of Anarchy}{14}
+\contentsline {subsubsection}{\numberline {3.3.1}Definition}{14}
+\contentsline {subsubsection}{\numberline {3.3.2}Bachmann-Landau notations}{14}
+\contentsline {subsubsection}{\numberline {3.3.3}Pure Nash Equilibria}{15}
+\contentsline {paragraph}{Identical Machines}{15}
+\contentsline {paragraph}{Uniformly Related Machines}{16}
+\contentsline {subsubsection}{\numberline {3.3.4}Mixed Nash Equilibria}{16}
+\contentsline {paragraph}{Identical Machines}{16}
+\contentsline {paragraph}{Uniformly Related Machines}{16}
+\contentsline {subsubsection}{\numberline {3.3.5}Summary}{16}

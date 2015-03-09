@@ -1,0 +1,34 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {subsection}{\numberline {1.1}Why we need Game Theory}{3}
+\contentsline {section}{\numberline {2}Game Theory: Introducing Load Balancing Games}{3}
+\contentsline {subsection}{\numberline {2.1}Strategic games}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Defenition}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Mixed and pure strategies}{4}
+\contentsline {subsubsection}{\numberline {2.1.3}Nash Equilibra}{5}
+\contentsline {subsubsection}{\numberline {2.1.4}Theorem of Nash}{5}
+\contentsline {subsection}{\numberline {2.2}Congestion games}{7}
+\contentsline {subsubsection}{\numberline {2.2.1}Definition}{7}
+\contentsline {subsubsection}{\numberline {2.2.2}The existence of a pure Nash equilbrum}{8}
+\contentsline {subsection}{\numberline {2.3}Load balancing games}{10}
+\contentsline {subsubsection}{\numberline {2.3.1}Definition}{10}
+\contentsline {subsubsection}{\numberline {2.3.2}Payoffs and makespan for linear cost functions}{10}
+\contentsline {paragraph}{Pure strategies}{10}
+\contentsline {paragraph}{Mixed strategies}{11}
+\contentsline {subsubsection}{\numberline {2.3.3}An example with linear costs}{12}
+\contentsline {section}{\numberline {3}The Price of Anarchy}{13}
+\contentsline {subsection}{\numberline {3.1}Definition}{13}
+\contentsline {subsection}{\numberline {3.2}Bachmann-Landau notations}{14}
+\contentsline {subsubsection}{\numberline {3.2.1}Bigh Oh, Big Omega \& Big Theta}{14}
+\contentsline {subsubsection}{\numberline {3.2.2}Small Oh, Small Omega \& Small Theta}{15}
+\contentsline {subsubsection}{\numberline {3.2.3}Asymptotical Equality}{15}
+\contentsline {subsection}{\numberline {3.3}$PoA$ in Pure Nash Equilibria}{15}
+\contentsline {subsubsection}{\numberline {3.3.1}Identical Machines}{15}
+\contentsline {subsubsection}{\numberline {3.3.2}Uniformly Related Machines}{16}
+\contentsline {subsection}{\numberline {3.4}$PoA$ in Mixed Nash Equilibria}{20}
+\contentsline {subsubsection}{\numberline {3.4.1}Identical Machines}{20}
+\contentsline {subsubsection}{\numberline {3.4.2}Uniformly Related Machines}{22}
+\contentsline {subsection}{\numberline {3.5}Summary}{22}
+\contentsline {subsection}{\numberline {3.6}$PoA$ in Load Balancing Games with non-linear cost functions}{22}
+\contentsline {section}{\numberline {4}Solutions}{22}
+\contentsline {subsection}{\numberline {4.1}s}{22}

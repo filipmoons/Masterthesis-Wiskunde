@@ -1,0 +1,168 @@
+% $Id: $
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+% The following makes latex use nicer postscript fonts.
+\usepackage{times}
+\usepackage[english]{babel}
+%\usepackage[colorlinks,urlcolor=blue,linkcolor=blue]{hyperref}
+\pagestyle{headings}
+\usepackage{vubtitlepage}
+\usepackage{lmodern}
+\usepackage[geometry]{ifsym}
+\author{Filip Moons}
+\title{Game Theory: Distributed Selfish Load Balancing on Networks}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{notation}[theorem]{Notation}
+
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\HQ}{{\mathbb H}}
+
+
+%\newenvironment{proof}{\noindent{\bf Bewijs.}}{{\hfill $ \Box $}\vskip 4mm}
+
+%\promotortitle{Promotor/Promotors}
+\promotor{Prof. Dr. Ann Now\'{e}}
+\advisors{}
+\advisortitle{}
+\addto\captionsenglish{\renewcommand*\abstractname{Abstract for non-mathematicians}}
+\date{MEI 2006}
+\faculty{Faculty of Science}
+\advisortitle{}
+\department{Department of Mathematics}
+\reason{Bachelor Thesis I}
+
+\date{January 2013}
+
+
+\begin{document}
+% Then english TitlePage
+\maketitlepage
+\newpage
+\null\vspace{\fill}
+
+\begin{abstract}
+Explaining the subject of my Bachelor thesis to those who do not study either Mathematics or Computer Science isn't an easy task, but I can give an idea of the problem studied by giving an example. Imagine, for example, that there are only two roads from Paris to Brussels: road A \& road B. If you take road A you'll always drive 5 hours, independent from the usage of road A by other drivers (\emph{agents} is the more game theoretical word). If you take road B, the time you need depends of the number of other agents using road B: you'll drive $5\frac{x}{100}$ hours, with $x$ the number of agents, but also on this road the maximum time spend is 5 hours, so mathematically that becomes $\min(5, 5\frac{x}{100})$ hours. Because every agent acts selfish and rational, the result under this circumstances and with only this information will be that every agent will take at any time road B: with road A they drive always 5 hours, with road B there is a chance to get to Brussels in less time. But consider now the following situation: exact 100 agents decide at the same time to go to Brussels, that means that all of them will take road B and so everyone will drive 5 hours. It would be much better that 50 agents would take road A (and thus drive 5 hours) and the other 50 take road B (and drive $5\frac{50}{100} = 2.5$ hours), that would reduce the average time to $3.75$ hours! This kind of problems where the selfishness of agents reduce the power (load) of a general system take place in a wide range of real life problems: not only in traffic, but also in economics, politics and, that's more my interest, also in Computer Science: in a distributed system computers interact on a selfish base because there isn't a central computer that organizes the network. It's extremely interesting to study which information these kind of agents (computers) need to know to reduce their selfishness and reach the optimal power of the distributed network.
+\end{abstract}
+\vspace{\fill}
+\newpage
+
+\tableofcontents
+
+\section{Introduction}
+Whenever a set of task should be executed on a set of resources, the problem of load balancing evidently arouses. We need to balance the load among the resources in order to exploit the available resources efficiently and fair.
+\subsection{Makespan scheduling on uniformly related machines}
+ One of the most fundamental load balancing problems is \emph{makespan scheduling on uniformly related machines}. This problem is defined by $m$ machines with speeds $s_1,...s_m$ and $n$ tasks with weights $w_1,...,w_n$. Let $[n] = \{1,...,n\}$ be to set of tasks and $[m]$ the set of machines. Now, the problem is to find an assignment function $A: [n] \rightarrow [m]$ of the tasks to the machines that is as balanced as possible. The load of machine $j \in [m]$ under $A$ is defined as:
+\begin{displaymath}
+  \ell_j = \displaystyle\sum_{\substack{i \in [n] \\j = A(i)}}{\frac{w_i}{s_j}}
+\end{displaymath}
+
+The \emph{makespan} is defined as $$\max\limits_{j \in [m]}(\ell_j)$$
+
+Now, of course, the objective is to minimize the makespan. When there is a central machine, it ins't that hard to design algorithms that compute the mapping A and minimizes the makespan. Suppose, however, that there is not a central machine that can enforce an efficient mapping of the tasks to the machines (e.g. in P2P Networks). This naturally leads to the following game theoretic setting in which we will be able to analyze what happens to the makespan if there is no global authority but selfish agents aiming at maximizing their individual benefit decide about the assignment of tasks. The understand the problem and it's solution, we first give the most important game theoretical results you'll need.
+
+\subsection{Import results from Game Theory}
+Important note: This section doesn't aim to give the reader an introduction in Game Theory. Instead, it gives only the relevant results that the reader must know for understanding the rest of this paper.
+
+\subsubsection{Congestion games}
+\begin{definition}\cite{2}
+A strategic game $\langle N, (A_i), \succeq_i\rangle$ consists of:
+\begin{itemize}
+  \item a finite set $N$  (the set of \textbf{players})
+  \item for each player $i \in N$ a nonempty set $A_i$ (the \textbf{set of actions} available to player i)
+  \item for each player $i \in N$ a preference relation $\succeq_i$ on $A=\times_{j\in N}A_j$ (the \textbf{preference relation} of player i)
+\end{itemize}
+\end{definition}
+\begin{remark}
+Under a wide range of circumstances the preference relation  $\succeq_i$ of player $i$ in a strategic game can be represented by a \textbf{payoff function} $u_i: A \rightarrow \R$, in the sense that $u_i(a) \geq u_i(b)$ whenever $a \succeq_i b$. Sometimes this function is also called a utility function. A strategic game is then often denoted as $G = \langle N, (A_i), (u_i)\rangle$
+\end{remark}
+\begin{definition}\cite{4}
+A congestion model $(N, M, (A_i)_{i\in N}, (c_j)_{j\in M})$ is defined as follows:
+\begin{itemize}
+  \item a finite set $N$ of players
+  \item a finite set $M$ of facilities
+  \item For $i \in N$, $A_i$ denotes the set of strategies of player $i$, where each $a_i \in A_i$ is a non-empty subset of the facilities.
+  \item For $j \in M, c_j \in \R^n$ denotes the vector of costs where $c_j(k)$ is the cost related to each user of facility $j$, if there are exactly $k$ players using that facility.
+\end{itemize}
+\end{definition}
+\begin{definition}\cite{2,4}
+A congestion game associated with a congestion model is a strategic game with:
+\begin{itemize}
+  \item a finite set $N$ of players,
+  \item for each player $i \in N$, there is a nonempty set of actions (strategies) $A_i$,
+  \item the preference relation $\succeq_i$ for each player $i$ is defined by a payoff function: Let $A =\times_{i\in N}A_i$ be the set of outcomes. For any $\vec{a} \in A$ and for any $j \in M$, let $n_j(\vec{a})$ be the number of players using facility $j$, assuming $\vec{a}$ is the current action profile.  Then the payoff function for player $i$ becomes: $u_i(\vec{a}) = \sum_{j\in a_i} c_j(n_j(\vec{a}))$.
+
+\end{itemize}
+\end{definition}
+\subsubsection{Equilibra in congestion games}
+One of the most fundamental concepts in game theory is that of Nash equilibrum. This notion captures a steady state of the play of a strategic game in which no player can improve his cost by unilaterally changing his strategy.
+
+\begin{definition}\cite{2}
+A Nash equilibrum of a strategic game $\langle N, (A_i), \succeq_i\rangle$ is a profile $a^* \in A$ of actions with the property that for every player $i \in N$ we have $$(a^*_{-i}, a^*_i) \succeq_i (a^*_{i}, a_i) \forall a_i \in A_i$$
+\end{definition}
+Although there is not enough space to give a deep explanation of the concept of a Nash equilibrum, it's important to know that a Nash equilibrum is not necessary an optimal solution of a stategic game. It's only a profile in which no player will benefit from changing his strategy on it's own.
+
+We can prove that a finite congestion game has a Nash Equilibrum. The proof of this statement use the notion of a potential game. We will first define a potential game and proof in a lemma that a every congestion game is a potential game. With this result we can then finally proof the existence of a Nash Equilibrum.
+
+\begin{definition}\cite{5} A game is a \textbf{potential game} if there exists a \textbf{potential function}:
+$$\Phi: A \rightarrow \R$$
+with the following property: let (a_i^{\'}, \vec{a^_i}),(a^*_{i}, a_i)
+ : A ! R
+with the following property. Let (ai
+; ai) and (a
+0
+i
+; ai) be two distinct joint actions.
+Ui(a
+0
+i
+; ai)  Ui(ai
+; ai) = (a
+0
+i
+; ai)  (ai
+; ai)
+
+\begin{definition}
+A \textbf{potential function} for a game is a real-valued function,
+ deﬁned on the set of possible outcomes of the game, such that the equilibria of the game are precisely the local optima of the potential function. T
+\end{definition}
+a potential function:  a real-valued function defined on the  space of  pure  strategy
+profiles such that the change in any player's  payoffs from a unilateral deviation is
+exactly  matched by the change in potential.
+
+\begin{theorem}\cite{4}
+Every finite congestion game has a pure strategy (deterministic) equilibrum.
+\end{theorem}
+
+\begin{proof}(Rosenthal 1973)
+Let $\vec{a} \in A$ be a deterministic stategy vector as defined above, $\vec{a}$ exists because the congestion is finite. Let $\Phi: A \rightarrow \R$ be a function defined as follows: $$\Phi(\vec{a}) = \displaystyle\sum_{j=1}^{m}\displaystyle\sum_{k=1}^{n_j(\vec{a})} c_j(k)$$
+Consider the case where player $i$ changes its strategy from $a_i$ to $b_i$ (where $a_i, b_i \in A_i$). 
+
+\end{proof}
+
+\section{References}
+\begin{thebibliography}{99}
+\bibitem[BVOCK2007]{1} B. V\"{o}cking, \emph{Selfish Load Balancing}, Chapter 20 in Algorithmic Game Theory, Cambridge University Press, December 2007.
+\bibitem[JOARU1994]{2} d J. Osborne and A. Rubinstein, \emph{A course in Game Theory},  The MIT Press, 1994.
+\bibitem[CW2007]{3} C. Witteveen, Intreerede: De Prijs van de Onafhankelijkheid, TU Delft 2007.
+\bibitem[YMAN2003]{4} Y. Mansour, \emph{Lecture 6: Congestion and potential games}, Computational Learning Theory, University of Tel Aviv, 2003.
+\bibitem[JMAR{5} Jason R. Marden, \emph{Lecture 12: Game Theory Course}, University of Colorado.
+\end{thebibliography}
+\end{document}
+

@@ -1,0 +1,91 @@
+\select@language {dutch}
+\contentsline {section}{\numberline {1}Stagegegevens}{4}
+\contentsline {subsection}{\numberline {1.1}Stageschool}{4}
+\contentsline {subsection}{\numberline {1.2}Klasgroepen}{4}
+\contentsline {subsubsection}{\numberline {1.2.1}5Wi8}{5}
+\contentsline {subsubsection}{\numberline {1.2.2}6Wi8 (Sophie)}{5}
+\contentsline {subsubsection}{\numberline {1.2.3}6Wi8 (Lieselotte)}{5}
+\contentsline {subsubsection}{\numberline {1.2.4}4SW}{6}
+\contentsline {subsection}{\numberline {1.3}Stageplanning}{6}
+\contentsline {subsubsection}{\numberline {1.3.1}Week 1: 22-26 september}{6}
+\contentsline {subsubsection}{\numberline {1.3.2}Week 2: 29 september - 3 oktober}{7}
+\contentsline {subsubsection}{\numberline {1.3.3}Week 3: 6-10 oktober}{7}
+\contentsline {subsubsection}{\numberline {1.3.4}Week 4: 13-17 oktober}{7}
+\contentsline {subsubsection}{\numberline {1.3.5}Week 5: 20-24 oktober}{8}
+\contentsline {subsubsection}{\numberline {1.3.6}Week 6: 27-31 oktober}{8}
+\contentsline {subsubsection}{\numberline {1.3.7}Week 7: 3-7 november}{8}
+\contentsline {subsubsection}{\numberline {1.3.8}Week 8: 10-14 november}{9}
+\contentsline {subsubsection}{\numberline {1.3.9}Week 9: 17-21 november}{9}
+\contentsline {section}{\numberline {2}Algemene reflectie}{10}
+\contentsline {section}{\numberline {3}Extra opdrachten Zelfstandige oefenstage}{12}
+\contentsline {subsection}{\numberline {3.1}Opdracht 1: Periode- \& vorderingsplan}{12}
+\contentsline {subsubsection}{\numberline {3.1.1}6Wi8}{12}
+\contentsline {paragraph}{Jaarplan van de mentor}{12}
+\contentsline {paragraph}{Eigen periode-\& vorderingsplan}{12}
+\contentsline {subsubsection}{\numberline {3.1.2}4SW}{13}
+\contentsline {subsection}{\numberline {3.2}Opdracht 2: Evaluatie van de leerlingen}{14}
+\contentsline {subsection}{\numberline {3.3}Opdracht 3: Neerslag gesprekken met de mentor}{15}
+\contentsline {subsubsection}{\numberline {3.3.1}Sophie Allein}{15}
+\contentsline {subsubsection}{\numberline {3.3.2}Lieselotte Monteyne}{16}
+\contentsline {subsubsection}{\numberline {3.3.3}David Maquenne}{16}
+\contentsline {section}{\numberline {4}Bijlagen}{17}
+\contentsline {subsection}{4.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}Begeleide oefenstage}{Blauw}
+\contentsline {subsubsection}{4.1.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lessen bij mentor Sophie Allein}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 1: Combinatoriek - keuzes m/z herhaling}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Invulblad Bingo (Didactische werkvorm)}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 2: Combinatoriek - Herhalingscombinatie}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 3: Combinatoriek - Herhalingscombinatie}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.5\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 4 \& 5: Combinatoriek - Oef + Binomium}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.6\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 6: Combinatoriek - Binomium van Newton}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.7\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Uitwerking oefeningen - Combinatoriek}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.8\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 7 \& 8: Combinatoriek - Toets + Binomium}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.9\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Herhalingstoets: Combinatoriek}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.10\tmspace +\thickmuskip {.2777em} Les 9: Combinatoriek - Oef + Binomium}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.11\tmspace +\thickmuskip {.2777em} Les 10: Inleiding Computerwetenschappen}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.12\tmspace +\thickmuskip {.2777em} Zelfgemaakte bundel `Inleiding Computerwetenschappen' \\ (VERSIE 1)}{Blauw$\rightarrow $Groen}
+\contentsline {paragraph}{4.1.1.13\tmspace +\thickmuskip {.2777em} Les 11, 12 \& 13: Inleiding Computerwetenschappen}{Blauw$\rightarrow $Groen}
+\contentsline {subsubsection}{4.1.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lessen bij mentor Lieselotte Monteyne}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 1: Combinatoriek - Inleiding}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 2: Combinatoriek - Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 3 \& 4: Combinatoriek - Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Uitwerking gemaakte oefening in klas}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.5\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 5: Combinatoriek - Oefeningen}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.6\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 6: Combinatoriek - Oefeningen}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.7\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Uitwerking oefeningen -Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.8\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Toets: Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.9\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 7 \& 8: Combinatoriek - Toets + HerhalingsVar}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.10\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Inhaaltoets: Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.11\tmspace +\thickmuskip {.2777em} Taak: Keuzes zonder herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {paragraph}{4.1.2.12\tmspace +\thickmuskip {.2777em} Les 10 \& 11: Combinatoriek - Keuzes met herhaling}{Blauw$\rightarrow $Rood}
+\contentsline {subsubsection}{4.1.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Evaluaties}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 1 \& 2 door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 2, 3 \& 4 door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 5 door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Algemene kribbels door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.5\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 1 door Lieselotte Monteyne}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.6\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 6 \& 7 door Lieselotte Monteyne}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.7\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lesbeoordeling les 9 door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.8\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Eindevaluatie BOS door Sophie Allein}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.9\tmspace +\thickmuskip {.2777em} Eindevaluatie BOS door Lieselotte Monteyne}{Blauw$\rightarrow $Geel}
+\contentsline {paragraph}{4.1.3.10\tmspace +\thickmuskip {.2777em} Toelating tot de module ZOS}{Blauw$\rightarrow $Geel}
+\contentsline {subsection}{4.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}Zelfstandige oefenstage}{Oranje}
+\contentsline {subsubsection}{4.2.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lessen bij mentor David Maquenne}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 1: Hoekmeting - Geori\IeC {\"e}nteerde hoeken}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 2: Hoekmeting - Chasles-Mobi\IeC {\"u}s}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Individuele verbetertransparant}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 3 \& 4: Hoekmeting - Hoekgroottes + Radialen}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.5\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Voorgemaakte cirkels met verschillende straal}{Oranje$\rightarrow $Blauw}
+\contentsline {paragraph}{4.2.1.6\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 5: Hoekmeting - Oefeningen}{Oranje$\rightarrow $Blauw}
+\contentsline {subsubsection}{4.2.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lessen bij mentor Sophie Allein}{Oranje$\rightarrow $Rood}
+\contentsline {paragraph}{4.2.2.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 14 \& 15: Kegelsneden - Inleiding + Parabool}{Oranje$\rightarrow $Rood}
+\contentsline {paragraph}{4.2.2.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 17: Kegelsneden - Toepassingen parabool}{Oranje$\rightarrow $Rood}
+\contentsline {paragraph}{4.2.2.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Opdrachten hoekenwerk}{Oranje$\rightarrow $Rood}
+\contentsline {paragraph}{4.2.2.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Uitgewerkte oefeningen - De parabool}{Oranje$\rightarrow $Rood}
+\contentsline {subsubsection}{4.2.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Lessen bij mentor Lieselotte Monteyne}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.1\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Uitgewerkte oefeningen - Combinatoriek}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.2\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Schriftelijk antwoord op vraag van 2 lln}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.3\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Herhalingstoets: Combinatoriek}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.4\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Taak: Combinatoriek}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.5\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Les 1, 2, 3, 4: Inleiding Computerwetenschappen}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.6\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Zelfgemaakte bundel `Inleiding Computerwetenschappen' \\ (VERSIE 2)}{Oranje$\rightarrow $Groen}
+\contentsline {paragraph}{4.2.3.7\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Nummering voor actieve werkvorm sorteeralgoritmes}{Oranje$\rightarrow $Groen}

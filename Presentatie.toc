@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.26pt}
+\beamer@sectionintoc {1}{Load Balancing Games}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Strategic Games}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Congestion Games}{11}{0}{1}
+\beamer@subsectionintoc {1}{3}{Load balancing games}{14}{0}{1}
+\beamer@sectionintoc {2}{Price of Anarchy}{18}{0}{2}
+\beamer@subsectionintoc {2}{1}{Concept}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{Bounds on $PoA$}{20}{0}{2}
+\beamer@sectionintoc {3}{Coordination Mechanisms}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{Policies}{25}{0}{3}
+\beamer@subsectionintoc {3}{2}{Taxation}{26}{0}{3}

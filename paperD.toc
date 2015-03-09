@@ -1,0 +1,11 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Inleiding}{2}
+\contentsline {section}{\numberline {2}Situatieschets \& Doelstellingen van het gesprek}{3}
+\contentsline {section}{\numberline {3}Transcriptie}{4}
+\contentsline {section}{\numberline {4}Grondige bespreking}{17}
+\contentsline {subsection}{\numberline {4.1}Algemene analyse}{17}
+\contentsline {subsection}{\numberline {4.2}De roos van Leary}{19}
+\contentsline {subsection}{\numberline {4.3}Communicatieniveaus}{22}
+\contentsline {subsection}{\numberline {4.4}Interventiecategorie\IeC {\"e}n}{24}
+\contentsline {subsection}{\numberline {4.5}Inbreng van de leerkracht versus bijlesstudent}{26}
+\contentsline {section}{\numberline {5}Suggesties voor verbetering}{27}

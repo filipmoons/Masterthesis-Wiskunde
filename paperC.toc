@@ -1,0 +1,21 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Order theory}{3}
+\contentsline {subsection}{\numberline {2.1}Ordered sets}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Preordered sets}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Partially ordered sets}{3}
+\contentsline {subsubsection}{\numberline {2.1.3}Chains}{3}
+\contentsline {subsection}{\numberline {2.2}Nets}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}Link with filters}{4}
+\contentsline {subsection}{\numberline {2.3}Lattices \& dcpo's}{4}
+\contentsline {subsection}{\numberline {2.4}The ``Way Below''-relation}{6}
+\contentsline {subsection}{\numberline {2.5}Domains}{9}
+\contentsline {section}{\numberline {3}Scott convergence}{11}
+\contentsline {subsection}{\numberline {3.1}Lower semicontinuous functions}{11}
+\contentsline {subsection}{\numberline {3.2}$\mathcal {S}$-limits}{12}
+\contentsline {subsection}{\numberline {3.3}Convergence and topology}{13}
+\contentsline {subsection}{\numberline {3.4}The Scott topology of domains}{16}
+\contentsline {section}{\numberline {4}Scott-Continuous Functions}{18}
+\contentsline {subsection}{\numberline {4.1}Definition}{18}
+\contentsline {subsection}{\numberline {4.2}Kleene Fixed-Point theorem}{20}
+\contentsline {section}{\numberline {5}Categorical conclusion: Injective spaces}{21}

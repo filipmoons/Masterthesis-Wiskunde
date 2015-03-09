@@ -1,0 +1,270 @@
+\documentclass{beamer}
+%\documentclass[trans]{beamer} %om te printen!
+%\transglitter etc: kunt ge pas zien op Full Screen (Ctrl+L)
+
+\usepackage{graphicx,multicol}
+\usepackage[all]{xy}
+\usepackage{beamerouterthememiniframes, beamercolorthemeann,srcltx,hyperref}
+
+\setbeamercolor{normal text}{fg=black!70}
+\setbeamertemplate{navigation symbols}{}%geen navigatie
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%\setbeamercovered{dynamic} %te komen items in lichtgrijs
+%\setbeamercolor{background canvas}{bg=black!0}%is wit
+
+\logo{\vspace{-0.2cm}\\
+\hfill\includegraphics[height=3cm]{VUB_schild}}
+%plaatst het logo op elke slide onderaan
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\z}{\mathcal{Z}}
+\newtheorem{remark1}{Remark}
+%\columnsep=1.8cm %\columnseprule=.4pt
+
+\title{Game Theory: Distributed Selfish Load Balancing on Networks}
+\author{Filip Moons\\3$^{\text{th}}$ Bachelor of Mathematics\\Promotor: Prof. Dr. Ann Now\'{e}\\Presentation Bachelor Thesis I}
+\date{Friday 1 Februari, 2013}
+
+\begin{document}
+
+\begin{frame}[plain]
+\includegraphics[width=0.4\paperwidth]{VUB_logo.jpg}
+\vspace{2cm}
+\titlepage
+\end{frame}
+
+
+%\section[Overzicht]{}%rechte haken dienen om niet in de outline te komen
+%maar wel vanboven in het donkergroene balkje
+
+%\begin{frame}[plain]{Outline}
+%\end{frame}
+%
+%\begin{frame}[plain]{Outline}
+%\tableofcontents[pausesections]
+%\end{frame}
+%
+%
+%\section{blabla}
+%
+%\begin{frame}
+%\begin{alertblock}{}
+%\begin{center}
+%blabla
+%\end{center}
+%\end{alertblock}
+%\end{frame}
+
+\begin{frame}{Content}
+\begin{itemize}
+  \item Introduction
+  \item Load Balancing Games
+    \begin{itemize}
+    \item Strategic Games: Mixed NE
+    \item Congestion Games: Pure NE + Mixed NE
+    \item Load Balancing Games: : Pure NE + Mixed NE
+    \end{itemize}
+  \item Price of Anarchy
+  \item Possible solution: Taxation
+\end{itemize}
+
+\end{frame}
+
+
+\section{Load Balancing Games}
+\subsection{Strategic Games}
+\begin{frame}
+\begin{definition}
+A strategic game $\langle N, (A_i), \succeq_i\rangle$ consists of:
+\begin{itemize}
+  \item a finite set $N$  (the set of \textbf{players}),
+  \item for each player $i \in N$ a nonempty set $A_i$ (the \textbf{set of actions} available to player i),
+  \item for each player $i \in N$ a preference relation $\succeq_i$ on $A=\times_{j\in N}A_j$ (the \textbf{preference relation} of player i).
+\end{itemize}
+\end{definition}
+\begin{alertblock}{Remark}
+The preference relation  $\succeq_i$ of player $i$ in a strategic game can be represented by a \textbf{payoff function} or \textbf{utility function} $u_i: A \rightarrow \R$, in the sense that $u_i(a) \geq u_i(b)$ whenever $a \succeq_i b$.
+\end{alertblock}
+\end{frame}
+%\begin{frame}
+%\begin{block}{}
+%\begin{center}
+%Introductie
+%\end{center}
+%\end{block}
+%\end{frame}
+
+
+\begin{frame}{Pure and mixed strategy profiles}
+\begin{block}{Pure strategy profile}
+$$a = (a_1,...,a_n) \in A, a_i \in A_i$$
+\end{block}
+
+\begin{block}{Mixed strategy profile}
+$$\alpha = \left(\alpha_i\right)_{i\in N} \in \Delta(A), \alpha_i(a_j) = \P[A_i = a_j]$$
+Now,
+$$\P[\alpha = a] = \displaystyle\prod_{i \in N} \alpha_i(a_i)$$
+The expected pay off for player $i$ under a mixed strategy profile $\alpha$:
+$$U_i(\alpha) = \displaystyle\sum_{a \in A}{\left(\prod_{j \in N}{\alpha_j(a_j)}\right) u_i(a)}$$
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Nash equilibria}
+\begin{block}{Pure Nash equilibrum} 
+A pure strategy profile $a^* \in A$ is a \textbf{pure Nash Equilibrum} if for each player $i\in N$:
+$$u_i(a_{-i}^*,a_i^*)) \geq u_i(a_{-i}^*, a_i) \;\;\;\; \forall a_i \in A_i$$
+\end{block}
+
+\begin{block}{Mixed Nash equilibrum}
+A mixed strategy profile $\alpha^*$ is a \textbf{mixed Nash Equilibrum} if for each player $i \in N$:
+$$U_i(\alpha_{-i}^*,\alpha_i^*)) \geq U_i(\alpha_{-i}^*, \alpha_i) \;\;\;\; \forall \alpha_i$$
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Theorem of Nash}
+\begin{theorem}
+Every finite strategic game has a mixed Nash equilibrum.
+\end{theorem}
+\begin{block}{Lemma: Brouwer fixed point theorem}
+Let $X$ be a \emph{\textbf{non-empty}}, convex and compact set. If $f : X \rightarrow X$ is continuous, then there must exist $x \in X$ such that $f(x) = x$.
+\end{block}
+\begin{block}{Proof.}
+$\Delta(A_i)$ is the set of mixed strategy profiles of a player $i$. Note that $(\alpha_i(a_1),..., \alpha_i(a_k),...)$ with $a_j \in A_i$ (the pure actions of player $i$ are the elements in 
+$\Delta(A_i)$. 
+\pause
+\begin{itemize}
+        \item The set $\Delta(A_i)$ is \textbf{\emph{non-empty}} by definition of a strategic game.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Theorem of Nash}
+\begin{block}{Lemma: Brouwer fixed point theorem}
+Let $X$ be a non-empty, \textbf{\emph{convex}} and compact set. If $f : X \rightarrow X$ is continuous, then there must exist $x \in X$ such that $f(x) = x$.
+\end{block}
+\begin{block}{Proof.}
+\begin{itemize}
+         \item To proof that the set $\Delta(A_i)$ is \textbf{\emph{convex}}, take $\vec{x} = (\alpha^x_i(a_1),...,\alpha^x_i(a_k))$ and $\vec{y} = (\alpha^y_i(a_1),...,\alpha^y_i(a_k))$ then $\vec{z} = \theta\vec{x} + (1 - \theta)\vec{y}$ for some $\theta \in [0,1]$ is in $\Delta(A_i)$ because $\vec{z}$ is also a mixed strategy for player $i$ (the sum of the components of $\vec{z}$ is 1).
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Theorem of Nash}
+\begin{block}{Lemma: Brouwer fixed point theorem}
+Let $X$ be a non-empty, convex and \textbf{\emph{compact}} set. If $f : X \rightarrow X$ is continuous, then there must exist $x \in X$ such that $f(x) = x$.
+\end{block}
+\begin{block}{Proof.}
+\begin{itemize}
+         \item  The \textbf{\emph{compactness}} in $\R^k$ can be shown by proving that the set is closed and bounded. The set is bounded because $0 \leq \alpha_i(a_j) \leq 1$. To proof closeness in $\R^k$, we'll proof that the limit of every convergent sequence in $\Delta(A_i)$ is an element of $\Delta(A_i)$. Consider a convergent sequence in $\Delta(A_i): ((\alpha^n_i(a_1),...,\alpha^n_i(a_k))_n\rightarrow(\alpha^*_i(a_1),...,\alpha^*_i(a_k))$. 
+           
+      \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Theorem of Nash}
+
+\begin{block}{Lemma: Brouwer fixed point theorem}
+Let $X$ be a non-empty, convex and \emph{\textbf{compact}} set. If $f : X \rightarrow X$ is continuous, then there must exist $x \in X$ such that $f(x) = x$.
+\end{block}
+\begin{proof}
+         $$\sum_{j=1}^k{\alpha^*_i(a_j)}  = \displaystyle\sum_{j=1}^k{\lim_{n\rightarrow\infty}{\alpha^n_i(a_j)}} = \displaystyle\lim_{n\rightarrow\infty}{\sum_{j=1}^k\alpha^n_i(a_j)} = \displaystyle\lim_{n\rightarrow\infty}{1} = 1$$
+                        This means that $(\alpha^*_i(a_1),...,\alpha^*_i(a_k))$ is also a mixed strategy for player $i$, but by definition of $\Delta(A_i)$, this limit belongs to $\Delta(A_i)$.
+\end{proof}
+\end{frame}
+
+\subsection{Congestion Games}
+\begin{frame}{Congestion Games}
+\begin{block}
+\begin{itemize}
+ \item a finite set $N$ of players,
+  \item for each player $i \in N$, there is a nonempty set of  (strategies) $A_i$,
+  \item the preference relation $\succeq_i$ for each player $i$ is defined by a payoff function $u_i: A \rightarrow \R$. For any $a \in A$ and for any $j \in M$, let $\ell_j(a)$ be \emph{the expected load on facility} $j$, assuming $a$ is the current pure strategy profile, so $\ell_j(a) = \sum_{\substack{i \in [n]\\j \in a_i}}{w_i}$ . Then the payoff function for player $i$ becomes: $u_i(a) = \sum_{j\in a_i} c_j(\ell_j(a))$.
+  \end{itemize}
+\end{definition}
+\end{frame}           
+
+
+\section{Price of Anarchy}
+
+\begin{frame}{Waar te vinden?}
+\pause
+\begin{block}{}
+\begin{center}
+Windows
+\end{center}
+\end{block}
+\pause
+\begin{itemize}
+\item[Editor] Winedt
+(\href{http://www.winedt.com}{http://www.winedt.com}),\\
+Texniccenter
+(\href{http://www.texniccenter.org}{http://www.texniccenter.org}),
+...
+\item[Compiler] MikTex (\href{http://www.miktex.org}{http://www.miktex.org}), ...
+\item[Viewer] Yap voor .dvi (geleverd bij MikTex),\\
+ Ghostview  voor .ps
+ (\href{http://www.cs.wisc.edu/~ghost}{http://www.cs.wisc.edu/$\sim$ ghost}),\\
+  Acrobat Reader voor .pdf (\href{http://www.adobe.com}{http://www.adobe.com}).
+\end{itemize}
+\pause
+\begin{block}{}
+\begin{center}
+Linux
+\end{center}
+\end{block}
+\pause
+
+\begin{itemize}
+\item[Editor] Kile, Xemacs, ...
+\item[Compiler] TeTex
+\item[Viewer] Ghostview  voor .ps
+ (\href{http://www.cs.wisc.edu/~ghost}{http://www.cs.wisc.edu/$\sim$ ghost}),\\
+  Acrobat Reader voor .pdf (\href{http://www.adobe.com}{http://www.adobe.com}).
+\end{itemize}
+\end{frame}
+
+\section{Taxation}
+
+\begin{frame}{Tex-file}
+ \pause
+\begin{itemize}
+\item Open je \structure{editor} \pause
+\item Open een nieuwe file  \pause
+\item Save als naam\structure{.tex}  \pause
+\item De file moet beginnen met een zogenaamde
+\structure{preamble} \pause
+\item De tekst moet in de \structure{body} staan  \pause
+\item \structure{Compileer} de file  \pause
+\item \structure{View} de file
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Handleiding}
+\href{http://homepages.vub.ac.be/~andooms/lshort.pdf}{The Not So
+Short Introduction to \LaTeX}
+\end{frame}
+
+
+\begin{frame}
+\transdissolve
+\begin{alertblock}{}
+\begin{center}
+Veel succes!
+\end{center}
+\end{alertblock}
+\end{frame}
+\end{document}

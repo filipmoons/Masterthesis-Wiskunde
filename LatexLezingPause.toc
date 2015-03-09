@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.26pt}
+\beamer@sectionintoc {1}{Load Balancing Games}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Strategic Games}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Congestion Games}{11}{0}{1}
+\beamer@sectionintoc {2}{Price of Anarchy}{12}{0}{2}
+\beamer@sectionintoc {3}{Taxation}{17}{0}{3}

@@ -1,0 +1,231 @@
+\documentclass{beamer}
+%\documentclass[trans]{beamer} %om te printen!
+%\transglitter etc: kunt ge pas zien op Full Screen (Ctrl+L)
+\usepackage{etex}
+\usepackage{tikz}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx,multicol}
+
+\usepackage[all]{xy}
+\usepackage{enumerate}
+
+\usepackage{graphicx}
+\usepackage{beamerouterthememiniframes, beamercolorthemeann,srcltx,hyperref}
+\usepackage{amsmath,amsthm,amssymb}
+
+\newcommand{\upuparrow}{\mathrel{\reflectbox{\rotatebox[origin=c]{90}{$\twoheadrightarrow$}}}}
+\newcommand{\downdownarrow}{\mathrel{\reflectbox{\rotatebox[origin=c]{90}{$\twoheadleftarrow$}}}}
+\setbeamercolor{normal text}{fg=black!70}
+\setbeamertemplate{navigation symbols}{}%geen navigatie
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%\setbeamercovered{dynamic} %te komen items in lichtgrijs
+%\setbeamercolor{background canvas}{bg=black!0}%is wit
+
+\logo{\vspace{-0.2cm}\\
+\hfill\includegraphics[height=3cm]{VUB_schild}}
+%plaatst het logo op elke slide onderaan
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\z}{\mathcal{Z}}
+\newtheorem{remark1}{Remark}
+\newcommand{\LFP}{\text{LFP}}
+%\columnsep=1.8cm %\columnseprule=.4pt
+\newcommand{\cost}{\text{cost}}
+\newcommand{\Nash}{\text{Nash}}
+\newcommand{\nash}{\text{nash}}
+\newcommand{\opt}{\text{opt}}
+\newcommand{\copt}{\cost(a_{\opt})}
+\title{Rate-Monotonic Scheduling}
+\author{Filip Moons\\Master in Applied Computer Science\\Promotor: Prof. Dr. Martin Timmerman\\Presentation Operating Systems \& Security}
+\date{Friday 9 January, 2014}
+
+\begin{document}
+
+\begin{frame}[plain]
+\includegraphics[width=0.4\paperwidth]{VUB_logo.jpg}
+\vspace{2cm}
+\titlepage
+\end{frame}
+
+
+%\section[Overzicht]{}%rechte haken dienen om niet in de outline te komen
+%maar wel vanboven in het donkergroene balkje
+
+%\begin{frame}[plain]{Outline}
+%\end{frame}
+%
+%\begin{frame}[plain]{Outline}
+%\tableofcontents[pausesections]
+%\end{frame}
+%
+%
+%\section{blabla}
+%
+%\begin{frame}
+%\begin{alertblock}{}
+%\begin{center}
+%blabla
+%\end{center}
+%\end{alertblock}
+%\end{frame}
+
+\begin{frame}{Content}
+\begin{itemize}
+  \item Tasks
+  \item The algorithm
+  \item Tests
+  \item Example
+  \end{itemize}
+
+\end{frame}
+
+
+
+\section{Tasks}
+\begin{frame}{Some assumptions}
+\begin{block}{Definition}
+A task $\tau_i$ is a process that has:
+\begin{itemize}
+        \item To be periodically executed in a period $T_i$       
+         \item The worst case execution time $C_i$
+        \item A deadline $D_i$, which is the available time on the processor. $D_i = T_i$
+        \end{itemize}
+\end{block}
+    
+\end{frame}
+
+\begin{frame}{Some assumptions}
+\begin{block}{Definition}
+A task $\tau_i$ is a process that has:
+\begin{itemize}
+        \item To be periodically executed in a period $T_i$       
+         \item The worst case execution time $C_i$
+        \item A deadline $D_i$, which is the available time on the processor. $D_i = T_i$
+        \end{itemize}
+\end{block}
+    
+\end{frame}
+
+
+%\begin{frame}
+%\begin{block}{}
+%\begin{center}
+%Introductie
+%\end{center}
+%\end{block}
+%\end{frame}
+\section{The algorithm}
+
+\begin{frame}{The algorithm}
+
+
+\begin{block}{Rate-Monotonic Scheduling: Algorithm}
+\begin{enumerate}
+  \item The task with the smallest period has the highest priority,
+  \item A higher-priority task ready to be executed, overrides the current 
+  executed task. The current executed task is is interrupted and may resume 
+  afterwards.
+\end{enumerate}\end{block}
+
+\end{frame}
+
+
+\section{Schedulability tests}
+\begin{frame}{An example}
+\begin{block}{}
+  \begin{enumerate}
+    \item $\tau_1$: $T_1$ = 4 ms,  $C_1$ = 1 ms 
+        \item $\tau_2$: $T_2$ = 5 ms,  $C_2$ = 2 ms
+             \item  $\tau_3$: $T_3$ = 7 ms,   $C_1$ = 2 ms 
+  \end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Schedulability test 1}
+\begin{block}{The utilization factor}
+  The utilization factor of a task set $\tau_1, \tau_2, ... , \tau_n$ is:
+$$ U = \sum\limits_{i=1}^{n} \frac{C_i}{T_i}$$
+
+$\frac{C_i}{T_i}$ gives the utilization of task $\tau_i$ on the CPU
+\end{block}
+
+\begin{block}{Schedulability test 1: Liu \& Layland lower bound}
+  With $n$-tasks with, a schedule exists as:
+        $$U \leq n(2^{\frac{1}{n}} -1)$$
+ For $n \to \infty$, we get: $\lim_{n \rightarrow \infty}   n(2^{\frac{1}{n}} -1) = \ln 2 \approx 
+0.693147...$
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Schedulability test 2}
+
+\begin{block}{The RT-test}
+ A task set can be scheduled by RMS if the deadline of the first execution of each task is met when using the scheduling algorithm starting 
+ all tasks at the same time.
+\end{block}
+
+\begin{block}{Total processing requirement}
+The total processing requirement $u_i(t)$ of a task $\tau_i$ in the time interval $[0,t]$ 
+is given by, with $0<t \leq T_i$:
+\begin{eqnarray}
+ u_i(t) = C_i + \sum\limits_{k=1}^{i-1} \left \lceil{\frac{t}{T_i}}\right \rceil C_k
+ \end{eqnarray}
+The idea is immediately clear: if $u_i(t) \leq t$ for some $t \leq T_i$ then task $\tau_i$
+is schedulable. 
+\end{block}
+\end{frame}
+
+\section{Example}
+
+\begin{frame}{An example}
+\begin{block}{}
+  \begin{enumerate}
+    \item $\tau_1$: $T_1$ = 4 ms,  $C_1$ = 1 ms $\to \frac{C_1}{T_1} = 0.25$,
+    \item $\tau_2$: $T_2$ = 5 ms,  $C_2$ = 2 ms $\to \frac{C_2}{T_2} = 0.4$,
+     \item  $\tau_3$: $T_3$ = 7 ms,   $C_1$ = 2 ms $\to \frac{C_2}{T_2} = 0.28$,
+  \end{enumerate}
+\end{block}
+\begin{block}{Schedulability test 1}
+  
+With $n=3$, the sum of $ \frac{C_i}{T_i}$ must be lower than 0.7798.  We become that 
+  $0.25 + 0.4 + 0.28 = 0, 91 > 0.7798$. 
+  \end{block}
+\end{frame}
+
+\begin{frame}{An example}
+
+\begin{block}{Schedulability test 2}
+ \begin{enumerate}
+  \item $u_1(t) = C_1 = 1 \leadsto u_1(4) = 1 $
+   \item $u_2(t) = ..  \leadsto u_2(4) = 3, u_2(5) = 4$
+   \item $u_3(t) = ... \leadsto u_3(4) = 5, u_3(5) = 6, u_3(7) = 8$
+     \end{enumerate}
+We test:
+\begin{enumerate}
+
+  \item $u_1(t) \leq t$ satisfied for $t=4? \leadsto u_1(4) = 1 \leq 4 \Rightarrow$ \textbf{OK!}
+
+  
+  \item $u_2(t) \leq t$ satisfied for $t\in{4,5}? \leadsto u_2(4) \leq 4,  u_2(5) \leq 5 \Rightarrow$ \textbf{OK!}
+  \item $u_3(t) \leq t$ satisfied for $t\in{4,5,7}? \leadsto u_3(4) > 4,  u_3(5) > 5, u_3(7) > 7 \Rightarrow$ \textbf{\underline{NOT} OK!}
+\end{enumerate}
+
+
+  
+  \end{block}
+\end{frame}
+
+
+
+\end{document}
