@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.2)  16 MAR 2015 11:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.2)  7 APR 2015 12:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -601,16 +601,10 @@ LaTeX Info: Redefining \addtolength on input line 76.
 
 (./MasterThesisWiskunde_FilipMoons.aux
 
-LaTeX Warning: Label `sequencezk' multiply defined.
-
-
 LaTeX Warning: Label `R' multiply defined.
 
 
 LaTeX Warning: Label `R' multiply defined.
-
-
-LaTeX Warning: Label `kieboom' multiply defined.
 
 )
 \openout1 = `MasterThesisWiskunde_FilipMoons.aux'.
@@ -761,37 +755,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--83
 [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./VUB_l
-ogo.pdf> <./VUB_schild.pdf>] (./MasterThesisWiskunde_FilipMoons.toc [1
-
-])
+ogo.pdf> <./VUB_schild.pdf>] (./MasterThesisWiskunde_FilipMoons.toc)
 \tf@toc=\write4
 \openout4 = `MasterThesisWiskunde_FilipMoons.toc'.
 
-
-[2]
-Chapter 1.
-[3
+ [1
 
 ]
-./MasterThesisWiskunde_FilipMoons.tex:166: Undefined control sequence.
-l.166 ...ve} if $A \geq 0$, with $0$ the $n\timesr
-                                                  $-null matrix.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Chapter 1.
+[2
 
-./MasterThesisWiskunde_FilipMoons.tex:168: Undefined control sequence.
-l.168 ...itive} if $A > 0$, with $0$ the $n\timesr
-                                                  $-null matrix.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[4] [5]
+] [3] [4]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
@@ -873,12 +847,12 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[6]
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 333--336
 
  []
 
-[7] [8] [9]
+[6] [7] [8]
 ./MasterThesisWiskunde_FilipMoons.tex:520: Undefined control sequence.
 l.520 ...rac{\mathrm{d}}{\mathrm{d}t}M(x_1,\ldotsx
                                                   _k) = M(\frac{\mathrm{d}}{...
@@ -893,9 +867,9 @@ Overfull \hbox (21.36671pt too wide) in alignment at lines 545--564
  [][][] []
  []
 
-[10] [11] [12] [13]
-./MasterThesisWiskunde_FilipMoons.tex:735: Undefined control sequence.
-l.735 with $\Lambda = \diag
+[9] [10] [11] [12]
+./MasterThesisWiskunde_FilipMoons.tex:740: Undefined control sequence.
+l.740 with $\Lambda = \diag
                            (\lambda_1, \lambda_2, \ldots, \lambda_n)$, thus:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -903,14 +877,14 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[14] [15]
+[13] [14]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 829.
+(Font)              <9> on input line 834.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 829.
+(Font)              <5> on input line 834.
 
-./MasterThesisWiskunde_FilipMoons.tex:836: Undefined control sequence.
-l.836  \blankline
+./MasterThesisWiskunde_FilipMoons.tex:841: Undefined control sequence.
+l.841  \blankline
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -918,15 +892,15 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 855
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 860
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-./MasterThesisWiskunde_FilipMoons.tex:855: Undefined control sequence.
+./MasterThesisWiskunde_FilipMoons.tex:860: Undefined control sequence.
 <argument> \texit 
                   {Tol}
-l.855 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
+l.860 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
                                            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -934,10 +908,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./MasterThesisWiskunde_FilipMoons.tex:855: Undefined control sequence.
+./MasterThesisWiskunde_FilipMoons.tex:860: Undefined control sequence.
 <argument> \firstchoice@false \texit 
                                      {Tol}
-l.855 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
+l.860 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
                                            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -945,10 +919,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./MasterThesisWiskunde_FilipMoons.tex:855: Undefined control sequence.
+./MasterThesisWiskunde_FilipMoons.tex:860: Undefined control sequence.
 <argument> \firstchoice@false \texit 
                                      {Tol}
-l.855 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
+l.860 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
                                            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -956,10 +930,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./MasterThesisWiskunde_FilipMoons.tex:855: Undefined control sequence.
+./MasterThesisWiskunde_FilipMoons.tex:860: Undefined control sequence.
 <argument> \firstchoice@false \texit 
                                      {Tol}
-l.855 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
+l.860 \KwRet $\mathbf{y^{(k)}}, \mu_{k}$\;}
                                            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -967,18 +941,14 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[16]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 931--936
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 936--941
 
  []
 
 [17]
 
-./MasterThesisWiskunde_FilipMoons.tex:962: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:967: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -986,7 +956,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.962   \node[main node]
+l.967   \node[main node]
                          (1) [label=above:$v_1$] {};
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -994,7 +964,7 @@ Pretend that you're Hercule Poirot: Examine all clues,
 and deduce the truth by order and method.
 
 
-./MasterThesisWiskunde_FilipMoons.tex:963: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:968: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -1002,12 +972,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.963   \node[main node]
+l.968   \node[main node]
                          (3) [label=right:$v_3$][below right of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:964: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:969: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -1015,31 +985,31 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.964     \node[main node]
+l.969     \node[main node]
                            (2) [label=left:$v_2$][below left of=1] {};
 (That was another \errmessage.)
 
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 967
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 972
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
-./MasterThesisWiskunde_FilipMoons.tex:973: Package tikz Error: Giving up on thi
+./MasterThesisWiskunde_FilipMoons.tex:978: Package tikz Error: Giving up on thi
 s path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.973 \end{tikzpicture}
+l.978 \end{tikzpicture}
                        
 (That was another \errmessage.)
 
-./MasterThesisWiskunde_FilipMoons.tex:973: Undefined control sequence.
+./MasterThesisWiskunde_FilipMoons.tex:978: Undefined control sequence.
 <argument> \pgf@baseline 
                          
-l.973 \end{tikzpicture}
+l.978 \end{tikzpicture}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1047,9 +1017,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[18]
 
-./MasterThesisWiskunde_FilipMoons.tex:992: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:997: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -1057,12 +1026,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.992   \node[main node]
+l.997   \node[main node]
                          (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:993: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:998: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -1070,12 +1039,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.993   \node[main node]
+l.998   \node[main node]
                          (3) [label=right:$v_3$][below right of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:994: Package pgfkeys Error: I do not know
+./MasterThesisWiskunde_FilipMoons.tex:999: Package pgfkeys Error: I do not know
  the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled 
 it.
 
@@ -1083,64 +1052,25 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.994     \node[main node]
+l.999     \node[main node]
                            (2) [label=left:$v_2$][below left of=1] {};
 (That was another \errmessage.)
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 1018
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 1023
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1018.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1023.
 
- [19]
-./MasterThesisWiskunde_FilipMoons.tex:1112: Missing $ inserted.
-<inserted text> 
-                $
-l.1112 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./MasterThesisWiskunde_FilipMoons.tex:1112: Missing } inserted.
-<inserted text> 
-                }
-l.1112 
-       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./MasterThesisWiskunde_FilipMoons.tex:1112: Display math should end with $$.
-<to be read again> 
-                   \@@par 
-l.1112 
-       
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./MasterThesisWiskunde_FilipMoons.tex:1112: Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.1112 
-       
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1171
+ [18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1183
 
  []
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1178: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1190: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1148,12 +1078,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1178   \node[main node]
+l.1190   \node[main node]
                           (1) [label=left:$v_1$] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1179: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1191: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1161,12 +1091,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1179   \node[main node]
+l.1191   \node[main node]
                           (3) [label=right:$v_3$][right of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1180: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1192: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1174,12 +1104,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1180     \node[main node]
+l.1192     \node[main node]
                             (2) [label=right:$v_2$][below of=3] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1181: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1193: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1187,29 +1117,29 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1181   \node[main node]
+l.1193   \node[main node]
                           (4) [label=left:$v_4$][below of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1199: Package tikz Error: Giving up on th
+./MasterThesisWiskunde_FilipMoons.tex:1211: Package tikz Error: Giving up on th
 is path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1199 \end{tikzpicture}
+l.1211 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[21] [22]
+[21]
 Chapter 2.
-[23
+[22
 
-] [24]
-./MasterThesisWiskunde_FilipMoons.tex:1347: Undefined control sequence.
-l.1347  \blankline
+] [23]
+./MasterThesisWiskunde_FilipMoons.tex:1321: Undefined control sequence.
+l.1321  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1217,27 +1147,31 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[25] [26] <hubauth.png, id=120, 589.20125pt x 233.87375pt>
+[24] [25] <hubauth.png, id=116, 589.20125pt x 233.87375pt>
 File: hubauth.png Graphic file (type png)
  <use hubauth.png>
-Package pdftex.def Info: hubauth.png used on input line 1458.
+Package pdftex.def Info: hubauth.png used on input line 1432.
 (pdftex.def)             Requested size: 353.52347pt x 140.32532pt.
 
-<basic.png, id=122, 563.10374pt x 501.875pt>
+<basic.png, id=118, 563.10374pt x 501.875pt>
 File: basic.png Graphic file (type png)
  <use basic.png>
-Package pdftex.def Info: basic.png used on input line 1485.
+Package pdftex.def Info: basic.png used on input line 1459.
 (pdftex.def)             Requested size: 337.86485pt x 301.12732pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[27 <./hubauth.png>]
+[26 <./hubauth.png>] [27 <./basic.png>]
+./MasterThesisWiskunde_FilipMoons.tex:1514: Undefined control sequence.
+l.1514  \blankline
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-LaTeX Warning: Reference `convergentiehits' on page 28 undefined on input line 
-1524.
-
-[28 <./basic.png>]
 ./MasterThesisWiskunde_FilipMoons.tex:1538: Undefined control sequence.
 l.1538  \blankline
                   
@@ -1247,28 +1181,13 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./MasterThesisWiskunde_FilipMoons.tex:1562: Undefined control sequence.
-l.1562  \blankline
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+[28] [29] [30] [31]
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1762.
 
-[29] [30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 1767--1780
+ [32] [33] [34]
 
- []
-
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 1821--1829
-
- []
-
-[33]
-
-./MasterThesisWiskunde_FilipMoons.tex:1854: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1925: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1276,12 +1195,12 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1854   \node[main node]
+l.1925   \node[main node]
                           (1) [label=left:\emph{hub}] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1855: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1926: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1289,24 +1208,24 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1855   \node[main node]
+l.1926   \node[main node]
                           (3) [label=right:\emph{authority}][right of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1862: Package tikz Error: Giving up on th
+./MasterThesisWiskunde_FilipMoons.tex:1933: Package tikz Error: Giving up on th
 is path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1862 \end{tikzpicture}
+l.1933 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:1877: Package pgfkeys Error: I do not kno
+./MasterThesisWiskunde_FilipMoons.tex:1950: Package pgfkeys Error: I do not kno
 w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
  it.
 
@@ -1314,113 +1233,8 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1877   \node[main node]
+l.1950   \node[main node]
                           (1) [label=above:$v_1$] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1878: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1878   \node[main node]
-                          (2) [label=above:$v_2$][right of=1] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1879: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1879   \node[main node]
-                          (3) [label=above:$v_3$][right of=2] {};;
-(That was another \errmessage.)
-
-Missing character: There is no ; in font nullfont!
-
-./MasterThesisWiskunde_FilipMoons.tex:1886: Package tikz Error: Giving up on th
-is path. Did you forget a semicolon?.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1886 \end{tikzpicture}
-                        
-(That was another \errmessage.)
-
-[34]
-
-./MasterThesisWiskunde_FilipMoons.tex:1931: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1931   \node[main node]
-                          (1) [label=above:$v_1$] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1932: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1932   \node[main node]
-                          (2) [label=above:$v_2$][right of=1] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1933: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1933   \node[main node]
-                          (3) [label=above:$v_3$][right of=2] {};;
-(That was another \errmessage.)
-
-Missing character: There is no ; in font nullfont!
-
-./MasterThesisWiskunde_FilipMoons.tex:1940: Package tikz Error: Giving up on th
-is path. Did you forget a semicolon?.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1940 \end{tikzpicture}
-                        
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1949: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1949  \node[main node]
-                         (1) [label=above:$w_1$] {};
 (That was another \errmessage.)
 
 
@@ -1433,19 +1247,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.1951   \node[main node]
-                          (2) [label=left:$w_2$] [below left of =1; left of=...
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1951: Package pgf Error: No shape named 1
-; left of is known.
-
-See the pgf package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1951 ...:$w_2$] [below left of =1; left of=3]{};
-                                                  
+                          (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
 
@@ -1458,85 +1260,26 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.1952   \node[main node]
-                          (3) [label=right:$w_3$][below right of=1;] {};
+                          (3) [label=above:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
+Missing character: There is no ; in font nullfont!
 
-./MasterThesisWiskunde_FilipMoons.tex:1952: Package pgf Error: No shape named 1
-; is known.
-
-See the pgf package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1952 ...abel=right:$w_3$][below right of=1;] {};
-                                                  
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1953: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1953     \node[main node]
-                            (4) [label=left:$w_4$][below of=2] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1954: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1954   \node[main node]
-                          (5) [label=right:$w_5$][below of=3] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:1965: Package tikz Error: Giving up on th
+./MasterThesisWiskunde_FilipMoons.tex:1959: Package tikz Error: Giving up on th
 is path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1965 \end{tikzpicture}
+l.1959 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
 [35]
 
-./MasterThesisWiskunde_FilipMoons.tex:2019: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2019   \node[main node]
-                          (2) [label=left:$v_2$] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:2023: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2023   \node[main node]
-                          (1) [label=above:$v_1$][above right of=2] {};
-(That was another \errmessage.)
+LaTeX Warning: Reference `centralescore' on page 36 undefined on input line 200
+9.
 
 
 ./MasterThesisWiskunde_FilipMoons.tex:2024: Package pgfkeys Error: I do not kno
@@ -1547,8 +1290,8 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2024       \node[main node]
-                              (3) [label=below:$v_3$][below right of = 2] {};
+l.2024   \node[main node]
+                          (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
 
@@ -1560,20 +1303,47 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2025     \node[main node]
-                            (4) [label=right:$v_4$][below right of=1] {};
+l.2025   \node[main node]
+                          (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:2036: Package tikz Error: Giving up on th
+./MasterThesisWiskunde_FilipMoons.tex:2026: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2026   \node[main node]
+                          (3) [label=above:$v_3$][right of=2] {};;
+(That was another \errmessage.)
+
+Missing character: There is no ; in font nullfont!
+
+./MasterThesisWiskunde_FilipMoons.tex:2033: Package tikz Error: Giving up on th
 is path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2036 \end{tikzpicture}
+l.2033 \end{tikzpicture}
                         
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2042: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2042  \node[main node]
+                         (1) [label=above:$w_1$] {};
 (That was another \errmessage.)
 
 
@@ -1586,7 +1356,19 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.2044   \node[main node]
-                          (6) [label=above left:$v'_6$] {};
+                          (2) [label=left:$w_2$] [below left of =1; left of=...
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2044: Package pgf Error: No shape named 1
+; left of is known.
+
+See the pgf package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2044 ...:$w_2$] [below left of =1; left of=3]{};
+                                                  
 (That was another \errmessage.)
 
 
@@ -1598,8 +1380,20 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2045    \node[main node]
-                           (1) [label=above:$v'_1$][above of=6] {};
+l.2045   \node[main node]
+                          (3) [label=right:$w_3$][below right of=1;] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2045: Package pgf Error: No shape named 1
+; is known.
+
+See the pgf package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2045 ...abel=right:$w_3$][below right of=1;] {};
+                                                  
 (That was another \errmessage.)
 
 
@@ -1611,8 +1405,8 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2046    \node[main node]
-                           (2) [label=below:$v'_2$][below of=6] {};
+l.2046     \node[main node]
+                            (4) [label=left:$w_4$][below of=2] {};
 (That was another \errmessage.)
 
 
@@ -1624,121 +1418,276 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2047    \node[main node]
-                           (4) [label=left:$v'_4$][left of=6] {};
+l.2047   \node[main node]
+                          (5) [label=right:$w_5$][below of=3] {};
 (That was another \errmessage.)
 
 
-./MasterThesisWiskunde_FilipMoons.tex:2048: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2048    \node[main node]
-                           (3) [label=right:$v'_3$][right of=6] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:2049: Package pgfkeys Error: I do not kno
-w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
- it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2049    \node[main node]
-                           (5) [label=below:$v'_3$][below of=3] {};
-(That was another \errmessage.)
-
-
-./MasterThesisWiskunde_FilipMoons.tex:2062: Package tikz Error: Giving up on th
+./MasterThesisWiskunde_FilipMoons.tex:2058: Package tikz Error: Giving up on th
 is path. Did you forget a semicolon?.
 
 See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2062 \end{tikzpicture}
+l.2058 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
 [36]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 2079.
- [37] [38] [39
 
-] [40]
+./MasterThesisWiskunde_FilipMoons.tex:2110: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
 
-./MasterThesisWiskunde_FilipMoons.tex:2148: LaTeX Error: \begin{thebibliography
-} on input line 2117 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
+See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2148 \end{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+l.2110   \node[main node]
+                          (2) [label=left:$v_2$] {};
+(That was another \errmessage.)
 
-(./MasterThesisWiskunde_FilipMoons.aux)
+
+./MasterThesisWiskunde_FilipMoons.tex:2114: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2114   \node[main node]
+                          (1) [label=above:$v_1$][above right of=2] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2115: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2115       \node[main node]
+                              (3) [label=below:$v_3$][below right of = 2] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2116: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2116     \node[main node]
+                            (4) [label=right:$v_4$][below right of=1] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2127: Package tikz Error: Giving up on th
+is path. Did you forget a semicolon?.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2127 \end{tikzpicture}
+                        
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2135: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2135   \node[main node]
+                          (6) [label=above left:$v'_6$] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2136: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2136    \node[main node]
+                           (1) [label=above:$v'_1$][above of=6] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2137: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2137    \node[main node]
+                           (2) [label=below:$v'_2$][below of=6] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2138: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2138    \node[main node]
+                           (4) [label=left:$v'_4$][left of=6] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2139: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2139    \node[main node]
+                           (3) [label=right:$v'_3$][right of=6] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2140: Package pgfkeys Error: I do not kno
+w the key '/tikz/main node' and I am going to ignore it. Perhaps you misspelled
+ it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2140    \node[main node]
+                           (5) [label=below:$v'_3$][below of=3] {};
+(That was another \errmessage.)
+
+
+./MasterThesisWiskunde_FilipMoons.tex:2153: Package tikz Error: Giving up on th
+is path. Did you forget a semicolon?.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2153 \end{tikzpicture}
+                        
+(That was another \errmessage.)
+
+[37]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 2170.
+ [38]
+./MasterThesisWiskunde_FilipMoons.tex:2200: Undefined control sequence.
+l.2200     \item $\|\alphaA
+                            A\| = |\alpha|\|A\|$ for all $\alpha \in \C$,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./MasterThesisWiskunde_FilipMoons.tex:2254: Undefined control sequence.
+l.2254   \vodts
+                & \ddots & \ddots & 0\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[39]
+./MasterThesisWiskunde_FilipMoons.tex:2268: Undefined control sequence.
+l.2268   \vdts
+               & \ddots & \ddots & 0\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (2.81036pt too wide) in paragraph at lines 2284--2286
+\OT1/lmr/m/n/10.95 The con-di-tions for be-ing a ma-trix norm are triv-ially me
+t be-cause we know that $[][] \OMS/lmsy/m/n/10.95 k\OML/lmm/m/it/10.95 A\OT1/lm
+r/bx/n/10.95 x\OMS/lmsy/m/n/10.95 k$
+ []
+
+[40] [41] [42] [43] [44]
+./MasterThesisWiskunde_FilipMoons.tex:2510: Missing $ inserted.
+<inserted text> 
+                $
+l.2510 $W$, so \Pi
+                  ^T = (WW^T)^T =
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[45] [46
+
+] [47] (./MasterThesisWiskunde_FilipMoons.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 2117 (\begingroup)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 16457 strings out of 493117
- 314022 string characters out of 6135434
- 373069 words of memory out of 5000000
- 19552 multiletter control sequences out of 15000+600000
- 96726 words of font info for 76 fonts, out of 8000000 for 9000
+ 16487 strings out of 493117
+ 314369 string characters out of 6135434
+ 380244 words of memory out of 5000000
+ 19576 multiletter control sequences out of 15000+600000
+ 98694 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,68p,431b,926s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-rm.en
-c}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
-cal/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
-e/2014/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2014/texmf
--dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2014/texmf-dist/font
-s/type1/public/lm/lmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lm
-bx8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/lm/lmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/lm/lmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi9.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/lm/lmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/lm/lmri10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri8.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
-ublic/lm/lmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
-rsfs/rsfs10.pfb>
-Output written on ./MasterThesisWiskunde_FilipMoons.pdf (41 pages, 578493 bytes
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
+14/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2014/texmf-dis
+t/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2014/texmf-dist/fonts/en
+c/dvips/lm/lm-mathex.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/lm/lmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12
+.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/lm/lmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi9.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+lm/lmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pf
+b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texm
+f-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/public/lm/lmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/lm/lmsy9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtt
+10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/rsfs/rsfs10.p
+fb>
+Output written on ./MasterThesisWiskunde_FilipMoons.pdf (48 pages, 610507 bytes
 ).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
+ 283 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

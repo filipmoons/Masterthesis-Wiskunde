@@ -1,38 +1,36 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Preliminaries and notations}{3}
-\contentsline {section}{\numberline {1.1}Some families of matrices}{3}
-\contentsline {subsection}{\numberline {1.1.1}Permutation matrices}{3}
-\contentsline {subsection}{\numberline {1.1.2}Nonnegative and primitive matrices}{4}
-\contentsline {subsection}{\numberline {1.1.3}Irreducible nonnegative matrices}{5}
-\contentsline {section}{\numberline {1.2}Perron-Frobenius Theorem}{7}
-\contentsline {subsection}{\numberline {1.2.1}Spectral radii of nonnegative matrices}{7}
-\contentsline {subsection}{\numberline {1.2.2}Example}{12}
-\contentsline {section}{\numberline {1.3}Numerical analysis}{12}
-\contentsline {subsection}{\numberline {1.3.1}Bachmann-Landau notations}{12}
-\contentsline {subsubsection}{Bigh Oh}{12}
-\contentsline {subsubsection}{Small Oh}{13}
-\contentsline {subsubsection}{Asymptotical Equality}{13}
-\contentsline {subsection}{\numberline {1.3.2}The Power Method}{13}
+\contentsline {chapter}{\numberline {1}Preliminaries and notations}{2}
+\contentsline {section}{\numberline {1.1}Some families of matrices}{2}
+\contentsline {subsection}{\numberline {1.1.1}Permutation matrices}{2}
+\contentsline {subsection}{\numberline {1.1.2}Nonnegative and primitive matrices}{3}
+\contentsline {subsection}{\numberline {1.1.3}Irreducible nonnegative matrices}{4}
+\contentsline {section}{\numberline {1.2}Perron-Frobenius Theorem}{6}
+\contentsline {subsection}{\numberline {1.2.1}Spectral radii of nonnegative matrices}{6}
+\contentsline {subsection}{\numberline {1.2.2}Proof}{10}
+\contentsline {subsection}{\numberline {1.2.3}Example}{11}
+\contentsline {section}{\numberline {1.3}Numerical analysis}{11}
+\contentsline {subsection}{\numberline {1.3.1}Bachmann-Landau notations}{11}
+\contentsline {subsubsection}{Bigh Oh}{11}
+\contentsline {subsubsection}{Small Oh}{12}
+\contentsline {subsubsection}{Asymptotical Equality}{12}
+\contentsline {subsection}{\numberline {1.3.2}The Power Method}{12}
 \contentsline {subsubsection}{The algorithm}{14}
-\contentsline {subsubsection}{Computational cost \& Usage}{17}
+\contentsline {subsubsection}{Computational cost \& Usage}{16}
 \contentsline {subsubsection}{Example}{17}
-\contentsline {section}{\numberline {1.4}Graphs}{18}
+\contentsline {section}{\numberline {1.4}Graphs}{17}
 \contentsline {subsection}{\numberline {1.4.1}General definitions}{18}
-\contentsline {subsubsection}{Product graphs}{20}
-\contentsline {subsubsection}{Adjacency matrices}{20}
-\contentsline {subsection}{\numberline {1.4.2}Simple graphs (andere implicatie!)}{20}
-\contentsline {subsection}{\numberline {1.4.3}Directed graphs}{21}
-\contentsline {chapter}{\numberline {2}Similarity on graphs}{23}
-\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{23}
-\contentsline {subsection}{\numberline {2.1.1}History}{23}
-\contentsline {subsection}{\numberline {2.1.2}Motivation}{24}
-\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{25}
-\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{26}
-\contentsline {subsection}{\numberline {2.1.5}Final reflection}{32}
-\contentsline {section}{\numberline {2.2}Similarity on directed graphs}{32}
-\contentsline {subsection}{\numberline {2.2.1}Introduction}{33}
-\contentsline {subsubsection}{The method of Kleinberg}{33}
-\contentsline {subsubsection}{Developing a generalization of Kleinbergs method}{34}
-\contentsline {subsubsection}{The general case}{36}
-\contentsline {subsection}{\numberline {2.2.2}Convergence of the sequence $z_k$}{37}
-\contentsline {subsection}{\numberline {2.2.3}Similarity matrices}{38}
+\contentsline {subsubsection}{Product graphs}{19}
+\contentsline {subsubsection}{Adjacency matrices}{19}
+\contentsline {subsection}{\numberline {1.4.2}Strong connectivity}{20}
+\contentsline {chapter}{\numberline {2}Similarity on graphs}{22}
+\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{22}
+\contentsline {subsection}{\numberline {2.1.1}History}{22}
+\contentsline {subsection}{\numberline {2.1.2}Motivation}{23}
+\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{24}
+\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{25}
+\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{29}
+\contentsline {subsection}{\numberline {2.1.6}Example}{32}
+\contentsline {subsection}{\numberline {2.1.7}Final reflection}{34}
+\contentsline {section}{\numberline {2.2}Similarity on directed graphs}{34}
+\contentsline {subsubsection}{From Hubs and Authorities to structure graphs}{35}
+\contentsline {subsection}{\numberline {2.2.1}Convergence of the sequence $\mathbf {z}_k$}{38}

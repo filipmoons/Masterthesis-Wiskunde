@@ -159,7 +159,7 @@ this is exactly the formula for the entries of the identity matrix.
   entries).
 \end{corollary}
 \subsection{Nonnegative and primitive matrices}
-\begin{definition}\label{groterkleiner}
+\begin{definition}
   Let $A$ and $B$ be two real $n\times r$-matrices. Then, $A \geq B$ (respectively $A > B$) if $a_{ij} \geq b_{ij}$ 
   (respectively $a_{ij}>b_{ij}$) for all $1 \leq i \leq n, 1 \leq j\leq r$. 
 \end{definition}
@@ -563,7 +563,6 @@ Using the extension of the product rule of derivation for multilinear functions
 \end{bmatrix} = \sum_i \phi(B_i, \lambda).
 \end{eqnarray*}
 \end{proof}
-\subsection{Proof}
 We now collect the above results into the following main theorem: we finally 
 arrived at the Perron-Frobenius Theorem:
 \begin{theorem}(\textbf{Perron-Frobenius theorem})\label{frobtheorem}
@@ -607,15 +606,11 @@ arrived at the Perron-Frobenius Theorem:
        \end{proof}
 
    
-   With the previous proof in mind, the following definition comes not unexpected:
    
-   \begin{definition}\label{perronroot}
-     If a matrix $A$ has an eigenvalue equal to the spectral radius $\rho(A)$, this eigenvalue
-     is called the \textbf{Perron root}, the corresponding eigenvector is called 
-     the \textbf{Perron root}.
-   \end{definition}
 
-  
+
+
+
 
 \subsection{Example}
 To check wether a matrix with nonnegative entries is primitive, irreducible or 
@@ -1096,7 +1091,7 @@ $$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\
  \begin{proof}
    This is trivial by the definition of an undirected graph.
  \end{proof}
-\begin{theorem}\label{numberwalks}
+\begin{theorem}
   Let $k > 0$. The element on place $(i,j)$ in $A^k_\graf$ contains the number 
   of walks of length $k$ from $i$ to $j$ in the graph $\graf = (V, \mu)$.
 \end{theorem}
@@ -1158,10 +1153,43 @@ strongly connected directed graphs of a matrix:
 \end{theorem}
 
 \begin{proof}
-From Theorem \ref{numberwalks} we know that a graph is strongly connected if and only if for every pair of indices $i$ and $j$ 
-there is an integer $k$ such that $(A^k)_{ij} > 0$, from Theorem \ref{irredubieleegenschappen} we 
-know this means that $A$ is irreducible and vice versa.
+  First assume that $A$ is reducible and let $|\graf| = n$ Consider:
+   $$ PAP^T = \begin{pmatrix}  B  & 0\\
+ C  & D\\
+\end{pmatrix} $$
+where $D$ is a $k \times k$-submatrix and $1 \leq k \leq n-1$, and $B$ is a square matrix of size at least $1$. 
+Consider any path from vertex $v_i$ with $k < i$. The last segment of the path is determined by the presence of a 
+nonzero element $PAP^T_{ij}$ in the $i$th row of $ PAP^T$. This row has zeros in the last 
+$k$ entries, so it is possible to make a connection from node $i$ to node $j$ 
+only if $j < k$. Similarly, the path can be extended from node $j$ only to 
+another node smaller than $k$. Continuing in this way, we found that a 
+directed path from node $i$ with $i < k$ cannot be connected to a node greater than $k +1$. Hence the
+directed graph $\graf(PAP^T)$ is not strongly connected. $\graf$ 
+is also not strongly connected: observe that the graph of  $PAP^T$ is obtained from that of $A$ just by renumbering the nodes, and
+this operation does not affect the connectedness of the graph. 
 
+Now assume that $\graf$ is not strongly connected. Then there are distinct vertices $v_i$ and 
+$v_j$ of $\graf $ for which there is no directed path from $v_i$ to $v_j$. Let $W_1$ consist of
+$v_j$ and all vertices from which there is directed path to $v_j$, let $W_2$ consist of $v_i$ and
+all vertices to which there is a directed path from $v_i$. The sets $W_1$ and $W_2$ 
+are nonempty and disjoint. Let $W_3$ be the set consisting of those vertices 
+which belong to neither $W_1$ nor $W_2$ ($W_3 = V\backslash(W_1 \bigcup W_2)$). 
+We now permute $A$ so that the rows and columns corresponding to the 
+vertices in $W_2$ come first followed by those corresponding to the vertices in 
+$W_3$:
+$$\bordermatrix{\; &W_2&W_3&W_1\cr
+                W_2&B_1 &  B_2  & O_{1}\cr
+                W_3&B_3 &  B_4  & O_{2}\cr
+                W_1&C_3 &  C_4 & D}$$
+Since there is no directed walk from $v_i$ to $v_j$ there is no arc
+from a vertex in $W_2$ to a vertex in $W_1$. Also there is no arc from
+a vertex $v_k$ in $W_3$ to a vertex in $W_1$, because such an arc implies that $v_k$ 
+belongs to $W_1$. Hence $O_{1} = 0$ and $O_{2} = 0$, $D$ is a square matrix
+and so is
+$$B = \bordermatrix{\; &W_2&W_3\cr
+                W_2&B_1 &  B_2\cr
+                W_3&B_3 &  B_4}.$$
+                Hence,   $A$ is reducible.
 \end{proof}
 
 We now link directed graphs with $n \times n$-matrices and vice versa. Consider any $n \times n$-matrix $A$, and consider any $n$ distinct 
@@ -1218,13 +1246,10 @@ Notice that this graph is strongly connected.
   graph $\graf(A)$ is strongly connected.
 
 \end{corollary}
-\begin{proof}
-  This follows immediately from the previous proof.
-\end{proof}
 \chapter{Similarity on graphs}
 
 In the previous chapter all the basic terminology and results were introduced, 
-we now take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
+now we take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
 concept to compare the nodes of two graphs. The concept arose from the research on algorithms for web searching engines (like \emph{Google}, \emph{Yahoo},\ldots) in the late nineties. 
 More specifically, Jon M. Kleinberg 
 introduced in his paper `Authoritative Sources in a Hyperlinked Environment' 
@@ -1234,7 +1259,7 @@ the
 whole idea and algorithm of Kleinberg is introduced in the first section of this chapter. In 
 2004, V.D. Blondel et al. (\cite{blondel}) generalized the algorithm of 
 Kleinberg, introducing the notion of similarity on directed graphs. This similarity is covered in the second section. With this similarity on directed graphs, 
-there is a much wider scope of applications than just search algorithms. 
+there is a much wider scope of applications than just search algoritmes. 
 Finally, we 
 conclude by looking at similarity on colored graphs in the last section. Both sections on similarity on directed and colored graph conclude with an 
 application on the Eurovision Song Contest results between 1980-1990. 
@@ -1255,8 +1280,8 @@ Two possible solutions were simultaneously invented in 1997 and 1998. The first
 one was the
 \textit{PageRank}-system developed by Larry Page and Sergey 
 Brin (\cite{page}). The PageRank system led to the foundation of the immensely popular Google 
-search engine. Meanwhile, also Jhon Kleinberg came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search). At that time,
-he was both a professor in the Computer Science Department at the Cornell University and researcher for IBM. The algorithm is 
+search engine. Meanwhile, also Jon Kleinberg came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search) as a 
+professor in the Computer Science Department at the Cornell University and researcher for IBM. The algorithm is 
 used inter alia today by the Ask search engine (www.ask.com).
 Both these algorithms use the hyperlinks between webpages to rank search 
 results. 
@@ -1266,12 +1291,12 @@ further detail about the PageRank-algorithm. In the following paragraphs, the
 HITS algorithm is extensively explained.
 
 \subsection{Motivation}\label{motivatiehits}
-Kleinbergs work originates in the problems that arises with text-based searching the WWW. Text-based searching just counts all the occurrences of a given search query on webpages and returns a set of webpages ordered by decreasing occurency.
+Kleinbergs work originates in the problem that arise with text-based searching the WWW. Text-based searching just counts all the occurrences of a given search query on webpages and returns a set of webpages ordered by decreasing occurency.
 When a user 
 supplies a search query, we probably face an \textit{abundance problem} with this method: the number of pages that could reasonably be returned as relevant is
 far too large for a human user to digest. To provide effective search results 
 under these conditions, we need to filter the `authoritative' ones. We face some complications when we
-want to filter the `authoritative' webpages in a text-based system. For example, if we search for `\texttt{job offers in Flanders} 
+want to filter the `authoritative' webpages in a text-based system. By example, if we search for `\texttt{job offers in Flanders} 
 ' the most authoritative page and expected first result in a search engine would be \texttt{www.vdab.be}. 
 Unfortunately, the query  `\texttt{job offers}' is used in over a 
 million pages on the internet and \texttt{www.vdab.be} is not the one using the 
@@ -1287,7 +1312,7 @@ Specifically, when a page $p$ includes a link to page $q$, it means
 that $p$ gives a \textit{conferred authority} on $q$. Again we face difficulties, because this conferred authority doesn't 
 hold for every link. Links are created for a wide variety of reasons, for 
 example, a large number of links are created for navigation within a website (e.g. ``Return to homepage'') 
-and these have of course nothing to do with a notion of authority. 
+and these have off course nothing to do with a notion of authority. 
 
 The HITS method is based on the relationship between the \textit{authorities} for a topic 
 and those pages that link to many related authorities, called \emph{hubs}. Page $p$ 
@@ -1343,7 +1368,7 @@ Any collection of hyperlinked pages can be transformed to a directed graph $\gra
 to page $q$, there is an arc $p \to q$. Suppose a search query is preformed, 
 specified by a query $\sigma$. We wish to determine the authoritative 
 pages by an analysis of the link structure. But first we have to construct a 
-subgraph of the internet on which our algorithm will operate. We want to make the 
+subgraph of the internet on which our algorithm will operate. We want to use the 
 computational effort as efficient as possible, so we restrict the subgraph to 
 the set $Q_\sigma$ of all pages where the query $\sigma$ occurs. For this, we could use
 any already existing text-based search engine.  But, for our algorithm $Q_\sigma$ 
@@ -1374,7 +1399,7 @@ Hence, by using the pages in $R_\sigma$, we can expand it to $S_\sigma$ by looki
 at the links that enter and leave $R_\sigma$. We get algorithm \ref{algoritmegraf}.
 
 Thus, we obtain $S_\sigma$ by expanding
-$R_\sigma$ to include any page pointed to by a page in $R_\sigma$. We also add $d$ pages that point
+$R_\sigma$ to include any page pointed to by a page in $R_\sigma$. We also add $d$ pages that points
 to a page in $R_\sigma$. $d$ is usually initiated to 50. The parameter $d$ is 
 crucial to stay in accordance with property 1 of our wish list. Indeed, a 
 webpage can be pointed to by several thousands and thousands of other webpages, 
@@ -1403,8 +1428,8 @@ removed from our final graph if we want a good determination of  the authoritati
 Our graph still contains some meaningless links in the context of page 
  authority. Suppose a large number of pages from the same domain name have a transverse link to 
  the same page $p$. Most of the time, this means a form of advertisement (by example `Website created by\ldots.' at the bottom of each page). It is useful 
- to only allow $m$ pages ($m$ is usually initiated to 6) from the same domain name to have a transverse link to the same page. 
- If $m$ is exceeded, all the transverse links must be deleted from the graph. Note, 
+ to only allow $m$ pages (m is usually initiated to 6) from the same domain name to have a transverse link to the same page. 
+ If $m$ is exceeded, the transverse links must be deleted from the graph. Note, 
  however, that not all links to advertisements will be erased because on most 
  web pages, advertisements change on every page which avoids the exceedance of $m$.
  
@@ -1416,14 +1441,14 @@ Our graph still contains some meaningless links in the context of page
  their in-degree. Although this approach can sometimes return good search results, this
  heuristic is often too simple because $S_\sigma$ will probably contain some 
  web pages with a lot of incoming links without being very relevant to the search query $\sigma$ (e.g. advertisements).   
- With these incoming links, those web pages are ranked high in the final search 
+ With this incoming links, those web pages are ranked high in the final search 
  result, which we want to avoid.
 
  Do we have to return to a text-based approach to avoid irrelevant web pages 
  being on top of the search results? No, the link structure of $\graf'_\sigma$ 
  can tell us a lot more than it may seem at first glance.  Authoritative pages 
  relevant to query $\sigma$ should indeed have a large in-degree, but there should also be a considerable overlap in the sets 
- of pages that point to authoritative pages. This set of pages that point to 
+ of pages that point to authoritative pages. These set of page that point to 
  authoritative pages are called \textit{hubs}. Hubs have links to several 
  authoritative pages and they sort of ``concentrate'' all the authorities on 
  query $\sigma$. Figure \ref{hubauth} shows what this means conceptually.
@@ -1608,7 +1633,7 @@ the evolution of the ideas in the successive papers.
     The characteristic polynomial $\det(A-\lambda I)$ has $n$ roots in $\C$ and 
     each root is an eigenvalue for $A$. Let $\lambda \in \C$ be any eigenvalue 
     and $\mathbf{v} \in \C^n$ be a corresponding eigenvector for $A$. We have:
-    $$A\mathbf{v} = \lambda\mathbf{v}.$$ As $A = A^t$, we also get:
+    $$A\mathbf{v} = \lambda\mathbf{v}$$. As $A = A^t$, we also get:
     $$\mathbf{v}^tA = \lambda \mathbf{v}^t.$$
     Taking the complex conjugate of both sides we get ($A$ is a real matrix):
     $$\bar{\mathbf{v}}^tA = \bar{\lambda}\bar{\mathbf{v}}^t$$
@@ -1722,7 +1747,7 @@ we have proved (1). From the definition of diagonalizable matrices and Theorem \
  \begin{theorem}
    Giving a graph $\graf$ with $n$ linked pages, the sequence as defined in the previous paragraph: 
    $$\mathbf{z}_0 = \mathbf{1} \in \R^{n}, \mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, \quad k = 
-  0,1,\ldots,$$
+  0,1,\ldots$$,
   converges when $M$ has a unique dominant eigenvalue.
  \end{theorem}
 \begin{proof}
@@ -1900,9 +1925,9 @@ combination with a lot of other procedures.
 
 \section{Similarity on directed graphs}
 This section summarizes the paper `\emph{A Measure of Similarity between Graph Vertices: 
-Applications to Synonym Extraction and Web Searching}'\cite{blondel} of V. D. Blondel and others. 
+Applications to Synonym Extraction and Web Searching}'\cite{blondel} of V. D. Blondel e.a. 
 The paper generalizes the HITS-algorithm leading to the concept of similarity on 
-directed graphs. This concept is explained in detail and far more mathematically 
+directed graphs. This concept is explained in detail and a bit more mathematically 
 rigorous than in the previous section. Recall our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
 eigenvalue. Although this is satisfactory in practical examples, we want to 
 construct a concept that works for all types of directed graphs, also the ones leading to 
@@ -1932,7 +1957,7 @@ and vertex \emph{authority} of the graph
     
 \end{tikzpicture}
 \end{center}
-and, conversely, the hub score of vertex $v_j$ of $\graf$ can be thought of as a similarity 
+and, conversely, the hub score of vertex $v_j$ of $\graf$ can be seen as a similarity 
 score between $v_j$ and vertex \emph{hub}. We call the hub-authority graph a 
 \emph{structure graph} and we already know the resulting iterative method from the previous section. 
 
@@ -1958,13 +1983,13 @@ We start with an example. In our example, we use as structure graph a path graph
     
 \end{tikzpicture}
 \end{center}
-Let $\graf(W,\to)$ be a graph. With each vertex $w_i$ of $\graf$ we now associate three scores $x_{i1}, x_{i2}$ and 
-$x_{i3}$, one for each vertex of the structure graph. We initialize these scores 
+Let $\graf(W,\to)$ be a graph. With each vertex $w_j$ of $\graf$ we now associate three scores $x_{i1}, x_{i2}$ and 
+$x_{i3}$, one for each vertex of the structure graph. We initialize these score 
 with a positive value and then update them according to the mutually reinforcing 
 relation:
-$$\begin{cases} x_{i1} := \hspace{75px} \sum_{j:(w_i,w_j)\in \to} x_{j2},\\ 
-x_{i2} := \sum_{j:(w_j,w_i)\in \to} x_{j1}\hspace{75px} + \sum_{j:(w_i,w_j)\in \to} x_{j3},\\
-x_{i3} := \hspace{75px}\sum_{j:(w_j,w_i)\in \to} x_{j2},
+$$\begin{cases} x_{i1} := \hspace{75px} \sum_{j:(w_i,w_j)\in \to} x_{i2},\\ 
+x_{i2} := \sum_{j:(w_j,w_i)\in \to} x_{i1}\hspace{75px} + \sum_{j:(w_i,w_j)\in \to} x_{i3},\\
+x_{i3} := \hspace{75px}\sum_{j:(w_j,w_i)\in \to} x_{i2},
 \end{cases}$$or, in matrix form ($\mathbf{x_j}$ denotes the column vector with entries $x_{ij}$, $B$ is the adjacency matrix of graph $\graf$),
 
 $$\begin{pmatrix}
@@ -2083,11 +2108,12 @@ $0.0489$.
  We now construct the general case. Take two directed graphs $\graf(U, \to)$ and $\grafeen(V, \to')$ 
  with $n_\graf$ and $n_\grafeen$ the order of the graphs. We think of $\graf$ as the structure 
  graph (such as the graphs $\text{hub}\to \text{authority}$ and the graph $1\to 2\to 
- 3$ in the previous paragraphs). We get the following mutually reinforcing updating iteration with the following updating equations:
+ 3$ in the previous paragraphs). We consider the real scores $x_{ij}$ for $i = 1,\ldots,n_\grafeen$ and $j = 1,\ldots,n_\graf$ and we
+ get the following mutually reinforcing updating iteration with the following updating equations:
  $$x_{ij} := \sum_{r:(v_r,v_i)\in \to', s:(u_s,u_j) \in \to} x_{rs} +  \sum_{r:(v_i,v_r)\in \to', s:(u_j,u_s) \in \to} x_{rs} $$
  Consider the product graph $\graf \times \grafeen$ (see Definition \ref{productgraph}). The above updating equation is equivalent to replacing
  the scores of all vertices of the product graph by the sum of the scores of the vertices linked by an incoming
- or outgoing edge. Equation \ref{sequencealgemeen} can also be rewritten in a a more compact matrix form. Let $X_k$
+ or outgoing edge. Equation \ref{sequencezk} can also be rewritten in a a more compact matrix form. Let $X_k$
  be the $n_\grafeen \times n_\graf$ matrix of entries $x_{ij}$ at iteration $k$, and $A$ and $B$ are the adjacency matrices
  of $\graf$ and $\grafeen$. Then the 
  updating equations can be written as:
@@ -2167,209 +2193,13 @@ $$S = \begin{pmatrix}
  is the highest among the similarity scores in $s_{2}$.
  \end{example}
  
- \subsection{Convergence of the sequence $\mathbf{z}_k$}
-In the introduction, we mentioned already that the sequence in Equation \ref{sequencealgemeen} 
-converges for even and odd iterates. We will prove this add the end of this subsection. But before we 
-arrive there, we first need some results on the eigenvectors and eigenvalues of nonnegative matrices. 
-The Perron-Frobenius applies only to nonnegative, \emph{irreducible} matrices, 
-but we will prove in Theorem \ref{perronzonderperron} that also nonnegative 
-matrices $M$ have a Perron root (see Definition \ref{perronroot}) 
-that has an associated Perron vector. We will also investigate more specific 
-results in the case $M$ is not only nonnegative, but also symmetric. 
+ \subsection{Convergence of the sequence $z_k$}
+In the introduction, we depend on the result that the sequence in Equation \ref{sequencezk} 
+converges for even and odd iterates. We now investigate this hypothesis and 
+prove a theorem about this convergence with the help of the Perron-Frobenius theory of the 
+first chapter. Before we can start with this theorem, we first need some more 
+corollaries of the Perron-Frobenius theorem for matrices that are not only nonnegative, but also symmetric.
 
-The reason why we prove all this is clear: remember that in the previous chapter 
-we assumed that $M$ has a unique dominant eigenvalue and showed convergence on 
-the basis of the Power Method. This approach is far to naive when introducing 
-similarity on graph vertices, because graphs can lead to matrices where there is 
-no unique dominant eigenvalue (for instance cycle graphs will lead to such an $M$ in combination
-with the hub$\to$authority structure graph). To solve this, a more profound 
-mathematical analysis of the concept is needed, which we present here.
-
-We first want to prove the spectral radius formula, but before we can handle this
-we have to introduce matrix norms and show that on finite dimensional 
-vector spaces they are all equivalent. Next, two lemmas are presented which will 
-also contribute to the proof of the spectral radius formula. 
-
-
-\begin{definition}
-  A function $\|.\|: \R^{m\times n} \to \R$ is called a \textbf{matrix norm} if 
-  the following conditions hold ($\|A\|$ denotes the norm of the matrix $A$):
-  \begin{enumerate}
-    \item $\|A\| \geq 0$,
-    \item$ \|A\| = 0$ if and only if $A = 0$,
-    \item $\|\alphaA A\| = |\alpha|\|A\|$ for all $\alpha \in \C$,
-    \item $\|A + B\| \leq \|A\|+\|B\|$ for all matrices $A, B \in \C^{m\times n}$
-  \end{enumerate}
-\end{definition}
-\begin{theorem}\textbf{(Equivalence of norms)} For any two matrix norms $\|.\|_\alpha$ and
-  $\|.\|_\beta$ we have:
-  $$s\|A\|_\alpha \leq \|A\|_\beta \leq t\|A\|_\alpha \quad \text{with } A \in \R^{m \times n}, r, s \in \R^+$$
-\end{theorem}
-\begin{proof}
-  This theorem holds for any finite dimensional vector space, but we focus only 
-  on the real case. It is straightforward to see that the equivalence of norms 
- is an equivalence relation. Thus, it is sufficient to show that every norm on $\R^{m\times n}$ 
- is equivalent to the Euclidean matrix norm: \textbf{nog onvolledig}
-\end{proof}
-\begin{lemma}\label{ongelijkheidnorm}
-  Let A be an $n\times n$ matrix and  let $\|.\|$ be a matrix norm then:
-  $$\rho(A) \leq \|A\|$$
-\end{lemma}
-\begin{proof}
-  Let $\lambda$ be an eigenvalue of $A$ and let $\mathbf{x} \not= 0$ be a corresponding 
-  eigenvector. From $Ax = \lambda x$, we have:
-  $$AX = \lambda X, \quad \text{where } X = \begin{bmatrix}
-  \mathbf{x} & \ldots & \mathbf{x}
-  \end{bmatrix} \in \R^{n\times n} \setminus \{0\}.$$
-  It follows that:
-  $$|\lambda|\|X\| = \|\lambda X \| = \|AX\| \leq \|A\| \|X\|,$$
-  and simplifying by $\| X \| (> 0)$ gives:
-  $$|\lambda| \leq \|A \|.$$
-  This holds for all eigenvalues, taking the maxim over all these eigenvalues 
-  gives the result.
-   
-\end{proof}
-
-\textbf{VRAAG: De Jordannormaalvorm wordt gezien als voorkennis, dit werd
-ook (weliswaar zeer kort) behandeld bij professor Kieboom in het eerste jaar, mag ik ervan
-uitgaan dat dit voorkennis is of moet dit toch een sectie worden bij het eerste hoofdstuk?}
-\begin{lemma}\label{eigennorm}
-  Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matix norm $\|. \|$ 
-  such that:
-  $$\|A\| \leq \rho(A) + \epsilon$$
-\end{lemma}
-\begin{proof}
-  The Jordan canonical form of $A$ is:
-  $$A = S \begin{bmatrix}
-  J_{n_1}(\lambda_1) & 0 & \ldots & 0 \\
-  0 & J_{n_2}(\lambda_2) & \ddots & \vdots \\
-  \vdots & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & J_{n_k}(\lambda_k)
-  \end{bmatrix}S^{-1},$$
-  where $S \in \R^{n\times n}$ is an invertible matrix, $\lambda_1, \ldots, \lambda_k$ 
-  are the eigenvalues of $A$ and $n_1 + \ldots + n_k = n$. Let:
-  $$D(\eta) = \begin{bmatrix}
-  D_{n_1}(\eta) & 0 & \ldots & 0 \\
-  0 & D_{n_2}(\eta) & \ddots & \vdots \\
-  \vodts & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & D_{n_k}(\eta)
-  \end{bmatrix}\quad \text{with } D_m(\eta)= \begin{bmatrix}
-  \eta & 0 & \ldots & 0 \\
-  0 & \eta^2 & \ddots & \vdots\\
-  \vdots & \ddots & \ddots & 0 \\
-  0 & \ldots & 0 & \eta^m
-  \end{bmatrix}$$
-  Since the left multiplication by $D_m(1/\epsilon)$ multiplies the $i$th row by $1/\epsilon^i$ 
-  and the right multiplication on the right by $D_m(\eta)$ multiplies the $j$th 
-  colum by $\epsilon^j$, we calculate:
-  $$D(1/\epsilon)S^{-1}ASD(\epsilon)=\begin{bmatrix}
-  B_{n_1}(\lambda_1, \epsilon) & 0 & \ldots & 0 \\
-  0 & B_{n_2}(\lambda_2, \epsilon) & \ddots & \vdots \\
-  \vdts & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & B_{n_k}(\lambda_k, \epsilon)  \end{bmatrix}$$
-  with 
-  $$B_m(\lambda, \epsilon) = D_m(1/\epsilon)J_m(\lambda)D_m(\epsilon)=
-  \begin{bmatrix}
-   \lambda & \epsilon &  0 & \ldots & 0 \\
-  0 & \lambda & \epsilon &  0 & \vdots \\
-  0 & \ddots & \ddots & \ddots & 0\\
-  \vdots & \ddots & \ddots & \lambda & \epsilon\\
-  0 & \ldots & 0 & 0 & \lambda  \end{bmatrix}$$
-  We now define the matrix norm for $M \in \R^{n\times n}$ by:
-  \begin{eqnarray}
-    \|M\| &=& \max_{\|\mathbf{x}\|_1 = 1} \| 
-    D(1/\epsilon)S^{-1}MSD(\epsilon)\mathbf{x}\|_1\\
-    &=& \max_{l \in [1:n]} \sum^n_{k=1} 
-    |(D(1/\epsilon)S^{-1}MSD(\epsilon))_{k,l}|.
- \end{eqnarray}
- The conditions for being a matrix norm are trivially met because we know that $\max_{\|\mathbf{x}\|_1 = 1} \|A\mathbf{x}\|$ is a matrix norm for any $A$ in $\C^{n\times n}$.
-\end{proof}
-
-\begin{theorem}\label{spectraalformula}\textbf{Spectral radius formula}
- Let a be an $n\times n$  matrix and  let $\|.\|$ be a matrix norm then:
-  $$\rho(A) = \lim_{k\to \infty} \|A^k\|^{1/k}$$
-\end{theorem}
-\begin{proof}
-  Given $k \geq 0$, we use Lemma \ref{ongelijkheidnorm} to write:
-  $$\rho(A)^k = \rho(A^k) \leq \|A^k\|,$$
-  so:
-  $$\rho(A) \leq \|A^k\|^{1/k}.$$
-  Taking the limit as $k \to \infty$ gives $\rho(A) \leq \lim_{k\to 
-  \infty}\|A^k\|^{1/k}$. To establish the reverse inequality, we need to prove 
-  that, for any $\epsilon > 0$, there exists a $K \geq 0$ such that 
-  $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ for all $k \geq K$. From Lemma \ref{eigennorm}, we know that
-  there exists a matrix norm $\|.\|$ so $\|A| \leq \rho(A) + \epsilon/2$. Moreover, by the equivalence of 
-  the norms on $\R^{n\times n},$ we know that there exists some constant $C  > 0$ such that 
-  $\|M\| \leq C \|M\|$ for all $M \in \R^{n \times n}$. Then, for any $k \geq 0,$
-  \begin{eqnarray*}
-    \|A^k\| &\leq& C\|A^k\| \leq C\|A\|^k \leq C(\rho(A)+\epsilon/2)^k,\\
-    \|A^k\|^{1/k} &\leq& C^{1/k}(\rho(A)+\epsilon/2) \rightarrow_{k\to \infty} 
-    \rho(A) + \epsilon/2
-  \end{eqnarray*}
-  This implies the existence of $K \geq 0$ such that $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ 
-  for $k \geq K$, as desired.
- \end{proof}
-Now we are ready for are first big result: since one is confronted in practice 
-with nonnegative matrices that are not necessary irreducible, 
-we extend the Perron-Frobenius and see what remains without this assumption. We 
-first start with a lemma and next we proof that the spectral radius $\rho(M)$ of a nonnegative matrix 
-$M$ is an eigenvalue of $M$, the Perron root. Moreover, there exists an 
-associated nonnegative eigenvector $\mathbf{x} \geq 0 (\mathbf{x} \not = 0)$, the Perron vector, such 
-that $M\mathbf{x} = \rho\mathbf{x}$.
-\begin{lemma}\label{voriglemmaspeer}
-  Let $A, B$ be $n \times n$-matrices, if $|A| \leq B$, then $\rho(A) \leq \rho(|A|) \leq
-  \rho(B)$. (See Definition \ref{modulusmatrix} for the definition of $|.|$).
-\end{lemma}
-\begin{proof}
-  For every $m=1,2,\ldots$ we have
-  $$|A^m| \leq |A|^m \leq B^m$$
-  by using some trivial properties of the absolute value function. Let $||.||_2$ be the matrix 
-  2-norm induced by the Euclidean vector norm: for any matrix $M$, we have $\|M\|_2 =
-  \max_{\|\mathbf{x}\|_2 = 1}\|M\mathbf{x}\|_2$. For this matrix norm it is 
-  trivial to see that if $|M| \leq |M'|$ (see Definition \ref{groterkleiner}) it follows that $\|M\|_2 \leq \|M'\|_2$ and also $\|M\|_2 = \|\;|M|\;\|_2$, we get:
-  $$\|A^m\|_2 \leq \|\;|A|^m\;\|_2 \leq \|B^m\|_2$$
-  and 
-  $$\|A^m\|^{1/m}_2 \leq \|\;|A|^m\;\|^{1/m}_2 \leq \|B^m\|^{1/m}_2$$
-  for all $m = 1, 2, \ldots$ If we now let $m \to \infty$ and apply the spectral 
-  radius formula from Theorem \ref{spectraalformula} we get:
-  $$\rho(A) \leq \rho(\|A\|) \leq \rho(B).$$
-\end{proof}
-
-\begin{theorem}\label{perronzonderperron}
-  If $A \geq 0$ is an $n \times n$-matrix, then $\rho(A)$ is an eigenvalue of $A$ 
-  and there is a nonnegative vector $\mathbf{x} \geq 0, \mathbf{x} \not = 0,$ 
-  such that $A\mathbf{x}=\rho(A)\mathbf{x}.$
-\end{theorem}
-\begin{proof}
-  For any $\epsilon > 0$ define $A(\epsilon)=[a_{ij}+\epsilon] > 0$. Denote by $\mathbf{x}(\epsilon)$ 
-  the Perron vector of $A(\epsilon)$, so $\mathbf{x}(\epsilon) > 0$ and 
-  $\sum^n_{i = 1} \mathbf{x}(\epsilon)_i = 1$. Since the set of vectors $\{\mathbf{x}(\epsilon): \epsilon > 0\}$ 
-  is contained in the compact set $\{x: x\in \C^n, \|\mathbf{x}\|_1 \leq 1\}$, 
-  there is a monotone decreasing sequence $\epsilon_1, \epsilon_2, \ldots$ with $\lim_{k\to\infty}\epsilon_k = 0$
-  such that $\lim_{k \to \infty}\mathbf{x}(\epsilon_k) = \mathbf{x}$ exists. 
-  Since $\mathbf{x}(\epsilon_k) > 0$ for all $k=1,2,\ldots,$ it must be that $\mathbf{x} = \lim_{k \to \infty} \mathbf{x}(\epsilon_k) \geq 
-  0$; $\mathbf{x} = 0$ is impossible because:
-  $$\sum^n_{i = 1}\mathbf{x}_i = \lim_{k\to 
-  \infty}\sum^n_{i=1}\mathbf{x}(\epsilon_k)_i = 1$$
-  By Lemma \ref{voriglemmaspeer}, $\rho(A(\epsilon_k)) \geq \rho(A(\epsilon_{k+1}) \geq \ldots \geq \rho(A)$ 
-  for all $k = 1, 2, \ldots, $ so the sequence $\{\rho(A(\epsilon_k))\}_{k=1,2,\ldots}$ 
-  is a monotone decreasing sequence. Thus, $\rho = \lim_{k \to \infty} \rho(A(\epsilon_k))$ 
-  exists and $\rho \geq \rho(A).$ From the fact that
-  \begin{eqnarray*}
-    A\mathbf{x} &=& \lim_{k\to\infty} A(\epsilon_k)\mathbf{x}(\epsilon_k)\\
-    &=& \lim_{k\to\infty} \rho(A(\epsilon_k))\mathbf{x}(\epsilon_k)\\
-    &=& \lim_{k\to \infty} \rho(A(\epsilon_k)) \lim_{k\to \infty} \mathbf{x}(\epsilon_k) \\
-    &=& \rho \mathbf{x},
-  \end{eqnarray*}
-  and the fact that $\mathbf{x}\not = 0$ we conclude that $\rho$ is an 
-  eigenvalue of $A$. But then $\rho \leq \rho(A)$ so it must be that $\rho = 
-  \rho(A)$.
-\end{proof}
-
-Now that we know that any nonnegative matrix $M$ has it's spectral radius as an 
-eigenvalue and there exists an associated nonnegative eigenvector, we will see 
-if we can get more specific results when handling nonnegative, symmetric 
-matrices.
 \begin{theorem}
   Let $M$ be a symmetric nonnegative matrix with spectral radius $\rho$. Then 
   the algebraic and geometric multiplicity of the Perron root $\rho$ are equal; 
@@ -2378,20 +2208,22 @@ matrices.
   $\Pi$ on the vector space associated with the Perron root of $M$ are all 
   nonnegative.
 \end{theorem}
-\begin{proof}
-  We know that any symmetric nonnegative matrix $M$ can be permuted to a Jordan cononical form
-  with irreducible blocks $M_i$ on the diagonal. We also know from the 
-  Perron-Frobenius theorem (see \ref{frobtheorem}) that the algebraic 
-  multiplicity of the Perron root of an irreducible nonnegative matrix is equal 
-  to 1. It follows from both facts that the algebraic multiplicities and the geometric
-  multiplicities  of the Perron root $\rho$ of $M$ are equal. The corresponding 
-  eigenspace of $M$ is obtained from the normalized Perron vectors of the $M_i$ 
-  blocks padded with zeros. This normalized Perron vectors form a basis $X$ which is nonnegative and 
-  orthonormal.
-  \end{proof}
-  
-  We are almost ready for the theorem about the convergence of $\mathbf{z}_k$, 
-  but we first need an easy result about the orthogonal projection.
+
+ \begin{theorem}
+   Let $M$ be a symmetric nonnegative matrix of spectral radius $\rho$. Let $z_0 > 0$ 
+   and consider the sequence
+   $$z_{k+1} = \frac{Mz_k}{||Mz_k||_2}, k = 0,1,\ldots$$
+   Two convergence cases can occur depending on whether or not $-rho$ is an 
+   eigenvalue of $M$. When $-\rho$ is not an eigenvalue of $M$, then the 
+   sequence of $z_k$ simply converges to 
+   $\frac{\Pi z_0}{||\Pi z_0||_2}$, where $\Pi$ is the orthogonal projector on the 
+   invariant subspace associated with the Perron root $\rho$. When $-\rho$ is an 
+   eigenvalue of $M$, then the subsequences $z_{2k}$ and $z_{2k+1}$ converge to 
+   the limits
+   $$z_{\text{even}}(z_0) = \lim_{k \to \infty} z_{2k}  = \frac{\Pi z_0}{||\Pi z_0||_2} \; \& \; z_{\text{odd}}(z_0) = \lim_{k \to \infty} z_{2k+1} = \frac{\Pi M z_0}{||\Pi M z_0||_2}.$$
+and the vector $z_{\text{even}}(\mathbf{1})$ is the unique vector of largest 
+possible Manhattan norm in that set. \end{theorem}
+
 \begin{theorem}
   Let $\mathcal{V}$ be a linear subspace of $\R^n$ with orthonormal basis $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m\}$.
   Arrange the column vectors $\mathbf{v}_i$ in a matrix $V$ and let $\mathbf{x} \in \R^n$. The 
@@ -2426,112 +2258,9 @@ Proving that $\Pi^2 =\Pi$ is also trivial, remember that for an orthogonal matri
   \end{eqnarray*}
 \end{proof}
 
- \begin{theorem}\label{grootbewijs}
-   Let $M$ be a  symmetric nonnegative, real matrix of spectral radius $\rho$. Let $z_0 > 0$ 
-   and consider the sequence
-   $$\mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, k = 0,1,\ldots$$
-   Two convergence cases can occur depending on whether or not $-\rho$ is an 
-   eigenvalue of $M$. When $-\rho$ is not an eigenvalue of $M$, then the 
-   sequence of $z_k$ simply converges to 
-   $\frac{\Pi \mathbf{z}_0}{||\Pi \mathbf{z}_0||_2}$, where $\Pi$ is the orthogonal projector on the 
-   invariant subspace associated with the Perron root $\rho$. When $-\rho$ is an 
-   eigenvalue of $M$, then the subsequences $\mathbf{z}_{2k}$ and $\mathbf{z}_{2k+1}$ converge to 
-   the limits
-   $$\mathbf{z}_{\text{even}}(z_0) = \lim_{k \to \infty} \mathbf{z}_{2k}  = \frac{\Pi \mathbf{z}_0}{||\Pi \mathbf{z}_0||_2} \quad \text{and}\quad \mathbf{z}_{\text{odd}}(\mathbf{z}_0) = \lim_{k \to \infty} \mathbf{z}_{2k+1} = \frac{\Pi M \mathbf{z}_0}{||\Pi M \mathbf{z}_0||_2}.$$
-and the vector $\mathbf{z}_{\text{even}}(\mathbf{1})$ is the unique vector of largest 
-possible Manhattan norm in that set. \end{theorem}
-\begin{proof}
-  We prove only the case where $-\rho$ is an eigenvalue, the other case is an 
-  easy adaption. Denote the invariant subspaces of $M$ corresponding to $\rho$, 
-  $-\rho$ and to the rest of the spectrum, respectively by $\mathcal{V}_\rho, \mathcal{V}_{-\rho}$ 
-  and $\mathcal{V}_\mu$. From the previous theorem, we know that $\mathcal{V}_\rho, \mathcal{V}_{-\rho}$  
-  are certainly nontrivial ($\rho$ and $-\rho$ have at least multiplicity $1$, so the eigenspace contains also at least
-  1 vector), also assume that $\mathcal{V}_\mu$ is nontrivial (if $\mathcal{V}_\mu$ would be trivial, the rest of the proof
-  gets only easier). We have:
-  $$MV_\rho = \rho V_\rho, \quad MV_{-\rho} = -\rho V_{-\rho}, \quad MV_\mu = V_\mu M_\mu,$$
-  where $M_\mu$ is a square matrix (diagonal if $V_\mu$ is a basis of eigenvectors of the rest of the spectrum, see Theorem
-  \ref{diagonaal}) with spectral radius $\mu$ strictly less than $\rho$. 
-  
-Remember from Theorem \ref{diagonaal} that $P^{-1}MP = D$, with $D$ a diagonal 
-matrix, this can be rewritten as $M = PDP^{-1}$ or $M = PDP^T$ ($P$ is an orthogonal 
-matrix), we can rewrite this in this case as (this is the so called \textit{eigen decomposition} for symmetric matrices):
-\begin{eqnarray*}
-M &=& \begin{bmatrix} 
-V_\rho & V_{-\rho} & V_\mu \\ \end{bmatrix}
-\begin{bmatrix}
-\rho I & \; & \; \\
-\; & -\rho I & \;\\
-\; & \; & M_\mu \\
-\end{bmatrix}\begin{bmatrix}
-V_\rho & V_{-\rho} & V_\mu \\ \end{bmatrix}^T\\
-&=&  \rho V_\rho V^T_\rho - \rho V_{-\rho}V^T_{-\rho} + V_{\mu}M_{\mu}V_{\mu}^T
-\end{eqnarray*}
-It then follows that:
-$$M^2 = \rho^2 \Pi + V_\mu M^2_\mu V_\mu^T,$$
-where
-$$\Pi = V_\rho V_\rho^T + V_{-\rho}V_{-\rho}^T$$
- is the orthogonal projector onto the invariant subspace $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ 
- of $M^2$ corresponding to $\rho^2$. We also have:
- $$M^{2k} = \rho^{2k}\Pi + V_\mu M^{2k}_\mu V_\mu^T,$$
- and since $\rho{M_\mu} = \mu < \rho$, it follows from multiplying this by $\mathbf{z}_0$ 
- and $M\mathbf{z}_0$ that:
- $$\mathbf{z}_{2k} = \frac{\Pi\mathbf{z}_0}{\|\Pi\mathbf{z}_0\|_2} + 
- O\left(\frac{\mu}{\rho}\right)^{2k}$$
- and
- $$\mathbf{z}_{2k+1} = \frac{\Pi M \mathbf{z}_0}{\|\Pi M \mathbf{z}_0\|_2} + 
- O\left(\frac{\mu}{\rho}\right)^{2k},$$
- provided $\Pi \mathbf{z}_0$ and $\Pi M \mathbf{z}_0$ are nonzero, so the 
- initial vectors $\mathbf{z}_0$ and $M\mathbf{z}_0$ must have a nonzero 
- component. This is no problem, because the Euclidean norms of these vectors 
- equal $\mathbf{z}_0^T \Pi \mathbf{z}_0$ and $\mathbf{z}_0^T M \Pi M \mathbf{z}_0$ 
- since $\Pi^2 = \Pi$. These norms are both nonzero since $\mathbf{z}_0 > 0$ and 
- both $\Pi$ and $M\Pi$ are nonnegative and nonzero.
- 
- From the fact that $M$ is nonnegative and the formula for $\mathbf{z}_{\text{even}}(\mathbf{z}_0)$ 
- and $\mathbf{z}_{\text{odd}}(\mathbf{z}_0)$ we conclude that both limits lie in 
- $\{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$. We now show that every 
- element $\mathbf{\tilde{z}}_0 \in \{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$ 
- can be obtained as $\mathbf{z}_{\text{even}}(\mathbf{z}_0)$ for some $\mathbf{z}_0  
- > 0$. Since the entries of $\Pi$ are nonnegative, so are those of 
- $\mathbf{\tilde{z}}_0$. This vector may have some zero entries. From $\mathbf{\tilde{z}}_0$ 
- we construct$ \mathbf{z}_0$ by adding $\epsilon > 0$ to all the zero entries of 
- $\mathbf{\tilde{z}}_0$. The vector $\mathbf{z}_0 - \mathbf{\tilde{z}}_0$ is 
- clearly orthogonal to $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ and will 
- vanish in the iteration of $M^2$. Thus we have $\mathbf{z}_{\text{even}}(\mathbf{z}_0) = \mathbf{\tilde{z}}_0$ 
- for $\mathbf{z}_0 > 0$, proving our statement.
- 
- We now prove the last statement. The matrix $\Pi$ and all vectors are 
- nonnegative and $\Pi^2=\Pi$ and so:
- 
- $$\left\|\frac{\Pi\mathbf{1}}{\|\Pi\mathbf{1}\|_2} \right\|_1=\sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}$$
- and also:
- $$ \left\|\frac{\Pi\mathbf{z}_0}{\|\Pi\mathbf{z}_0\|_2} \right\|_1 = \frac{\mathbf{1}^T\Pi^2\mathbf{z}_0}{\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}}$$
-We apply the Cauchy-Schwarz inequality to $\Pi\mathbf{1}$ and $\Pi\mathbf{z}_0$, remember that $\Pi = WW^T$ for some
-$W$, so \Pi^T = (WW^T)^T = 
-(W^T)^T W^T= WW^T = \Pi$, that the matrix $\Pi$ and all vectors are nonnegative and $\Pi^2=\Pi$:
-\begin{eqnarray*}
-  |\langle \Pi\mathbf{1}, \Pi\mathbf{z}_0 \rangle| &\leq& \|\Pi\mathbf{1} 
-  \|.\|\Pi\mathbf{z}_0\|\\
-  |(\Pi\mathbf{1})^T\Pi\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}\\
-    |\mathbf{1}^T\Pi^T\Pi\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}\\
-   |\mathbf{1}^T\Pi^2\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0},
-\end{eqnarray*}
-equality arises only when $\Pi\mathbf{z}_0 = \lambda\Pi\mathbf{1}$ for some $\lambda \in 
-\C$. But since $\Pi\mathbf{z}_0$ and $\Pi\mathbf{1}$ are both real nonnegative, 
-the last statement is proved.
-
-\end{proof}
 
 
-
-De rest van de thesis laat ik even weg door enerzijds een paar 
-compilatieproblemen en anderzijds nog onvolkomendheden.
-
-
-
+\subsection{Similarity matrices}
 
 
 
@@ -2550,7 +2279,8 @@ Press, 1991
 Applications}, Academic Press, 1985
 \bibitem[MEU2011]{11} W. De Meuter, \emph{Algoritmen en Datastructuren I}, Vrije Universiteit Brussel, 2011.
 \bibitem[KIEBOOM2011]{kieboom} R. Kieboom, \emph{Aanvulling Lineaire Algebra}, Vrije Universiteit Brussel, 2011.
-\bibitem[ADHEMAR] A. Bultheel, \emph{Inleiding tot de numerieke wiskunde}, Acco, 
+\bibitem[KIEBOOM2011]{kieboom} R. Kieboom, \emph{Aanvulling Lineaire Algebra}, Vrije Universiteit Brussel, 2011.
+\bibitem[ADHEMAR] A. Bultheel, \emph{Inleidng tot de numerieke wiskunde}, Acco, 
 2006.
 \bibitem[BIN1977]{12} K.G. Binmore, \emph{Mathematical Analysis: A Straightforward Approach}, Cambridge Universitiy Press, 1977.
 \bibitem[GOLUB]{golub} G. Golub, C.F. Van Loan, \emph{Matrix Computations}, 
@@ -2567,8 +2297,4 @@ Searching}, Society for Industrial and Applied Mathematics, 2004.
 environment}, J. ACM, 1999.
 \bibitem[DEIFT]{random} P. Deift, D. Gioev, \emph{Random Matrix Theory: Invariant Ensembles and 
 Universality}, American Mathematical Society, January, 2009.
-\bibitem[FOUC]{fouc} S. Foucart, \emph{Linear Algebra and Matrix Analysis}, 
-Drexel University, 2010.
-\bibitem[HORN]{horn} R.A. Horn, C.R. Johnson, \emph{Matrix Analysis}, Cambridge University Press, 1985.
-\end{thebibliography}
 \end{document}
