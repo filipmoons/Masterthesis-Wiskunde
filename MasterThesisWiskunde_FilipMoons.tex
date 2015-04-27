@@ -2,10 +2,15 @@
 \documentclass[a4paper,11pt]{report}
 \usepackage{a4wide}
 \usepackage{tikz}
+\usepackage{lscape}
+
 \usetikzlibrary{arrows}
+\usepackage[titletoc]{appendix}
 \usepackage{mathrsfs}
 \usepackage{enumerate}
+\usepackage{mcode}
 \usepackage[]{algorithm2e}
+\usepackage{mathtools}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{amsfonts}
 % The following makes latex use nicer postscript fonts.
@@ -59,6 +64,9 @@
 \renewcommand{\int}{\text{int}}
 \newcommand{\graf}{\mathscr{G}}
 \newcommand{\grafeen}{\mathscr{H}}
+\newcommand{\vect}{\operatorname{vec}}
+\newcommand{\tol}{\text{TOL}}
+
 %\newenvironment{proof}{\noindent{\bf Bewijs.}}{{\hfill $ \ Box $}\vskip 4mm}
 
 \promotortitle{Promotor}
@@ -67,7 +75,6 @@
 \author{Filip Moons}
 \title{Similarity on Combinatorial Structures}
 \advisortitle{}
-\addto\captionsenglish{\renewcommand*\abstractname{Abstract for non-mathematicians}}
 \date{MEI 2006}
 \faculty{Faculty of Science}
 \advisortitle{}
@@ -81,6 +88,32 @@ for\\ the degree of Master of Science in Mathematics - specialization: Education
 \begin{document}
 % Then english TitlePage
 \maketitlepage
+\chapter*{Acknowledgements}
+First of all, I would like to thank my promotor, Philippe Cara for his incredible attention to detail, 
+for the patience he had with me and the many reminders to continue and to work 
+hard. He also showed me the way to this beautiful topic for a Master thesis. Besides his role as 
+promotor, I will never forget him as professor of the Linear Algebra course in 
+the very first term of the BSc in Mathematics, that without any doubt was the 
+most memorable course during my college years: the hard study and the stress I 
+had before entering the exam room are memories that I still will be telling in my old age.
+
+Secondly, I would like to thank Roger Van Nieuwenhuyze, my math lecturer during 
+the teacher training I followed for one year at the Hogeschool-Universiteit Brussel. Without his encouragements, I had never dared to leave
+and study Mathematics at university level. 
+
+I also want to thank all professors and teaching assistant who have learned me a 
+lot during the past five years. A special thanks goes to Reen Tallon, who 
+always managed to overcome any administrative burden caused by the combination 
+of programs.
+
+
+...
+
+ 
+ 
+ 
+\section*{Abstract}\newpage
+\section*{Samenvatting}
 
 
 \tableofcontents
@@ -101,7 +134,7 @@ unless otherwise stated. We start with permutation matrices and their uses.
 With permutation matrices, we can introduce irreducible matrices. Also nonnegative and primitive square matrices are presented. After defining 
 those, we look at the Perron-Frobenius theorem. 
 \subsection{Permutation matrices}
-\begin{definition}
+\begin{definition}\label{petmruation}
   Given a permutation $\pi$ of $n$ elements:
   $$\pi: \{1,\ldots,n\} \to \{1,\ldots,n\},$$
   with:
@@ -275,7 +308,7 @@ Thus $(PA^tP^T)_{rs} = 0$ for $t = 1, 2,\ldots$ and for any $r,s$
 corresponding to an entry of the zero submatrix in $PAP^T$.
 Now, for $t = 1,\ldots,n:$
 $$0 = (PA^tP^T)_{rs} = \sum_k\sum_l p_{r k}a_{kl}^{(t)}p_{s t}$$
-By using the same reasoning as in \ref{redenering1}, choose $k,l$ so that $p_{r k}$ = $p_{s l} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
+By using the same reasoning as in \ref{redenering1}, choose $k,l$ so that $p_{r k}$ = $p_{s t} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
 contradicting the hypothesis. This completes the proof. 
  \end{proof}
  
@@ -872,7 +905,7 @@ In our algorithm we accepted an estimation error of $10^{-5}$, so the number of
 steps $n$ can be computed as:
 $$\left|\frac{\lambda_2}{\lambda_1} \right|^n \approx Tol$$
 So, for example, for $Tol = 10^{-5}$ we get $n = -5/\log{\lambda_1/\lambda_2}$, we become:
-$$\text{\texttt{power\_method}} \in O\left(\frac{-1}{\log{\lambda_2/\lambda_2}}\right)$$
+$$\text{\texttt{power\_method}} \in O\left(\frac{-1}{\log{\lambda_1 - \logt\lambda_2}}\right)$$
 Note that this O holds for any estimation error $Tol$ of the form $10^{-e}$ with $e \in \N$. 
 
 When $\lambda_2 \approx \lambda_1$ we see that the power method (almost) has infinitely 
@@ -949,7 +982,7 @@ The definitions and results in this section are mainly based on the course
  \textbf{vertices} and $\rightarrow$ is called the \textbf{adjacency relation}. Let $u, v \in V$, then the ordered pair 
  $(u, v)$ belonging to $\to$ is called an \textbf{arc} or \textbf{edge} and we write $u \rightarrow v$. We also
  say that $u$ is \textbf{adjacent} to $v$.  When $v \to v$ (with $v \in V$) we say that the graph has a 
- \textbf{loop} in $v$. A graph $(V,\rightarrow)$ is 
+ \textbf{loop} at $v$. A graph $(V,\rightarrow)$ is 
   most of the time denoted by calligraphic letters $\mathscr{G}, 
   \mathscr{H},..$.   \end{definition}
  When the relation $\rightarrow$ is symmetric, 
@@ -1037,17 +1070,32 @@ $$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\
 \end{definition}  
   
 
- 
+ \begin{definition}\label{terminal}
+  Let $\graf=(V,\to)$ be a graph with vertices $v_1, v_2, \ldots, v_n \in V$ 
+  and edges (defined as ordered pairs) $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
+  V)$. Let $u \to v$ be an edge between $u, v \in V$. 
+  We call $u$ the \textbf{source node} and $v$ the \textbf{terminal node} of the 
+  edge. $s_\graf(i)$ denotes the source node $u_i$ of edge $i$, $t_\graf(i)$ denotes the 
+  terminal node $w_i$ of edge $i$.
+\end{definition}
  
 \begin{definition}
   The \textbf{order of a finite graph $\graf$} is the number of vertices of $\graf$ and is denoted by $|\graf|$.  
 \end{definition} 
   
   \begin{definition}
-    The \textbf{degree of a vertex $v$ in a graph $\graf$} is the number of edges 
-    containing $v$ and is denoted by $\deg(v)$, so:
-    $$\deg{v} = |\graf_v|$$
+    The \textbf{indegree of a vertex $v$} in a graph $\graf$ is the number of times $v$ is a terminal node of an edge. 
+    
   \end{definition}
+    \begin{definition}
+    The \textbf{outdegree of a vertex $v$} in a graph $\graf$ is the number of times $v$ is a source node of an edge. 
+    
+  \end{definition}
+      \begin{definition}
+    The \textbf{degree of a vertex $v$} in a graph $\graf$ is the sum of the indegree and outdegree of vertex $v$. 
+    
+  \end{definition}
+  
   
  
  \begin{definition}
@@ -1067,16 +1115,29 @@ $$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\
   
 
 
-\begin{definition} A \textbf{simple graph} is an undirected graph $\graf(V,\mu)$ containing no loops and for all vertices $v_i, v_j \in V$, we have that the multiplicity
+\begin{definition} A \textbf{simple graph} is an undirected graph $\graf=(V,\mu)$ containing no loops and for all vertices $v_i, v_j \in V$, we have that the multiplicity
  $\mu(v_i,v_j)$ is at most 1.\end{definition}
  
  \subsubsection{Product graphs}
  \begin{definition}\label{productgraph}
-   Take two graphs $\graf(U,\to), \grafeen(V,\to')$, the \textbf{product graph} $\graf \times \grafeen$ 
+   Take two graphs $\graf=(U,\to), \grafeen=(V,\to')$, the \textbf{product graph} $\graf \times \grafeen$ 
    is the graph with $|\graf|.|\grafeen|$ vertices and that has an edge between 
    vertices $(u_i, v_j)$ and $(u_k, v_l)$ if there is an edge between $u_i$ and $u_k$ in $\graf$ and there is an 
    edge between $v_j$ and $v_l$ in $\grafeen$. 
  \end{definition}
+ 
+ \subsubsection{Colored graphs}\label{colored}
+ \begin{definition}\label{defcolor}
+   A \textbf{node colored graph} $\graf$ is quadruple  $(V, \to, C, a)$ with $V$ 
+   a set of vertices, $\to$ an adjacency relation, $C$ a set of colors and $a$ 
+   a surjective function $a: V \to C$ that assigns to each vertex one color.
+ \end{definition}
+ \begin{definition}
+   In a node colored graph $\graf = (V, \to, C, a) $, $c_\graf(i)$ denotes the number of vertices of 
+   color $i$. So:
+   $$c_\graf(i) = |\{(i, v_j) \in C \times V | a(v_j) = i\}|$$
+ \end{definition}
+
  \subsubsection{Adjacency matrices}
  We now represent a finite graph in the form of an adjacency matrix. This 
  matrix gives a lot of useful information about the graph and vice versa.
@@ -1130,15 +1191,8 @@ $$A = \begin{pmatrix}
 
 
 \subsection{Strong connectivity}
-In this section, we take a closer look at \emph{directed graphs}. We already 
-showed that the adjacency matrix of a simple graph $\graf$ is irreducible if and only 
-if $\graf$ is connected. But this is not appropriate for checking the irreducibility 
-of matrices using graphs, because the only matrices we can check
-are the ones containing entries equal to $0$ or $1$. Can we find a more general method for checking irreducibility of 
-a matrix using graphs? Luckily, we can and that's where directed graphs come 
-in: we will introduce a method for turning a matrix in to a directed graph 
-and vice versa and link the irreducibility of this matrix to a property of the 
-directed graph.
+In this section, we take a closer look at \emph{directed graphs} and introduce 
+the concept of connectivity.
 \begin{definition}
   An undirected graph $\graf$ is \textbf{connected} if it possible to establish a path from any 
    vertex to any other vertex.
@@ -1164,80 +1218,23 @@ know this means that $A$ is irreducible and vice versa.
 
 \end{proof}
 
-We now link directed graphs with $n \times n$-matrices and vice versa. Consider any $n \times n$-matrix $A$, and consider any $n$ distinct 
-points $v_1, v_2,\ldots,v_n$ in the plane, which will be the nodes of the directed graph. 
-For every nonzero entry $a_{ij}$ of the matrix, we connect the node $v_i$ to the 
-node $v_j$ by means of an arc $v_i \rightarrow v_j$ directed from $v_i$ to 
-$v_j$. In this way, with every $n \times n$-matrix $A$ can be associated a \textbf{directed} 
-graph $\graf(A)$.
-
-\begin{example}\label{vbgraf}
-  Consider the matrix:
-  $$B = \begin{pmatrix} 
-0 & 0 & 89 & 7  \\
-0 & 0 & 2 & 2  \\
-123 & 9 & 0 & 0  \\
-14 & 89 & 0 & 0  
-\end{pmatrix}.$$
-We get the directed graph: \\
-\begin{center}
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-                    thick]
-                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
-                            inner sep=0pt]
-
-
-  \node[main node] (1) [label=left:$v_1$] {};
-  \node[main node] (3) [label=right:$v_3$][right of=1] {};
-    \node[main node] (2) [label=right:$v_2$][below of=3] {};
-  \node[main node] (4) [label=left:$v_4$][below of=1] {};
-
-  \path[every node/.style={font=\sffamily\small}]
-   
-    (1) edge [bend right] node [left] {} (3)
-  
-    (3) edge [bend right] node [right] {} (1)
-    (1) edge [bend right] node [left] {} (4)
-  
-    (4) edge [bend right] node [right] {} (1)
-        (3) edge [bend right] node [left] {} (2)
-  
-    (2) edge [bend right] node [right] {} (3)
-       (4) edge [bend right] node [left] {} (2)
-  
-    (2) edge [bend right] node [right] {} (4)
-
-
-\end{tikzpicture}
-\end{center}
-Notice that this graph is strongly connected.
-
-\end{example}
-\begin{corollary}
-    An $n \times n$-matrix $A$ is irreducible if and only if its directed 
-  graph $\graf(A)$ is strongly connected.
-
-\end{corollary}
-\begin{proof}
-  This follows immediately from the previous proof.
-\end{proof}
 \chapter{Similarity on graphs}
 
 In the previous chapter all the basic terminology and results were introduced, 
-we now take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
+now we take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
 concept to compare the nodes of two graphs. The concept arose from the research on algorithms for web searching engines (like \emph{Google}, \emph{Yahoo},\ldots) in the late nineties. 
 More specifically, Jon M. Kleinberg 
 introduced in his paper `Authoritative Sources in a Hyperlinked Environment' 
-(\cite{kleinberg}) the famous `HITS algorithm' for extracting information from the link structure of websites. The method leads to an iterative algorithm where 
+\cite{kleinberg} the famous `HITS algorithm' for extracting information from the link structure of websites. The method leads to an iterative algorithm where 
 graphs represent the link structure of a collection of websites on a specific topic. Because this paper formed the basis of later research on similarity on graphs, 
 the
 whole idea and algorithm of Kleinberg is introduced in the first section of this chapter. In 
-2004, V.D. Blondel et al. (\cite{blondel}) generalized the algorithm of 
+2004, V.D. Blondel et al. \cite{blondel} generalized the algorithm of 
 Kleinberg, introducing the notion of similarity on directed graphs. This similarity is covered in the second section. With this similarity on directed graphs, 
-there is a much wider scope of applications than just search algorithms. 
-Finally, we 
-conclude by looking at similarity on colored graphs in the last section. Both sections on similarity on directed and colored graph conclude with an 
-application on the Eurovision Song Contest results between 1980-1990. 
+there is a much wider scope of applications than just search algorithms. Next, we extend the notion of similarity on directed graphs: the method
+of Blondel only returns the concept of node similarity which is in fact a 
+measurement of how similar two nodes of two graphs are to each other.
+
 \section{The HITS algorithm of Kleinberg}
 \subsection{History}
 Back in the nineties, internet became more and more popular by the public. The popular search 
@@ -1255,7 +1252,7 @@ Two possible solutions were simultaneously invented in 1997 and 1998. The first
 one was the
 \textit{PageRank}-system developed by Larry Page and Sergey 
 Brin (\cite{page}). The PageRank system led to the foundation of the immensely popular Google 
-search engine. Meanwhile, also Jhon Kleinberg came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search). At that time,
+search engine. Meanwhile, also Jon Kleinberg came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search). At that time,
 he was both a professor in the Computer Science Department at the Cornell University and researcher for IBM. The algorithm is 
 used inter alia today by the Ask search engine (www.ask.com).
 Both these algorithms use the hyperlinks between webpages to rank search 
@@ -1266,7 +1263,7 @@ further detail about the PageRank-algorithm. In the following paragraphs, the
 HITS algorithm is extensively explained.
 
 \subsection{Motivation}\label{motivatiehits}
-Kleinbergs work originates in the problems that arises with text-based searching the WWW. Text-based searching just counts all the occurrences of a given search query on webpages and returns a set of webpages ordered by decreasing occurency.
+Kleinberg's work originates in the problems that arise with text-based searching the WWW. Text-based searching just counts all the occurrences of a given search query on webpages and returns a set of webpages ordered by decreasing occurency.
 When a user 
 supplies a search query, we probably face an \textit{abundance problem} with this method: the number of pages that could reasonably be returned as relevant is
 far too large for a human user to digest. To provide effective search results 
@@ -1293,7 +1290,7 @@ The HITS method is based on the relationship between the \textit{authorities} fo
 and those pages that link to many related authorities, called \emph{hubs}. Page $p$ 
 is called an \textit{authority} for the query ``\texttt{smartphone brand}'' if it 
 contains valuable information on the subject. In our example websites of 
-smartphone manifacturers such as ``\texttt{www.apple.com}'', 
+smartphone manufacturers such as ``\texttt{www.apple.com}'', 
 ``\texttt{www.samsung.com}'',... would be good authorities for this search 
 query and these are the results a user expect from a search engine. 
 
@@ -1340,7 +1337,7 @@ authorities.
 \end{algorithm}
 Any collection of hyperlinked pages can be transformed to a directed graph $\graf = (V, 
 \to)$: the nodes correspond to the pages, and if there is a link from page $p$ 
-to page $q$, there is an arc $p \to q$. Suppose a search query is preformed, 
+to page $q$, there is an arc $p \to q$. Suppose a search query is performed, 
 specified by a query $\sigma$. We wish to determine the authoritative 
 pages by an analysis of the link structure. But first we have to construct a 
 subgraph of the internet on which our algorithm will operate. We want to make the 
@@ -1366,7 +1363,7 @@ in relevant pages, it will be easier to find good authorities.
 To construct $S_\sigma$, we first construct a \emph{root set} $R_\sigma$ with the $t$ highest-ranked pages for $\sigma$ 
 using a text-based search engine (they sort results based on the occurence of 
 $\sigma$). Typically, $t$ is set about $200$. $R_\sigma$ complies with properties 1 and 2 
-of our wish list, but because $R_\sigma \subset Q_\sigma$, it fails from satisfying 
+of our wish list, but because $R_\sigma \subset Q_\sigma$, it may fail from satisfying 
 property 3. Now we use the root set $R_\sigma$ to create the set $S_\sigma$ satisfying our 
 complete wish list. When a strong authority is not in $R_\sigma$, it is very 
 likely that at least one of the pages in $R_\sigma$ points to this authority. 
@@ -1413,7 +1410,7 @@ Our graph still contains some meaningless links in the context of page
  
  \subsection{Hubs and Authorities}
  A very simple approach would now be to order the pages in $\graf'_\sigma$ by 
- their in-degree. Although this approach can sometimes return good search results, this
+ their indegree. Although this approach can sometimes return good search results, this
  heuristic is often too simple because $S_\sigma$ will probably contain some 
  web pages with a lot of incoming links without being very relevant to the search query $\sigma$ (e.g. advertisements).   
  With these incoming links, those web pages are ranked high in the final search 
@@ -1443,7 +1440,7 @@ Our graph still contains some meaningless links in the context of page
 So let $\graf'_\sigma = (V,\to)$ and let $h_j$ and $a_j$ be the hub and authority 
 scores of vertex $v_j$ (corresponding with page $j$). These scores must be initialized by some positive start values 
 and then updated simultaneously for all vertices. This leads to a \emph{mutually reinforcing relation} 
-in which the hub score of $v_j$ is set equal to the authority scores of all 
+in which the hub score of $v_j$ is set equal to the sum of the authority scores of all 
 vertices pointed to by $v_j$ and in an equal manner the authority score of $v_j$ 
 is set equal to the sum of the hub scores of all vertices pointing to $v_j$.
 
@@ -1453,7 +1450,7 @@ a_j := \sum_{i:(v_i,v_j)\in \to} h_i.
 
 The basic operations in which hubs and authorities reinforce one another are 
 depicted in Figure \ref{reinforcing}.
-
+\mathbf{deze tekening wordt nog herwerkt}
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.6]{basic.png}\caption{The basic operations in the reinforcing relation between hubs and authorities (Source: \cite{kleinberg})}\label{reinforcing}
@@ -1466,23 +1463,23 @@ as:
 $$\begin{pmatrix} 
 \textbf{h}\\
 \textbf{a}
-\end{pmatrix}_{k+1} = \begin{pmatrix} 
+\end{pmatrix}^{(k+1)} = \begin{pmatrix} 
 0 & B\\
 B^T & 0
 \end{pmatrix} \begin{pmatrix} 
 \textbf{h}\\
 \textbf{a}
-\end{pmatrix}_{k},\quad k = 0, 1,\ldots,$$
+\end{pmatrix}^{(k)},\quad k = 0, 1,\ldots,$$
 In compact form, we denote
 \begin{eqnarray}\label{compactform}
-  \mathbf{x_{k+1}} = M\mathbf{x_k},\quad k = 0, 1,\ldots,
+  \mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)},\quad k = 0, 1,\ldots,
 \end{eqnarray}
 
 where 
-$$\mathbf{x_k} = \begin{pmatrix} 
+$$\mathbf{x}^{(k)} = \begin{pmatrix} 
 \mathbf{h}\\
 \mathbf{a}
-\end{pmatrix}_{k}, M =  \begin{pmatrix} 
+\end{pmatrix}^{(k)}, M =  \begin{pmatrix} 
 0 & B\\
 B^T & 0
 \end{pmatrix}$$
@@ -1491,20 +1488,20 @@ After each iteration, we have to normalize $h_j$ and $a_j$. Indeed, we want to g
 and in order to compare these after each iteration step, they must be normalized because only the relative differences do matter, otherwise the whole procedure would be 
 meaningless. Pages with larger $a_j$-scores are viewed as being better authorities, pages with larger $h_j$-scores are better hubs. 
 
-We get the following sequence (with $z_0$ some positive start value) of normalized vectors: 
+We get the following sequence (with $z^{(0)}$ some positive start value) of normalized vectors: 
 \begin{eqnarray}\label{sequencezk}
-  \mathbf{z}_0 = \mathbf{x}^{(0)} > 0, \mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, \quad k = 
+  \mathbf{z}^{(0)} = \mathbf{x}^{(0)} > 0, \mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, \quad k = 
   0,1,\ldots,
 \end{eqnarray}
 
-How do we decide on $\mathbf{x}^{(0)}$? We will see that any positive vector in $\R^{2n}$ is a good choice, but for the shake of simplicity, we choose the natural choice\footnote{$\mathbf{1}$ is a matrix, or vector, whose entries are all equal to 
+How do we decide on $\mathbf{x}^{(0)}$? We will see that any positive vector in $\R^{2n}$ is a good choice, but for the sake of simplicity, we make the natural choice\footnote{$\mathbf{1}$ is a matrix, or vector, whose entries are all equal to 
 $1$.} $\mathbf{1} \in \R^{2n}$ . The limit to which the sequence converges 
 results in `definitive' hub and authority scores for each page in the graph $\graf'_\sigma$. 
 
 To compute the iterative algorithm, we update the hub and authority scores in an alternating form (by each step we have to normalize the scores). 
-Because we will proof that te sequence converges, theoretically we can keep on iterating until a fixed point is reached. But in most practical settings, 
+Because we will prove that the sequence converges, theoretically we can keep on iterating until a fixed point is approximated. But in most practical settings, 
 we choose a fixed number of steps $k$ to reduce the computational cost because we can not know beforehand how
-large $k$ has to be to reach the limit. But off course, it is extremely important to know that method converges anyway. Let $\mathbf{x}^{(i)}$ denote vector $\mathbf{x}$ at iteration step $i$ as in Notation \ref{numeriekenotatie}, and we become Algorithm 
+large $k$ has to be to reach the limit. But of course, it is extremely important to know that method converges anyway. Let $\mathbf{x}^{(i)}$ denote vector $\mathbf{x}$ at iteration step $i$ as in Notation \ref{numeriekenotatie}, and we get Algorithm 
 \ref{hitsalgorithm}.
 
 
@@ -1532,7 +1529,7 @@ large $k$ has to be to reach the limit. But off course, it is extremely importan
 \end{algorithm}
 
 To filter the top $c$ hubs and the top $c$ authorities, you can use the trivial 
-algorithm \ref{filter}. \begin{algorithm}[t!]
+Algorithm \ref{filter}. \begin{algorithm}[t!]
  \KwData{\\$\graf$: a graph of $n$ linked pages.\\$k$: natural number.\\$c$: natural number.}
  \KwResult{A vector $((\mathcal{H}_1,\mathcal{H}_2,\ldots, \mathcal{H}_c), (\mathcal{A}_1,\mathcal{A}_2,\ldots, \mathcal{A}_c))$ containing exactly the nodes of the $c$ top hubs and $c$ top authorities.}
  \blankline
@@ -1553,38 +1550,38 @@ a vector of nodes $(\mathcal{A}_1,\mathcal{A}_2,\ldots, \mathcal{A}_c)$\;
 \end{algorithm}
 
 How do we decide on the values of $k$ and $c$? It's immediately clear that $c$ and $k$ must
-be propertional: for low $c$ values, a lower 
+be proportional: for low $c$ values, a lower 
 value for the number of iteration steps $k$ is appropriate and vice versa. 
 Experiments in $\cite{kleinberg}$ showed that $k$ set to $20$ is sufficient to 
 become stable for finding the $5$ best hubs and authorities, thus for $c = 5$. 
 
 \subsection{Convergence of the algorithm}
-We know want to proof that for arbitrarily large values of $k$, the
-sequence $z_k$ converge to a limit $(\mathbf{h'}, \mathbf{a'})$. Before 
- we want to prove the convergence, note that  adjacency matrices are nonnegative by definition, and thus the matrix $M$ is 
+We now want to prove that for arbitrarily large values of $k$, the
+sequence $Z^{(k)}$ converge to a limit $(\mathbf{h'}, \mathbf{a'})$. Before 
+  prove the convergence, note that  adjacency matrices are nonnegative by definition, and thus the matrix $M$ is 
 nonnegative too. $M$ is also clearly a symmetric $n' \times n'$-matrix with nonnegative, real entries. We prove that such matrices
-have  $n'$ (not necessarily different) real eigenvalues and that we can diagonalize $M$.   Remember that we introduced the 
-power method in \ref{powersection} and with this proofs about symmetric, real matrices, and with these theorems we showed that the first condition of the power method namely being a diagonalizable matrix) is met. 
+have  $n'$ (not necessarily different) real eigenvalues and that we can diagonalize $M$.   This is the first condition of the  
+power method iwe introduced in section \ref{powersection}.
 If we can also prove the second condition (having a unique dominant eigenvalue), 
 convergence is immediately shown by the power method.
 
 However, there is a problem here: we can not prove that nonnegative symmetric matrices have a unique dominant 
-eigenvalue, simply because this is not true in general.\footnote{The matrix $\begin{pmatrix} 
+eigenvalue (a unique dominant eigenvalue means the largest eigenvalue with multiplicity 1), simply because this is not true in general.\footnote{The matrix $\begin{pmatrix} 
 1 & 0\\
 0 & 1
-\end{pmatrix}$ is a simple counterexample for a symmetric, nonnegatieve, real matrix that has no unique dominant eigenvalue.} 
-In the original paper of Kleinberg (\cite{kleinberg}) he solves this issue by 
+\end{pmatrix}$ is a simple counterexample of a symmetric, nonnegative, real matrix that has no unique dominant eigenvalue.} 
+In the original paper of Kleinberg \cite{kleinberg} he solves this issue by 
 simply imposing that the matrix $M$ has a unique dominant eigenvalue and he doesn't pay any further attention to this problem.  
 He presents it as `a small, technical assumption for the sake of simplicity'.
 
 Is this justified in practice? Actually it is, because you can prove with probability theory that a random 
-matrix $C_n$,  with a probability tending to 1, has no repeated eigenvalues as the size of the matrix goes to infinity (\cite{random}).  You can also defend this differently: the only reason why we can't use the 
+matrix $C_n$,  with a probability tending to 1, has no repeated eigenvalues as the size of the matrix goes to infinity (See for example Thereom 2.2.3 in \cite{random}).  You can also defend this differently: the only reason why we can't use the 
 Perron-Frobenius theorem (see \ref{frobtheorem}) here, is because $M$ will have 
 zero entries (not all pages in $S_\sigma$ will be linked to each other, the graph $\graf'_\sigma$ is not strongly connected in general). But,
 it is intuitively clear that by adding 1 to each entry of $M$, the final results 
 of the algorithm (a sorted vector with the best hubs and authorities) will not 
 be changed at all, because pages with larger indegrees and outdegrees will continue to get better hub and authority scores (note, however, that the relative hub and authority scores can fluctuate a bit and the algorithm will converge slower because of the lack of zero 
-entries). So, by adding 1 to each entry of $M$, $M$ becomes a positive, real matrix 
+entries). So, by adding 1 to each entry of $M$, the matrix becomes a positive, real matrix 
 and we know from the Perron-Frobenius that these matrices have a unique dominant 
 eigenvalue. So yes, the `small, technical assumption' in the paper of Kleinberg 
 is justified.
@@ -1640,27 +1637,27 @@ the evolution of the ideas in the successive papers.
  \begin{proof}
 By induction on the order of the matrix. For $n=1$ the theorem is trivial. Let $A$ 
 be a symmetric $n\times n$-matrix. $A$ has at least one eigenvalue $\lambda_1$ by the 
-previous theorem. Let $\mathbf{x_1}$ be a corresponding eigenvalue with $\|\mathbf{x_1}\|=1$ 
-and $A\mathbf{x_1}=\lambda_1\mathbf{x_1}$. By the Gram-Schmidt procedure, we construct an 
-orthonormal basis $V_1 = \{\mathbf{x_1}, \mathbf{v_2},\ldots,\mathbf{v_n}\}$ of 
+previous theorem. Let $\mathbf{x_1}$ be a corresponding eigenvalue with $\|\mathbf{x}_1\|=1$ 
+and $A\mathbf{x}_1=\lambda_1\mathbf{x}_1$. By the Gram-Schmidt procedure, we construct an 
+orthonormal basis $V_1 = \{\mathbf{x}_1, \mathbf{v}_2,\ldots,\mathbf{v}_n\}$ of 
 $\R^n$.
 Let:
-$$S_1= [\mathbf{x_1},\mathbf{v_2},\ldots,\mathbf{v_n}],$$
+$$S_1= [\mathbf{x}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n],$$
 since $S_1$ is orthonormal, we get $S^t_1 = S^{-1}$. Consider the matrix:
 $S_1^{-1}AS_1$. We have:
 $$(S_1^{-1}AS_1)^t = (S_1^{t}AS_1)^t = S_1^t A^t S_1 = S^{-1}_1AS_1$$
-Thus $S_1^{-1}AS_1$ is a symmetric matrix. Since $S_1\mathbf{e_1} = \mathbf{x_1}$, we get:
+Thus $S_1^{-1}AS_1$ is a symmetric matrix. Since $S_1\mathbf{e}_1 = \mathbf{x}_1$, we get:
 \begin{eqnarray*}
- S_1^{-1}AS_1\mathbf{e_1} &=& (S_1^{-1} A)(\mathbf{x_1})\\
- &=& S_1^{-1}(\lambda_1\mathbf{x_1})\\
- &=& \lambda_1(S_1^{-1}\mathbf{x_1})\\
- &=& \lambda_1 \mathbf{e_1}
+ S_1^{-1}AS_1\mathbf{e}_1 &=& (S_1^{-1} A)(\mathbf{x}_1)\\
+ &=& S_1^{-1}(\lambda_1\mathbf{x}_1)\\
+ &=& \lambda_1(S_1^{-1}\mathbf{x}_1)\\
+ &=& \lambda_1 \mathbf{e}_1
 \end{eqnarray*}
 So we get:
 $$S_1^{-1}AS_1=\left(
 \begin{array}{c|c}
 \lambda_1 & \mathbf{0} \\ \hline
-\mathbf{0}^t & \mathbf{A_1}
+\mathbf{0}^t & A_1
 \end{array}\right),$$
 with $\mathbf{0}$ a vector of zero entries of size $n-1$ and $A_1$ an $(n-1)\times(n-1)$ symmetric matrix. 
 We know by induction that there exist a $(n-1)\times(n-1)$ orthogonal matrix $S_2$ such that 
@@ -1721,14 +1718,14 @@ we have proved (1). From the definition of diagonalizable matrices and Theorem \
 \end{proof}
  \begin{theorem}
    Giving a graph $\graf$ with $n$ linked pages, the sequence as defined in the previous paragraph: 
-   $$\mathbf{z}_0 = \mathbf{1} \in \R^{n}, \mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, \quad k = 
+   $$\mathbf{z}^{(0)} = \mathbf{1} \in \R^{n}, \mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, \quad k = 
   0,1,\ldots,$$
   converges when $M$ has a unique dominant eigenvalue.
  \end{theorem}
 \begin{proof}
   Since 1) $M$ is diagonalizable as symmetric matrix by Theorem \ref{diagonaal}  
   and 2) $M$ has a unique dominant eigenvalue, it follows from the power method that
-  the sequence will converge to a corresponding dominating eigenvector $(\mathbf{h}, \mathbf{a})$. This eigenvector contains the hub and authority scores.
+  the sequence will converge to a corresponding dominating eigenvector $(\mathbf{h'}, \mathbf{a'})$. This eigenvector contains the hub and authority scores.
   \end{proof}
 
 
@@ -1753,7 +1750,8 @@ dominant eigenvectors of $BB^T$ and $B^TB$.\end{corollary}
      $\mathbf{h}$ is the dominant eigenvector of $BB^T$ and $\mathbf{a}$ is the dominant eigenvector of 
      $B^TB$.
  \end{proof}
- \subsection{Example}
+ \subsection{Examples}
+ \subsubsection{Searching for math professors at the VUB}
 \begin{example}
   We conclude this section with a fictitious example of the HITS-algorithm. Suppose you 
   are looking for \texttt{math professors vub} with a text-based search engine 
@@ -1787,10 +1785,10 @@ $\graf_\sigma$:
     \item \textbf{Row 2}: website of the faculty of science,
     \item  \textbf{Row 3}: website of the professor with the 4 PhD students,
     \item  \textbf{Row 4, 5, 6}: websites of the professors with the 2 PhD students,
-    \item  \textbf{Row 7, 8, 9, 10}: websites of the 4 Phd students of the professor on row 3,
-    \item  \textbf{Row 11, 12}: websites of the 2 Phd students of the professor on row 4,
-    \item  \textbf{Row 12, 14}: websites of the 2 Phd students of the professor on row 5,
-    \item  \textbf{Row 14, 16}: websites of the 2 Phd students of the professor on row 6,
+    \item  \textbf{Row 7, 8, 9, 10}: websites of the 4 PhD students of the professor on row 3,
+    \item  \textbf{Row 11, 12}: websites of the 2 PhD students of the professor on row 4,
+    \item  \textbf{Row 12, 14}: websites of the 2 PhD students of the professor on row 5,
+    \item  \textbf{Row 14, 16}: websites of the 2 PhD students of the professor on row 6,
 
 
 \end{itemize}
@@ -1815,7 +1813,7 @@ $$
 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{pmatrix},$$
 
-Intuitively, we expect - when applying the HITS-method - that the professor with his 4 PhD 
+Intuitively, we expect that the professor with his 4 PhD 
 student will have the largest authority score, immediately followed by the other 3 professors.
 The website of the mathematics department is clearly the best hub in this example and should get the largest hub score.
 Also the website of the faculty of science should get a high hub score.
@@ -1863,7 +1861,6 @@ $$ \mathbf{a} = \begin{pmatrix}
 0.0758\\
 \end{pmatrix}
 $$
-\end{example}
 
 We see that the websites of the 4 math professors are indeed the best authorities for the search 
 query \texttt{math professors vub} and that the website of the mathematics department is an 
@@ -1873,6 +1870,259 @@ search results (he has the highest authority score), the other professors would
 appear just underneath him. Obviously, a hub score of 0.8645 is so high that it would be quite exceptional in 
 a graph containing a lot more websites (it's very unlikely that you find a website containing links to all the other pages/nodes in the graph). Nevertheless, we conclude that the HITS-algorithm returns the 
 results we wanted intuitively.
+
+\end{example}
+ \subsubsection{Predictors in the Eurovision Song Contest 2009-2014}
+ The Eurovision Song Contest is an annual competition between countries whose 
+ public broadcaster is part of the EBU-network. The contest is the biggest music 
+ competition in the world, reaching about 200 million anually.
+  
+ The contest consists of three shows: 2 semi-finals and 1 grand final. From each 
+ semi-final, 10 countries proceed the the grand final. Each country, also those 
+ who dropped out during the semi-finals, gives points during the voting of the grand final. 
+The voting during the grand final takes place after all the countries have performed their song. 
+Each country is called and and awards 12 points to their 
+favorite song, 10 points to their second favorite, and then points from 8 down 
+to 1 to other eight songs. Countries can not vote for themselves. 
+
+The voting 
+system is in fact a positional voting system that is very similar to the Borda count 
+method (see \cite{saari} for a scientific explanation of Borda count): the list 
+of points of a country represents the ranking of the 10 best countries in the voting of that country. 
+So the points are values on an ordinal scale.
+
+The complete voting procedure during the Eurovision Song Contest can be seen as 
+a directed graph: all the participating countries are the nodes and the edges 
+represent the points between the countries (when country $a$ assigns 3 points to country $b$, then there are 3 edges from $a$ to 
+$b$).
+
+Let $A$ be the adjacency matrix of the voting during a song contest ($A$ will in fact be just a points table). If we 
+take $A$ as input for the HITS-algorithm, we expect that the country with the 
+highest authority score will be the winner of the competition. Actually we 
+expect a lot more: when we order the countries based on their authority score, 
+we expect that this ordering will be practically equal to the final ranking of the contest. 
+This is based on the simple fact that Borda count just sums up points, and we 
+only expect very small differences when the difference in points is low between 
+two countries, because then the hub scores can influence the result of the 
+HITS-algorithm a bit.
+
+But what is very interesting now, is the role that the hub scores are playing. 
+In fact these scores can be seen as a kind of `predictive value' of a country: a 
+country with a high hub score will have assigned points in such way that it is 
+seen as a reliable source, meaning that the points of that country will match 
+well with the final result of the contest. 
+
+Let's take the Eurovision Song Contest 2014 as an example. 
+
+The final results of the contest where (the complete result table can be found in Appendix 
+B):
+\begin{enumerate}
+  \itemsep0em
+\item Austria (290 points)
+\item The Netherlands (238 points)
+\item Sweden (218 points)
+\item Armenia (174 points)
+\item Hungary (143 points)
+\item Ukraine (113 points)
+\item Russia (89 points)
+\item Norway (88 points)
+\item Denmark (74 points)
+\item Spain (74 points)
+\item Finland (72 points)
+\item Romania (72 points)
+\item Switzerland (64 points)
+\item Poland (62 points)
+\item Iceland (58 points)
+\item Belarus (43 points)
+\item United Kingdom (40 points)
+\item Germany (39 points)
+\item Montenegro (37 points)
+\item Greece (35 points)
+\item Italy (33 points)
+\item Azerbaijan (33 points)
+\item Malta (32 points)
+\item San Marino (14 points)
+\item Slovenia (9 points)
+\item France (2 points)
+\end{enumerate}
+Now we calculate the hub and authority scores, based on the full scoreboard and 
+the results are presented in Table \ref{t2014}.
+\begin{table}[h!]
+  \centering
+
+\begin{tabular}{l | r}
+\textbf{Participant}     & \textbf{Authority Score}\\\hline 
+Austria         & 0.285110029     \\
+The Netherlands & 0.235720093     \\
+Sweden          & 0.212949392     \\
+Armenia         & 0.156091783     \\
+Hungary         & 0.124453384     \\
+Ukraine         & 0.095410297     \\
+Norway          & 0.086504385     \\
+Denmark         & 0.074474911     \\
+Finland & 0.070675128     \\
+Spain           & 0.068432379     \\
+Russia          & 0.065352465     \\
+Romania         & 0.062560768     \\
+Switzerland     & 0.055868228     \\
+Iceland         & 0.053973263     \\
+Poland          & 0.052246035     \\
+United Kingdom  & 0.037978889     \\
+Germany         & 0.029958317     \\
+Belarus         & 0.027945852     \\
+Malta           & 0.026911408     \\
+Italy           & 0.023817428     \\
+Montenegro      & 0.023425296     \\
+Azerbaijan      & 0.022613716     \\
+Greece          & 0.021816155     \\
+San Marino      & 0.009315756     \\
+Slovenia        & 0.005843162     \\
+France  & 0.002167387     \\
+Albania         & 0               \\
+Belgium         & 0               \\
+Estonia         & 0               \\
+FYR Macedonia   & 0               \\
+Georgia         & 0               \\
+Ireland         & 0               \\
+Israel          & 0               \\
+Latvia          & 0               \\
+Lithuania       & 0               \\
+Moldova         & 0               \\
+Portugal        & 0              
+\end{tabular}
+$\;\;\;$
+\begin{tabular}{l|r}
+\textbf{Participant}     & \textbf{Hub Score}   \\\hline 
+Portugal        & 0.173610946 \\
+Finland         & 0.172574335 \\
+Belgium         & 0.169584694 \\
+Latvia          & 0.166295198 \\
+Spain           & 0.165764986 \\
+Hungary         & 0.165699760  \\
+Iceland         & 0.165062483 \\
+Estonia         & 0.162056401 \\
+Denmark         & 0.160549539 \\
+Lithuania       & 0.159920120  \\
+Greece          & 0.159278464 \\
+Norway          & 0.156676045 \\
+Slovenia        & 0.156533823 \\
+Sweden          & 0.155725338 \\
+Romania         & 0.155212094 \\
+France          & 0.153993935 \\
+Switzerland     & 0.153864143 \\
+Israel          & 0.153059334 \\
+Ireland         & 0.147584917 \\
+The Netherlands & 0.145211066 \\
+United Kingdom  & 0.144342619 \\
+Austria         & 0.137956312 \\
+Germany         & 0.136869443 \\
+Ukraine         & 0.135769452 \\
+Italy           & 0.121638547 \\
+Malta           & 0.119063784 \\
+Georgia         & 0.117423087 \\
+Moldova         & 0.115874904 \\
+Poland          & 0.112296570  \\
+FYR Macedonia   & 0.107531180  \\
+Russia          & 0.102149330  \\
+San Marino      & 0.098204303 \\
+Montenegro      & 0.097193444 \\
+Albania         & 0.091897617 \\
+Belarus         & 0.089227164 \\
+Azerbaijan      & 0.068005452 \\
+Armenia         & 0.050899422
+\end{tabular}
+
+\caption{The authority and hub scores of the countries during the Final of the Eurovision Song Contest 2014}
+\end{table}\label{t2014}
+
+Notice that ordering the countries by their authority scores indeed returns the final ranking of the contest. The countries who have an
+authority score equal to 0 are the countries that didn't make it to the final and couldn't therefore 
+receive any points. When looking at the hub scores, it appears that Portugal `predicted' the 
+final ranking the best. When we look at the points awarded by Portugal during 
+the final, this is indeed true:
+\begin{itemize}
+  \itemsep0em
+
+  \item \textbf{12 points}: Austria\item \textbf{10 points}: The Netherlands
+\item \textbf{8 points}: Sweden\item \textbf{7 points}: Switzerland	\item \textbf{6 points}: Hungary\item \textbf{5 points}: Denmark\item \textbf{4 points}: Armenia	\item \textbf{3 points}: Norway\item \textbf{2 points}: Russia\item \textbf{1 point}: Romania
+\end{itemize}
+No less than 7 countries in the points of Portugal have achieved the final top 
+10, the top 3 results of Portugal are even equal to the final top 3! Russia, Romania and
+Switzerland are the 3 countries where Portugal awarded points to but didn't achieve the 
+top 10, but still they are placed 11$^\text{\th}$, 12$^\text{\th}$ and 
+13$^\text{\th}$ in the final ranking. So it is absolutely not surprising that Portugal is the country 
+with the highest hub score. 
+
+Note that countries who scored very well during 
+the final, usually have a moderate hub score: this is due to the fact that 
+countries can not vote for themselves. The average hub score is, in general, also 
+lower than the average authority score, this is because countries can award 
+points to only 10 countries, but (qualified) countries can receive points from 
+every country, except themselves. The `predictive value' of a country is 
+therefore limited to only 10 countries, while the voting produces a complete final ranking of 26 
+countries.
+
+Of course, it's tempting to research the predictive value of countries during a 
+couple of years. We opted for the period 2009-2014 because during the last five 
+years the voting procedure remained unchanged: the points awarded by each country are based on 50$\%$ televoting and
+$50\%$ jury vote. So we take the average of the hub scores of the last five 
+years of each country. We only put one condition on these countries: they should 
+have participated at 4 out of 5 times, more than 1 absence would possibly make the average misleading.
+The result is presented in Table \ref{thub}. The complete results of each year can be found in Appendix B. 
+
+We see that Hungary, Cyprus and Belgium are the best predictors during the last 
+five years. The bottom is also not very surprising: in 2010, 2012 and 2013 Albania did not 
+receive enough televotes so the jury decided their points for $100\%$ (see \cite{eurovision} for more information), making their judging process vary from one year to another.
+Azerbaijan and Armenia scored very high in the last five years, (e.g. Azerbaijan reached the top 5
+every year except 2014, won in 2011 and became second in 2013) 
+but due to their dispute about the Nagorno-Karabakh region, they never exchanged a 
+single
+point during the last five years.
+
+\begin{table}[h!]
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|}
+\hline
+\textbf{Participant}                                       & \textbf{2014} & \textbf{2013} & \textbf{2012} & \textbf{2011} & \textbf{2010} & \textbf{2009} & \textbf{Average}  \\ \hline
+Hungary                                                    & 0.165700      & 0.150320      & 0.151291      & 0.130650      & -             & 0.158260      & \textbf{0.151244} \\ \hline
+Cyprus                                                     & -             & 0.161413      & 0.140385      & 0.145691      & 0.144175      & 0.146567      & \textbf{0.147646} \\ \hline
+Belgium                                                    & 0.169585      & 0.159189      & 0.153462      & 0.118487      & 0.147362      & 0.122234      & \textbf{0.145053} \\ \hline
+Lithuania                                                  & 0.159920      & 0.141552      & 0.144121      & 0.127425      & 0.144634      & 0.152601      & \textbf{0.145042} \\ \hline
+\begin{tabular}[c]{@{}l@{}}The \\ Netherlands\end{tabular} & 0.145211      & 0.133926      & 0.147638      & 0.137637      & 0.139085      & 0.163395      & \textbf{0.144482} \\ \hline
+Israel                                                     & 0.153059      & 0.157744      & 0.139948      & 0.131677      & 0.118970      & 0.157031      & \textbf{0.143072} \\ \hline
+Spain                                                      & 0.165765      & 0.153609      & 0.133174      & 0.114255      & 0.162626      & 0.122739      & \textbf{0.142028} \\ \hline
+Latvia                                                     & 0.166295      & 0.134627      & 0.138436      & 0.121329      & 0.142837      & 0.143788      & \textbf{0.141219} \\ \hline
+Estonia                                                    & 0.162056      & 0.141096      & 0.131495      & 0.143254      & 0.136098      & 0.131401      & \textbf{0.140900} \\ \hline
+Slovenia                                                   & 0.156534      & 0.141375      & 0.148665      & 0.118682      & 0.137277      & 0.133178      & \textbf{0.139285} \\ \hline
+Malta                                                      & 0.119064      & 0.146482      & 0.122804      & 0.162192      & 0.138073      & 0.139682      & \textbf{0.138049} \\ \hline
+Iceland                                                    & 0.165062      & 0.149906      & 0.129060      & 0.130358      & 0.137492      & 0.113493      & \textbf{0.137562} \\ \hline
+Denmark                                                    & 0.160550      & 0.112496      & 0.139704      & 0.104782      & 0.144174      & 0.156365      & \textbf{0.136345} \\ \hline
+Greece                                                     & 0.159278      & 0.144943      & 0.124054      & 0.145912      & 0.095629      & 0.148054      & \textbf{0.136312} \\ \hline
+Austria                                                    & 0.137956      & 0.127058      & 0.153796      & 0.129429      & -             & 0.132217      & \textbf{0.136091} \\ \hline
+Croatia                                                    & -             & 0.169310      & 0.132023      & 0.129980      & 0.114014      & 0.134540      & \textbf{0.135974} \\ \hline
+France                                                     & 0.153994      & 0.135187      & 0.151435      & 0.137268      & 0.118194      & 0.109034      & \textbf{0.134185} \\ \hline
+Russia                                                     & 0.102149      & 0.130277      & 0.129907      & 0.143360      & 0.141861      & 0.152992      & \textbf{0.133424} \\ \hline
+Sweden                                                     & 0.155725      & 0.122816      & 0.099063      & 0.106864      & 0.153858      & 0.160329      & \textbf{0.133109} \\ \hline
+Ireland                                                    & 0.147585      & 0.137790      & 0.132864      & 0.103704      & 0.147411      & 0.128126      & \textbf{0.132913} \\ \hline
+Romania                                                    & 0.155212      & 0.141742      & 0.119829      & 0.131675      & 0.128084      & 0.119466      & \textbf{0.132668} \\ \hline
+Germany                                                    & 0.136869      & 0.126650      & 0.157167      & 0.103942      & 0.115909      & 0.155134      & \textbf{0.132612} \\ \hline
+Finland                                                    & 0.172574      & 0.108008      & 0.141472      & 0.101891      & 0.133330      & 0.132773      & \textbf{0.131675} \\ \hline
+Bulgaria                                                   & -             & 0.136342      & 0.150772      & 0.110776      & 0.136208      & 0.122794      & \textbf{0.131378} \\ \hline
+Norway                                                     & 0.156676      & 0.098933      & 0.154850      & 0.099012      & 0.155455      & 0.107546      & \textbf{0.128745} \\ \hline
+\begin{tabular}[c]{@{}l@{}}United \\ Kingdom\end{tabular}  & 0.144343      & 0.143615      & 0.121922      & 0.096917      & 0.136172      & 0.133630      & \textbf{0.128594} \\ \hline
+Portugal                                                   & 0.173611      & -             & 0.116836      & 0.130723      & 0.107674      & 0.105899      & \textbf{0.126949} \\ \hline
+Serbia                                                     & -             & 0.165969      & 0.113907      & 0.095025      & 0.132455      & 0.123080      & \textbf{0.126087} \\ \hline
+Ukraine                                                    & 0.135769      & 0.106438      & 0.123998      & 0.120992      & 0.139278      & 0.142826      & \textbf{0.125295} \\ \hline
+\begin{tabular}[c]{@{}l@{}}FYR \\Macedonia\end{tabular}                                           & 0.107531      & 0.138521      & 0.132612      & 0.116197      & 0.127626      & 0.124228      & \textbf{0.124453} \\ \hline
+Belarus                                                    & 0.089227      & 0.143351      & 0.120914      & 0.138934      & 0.104108      & 0.149588      & \textbf{0.124354} \\ \hline
+Moldova                                                    & 0.115875      & 0.139519      & 0.119439      & 0.126125      & 0.119696      & 0.119161      & \textbf{0.123302} \\ \hline
+Switzerland                                                & 0.153864      & 0.117585      & 0.125128      & 0.092621      & 0.127077      & 0.117733      & \textbf{0.122335} \\ \hline
+Georgia                                                    & 0.117423      & 0.147386      & 0.123067      & 0.132744      & 0.086281      & -             & \textbf{0.121380} \\ \hline
+Albania                                                    & 0.091898      & 0.102282      & 0.098185      & 0.142108      & 0.140538      & 0.141493      & \textbf{0.119417} \\ \hline
+Azerbaijan                                                 & 0.068005      & 0.109553      & 0.113396      & 0.119173      & 0.120818      & 0.109357      & \textbf{0.106717} \\ \hline
+Armenia                                                    & 0.050899      & 0.125792      & -             & 0.128531      & 0.101509      & 0.109782      & \textbf{0.103303} \\ \hline
+\end{tabular}
+\caption{The average of the hub scores between 2009-2014. Countries must have participated at least 4 times.}
+\end{table}\label{thub}
 
 \subsection{Final reflection}
 The HITS-algorithm is one of the few algorithms that has the ability to rank pages according to a specific search 
@@ -1885,12 +2135,12 @@ directly to the user without any new calculations.
 
 The biggest 
 disadvantage of the HITS-algorithm is that it suffers from \emph{topic drift}: 
-the graph $\graf_\sigma$ could contain nodes which have high authority scores 
+the graph $\graf'_\sigma$ could contain nodes which have high authority scores 
 for the query but are completely irrelevant.  E.g. \texttt{Facebook} is nowadays a universally popular website, 
 almost every website 
  contains a `like' or `share' button linking to Facebook, and Facebook itself contains tons of posts
  linking to other webpages. This means that Facebook has a great chance to appear in almost any
-  $\graf_\sigma$ and receive a high
+  $\graf'_\sigma$ and receive a high
  authority score because the original HITS-algorithm as presented here cannot detect such `universally popular' websites.  The same goes for other social media websites and some advertisements.
 
 Nowadays, we know that \texttt{Ask.com} uses this algorithm. In fact, most search engines are 
@@ -1898,22 +2148,25 @@ very secretive about their search algorithm (e.g. \texttt{Google}) to make profi
 are that other search engines use some variant of the algorithm as well, in 
 combination with a lot of other procedures. 
 
-\section{Similarity on directed graphs}
-This section summarizes the paper `\emph{A Measure of Similarity between Graph Vertices: 
+\section{Node similarity}\label{sectionnodesim}
+This section provides a detailed overview of the paper `\emph{A Measure of Similarity between Graph Vertices: 
 Applications to Synonym Extraction and Web Searching}'\cite{blondel} of V. D. Blondel and others. 
 The paper generalizes the HITS-algorithm leading to the concept of similarity on 
 directed graphs. This concept is explained in detail and far more mathematically 
-rigorous than in the previous section. Recall our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
+rigorously than in the previous section. Recall our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
 eigenvalue. Although this is satisfactory in practical examples, we want to 
 construct a concept that works for all types of directed graphs, also the ones leading to 
-matrices with dominant eigenvalues with multiplicity more than 1 and therefore 
-we will develop a method to work around this situation.  The section concludes with a selfmade example.
+matrices with dominant eigenvalues with multiplicity greater than 1 and therefore 
+we will develop a method to work around this situation.  
 
 \subsubsection{From Hubs and Authorities to structure graphs}
-We generalize the construction of the previous section. Remember that
+We start with an introduction on how we generalize the construction of the previous section. We don't present any proofs in this subsection,
+the results are shown in the next subsections.
+
+Remember from the previous section
 we constructed a graph $\graf'_\sigma$ and calculated hub and authorities scores for each vertex.
-Now, for any directed graph $\graf$, the authority score of a vertex $v_j$ of $\graf$ can be thought of as a similarity score between $v_j$ of $\graf$ 
-and vertex \emph{authority} of the graph
+Now, for any directed graph $\graf$, the authority score of a vertex $v_j$ of $\graf$ can be thought of as a \emph{score} between $v_j$ of $\graf$ 
+and the vertex denoted as \emph{authority} of the graph:
 
 \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -1932,9 +2185,10 @@ and vertex \emph{authority} of the graph
     
 \end{tikzpicture}
 \end{center}
-and, conversely, the hub score of vertex $v_j$ of $\graf$ can be thought of as a similarity 
-score between $v_j$ and vertex \emph{hub}. We call the hub-authority graph a 
+and, conversely, the hub score of vertex $v_j$ of $\graf$ can be thought of as a 
+score between $v_j$ and the vertex denoted as \emph{hub}. We call the hub-authority graph a 
 \emph{structure graph} and we already know the resulting iterative method from the previous section. 
+We will call this scores \emph{similarity scores}.
 
 The central question is now: which \emph{mutually reinforcing relation} (iterative method) do we get when using another structure graph, 
 different from the hub-authority structure graph? 
@@ -1971,7 +2225,7 @@ $$\begin{pmatrix}
 x_1\\
 x_2\\
 x_3
-\end{pmatrix}_{k+1} = \begin{pmatrix}
+\end{pmatrix}^{(k+1)} = \begin{pmatrix}
 0 & B & 0\\
 B^T & 0 & B\\
 0 & B^T & 0
@@ -1979,38 +2233,40 @@ B^T & 0 & B\\
 x_1\\
 x_2\\
 x_3
-\end{pmatrix}_{k}   $$ 
-which we, again, can denote by $\mathbf{x_{k+1}} = M\mathbf{x_k}$. The principle is now exactly the 
+\end{pmatrix}^{(k)}   $$ 
+which we, again, can denote by 
+\begin{eqnarray}\label{kleinecompact}
+ \mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)}.
+  \end{eqnarray}
+ The principle is now exactly the 
 same as the previous example with hubs and authorities. The matrix $M$ is 
-symmetric and nonnegative, and again the results is the limit of the normalized vector sequence:
+symmetric and nonnegative, and again the result is the limit of the normalized vector sequence:
 \begin{eqnarray}\label{sequencealgemeen}
-  \mathbf{z}_0 = \mathbf{x}^{(0)} > 0, \mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, \quad k = 
+  \mathbf{z}^{(0)} = \mathbf{x}^{(0)} > 0, \mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, \quad k = 
   0,1,\ldots,
 \end{eqnarray}
-Remember that the HITS-algorithm assumed that $M$ as a unique dominant 
+Remember that the HITS-algorithm assumed that $M$ has a unique dominant 
 eigenvalue but we don't want to make this assumption in this section because we 
-want a concept that can be applied to all kind of directed graphs. We will see 
+want a concept that can be applied to all kinds of directed graphs. We will see 
 that without this assumption, the sequence \ref{sequencealgemeen} does not 
 always converge but oscillates between the limits:
-$$\mathbf{z}_\text{even}= \lim_{k\to\infty}\mathbf{z}_{2k}\quad\text{and}\quad \mathbf{z}_{\text{odd}}= \lim_{k\to\infty}\mathbf{z}_{2k+1}$$ 
+$$\mathbf{z}_\text{even}= \lim_{k\to\infty}\mathbf{z}^{(2k)}\quad\text{and}\quad \mathbf{z}_{\text{odd}}= \lim_{k\to\infty}\mathbf{z}^{(2k+1)}$$ 
 The limit vectors $\mathbf{z}_\text{even}$ and $\mathbf{z}_\text{odd}$ do in 
-general depend on the initial vector $\mathbf{z}_0$. The set of all limit vectors obtained when 
+general depend on the initial vector $\mathbf{z}^{(0)}$. The set of all limit vectors obtained when 
 starting from a positive initial vector is given by:
-$$ Z = \{\mathbf{z}_\text{even}(\mathbf{z}_0), \mathbf{z}_\text{odd}(\mathbf{z}_0): \mathbf{z}_0 > 
+$$ Z = \{\mathbf{z}_\text{even}(\mathbf{z}^{(0)}), \mathbf{z}_\text{odd}(\mathbf{z}^{(0)}): \mathbf{z}^{(0)} > 
 0\},$$
-and we would like to select a particular vector in that set. The vector $\mathbf{z}_0=\mathbf{1}$
-is a good choice: it's the unique 
-vector with the largest possible Manhattan\footnote{$\|\boldsymbol{x}\|_1 := \sum_{i=1}^{n} |x_i|$ for $\mathbf{x}\in\R^n$is the Manhattan norm.} (we will prove this in Theorem \ref{grootbewijs}) norm and makes computations easy. We denote  
-$z_{\text{even}}(\mathbf{1})$.
+and we would like to select a particular vector in that set. We will prove later on that the vector $\mathbf{z}^{(0)}=\mathbf{1}$
+is a good choice because it's the unique 
+vector with the largest possible Manhattan\footnote{$\|\boldsymbol{x}\|_1 := \sum_{i=1}^{n} |x_i|$ for $\mathbf{x}\in\R^n$is the Manhattan norm.} (we will prove this in Theorem \ref{grootbewijs}) norm. We denote  
+$\mathbf{z}_{\text{even}}(\mathbf{1})$.
 
-The three components of the 
-extremal limit  $z_{\text{even}}(\mathbf{1})$ are now defined as the \textit{similarity 
-scores} $\mathbf{s}_1, \mathbf{s}_2, \mathbf{s}_3$ and the \textit{similarity matrix} is defined by $S = [\mathbf{s}_1\; \mathbf{s}_2\; \mathbf{s}_3].$ 
-We will also prove in \ref{centralescore} that $\mathbf{s}_2$ can be obtained from 
-$B$ by calculating the dominant eigenvector of the matrix $BB^T+B^TB$.
+The  
+extremal limit  $\mathbf{z}_{\text{even}}(\mathbf{1})$ will be defined as the \textit{similarity 
+matrix}.
 
 We now give a numerical example.
-\begin{example}
+\begin{example}\label{ergvoorbeeld}
   Take as structure graph again the path graph with three vertices $v_1$, $v_2$, 
   $v_3$:
 
@@ -2066,41 +2322,45 @@ $$B = \begin{pmatrix}
 0 & 0 & 0 & 0 & 0\\
 0 & 0 & 0 & 0 & 0\\
 \end{pmatrix}$$
- By using the described mutually reinforcing updating iteration we become the 
+ By using the described mutually reinforcing updating iteration we get the 
  following similarity matrix (a numerical algorithm to calculate this is presented later 
- on in this section together with some proofs that facilitate the calculation):
+ on in this section):
  $$ S = \begin{pmatrix}
-0.4433 & 0.1043 & 0 \\
-0.2801 & 0.3956 & 0.0858 \\
-0.0858 & 0.3956 & 0.2801\\
-0.2216 & 0.0489 & 0.2216\\
-0 & 0.1043 & 0.4433 \\
+ 0.3557 & 0.1265 & 0\\
+ 0.3102 & 0.3451  & 0.0557\\
+ 0.2732 & 0.4619 & 0.4115\\
+0 & 0.1579 & 0.3557\\
+ 0 & 0.0840 & 0.1521
 \end{pmatrix}$$
 The similarity score of $w_4$ with $v_2$ of the structure graph is equal to 
-$0.0489$.
+$0.1579$.
  \end{example}
 
- We now construct the general case. Take two directed graphs $\graf(U, \to)$ and $\grafeen(V, \to')$ 
+ We now construct the general case. Take two directed graphs $\graf=(U, \to)$ and $\grafeen=(V, \to')$ 
  with $n_\graf$ and $n_\grafeen$ the order of the graphs. We think of $\graf$ as the structure 
  graph (such as the graphs $\text{hub}\to \text{authority}$ and the graph $1\to 2\to 
- 3$ in the previous paragraphs). We get the following mutually reinforcing updating iteration with the following updating equations:
- $$x_{ij} := \sum_{r:(v_r,v_i)\in \to', s:(u_s,u_j) \in \to} x_{rs} +  \sum_{r:(v_i,v_r)\in \to', s:(u_j,u_s) \in \to} x_{rs} $$
+ 3$ in the previous paragraphs). We get the following mutually reinforcing updating iteration with as updating equations:
+ \begin{eqnarray}\label{vergblondel}
+ x^{(k+1)}_{ij} := \sum_{r:(v_r,v_i)\in \to', s:(u_s,u_j) \in \to} x^{(k)}_{rs} +  \sum_{r:(v_i,v_r)\in \to', s:(u_j,u_s) \in \to} x^{(k)}_{rs} 
+ \end{eqnarray}
  Consider the product graph $\graf \times \grafeen$ (see Definition \ref{productgraph}). The above updating equation is equivalent to replacing
  the scores of all vertices of the product graph by the sum of the scores of the vertices linked by an incoming
- or outgoing edge. Equation \ref{sequencealgemeen} can also be rewritten in a a more compact matrix form. Let $X_k$
+ or outgoing edge. 
+ 
+ Equation (\ref{sequencealgemeen}) can be rewritten in a more compact matrix form. Let $X_k$
  be the $n_\grafeen \times n_\graf$ matrix of entries $x_{ij}$ at iteration $k$, and $A$ and $B$ are the adjacency matrices
  of $\graf$ and $\grafeen$. Then the 
  updating equations can be written as:
- \begin{eqnarray}
-X_{k+1} = BX_kA^T + B^TX_kA,\quad k=0,1,\ldots,
+ \begin{eqnarray}\label{compacteforms}
+X^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
   \end{eqnarray}
 We'll prove that the normalized even and odd iterates of 
- this updating equation converge and that the limit $z_{\text{even}}(\mathbf{1})$ 
+ this updating equation converge and that the limit $\mathbf{z}_{\text{even}}(\mathbf{1})$ 
  is the limit with the largest Manhattan norm. This limit is the definition of 
  the similarity matrix. The following example shows a calculated similarity 
  matrix of two directed graphs.
  
- \begin{example}
+ \begin{example}\label{eenvoudigvoorbeeldjes}
    Let $\graf_A(V,\to)$ be the following graph:
  \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -2152,7 +2412,7 @@ We'll prove that the normalized even and odd iterates of
       (6) edge node [left] {} (1)
 \end{tikzpicture}
 \end{center}
-We become the following similarity matrix (a numerical algorithm to calculate this matrix is introduced later
+We get the following similarity matrix (a numerical algorithm to calculate this matrix is introduced later
 in this section):
 $$S = \begin{pmatrix}
 0.2636 & 0.2786 & 0.2723 & 0.1289 \\
@@ -2167,9 +2427,9 @@ $$S = \begin{pmatrix}
  is the highest among the similarity scores in $s_{2}$.
  \end{example}
  
- \subsection{Convergence of the sequence $\mathbf{z}_k$}
-In the introduction, we mentioned already that the sequence in Equation \ref{sequencealgemeen} 
-converges for even and odd iterates. We will prove this add the end of this subsection. But before we 
+ \subsection{Convergence of the sequence $\mathbf{z}^{(k)}$}
+In the introduction, we mentioned already that the sequence in Equation (\ref{sequencealgemeen})
+converges for even and odd iterates. We will prove this at the end of this subsection. But before we 
 arrive there, we first need some results on the eigenvectors and eigenvalues of nonnegative matrices. 
 The Perron-Frobenius applies only to nonnegative, \emph{irreducible} matrices, 
 but we will prove in Theorem \ref{perronzonderperron} that also nonnegative 
@@ -2178,61 +2438,37 @@ that has an associated Perron vector. We will also investigate more specific
 results in the case $M$ is not only nonnegative, but also symmetric. 
 
 The reason why we prove all this is clear: remember that in the previous chapter 
-we assumed that $M$ has a unique dominant eigenvalue and showed convergence on 
-the basis of the Power Method. This approach is far to naive when introducing 
+we assumed that $M$ has a unique dominant eigenvalue and showed convergence by the Power Method. 
+This approach is far to naive when introducing 
 similarity on graph vertices, because graphs can lead to matrices where there is 
-no unique dominant eigenvalue (for instance cycle graphs will lead to such an $M$ in combination
-with the hub$\to$authority structure graph). To solve this, a more profound 
+no unique dominant eigenvalue. To solve this, a more profound 
 mathematical analysis of the concept is needed, which we present here.
 
-We first want to prove the spectral radius formula, but before we can handle this
-we have to introduce matrix norms and show that on finite dimensional 
-vector spaces they are all equivalent. Next, two lemmas are presented which will 
+We first want to prove the spectral radius formula. Next, two lemmas are presented which will 
 also contribute to the proof of the spectral radius formula. 
 
 
-\begin{definition}
-  A function $\|.\|: \R^{m\times n} \to \R$ is called a \textbf{matrix norm} if 
-  the following conditions hold ($\|A\|$ denotes the norm of the matrix $A$):
-  \begin{enumerate}
-    \item $\|A\| \geq 0$,
-    \item$ \|A\| = 0$ if and only if $A = 0$,
-    \item $\|\alphaA A\| = |\alpha|\|A\|$ for all $\alpha \in \C$,
-    \item $\|A + B\| \leq \|A\|+\|B\|$ for all matrices $A, B \in \C^{m\times n}$
-  \end{enumerate}
-\end{definition}
-\begin{theorem}\textbf{(Equivalence of norms)} For any two matrix norms $\|.\|_\alpha$ and
-  $\|.\|_\beta$ we have:
-  $$s\|A\|_\alpha \leq \|A\|_\beta \leq t\|A\|_\alpha \quad \text{with } A \in \R^{m \times n}, r, s \in \R^+$$
-\end{theorem}
-\begin{proof}
-  This theorem holds for any finite dimensional vector space, but we focus only 
-  on the real case. It is straightforward to see that the equivalence of norms 
- is an equivalence relation. Thus, it is sufficient to show that every norm on $\R^{m\times n}$ 
- is equivalent to the Euclidean matrix norm: \textbf{nog onvolledig}
-\end{proof}
-\begin{lemma}\label{ongelijkheidnorm}
-  Let A be an $n\times n$ matrix and  let $\|.\|$ be a matrix norm then:
-  $$\rho(A) \leq \|A\|$$
-\end{lemma}
-\begin{proof}
-  Let $\lambda$ be an eigenvalue of $A$ and let $\mathbf{x} \not= 0$ be a corresponding 
-  eigenvector. From $Ax = \lambda x$, we have:
-  $$AX = \lambda X, \quad \text{where } X = \begin{bmatrix}
-  \mathbf{x} & \ldots & \mathbf{x}
-  \end{bmatrix} \in \R^{n\times n} \setminus \{0\}.$$
-  It follows that:
-  $$|\lambda|\|X\| = \|\lambda X \| = \|AX\| \leq \|A\| \|X\|,$$
-  and simplifying by $\| X \| (> 0)$ gives:
-  $$|\lambda| \leq \|A \|.$$
-  This holds for all eigenvalues, taking the maxim over all these eigenvalues 
-  gives the result.
-   
-\end{proof}
+Before we prove the following lemma, remember the well known theorem about the 
+Jordan canonical form of a square matrix $A$ (see Theorem in \cite{kieboom}). 
+\begin{theorem}
+  A square complex matrix $A$ is similar to a block diagonal matrix 
+  $$ J = \begin{pmatrix}
+  J_1 & & \\
+  & \ddots & \\
+  & & J_p
+  \end{pmatrix}$$
+  where each block $J_i$ is a square matrix of the form:
+  $$J_i = \begin{pmatrix}
+  \lambda_i & 1 & &\\
+  & \lambda_1 & \ddots &\\
+  & & \ddots & 1\\
+  & & & \lambda_1.
+  \end{pmatrix}$$
+  So there exists an (invertible) matrix $P$ such that 
+  $$P^{-1}AP = J$$
+  J is called the \textbf{Jordan normal form}  of $A$.
+  \end{theorem}
 
-\textbf{VRAAG: De Jordannormaalvorm wordt gezien als voorkennis, dit werd
-ook (weliswaar zeer kort) behandeld bij professor Kieboom in het eerste jaar, mag ik ervan
-uitgaan dat dit voorkennis is of moet dit toch een sectie worden bij het eerste hoofdstuk?}
 \begin{lemma}\label{eigennorm}
   Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matix norm $\|. \|$ 
   such that:
@@ -2345,13 +2581,13 @@ that $M\mathbf{x} = \rho\mathbf{x}$.
   the Perron vector of $A(\epsilon)$, so $\mathbf{x}(\epsilon) > 0$ and 
   $\sum^n_{i = 1} \mathbf{x}(\epsilon)_i = 1$. Since the set of vectors $\{\mathbf{x}(\epsilon): \epsilon > 0\}$ 
   is contained in the compact set $\{x: x\in \C^n, \|\mathbf{x}\|_1 \leq 1\}$, 
-  there is a monotone decreasing sequence $\epsilon_1, \epsilon_2, \ldots$ with $\lim_{k\to\infty}\epsilon_k = 0$
+  there is a monotone decreasing sequence $\epsilon_1 > \epsilon_2 > \ldots$ with $\lim_{k\to\infty}\epsilon_k = 0$
   such that $\lim_{k \to \infty}\mathbf{x}(\epsilon_k) = \mathbf{x}$ exists. 
   Since $\mathbf{x}(\epsilon_k) > 0$ for all $k=1,2,\ldots,$ it must be that $\mathbf{x} = \lim_{k \to \infty} \mathbf{x}(\epsilon_k) \geq 
   0$; $\mathbf{x} = 0$ is impossible because:
   $$\sum^n_{i = 1}\mathbf{x}_i = \lim_{k\to 
   \infty}\sum^n_{i=1}\mathbf{x}(\epsilon_k)_i = 1$$
-  By Lemma \ref{voriglemmaspeer}, $\rho(A(\epsilon_k)) \geq \rho(A(\epsilon_{k+1}) \geq \ldots \geq \rho(A)$ 
+  By Lemma \ref{voriglemmaspeer}, $\rho(A(\epsilon_k)) \geq \rho(A(\epsilon_{k+1}) \geq \cdots \geq \rho(A)$ 
   for all $k = 1, 2, \ldots, $ so the sequence $\{\rho(A(\epsilon_k))\}_{k=1,2,\ldots}$ 
   is a monotone decreasing sequence. Thus, $\rho = \lim_{k \to \infty} \rho(A(\epsilon_k))$ 
   exists and $\rho \geq \rho(A).$ From the fact that
@@ -2390,7 +2626,7 @@ matrices.
   orthonormal.
   \end{proof}
   
-  We are almost ready for the theorem about the convergence of $\mathbf{z}_k$, 
+  We are almost ready for the theorem about the convergence of $\mathbf{z}^{(k)}$, 
   but we first need an easy result about the orthogonal projection.
 \begin{theorem}
   Let $\mathcal{V}$ be a linear subspace of $\R^n$ with orthonormal basis $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m\}$.
@@ -2427,17 +2663,20 @@ Proving that $\Pi^2 =\Pi$ is also trivial, remember that for an orthogonal matri
 \end{proof}
 
  \begin{theorem}\label{grootbewijs}
-   Let $M$ be a  symmetric nonnegative, real matrix of spectral radius $\rho$. Let $z_0 > 0$ 
+   Let $M$ be a  symmetric nonnegative, real matrix of spectral radius $\rho$. Let $Z^{(0)} > 0$ 
    and consider the sequence
-   $$\mathbf{z}_{k+1} = \frac{M\mathbf{z}_k}{||M\mathbf{z}_k||_2}, k = 0,1,\ldots$$
+   $$\mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, k = 0,1,\ldots$$
    Two convergence cases can occur depending on whether or not $-\rho$ is an 
    eigenvalue of $M$. When $-\rho$ is not an eigenvalue of $M$, then the 
-   sequence of $z_k$ simply converges to 
-   $\frac{\Pi \mathbf{z}_0}{||\Pi \mathbf{z}_0||_2}$, where $\Pi$ is the orthogonal projector on the 
-   invariant subspace associated with the Perron root $\rho$. When $-\rho$ is an 
-   eigenvalue of $M$, then the subsequences $\mathbf{z}_{2k}$ and $\mathbf{z}_{2k+1}$ converge to 
+   sequence of $Z^{(k)}$ simply converges to 
+   $\frac{\Pi \mathbf{z}^{(0)}}{||\Pi \mathbf{z}^{(0)}||_2}$, where $\Pi$ is the orthogonal projector on the 
+  eigenspace associated with the Perron root $\rho$. When $-\rho$ is an 
+   eigenvalue of $M$, then the subsequences $\mathbf{z}^{(2k)}$ and $\mathbf{z}^{(2k+1)}$ converge to 
    the limits
-   $$\mathbf{z}_{\text{even}}(z_0) = \lim_{k \to \infty} \mathbf{z}_{2k}  = \frac{\Pi \mathbf{z}_0}{||\Pi \mathbf{z}_0||_2} \quad \text{and}\quad \mathbf{z}_{\text{odd}}(\mathbf{z}_0) = \lim_{k \to \infty} \mathbf{z}_{2k+1} = \frac{\Pi M \mathbf{z}_0}{||\Pi M \mathbf{z}_0||_2}.$$
+   $$\mathbf{z}_{\text{even}}(Z^{(0)}) = \lim_{k \to \infty} \mathbf{z}^{(2k)}  = \frac{\Pi \mathbf{z}^{(0)}}{||\Pi \mathbf{z}^{(0)}||_2} \quad \text{and}\quad \mathbf{z}_{\text{odd}}(\mathbf{z}^{(0)}) = \lim_{k \to \infty} \mathbf{z}^{(2k+1)} = \frac{\Pi M \mathbf{z}^{(0)}}{||\Pi M \mathbf{z}^{(0)}||_2}.$$
+where $\Pi$ is the orthogonal projector on the sums of the invariant subspaces associated with $\rho$
+and $-\rho$. In both cases the set of all possible limits is given by:
+$$\{\mathbf{z}_{\text{even}}(Z^{(0)}), \mathbf{z}_{\text{odd}}(Z^{(0)}): \mathbf{z}^{(0)} > 0\} = \left\{ \frac{\Pi \mathbf{z}}{||\Pi \mathbf{z}||_2}: \mathbf{z} > 0 \right\}$$
 and the vector $\mathbf{z}_{\text{even}}(\mathbf{1})$ is the unique vector of largest 
 possible Manhattan norm in that set. \end{theorem}
 \begin{proof}
@@ -2454,7 +2693,7 @@ possible Manhattan norm in that set. \end{theorem}
   
 Remember from Theorem \ref{diagonaal} that $P^{-1}MP = D$, with $D$ a diagonal 
 matrix, this can be rewritten as $M = PDP^{-1}$ or $M = PDP^T$ ($P$ is an orthogonal 
-matrix), we can rewrite this in this case as (this is the so called \textit{eigen decomposition} for symmetric matrices):
+matrix), we can rewrite this in this case as (this is the so called \textit{eigendecomposition} for symmetric matrices):
 \begin{eqnarray*}
 M &=& \begin{bmatrix} 
 V_\rho & V_{-\rho} & V_\mu \\ \end{bmatrix}
@@ -2473,68 +2712,1336 @@ $$\Pi = V_\rho V_\rho^T + V_{-\rho}V_{-\rho}^T$$
  is the orthogonal projector onto the invariant subspace $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ 
  of $M^2$ corresponding to $\rho^2$. We also have:
  $$M^{2k} = \rho^{2k}\Pi + V_\mu M^{2k}_\mu V_\mu^T,$$
- and since $\rho{M_\mu} = \mu < \rho$, it follows from multiplying this by $\mathbf{z}_0$ 
- and $M\mathbf{z}_0$ that:
- $$\mathbf{z}_{2k} = \frac{\Pi\mathbf{z}_0}{\|\Pi\mathbf{z}_0\|_2} + 
+ and since $\rho{M_\mu} = \mu < \rho$, it follows from multiplying this by $\mathbf{z}^{(0)}$ 
+ and $M\mathbf{z}^{(0)}$ that:
+ $$\mathbf{z}^{(2k)} = \frac{\Pi\mathbf{z}^{(0)}}{\|\Pi\mathbf{z}^{(0)}\|_2} + 
  O\left(\frac{\mu}{\rho}\right)^{2k}$$
  and
- $$\mathbf{z}_{2k+1} = \frac{\Pi M \mathbf{z}_0}{\|\Pi M \mathbf{z}_0\|_2} + 
+ $$\mathbf{z}^{(2k+1)} = \frac{\Pi M \mathbf{z}^{(0)}}{\|\Pi M \mathbf{z}^{(0)}\|_2} + 
  O\left(\frac{\mu}{\rho}\right)^{2k},$$
- provided $\Pi \mathbf{z}_0$ and $\Pi M \mathbf{z}_0$ are nonzero, so the 
- initial vectors $\mathbf{z}_0$ and $M\mathbf{z}_0$ must have a nonzero 
+ provided $\Pi \mathbf{z}^{(0)}$ and $\Pi M \mathbf{z}^{(0)}$ are nonzero, so the 
+ initial vectors $\mathbf{z}^{(0)}$ and $M\mathbf{z}^{(0)}$ must have a nonzero 
  component. This is no problem, because the Euclidean norms of these vectors 
- equal $\mathbf{z}_0^T \Pi \mathbf{z}_0$ and $\mathbf{z}_0^T M \Pi M \mathbf{z}_0$ 
- since $\Pi^2 = \Pi$. These norms are both nonzero since $\mathbf{z}_0 > 0$ and 
+ equal $\mathbf{z}^{(0)}^T \Pi \mathbf{z}^{(0)}$ and $\mathbf{z}^{(0)}^T M \Pi M \mathbf{z}^{(0)}$ 
+ since $\Pi^2 = \Pi$. These norms are both nonzero since $\mathbf{z}^{(0)} > 0$ and 
  both $\Pi$ and $M\Pi$ are nonnegative and nonzero.
  
- From the fact that $M$ is nonnegative and the formula for $\mathbf{z}_{\text{even}}(\mathbf{z}_0)$ 
- and $\mathbf{z}_{\text{odd}}(\mathbf{z}_0)$ we conclude that both limits lie in 
+ From the fact that $M$ is nonnegative and the formula for $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)})$ 
+ and $\mathbf{z}_{\text{odd}}(\mathbf{z}^{(0)})$ we conclude that both limits lie in 
  $\{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$. We now show that every 
- element $\mathbf{\tilde{z}}_0 \in \{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$ 
- can be obtained as $\mathbf{z}_{\text{even}}(\mathbf{z}_0)$ for some $\mathbf{z}_0  
+ element $\mathbf{\tilde{z}}^{(0)} \in \{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$ 
+ can be obtained as $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)})$ for some $\mathbf{z}^{(0)}  
  > 0$. Since the entries of $\Pi$ are nonnegative, so are those of 
- $\mathbf{\tilde{z}}_0$. This vector may have some zero entries. From $\mathbf{\tilde{z}}_0$ 
- we construct$ \mathbf{z}_0$ by adding $\epsilon > 0$ to all the zero entries of 
- $\mathbf{\tilde{z}}_0$. The vector $\mathbf{z}_0 - \mathbf{\tilde{z}}_0$ is 
+ $\mathbf{\tilde{z}}^{(0)}$. This vector may have some zero entries. From $\mathbf{\tilde{z}}^{(0)}$ 
+ we construct $\mathbf{z}^{(0)}$ by adding $\epsilon > 0$ to all the zero entries of 
+ $\mathbf{\tilde{z}}^{(0)}$. The vector $\mathbf{z}^{(0)} - \mathbf{\tilde{z}}^{(0)}$ is 
  clearly orthogonal to $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ and will 
- vanish in the iteration of $M^2$. Thus we have $\mathbf{z}_{\text{even}}(\mathbf{z}_0) = \mathbf{\tilde{z}}_0$ 
- for $\mathbf{z}_0 > 0$, proving our statement.
+ vanish in the iteration of $M^2$. Thus we have $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)}) = \mathbf{\tilde{z}}^{(0)}$ 
+ for $\mathbf{z}^{(0)} > 0$, proving our statement.
  
  We now prove the last statement. The matrix $\Pi$ and all vectors are 
  nonnegative and $\Pi^2=\Pi$ and so:
  
  $$\left\|\frac{\Pi\mathbf{1}}{\|\Pi\mathbf{1}\|_2} \right\|_1=\sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}$$
  and also:
- $$ \left\|\frac{\Pi\mathbf{z}_0}{\|\Pi\mathbf{z}_0\|_2} \right\|_1 = \frac{\mathbf{1}^T\Pi^2\mathbf{z}_0}{\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}}$$
-We apply the Cauchy-Schwarz inequality to $\Pi\mathbf{1}$ and $\Pi\mathbf{z}_0$, remember that $\Pi = WW^T$ for some
+ $$ \left\|\frac{\Pi\mathbf{z}^{(0)}}{\|\Pi\mathbf{z}^{(0)}\|_2} \right\|_1 = \frac{\mathbf{1}^T\Pi^2\mathbf{z}^{(0)}}{\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}}$$
+We apply the Cauchy-Schwarz inequality to $\Pi\mathbf{1}$ and $\Pi\mathbf{z}^{(0)}$, remember that $\Pi = WW^T$ for some
 $W$, so \Pi^T = (WW^T)^T = 
 (W^T)^T W^T= WW^T = \Pi$, that the matrix $\Pi$ and all vectors are nonnegative and $\Pi^2=\Pi$:
 \begin{eqnarray*}
-  |\langle \Pi\mathbf{1}, \Pi\mathbf{z}_0 \rangle| &\leq& \|\Pi\mathbf{1} 
-  \|.\|\Pi\mathbf{z}_0\|\\
-  |(\Pi\mathbf{1})^T\Pi\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}\\
-    |\mathbf{1}^T\Pi^T\Pi\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0}\\
-   |\mathbf{1}^T\Pi^2\mathbf{z}_0| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}_0^T\Pi^2\mathbf{z}_0},
+  |\langle \Pi\mathbf{1}, \Pi\mathbf{z}^{(0)} \rangle| &\leq& \|\Pi\mathbf{1} 
+  \|.\|\Pi\mathbf{z}^{(0)}\|\\
+ \Leftrightarrow |(\Pi\mathbf{1})^T\Pi\mathbf{z}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}\\
+\Leftrightarrow    |\mathbf{1}^T\Pi^T\Pi\mathbf{z}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}\\
+\Leftrightarrow   |\mathbf{1}^T\Pi^2\mathbf{z}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}},
 \end{eqnarray*}
-equality arises only when $\Pi\mathbf{z}_0 = \lambda\Pi\mathbf{1}$ for some $\lambda \in 
-\C$. But since $\Pi\mathbf{z}_0$ and $\Pi\mathbf{1}$ are both real nonnegative, 
+equality arises only when $\Pi\mathbf{z}^{(0)} = \lambda\Pi\mathbf{1}$ for some $\lambda \in 
+\C$. But since $\Pi\mathbf{z}^{(0)}$ and $\Pi\mathbf{1}$ are both real nonnegative, 
 the last statement is proved.
 
 \end{proof}
 
+\subsection{Compact form \& Similarity matrices}
+We now come to the formal definition of the similarity matrix of two directed 
+graphs $\graf(U,\to)$ and $\grafeen(V, \to')$, by proving that the mutually reinforcing relation
+is given by ($A$ and $B$ are the adjacency matrices of $\graf$ and $\grafeen$):
+ \begin{eqnarray}\label{compactform2}
+X^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
+  \end{eqnarray}
+which we already introduced in \ref{compacteforms}. To prove this relation, we take a 
+detour via a nice property of the Kronecker product and the $\vect$-operator. The $\vect$-operator
+is a convenient way of stacking columns of a matrix left to right. With this operator 
+we can rewrite \ref{compactform2} in $\mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)}$ with $M$ equal to a sum of Kronecker products. This will 
+allow us the apply Theorem \ref{grootbewijs}.
+\begin{definition}
+  With each $m\times n$-matrix $A = [a_{ij}]$ we can associate the vector $\vect(A) \in \R^{mn}$ 
+  defined by:
+  $$\vect(A) = \begin{pmatrix}
+  a_{11} & \ldots & a_{m1} & a_{12} & \ldots & a_{m2} & a_{1n} & \ldots & a_{mn}
+  \end{pmatrix}^T$$
+\end{definition}
+
+\begin{definition}
+  The  \textbf{Kronecker product} (or \textbf{tensor product}) of an $m \times 
+  n$-matrix $A = (a_{ij})$ and a $p \times q$-matrix $B = (b_{ij})$ is denoted 
+  by $A \otimes B$ and is defined by the matrix:
+  $$A \otimes B = \begin{pmatrix}
+  a_{11}B & \ldots & a_{1n}B\\
+  \vdots & \ddots & \vdots \\
+  a_{m1}B & \ldots & a_{mn}B
+  \end{pmatrix} \in \R^{mp \times nq}$$
+\end{definition}
+
+\begin{lemma}\label{hulptensor}
+  Consider a $m \times 
+  n$-matrix $A = (a_{ij})$ and a $p \times q$-matrix $B=(b_{ij})$, we have:
+  $$A^T \otimes B^T = (A\otimes B)^T$$
+\end{lemma}
+\begin{proof}
+  By direct computation, we get:
+  \begin{eqnarray*}
+    (A \otimes B)^T  &=& \begin{pmatrix}
+  a_{11}\begin{pmatrix}
+  b_{11} & b_{12} & \ldots & b_{1q}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{p1} & b_{p2} & \ldots & _{pq}
+  \end{pmatrix}
+  
+ & \ldots & a_{1n}\begin{pmatrix}
+  b_{11} & b_{12} & \ldots & b_{1q}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{p1} & b_{p2} & \ldots & _{pq}
+  \end{pmatrix}
+\\
+  \vdots & \ddots & \vdots \\
+  a_{m1}\begin{pmatrix}
+  b_{11} & b_{12} & \ldots & b_{1q}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{p1} & b_{p2} & \ldots & _{pq}
+  \end{pmatrix}
+ & \ldots & a_{mn}\begin{pmatrix}
+  b_{11} & b_{12} & \ldots & b_{1q}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{p1} & b_{p2} & \ldots & _{pq}
+  \end{pmatrix}
+
+  \end{pmatrix}^T\\
+  &=& \begin{pmatrix}
+  a_{11}\begin{pmatrix}
+  b_{11} & b_{21}  &\ldots & b_{p1}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{1q} & b_{2q} & \ldots & b_{pq}
+  \end{pmatrix} & \ldots & a_{m1}\begin{pmatrix}
+  b_{11} & b_{21}  &\ldots & b_{p1}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{1q} & b_{2q} & \ldots & b_{pq}
+  \end{pmatrix}\\
+  \vdots & \ddots & \vdots \\
+  a_{1n}\begin{pmatrix}
+  b_{11} & b_{21}  &\ldots & b_{p1}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{1q} & b_{2q} & \ldots & b_{pq}
+  \end{pmatrix} & \ldots & a_{mn}\begin{pmatrix}
+  b_{11} & b_{21}  &\ldots & b_{p1}\\
+  \vdots & \ddots & \vdots &\vdots\\
+  b_{1q} & b_{2q} & \ldots & b_{pq}
+  \end{pmatrix}
+  \end{pmatrix} \\
+  &=&\begin{pmatrix}
+  a_{11}B^T & \ldots & a_{m1}B^T\\
+  \vdots & \ddots & \vdots \\
+  a_{1n}B^T & \ldots & a_{mn}B^T  \end{pmatrix}\\
+  &=& A^T \otimes B^T
+  \end{eqnarray*}
+\end{proof}
+\begin{theorem}\label{tensor}
+  Let $A$ a $m \times n$-matrix , $B$ a $p\times q$-matrix and $C$ a $m \times 
+  p$ matrix, the matrix equation:
+ $$AXB = C$$ with $X$ an unknown $n \times p$-matrix, is equivalent tot the 
+ system of $qm$ equations and $np$ unkonws given by:
+ $$(B^T \otimes A)\vect(X) = \vect(C)$$
+ so:
+ $$\vect(AXB) = (B^T \otimes A)\vect(X)$$
+\end{theorem}
+\begin{proof}
+  Let $Q_k$ be the $k$th column of a given matrix $Q$, we get:
+  \begin{eqnarray*}
+    (AXB)_k &=& A(XB)_k\\
+    &=& AXB_k\\
+    &=& A \sum_{i=1}^p b_{ik}X_{i}\\
+    &=& Ab_{1k}X_1 + Ab_{2k}X_2 + \ldots + Ab_{pk}X_p\\
+    &=& \begin{pmatrix}
+    b_{1k}A & b_{2k}A & \ldots & b_{pk}A \end{pmatrix}\vect(X)\\
+    &=& (B^T_k \otimes A)\vect(X)
+  \end{eqnarray*}
+ We get:
+ $$\vect(AXB) = \begin{pmatrix} 
+ B^T_1 \otimes A\\
+ \vdots\\
+ B^T_q \otimes A\\
+ \end{pmatrix} \vect(X)$$
+ But it follows immediately that:
+ $$\vect(AXB) = (B^T\otimes A)\vect(X)$$
+ because the transpose of a column of $B$ is a row of $B^T$.
+\end{proof}
+
+\begin{theorem}\label{frobvorm}
+  Let $\graf$ and $\grafeen$ be two directed graphs with adjacency matrices $A = [a_{ij}] \in R^{n\times n}$ 
+  and $B = [b_{ij}] \in \R^{m\times m}$ and let $Z^{(0)} > 0$ be an initial positive matrix, and define\footnote{$\|A\|_F = \sqrt{\sum_{i=1}^m\sum_{j=1}^n(a_{ij})^2}$ is the \emph{Frobenius} norm for  a $m\times n$-matrix $A$.}:
+  $$Z^{(k+1)} = \frac{BZ^{(k)}A^T + B^TZ^{(k)}A}{\|BZ^{(k)}A^T + B^TZ^{(k)}A\|_F}, \quad k = 
+  0,1,\ldots.$$
+  Then the matrix subsequences $Z^{(2k)}$ and $Z^{(2k+1)}$ converge to $Z_\text{even}$ 
+  and $Z_\text{odd}$ and among all the matrices in the set of all possible 
+  limits:
+  $$\{Z_\text{even}(Z^{(0)}), Z_\text{odd}(Z^{(0)}): Z^{(0)} > 0 \}$$
+  the matrix $Z_\text{even}(\mathbf{1})$ is the unique matrix of largest 1-norm\footnote{$\|A\|_{1,1} = \sum_{i=1}^m\sum_{j=1}^n|a_{ij}|$ is the $1$-norm for a $m\times n$-matrix $A$}.
+  \end{theorem}
+
+\begin{proof}
+  We first rewrite the compact form of \ref{compactform2}:
+  \begin{eqnarray*}
+    X^{(k+1)} &=& BX^{(k)}A^T + B^TX^{(k)}A\\
+ \Leftrightarrow   \vect(X^{(k+1)}) &=& \vect(BX^{(k)}A^T + B^TX^{(k)}A)\\
+ \Leftrightarrow   \vect(X^{(k+1)}) &=& \vect(BX^{(k)}A^T) + \vect(B^TX^{(k)}A)\\
+ \Leftrightarrow   \vect(X^{(k+1)}) &=& \left( (A^T)^T \otimes B\right)\vect(X^{(k)}) + \left( A^T \otimes B^T\right)\vect(X^{(k)})\\
+  \Leftrightarrow  \vect(X^{(k+1)}) &=& (A \otimes B + A^T \otimes B^T)\vect(X^{(k)})
+  \end{eqnarray*}
+If we define $\mathbf{x}_k = \vect(X^{(k)})$ and $M = A \otimes B + A^T \otimes 
+B^T$ we get:
+$$\mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)},$$
+exactly the same compact form as introduced in the beginning of this section in 
+\ref{kleinecompact}. If we can prove that $M$ is symmetric and nonnegative, then
+we can apply Theorem \ref{grootbewijs} and the result follows. $M$ is, of 
+course, nonnegative because the adjacency matrices $A$ and $B$ are always 
+nonnegative. To see that $M$ is symmetric, first notice that M can be rewritten 
+using Lemma \ref{hulptensor} to:
+$$M = A \otimes B + (A \otimes  B)^T,$$
+because $A \otimes B$ is a $nm \times nm$ square matrix, we know that $M$ is 
+symmetric because it's the sum of a square matrix and it's transpose. In order 
+to stay consistent with the vector norm appearing in Theorem \ref{grootbewijs}, the matrix norm 
+$\| .\|_F$ or the \emph{Frobenius} norm is the square root of the sum of all squared 
+entries and the $1$-norm $\|.\|_1$ is the sum of all magnitudes of the entries. 
+We can now apply Theorem \ref{grootbewijs} and the result follows.
+\end{proof}
+\begin{definition}
+  Let $\graf, \grafeen$ be two directed graphs, then the unique matrix
+   $$S = Z_\text{even}(\mathbf{1}) = \lim_{k\to +\infty} Z^{(2k)}$$ 
+ (with the notations of the previous theorem) is the \textbf{similarity matrix} between $\graf$ and
+   $\grafeen$.
+\end{definition}
+Notice that it follows from \ref{compactform2} that the similarity matrix 
+between $\grafeen$ and $\graf$ is the transpose of the similarity matrix between 
+$\graf$ and $\grafeen$.
+\subsection{Algorithm \& Computational cost}
 
 
-De rest van de thesis laat ik even weg door enerzijds een paar 
-compilatieproblemen en anderzijds nog onvolkomendheden.
+
+\begin{algorithm}[H]\label{algsimilarity}
+ \KwData{\\
+ $A$:  the $n\times n$ adjacency matrix of a directed graph $\graf$\\
+$B$: the  $m \times m$adjacency matrix of a directed graph $\grafeen$.}\\
+$\tol$: tolerance for the estimation error.\\
+ \KwResult{\\$S$: the similarity matrix between $\graf$ and $\grafeen$.}
+ \blankline
+\SetKwFunction{powermethod}{similarity\_matrix}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$A$,$B$,$\tol$}}{
+$k = 1$ \;
+$Z^{(0)} = \mathbf{1}$ ($n \times m$-matrix with all entries equal to $1$)\;
+$\mu =  n\times m$-matrix with all entries equal to $\tol$\;
+\Repeat{$k$ is even and $|Z - Z^{(k-2)}| < \mu$}{
+$Z^{(k)} = \frac{BZ^{(k-1)}A^T + B^TZ^{(k-1)}A}{\|BZ^{(k-1)}A^T + B^TZ^{(k-1)}A\|_F}$\;
+$k = k + 1$\;
+}
+ 
+\KwRet $Z^{(k)} $\;}{}
+ 
+ \caption{Algorithm for calculating the similarity matrix between $\graf$ and $\grafeen$}\label{powermethod}
+\end{algorithm}
+The compact form introduced in the previous section leads directly to the approximation 
+algorithm \ref{algsimilarity}. Note that the algorithm must iterate an even number 
+of times and to check if the tolerance limit is reached, only the even 
+iteration steps are considered. This is of course an obvious consequence of the 
+definition of the similarity matrix. A Matlab implementation of the algorithm 
+can be found in Listing \ref{lstsim} in Appendix A.
+
+To estimate the computational cost, we first notice that the algorithm is a 
+matrix analogue to the power method introduced in section \ref{powersection}. We 
+already showed in Theorem \ref{grootbewijs} that the convergence of the even 
+iterates in the above recurrence relation is linear with ratio $(\mu/\rho)^{2n}$. 
+With the accuracy level $\tol$, we become:
+\textbf{Ik weet dat ik $\approx$ nog moet definiëren, maar ik weet niet goed hoe.}
+$$\left|\frac{\mu}{\rho} \right|^{2n} \approx \tol$$
+
+So, for example, for $\tol = 10^{-5}$ we get $n = -5/(2\log{\mu/\lambda})$, we become:
+$$\text{\texttt{similarity\_matrix}} \in O\left(\frac{-1}{\log{\mu- \log\rho}}\right)$$
+Note that this O holds for any estimation error $\tol$ of the form $10^{-e}$ with $e \in \N$. 
+Also note that this is completely analogous to the computational cost of the 
+power method, which comes as no surprise since the algorithms are similar, but remember 
+from Theorem \ref{perronzonderperron} that we cannot encounter a situation in 
+which $\mu = \rho$, since we know that $\rho$ is the unique dominant eigenvalue (in contrast to the power method, where
+we don't know in general whether a matrix has a unique dominant eigenvalue or 
+not).
+
+\subsection{Special cases}
+We now consider some special cases of of similarity scores between two vertices 
+of graphs.
+\subsubsection{HITS-algorithm}
+Remember that the HITS-algorithm assumed that
+$$M =  \begin{pmatrix} 
+0 & B\\
+B^T & 0
+\end{pmatrix},$$ 
+
+has a unique dominant eigenvalue to 
+calculate the hub and authority scores of nodes in a graph $\graf_\sigma$ with adjacency matrix
+$B$. This assumption is a direct result of the power method, because it's one 
+of the conditions to apply the algorithm. One of our goals of this section was to drop this 
+assumption, making the concept of similarity more robust. We finally arrived at 
+this result.
+
+
+\begin{theorem}
+  Let $\graf$ be a graph with adjacency matrix $B$. The normalized hub and 
+  authority scores of the vertices are given by the normalized dominant 
+  eigenvectors of the matrices $BB^T$ and $B^TB$, provided the corresponding 
+  Perron root is of multiplicity 1. Otherwise, it is the normalized projection 
+  of the vector $\mathbf{1}$ on the eigenspace of the Perron root.
+\end{theorem}
+\begin{proof}
+  The corresponding matrix $M$ is:
+  $$M =  \begin{pmatrix} 
+0 & B\\
+B^T & 0
+\end{pmatrix}$$
+so:
+$$M^2 = \begin{pmatrix} 
+BB^T & 0\\
+0 & B^TB
+\end{pmatrix},$$
+and the result follows from Theorem \ref{grootbewijs} under the condition that 
+the matrix $M^2$ has a dominant root $\rho^2$ . This can be seen as follows: let $V$ and $U$ be
+orthonormal bases for the dominant eigenspaces of $B$:
+$$BV = \rho U, \quad B^TU = \rho V$$
+then clearly $V$ and $U$ are also bases for the dominant eigenspaces of $B^TB$ 
+and $BB^T$ so:
+$$B^TBV = \rho^2V, \quad BB^TU= \rho^2U.$$
+The projectors associated with the dominant eigenvalues of $BB^T$ and $B^TB$ 
+are, respectively:
+$$\Pi_v = VV^T \quad \text{and} \quad \Pi_u = UU^T,$$
+the projector of $\Pi$ of $M^2$ is then:
+$$\Pi = \text{diag}(\Pi_v, \Pi_u),$$
+and hence the subvectors of $\Pi\mathbf{1}$ are the vectors $\Pi_{v}\mathbf{1}$ 
+and $\Pi_u\mathbf{1}$, which can be computed with $B^TB$ and $BB^T$.
+\end{proof}
+
+
+\subsubsection{Central scores}
+As for the hub and authority scores we can give an explicit expression for the 
+similarity score with vertex $2$, which we will call the \emph{central score}. 
+\begin{theorem}\label{centralescore}
+  Let $\graf$ be a graph with adjacency matrix $B$. The normalized similarity scores of vertex $2$ 
+  of the path graph $1 \to 2 \to 3$ with the vertices of graph $\graf$ are called the central 
+  scores and are given by the normalized dominant eigenvector of the matrix 
+  $B^TB+BB^T$, provided the corresponding Perron root is of multiplicity $1$. 
+  Otherwise, it is the normalized projection of the vector \mathbf{1} on the 
+  dominant invariant subspace.
+  \end{theorem}
+  
+  \begin{proof}
+    Let 
+    $$M = \begin{pmatrix}
+    0 & B & 0 \\
+    B^T & 0 & B \\
+    0 & B^T & 0
+    \end{pmatrix}$$
+    so:
+    $$M^2 = \begin{pmatrix}
+    BB^T & 0 & BB\\
+    0 & B^TB + BB^T & 0 \\
+    B^TB^T & 0 & B^TB
+    \end{pmatrix}$$
+    because $M$ is nonnegative and symmetric, the result follows from Theorem \ref{grootbewijs} 
+    under the condition that the central matrix $B^TB+BB^T$ has a dominant root $\rho^2$ 
+    of $M^2$. We can state this condition otherwise, because $M$ can be permuted 
+    to:
+    $$M = P^T \begin{pmatrix}
+    0 & E\\
+    E^T & 0
+    \end{pmatrix}P, \quad \text{where } E = \begin{pmatrix}
+    B\\
+    B^T
+    \end{pmatrix}
+ 
+  Now let $V$ and $U$ be orthonormal bases for the dominant eigenspaces of $E^TE$ 
+  and $EE^T$, since:
+  $$E^TEV = \rho^2V, \quad EE^TU = \rho^2U.$$
+  Moreover,
+  $$PM^2P^T = \begin{pmatrix}
+  EE^T & 0 \\
+  0 & E^TE
+  \end{pmatrix},$$
+and let
+$$\Pi_v = VV^T \quad \text{and} \quad \Pi_u = UU^T$$
+be the projectors associated with the dominant eigenvalues of EE^T and E^TE. The 
+project $\Pi$ of $M^2$ is then equal to:
+$$\Pi = P^T\text{diag}(\Pi_v, \Pi_u)P,$$
+and it follows that the subvectors of $\Pi\mathbf{1}$ are te vectors $\Pi_v\mathbf{1}$ 
+and $\mathbf{\Pi_u\mathbf{1}}$, which can be computed from $E^TE$ or $EE^T$. 
+Since $E^TE = B^TB + BB^T$, the central vector $\Pi_v\mathbf{1}$ is the central 
+vector of $\Pi\mathbf{1}$.
+ \end{proof} 
+\begin{example}
+  In order to illustrate the intuitive meaning of calculating a similarity 
+  matrix where the path graph $1 \to 2 \to 3$ is the structure graph, consider 
+  the following directed bow-tie graph:
+  \begin{center}
+   \includegraphics[scale=1]{bowtie2.png}
+   \end{center}
+   Label the center vertex first, then the $m$ left vertices and finally the $n$
+ right vertices, then the adjacency matrix of the bow-tie graph becomes:
+ 
+ $$B =\(
+\left(
+\begin{array}{c|ccc|ccc}
+0       & 0 & \ldots & 0  & 1 & \ldots & 1\\\hline 
+1 &  &             &     &    &              & \\
+\vdots & & \mathbf{0}_n & && \mathbf{0}&\\
+1 &  &             &     &    &              & \\ \hline
+0 &  &             &     &    &              & \\
+\vdots & & \mathbf{0} & && \mathbf{0}_m&\\
+0 & & &     &    &              & \\
+
+
+\end{array}
+\right)
+\) $$
+ By direct computation, we get that the matrix $B^TB + BB^T$ is equal to:
+ $$B^TB + BB^T = \begin{pmatrix}
+ m + n & 0 & 0\\
+ 0 & \mathbf{1}_n & 0\\
+ 0 & 0 & \mathbf{1}_m
+ \end{pmatrix}$$
+ By Theorem \ref{centralescore}, the Perron root of $M$ is equal to $\rho = \sqrt{n+m}$ 
+ and the similarity matrix is the $(1+m+n)\times 3$-matrix:
+ $$S = \frac{1}{\sqrt{m+n+1}}\(
+\left(\begin{array}{c|c|c}
+ 0 & 1 & 0\\\hline
+ 1 & 0 & 0\\
+ \vdots & \vdots & \vdots\\
+ 1 & 0 & 0\\\hline
+ 0 & 0 & 1\\
+ \vdots & \vdots & \vdots \\
+ 0 & 0 & 1
+ \end{array}\right)
+\) $$
+ If we see vertex 2 of the path graph $1 \to 2 \to 3$ as the \emph{center}, 
+ which can be seen as a vertex through which much information is passed, 
+ then it is not surprising that $S$ indicates that vertex $1$ of the directed 
+ bow-tie graph is the only one that looks like a center. The left vertices of 
+ the bow-tie graph look like vertex 1 of the path graph and the right vertices 
+ of the bow-tie graph look like vertex $3$. This is a beautiful example because 
+ it confirms our intuition.
+ \end{example}
+ \subsubsection{Self-similarity of a graph}
+When we compute the similarity matrix of two equal graphs $\graf = \grafeen$, 
+the similarity matrix $S$ is  square matrix with as entries the similarity 
+scores between vertices of $\graf$, we call $S$ the \emph{self-similarity matrix of $\graf$} 
+in this case. 
+
+Intuitively, we expect that vertices have the highest similarity scores with 
+themselves, which means that the largest entries are located on the diagonal of 
+$S$. We prove in the next theorem that the largest entry of a self-similarity 
+matrix appears always on the diagonal and that, except for some special cases, 
+the diagonal elements of a self-similarity matrix are nonzero. This doesn't mean
+that the diagonal elements are always larger than the other elements on the same 
+row or column and we conclude this paragraph with some easy examples the show 
+this.
+
+\begin{theorem}
+  The self-similarity matrix of a graph $\graf$ is positive semidefinite\footnote{A $n\times n$-matrix $A$ is called positive-semidefinite if
+$\mathbf{x}^{T} A \mathbf{x}\geq 0$
+for all $\mathbf{x}$ in $\R^n$.}. The largest entry of the matrix appears on the 
+diagonal and if a diagonal entry is equal to zero,  all the entries of the corresponding row and 
+column are also equal to zero.
+\end{theorem}
+\textbf{Hier ga ik nog enkele relevante eigenschappen van positieve semidefinitie matrices toevoegen, dit bewijs toch net iets te kort door de bocht me dunkt.}
+\begin{proof}
+  Since A = B, the compact form of Theorem \ref{frobvorm} becomes:
+ $$Z^{(k+1)} = \frac{BZ^{(k)}A^T + B^TZ^{(k)}A}{\|BZ^{(k)}A^T + B^TZ^{(k)}A\|_F}, \quad Z^{(0)} = \mathbf{1},  $$
+  It is clear that all matrices $Z^{(k)}$ are positive semidefinite because the 
+  scaled sum of two positive semidefinite matrices is also positive 
+  semidefinite. Since the positive semidefinite matrices form a closed set (in the usual 
+  topology), the limit $S$ will also be positive semidefinite. The rest of the 
+  theorem are well known properties of positive semidefinite matrices.
+\end{proof}
+\begin{example}
+  The self-similartiy matrix of the graph:
+  \begin{center}
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+  \node[main node] (3) [label=above:$v_3$][right of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [left] {} (2)
+      (2) edge node [left] {} (3)
+    
+\end{tikzpicture}
+\end{center}
+is equal to:
+$$\begin{pmatrix}
+  0.5774 & 0 & 0 \\
+  0 & 0.5774 & 0 \\
+  0 & 0 & 0.5774
+\end{pmatrix}$$
+\end{example}
+
+\begin{example}
+  The self-similartiy matrix of the graph:
+  \begin{center}
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=left:$v_2$][below left of=1] {};
+    \node[main node] (4) [label=right:$v_4$][below right of=1] {};
+
+  \node[main node] (3) [label=below:$v_3$][below right of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [left] {} (2)
+      (2) edge node [left] {} (3)
+      (3) edge node [left] {} (4)
+      (4) edge node [left] {} (1)
+    
+\end{tikzpicture}
+\end{center}
+is equal to:
+$$\begin{pmatrix}
+  0.250 & 0.250 & 0.250 & 0.250 \\
+  0.250 & 0.250 & 0.250 & 0.250 \\
+  0.250 & 0.250 & 0.250 & 0.250 \\
+  0.250 & 0.250 & 0.250 & 0.250 \\
+\end{pmatrix}$$
+
+
+\end{example}
+\begin{example}
+  The self-similartiy matrix of the graph:
+  \begin{center}
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=below:$v_2$][below of=1] {};
+    \node[main node] (4) [label=right:$v_4$][below right of=2] {};
+
+  \node[main node] (3) [label=left:$v_3$][below left of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [left] {} (2)
+      (2) edge node [left] {} (3)
+      (2) edge node [left] {} (4)
+    
+\end{tikzpicture}
+\end{center}
+is equal to:
+$$\begin{pmatrix}
+  0.4082 & 0 & 0 & 0\\
+  0 & 0.4082 & 0 & 0\\
+  0 & 0 & 0.4082 & 0.4082\\
+    0 & 0 & 0.4082 & 0.4082\\
+
+\end{pmatrix}$$
+
+
+\end{example}
+\section{Node-edge similarity}
+The paper of Blondel et al. \cite{blondel} caused a flow of successive papers 
+which build upon the concept of similarity between two graphs. For instance, the paper
+`Graph similarity scoring and 
+matching' of Laura A Zager and Goerge C. Verghese \cite{zager} expands the 
+notion of node similarity presented in the previous section to similarity 
+between the edges of two graphs. The paper was presented in 2006. Intuitively an 
+edge of a graph $\graf$ is similar to an edge of graph $\grafeen$ if their 
+\emph{source} and \emph{terminal nodes} are similar. As a consequence, the notion of similarity between edges
+introduces a coupling between edge and node similarity scores. The algorithm presented in 
+this paper is therefore an extension of the algorithm presented in the previous section.
+
+\subsection{Coupled node-edge similarity scores}
+We now present the extended algorithm allowing us to calculate not only a node 
+similarity scores, but also edge similarity scores. The algorithm will use a 
+new sort of matrices that represent a graph. Recall Definition \ref{terminal} of 
+source and terminal nodes.
+
+
+\begin{definition}
+  Let be $\graf=(V,\to)$ be a graph with adjacency matrix A, vertices $v_1, v_2, \ldots, v_n \in V$ 
+  and edges $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
+  V)$. We define the \textbf{source-edge matrix $A_S$} as a $n\times m$ matrix with entries:
+  $$(A_S)_{ij} = \begin{cases} 1 &\mbox{if }$s_\graf(j) = v_i$   \\ 
+0 & \mbox{otherwise} \end{cases},$$
+the notation $A_S$ is derived from the adjacency matrix $A$, when the graph 
+would have another adjacency matrix, for instance $B$, we would write $B_S$.
+  \end{definition}
+  
+  \begin{definition}
+  Let be $\graf=(V,\to)$ be a graph with adjacency matrix $A$, vertices $v_1, v_2, \ldots, v_n \in V$ 
+  and edges $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
+  V)$. We define the \textbf{terminus-edge matrix $A_T$} as a $n\times m$ matrix with entries:
+  $$(A_T)_{ij} = \begin{cases} 1 &\mbox{if }$t_\graf(j) = v_i$   \\ 
+0 & \mbox{otherwise} \end{cases},$$
+the notation $A_T$ is derived from the adjacency matrix $A$, when the graph 
+would have another adjacency matrix, for instance $B$, we would write $B_T$.
+  \end{definition}
+\begin{property}
+Let $\graf=(V,\to)$ be a graph, then $A_SA^T_S$ is a diagonal matrix where the $i$th diagonal entry is equal the outdegree of vertex $v_i$.
+   \end{property}
+   \begin{proof}
+By direct computation, we get:
+$$(A_SA_S^T)_{ij} = \sum^n_{k=1}(A_S)_{ik}(A_S)^T_{kj} = \sum^n_{k=1}(A_S)_{ik}(A_S)_{jk}$$
+Assume $i \not = j$. Then for each $k$, $(A_S)_{ik}(A_S)_{jk}= 0$ since vetrex $v_i$ 
+and vertex $v_j$ can't be both the source node of edge $k$.
+
+When $i=j$, then for each $k$, $(A_S)_{ik}(A_S)_{jk}= ((A_S)_{ik})^2$ equals 0 or 1 depending on whether $v_i$ 
+is a starting point or not, so 1 is added to $(A_SA_S^T)_{ii}$ each time an edge `departs' from 
+$v_i$, this is exactly the outdegree of vertex $v_i$.
+   \end{proof}
+   
+In an analogous way, we prove:
+\begin{property}
+Let $\graf=(V,\to)$ be a graph, then $A_TA_T^T$ is a diagonal matrix where the $i$th diagonal entry is equal the indegree of vertex $v_i$.
+   \end{property}
+
+\begin{property}
+  Let $\graf =(V,\to)$ be a graph, then the adjacency matrix $A$ is equal to 
+  $A_SA^T_T$.
+\end{property}
+\begin{proof}
+  By direct computation, we get:
+  $$(A_SA_T^T)_{ij} = \sum^n_{k=1}(A_S)_{ik}(A_T)^T_{kj} = \sum^n_{k=1}(A_S)_{ik}(A_T)_{jk}$$
+The terms $(A_S)_{ik}(A_T)_{jk}$ equal $1$ if edge $k$ goes from $v_i$ to 
+$v_j$ and since the sum is taken over all edges we conclude:
+$$(A_SA_T^T)_{ij} = A_{ij}.$$
+\end{proof}
+Let  $\graf(V,\to)$, $\grafeen(U,\to')$ be two (directed) graphs, $\graf$ has $n_\graf$ vertices and $m_\graf$ edges and $\grafeen$ has $n_\grafeen$ vertices and $m_\grafeen$. 
+Remember the following updating equation from (\ref{vergblondel}), which returns the 
+(node) similarity score between vertices $u_i$ 
+from $\grafeen$ and $v_j$ from $\graf$:
+$\graf=(U,\to)$ :
+\begin{eqnarray*}
+ x^{(k+1)}_{ij} = \sum_{r:(u_r,u_i)\in \to', w:(v_w,v_j) \in \to} x^{(k)}_{rw} +  \sum_{r:(u_i,u_r)\in \to', w:(v_j,v_w) \in \to} 
+ x^{(k)}_{rw},
+ \end{eqnarray*} 
+if we number the edges of $\graf$ and $\grafeen$ as  $(v_{x'_1},v_{y'_1})_1, (v_{x'_1},v_{y'_1})_2,\ldots, (v_{x'_{m_\graf}},v_{y'_{m_\graf}})_{m_\graf} \in \to$ (with $(v_{x'_i},v_{y'_i})\in 
+  V)$ and $(u_{x'_1},v_{y'_1})_1, (u_{x'_1},v_{y'_1})_2,\ldots, (u_{x'_{m_\grafeen}},v_{y'_{m_\grafeen}})_{m_\grafeen} \in \to'$ (with $(u_{x'_i},u_{y'_i})\in 
+  U)$ , this can be rewritten as:
+ \begin{eqnarray*}
+ x^{(k+1)}_{ij} = \sum_{t_\grafeen(p)=u_i, t_\graf(q)=v_j} x^{(k)}_{s_\grafeen(p)s_\graf(q)} +  \sum_{s_\grafeen(p)=u_i, s_\graf(q)=v_j} 
+ x^{(k)}_{t_\grafeen(p)t_\graf(q)}.
+ \end{eqnarray*} 
+ We now extend this mutually reinforcing relation with the notion of edge 
+ similarity. $x_{ij}$ denotes again the node similarity score between vertex $u_i$ from $\grafeen$ and vertex $v_j$ from $\graf$ 
+ and $y_{pq}$ denotes the edge similarity score between edge $p$ from $\grafeen$ and edge $q$ in $\graf$, the update equations for edge and node similarity scores take now the 
+ following form:
+ \begin{eqnarray}
+ y_{pq}^{(k+1)} &=& x^{(k)}_{s_\grafeen(p)s_\graf(q)} + x^{(k)}_{t_\grafeen(p)t_\graf(q)}\label{edge1}\\
+ x^{(k+1)}_{ij} &=& \sum_{t_\grafeen(r)=u_i, t_\graf(w)=v_j} y^{(k)}_{rw} +  \sum_{s_\grafeen(t)=u_i, s_\graf(w)=v_j} y^{(k)}_{rw} \label{edge2}
+ \end{eqnarray} 
+With the same 
+ reasoning as presented in the previous section, these scores can be assembled into matrices $Y^{(k)}$ and $X^{k}$ 
+by using the source-edge matrices $A_S$ and the terminus-edge matrices $A_T$. Let $A$ be the adjacency matrix of $\graf$ and $B$ be the adjacency
+matrix of $\grafeen$, let $X^{(k)}$ be the $n_\grafeen \times n_\graf$-matrix with entries $x_{ij}$, the node similarity scores at iteration step $k$ 
+and let $Y^{(k)}$ be the $m_\grafeen \times m_\graf$-matrix with entries $y_{pq}$, the edge similarity scores at step $k$. The equations (\ref{edge1}) and (\ref{edge2}) 
+can be rewritten as:
+\begin{eqnarray}
+  Y'^{(k+1)} &=& B_S^TX^{(k)}A_S + B_T^TX^{(k)}A_T\label{edgematrix1}\\
+   X'^{(k+1)} &=& B_SY^{(k)}A_S^T + B_TY^{(k)}A^T_T\label{edgematrix2}
+ \end{eqnarray}
+ for  $k =  0,1,\ldots$
+ 
+ Of course we want to customize this equations in a way that we can apply Theorem \ref{grootbewijs} to prove convergence. 
+ This will be completely analogous to Theorem \ref{frobvorm}, but we can achieve a slightly better result: not only the even and odd iterates
+ will converge, the iteration converges as a whole. Lastly, remember that one of the conditions of Theorem \ref{grootbewijs} is to 
+ normalize the results at each iteration step. Therefore, the following theorem comes as no surprise:
+  \textbf{Bij dit bewijs moet nog een stuk bijgevoegd worden dat bewijst dat de uiteindelijke matrix M enkel positieve eigenwaarden heeft.}
+
+ \begin{theorem}\label{edgegrootbewijs}
+   Let $\graf$ and $\grafeen$ be two graphs with adjacency matrices $A$ and $B$, $\graf$ has $n_\graf$ vertices and
+   $m_graf$ edges and$\grafeen$ has $n_\grafeen$ vertices and $m_grafeen$ edges, define: 
+
+
+   
+ \begin{eqnarray}
+  Y^{(k+1)} &=& \frac{B_S^TX^{(k)}A_S + B_T^TX^{(k)}A_T}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+   X^{(k+1)} &=& \frac{B_SY^{(k)}A_S^T + B_TY^{(k)}A^T_T}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F}s
+ \end{eqnarray}
+  for  $k =  0,1,\ldots$.
+  
+  Then the matrix subsequences $X^{(2k)}$, $Y^{(2k)}$ and $X^{(k+1)}$, $Y^{(k+1)}$ 
+  converge to $X_{\text{even}}$, $Y_{\text{even}}$ and $X_{\text{odd}}$, 
+  $Y_{\text{odd}}$. If we take:
+  \begin{eqnarray*}
+    \mathbf{X}^{(0)} = \mathbf{1}  \in \R^{n_\grafeen \times n_\graf}\\
+    \mathbf{Y}^{(0)} = \mathbf{1} \in \R^{m_\grafeen \times m_\graf}
+  \end{eqnarray*}
+ as initial matrices, then $X_{\text{even}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})$ 
+ are the unique matrices of largest 1-norm among all possible limits with positive 
+ initial matices.
+  \end{theorem}
+  \begin{proof}
+ By Theorem \ref{tensor} we can rewrite (\ref{edgematrix1}) as follows:
+ \begin{eqnarray*}
+         Y'^{(k+1)} &=& B_S^TX'^{(k)}A_S + B_T^TX'^{(k)}A_T\\
+  \Leftrightarrow  \vect(Y'^{(k+1)}) &=& \vect(B_S^TX'^{(k)}A_S + 
+  B_T^TX'^{(k)}A_T)\\
+  \Leftrightarrow  \vect(Y'^{(k+1)}) &=& \vect(B_S^TX'^{(k)}A_S) + 
+  \vect(B_T^TX'^{(k)}A_T)\\
+  \Leftrightarrow \vect(Y'^{(k+1)}) &=& (A_S^T \otimes B_S^T)\vect(X'^{(k)}) + (A^T_T \otimes 
+  B^T_T)\vect(X'^{(k)})\\
+   \Leftrightarrow \vect(Y'^{(k+1)}) &=& (A_S^T \otimes B_S^T + A^T_T \otimes 
+  B^T_T)\vect(X'^{(k)})
+ \end{eqnarray*}
+ Completely analogous we can also rewrite (\ref{edgematrix2}):
+ $$\vect(X'^{(k+1)}) &=& (A_S \otimes B_S + A_T \otimes B_T)\vect(Y^{k}),$$
+ define $\mathbf{y}^{(k)}=\vect(Y'^{(k+1)})$ and $\mathbf{x}^{(k)}= \vect(X'^{(k+1)})$, we get:
+ \begin{eqnarray*}
+   \mathbf{y}^{(k+1)} &=& (A_S^T \otimes B_S^T + A^T_T \otimes 
+   B^T_T)\mathbf{x}^{(k)}\\
+   \mathbf{x}^{(k+1)} &=& (A_S \otimes B_S + A_T \otimes B_T)\mathbf{y}^{(k)}
+ \end{eqnarray*} 
+ If we define $G = A_S^T \otimes B_S^T + A^T_T \otimes B^T_T$, then with Lemma \ref{hulptensor} and the well known
+ properties of transpose matrices:
+ \begin{eqnarray*}
+   G^T &=& (A_S^T \otimes B_S^T + A^T_T \otimes B^T_T)^T\\
+   &=& ((A_S\otimes B_S)^T + (A_T \otimes B_T)^T)^T\\
+   &=& ((A_S\otimes B_S)^T)^T +  ((A_T \otimes B_T)^T)^T\\
+   &=& A_S\otimes B_S + A_T \otimes B_T
+ \end{eqnarray*}
+ So we get:
+  \begin{eqnarray*}
+     \mathbf{y}^{(k+1)} &=& G\mathbf{x}^{(k)}\\
+     \mathbf{x}^{(k+1)} &=& G^T\mathbf{y}^{(k)},\\
+ \end{eqnarray*}
+$G$ is a $n_\graf n_\grafeen \times m_\graf m_\grafeen$-matrix, the previous expressions  can be concatenated to a single matrix update equation (we define matrix $M$ and $\mathbf{z}^{(k+1)}$):
+ $$\mathbf{z}^{(k+1)} =\begin{pmatrix}
+ \mathbf{x}\\
+ \mathbf{y}
+ \end{pmatrix}^{(k+1)} = \begin{pmatrix}
+ \mathbf{0}_{m_\graf m_\grafeen} & G^T\\
+ G & \mathbf{0}_{n_\graf n_\grafeen} \\
+ \end{pmatrix}
+ \begin{pmatrix}
+ \mathbf{x}\\
+ \mathbf{y}
+ \end{pmatrix}^{(k)}
+ = M\mathbf{z}^{(k)},$$
+  M is clearly nonnegative because $G$ and $G^T$ consists of sums of Kronecker products of $A_S, B_S, A^T$ and/or $B^T$, all matrices
+ with entries equal to zero or one, $M$ is as a $(n_\graf n_\grafeen + m_\graf m_\grafeen)\times(n_\graf n_\grafeen + m_\graf m_\grafeen)$-matrix
+ clearly symmetric, so the result follows immediately from Theorem \ref{grootbewijs}. 
+The appearance of the Perron norm can be explained in the same way as in Theorem \ref{frobvorm}, note that we write $Y^{(k)}$ and $X^{(k)}$ 
+for the normalized results at iteration step $k$.
+ \end{proof}
+ We define now $X_{\text{even}}(\mathbf{1})$ as the node similarity matrix and $Y_{\text{even}}(\mathbf{1})$ as the edge similarity 
+ matrix.
+ 
+
+  \subsection{The algorithm}
+  \begin{algorithm}[h!]\label{edgealgorithm}
+ \KwData{\\
+ $A_S$:  the $n_\graf \times m_\graf$ source-edge matrix of a graph $\graf$\\
+ $A_T$:  the $n_\graf \times m_\graf$ terminal-edge matrix of a graph $\graf$\\
+ $B_S$: the $n_\grafeen \times m_\grafeen$ source-edge matrix of a graph $\graf$\\
+ $B_T$: the $n_\grafeen \times m_\grafeen$ terminal-edge matrix of a graph $\graf$\\
+ $\tol$: tolerance for the estimation error.\\
+ \KwResult{\\
+ $X$: the node similarity matrix between $\graf$ and $\grafeen$\\
+ $Y$: the edge similarity matrix between $\graf$ and $\grafeen$}
+ \blankline
+\SetKwFunction{powermethod}{node\_edge\_similarity\_matrix}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$A_S$,$A_T$, $B_S$,$B_T$,$\tol$}}{
+$k = 1$ \;
+$X^{(0)} = \mathbf{1}$ ($n_\grafeen\times n_\graf$-matrix with all entries equal to $1$)\;
+$Y^{(0)} = \mathbf{1}$ ($m_\grafeen\times m_\graf$-matrix with all entries equal to $1$)\;
+$\mu_X =  n_\grafeen\times n_\graf$-matrix with all entries equal to $\tol$\;
+$\mu_Y =  m_\grafeen\times m_\graf$-matrix with all entries equal to $\tol$\;
+
+\Repeat{$|X^{(k)} - X^{(k-1)}| < \mu_X$ and $|Y^{(k)} - Y^{(k-1)}| < \mu_Y$ }{
+$Y^{(k)}=& \frac{B_S^TX^{(k-1)}A_S + B_T^TX^{(k-1)}A_T}{\|B_S^TX^{(k-1)}A_S + B_T^TX^{(k-1)}A_T\|_F}$\;
+$X^{(k)} = \frac{B_SY^{(k)}A_S^T + B_TY^{(k)}A^T_T}{\|B_SY^{(k)}A_S^T + B'_TY^{(k)}A^T_T\|_F}$\;
+$k = k + 1$\;
+}
+ 
+\KwRet $X^{(k)}, Y^{(k)} $\;}{}
+  \caption{Algorithm for calculating the node and edge similarity matrix $X$ and $Y$ between $\graf$ and $\grafeen$.\\}\label{edgealgorithm}
+\end{algorithm}
+ 
+ The algorithm to calculate the node and edge similarity scores is presented in pseudo-code in Algorithm \ref{edgealgorithm}. 
+ Remember that the absolute value that is mentioned is the same as in Notation 
+ \ref{modulusmatrix}. Besides the differenfSt calculations, the main difference with the algorithm of the previous section (Algorithm \ref{algsimilarity})
+ is that the whole sequence converges, not only the even (or odd) iterates, 
+ making this algorithm twice as fast. Also notice that we implement a \textit{sequential} 
+ update: when $Y^{(k)}$ is calculated, it's result is immediately used in 
+ $X^{(k)}$. This is not according to Theorem \ref{edgegrootbewijs}, which 
+ suggest \textit{simultaneous} updating equations: in that case $X^{(k)}$ uses $Y^{(k-1)}$ 
+ in it's calculations. It is not difficult to see, by an analogous argument of 
+ Theorem \ref{edgegrootbewijs}, that both approaches yield the same set of 
+ similarity scores. Numerical analysts, however, will always prefer the sequential
+ update procedure because it performs slightly better. 
+ 
+ A Matlab implementation 
+ can be found in Listing \ref{edgematlab} in Appendix \ref{appendixa}. Because giving source-edge matrices and terminal-edge matrices as input
+ is quite unnatural, in Listing \ref{sourceedgematlab} and Listing \ref{terminaledgematlab} 
+ some Matlab code is also presented to transform an adjacency matrix into a 
+ source-edge matrix and a terminal-edge matrix. The resulting matrices represent an edge numbering left-to-right, based on the entries of the adjacency matrix. The algorithm to calculate the 
+ source-edge matrix based on the adjacency matrix is also written in pseudo-code in Algorithm 
+ \ref{sourceedge}, the calculation of the terminal-edge matrix is completely 
+ analogous. A Matlab implementation of Algorithm \ref{edgealgorithm} that takes 
+ two adjacency matrices as input can be found in Listing \ref{zeeruitgebreid}.
+ 
+   \begin{algorithm}[H]\label{sourcedge}
+ \KwData{\\
+ $A$:  the $n \times n$ adjacency matrix of a graph $\graf$\\
+ \KwResult{\\
+ $A_S$: the source-edge matrix of graph $\graf$}
+ \blankline
+\SetKwFunction{powermethod}{source\_edge\_matrix}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$A$}}{
+$m$ = sum of all entries of $A$ \;
+$A_S$ = initialize a $n \times m$-matrix wit all entries equal to 0\;
+current\_edge = 0 \;
+
+\For{$i: 1$ to $n$ }{
+  \For{$j: 1$ to $n$ }{
+     \If{$(A)_{ij} > 0$}{
+          \For{$e: 1$ to $(A)_{ij}$}{
+            $(A_S)_{i, \text{current\_edge }}$ = 1\;
+            current\_edge = current\_edge + 1 \;
+          }
+     }
+  }}}
+ 
+\KwRet $A_S$\;}{}
+  \caption{Algorithm for calculating the source-edge matrix $A_S$ based on the adjacency matrix $A$ of a graph $\graf$.\\}\label{sourceedge}
+\end{algorithm}
+ 
+ \subsection{Difference with node similarity}
+ \textbf{Dit wordt nog uitgewerkt}
+
+ \subsection{Example}
+ \begin{example}
+   We retake Example \ref{eenvoudigvoorbeeldjes} and number the edges as 
+   follows, let $\graf = (V,\to)$ be :
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+  \node[main node] (3) [label=above:$v_3$][right of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {1} (2)
+      (2) edge node [above] {2} (3)
+    
+\end{tikzpicture}
+\end{center}
+Let $\grafeen=(W,\to)$ be the following graph:
+ \begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+ \node[main node] (1) [label=above:$w_1$] {};
+
+  \node[main node] (2) [label=left:$w_2$] [below left of =1; left of=3]{};
+  \node[main node] (3) [label=right:$w_3$][below right of=1;] {};
+    \node[main node] (4) [label=left:$w_4$][below of=2] {};
+  \node[main node] (5) [label=right:$w_5$][below of=3] {};
+  \path[every node/.style={font=\sffamily\small}]
+       (1) edge node [left] {$1$} (2)
+      (1) edge node [right] {$2$} (3)
+      (2) edge node [near start, below] {$5$} (5)
+            (2) edge node [above] {$3$} (3)
+
+      (2) edge node [left] {$4$} (4)
+      (3) edge node [near start] {$6$} (4)
+      (3) edge node [right] {$7$} (5)
+
+\end{tikzpicture}
+\end{center}
+Then the node similarity matrix is:
+
+$$X = \begin{pmatrix}
+0.2338  &  0.0718  &       0\\
+0.2472   & 0.3230  &  0.0128\\
+0.1841   &  0.7553 &   0.3185\\
+0  &  0.0935  &  0.2338\\
+0   & 0.0441 &   0.0576
+\end{pmatrix},$$
+ and the edge similarity matrix equals:
+ $$ Y = \begin{pmatrix}
+0.2166 & 0.0329\\
+0.3847 & 0.1518\\
+0.3899 & 0.2495\\
+0.1325 & 0.2166\\
+0.1133 & 0.1480\\
+0.3653 & 0.4176\\
+0.1080 & 0.3847
+\end{pmatrix}$$
+If you look at the structure of $\grafeen$ and compare it with the structure of $\graf$, then 
+intuitively it is not surprising that edge $3$ of $\grafeen$ is most similar to edge $1$ of 
+$\graf$ and edge $6$ of $\grafeen$ is most similar to edge $2$ of $\graf$.
+ \end{example}
+ 
+
+
+\section{Colored graphs}
+In this last section, we extend the notion of similarity to colored graphs. The 
+paper \cite{vandoren} is written by two Belgian professors Paul Van Dooren and 
+Catherin Fraikin from the French speaking part of the Catholic University of 
+Louvain in 2009.
+
+Graph coloring is already introduced in paragraph \ref{colored} and we will 
+construct a method that returns similarity matrices for two graphs where the coloring is on the nodes or 
+on the edges of both graphs. 
+\subsection{Colored nodes}
+We first extend the node similarity introduced in section \ref{sectionnodesim} to 
+node colored graphs. Take two graphs $\graf=(V,\to, C, a)$ and $\grafeen=(U,\to', C, a')$ with $|C|$ (remember that $a$, $a'$ are surjective) different colors and assume that the nodes 
+in both graphs are renumbered such that those of color $1$ come first, then 
+those of color $2$,... The adjacency matrices $A$ (of graph $\graf$) and $B$ (of graph $\grafeen$) 
+can then be partitioned as follows:
+$$A = \begin{pmatrix}
+A_{11} & A_{12} & \ldots & A_{1|C|}\\
+A_{11} & A_{12} & \ldots & A_{1|C|}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{|C|1} & A_{|C|2} & \ldots & A_{|C||C|}\\
+\end{pmatrix}
+ \quad \text{and} \quad
+ \begin{pmatrix}
+B_{11} & B_{12} & \ldots & B_{1|C|}\\
+B_{11} & B_{12} & \ldots & B_{1|C|}\\
+\vdots & \vdots & \ddots & \vdots\\
+B_{|C|1} & B_{|C|2} & \ldots & B_{|C||C|}\\
+\end{pmatrix}$$
+Remember that $c_\graf(i)$ denotes the number of vertices of color $i$ in graph $\graf$, then each block $A_{ij} \in \R^{c_\graf(i)\times c_\graf(j)}$ and $B_{ij} \in \R^{c_\grafeen(i)\times c_\grafeen(j)}$ 
+describes the adjacency relations between the nodes of color $i$ to the vertices 
+of color $j$ in both $A$ and $B$. In fact, by just renumbering the vertices such 
+that the nodes with the same color succeed each other, you immediately get such 
+partitioning. If you see this renumbering as a permutation on the nodes,
+then performing on the original adjacency matrix a left and right multiplication with the corresponding permutation matrix (see Definition 
+\ref{petmruation}) leads to this adjusted adjacency matrix.
+To make the idea more comprehensible, we give an example.
+
+\begin{example}
+  Let $\graf$ be following graph:
+  \begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=6pt,
+                            inner sep=0pt]
+
+
+  \node[main node, fill=green] (1) [label=below:$v_1$] {};
+  \node[main node, fill=blue] (2) [label=below:$v_2$][right of=1] {};
+  \node[main node, fill=green] (3) [label=below:$v_3$][right of=2] {};;
+  \node[main node, fill=yellow] (4) [label=below:$v_4$][right of=3] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {} (2)
+    (1) edge[bend right=30]  node [below] {} (3)
+
+    (2) edge node [above] {} (3)
+     (3) edge node [above] {} (4)
+     (3) edge [bend right=30] node [below] {} (4)
+     (2) edge [bend left=40] node [above] {} (3)
+     (3) edge [bend right=40] node [above] {} (2)
+     (4) edge [loop above] node {} (4)
+\end{tikzpicture}
+\end{center}
+The adjacency matrix equals:
+$$A = \begin{pmatrix}
+0 & 1 & 1  & 0\\
+0 & 0 & 2 & 0\\
+0 & 1 & 0 & 2\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}.$$
+If we order the colors as: $\{\text{green, blue, yellow}\}$ (so color 1 = green, color 2 = blue, color 3 = yellow), we can renumber the 
+vertices and get the following graph:
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=6pt,
+                            inner sep=0pt]
+
+
+  \node[main node, fill=green] (1) [label=below:$v_1$] {};
+  \node[main node, fill=green] (2) [label=below:$v_2$][right of=1] {};
+  \node[main node, fill=blue] (3) [label=below:$v_3$][right of=2] {};;
+  \node[main node, fill=yellow] (4) [label=below:$v_4$][right of=3] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge[bend right=30] node [below] {} (3)
+    (1) edge node [below] {} (2)
+
+    (3) edge node [above] {} (2)
+     (2) edge[bend right=30] node [below] {} (4)
+     (2) edge[bend right=20] node [below] {} (4)
+        (2) edge [bend left=40] node [above] {} (3)
+     (3) edge [bend right=40] node [above] {} (2)
+          (4) edge [loop above] node {} (4)
+
+\end{tikzpicture}
+\end{center}
+
+The adjacency matrix equals:
+$$A' = PAP = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}
+0 & 1 & 1  & 0\\
+0 & 0 & 2 & 0\\
+0 & 1 & 0 & 2\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}=
+\begin{pmatrix}
+0 & 1 & 1 & 0\\
+0 & 0 & 1 & 2\\
+0 & 2 & 0 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix},$$
+which can be partitioned in blocks as follows (we have 3 colors: 1 = green, 2 = blue, 3 = yellow):
+$$A' = \begin{pmatrix}
+A_{11} & A_{12} & A_{13}\\
+A_{21} & A_{22} & A_{23}\\
+A_{31} & A_{32} & A_{33}\\
+\end{pmatrix} =
+\begin{pmatrix}\smallskip
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0\\
+\end{pmatrix}& 
+\begin{pmatrix}
+ 1\\
+ 1\\
+\end{pmatrix}
+& \begin{pmatrix}
+0\\
+2\\
+\end{pmatrix}\\ \smallskip
+ \begin{pmatrix}
+0 & 2\\
+\end{pmatrix} & \begin{pmatrix}
+ 0\\
+\end{pmatrix} & \begin{pmatrix}
+ 0\\
+\end{pmatrix}\\
+\begin{pmatrix}
+ 0 & 0\\
+\end{pmatrix} & \begin{pmatrix}
+ 0\\
+\end{pmatrix} & \begin{pmatrix}
+ 1\\
+\end{pmatrix}\\
+\end{pmatrix} .$$
+\end{example}
+Now, we only will compare the nodes of the same in both graphs, so that we 
+define similarity matrices $S_{ii} \in \R^{c_\graf(i)\times c_\grafeen(i)}$, with 
+$i=1,\ldots,|C|$, which we can put in a block-diagonal similarity matrix:
+$$S = \begin{pmatrix}
+S_{11} & 0 & \ldots & 0\\
+0 & S_{12} & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \ldots & S_{|C||C|}
+\end{pmatrix}$$
 
 
 
+\begin{theorem}
+  Let $\graf=(V,\to, C, a)$ and $\grafeen=(V,\to, C, a')$ be two node colored graphs and define:
+  \begin{eqnarray*}
+  Z^{(k+1)}_1 &=& \sum_{i \in \{1,\ldots, |C|\}}B_{1i}S^{(k)}_{ii}A^T_{1i} + B^T_{i1}S^{(k)}_{ii}A_{i1}\\
+  Z^{(k+1)}_2 &=& \sum_{i \in \{1,\ldots, |C|\}}B_{2i}S^{(k)}_{ii}A^T_{2i} + B^T_{i2}S^{(k)}_{ii}A_{i2} \\
+  &\vdots& \\
+    Z^{(k+1)}_{|C|} &=& \sum_{i \in \{1,\ldots, |C|\}}B_{|C|i}S^{(k)}_{ii}A^T_{|C|i} + B^T_{i|C|}S^{(k)}_{ii}A_{i|C|} \\
+ (S_{11}, S_{22},\ldots, S_{|C| |C|} )^{(k+1)} &=& \frac{\left(Z^{(k+1)}_1, Z^{(k+1)}_2, \ldots,Z^{(k+1)}_{|C|}\right)}{\left|\left|\left(Z^{(k+1)}_1, Z^{(k+1)}_2, \ldots,Z^{(k+1)}_{|C|}\right)\right|\right|_F}
+  \end{eqnarray*}
+ for $k = 0,1,\ldots$
+
+ Then the the matrix subsequences $Z^{(2k)}_j$ for every $j \in \{1, \ldots, |C|\}$ 
+ and $(S_{11}, S_{22},\ldots, S_{|C| |C|} )^{(2k)}$ converge to $Z^{\text{even}}_j$ and  $(S_{11}, S_{22},\ldots, S_{|C| |C|} 
+ )^{\text{even}}$. Also the odd subsequences converge. If we take:
+ $$S^{(0)}_{jj} = \mathbf{1} \in \R^{c_\grafeen(j)\times c_\graf(j)}$$
+ as initial matrices, then the resulting $S^{\text{even}}_{jj}(\mathbf{1})$ are 
+ the unique matrices of largest 1-norm among all possible limits with positive 
+ start vector.
+  
+\end{theorem}
+  
+\begin{proof}
+   By induction on $|C|$. Remember from Definition \ref{defcolor} that the function $c$ is surjective, meaning that
+  $C$ only consists of colors that are actually used.
+    
+   For $|C|=1$, we have a graph with all vertices having the same color, which can be seen as an uncoloured graph. This just 
+   the normal case as described in section \ref{sectionnodesim}.
+   
+Although redundant, it is instructive to prove the case $|C|=2$, because the 
+generalization in the induction step is then immediately clear, so consider 
+the partitioned adjacency matrices:
+$$\begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}\\
+\end{pmatrix} \quad \text{and} \quad
+\begin{pmatrix}
+B_{11} & B_{12}\\
+B_{21} & B_{22}\\
+\end{pmatrix},$$
+the equations of the theorem are in this case:
+
+\begin{eqnarray*}
+  Z^{(k+1)}_1 &=& B_{11}S^{(k)}_{11}A_{11}^T + B^T_{11}S^{(k)}_{11}A_{11} + B_{12}S^{(k)}_{22}A_{12}^T + B^T_{21}S^{(k)}_{22}A_{21}\\
+  Z^{(k+1)}_2 &=& B_{21}S^{(k)}_{11}A_{21}^T + B^T_{12}S^{(k)}_{11}A_{12} + B_{22}S^{(k)}_{22}A_{22}^T + B^T_{22}S^{(k)}_{22}A_{22} \\
+ (S_{11}, S_{22})^{(k+1)} &=& \frac{(Z^{(k+1)}_1, Z^{(k+1)}_2)}{\|(Z^{(k+1)}_1, Z^{(k+1)}_2)\|_F}
+ \end{eqnarray*}
+Let $Z'^{(k+1)}_1$ be the not normalized version $Z^{(k+1)}$, then we can write (see Theorem \ref{tensor}):
+\begin{eqnarray*}
+  Z'^{(k+1)}_1 &=& B_{11}Z'^{(k)}_1A_{11}^T + B^T_{11}Z'^{(k)}_1A_{11} + B_{12}Z'^{(k)}_2A_{12}^T + B^T_{21}Z'^{(k)}_{2}A_{21}\\
+ \Leftrightarrow \vect(Z'^{(k+1)}_1) &=& \vect(B_{11}Z'^{(k)}_1A_{11}^T + B^T_{11}Z'^{(k)}_1A_{11} + B_{12}Z'^{(k)}_2A_{12}^T + B^T_{21}Z'^{(k)}_{2}A_{21})\\
+  \Leftrightarrow \vect(Z'^{(k+1)}_1) &=& (A_{11}\otimes B_{11})\vect{Z'^{(k)}_1}  
+  + (A^T_{11}\otimes B^T_{11})\vect(Z'^{(k)}_1) \\
+  && \;\; + (A_{12}\otimes B_{12})\vect(Z'^{(k)}_2)
+  + (A^T_{21}\otimes B^T_{21})\vect(Z'^{(k)}_2) \\
+  \Leftrightarrow \vect(Z'^{(k+1)}_1) &=& (A_{11}\otimes B_{11} + A^T_{11}\otimes B^T_{11})\vect(Z'^{(k)}_1)  \\ 
+&&  \;\; + (A_{12}\otimes B_{12}+A^T_{21}\otimes B^T_{21})\vect(Z'^{(k)}_2)
+ \end{eqnarray*}
+ In a similar way, we can write $Z'^{(k+1)}_2$, which is the not normalized version of $Z^{(k+1)}_2$, as:
+ \begin{eqnarray*}
+ \vect(Z'^{(k+1)}_2) &=& (A_{21}\otimes B_{21} + A^T_{12}\otimes B^T_{12})\vect{Z'^{(k)}_1} + (A_{22}\otimes B_{22}+A^T_{22}\otimes B^T_{22})\vect{Z'^{(k)}_2}\\
+\end{eqnarray*}
+If we define $M$, $\mathbf{z}^{k+1}$ as follows, the previous expressions 
+concatenate to a single matrix update equation:
+\begin{eqnarray*}
+\mathbf{z}^{k+1} &=& \begin{pmatrix}
+\vect(Z'_1)\\
+\vect(Z'_2)\\
+\end{pmatrix}^{(k+1)}\\
+&=& \begin{pmatrix}
+A_{11}\otimes B_{11} + A^T_{11}\otimes B^T_{11}& A_{12}\otimes B_{12}+A^T_{21}\otimes B^T_{21}\\
+A_{21}\otimes B_{21} + A^T_{12}\otimes B^T_{12} & A_{22}\otimes B_{22} + A^T_{22}\otimes B^T_{22}
+\end{pmatrix}
+\begin{pmatrix}
+\vect(Z'_1)\\
+\vect(Z'_2)\\
+\end{pmatrix}^{(k)}\\
+&=& M\mathbf{z}^{(k)}
+\end{eqnarray*}
+Notice that the diagonal blocks in $M$ are related to links between the nodes with the same color, 
+while the off diagonal blocks refer to links between nodes of another color. As 
+always, we want to use Theorem \ref{grootbewijs} to get the result. $M$ is 
+clearly nonnegative, because every block $A_{ij}$ and $B_{ij}$ is nonnegative (it's derived from the nonnegative adjacency matrices $A$ and 
+$B$). Proving that $M$ is symmetric a bit trickier, but notice that $A_{11}\otimes B_{11} + (A_{11}\otimes B_{11})^T$
+is a symmetric $c_\graf(1)c_\grafeen(1)\times c_\graf(1)c_\grafeen(1)$ matrix (because it's the sum of a matrix with his transpose), and $A_{22}\otimes B_{22} + (A_{22}\otimes B_{22})^T$ is a symmetric 
+$c_\graf(2)c_\grafeen(2)\times c_\graf(2)c_\grafeen(2)$. If we define $G = A_{21} \otimes B_{21} + A^T_{12}\otimes B^T_{12}$, $G$ is a $c_\graf(2)c_\grafeen(2) \times c_\graf(1)c_\grafeen(1)$-matrix. Now, notice the following relation between the off diagonal blocks:
+\begin{eqnarray*}
+  G^T &=& (A_{21} \otimes B_{21} + A^T_{12}\otimes B^T_{12})^T \\
+  &=& (A_{21} \otimes B_{21})^T + ((A^T_{12}\otimes B^T_{12})^T)^T\\
+  &=& A_{12}\otimes B_{12}+A^T_{21}\otimes B^T_{21}
+  \end{eqnarray*}
+$G^T$ is a $c_\graf(1)c_\grafeen(1) \times c_\graf(2)c_\grafeen(2)$-matrix.
+So we can rewrite $M$ as:
+$$M = \begin{pmatrix}
+A_{11}\otimes B_{11} + A^T_{11}\otimes B^T_{11}& G^T\\
+G & A_{22}\otimes B_{22} + A^T_{22}\otimes B^T_{22}
+\end{pmatrix}$$
+ $M$ is a $(c_\graf(1)c_\grafeen(1)+c_\graf(2)c_\grafeen(2))\times(c_\graf(1)c_\grafeen(1)+c_\graf(2)c_\grafeen(2))$-matrix, we want to prove that $(M)_{ij}  = (M)_{ji}$ and to do so we distinguish all possible cases: 
+ 
+\begin{itemize}
+  \item If $i \leq c_\graf(1)c_\grafeen(1), j \leq c_\graf(1)c_\grafeen(1)$, 
+  then $(M)_{ij}$ and $(M)_{ji}$ will both be entries of $A_{11}\otimes B_{11} + A^T_{11}\otimes B^T_{11}$ and this submatrix was symmetric.
+  \item If $i \leq c_\graf(1)c_\grafeen(1), j > c_\graf(1)c_\grafeen(1)$, then $(M)_{ij}$ 
+  will be an entry of $G^T$ and $(M)_{ji}$ will be an entry of $G$, so they are 
+  equal.
+  \item If $i > c_\graf(1)c_\grafeen(1), j > c_\graf(1)c_\grafeen(1)$, then $(M)_{ij}$ and $(M)_{ji}$ will both be entries of $A_{22}\otimes B_{22} + A^T_{22}\otimes B^T_{22}$ and this submatrix was symmetric.
+   \item If $i > c_\graf(1)c_\grafeen(1), j \leq c_\graf(1)c_\grafeen(1)$, then $(M)_{ij}$ 
+  will be an entry of $G$ and $(M)_{ji}$ will be an entry of $G^T$, so they are 
+  equal.
+  \end{itemize}
+
+The result immediately follows from Theorem \ref{grootbewijs}. We motivated the usage of the Frobenius norm
+already in the proof of  Theorem \ref{frobvorm}. Notice that the normalization after each iteration step happens 
+`together' by dividing by $\|(Z^{(k+1)}_1, Z^{(k+1)}_2\|_F$ , because this is in accordance to the conditions of Theorem \ref{grootbewijs}.
+Normalizing $Z^{(k+1)}_1, Z^{(k+1)}_2$ separately after the expressions is 
+calculated, gives an iterative process that is different from the one described 
+in Theorem \ref{grootbewijs}.
+
+We now prove the induction step $|C|=n-1\Rightarrow |C|=n$. The only crucial thing to prove is that $M$ is 
+again symmetric, the rest of the steps consist of an easy expansion of the case 
+$|C|=2$. $M$ is in this case equal to:
+$$M=\begin{pmatrix}\smallskip
+\begin{array}{l}
+A_{11} \otimes B_{11}\\ + A^T_{11} \otimes B^T_{11} 
+\end{array} & \ldots & 
+\begin{array}{l}
+A_{1(n-1)} \otimes B_{1(n-1)}\\ + A^T_{(n-1)1} \otimes B^T_{ (n-1)1}
+\end{array}  & \begin{array}{l}
+A_{1n} \otimes B_{1n} \\ + A^T_{n1} \otimes B^T_{n1} 
+\end{array}
+\\
+\vdots & \ddots  & \vdots & \vdots\\
+\begin{array}{l}
+A_{(n-1)1} \otimes B_{(n-1)1}\\ + A^T_{1(n-1)} \otimes B^T_{1(n-1)}
+\end{array} & \ldots
+& \begin{array}{l}
+A_{(n-1)(n-1)} \otimes B_{(n-1)(n-1)}\\ + A^T_{(n-1)(n-1)} \otimes B^T_{(n-1)(n-1)}  
+\end{array} 
+& \begin{array}{l}
+ A_{(n-1)n} \otimes B_{(n-1)n}\\ + A^T_{n(n-1)} \otimes B^T_{n(n-1)}\end{array} \\
+ 
+\begin{array}{l}
+ A_{n1} \otimes B_{n1}\\ + A^T_{1n} \otimes B^T_{1n}\end{array}
+ & \ldots
+&\begin{array}{l}
+ A_{n(n-1)} \otimes B_{n(n-1)}\\ + A^T_{(n-1)n} \otimes B^T_{(n-1)n}  
+\end{array}
+& \begin{array}{l}
+A_{nn} \otimes B_{nn}\\ + A^T_{nn} \otimes B^T_{nn}
+\end{array}
+\end{pmatrix}$$
+which can be seen as:
+$$M = \begin{pmatrix}\smallskip
+& & &
+
+\begin{array}{l}
+A_{1n} \otimes B_{1n} \\ + A^T_{n1} \otimes B^T_{n1} 
+\end{array}
+\\ & \begin{array}{l}M'
+\end{array} & & \vdots\\
+&  & &
+ \begin{array}{l}
+ A_{(n-1)n} \otimes B_{(n-1)n}\\ + A^T_{n(n-1)} \otimes B^T_{n(n-1)}\end{array} \\
+
+ 
+\begin{array}{l}
+ A_{n1} \otimes B_{n1}\\ + A^T_{1n} \otimes B^T_{1n}\end{array}
+ & \ldots
+&\begin{array}{l}
+ A_{n(n-1)} \otimes B_{n(n-1)}\\ + A^T_{(n-1)n} \otimes B^T_{(n-1)n}  
+\end{array}
+& \begin{array}{l}
+A_{nn} \otimes B_{nn}\\ + A^T_{nn} \otimes B^T_{nn}
+\end{array}
+\end{pmatrix}$$
+From the induction hypothesis we now that $M'$ is symmetric. It's clear that the 
+entries in the last column of $M$ are the transpose of the entries in the last 
+row. It follows that $M$ is again symmetric.
+
+\end{proof}
+\begin{appendices}
+  \chapter{Listings} \label{appendixa}% appeared as appendix A
+\lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
+
+\lstinputlisting[caption={The MatLab code for algorithm \ref{algsimilarity}.},label={lstsim}]{similarity_matrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithm}.}, label={edgematlab}]{node_edge_similarity_matrix.m}
+\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a source-edge matrix (edges are numbered left-to-right based on the adjacency matrix).}, label={sourceedgematlab}]{source_edge_matrix.m}
+\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a terminal-edge matrix (edges are numbered left-to-right based on the adjacency matrix).}, label={terminaledgematlab}]{terminal_edge_matrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithm} but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{landscape}
+  \chapter{Results of the Eurovision Song Contest 2009-2014}
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
+Participant              & \textbf{Albania} & \textbf{Armenia} & \textbf{Austria} & \textbf{Azerbaijan} & \textbf{Belarus} & \textbf{Belgium} & \textbf{Denmark} & \textbf{Estonia} & \textbf{F.Y.R. Macedonia} & \textbf{Finland} & \textbf{France} & \textbf{Georgia} & \textbf{Germany} & \textbf{Greece} & \textbf{Hungary} & \textbf{Iceland} & \textbf{Ireland} & \textbf{Israel} & \textbf{Italy} & \textbf{Latvia} & \textbf{Lithuania} & \textbf{Malta} & \textbf{Moldova} & \textbf{Montenegro} & \textbf{Norway} & \textbf{Poland} & \textbf{Portugal} & \textbf{Romania} & \textbf{Russia} & \textbf{San Marino} & \textbf{Slovenia} & \textbf{Spain} & \textbf{Sweden} & \textbf{Switzerland} & \textbf{The Netherlands} & \textbf{Ukraine} & \textbf{United Kingdom} & \textbf{Points} & \textbf{Place} \\
+\textbf{Albania}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Armenia}         &                  &                  & 12               &                     & 10               &                  & 2                & 5                & 8                         & 4                & 12              & 12               & 6                & 7               & 7                & 2                &                  & 6               &                & 10              &                    & 6              & 3                & 10                  &                 & 1               & 4                 & 7                & 8               & 6                   &                   & 4              & 5               &                      & 7                        & 10               &                         & 174             & 4              \\
+\textbf{Austria}         & 5                &                  &                  & 1                   &                  & 12               & 8                & 4                & 3                         & 12               & 10              & 10               & 7                & 12              & 10               & 10               & 12               & 12              & 12             & 6               & 10                 & 10             & 7                & 2                   & 10              &                 & 12                & 8                & 5               &                     & 12                & 12             & 12              & 12                   & 12                       & 8                & 12                      & 290             & 1              \\
+\textbf{Azerbaijan}      &                  &                  &                  &                     & 3                &                  &                  &                  &                           &                  &                 & 7                &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  & 10              & 12                  &                   &                &                 &                      &                          & 1                &                         & 33              & 22             \\
+\textbf{Belarus}         &                  & 8                &                  & 7                   &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  & 1               &                &                 & 3                  &                & 5                & 1                   &                 &                 &                   &                  & 12              &                     &                   &                &                 &                      &                          & 6                &                         & 43              & 16             \\
+\textbf{Belgium}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Denmark}         &                  & 1                &                  &                     &                  & 6                &                  &                  &                           & 6                & 3               &                  & 8                &                 &                  & 8                &                  &                 &                &                 & 1                  &                &                  &                     & 1               & 6               & 5                 & 4                &                 & 1                   & 6                 & 3              & 8               & 3                    & 1                        &                  & 3                       & 74              & 9              \\
+\textbf{Estonia}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{FYR Macedonia}   &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Finland Finland} &                  &                  & 4                &                     &                  & 3                & 4                & 6                &                           &                  &                 &                  & 4                &                 & 6                & 5                &                  &                 & 6              & 3               &                    &                &                  &                     & 7               & 3               &                   &                  &                 & 3                   &                   &                & 6               & 4                    & 2                        &                  & 6                       & 72              & 11             \\
+\textbf{France France}   &                  &                  &                  &                     &                  &                  &                  &                  &                           & 1                &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                & 1               &                      &                          &                  &                         & 2               & 26             \\
+\textbf{Georgia}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Germany}         & 4                & 6                &                  &                     &                  &                  &                  &                  &                           &                  &                 & 5                &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 & 8               &                   & 2                &                 &                     & 2                 &                &                 & 7                    &                          & 5                &                         & 39              & 18             \\
+\textbf{Greece}          & 2                & 7                &                  & 4                   & 6                &                  &                  &                  &                           &                  &                 & 4                &                  &                 &                  &                  &                  & 2               & 3              &                 &                    & 1              &                  &                     &                 &                 &                   &                  & 4               &                     &                   &                &                 &                      &                          &                  & 2                       & 35              & 20             \\
+\textbf{Hungary}         & 8                &                  & 7                & 8                   & 5                & 7                & 3                & 7                & 10                        & 5                &                 &                  &                  & 6               &                  & 6                & 1                & 7               &                & 1               &                    &                & 4                & 12                  &                 &                 & 6                 & 10               & 6               & 7                   &                   & 2              & 7               & 1                    & 4                        & 3                &                         & 143             & 5              \\
+\textbf{Iceland}         &                  &                  & 2                &                     &                  &                  & 5                &                  &                           &                  & 7               &                  & 2                &                 & 5                &                  &                  &                 & 7              &                 &                    &                &                  &                     & 6               &                 &                   &                  & 1               & 8                   &                   & 1              & 4               &                      & 6                        &                  & 4                       & 58              & 15             \\
+\textbf{Ireland}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Israel}          &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Italy}           & 10               &                  &                  &                     &                  &                  &                  &                  & 2                         &                  & 1               &                  &                  &                 &                  &                  &                  &                 &                &                 &                    & 12             &                  & 6                   &                 &                 &                   &                  &                 &                     &                   &                &                 & 2                    &                          &                  &                         & 33              & 21             \\
+\textbf{Latvia}          &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Lithuania}       &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Malta}           & 1                &                  &                  & 5                   &                  &                  &                  &                  &                           & 3                &                 &                  &                  &                 &                  &                  & 3                &                 & 1              &                 &                    &                &                  &                     &                 &                 &                   &                  &                 & 4                   &                   &                &                 &                      & 5                        &                  & 10                      & 32              & 23             \\
+\textbf{Moldova}         &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Montenegro}      & 6                & 12               &                  &                     &                  &                  &                  &                  & 12                        &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     & 7                 &                &                 &                      &                          &                  &                         & 37              & 19             \\
+\textbf{Norway}          &                  &                  & 1                &                     & 4                &                  & 6                & 3                &                           & 7                & 2               &                  & 5                & 3               &                  & 1                & 7                &                 &                & 5               & 8                  & 2              &                  &                     &                 & 7               & 3                 & 1                &                 &                     & 5                 &                & 3               & 5                    & 10                       &                  &                         & 88              & 8              \\
+\textbf{Poland}          &                  &                  &                  & 2                   & 7                &                  &                  &                  & 5                         &                  & 5               &                  & 10               & 1               & 3                & 3                &                  &                 & 8              &                 &                    &                & 2                & 4                   & 2               &                 &                   &                  &                 &                     & 1                 &                & 2               &                      &                          & 7                &                         & 62              & 14             \\
+\textbf{Portugal}        &                  &                  &                  &                     &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         &                 &                \\
+\textbf{Romania}         &                  &                  & 8                & 6                   & 1                & 5                &                  &                  & 4                         &                  &                 &                  &                  &                 &                  &                  & 2                & 8               & 5              &                 &                    & 8              & 12               &                     & 4               &                 & 1                 &                  &                 &                     &                   & 8              &                 &                      &                          &                  &                         & 72              & 12             \\
+\textbf{Russia}          &                  & 10               &                  & 12                  & 12               &                  &                  & 1                & 6                         &                  &                 & 8                &                  & 10              &                  &                  &                  & 3               &                & 2               & 6                  & 5              & 8                &                     &                 &                 & 2                 &                  &                 &                     &                   &                &                 &                      &                          & 4                &                         & 89              & 7              \\
+\textbf{San Marino}      & 3                & 3                &                  & 3                   &                  &                  &                  &                  &                           &                  &                 &                  &                  &                 & 4                &                  &                  &                 &                &                 &                    &                & 1                &                     &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         & 14              & 24             \\
+\textbf{Slovenia}        &                  &                  &                  &                     &                  &                  &                  &                  & 1                         &                  &                 &                  &                  &                 &                  &                  &                  &                 &                &                 &                    &                &                  & 8                   &                 &                 &                   &                  &                 &                     &                   &                &                 &                      &                          &                  &                         & 9               & 25             \\
+\textbf{Spain}           & 12               & 2                &                  &                     &                  & 2                &                  & 2                &                           &                  & 6               &                  & 1                &                 &                  &                  & 6                & 4               &                & 4               & 4                  &                &                  &                     & 5               & 2               &                   & 5                &                 &                     & 4                 &                &                 & 8                    &                          & 2                & 5                       & 74              & 10             \\
+\textbf{Sweden}          & 7                &                  & 6                &                     &                  & 10               & 12               & 10               &                           & 10               & 4               & 2                &                  & 2               & 8                & 7                & 4                & 10              &                & 8               & 7                  & 7              & 6                & 3                   & 8               & 4               & 8                 & 12               & 2               & 10                  & 8                 & 10             &                 & 6                    & 8                        & 12               & 7                       & 218             & 3              \\
+\textbf{Switzerland}     &                  & 5                & 3                &                     &                  &                  &                  &                  &                           &                  &                 & 1                & 3                & 4               & 1                &                  & 5                &                 & 2              &                 & 2                  & 3              &                  & 5                   &                 & 10              & 7                 & 6                &                 &                     & 3                 &                &                 &                      & 3                        &                  & 1                       & 64              & 13             \\
+\textbf{The Netherlands} &                  & 4                & 10               &                     & 2                & 8                & 10               & 12               & 7                         & 8                & 8               &                  & 12               & 8               & 12               & 12               & 10               &                 & 4              & 12              & 12                 &                &                  &                     & 12              & 12              & 10                & 3                & 3               & 2                   & 10                & 7              & 10              & 10                   &                          &                  & 8                       & 238             & 2              \\
+\textbf{Ukraine}         &                  &                  & 5                & 10                  & 8                & 4                & 1                & 8                &                           & 2                &                 & 6                &                  & 5               & 2                &                  &                  & 5               & 10             & 7               & 5                  &                & 10               & 7                   &                 & 5               &                   &                  & 7               &                     &                   & 6              &                 &                      &                          &                  &                         & 113             & 6              \\
+\textbf{United Kingdom}  &                  &                  &                  &                     &                  & 1                & 7                &                  &                           &                  &                 & 3                &                  &                 &                  & 4                & 8                &                 &                &                 &                    & 4              &                  &                     & 3               &                 &                   &                  &                 & 5                   &                   & 5              &                 &                      &                          &                  &                         & 40              & 17            
+\end{tabular}
+}
+\end{table}
+
+\end{landscape}
+\end{appendices}
 
 
-
+%\chapter{Equation deduction} % appeared as appendix B
+%\lipsum[2-3]
    \newpage
 \begin{thebibliography}{99}
 \bibitem[EVES]{0} H. Eves, \emph{Elementary Matrix Theory}, Dover Publications, 
@@ -2544,9 +4051,9 @@ Applications}, Encyclopedia of Mathematics and its Applications 64, Cambridge Un
 \bibitem[STERN2010]{1} S. Sternberg, \emph{The Perron-Frobenius theorem}, Chapter 9 in Dynamical Systems, Dover Publications, 2010.
 \bibitem[NOUT2008]{2} D. Noutsos, \emph{Perron-Frobenius theory and some extensions} (lecture notes), Department of Mathematics, University of Ioannina, May 2008.
 \bibitem[VARGA] R. S. Varga, \emph{Matrix Iterative Analysis}, Prentice-Hall, 1962. 
-\bibitem R. A. Brualdi, H. J. Ryser, \emph{Combinatorial Matrix Theory}, Cambridge University 
+\bibitem[BRUALDI] R. A. Brualdi, H. J. Ryser, \emph{Combinatorial Matrix Theory}, Cambridge University 
 Press, 1991
-\bibitem P. Lancaster, M. Tismenetsky, \emph{The Theory of Matrices: With 
+\bibitem[LANCASTER] P. Lancaster, M. Tismenetsky, \emph{The Theory of Matrices: With 
 Applications}, Academic Press, 1985
 \bibitem[MEU2011]{11} W. De Meuter, \emph{Algoritmen en Datastructuren I}, Vrije Universiteit Brussel, 2011.
 \bibitem[KIEBOOM2011]{kieboom} R. Kieboom, \emph{Aanvulling Lineaire Algebra}, Vrije Universiteit Brussel, 2011.
@@ -2567,8 +4074,17 @@ Searching}, Society for Industrial and Applied Mathematics, 2004.
 environment}, J. ACM, 1999.
 \bibitem[DEIFT]{random} P. Deift, D. Gioev, \emph{Random Matrix Theory: Invariant Ensembles and 
 Universality}, American Mathematical Society, January, 2009.
+\bibitem[EUROVISION]{eurovision} \emph{Official website of the Eurovision Song 
+Contest}, www.eurovision.tv, May, 2015.
+\bibitem[SAARI]{saari} D. G. Saari,  \emph{Mathematical Structure of Voting Paradoxes: II. Positional Voting}, Journal of Economic Theory, 2000.
 \bibitem[FOUC]{fouc} S. Foucart, \emph{Linear Algebra and Matrix Analysis}, 
 Drexel University, 2010.
 \bibitem[HORN]{horn} R.A. Horn, C.R. Johnson, \emph{Matrix Analysis}, Cambridge University Press, 1985.
+\bibitem[HORN2]{horn2} R.A. Horn, C.R. Johnson, \emph{Topics in Matrix 
+Analysis}, Cambridge University Press, 1991.
+\bibitem[ZAGER]{zager} L. A.Zager, George C. Verghese, \emph{Graph similarity scoring and matching}, Applied Mathematics Letters, January, 2007.i
+Analysis}, Cambridge University Press, 1991.
+\bibitem[VANDOREN]{vandoren} P. Van Doren, C. Fraikin, \emph{Similarity matrices for colored 
+graphs}, Bulletin of the Belgian Mathematical Society Simon Stevin, 2009.
 \end{thebibliography}
 \end{document}
