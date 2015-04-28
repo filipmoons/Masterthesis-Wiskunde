@@ -1,0 +1,54 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Preliminaries and notations}{5}
+\contentsline {section}{\numberline {1.1}Some families of matrices}{5}
+\contentsline {subsection}{\numberline {1.1.1}Permutation matrices}{5}
+\contentsline {subsection}{\numberline {1.1.2}Nonnegative and primitive matrices}{6}
+\contentsline {subsection}{\numberline {1.1.3}Irreducible nonnegative matrices}{7}
+\contentsline {section}{\numberline {1.2}Perron-Frobenius Theorem}{9}
+\contentsline {subsection}{\numberline {1.2.1}Spectral radii of nonnegative matrices}{9}
+\contentsline {subsection}{\numberline {1.2.2}Proof}{13}
+\contentsline {subsection}{\numberline {1.2.3}Example}{14}
+\contentsline {section}{\numberline {1.3}Numerical analysis}{14}
+\contentsline {subsection}{\numberline {1.3.1}Bachmann-Landau notations}{14}
+\contentsline {subsubsection}{Bigh Oh}{14}
+\contentsline {subsubsection}{Small Oh}{15}
+\contentsline {subsubsection}{Asymptotical Equality}{15}
+\contentsline {subsection}{\numberline {1.3.2}The Power Method}{15}
+\contentsline {subsubsection}{The algorithm}{17}
+\contentsline {subsubsection}{Computational cost \& Usage}{19}
+\contentsline {subsubsection}{Example}{20}
+\contentsline {section}{\numberline {1.4}Graphs}{20}
+\contentsline {subsection}{\numberline {1.4.1}General definitions}{21}
+\contentsline {subsubsection}{Product graphs}{22}
+\contentsline {subsubsection}{Colored graphs}{23}
+\contentsline {subsubsection}{Adjacency matrices}{23}
+\contentsline {subsection}{\numberline {1.4.2}Strong connectivity}{24}
+\contentsline {chapter}{\numberline {2}Similarity on graphs}{25}
+\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{25}
+\contentsline {subsection}{\numberline {2.1.1}History}{25}
+\contentsline {subsection}{\numberline {2.1.2}Motivation}{26}
+\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{27}
+\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{28}
+\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{32}
+\contentsline {subsection}{\numberline {2.1.6}Examples}{35}
+\contentsline {subsubsection}{Searching for math professors at the VUB}{35}
+\contentsline {subsubsection}{Predictors in the Eurovision Song Contest 2009-2014}{37}
+\contentsline {subsection}{\numberline {2.1.7}Final reflection}{42}
+\contentsline {section}{\numberline {2.2}Node similarity}{42}
+\contentsline {subsubsection}{From Hubs and Authorities to structure graphs}{42}
+\contentsline {subsection}{\numberline {2.2.1}Convergence of the sequence $\mathbf {z}^{(k)}$}{46}
+\contentsline {subsection}{\numberline {2.2.2}Compact form \& Similarity matrices}{52}
+\contentsline {subsection}{\numberline {2.2.3}Algorithm \& Computational cost}{55}
+\contentsline {subsection}{\numberline {2.2.4}Special cases}{56}
+\contentsline {subsubsection}{HITS-algorithm}{56}
+\contentsline {subsubsection}{Central scores}{57}
+\contentsline {subsubsection}{Self-similarity of a graph}{59}
+\contentsline {section}{\numberline {2.3}Node-edge similarity}{60}
+\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{61}
+\contentsline {subsection}{\numberline {2.3.2}The algorithm}{64}
+\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{65}
+\contentsline {subsection}{\numberline {2.3.4}Example}{66}
+\contentsline {section}{\numberline {2.4}Colored graphs}{66}
+\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{67}
+\contentsline {chapter}{Appendix \numberline {A}Listings}{72}
+\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2014}{76}
