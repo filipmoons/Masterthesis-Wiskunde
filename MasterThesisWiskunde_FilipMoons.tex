@@ -74,7 +74,7 @@
 \promotor{Prof. Dr. P. Cara}
 \advisors{}
 \author{Filip Moons}
-\title{Similarity on Combinatorial Structures}
+\title{Similarity on Graphs \& Hypergraphs}
 \advisortitle{}
 \date{MEI 2006}
 \faculty{Faculty of Science}
@@ -107,15 +107,59 @@ lot during the past five years. A special thanks goes to Reen Tallon, who
 always managed to overcome any administrative burden caused by the combination 
 of programs.
 
+Last but not least, I want to thank my parents for their angry looks when they 
+felt I did not study enough, it certainly kept me on track. Also my partner Sacha and my friends from university and the Classical Liberal Student  
+Union made my college years unforgettable for the rest of my life.
 
-...
 
  
- 
- 
-\section*{Abstract}\newpage
-\section*{Samenvatting}
+\chapter*{Abstract}
 
+
+\chapter*{Samenvatting}
+Deze thesis bespreekt similariteit op graffen \& hypergraffen. De notie van 
+similariteit op graffen vindt zijn oorsprong in het HITS-algoritme: dit algoritme 
+werd eind jaren negentig ontdekt om zoekresultaten van een internetzoekmachine op een betekenisvolle manier 
+te sorteren. Het algoritme onderzoekt de relaties tussen de hyperlinks van een verzameling webpagina's: sommige webpagina's worden 
+bestempeld als goede doorverwijzers, andere webpagina's worden dan weer als een gezaghebbende bron beschouwd voor de zoekterm. 
+Uiteraard is deze tweedeling sterk verwant: pagina's die goede doorverwijzers 
+zijn zullen veel links naar pagina's bevatten die als een gezaghebbende bron 
+gezien worden en omgekeerd, zullen pagina's als gezaghebbende bron worden 
+beschouwd als ze veel inkomende links krijgen van goede doorverwijzers. Dit 
+algoritme was erg vernieuwend in die tijd, vermits tot dan toe zoekresultaten 
+enkel gesorteerd werden op het aantal inkomende links (zonder daarbij de bronpagina na te gaan) 
+of het aantal keren dat een zoekterm voorkwam.
+
+Deze methode werd rond 2005 veralgemeend naar een notie van similariteit tussen 
+graffen. Een verzameling webpagina's die onderling gelinkt zijn zoals die in het HITS-algoritme gebruikt worden,
+kan immers beschouwd worden als een graf. Deze veralgemening leidt tot een 
+methode waarbij we een soort score kunnen kleven op hoe twee toppen van twee verschillende graffen op elkaar lijken. 
+Deze `similariteisscore' zal hoger zijn als de adjacente toppen van deze twee toppen 
+ook gelijkaardig zijn.
+
+Eens we similariteit op de toppen van graffen hebben ingevoerd, gaan we deze 
+methode verder uitbreiden tot similariteit op toppen en bogen van graffen en tot 
+similariteit tussen gekleurde graffen. We hebben zo een compleet overzicht van 
+de meest recente studies over het onderwerp. Opvallend is dat de convergentie van de resulterende algoritmes van al deze uitbreidingen met 
+dezelfde convergentiestelling kunnen bewezen worden.
+
+Een belangrijke opmerking is hier wel dat deze verschillende uitbreidingen lichtjes 
+andere resultaten opleveren. Er bestaat niet zoiets als `de' similariteitsscore tussen twee 
+toppen van twee graffen, eenvoudigweg omdat elke uitbreiding een licht verschillend resultaat zal opleveren.
+Daarom zijn deze similariteitscores vooral in verhouding tot de andere scores interessant: we kunnen 
+bv. gemakkelijk bepalen welke top van de ene graf, het meest lijkt op de top van een andere 
+graf simpelweg door de grootste similariteitsscore te bekijken.    Dit zal ook blijken uit het korte overzicht van toepassingen dat op 
+het einde van deze masterproef is toegevoegd, ook daar wordt een
+similariteitsscore enkel in verhouding tot de andere similareitsscores bekeken.
+
+In het voorlaatste hoofdstuk ontdekken we tot slot nieuw terrein: we proberen 
+via tensoren het concept van similariteit over te brengen op de meer algemene 
+structuur van hypergraffen. Een generalizatie die wonderwel slaagt door de tensoren zo om te vormen dat we opnieuw dezelfde convergentiestelling als bij graffen toe te 
+passen. Toch is er ook een grote maar, want net zoals bij de meeste andere
+uitbreidingen via tensoren, is ook hier de vloek van de dimensionaliteit nooit ver weg. 
+
+
+ 
 
 \tableofcontents
 \newpage
@@ -144,12 +188,12 @@ those, we look at the Perron-Frobenius theorem.
   obtained by permuting the rows of the identity matrix $I_n$ according to $\pi$. 
   So:
  $$P_\pi = \begin{bmatrix} 
-\mathbf{e}_{\pi(1)}  \\
-\mathbf{e}_{\pi(2)}  \\
+e^T_{\pi(1)}  \\
+e^T_{\pi(2)}  \\
 \vdots  \\
-\mathbf{e}_{\pi(n)}  
+e^T_{\pi(n)}  
 \end{bmatrix}.$$
- where $\mathbf{e}_{j}$ is the $j$-th row of $I_n$.
+ where $e_{j}$ is the $j$-th column of $I_n$.
  \end{definition}
 \begin{example}
   The permutation matrix $P_\pi$ corresponding to the permutation  $$\pi = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 4 & 2 & 3 \end{pmatrix} $$
@@ -346,6 +390,7 @@ c_n\\
     again from Definition \ref{defreduciebel} we conclude that $A$ is reducible.
 
  \end{proof}
+ 
  
 
  \section{Perron-Frobenius Theorem}
@@ -645,8 +690,9 @@ arrived at the Perron-Frobenius Theorem:
    
    \begin{definition}\label{perronroot}
      If a matrix $A$ has an eigenvalue equal to the spectral radius $\rho(A)$, this eigenvalue
-     is called the \textbf{Perron root}, the corresponding eigenvector is called 
-     the \textbf{Perron root}.
+     is called the \textbf{Perron root}, the corresponding eigenvector $\mathbf{x}$ such that:
+     $$A\mathbf{x} = \rho(A)\mathbf{x} \quad \text{and} \quad \|\mathbf{x}\|_1 = 1$$s called 
+     the \textbf{Perron vector}.
    \end{definition}
 
   
@@ -685,6 +731,163 @@ and hence is primitive. The same goes for $$\left(\begin{array}{cc}
 1 & 1 \\
 \end{array}\right),$$ this matrix is irreducible but not primitive. Its 
 eigenvalues are $1$ and $-1$.
+
+\section{Norms}
+If one has several vectors in $\R^n$ or several matrices in $\R^{n\times m}$, 
+how do we measure that some of them are `large' and some of them are `small'? 
+One way to answer this question is to study norms, which are basically functions 
+that a assign a positive `size' to a vector in a vector space. The norms that we define 
+in this master thesis are limited to $\R^n$ and $\R^{n\times m}$ and we call 
+them respectively \emph{vector norms} (norms on $\R^n$) and \emph{matrix norms} (norms on $\R^{n\times 
+m}$). This section is mainly based on chapter 2 from \cite{golub} and chapter 5 
+form \cite{horn}.
+
+\subsection{Vector norms}
+\begin{definition}
+  A \textbf{vector norm} on $\R^n$ is a function $\|\cdot\|: \R^n \to \R$ with 
+  the following properties:
+  \begin{enumerate}
+ \item $\|\mathbf{x}\| \leq 0$, for all $\mathbf{x} \in \R^n$ with equality if 
+ and only if $\mathbf{x} = \mathbf{0}$.
+ \item $\|\mathbf{x} + \mathbf{y}\| \leq \|\mathbf{x}\| + \|\mathbf{y}\|$ for 
+ all $\mathbf{x},\mathbf{y} \in \R^n$.
+ \item $\|\alpha \mathbf{x}\| = |\alpha|\|\mathbf{x}\|$ for all $\alpha \in \R$, $\mathbf{x} \in 
+ \R^n$.
+  \end{enumerate}
+\end{definition}
+
+
+
+We now give some well known vector norms:
+\subsubsection{$p$-norms}
+\begin{definition}
+  The \textit{H\"{o}lder} or  \emph{p-norms} are defined by:
+  $$\|\mathbf{x}\|_p = (\|x_1\|^p+\cdots + \|x_n\|^p)^{\frac{1}{p}} = \left(\sum_{i=1}^n |\mathbf{x}_i|^p\right)^{\frac{1}{p}},$$
+  for $\mathbf{x} \in \R^n.$
+\end{definition}
+The $1$-norm is also known as the \emph{Manhatten} norm:
+$$\|\mathbf{x}\|_1 = |x_1|+  \cdots + |x_n|$$
+
+The $2$-norm is also known as the standard \emph{Euclidean norm}:
+$$\|\mathbf{x}\|_2 = (|x_1|^2+  \cdots + |x_n|^2)^{\frac{1}{2}} = (\text{trace}(\mathbf{x}^T \mathbf{x}))^{\frac{1}{2}}$$
+Notice that the $2$-norm is invariant under orthogonal transformation, for if 
+$Q^TQ = I$ with $Q \in \R^{n\times n}$ and $\mathbf{x} \in \R^n$:
+$$\|Q\mathbf{x}\|^2_2 = \text{trace}(\mathbf{x}^TQ^TQ\mathbf{x}) = \text{trace}(\mathbf{x}^T\mathbf{x}) = 
+\|\mathbf{x}\|^2_2$$
+
+\subsubsection{Maximum norm}
+Finally, when $p \to \infty$ we get the \emph{maximum norm}:
+$$\|\mathbf{x}\|_\infty = \max(|x_1|, \ldots, |x_n|)$$ 
+We will prove this:
+\begin{theorem}
+  Let $\mathbf{x} \in \R^n$ then:
+  $$\lim_{p\to \infty}\|\mathbf{x}\|_p = \|\mathbf{x}\|_\infty =\max(|x_1|, \ldots, |x_n|)$$
+\end{theorem}
+\begin{proof}
+  Rewrite $\|\mathbf{x}\|_p$ as:
+  $$\|\mathbf{x}\|_p = \left(\sum^n_{i=1} |x_i|^p \right)^{\frac{1}{p}} = \|\mathbf{x}\|_\infty 
+  \left(\sum^n_{i=1} \left(\frac{|x_i|}{\|\mathbf{x}\|_\infty} \right)^p \right)^{\frac{1}{p}}$$
+  Note that $\left(\frac{|x_i|}{\|\mathbf{x}\|_\infty}\right) \leq 1$ for every $i$, with equality at least once and
+  at most $n$ times, then:
+  $$\|\mathbf{x}\|_\infty \leq \|\mathbf{x}\|_p \leq \|\mathbf{x}\|_\infty n^{\frac{1}{p}}$$ 
+  because $n > 0$, we get $\lim_{p\to \infty} n^{\frac{1}{p}} = 1$, then:
+  $$\lim_{p\to\infty} \|\mathbf{x}\|_p = \|\mathbf{x}\|_\infty.$$
+\end{proof}
+
+\subsubsection{Norm equivalence}
+
+One very import property of all the norms of $\R^n$ is that they are all 
+\emph{equivalent}, meaning that when two vectors have about the same size according to one vector norm, they also
+will have more or less the same size according to another vector norm. 
+
+\begin{theorem}\label{equivalencenorms}
+  All norms on $\R^n$ are \emph{equivalent}, i.e., if $\|\cdot\|_\alpha$ and 
+  $\|\cdot\|_\beta$ are norms on $\R^n$, then there exist positive constants $c_1, c_2 \in 
+  \R^+$ such that:
+  $$c_1 \|\mathbf{x}\|_\alpha \leq \|\mathbf{x}\|_\beta \leq c_2 
+  \|\mathbf{x}\|_\alpha$$
+  
+  \end{theorem}
+\begin{proof}
+  We demonstrate that any norm $\|\cdot\|_\alpha$ on $\R^n$ is equivalent to the 
+  Euclidean norm. Let $\{\mathbf{e}_1,\ldots,\mathbf{e}_n\}$ be the canonical 
+  basis for $\R^n$, so any $\mathbf{x} \in \R^n$ can be written as $x = \sum_{i=1}^n x_i 
+  e_i$. For all pairs of vectors $\mathbf{x}, \mathbf{y} \in \R^n$ we check that $\|\cdots\|$ is continuous
+  with respect to the Euclidean norm and we get using the Cauchy-Schwarz inequality:
+  \begin{eqnarray*}
+    \|\mathbf{x} - \mathbf{y}\|_\alpha &=& \left\|\sum_{i=1}^n (x_i - y_i)e_i 
+    \right\|_\alpha\\
+   &\leq& \sum_{i=1}^n (x_i - y_i)\|e_i\|_\alpha\\
+   &\leq& \max_{1\leq i \leq  n}(\|e_i\|_\alpha)   \sum_{i=1}^n (x_i - y_i)\\
+   &\leq& M \left( \sum_{i=1}^n (x_i - y_i)^2\right)^{\frac{1}{2}}\\
+   &=& M \|x-y\|_2,
+  \end{eqnarray*}
+  with $M = \max_{1\leq i \leq n}(\|e_i\|_\alpha)$. This means that when two vectors
+  are nearby with respect to the Euclidean norm, they are also nearby with respect
+  to any other norm. Now consider the unit sphere with respect
+  to the Euclidean norm $S= \{\mathbf{x} \in \R^n: \|\mathbf{x}\|_2 = 1 \}$. 
+  This set is closed and bounded in the Euclidean topology, so the theorem of 
+  Heine-Borel (see Theorem 3.5.2 in \cite{caenepeel}) shows that it is compact. Therefore, the continuous function $\|\cdot\|$ 
+  attains it's maximum and minimum values on $S$, say $c'_1$ and $c'_2$. That is,
+  $$c'_1\|\mathbf{x}\|_2 \leq \|\mathbf{x}\|_\alpha \leq c'_2\|\mathbf{x}\|_2$$
+  for any $x$ with on the 
+  Euclidean unit sphere. But every vector $\mathbf{y} \in \R^n$ can be 
+  expressed as $\mathbf{y} = \alpha \mathbf{x}$ for some $\mathbf{x}$ on the 
+  Euclidean unit sphere. If we multiply the foregoing inequality by $|\alpha|$ 
+  and draw the scalar into the norms, we get:
+  $$c'_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\alpha \leq c'_2\|\mathbf{y}\|_2$$
+  for any vector $\mathbf{y}$.
+  We must check that the constants $c'_1$ and $c'_2$ are positive. They are 
+  clearly nonnegative since $\|\cdot\|$ is nonnegative and $c'_1\leq c'_2$ by 
+  definition. Assume that $c'_1 = 0$, which implies the existence of a point $\mathbf{x}$
+  on the Euclidean unit sphere for which $\|\mathbf{x}\| = 0$, but then $x = 0$, 
+  a contradiction.
+  So, we have proved that we can find $c'_1, c'_2, c''_1, c''_2$ such that:
+  \begin{eqnarray*}
+    c'_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\alpha \leq c'_2\|\mathbf{y}\|_2\\
+    c''_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\beta \leq c''_2\|\mathbf{y}\|_2\\
+  \end{eqnarray*}
+  so we get:
+  $$\frac{1}{c'_2}\|\mathbf{y}\|_\alpha \leq \|\mathbf{y}\|_2 \leq \frac{1}{c''_1}\|\mathbf{y}\|_\beta$$
+and:
+$$\frac{1}{c''_2}\|\mathbf{y}\|_\beta \leq \|\mathbf{y}\|_2 \leq \frac{1}{c'_1}\|\mathbf{y}\|_\alpha$$
+
+  Take $c_1 = \frac{c''_1}{c'_2}$ and $c_2=\frac{c''_2}{c'_1}$.
+\end{proof}
+For example, for any $\mathbf{x} \in \R^n$ we have:
+\begin{eqnarray*}
+  \|\mathbf{x}\|_2 &\leq \|\mathbf{x}\|_1 \leq& \sqrt{n}\|\mathbf{x}\|_2\\
+   \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_2 \leq& \sqrt{n}\|\mathbf{x}\|_\infty\\
+     \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_1 \leq& n\|\mathbf{x}\|_\infty
+  \end{eqnarray*}
+\subsection{Matrix norms}
+The analysis of matrix algorithms requires that we be able to assess the size of 
+matrices. We introduce therefore \textit{matrix norms}, off course, this 
+definition is completely analogous:
+\begin{definition}
+  A \textbf{matrix norm} on $\R^{n\times m}$ is a function $\|\cdot\|: \R^{n\times m} \to \R$ with 
+  the following properties:
+  \begin{enumerate}
+ \item $\|A\| \leq 0$, for all $A \in \R^{n\times m}$ with equality if 
+ and only if $A$ is a matrix with only zero entries.
+ \item $\|A + B\| \leq \|A| + \|B\|$ for 
+ all $A, B \in \R^{n\times m}$.
+ \item $\|\alpha A\| = |\alpha|\|A\|$ for all $\alpha \in \R$, $A \in 
+ \R^{n\times m}$.
+  \end{enumerate}
+\end{definition}
+\subsubsection{Frobenius norm}
+One of the most frequently used matrix norms is the so called \textit{Frobenius norm}:
+$$\|A\|_F = \left(\sum_{i=1}^n \sum_{j=1}^m |a_{ij}|^2\right)^{\frac{1}{2}} = \text{trace}(A^TA)^{\frac{1}{2}} ,$$
+If $A \in \R^{1\times m}$, then the Frobenius norm equals the 2-norm.
+
+\subsubsection{$p$-norms}
+We can also define $p$-norms on matrices:
+$$\|A\|_p = \sup_{x\not = 0} \frac{\|Ax\|_p}{\|x\|_p}$$
+
+Again, we can show that all matrix norms are equivalent with the same reasoning 
+as in Theorem \ref{equivalencenorms}.
+
 \section{Numerical analysis}
 \subsection{Bachmann-Landau notations}
 For comparing the computational cost of algorithms, 
@@ -1218,6 +1421,11 @@ there is an integer $k$ such that $(A^k)_{ij} > 0$, from Theorem \ref{irredubiel
 know this means that $A$ is irreducible and vice versa.
 
 \end{proof}
+
+\section{Hypergraphs}
+After introducing graphs, we now introduce hypergraphs. Intuitively, a 
+hypergraph is a generalization 
+
 
 \chapter{Similarity on graphs}
 
@@ -1879,12 +2087,14 @@ results we wanted intuitively.
  competition in the world, reaching about 200 million anually.
   
  The contest consists of three shows: 2 semi-finals and 1 grand final. From each 
- semi-final, 10 countries proceed the the grand final. Each country, also those 
+ semi-final, 10 countries proceed the the grand final. Italy, Germany, Spain, United Kingdom and France are 
+ always qualified for the grand final because they are the main funders of the event. 
+ Also the winner of last year participates automatically in the final. Each country, also those 
  who dropped out during the semi-finals, gives points during the voting of the grand final. 
 The voting during the grand final takes place after all the countries have performed their song. 
 Each country is called and and awards 12 points to their 
 favorite song, 10 points to their second favorite, and then points from 8 down 
-to 1 to other eight songs. Countries can not vote for themselves. 
+to 1 to eight other songs. Countries can not vote for themselves. 
 
 The voting 
 system is in fact a positional voting system that is very similar to the Borda count 
@@ -1904,8 +2114,10 @@ expect a lot more: when we order the countries based on their authority score,
 we expect that this ordering will be practically equal to the final ranking of the contest. 
 This is based on the simple fact that Borda count just sums up points, and we 
 only expect very small differences when the difference in points is low between 
-two countries, because then the hub scores can influence the result of the 
-HITS-algorithm a bit.
+two countries. This small differences are then be caused by the algorithm: remember 
+that the HITS-algorithm does not simply give a high authority score to nodes 
+with a large indegree, but also takes the hub scores into account, but we will 
+see that the hub scores will be low so their influence will indeed be limited.
 
 But what is very interesting now, is the role that the hub scores are playing. 
 In fact these scores can be seen as a kind of `predictive value' of a country: a 
@@ -2073,12 +2285,14 @@ The result is presented in Table \ref{thub}. The complete results of each year c
 
 We see that Hungary, Cyprus and Belgium are the best predictors during the last 
 five years. The bottom is also not very surprising: in 2010, 2012 and 2013 Albania did not 
-receive enough televotes so the jury decided their points for $100\%$ (see \cite{eurovision} for more information), making their judging process vary from one year to another.
+receive enough televotes so the jury decided their points (see \cite{eurovision} for more information), making their judging process vary from one year to another.
 Azerbaijan and Armenia scored very high in the last five years, (e.g. Azerbaijan reached the top 5
 every year except 2014, won in 2011 and became second in 2013) 
 but due to their dispute about the Nagorno-Karabakh region, they never exchanged a 
 single
-point during the last five years.
+point during the last five years. Also cultural differences are probably an 
+explanation: Georgia, Azerbaijan and Armenia are located in the Caucasus, a remote corner of Europe, with 
+many Asian influences (the region is sometimes refered to as Eurasia). 
 
 \begin{table}[h!]
 \begin{tabular}{|l|r|r|r|r|r|r|r|r|}
@@ -2919,7 +3133,9 @@ we can apply Theorem \ref{grootbewijs} and the result follows. $M$ is, of
 course, nonnegative because the adjacency matrices $A$ and $B$ are always 
 nonnegative. To see that $M$ is symmetric, first notice that M can be rewritten 
 using Lemma \ref{hulptensor} to:
-$$M = A \otimes B + (A \otimes  B)^T,$$
+\begin{eqnarray}\label{uitgeschrevenvectornormaal}
+M = A \otimes B + (A \otimes  B)^T,
+\end{eqnarray}
 because $A \otimes B$ is a $nm \times nm$ square matrix, we know that $M$ is 
 symmetric because it's the sum of a square matrix and it's transpose. In order 
 to stay consistent with the vector norm appearing in Theorem \ref{grootbewijs}, the matrix norm 
@@ -3281,7 +3497,7 @@ $$\begin{pmatrix}
 The paper of Blondel et al. \cite{blondel} caused a flow of successive papers 
 which build upon the concept of similarity between two graphs. For instance, the paper
 `Graph similarity scoring and 
-matching' of Laura A Zager and Goerge C. Verghese \cite{zager} expands the 
+matching' of Laura Zager and Goerge Verghese \cite{zager} expands the 
 notion of node similarity presented in the previous section to similarity 
 between the edges of two graphs. The paper was presented in 2006. Intuitively an 
 edge of a graph $\graf$ is similar to an edge of graph $\grafeen$ if their 
@@ -3297,30 +3513,28 @@ source and terminal nodes.
 
 
 \begin{definition}
-  Let be $\graf=(V,\to)$ be a graph with adjacency matrix A, vertices $v_1, v_2, \ldots, v_n \in V$ 
-  and edges $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
-  V)$. We define the \textbf{source-edge matrix $A_S$} as a $n\times m$ matrix with entries:
-  $$(A_S)_{ij} = \begin{cases} 1 &\mbox{if }$s_\graf(j) = v_i$   \\ 
+  Let be $\graf=(V,\to)$ be a graph with adjacency matrix A, numbered vertices $v_1, v_2, \ldots, v_n \in V$ 
+  and numbered edges $e_1, e_2, \ldots e_m  \in \to$. We define the \textbf{source-edge matrix $A_S$} as a $n\times m$ matrix with entries:
+  $$(A_S)_{ij} = \begin{cases} 1 &\mbox{if }$s_\graf(e_j) = v_i$   \\ 
 0 & \mbox{otherwise} \end{cases},$$
 the notation $A_S$ is derived from the adjacency matrix $A$, when the graph 
 would have another adjacency matrix, for instance $B$, we would write $B_S$.
   \end{definition}
   
   \begin{definition}
-  Let be $\graf=(V,\to)$ be a graph with adjacency matrix $A$, vertices $v_1, v_2, \ldots, v_n \in V$ 
-  and edges $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
-  V)$. We define the \textbf{terminus-edge matrix $A_T$} as a $n\times m$ matrix with entries:
-  $$(A_T)_{ij} = \begin{cases} 1 &\mbox{if }$t_\graf(j) = v_i$   \\ 
+  Let be $\graf=(V,\to)$ be a graph with adjacency matrix $A$, numbered vertices $v_1, v_2, \ldots, v_n \in V$ 
+  and numbered edges $e_1, e_2, \ldots e_m  \in \to$. We define the \textbf{terminus-edge matrix $A_T$} as a $n\times m$ matrix with entries:
+  $$(A_T)_{ij} = \begin{cases} 1 &\mbox{if }$t_\graf(e_j) = v_i$   \\ 
 0 & \mbox{otherwise} \end{cases},$$
 the notation $A_T$ is derived from the adjacency matrix $A$, when the graph 
 would have another adjacency matrix, for instance $B$, we would write $B_T$.
   \end{definition}
-\begin{property}
+\begin{property}\label{outdegreeprop}
 Let $\graf=(V,\to)$ be a graph, then $A_SA^T_S$ is a diagonal matrix where the $i$th diagonal entry is equal the outdegree of vertex $v_i$.
    \end{property}
    \begin{proof}
 By direct computation, we get:
-$$(A_SA_S^T)_{ij} = \sum^n_{k=1}(A_S)_{ik}(A_S)^T_{kj} = \sum^n_{k=1}(A_S)_{ik}(A_S)_{jk}$$
+$$(A_SA_S^T)_{ij} = \sum^m_{k=1}(A_S)_{ik}(A_S)^T_{kj} = \sum^m_{k=1}(A_S)_{ik}(A_S)_{jk}$$
 Assume $i \not = j$. Then for each $k$, $(A_S)_{ik}(A_S)_{jk}= 0$ since vetrex $v_i$ 
 and vertex $v_j$ can't be both the source node of edge $k$.
 
@@ -3330,17 +3544,17 @@ $v_i$, this is exactly the outdegree of vertex $v_i$.
    \end{proof}
    
 In an analogous way, we prove:
-\begin{property}
+\begin{property}\label{indegreeprop}
 Let $\graf=(V,\to)$ be a graph, then $A_TA_T^T$ is a diagonal matrix where the $i$th diagonal entry is equal the indegree of vertex $v_i$.
    \end{property}
 
-\begin{property}
+\begin{property}\label{adjancencyprop}
   Let $\graf =(V,\to)$ be a graph, then the adjacency matrix $A$ is equal to 
   $A_SA^T_T$.
 \end{property}
 \begin{proof}
   By direct computation, we get:
-  $$(A_SA_T^T)_{ij} = \sum^n_{k=1}(A_S)_{ik}(A_T)^T_{kj} = \sum^n_{k=1}(A_S)_{ik}(A_T)_{jk}$$
+  $$(A_SA_T^T)_{ij} = \sum^m_{k=1}(A_S)_{ik}(A_T)^T_{kj} = \sum^m_{k=1}(A_S)_{ik}(A_T)_{jk}$$
 The terms $(A_S)_{ik}(A_T)_{jk}$ equal $1$ if edge $k$ goes from $v_i$ to 
 $v_j$ and since the sum is taken over all edges we conclude:
 $$(A_SA_T^T)_{ij} = A_{ij}.$$
@@ -3349,28 +3563,25 @@ Let  $\graf(V,\to)$, $\grafeen(U,\to')$ be two (directed) graphs, $\graf$ has $n
 Remember the following updating equation from (\ref{vergblondel}), which returns the 
 (node) similarity score between vertices $u_i$ 
 from $\grafeen$ and $v_j$ from $\graf$:
-$\graf=(U,\to)$ :
 \begin{eqnarray*}
  x^{(k+1)}_{ij} = \sum_{r:(u_r,u_i)\in \to', w:(v_w,v_j) \in \to} x^{(k)}_{rw} +  \sum_{r:(u_i,u_r)\in \to', w:(v_j,v_w) \in \to} 
  x^{(k)}_{rw},
  \end{eqnarray*} 
-if we number the edges of $\graf$ and $\grafeen$ as  $(v_{x'_1},v_{y'_1})_1, (v_{x'_1},v_{y'_1})_2,\ldots, (v_{x'_{m_\graf}},v_{y'_{m_\graf}})_{m_\graf} \in \to$ (with $(v_{x'_i},v_{y'_i})\in 
-  V)$ and $(u_{x'_1},v_{y'_1})_1, (u_{x'_1},v_{y'_1})_2,\ldots, (u_{x'_{m_\grafeen}},v_{y'_{m_\grafeen}})_{m_\grafeen} \in \to'$ (with $(u_{x'_i},u_{y'_i})\in 
-  U)$ , this can be rewritten as:
+if we number the edges of $\graf$ and $\grafeen$ as  $e_1, e_2, \ldots e_{m_\graf}  \in \to$ and $e'_1, e'_2, \ldots, e'_{m_\grafeen}  \in \to'$, this can be rewritten as:
  \begin{eqnarray*}
- x^{(k+1)}_{ij} = \sum_{t_\grafeen(p)=u_i, t_\graf(q)=v_j} x^{(k)}_{s_\grafeen(p)s_\graf(q)} +  \sum_{s_\grafeen(p)=u_i, s_\graf(q)=v_j} 
- x^{(k)}_{t_\grafeen(p)t_\graf(q)}.
+ x^{(k+1)}_{ij} = \sum_{t_\grafeen(e'_p)=u_i, t_\graf(e_q)=v_j} x^{(k)}_{s_\grafeen(e'_p)s_\graf(e_q)} +  \sum_{s_\grafeen(e'_p)=u_i, s_\graf(e_q)=v_j} 
+ x^{(k)}_{t_\grafeen(e'_p)t_\graf(e_q)}.
  \end{eqnarray*} 
  We now extend this mutually reinforcing relation with the notion of edge 
  similarity. $x_{ij}$ denotes again the node similarity score between vertex $u_i$ from $\grafeen$ and vertex $v_j$ from $\graf$ 
  and $y_{pq}$ denotes the edge similarity score between edge $p$ from $\grafeen$ and edge $q$ in $\graf$, the update equations for edge and node similarity scores take now the 
  following form:
  \begin{eqnarray}
- y_{pq}^{(k+1)} &=& x^{(k)}_{s_\grafeen(p)s_\graf(q)} + x^{(k)}_{t_\grafeen(p)t_\graf(q)}\label{edge1}\\
- x^{(k+1)}_{ij} &=& \sum_{t_\grafeen(r)=u_i, t_\graf(w)=v_j} y^{(k)}_{rw} +  \sum_{s_\grafeen(t)=u_i, s_\graf(w)=v_j} y^{(k)}_{rw} \label{edge2}
+ y_{pq}^{(k+1)} &=& x^{(k)}_{s_\grafeen(e'_p)s_\graf(e_q)} + x^{(k)}_{t_\grafeen(e'_p)t_\graf(e_q)}\label{edge1}\\
+ x^{(k+1)}_{ij} &=& \sum_{t_\grafeen(e'_r)=u_i, t_\graf(e_w)=v_j} y^{(k)}_{rw} +  \sum_{s_\grafeen(e_t)=u_i, s_\graf(e_w)=v_j} y^{(k)}_{rw} \label{edge2}
  \end{eqnarray} 
 With the same 
- reasoning as presented in the previous section, these scores can be assembled into matrices $Y^{(k)}$ and $X^{k}$ 
+ reasoning as presented in the previous section, these scores can be assembled into matrices $Y^{(k)}$ and $X^{(k)}$ 
 by using the source-edge matrices $A_S$ and the terminus-edge matrices $A_T$. Let $A$ be the adjacency matrix of $\graf$ and $B$ be the adjacency
 matrix of $\grafeen$, let $X^{(k)}$ be the $n_\grafeen \times n_\graf$-matrix with entries $x_{ij}$, the node similarity scores at iteration step $k$ 
 and let $Y^{(k)}$ be the $m_\grafeen \times m_\graf$-matrix with entries $y_{pq}$, the edge similarity scores at step $k$. The equations (\ref{edge1}) and (\ref{edge2}) 
@@ -3385,11 +3596,10 @@ can be rewritten as:
  This will be completely analogous to Theorem \ref{frobvorm}, but we can achieve a slightly better result: not only the even and odd iterates
  will converge, the iteration converges as a whole. Lastly, remember that one of the conditions of Theorem \ref{grootbewijs} is to 
  normalize the results at each iteration step. Therefore, the following theorem comes as no surprise:
-  \textbf{Bij dit bewijs moet nog een stuk bijgevoegd worden dat bewijst dat de uiteindelijke matrix M enkel positieve eigenwaarden heeft.}
 
  \begin{theorem}\label{edgegrootbewijs}
    Let $\graf$ and $\grafeen$ be two graphs with adjacency matrices $A$ and $B$, $\graf$ has $n_\graf$ vertices and
-   $m_graf$ edges and$\grafeen$ has $n_\grafeen$ vertices and $m_grafeen$ edges, define: 
+   $m_\graf$ edges and $\grafeen$ has $n_\grafeen$ vertices and $m_\grafeen$ edges, define: 
 
 
    
@@ -3403,14 +3613,14 @@ can be rewritten as:
   
   Then the matrix subsequences $X^{(2k)}$, $Y^{(2k)}$ and $X^{(k+1)}$, $Y^{(k+1)}$ 
   converge to $X_{\text{even}}$, $Y_{\text{even}}$ and $X_{\text{odd}}$, 
-  $Y_{\text{odd}}$. If we take:
-  \begin{eqnarray*}
-    \mathbf{X}^{(0)} = \mathbf{1}  \in \R^{n_\grafeen \times n_\graf}\\
-    \mathbf{Y}^{(0)} = \mathbf{1} \in \R^{m_\grafeen \times m_\graf}
+  $Y_{\text{odd}}$. If we take\footnote{J is a matrix of all ones}:
+  \begin{eqnarray*}  X^{(0)} = J \in \R^{n_\grafeen \times n_\graf}\\
+    Y^{(0)} = J \in \R^{m_\grafeen \times m_\graf}
   \end{eqnarray*}
- as initial matrices, then $X_{\text{even}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})$ 
+ as initial matrices, then $X_{\text{even}}(\mathbf{1})=X_{\text{odd}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})= Y_{\text{odd}}(\mathbf{1})$ 
  are the unique matrices of largest 1-norm among all possible limits with positive 
- initial matices.
+ initial matices and the matrix sequence $X^{(k)}$, $Y^{(k)}$ converges has a 
+ whole.
   \end{theorem}
   \begin{proof}
  By Theorem \ref{tensor} we can rewrite (\ref{edgematrix1}) as follows:
@@ -3442,11 +3652,11 @@ can be rewritten as:
    &=& A_S\otimes B_S + A_T \otimes B_T
  \end{eqnarray*}
  So we get:
-  \begin{eqnarray*}
-     \mathbf{y}^{(k+1)} &=& G\mathbf{x}^{(k)}\\
-     \mathbf{x}^{(k+1)} &=& G^T\mathbf{y}^{(k)},\\
- \end{eqnarray*}
-$G$ is a $n_\graf n_\grafeen \times m_\graf m_\grafeen$-matrix, the previous expressions  can be concatenated to a single matrix update equation (we define matrix $M$ and $\mathbf{z}^{(k+1)}$):
+  \begin{eqnarray}
+     \mathbf{y}^{(k+1)} &=& G\mathbf{x}^{(k)}\label{uitgeschrevenvectoren1}\\
+     \mathbf{x}^{(k+1)} &=& G^T\mathbf{y}^{(k)}\label{uitgeschrevenvectoren2},
+ \end{eqnarray}
+$G$ is a $m_\graf m_\grafeen \times n_\graf n_\grafeen$-matrix, the previous expressions  can be concatenated to a single matrix update equation (we define matrix $M$ and $\mathbf{z}^{(k+1)}$):
  $$\mathbf{z}^{(k+1)} =\begin{pmatrix}
  \mathbf{x}\\
  \mathbf{y}
@@ -3459,14 +3669,57 @@ $G$ is a $n_\graf n_\grafeen \times m_\graf m_\grafeen$-matrix, the previous exp
  \mathbf{y}
  \end{pmatrix}^{(k)}
  = M\mathbf{z}^{(k)},$$
-  M is clearly nonnegative because $G$ and $G^T$ consists of sums of Kronecker products of $A_S, B_S, A^T$ and/or $B^T$, all matrices
+  M is clearly nonnegative because $G$ and $G^T$ consists of sums of Kronecker products of $A_S, B_S, A_T$ and/or $B_T$, all matrices
  with entries equal to zero or one, $M$ is as a $(n_\graf n_\grafeen + m_\graf m_\grafeen)\times(n_\graf n_\grafeen + m_\graf m_\grafeen)$-matrix
  clearly symmetric, so the result follows immediately from Theorem \ref{grootbewijs}. 
 The appearance of the Perron norm can be explained in the same way as in Theorem \ref{frobvorm}, note that we write $Y^{(k)}$ and $X^{(k)}$ 
-for the normalized results at iteration step $k$.
+for the normalized results at iteration step $k$. We still have to prove that 
+odd and even iterates are the same and that $M$ has only positive eigenvalues, meaning that the sequence converges to $\frac{\Pi \mathbf{z}^{(0)}}{\|\Pi \mathbf{z}^{(0)}\|_2}$,
+this can be done easily by expanding the matrix equation: 
+$$\mathbf{x}^{(k)} = \begin{cases} 
+(G^TG)^{\frac{k}{2}}\mathbf{x}^{(0)  &\mbox{$k$ even }\\
+ 
+(G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&\mbox{$k$ odd}
+\end{cases} \quad \text{and} \quad
+\mathbf{y}^{(k)} = \begin{cases} 
+(GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &\mbox{$k$ even }\\
+ 
+(GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)&\mbox{$k$ odd}
+\end{cases}
+$$
+The matrix $G$ is the sum of two matrices $(A_S^T \otimes B_S^T)$ and $(A^T_T \otimes 
+B^T_T)$. Now, $A_S^T$ is a $m_\graf \times n_\graf$-matrix and has in each row a 
+single `$1$'-entry, simply because an edge has at most one source node . The same holds for 
+$B_S^T$. Therefore, taking the Kronecker product of those two matrices results in the matrix $A_S^T \otimes B_S^T$
+which also has just a single `$1$' entry in each row. With the same reasoning, 
+we conclude that also $A^T_T \otimes B^T_T$ has also just a single `$1$'-entry in each row. Taking 
+the sum of $(A_S^T \otimes B_S^T)$ and $(A^T_T \otimes 
+B^T_T)$ results thus in the matrix $G$ with exactly two $1$ entries in each row. If we know choose the initial conditions as 
+$\mathbf{x}^{(0)} = \mathbf{1} \in \R^{n_\grafeen n_\graf}$ and $\mathbf{y}^{(0)} = 
+\mathbf{1} \in \R^{m_\grafeen m_\graf}$. Then we conclude:
+$$G\mathbf{x}^{(0)} = 2\mathbf{y}^{(0)},$$
+we get:
+\begin{eqnarray*}
+\mathbf{x}^{(k)} &=& \begin{cases} 
+(G^TG)^{\frac{k-2}{2}}G^TG\mathbf{x}^{(0)} = \frac{1}{2}(G^TG)^{\frac{k-2}{2}}G^T\mathbf{y}^{(0) &\mbox{$k$ even }\\
+(G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&\mbox{$k$ odd}
+\end{cases}\\
+\mathbf{y}^{(k)} &=& \begin{cases} 
+(GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &\mbox{$k$ even }\\
+(GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)} = (GG^T)^{\frac{k-1}{2}}\frac{1}{2}\mathbf{y}^{(0)\;\;\;\;\;\;\;\;\;\;\;\;\;&\mbox{$k$ odd}
+\end{cases}
+\end{eqnarray*}
+First, observe that the matrices $GG^T$ and $G^TG$ are besides being symmetric (for example, $(GG^T)^T = GG^T$) 
+and nonnegative, are also positive semi-definite and thus have only nonnegative 
+eigenvalues. Note that the factor $\frac{1}{2}$ that appears in the odd iterates 
+will be eliminated by the normalization in each step. So in the limit as $k \to \infty$ 
+, the even and odd iterates are the same.
+
  \end{proof}
  We define now $X_{\text{even}}(\mathbf{1})$ as the node similarity matrix and $Y_{\text{even}}(\mathbf{1})$ as the edge similarity 
  matrix.
+ 
+ 
  
 
   \subsection{The algorithm}
@@ -3504,16 +3757,16 @@ $k = k + 1$\;
  
  The algorithm to calculate the node and edge similarity scores is presented in pseudo-code in Algorithm \ref{edgealgorithm}. 
  Remember that the absolute value that is mentioned is the same as in Notation 
- \ref{modulusmatrix}. Besides the differenfSt calculations, the main difference with the algorithm of the previous section (Algorithm \ref{algsimilarity})
+ \ref{modulusmatrix}. Besides the different calculations, the main difference with the algorithm of the previous section (Algorithm \ref{algsimilarity})
  is that the whole sequence converges, not only the even (or odd) iterates, 
  making this algorithm twice as fast. Also notice that we implement a \textit{sequential} 
- update: when $Y^{(k)}$ is calculated, it's result is immediately used in 
+ update: when $Y^{(k)}$ is calculated,the result is immediately used in 
  $X^{(k)}$. This is not according to Theorem \ref{edgegrootbewijs}, which 
  suggest \textit{simultaneous} updating equations: in that case $X^{(k)}$ uses $Y^{(k-1)}$ 
  in it's calculations. It is not difficult to see, by an analogous argument of 
  Theorem \ref{edgegrootbewijs}, that both approaches yield the same set of 
  similarity scores. Numerical analysts, however, will always prefer the sequential
- update procedure because it performs slightly better. 
+ update procedure because it performs slightly better (see section 3.2 in \cite{numeriekwiskunde}). 
  
  A Matlab implementation 
  can be found in Listing \ref{edgematlab} in Appendix \ref{appendixa}. Because giving source-edge matrices and terminal-edge matrices as input
@@ -3538,7 +3791,7 @@ $k = k + 1$\;
 \myalg{\powermethod{$A$}}{
 $m$ = sum of all entries of $A$ \;
 $A_S$ = initialize a $n \times m$-matrix wit all entries equal to 0\;
-current\_edge = 0 \;
+current\_edge = 1\;
 
 \For{$i: 1$ to $n$ }{
   \For{$j: 1$ to $n$ }{
@@ -3555,8 +3808,80 @@ current\_edge = 0 \;
 \end{algorithm}
  
  \subsection{Difference with node similarity}
- \textbf{Dit wordt nog uitgewerkt}
+It is clear that the node-edge similarity algorithm is different from 
+Algorithm \ref{algsimilarity} from the previous section. We will make this a little 
+more explicit and show how different the resulting node similarity matrix is exactly. We first need another property of the Kronecker property.
 
+\begin{property}\textbf{(mixed-product proeperty of Kronecker products)}
+  Let $A \in \R^{m\times n}, B \in \R^{r \times s}, C \in \R^{n\times p}$ and $D \in \R^{s \times t}$ 
+  then:
+  $$(A\otimes B)(C \otimes D) = AC \otimes BD\; (\in \R^{mr \times pt})$$
+\end{property}
+\begin{proof}
+  \begin{eqnarray*}
+(A\otimes B)(C \otimes D) &=&
+  \begin{pmatrix}
+    a_{11}B & \ldots & a_{1n}B\\
+    \vdots & \ddots & \vdots\\
+    a_{m1}B & \ldots & a_{mn}B
+  \end{pmatrix}
+  \begin{pmatrix}
+    c_{11}D & \ldots & c_{1p}D\\
+    \vdots & \ddots & \vdots\\
+    a_{n1}D & \ldots & a_{np}D
+  \end{pmatrix}\\
+  &=& \begin{pmatrix}
+    \sum_{k=1}^n a_{1k}c_{k1}BD & \ldots & \sum_{k=1}^n a_{1k}c_{kp}BD\\
+    \vdots & \ddots & \vdots\\
+    \sum_{k=1}^n a_{mk}c_{k1}BD & \ldots & \sum_{k=1}^n a_{mk}c_{kp}BD\\
+  \end{pmatrix}\\
+  &=& AC \otimes BD.
+  \end{eqnarray*}
+\end{proof}
+
+
+
+Now take equations (\ref{uitgeschrevenvectoren1}) and 
+(\ref{uitgeschrevenvectoren2}) and consider only the even iterates. We consider only the even iterates because Algorithm \ref{algsimilarity} does, 
+remember that in Algorithm \ref{edgealgorithm} the even and odd iterates yield 
+the same set of similarity scores, we get:
+\begin{eqnarray*}
+  \mathbf{x}^{(k)} &=& (G^TG)\mathbf{x}^{(k-2)}\\
+  &=& ((A_S\otimes B_S + A_T \otimes B_T)(A^T_S \otimes B^T_S + A^T_T \otimes 
+  B^T_T))\mathbf{x}^{(k-2)}\\
+  &=& ((A_S\otimes B_S)(A^T_S \otimes B^T_S) + (A_S\otimes B_S)(A^T_T \otimes 
+  B^T_T) \\
+  &\quad& + (A_T \otimes B_T)(A^T_S \otimes B^T_S) + (A_T \otimes B_T)(A^T_T \otimes 
+  B^T_T))\mathbf{x}^{(k-2)}\\
+  &=& (A_S A^T_S \otimes B_SB^T_S + A_SA^T_T \otimes B_SB^T_T \\
+  &\quad& + A_TA^T_S \otimes 
+  B_TB^T_S + A_TA^T_T\otimes B_TB^T_T)\mathbf{x}^{(k-2)}\\
+  &=& (A_S A^T_S \otimes B_SB^T_S + A \otimes B + A^T \otimes B^T + A_TA^T_T\otimes 
+  B_TB^T_T)\mathbf{x}^{(k-2)}\\
+  &=& (A \otimes B + A^T \otimes B^T + A_S A^T_S \otimes B_SB^T_S + A_TA^T_T\otimes 
+  B_TB^T_T)\mathbf{x}^{(k-2)}
+\end{eqnarray*}
+Where $A, B$ are the adjancency matrices of $\graf, \grafeen$ (Property 
+\ref{adjancencyprop}), 
+$A_S A^T_S, B_S B^T_S$ are the diagonal matrices with the outdegrees of the vertices 
+on the diagonal (Property \ref{outdegreeprop}) and $A_TA^T_T, 
+  B_TB^T_T$ are the diagonal matrices with the indegree of the vertices on the 
+  diagonal (Property \ref{indegreeprop}). The iteration sugested in Theorem \ref{frobvorm} 
+  in the previous section has the following form (see equation 
+  (\ref{uitgeschrevenvectornormaal})):
+  $$\mathbf{x}^{(k)} = A \otimes B + A^T \otimes B^T\mathbf{x}^{(k-2)},$$
+thus Algorithm \ref{edgealgorithm} differs from Algorithm \ref{algsimilarity} in three important ways:
+\begin{itemize}
+  \item  In Algorithm \ref{edgealgorithm} the inclusion of additional diagonal terms serve to amplify the scores of 
+nodes that are highly connected in the node similarity matrix,
+\item  Algorithm \ref{edgealgorithm} returns a node similarity matrix and an edge similarity matrix, Algorithm \ref{algsimilarity}
+returns only a node similarity matrix,
+\item The whole sequence in Algorithm \ref{edgealgorithm} converges, not only 
+the even and odd iterates.
+
+\end{itemize}
+  
+  
  \subsection{Example}
  \begin{example}
    We retake Example \ref{eenvoudigvoorbeeldjes} and number the edges as 
@@ -3625,7 +3950,8 @@ $$X = \begin{pmatrix}
 \end{pmatrix}$$
 If you look at the structure of $\grafeen$ and compare it with the structure of $\graf$, then 
 intuitively it is not surprising that edge $3$ of $\grafeen$ is most similar to edge $1$ of 
-$\graf$ and edge $6$ of $\grafeen$ is most similar to edge $2$ of $\graf$.
+$\graf$ and edge $6$ of $\grafeen$ is most similar to edge $2$ of $\graf$ because they are both very
+central edges with source nodes and terminal nodes that are very similar.
  \end{example}
  
 
@@ -3633,7 +3959,7 @@ $\graf$ and edge $6$ of $\grafeen$ is most similar to edge $2$ of $\graf$.
 \section{Colored graphs}
 In this last section, we extend the notion of similarity to colored graphs. The 
 paper \cite{vandoren} is written by two Belgian professors Paul Van Dooren and 
-Catherin Fraikin from the French speaking part of the Catholic University of 
+Catherine Fraikin from the Catholic University of 
 Louvain in 2009.
 
 Graph coloring is already introduced in paragraph \ref{colored} and we will 
@@ -3641,7 +3967,7 @@ construct a method that returns similarity matrices for two graphs where the col
 on the edges of both graphs. 
 \subsection{Colored nodes}
 We first extend the node similarity introduced in section \ref{sectionnodesim} to 
-node colored graphs. Take two graphs $\graf=(V,\to, C, a)$ and $\grafeen=(U,\to', C, a')$ with $|C|$ (remember that $a$, $a'$ are surjective) different colors and assume that the nodes 
+node colored graphs. Take two node colored graphs $\graf=(V,\to, C, a)$ and $\grafeen=(U,\to', C, a')$ with $|C|$ (remember that $a$, $a'$ are surjective) different colors and assume that the nodes 
 in both graphs are renumbered such that those of color $1$ come first, then 
 those of color $2$,... The adjacency matrices $A$ (of graph $\graf$) and $B$ (of graph $\grafeen$) 
 can then be partitioned as follows:
@@ -3787,7 +4113,7 @@ A_{31} & A_{32} & A_{33}\\
 \end{pmatrix}\\
 \end{pmatrix} .$$
 \end{example}
-Now, we only will compare the nodes of the same in both graphs, so that we 
+Now, we will only compare the nodes of the same color in both graphs, so that we 
 define similarity matrices $S_{ii} \in \R^{c_\graf(i)\times c_\grafeen(i)}$, with 
 $i=1,\ldots,|C|$, which we can put in a block-diagonal similarity matrix:
 $$S = \begin{pmatrix}
@@ -3825,9 +4151,9 @@ S_{11} & 0 & \ldots & 0\\
   $C$ only consists of colors that are actually used.
     
    For $|C|=1$, we have a graph with all vertices having the same color, which can be seen as an uncoloured graph. This just 
-   the normal case as described in section \ref{sectionnodesim}.
-   
-Although redundant, it is instructive to prove the case $|C|=2$, because the 
+   the normal case as proved in Theorem \ref{frobvorm}.
+      
+Although redundant, it is instructive to prove the case $|C|=2$ seperately, because the 
 generalization in the induction step is then immediately clear, so consider 
 the partitioned adjacency matrices:
 $$\begin{pmatrix}
@@ -3978,6 +4304,97 @@ entries in the last column of $M$ are the transpose of the entries in the last
 row. It follows that $M$ is again symmetric.
 
 \end{proof}
+
+\chapter{Similarity on hypergraphs}
+\section{Introduction}
+In this section, we explore similarity on hypergraphs: an undiscovered field as 
+no papers can be found in journals about this subject. In this section, we try to formulate an answer to the question wheter
+we can generalize the results of the previous section to the domain of 
+hypergraphs.
+
+One of the most obvious ways to apply the concept of similarity to hypergraphs 
+is looking to the corresponding graph representation of a hypergraph and apply 
+the algorithms of the previous section. This is explained in the first section of 
+this chapter. Although it the most logic way to introduce similarity on hypergraphs, it's aslo the least significant
+solution because most graph representations throw away a lot of information that 
+the structure of a hypergraph contains.
+
+A slightly smarter, more meaningful way to introduce similarity on hypergraphs 
+is to work with the hypergraph variant of an adjacency matrix. As with graphs, 
+also hypergraphs can be represented by a kind of matrix representation. The only 
+difference with graphs is that there is no consensus at all in the literature 
+about which matrix representation is the standard for hypergraphs (see \cite{berge}).  
+
+The most common representation is a (two-dimensional) normal matrix representation, where the rows 
+represent the nodes and the columns the edges and the entries $(A)_{ij}$ are equal to $1$ if vertex $i$ is contained in edge $j$ and
+$0$ otherwise.
+Although it's an easy representation that is applicable to hypergraphs with edges containing different numbers of nodes, 
+the biggest drawbacks are that all edges must be undirected (there is no way to express
+which is the start node, the second node,..., terminal node) and that this 
+representation is completely different to the structure of an adjacency matrix 
+we are so used with graphs. The main reason why it's so popular is probably that 
+the hypergraph can be represented by just a normal matrix, no other 
+datastructure must be studied.
+
+Another way to represent a hypergraph is through a hypermatrix. 
+Take, for example, a 3-uniform hypergraph (see Definition \ref{unfiromgraph}), then the adjacency hypermatrix $\mathcal{A}$ 
+is $n \times n \times n$-hypermatrix, with $n$ the number of vertices. The element $(\mathcal{A})_{ijk} $ is 
+equal to the number of 3-edges between vertices $v_i, v_j$ and $v_k$. Besides that it is the natural generalization of adjacency matrices we 
+know from graphs, it's also a richer structure, this is explained in the final 
+reflection in subsection \ref{promohypermatrices}. For now, we consider only 
+$k$-uniform hypergrahs with undirected edges. Meaning that symmetry elements 
+given by permutations of the index set in the hypermatrix have the same value, so 
+in our $3$-uniform hypergraph this means that 
+$$(\mathcal{A})_{ijk} = (\mathcal{A})_{ikj} = (\mathcal{A})_{jik} = (\mathcal{A})_{jki} = (\mathcal{A})_{kij} = (\mathcal{A})_{kji}.$
+
+How do we generalize similarity by working with hypermatrix representations of 
+hypergraphs? Intuitively, it's not so hard to understand: all the algorithms 
+described in section 2 consist of a matrix sequences of which the convergence is 
+proved by Theorem \ref{grootbewijs}. All this proofs have one thing in common: 
+they use a vectorization of the matrix sequence, so the sequence can be 
+rewritten in the form:
+$$\mathbf{z}^{(k)} = M\mathbf{z}^{(k-1)}$$
+when $M$ meets certain conditions (being nonnegative and symmetric), our 
+convergence theorem can be applied and we're done. Now, we can apply the same 
+trick with hypermatrices, instead of a vectorization we can apply a \textit{matricization} on a 
+hypermatrix, turning the hypermatrix into a `normal', two-dimensional matrix. If 
+this returns the matrix sequences of section 2, we know that the generalized 
+methods will convergence. A beautiful visualization of this idea can be found in 
+Figure \ref{visualizatie}: think of a 3-uniform hypergraph with 3 nodes. The 
+corresponding hypermatrix will be of dimension $3 \times 3 \times 3$, which can 
+be visually represented as a cube. Just as a cube can be decomposed into a square and next into a straight line, 
+we can decompose the hypermatrix into a matrix and next into a vector.
+
+There is only one difficult aspect when we bring similarity to hypergraphs and 
+use their hypermatrix representation: the result will be a similarity 
+hypermatrix. This means that by calculating the similarity hypergraph of two  $k$-uniform hypergraphs, we don't get similarity scores to compare nodes (or edges) two-by-two
+but we get similarity scores to compare two groups of $k$ nodes at the same time. 
+We will propose some solutions to transform the resulting similarity hypermatrices 
+in such way we can compare nodes two-by-two.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.05]{cube.jpg}\caption{Just as a cube can be decomposed in to a square and even to a straight line,
+  a hypermatrix can be decomposed into a matrix and next into a vector. (Source: \emph{istockphoto.com})}\label{visualizatie}
+\end{figure}
+ 
+ 
+
+\texttt{hypergraph.tex}
+
+
+\section{Similarity through graph representations}
+
+\section{Node similarity}
+\section{Node-edge similarity}
+\section{Similarity on colored hypergraphs}
+\texttt{hypergraph.tex}
+
+\section{Final reflection}
+\subsection{Why hypermatrices are the best representation of a hypergraph}\label{promohypermatrices}
+\subsection{The curse of dimensionality}
+
+\section{Applications}
 \begin{appendices}
   \chapter{Listings} \label{appendixa}% appeared as appendix A
 \lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
@@ -4370,6 +4787,9 @@ row. It follows that $M$ is again symmetric.
 Applications}, Encyclopedia of Mathematics and its Applications 64, Cambridge University Press, 1997. 
 \bibitem[STERN2010]{1} S. Sternberg, \emph{The Perron-Frobenius theorem}, Chapter 9 in Dynamical Systems, Dover Publications, 2010.
 \bibitem[NOUT2008]{2} D. Noutsos, \emph{Perron-Frobenius theory and some extensions} (lecture notes), Department of Mathematics, University of Ioannina, May 2008.
+\bibitem[TROPP]{tropp} J. A. Tropp, \emph{Introduction to Numerical Methods}, California Institute of 
+Technology, 2005.
+\bibitem[CAENEPEEL]{caenepeel} S. Caenepeel, \emph{Analyse I}, Vrije Universiteit Brussel, 2011.
 \bibitem[VARGA] R. S. Varga, \emph{Matrix Iterative Analysis}, Prentice-Hall, 1962. 
 \bibitem[BRUALDI] R. A. Brualdi, H. J. Ryser, \emph{Combinatorial Matrix Theory}, Cambridge University 
 Press, 1991
@@ -4377,7 +4797,7 @@ Press, 1991
 Applications}, Academic Press, 1985
 \bibitem[MEU2011]{11} W. De Meuter, \emph{Algoritmen en Datastructuren I}, Vrije Universiteit Brussel, 2011.
 \bibitem[KIEBOOM2011]{kieboom} R. Kieboom, \emph{Aanvulling Lineaire Algebra}, Vrije Universiteit Brussel, 2011.
-\bibitem[ADHEMAR] A. Bultheel, \emph{Inleiding tot de numerieke wiskunde}, Acco, 
+\bibitem[ADHEMAR]{numeriekwiskunde} A. Bultheel, \emph{Inleiding tot de numerieke wiskunde}, Acco, 
 2006.
 \bibitem[BIN1977]{12} K.G. Binmore, \emph{Mathematical Analysis: A Straightforward Approach}, Cambridge Universitiy Press, 1977.
 \bibitem[GOLUB]{golub} G. Golub, C.F. Van Loan, \emph{Matrix Computations}, 
@@ -4402,9 +4822,13 @@ Drexel University, 2010.
 \bibitem[HORN]{horn} R.A. Horn, C.R. Johnson, \emph{Matrix Analysis}, Cambridge University Press, 1985.
 \bibitem[HORN2]{horn2} R.A. Horn, C.R. Johnson, \emph{Topics in Matrix 
 Analysis}, Cambridge University Press, 1991.
+\bibitem[LAUB]{laub} Alan J. Laub, \emph{Matrix Analysis for Scientists and 
+Engineers}, Siam, 2004.
 \bibitem[ZAGER]{zager} L. A.Zager, George C. Verghese, \emph{Graph similarity scoring and matching}, Applied Mathematics Letters, January, 2007.i
 Analysis}, Cambridge University Press, 1991.
 \bibitem[VANDOREN]{vandoren} P. Van Doren, C. Fraikin, \emph{Similarity matrices for colored 
 graphs}, Bulletin of the Belgian Mathematical Society Simon Stevin, 2009.
+\bibitem[BERGE]{berge} C. Berge, \textit{Graphs and Hypergraphs}, University of 
+Paris (North-Holland Publishing Company), 1970.
 \end{thebibliography}
 \end{document}
