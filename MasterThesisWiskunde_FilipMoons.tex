@@ -65,6 +65,9 @@
 \renewcommand{\int}{\text{int}}
 \newcommand{\graf}{\mathscr{G}}
 \newcommand{\grafeen}{\mathscr{H}}
+\newcommand{\hgraf}{\mathcal{G}}
+\usepackage{eufrak}
+\newcommand{\hgrafeen}{\mathcal{H}}
 \newcommand{\vect}{\operatorname{vec}}
 \newcommand{\tol}{\text{TOL}}
 
@@ -1190,7 +1193,7 @@ The definitions and results in this section are mainly based on the course
   most of the time denoted by calligraphic letters $\mathscr{G}, 
   \mathscr{H},..$.   \end{definition}
  When the relation $\rightarrow$ is symmetric, 
- we call the graph \textbf{undirected}, in this case we often write $\sim$ instead 
+ we call the graph \textbf{undirected}, in this case we often write $E$ instead 
  of $\rightarrow$.  
  
  
@@ -1250,23 +1253,37 @@ because you can not define multiple edges between vertices in a relation.
 
 
 
-Therefore we introduce a more general definition and introduce the concept of 
-multiplicity of an edge:
+Therefore we define multisets and make a remark that introduces the concept of 
+multiplicity of an edge using these multisets. Multisets are a generalization of 
+the notion of a set in which elements are allowed to appear more than once.
 
-\begin{definition}
-  A graph is an ordered pair $(V, \mu)$ with $V$ a set and $\mu: V \times V \to \N$ a function that gives the \textbf{multiplicity} of an edge.
-  The function is defined as follows:
-  \begin{itemize}
-    \item when $\mu(u, v) = 0$ we say that $u$ and $v$ are not adjacent;
-    \item when $\mu(u, v) = k > 0$ we say that there are $k$ edges from $u$ to 
-    $v$.
-  \end{itemize} 
+\begin{definition}\label{multiset}
+  A \textbf{multiset} $A=(S,\mu)$ is an ordered pair with $S$ a set and $\mu: S \to 
+  \N\minus{0}$ a function that gives the \textbf{multiplicity} of an element of $S$. A 
+  multiset can be written as a set in the following way:
+  $$A = (S, \mu) = \{(s,\mu(s)): s \in S\}$$
+  
+  The \textbf{cardinality of a multiset} is defined as 
+  $$|A| = \sum_{s \in S} \mu(s).$$
+  \end{definition}
+ Consider as an example the multiset $\{a, a, b, b, b c\}$ (with $a, b, c$ 
+ different elements), which can be denoted as a set as $\{(a, 2), (b,3), (c,1)\}$
+  
 \end{definition}
-It is clear that our previous definition fits perfectly in this more general definition, by constructing $\mu$ in this case as follows:
-$$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\ 
-0 & \mbox{otherwise}. \end{cases}$$ 
+
+We now introduce the following important remark using multisets:
+\begin{remark}
+  Although we will stay writing a graph as $\graf = (V,\to)$, this defintion doesn't allow
+  for repeated edges. A graph that can have multiple edges between two vertices 
+  is often called a \textbf{multigraph}, but in this master thesis we call a 
+  multigraph just a graph. To define this in a mathematical correct way, you define 
+$\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a multiset consisting of elements of the cartesian product $V \times V$.
+\end{remark}
+
+
+
  \begin{definition}
-  The \textbf{neighbourhood} of a vertex $v$ of a graph $\graf=(V,\mu)$ is the induced subgraph $\graf_v$ 
+  The \textbf{neighbourhood} of a vertex $v$ of a graph $\graf=(V,\to)$ is the induced subgraph $\graf_v$ 
  with vertex set $V'$ consisting of all vertices adjacent to $v$ without $v$ itself and with the multiplicity function $\mu'$,
  which is the restriction of $\mu$ to the vertices in $V'$.
  A vertex with a neighbourhood equal to the empty graph (a graph with an empty set of vertices) is called 
@@ -1276,8 +1293,7 @@ $$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\
 
  \begin{definition}\label{terminal}
   Let $\graf=(V,\to)$ be a graph with vertices $v_1, v_2, \ldots, v_n \in V$ 
-  and edges (defined as ordered pairs) $(v_{x_1},v_{y_1})_1, (v_{x_1},v_{y_1})_2,\ldots, (v_{x_m},v_{y_m})_m  \in \to$ (with $(v_{x_i},v_{y_i})\in 
-  V)$. Let $u \to v$ be an edge between $u, v \in V$. 
+  and edges (defined as ordered pairs) $e_1, \ldots e_m  \in \to$. Let $u \to v$ be an edge between $u, v \in V$. 
   We call $u$ the \textbf{source node} and $v$ the \textbf{terminal node} of the 
   edge. $s_\graf(i)$ denotes the source node $u_i$ of edge $i$, $t_\graf(i)$ denotes the 
   terminal node $w_i$ of edge $i$.
@@ -1319,8 +1335,7 @@ $$\mu(u,v)= \begin{cases} 1 &\mbox{if } (u,v) \in \to \\
   
 
 
-\begin{definition} A \textbf{simple graph} is an undirected graph $\graf=(V,\mu)$ containing no loops and for all vertices $v_i, v_j \in V$, we have that the multiplicity
- $\mu(v_i,v_j)$ is at most 1.\end{definition}
+\begin{definition}\label{simplegraph} A \textbf{simple graph} is an undirected graph $\graf=(V,\to)$ containing no loops and for all vertices $v_i, v_j \in V$, their is at most one edge.\end{definition}
  
  \subsubsection{Product graphs}
  \begin{definition}\label{productgraph}
@@ -1424,7 +1439,172 @@ know this means that $A$ is irreducible and vice versa.
 
 \section{Hypergraphs}
 After introducing graphs, we now introduce hypergraphs. Intuitively, a 
-hypergraph is a generalization 
+hypergraph is a generalization of a graph in which an edge can connect to any 
+number of vertices. 
+
+In contrast to the section about graphs, the representation of a hypergraph as a (multidimensional) adjacency matrix 
+is not yet introduced here. This representation is not trivial and needs an 
+introduction in basic tensor theory. It's not our goal to introduce this whole theory in this master thesis (in fact, this would
+be a master thesis on it's own), but it will only be clear to the reader after reading chapter 
+2 on similarity on graphs why certain topics are introduced and others are 
+left out. Therfore, the representation of a hypergraph as an adjacency tensor is 
+discussed in chapter 3 on similarity on hypergraphs.
+
+The reason why we separate both subjects is that hypergraphs are not as known as graphs, and so we think it's 
+intresting to the reader to discover the most important defintions about 
+hypergraphs already in this stage of the thesis, as it gives the reader an idea of all the mathematical objects we 
+will be discussing. The definitions presented are mainly from \cite{berge} and 
+\cite{hypper}.
+
+\subsection{General definitions}
+\begin{definition}
+  A \textbf{hypergraph} is an ordered pair (V, E) with $V$ a finite set of 
+and $E \subseteq 2^V$, the power set of $V$. The elements of $V$ are called
+the \textbf{vertices} and the elements of $E$ are called the \textbf{edges}.
+An hypergraph (V, E) will be denoted by calligraphic letters $\mathcal{G}, \mathcal{H},\ldots$.  
+  \end{definition}
+
+\begin{remark}
+  As in graphs, the classic definitions of a hypergraphs doesn't allow to have 
+  multiple edges that cover the same vertices. Also repeated vertices within an edge, often called \textbf{hyperloops} are not allowed 
+  by the above definition. A hypergraph that can have multiple edges connecting 
+  the same vertices, and hyperloops is called a \textbf{multi-hypergraph}, but 
+  in this master thesis we call a multi-hypergraph just a hypergraph. To define 
+  this in mathematical correct way, a hypergraph $\hgraf$ is an ordered
+ pair $(V,E)$ where $V$ a finite set and $E$ is a multi-set consisting of 
+multi-subsets of $V$ (a multi-subset is just a subset of a set where the elements are 
+allowed to appeared more than once).
+\end{remark}
+
+\begin{example}\label{vb1hypergraph}
+The hypergraph $\hgraf = (V, E)$ consist of 7 vertices and 4 edges. The edges
+are equal to the multiset $\{\{v_1, v_2, v_3\}, \{v_2, v_3\}, \{v_3, v_5, v_6\}, \{v_3, v_5, v_6\}, \{v_4\} 
+\}$. Note that the colors don't have any meaning to the hypergraph (the hypergraph
+is not an edge colored hypergraph), but only serve to clarify the drawing.
+
+\begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v1,label=above:\(v_2\)] (v2) {};
+\node[vertex,right of=v2,label=above:\(v_3\)] (v3) {};
+\node[vertex,below of=v1,label=above:\(v_4\)] (v4) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v5,label=above:\(v_7\)] (v7) {};
+
+\begin{pgfonlayer}{background}
+\draw[edge,color=yellow] (v1) -- (v2) -- (v3);
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v5) -- (v6) -- (v3);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v5.center) -- (v6.center) -- (v3.center);
+\end{scope}
+
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge2,opacity=1,color=blue] (v3) -- (v5) -- (v6) -- (v3);
+\fill[edge2,opacity=1,color=blue] (v3.center) -- (v5.center) -- (v6.center) -- (v3.center);
+\end{scope}
+\draw[edge,color=red,line width=40pt] (v2) -- (v3);
+\draw[edge,color=purple] (v4) -- (v4);
+\end{pgfonlayer}
+
+\node[elabel,color=yellow,label=right:\(e_1\)]  (e1) at (-3,0) {};
+\node[elabel,below of=e1,color=red,label=right:\(e_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(e_3\)]  (e3) {};
+\node[elabel,below of=e3,color=green,label=right:\(e_4\)]  (e4) {};
+\node[elabel,below of=e4,color=purple,label=right:\(e_5\)]  (e5) {};
+\end{tikzpicture}
+\end{center}
+\end{example}
+\begin{definition}
+  In a hypergraph $\hgraf=(V,E)$, two vertices $v_i, v_j \in V$ are called 
+  \textbf{adjacent} if there is an edge $e \in E$ that contains both vertices. 
+  Two edges $e_k, e_l$ are called adjacent if there intersection is not empty.
+\end{definition}
+
+\begin{definition}
+  The \textbf{order of a finite graph \hgraf} is the number of vertices of $\hgraf$ 
+  and is denoted by $|\hgraf|$.
+\end{definition}
+We define now the degree of a vertex in a hypergraph. Note that we don't define 
+the indegree and outdegree of vertex as the hypergraphs we consider are 
+undirected.
+\begin{definition}
+The \textbf{degree of a vertex} $v$ in a hypergraph $\hgraf$ is the number of 
+times $v$ is contained in an edge.
+\end{definition}
+\subsubsection{$k$-hypergraphs}
+In most applications, the edges of an hypergraph connect a fixed number of 
+vertices. This is called a uniform hypergraph:
+
+\begin{definition}
+  A \textbf{$k$-uniform hypergraph} with $k \geq 2 \in \N$ if for all $e \in E$, 
+  the cardinality $|e|$ is equal to $k$. The cardinality of multisets is defined in Definition \ref{multiset}.
+  The term \textbf{$k$-graph} is often used 
+  instead of a $k$-uniform hypergraph. The edges in a $k$-graph are sometimes 
+  called $k$-edges.
+\end{definition}
+
+Notice that the $2$-hypergraphs are just the undirected graphs we defined in the previous 
+section.
+
+
+
+\subsubsection{Directed hypergraphs}
+An important difference with the previous section is that all hypergraphs we 
+have defined are \textbf{undirected}: their is no specific order in which an 
+edge connect different vertices. In a graph, directed edges arise naturally as 
+some vertex can be the source node and some vertex can be the terminal node, no other nodes
+are connected by an edge of a graph. For edges of hypergraphs this concept is not straightforward to generalize: one option is to see 
+edges as paths connecting vertices in a specific order,
+ another option is to split the vertices connected by an edge in a set of source 
+ nodes and a set of terminal nodes. This last notion is 
+studied in \cite{gallo}. We will not discuss this topic in detail, all the 
+hypergraphs in this master thesis are undirected.
+
+
+\subsection{Incidence matrix}
+A hypergraph can be represented as an incidence matrix by numbering the vertices 
+and the edges. The resulting incidence matrix will be a boolean matrix with only 
+$1$ and $0$ entries. An alternative way to represent a hypergraph is by using
+adjacency tensors. As said in this introduction, these are discussed in chapter 
+3.
+
+\begin{definition}
+  The \textbf{incidence matrix} of a hypergraph $\hgraf = (V, E)$ with vertices
+  $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$ is a $n\times m$-matrix $A$ 
+  where rows represent the vertices and the columns represent the 
+  edges, such that:
+  
+ $$(A)_{ij} = \begin{cases} 1 &\mbox{if }$v_i \in e_j$   \\ 
+0 & \mbox{if } $v_i \not\in e_j$ \end{cases}$$
+\end{definition}
+\begin{example}
+  The corresponding incidence matrix of the hypergraph of Example \ref{vb1hypergraph} 
+  is:
+  $$\begin{pmatrix}
+    1 & 0 & 0 & 0 & 0\\
+    1 & 1 & 0 & 0 & 0\\
+    1 & 1 & 1 & 1 & 0\\
+    0 & 0 & 1 & 1 & 1\\
+    0 & 0 & 1 & 1 & 0\\
+    0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0\\
+  \end{pmatrix}.$$
+\end{example}
+
+
+
+
+
 
 
 \chapter{Similarity on graphs}
@@ -4308,14 +4488,14 @@ row. It follows that $M$ is again symmetric.
 \chapter{Similarity on hypergraphs}
 \section{Introduction}
 In this section, we explore similarity on hypergraphs: an undiscovered field as 
-no papers can be found in journals about this subject. In this section, we try to formulate an answer to the question wheter
+no papers can be found in journals about this subject. In this section, we try to formulate an answer to the question whether
 we can generalize the results of the previous section to the domain of 
 hypergraphs.
 
 One of the most obvious ways to apply the concept of similarity to hypergraphs 
-is looking to the corresponding graph representation of a hypergraph and apply 
+is looking to the corresponding graph representations of a hypergraph and apply 
 the algorithms of the previous section. This is explained in the first section of 
-this chapter. Although it the most logic way to introduce similarity on hypergraphs, it's aslo the least significant
+this chapter. Although it the most logic way to introduce similarity on hypergraphs, it's also the least significant
 solution because most graph representations throw away a lot of information that 
 the structure of a hypergraph contains.
 
@@ -4336,18 +4516,21 @@ we are so used with graphs. The main reason why it's so popular is probably that
 the hypergraph can be represented by just a normal matrix, no other 
 datastructure must be studied.
 
-Another way to represent a hypergraph is through a hypermatrix. 
-Take, for example, a 3-uniform hypergraph (see Definition \ref{unfiromgraph}), then the adjacency hypermatrix $\mathcal{A}$ 
-is $n \times n \times n$-hypermatrix, with $n$ the number of vertices. The element $(\mathcal{A})_{ijk} $ is 
+Another way to represent a hypergraph is through a multi-dimensional adjacency matrix. Also referred 
+to as an hypermatrix or an adjacency tensor. 
+Take, for example, a $3$-hypergraph (see Definition \ref{unfiromgraph}), then the adjacency tensor $\mathcal{A}$ 
+is $n \times n \times n$-tensor, with $n$ the number of vertices. The element $(\mathcal{A})_{ijk} $ is 
 equal to the number of 3-edges between vertices $v_i, v_j$ and $v_k$. Besides that it is the natural generalization of adjacency matrices we 
 know from graphs, it's also a richer structure, this is explained in the final 
-reflection in subsection \ref{promohypermatrices}. For now, we consider only 
-$k$-uniform hypergrahs with undirected edges. Meaning that symmetry elements 
+reflection in subsection \ref{promohypermatrices}. 
+
+For now, we consider only 
+$k$-uniform hypergraphs with undirected edges. Meaning that symmetry elements 
 given by permutations of the index set in the hypermatrix have the same value, so 
 in our $3$-uniform hypergraph this means that 
 $$(\mathcal{A})_{ijk} = (\mathcal{A})_{ikj} = (\mathcal{A})_{jik} = (\mathcal{A})_{jki} = (\mathcal{A})_{kij} = (\mathcal{A})_{kji}.$
 
-How do we generalize similarity by working with hypermatrix representations of 
+How do we generalize similarity by working with adjacency tensor representations of 
 hypergraphs? Intuitively, it's not so hard to understand: all the algorithms 
 described in section 2 consist of a matrix sequences of which the convergence is 
 proved by Theorem \ref{grootbewijs}. All this proofs have one thing in common: 
@@ -4356,12 +4539,12 @@ rewritten in the form:
 $$\mathbf{z}^{(k)} = M\mathbf{z}^{(k-1)}$$
 when $M$ meets certain conditions (being nonnegative and symmetric), our 
 convergence theorem can be applied and we're done. Now, we can apply the same 
-trick with hypermatrices, instead of a vectorization we can apply a \textit{matricization} on a 
-hypermatrix, turning the hypermatrix into a `normal', two-dimensional matrix. If 
+trick with hypermatrices, instead of a vectorization we can apply a \textit{matricization} on an adjacency tensor
+ turning the tensor into a `normal', two-dimensional matrix. If 
 this returns the matrix sequences of section 2, we know that the generalized 
-methods will convergence. A beautiful visualization of this idea can be found in 
-Figure \ref{visualizatie}: think of a 3-uniform hypergraph with 3 nodes. The 
-corresponding hypermatrix will be of dimension $3 \times 3 \times 3$, which can 
+methods will converge. A beautiful visualization of this idea can be found in 
+Figure \ref{visualizatie}: think of a 3-uniform hypergraph with $n$ nodes. The 
+corresponding tensor will be of dimension $n \times n \times n$, which can 
 be visually represented as a cube. Just as a cube can be decomposed into a square and next into a straight line, 
 we can decompose the hypermatrix into a matrix and next into a vector.
 
@@ -4378,12 +4561,80 @@ in such way we can compare nodes two-by-two.
   a hypermatrix can be decomposed into a matrix and next into a vector. (Source: \emph{istockphoto.com})}\label{visualizatie}
 \end{figure}
  
- 
+\section{Similarity through corresponding graph representations}
+One way to look at similarity on hypergraphs is to represent a hypergraph as a 
+graph and use the similarity algorithms from the previous section. Almost
+every generalization with hypergraphs starts by looking at corresponding 
+graph representations (\cite{berge}), and therefore it's interesting to do this for the notion of similarity too.
+ We describe three representations of 
+hypergraphs as a graph: the line-graphs, the 2-section graphs and the incidence 
+graphs. For each representation we use the same examples to see the differences between the graph representations. 
+\subsection{Line-graphs}
+In this subsection, we describe the representation of a hypergraph as a 
+line-graph. We then show some relevant properties and examples and we conclude 
+by looking at similarity between hypergraphs through this representation.
+\begin{definition}
+  Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{e_1, \ldots e_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
+  denoted by $\graf_1 = (V', \to)$ 
+with:
+  \begin{enumerate}
+    \item $V' = E$,
+    \item $e_i \to e_j$ if and only if $e_i \cap e_j \not = \emptyset$
+  \end{enumerate}
+\end{definition}
+It's immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). We will 
+now prove that every simple, undirected graph is the line-graph of an hypergraph. More 
+specifically, we will show that any connected graph is the line-graph of a linear 
+hypergraph.
 
-\texttt{hypergraph.tex}
+\begin{definition}
+  A \textbf{lineair hypergraph} is a hypergraph where each pair of edges
+  intersects in at most one vertex.
+  \end{definition}
+  
+  \begin{theorem}
+    Every simple graph $\graf=(V,\to)$ with vertices $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$
+    is the the line-graph of a lineair 
+    hypergraph $\hgrafeen$.
+  \end{theorem}
+  \begin{proof}
+First, assume that $\graf$ is connected. Construct the 
+  hypergraph $\hgrafeen=(V',E')$ in the following way:
+  \begin{itemize}
+    \item Let $V' = \to$, this is possible since $\graf$ is simple so their is at most one edge that connects two vertices.
+    \item The collection of edges $E'$ is the family $e'_i$ where $e'_i$ is the 
+    set of all edges of $\graf$ that connect vertex $v_i$ so:
+    $$\hgrafeen = (V',E') = (\to, \{e'_1, \ldots e'_n\}),$$
+    with:
+    $$e'_i = \{e \in \to | v_i \text{ is a node connected by } e \}$$
+  \end{itemize}
+  If $\graf$ has only one edge ($m = 1$) $e_1$ then
+  $$V = {v_1, v_2} \quad \text{and} \quad e'_1 = e'_2,$$
+  so $\hgrafeen = (\{e_1\}, \{e'_1, e'_2\})$, this is the only case where $\hgrafeen$ will have a repeated edge. Notice
+  that $\hgrafeen = (\{e_1\}, \{e'_1, e'_2\})$ is a lineair hypergraph as $e'_1 \cap e'_2 = \{e_1\}$.
+   If $m > 1$, i \not = j and $e'_i \cap e'_j \not = \emptyset$, then there is 
+   exactly one $e \in \to$ such that $e \in (e'_i \cap e'_j)$ with $e = \{v_i, v_j\}$ 
+   because $\graf$ is a simple graph.
+   
+  If $\graf$ is not connected, treat the connected components of $\graf$ one by one. A special
+  case occurs when a component is an isolated vertex,  
+  The resulting hypergraphs $\hgrafeen_1 = (V'_1, E'_1), \ldots, \hgrafeen_k (V'_k, E'_k)$ of these components can be merged into
+   one hypergraph by taking the 
+  unions of the vertices and the edges, resulting in the hypergraph:
+  $$\hgrafeen = (V', E') = (V'_1 \cup \ldots \cup V'_k, E'_1 \cup \ldots \cup 
+  E'_k)$$. Note that $\hgrafeen$ is also a linear hypergraph in this case: the 
+  intersection of an edge in $E'_i$ with an edge in $E'_j$ with $i \not j$ will be 
+  empty.
+    
+  
+  \end{proof}
+  
+  
+\end{proof}
 
 
-\section{Similarity through graph representations}
+
+
 
 \section{Node similarity}
 \section{Node-edge similarity}
@@ -4830,5 +5081,9 @@ Analysis}, Cambridge University Press, 1991.
 graphs}, Bulletin of the Belgian Mathematical Society Simon Stevin, 2009.
 \bibitem[BERGE]{berge} C. Berge, \textit{Graphs and Hypergraphs}, University of 
 Paris (North-Holland Publishing Company), 1970.
+\bibitem[PEARSON]{hypper}K. J. Pearson, T Zhang, \textit{On spectral hypergraph theory of the adjacency 
+tensor}, Journal on Graphs and Combinatorics, Springer, 2014.
+\bibitem[GALLO]{gallo} G. Gallo, G. Longo, S. Nguyen, S. Pallottino, \emph{Directed hypergraphs and 
+appplications}, Journal of Discrete Applied Mathematics, Elsevier, 1997.
 \end{thebibliography}
 \end{document}

@@ -31,42 +31,48 @@
 \contentsline {subsubsection}{Colored graphs}{28}
 \contentsline {subsubsection}{Adjacency matrices}{28}
 \contentsline {subsection}{\numberline {1.5.2}Strong connectivity}{29}
-\contentsline {chapter}{\numberline {2}Similarity on graphs}{30}
-\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{30}
-\contentsline {subsection}{\numberline {2.1.1}History}{30}
-\contentsline {subsection}{\numberline {2.1.2}Motivation}{31}
-\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{32}
-\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{33}
-\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{37}
-\contentsline {subsection}{\numberline {2.1.6}Examples}{40}
-\contentsline {subsubsection}{Searching for math professors at the VUB}{40}
-\contentsline {subsubsection}{Predictors in the Eurovision Song Contest 2009-2014}{42}
-\contentsline {subsection}{\numberline {2.1.7}Final reflection}{46}
-\contentsline {section}{\numberline {2.2}Node similarity}{46}
-\contentsline {subsubsection}{From Hubs and Authorities to structure graphs}{46}
-\contentsline {subsection}{\numberline {2.2.1}Convergence of the sequence $\mathbf {z}^{(k)}$}{51}
-\contentsline {subsection}{\numberline {2.2.2}Compact form \& Similarity matrices}{58}
-\contentsline {subsection}{\numberline {2.2.3}Algorithm \& Computational cost}{61}
-\contentsline {subsection}{\numberline {2.2.4}Special cases}{62}
-\contentsline {subsubsection}{HITS-algorithm}{62}
-\contentsline {subsubsection}{Central scores}{63}
-\contentsline {subsubsection}{Self-similarity of a graph}{65}
-\contentsline {section}{\numberline {2.3}Node-edge similarity}{66}
-\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{67}
-\contentsline {subsection}{\numberline {2.3.2}The algorithm}{71}
-\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{72}
-\contentsline {subsection}{\numberline {2.3.4}Example}{73}
-\contentsline {section}{\numberline {2.4}Colored graphs}{74}
-\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{74}
-\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{80}
-\contentsline {section}{\numberline {3.1}Introduction}{80}
-\contentsline {section}{\numberline {3.2}Similarity through graph representations}{82}
-\contentsline {section}{\numberline {3.3}Node similarity}{82}
-\contentsline {section}{\numberline {3.4}Node-edge similarity}{82}
-\contentsline {section}{\numberline {3.5}Similarity on colored hypergraphs}{82}
-\contentsline {section}{\numberline {3.6}Final reflection}{82}
-\contentsline {subsection}{\numberline {3.6.1}Why hypermatrices are the best representation of a hypergraph}{82}
-\contentsline {subsection}{\numberline {3.6.2}The curse of dimensionality}{82}
-\contentsline {section}{\numberline {3.7}Applications}{82}
-\contentsline {chapter}{Appendix \numberline {A}Listings}{83}
-\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2014}{87}
+\contentsline {section}{\numberline {1.6}Hypergraphs}{29}
+\contentsline {subsection}{\numberline {1.6.1}General definitions}{29}
+\contentsline {subsubsection}{$k$-hypergraphs}{30}
+\contentsline {subsubsection}{Directed hypergraphs}{31}
+\contentsline {subsection}{\numberline {1.6.2}Incidence matrix}{31}
+\contentsline {chapter}{\numberline {2}Similarity on graphs}{32}
+\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{32}
+\contentsline {subsection}{\numberline {2.1.1}History}{32}
+\contentsline {subsection}{\numberline {2.1.2}Motivation}{33}
+\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{34}
+\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{35}
+\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{39}
+\contentsline {subsection}{\numberline {2.1.6}Examples}{42}
+\contentsline {subsubsection}{Searching for math professors at the VUB}{42}
+\contentsline {subsubsection}{Predictors in the Eurovision Song Contest 2009-2014}{44}
+\contentsline {subsection}{\numberline {2.1.7}Final reflection}{48}
+\contentsline {section}{\numberline {2.2}Node similarity}{48}
+\contentsline {subsubsection}{From Hubs and Authorities to structure graphs}{48}
+\contentsline {subsection}{\numberline {2.2.1}Convergence of the sequence $\mathbf {z}^{(k)}$}{53}
+\contentsline {subsection}{\numberline {2.2.2}Compact form \& Similarity matrices}{60}
+\contentsline {subsection}{\numberline {2.2.3}Algorithm \& Computational cost}{63}
+\contentsline {subsection}{\numberline {2.2.4}Special cases}{64}
+\contentsline {subsubsection}{HITS-algorithm}{64}
+\contentsline {subsubsection}{Central scores}{65}
+\contentsline {subsubsection}{Self-similarity of a graph}{67}
+\contentsline {section}{\numberline {2.3}Node-edge similarity}{68}
+\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{69}
+\contentsline {subsection}{\numberline {2.3.2}The algorithm}{73}
+\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{74}
+\contentsline {subsection}{\numberline {2.3.4}Example}{75}
+\contentsline {section}{\numberline {2.4}Colored graphs}{76}
+\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{76}
+\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{82}
+\contentsline {section}{\numberline {3.1}Introduction}{82}
+\contentsline {section}{\numberline {3.2}Similarity through corresponding graph representations}{84}
+\contentsline {subsection}{\numberline {3.2.1}Line-graphs}{84}
+\contentsline {section}{\numberline {3.3}Node similarity}{85}
+\contentsline {section}{\numberline {3.4}Node-edge similarity}{85}
+\contentsline {section}{\numberline {3.5}Similarity on colored hypergraphs}{85}
+\contentsline {section}{\numberline {3.6}Final reflection}{85}
+\contentsline {subsection}{\numberline {3.6.1}Why hypermatrices are the best representation of a hypergraph}{85}
+\contentsline {subsection}{\numberline {3.6.2}The curse of dimensionality}{85}
+\contentsline {section}{\numberline {3.7}Applications}{85}
+\contentsline {chapter}{Appendix \numberline {A}Listings}{86}
+\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2014}{90}
