@@ -1319,9 +1319,9 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
   
  
  \begin{definition}
-   A  \textbf{walk} in a graph $\graf$ is a sequence of vertices
-   $$v_0,v_1,\ldots,v_k$$
-   such that $v_{i-1} \to v_i$ for each $i \in \{1,\ldots,k\}$. The \textbf{length} of the walk is $k$, one less
+   A  \textbf{walk} or \textbf{path} in a graph $\graf$ is a sequence of vertices
+   $$a_0,a_1,\ldots,a_k$$
+   such that $a_{i-1} \to a_i$ for each $i \in \{1,\ldots,k\}$. The \textbf{length} of the walk is $k$, one less
    than the number of vertices. 
  \end{definition}
  
@@ -1516,18 +1516,18 @@ is not an edge colored hypergraph), but only serve to clarify the drawing.
 \draw[edge,color=purple] (v4) -- (v4);
 \end{pgfonlayer}
 
-\node[elabel,color=yellow,label=right:\(e_1\)]  (e1) at (-3,0) {};
-\node[elabel,below of=e1,color=red,label=right:\(e_2\)]  (e2) {};
-\node[elabel,below of=e2,color=blue,label=right:\(e_3\)]  (e3) {};
-\node[elabel,below of=e3,color=green,label=right:\(e_4\)]  (e4) {};
-\node[elabel,below of=e4,color=purple,label=right:\(e_5\)]  (e5) {};
+\node[elabel,color=yellow,label=right:\(E_1\)]  (e1) at (-3,0) {};
+\node[elabel,below of=e1,color=red,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e3,color=green,label=right:\(E_4\)]  (e4) {};
+\node[elabel,below of=e4,color=purple,label=right:\(E_5\)]  (e5) {};
 \end{tikzpicture}
 \end{center}
 \end{example}
 \begin{definition}
   In a hypergraph $\hgraf=(V,E)$, two vertices $v_i, v_j \in V$ are called 
-  \textbf{adjacent} if there is an edge $e \in E$ that contains both vertices. 
-  Two edges $e_k, e_l$ are called adjacent if there intersection is not empty.
+  \textbf{adjacent} if there is an edge $E_i \in E$ that contains both vertices. 
+  Two edges $E_k, E_l$ are called adjacent if there intersection is not empty.
 \end{definition}
 
 \begin{definition}
@@ -1541,13 +1541,26 @@ undirected.
 The \textbf{degree of a vertex} $v$ in a hypergraph $\hgraf$ is the number of 
 times $v$ is contained in an edge.
 \end{definition}
+
+\begin{definition}
+A \textbf{path} in an hypergraph $\hgraf = (V,E)$ is a sequence $p = (a_0, A_1, a_1, \ldots, A-k, a_k), k \geq 1$ where the
+$a_i$'s are pairwise distinct vertices, the $A_i$'s are pairwise distinct
+edges and ${a_{i-1}, a_i} \in A_i$ for $1 \leq i \leq k$. The path $p$ is said 
+to join $a_0$ and $a_k$. The length of the path is $k$.
+\end{definition}
+
+\begin{definition}
+A hypergraph is \textbf{connected} if for each vertex there is a path to any 
+other vertex.
+
+\end{definition}
 \subsubsection{$k$-hypergraphs}
 In most applications, the edges of an hypergraph connect a fixed number of 
 vertices. This is called a uniform hypergraph:
 
 \begin{definition}
-  A \textbf{$k$-uniform hypergraph} with $k \geq 2 \in \N$ if for all $e \in E$, 
-  the cardinality $|e|$ is equal to $k$. The cardinality of multisets is defined in Definition \ref{multiset}.
+  A \textbf{$k$-uniform hypergraph} with $k \geq 2 \in \N$ if for all $E_i \in E$, 
+  the cardinality $|E_i|$ is equal to $k$. The cardinality of multisets is defined in Definition \ref{multiset}.
   The term \textbf{$k$-graph} is often used 
   instead of a $k$-uniform hypergraph. The edges in a $k$-graph are sometimes 
   called $k$-edges.
@@ -1578,7 +1591,7 @@ $1$ and $0$ entries. An alternative way to represent a hypergraph is by using
 adjacency tensors. As said in this introduction, these are discussed in chapter 
 3.
 
-\begin{definition}
+\begin{definition}\label{incidencematrixhypergraph}
   The \textbf{incidence matrix} of a hypergraph $\hgraf = (V, E)$ with vertices
   $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$ is a $n\times m$-matrix $A$ 
   where rows represent the vertices and the columns represent the 
@@ -3695,7 +3708,7 @@ source and terminal nodes.
 \begin{definition}
   Let be $\graf=(V,\to)$ be a graph with adjacency matrix A, numbered vertices $v_1, v_2, \ldots, v_n \in V$ 
   and numbered edges $e_1, e_2, \ldots e_m  \in \to$. We define the \textbf{source-edge matrix $A_S$} as a $n\times m$ matrix with entries:
-  $$(A_S)_{ij} = \begin{cases} 1 &\mbox{if }$s_\graf(e_j) = v_i$   \\ 
+  $$(A_S)_{ij} = \begin{cases} 1 &\mbox{if }s_\graf(e_j) = v_i   \\ 
 0 & \mbox{otherwise} \end{cases},$$
 the notation $A_S$ is derived from the adjacency matrix $A$, when the graph 
 would have another adjacency matrix, for instance $B$, we would write $B_S$.
@@ -3728,7 +3741,7 @@ In an analogous way, we prove:
 Let $\graf=(V,\to)$ be a graph, then $A_TA_T^T$ is a diagonal matrix where the $i$th diagonal entry is equal the indegree of vertex $v_i$.
    \end{property}
 
-\begin{property}\label{adjancencyprop}
+\begin{property}\label{adjacencyprop}
   Let $\graf =(V,\to)$ be a graph, then the adjacency matrix $A$ is equal to 
   $A_SA^T_T$.
 \end{property}
@@ -3857,14 +3870,14 @@ for the normalized results at iteration step $k$. We still have to prove that
 odd and even iterates are the same and that $M$ has only positive eigenvalues, meaning that the sequence converges to $\frac{\Pi \mathbf{z}^{(0)}}{\|\Pi \mathbf{z}^{(0)}\|_2}$,
 this can be done easily by expanding the matrix equation: 
 $$\mathbf{x}^{(k)} = \begin{cases} 
-(G^TG)^{\frac{k}{2}}\mathbf{x}^{(0)  &\mbox{$k$ even }\\
+(G^TG)^{\frac{k}{2}}\mathbf{x}^{(0)  &\mbox{k even }\\
  
-(G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&\mbox{$k$ odd}
+(G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&\mbox{k odd}
 \end{cases} \quad \text{and} \quad
 \mathbf{y}^{(k)} = \begin{cases} 
-(GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &\mbox{$k$ even }\\
+(GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &\mbox{k even }\\
  
-(GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)&\mbox{$k$ odd}
+(GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)&\mbox{k odd}
 \end{cases}
 $$
 The matrix $G$ is the sum of two matrices $(A_S^T \otimes B_S^T)$ and $(A^T_T \otimes 
@@ -3933,7 +3946,7 @@ $k = k + 1$\;
  
 \KwRet $X^{(k)}, Y^{(k)} $\;}{}
   \caption{Algorithm for calculating the node and edge similarity matrix $X$ and $Y$ between $\graf$ and $\grafeen$.\\}\label{edgealgorithm}
-\end{algorithm}
+\end{algorithm}\label{edgealgorithm}
  
  The algorithm to calculate the node and edge similarity scores is presented in pseudo-code in Algorithm \ref{edgealgorithm}. 
  Remember that the absolute value that is mentioned is the same as in Notation 
@@ -3970,7 +3983,7 @@ $k = k + 1$\;
 \SetKwProg{myalg}{begin}{}{end}
 \myalg{\powermethod{$A$}}{
 $m$ = sum of all entries of $A$ \;
-$A_S$ = initialize a $n \times m$-matrix wit all entries equal to 0\;
+$A_S$ = initialize a $n \times m$-matrix with all entries equal to 0\;
 current\_edge = 1\;
 
 \For{$i: 1$ to $n$ }{
@@ -4041,8 +4054,8 @@ the same set of similarity scores, we get:
   &=& (A \otimes B + A^T \otimes B^T + A_S A^T_S \otimes B_SB^T_S + A_TA^T_T\otimes 
   B_TB^T_T)\mathbf{x}^{(k-2)}
 \end{eqnarray*}
-Where $A, B$ are the adjancency matrices of $\graf, \grafeen$ (Property 
-\ref{adjancencyprop}), 
+Where $A, B$ are the adjacency matrices of $\graf, \grafeen$ (Property 
+\ref{adjacencyprop}), 
 $A_S A^T_S, B_S B^T_S$ are the diagonal matrices with the outdegrees of the vertices 
 on the diagonal (Property \ref{outdegreeprop}) and $A_TA^T_T, 
   B_TB^T_T$ are the diagonal matrices with the indegree of the vertices on the 
@@ -4566,95 +4579,1245 @@ One way to look at similarity on hypergraphs is to represent a hypergraph as a
 graph and use the similarity algorithms from the previous section. Almost
 every generalization with hypergraphs starts by looking at corresponding 
 graph representations (\cite{berge}), and therefore it's interesting to do this for the notion of similarity too.
- We describe three representations of 
-hypergraphs as a graph: the line-graphs, the 2-section graphs and the incidence 
-graphs. For each representation we use the same examples to see the differences between the graph representations. 
+ We describe two representations of 
+hypergraphs as a graph: the line-graphs and the 2-sections of hypergraphs. 
+For each representation we use the same examples to see the differences on the similarity scores between the graph representations. 
 \subsection{Line-graphs}
 In this subsection, we describe the representation of a hypergraph as a 
 line-graph. We then show some relevant properties and examples and we conclude 
 by looking at similarity between hypergraphs through this representation.
 \begin{definition}
-  Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{e_1, \ldots e_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
-  denoted by $\graf_1 = (V', \to)$ 
+  Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{E_1, \ldots E_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
+  often denoted by $\ell(\hgrafeen) = (V', \to)$ 
 with:
   \begin{enumerate}
     \item $V' = E$,
-    \item $e_i \to e_j$ if and only if $e_i \cap e_j \not = \emptyset$
+    \item $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ ($E_i$ and $E_j$ must be adjacent)
   \end{enumerate}
 \end{definition}
-It's immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). We will 
-now prove that every simple, undirected graph is the line-graph of an hypergraph. More 
-specifically, we will show that any connected graph is the line-graph of a linear 
-hypergraph.
 
-\begin{definition}
-  A \textbf{lineair hypergraph} is a hypergraph where each pair of edges
-  intersects in at most one vertex.
-  \end{definition}
+It's immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). 
+The following example shows that representation of a hypergraph by a line-graph 
+is not unique:
+
+
+
+\begin{example}
+  Let $\hgrafeen_1$ be the following hypergraph:
+  \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\end{tikzpicture}
+\end{center}
+
+  Let $\hgrafeen_2$ be the following hypergraph:
   
-  \begin{theorem}
-    Every simple graph $\graf=(V,\to)$ with vertices $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$
-    is the the line-graph of a lineair 
-    hypergraph $\hgrafeen$.
+  \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=60pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v1,label=above:\(v_2\)] (v2) {};
+\node[vertex,right of=v2,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v2) -- (v3);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v1) -- (v2);
+\fill[edge,opacity=1,color=green] (v1.center) -- (v2.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v2)--(v3) -- (v4);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v4.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,1) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\end{tikzpicture}
+\end{center}
+
+ And let $\hgrafeen_3$ be the following hypergraph ($\hgrafeen_3$ is in fact also an undirected graph):
+  \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v1,label=above:\(v_2\)] (v2) {};
+
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge2,opacity=1,color=green] (v1) -- (v1);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge2,opacity=1,color=blue] (v2) -- (v2);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,1) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\end{tikzpicture}
+\end{center}
+Both $\hgrafeen_1, \hgrafeen_2$ and $\hgrafeen_3$ lead to the same line-graph 
+$\graf$:
+\begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$E_1$] {};
+  \node[main node] (2) [label=above:$E_2$][right of=1] {};
+  \node[main node] (3) [label=above:$E_3$][right of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [left] {} (2)
+      (2) edge node [left] {} (3)
+    
+\end{tikzpicture}
+\end{center}
+\end{example}
+From the previous example, we already suspect that using the line-graph 
+representation of a hypergraph to compute similarity will not give satisfactory 
+results. It will only produce similarity scores between the edges of the hypergraph,
+because the vertices are not represented in the line-graph representation. Also
+the fact that the representation is not unique is alarming: if we calculate, for instance, the similarity scores of $\hgrafeen_1$ and $\hgrafeen_3$ 
+of the previous example by using the line-graph representation, we are just 
+calculating the self-similarity score of the line-graph $\graph$ although those 
+hypergraphs are not that similar at all. 
+
+To use Algorithm \ref{algsimilarity} from section 2.2, we introduce Algorithm \ref{linealg}.
+This algorithm takes a hypergraph as input and returns the adjacency matrix of 
+the corresponding line-graph. The Matlab implementation can be found in Appendix \ref{appendixa} in Listing \ref{linealgmatlab}. By applying this algorithm to two hypergraphs, we 
+can use Algorithm \ref{algsimilarity}. Remember that the returning similarity 
+matrix will allow us to compare the edges of the two hypergraphs.
+
+\begin{algorithm}[H]\label{linealg}
+ \KwData{\\
+ $n$:  the number of vertices of hypergraph $\hgrafeen$\\
+ $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
+ \KwResult{\\
+ $A$: the adjacency matrix of the corresponding line-graph}
+ \blankline
+\SetKwFunction{powermethod}{hypergraph\_to\_linegraph}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$n$, $E$}}{
+$m = |E|$\;
+$A$ = initialize a $m \times m$-matrix with all entries equal to 0\;
+
+\For{$i: 1$ to $m$ }{
+  \For{$j: 1$ to $m$ }{
+     \eIf{$E_i \cap E_j \not = \emptyset$ and $i \not = j$ }{
+         $(A)_{ij} = 1$
+     }{$(A)_{ij} = 0$}
+  }}}
+ 
+\KwRet $A$\;}{}
+  \caption{Algorithm to calculate the adjacency matrix of the representing line-graph of a hypergraph.\\}\label{linealg}
+\end{algorithm}
+We now give some examples of the similarity of two hypergraphs by using 
+line-graphs:
+\begin{example}\label{ex1line}
+  Let $\hgrafeen_1$ be the following hypergraph:
+     \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\end{tikzpicture}
+\end{center}
+
+  Let $\hgrafeen_2$ be the following hypergraph:
+   \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=60pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_4\)] (v4) {};
+\node[vertex,right of=v3,label=above:\(v_5\)] (v5) {};
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+
+\node[vertex,right of=v6,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+\node[vertex,right of=v8,label=above:\(v_9\)] (v9) {};
+\node[vertex,above of=v6,label=above:\(v_1\)] (v1) {};
+
+\node[vertex,above of=v8,label=above:\(v_3\)] (v3) {};
+\node[vertex,above of=v7,label=above:\(v_2\)] (v2) {};
+
+
+\node[vertex,below of=v6,label=above:\(v_{10}\)] (v10) {};
+\node[vertex,right of=v10,label=above:\(v_{11}\)] (v11) {};
+\node[vertex,right of=v11,label=above:\(v_{12}\)] (v12) {};
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v7);
+\draw[edge3,color=yellow] (v11) -- (v7);
+\draw[edge3,color=yellow] (v1) -- (v6);
+\draw[edge3,color=yellow] (v1) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v11);
+\draw[edge3,color=yellow] (v6) -- (v10);
+
+\draw[edge3,color=yellow] (v10) -- (v11);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v4) -- (v5);
+\fill[edge,opacity=1,color=green] (v4.center) -- (v5.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v3) -- (v8);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v8.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v9);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v9.center);
+\draw[edge,opacity=1,color=blue] (v9) -- (v8);
+\draw[edge,opacity=1,color=blue] (v9) -- (v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v8)--(v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+\draw[edge,color=purple] (v5) -- (v6)--(v7)--(v8);
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E'_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E'_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E'_3\)]  (e3) {};
+\node[elabel,below of=e3,color=purple,label=right:\(E'_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+
+ Intuitively, we expect high similarity scores for the edges $(E'_1, E_1), (E'_2,E_2)$
+  and $(E'_3,E_3)$, because they all contain the same amount of vertices and have exactly the same structure. The fact that
+ $E'_1$, $E'_2$, $E'_3$ are not adjacent to each other may not play a major role as both $\hgrafeen_1$ and $\hgrafeen_2$  are
+ connected hypergraphs. By applying algorithm \ref{linealg} we get the adjacency matrices $A_1$ for 
+ $\hgrafeen_1$ and $A_2$ for $\hgrafeen_2$:
+ $$A_1 = \begin{pmatrix}
+  0 & 1 & 0\\
+ 1 & 0 & 1\\
+  0 & 1 & 0
+ \end{pmatrix} \quad \text{and} \quad
+ A_2 = \begin{pmatrix}
+     0 & 0 & 0 & 1\\
+     0 & 0 & 0 & 1\\
+     0 & 0 & 0 & 1\\
+     1 & 1 & 1 & 0
+ \end{pmatrix}
+ 
+ 
+ Now we use Algorithm \ref{algsimilarity} with $A_1$ and $A_2$ and get the following similarity matrix:
+  $$ S = \begin{pmatrix}
+      0.2887 &    0.2887  & 0.2887\\
+    0.2887  & 0.2887   & 0.2887\\
+    0.2887   & 0.2887  & 0.2887\\
+    0.2887  &  0.2887  & 0.2887
+    \end{pmatrix}$$
+    
+    This is completely against our intuition but is not surprising: the representing line-graph of a hypergraph is 
+    connected if also the hypergraph itself is connected. As we know from 
+    section 2.2, the node similarity method looks at adjacent vertices. Because the 
+    vertices are here the edges of the matrix and the line-graph doesn't save 
+    any information about the vertices of the hypergraph, this result here is based
+    only on the fact that edges are adjacent to other edges in both hypergraphs. When this is the case, the edges that are equally similar for the node similarity method. 
+\end{example}
+
+We now give two other examples to investigate a little more in the connectivity :
+
+\begin{example}\label{ex2line}
+  $\hgrafeen_1$ is the same as in the previous example, but now, $\hgrafeen_2$ 
+  is the following hypergraph:
+   \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=60pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_4\)] (v4) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+
+\node[vertex,right of=v6,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+\node[vertex,right of=v8,label=above:\(v_9\)] (v9) {};
+\node[vertex,above of=v6,label=above:\(v_1\)] (v1) {};
+
+\node[vertex,above of=v8,label=above:\(v_3\)] (v3) {};
+\node[vertex,above of=v7,label=above:\(v_2\)] (v2) {};
+
+
+\node[vertex,below of=v6,label=above:\(v_{10}\)] (v10) {};
+\node[vertex,right of=v10,label=above:\(v_{11}\)] (v11) {};
+\node[vertex,right of=v11,label=above:\(v_{12}\)] (v12) {};
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v7);
+\draw[edge3,color=yellow] (v11) -- (v7);
+\draw[edge3,color=yellow] (v1) -- (v6);
+\draw[edge3,color=yellow] (v1) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v11);
+\draw[edge3,color=yellow] (v6) -- (v10);
+
+\draw[edge3,color=yellow] (v10) -- (v11);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v4) -- (v5);
+\fill[edge,opacity=1,color=green] (v4.center) -- (v5.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v3) -- (v8);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v8.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v9);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v9.center);
+\draw[edge,opacity=1,color=blue] (v9) -- (v8);
+\draw[edge,opacity=1,color=blue] (v9) -- (v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v8)--(v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E'_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E'_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E'_3\)]  (e3) {};
+
+\end{tikzpicture}
+\end{center}
+  The similarity score of these two hypergraphs by using their line-graph representation becomes:
+  $$S = \begin{pmatrix}
+  0 & 0 & 0\\
+  0 & 0 & 0\\
+  0 & 0 & 0
+  \end{pmatrix}$$
+  The same reasoning applies here: normally $(E'_1, E_1), (E'_2,E_2)$
+  and $(E'_3,E_3)$  must be similar but this method returns an all zero matrix as similarity 
+  matrix for the edges because the only criterium for this method is the 
+  adjacency of the edges to other edges. As $\hgrafeen_1$ is connected with all edges adjacent to each other but $\hgrafeen_2$ has only isolated edges, the similarity 
+  matrix is full of zeros.
+\end{example}
+We now show a last example where the hypergraph has some edges that are adjacent to each other:
+
+\begin{example}\label{ex3line}
+  $\hgrafeen_1$ is the same as in the previous example, but now, $\hgrafeen_2$ 
+  is the following hypergraph:
+   \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=60pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_4\)] (v4) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+
+\node[vertex,right of=v6,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+\node[vertex,right of=v8,label=above:\(v_9\)] (v9) {};
+\node[vertex,above of=v6,label=above:\(v_1\)] (v1) {};
+
+\node[vertex,above of=v8,label=above:\(v_3\)] (v3) {};
+\node[vertex,above of=v7,label=above:\(v_2\)] (v2) {};
+
+
+\node[vertex,below of=v6,label=above:\(v_{10}\)] (v10) {};
+\node[vertex,right of=v10,label=above:\(v_{11}\)] (v11) {};
+\node[vertex,right of=v11,label=above:\(v_{12}\)] (v12) {};
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v7);
+\draw[edge3,color=yellow] (v11) -- (v7);
+\draw[edge3,color=yellow] (v1) -- (v6);
+\draw[edge3,color=yellow] (v1) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v7);
+\draw[edge3,color=yellow] (v6) -- (v11);
+\draw[edge3,color=yellow] (v6) -- (v10);
+
+\draw[edge3,color=yellow] (v10) -- (v11);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v4) -- (v5)--(v6);
+\fill[edge,opacity=1,color=green] (v4.center) -- (v5.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v3) -- (v8);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v8.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v9);
+\fill[edge,opacity=1,color=blue] (v3.center) -- (v9.center);
+\draw[edge,opacity=1,color=blue] (v9) -- (v8);
+\draw[edge,opacity=1,color=blue] (v9) -- (v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v3) -- (v8)--(v12);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E'_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E'_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E'_3\)]  (e3) {};
+
+\end{tikzpicture}
+\end{center}
+  The similarity score of these two hypergraphs by using their line-graph representation becomes:
+  $$S = \begin{pmatrix}
+    0.4082 &    0.4082  &  0.4082\\
+    0.4082 &    0.4082  &   0.4082\\
+         0      &   0   &      0
+  \end{pmatrix}$$
+  After the previous examples, this does not surprise us: as being adjacent to other edges is the only criterium for this method, $E'_3$ is not similar to neither 
+  $E_1$, $E_2$, $E_3$ as $E'_3$ is an isolated edge (remember from Algorithm \ref{algsimilarity} that the 
+  rows of the similarity matrix represent the nodes from the second graph, the 
+  colums represent the nodes of the nodes of the first graph).
+  
+  \end{example}
+Conclusion? The line-graph representation only tells us something about the 
+isolated edges in two hypergraphs when calculating similarity scores with it. When the similarity 
+score of two edges $E_i$ and $E'_i$ is not zero, it just means that they are both 
+not an isolated edge (an edge is isolated when it is adjacent to no other edge). 
+It's clear that this is a very limited interpretation of similarity between two 
+hypergraphs.
+
+\subsection{$2$-section of a hypergraph}
+We now look at another graph representation of a hypergraph. In contrast to the 
+line-graph representation, the $2$-section saves information about the vertices 
+which will introduce a much more sophisticated way to say something about 
+similarity between two hypergraphs by using their $2$-section.
+
+\begin{defintion}
+  The \textbf{$2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]_2 = (V,\to)$ 
+  with:
+  \begin{itemize}
+    \item The same vertex set as the hypergraph,
+    \item $v_i \to v_j$ if and only if $v_i, v_j \in E_k$ for some $E_k \in E$ and $i \not = j$ ($v_i$ and $v_j$ must be adjacent).
+  \end{itemize}
+  \end{defintion}
+  
+\begin{example}
+The 2-section of the following hypergraph $\hgrafeen$ is drawn on top:
+    \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+\tikzstyle{gedge} = [<->,>=stealth',shorten >=1pt, auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{gedge30} = [<->,>=stealth',shorten >=1pt,bend right=30, auto,node distance=3cm,
+                    thick]
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above left:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above right:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=below:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=below:\(v_8\)] (v8) {};
+
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=1]
+  \draw[gedge,opacity=1,color=black] (v3) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v4);
+   \draw[gedge,opacity=1,color=black] (v5) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v8) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v7) -- (v4);
+   \draw[gedge,opacity=1,color=black] (v1) -- (v2);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v5);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v8);
+   \draw[gedge30, bent left=100, opacity=1,color=black] (v1) -- (v7);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v5);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v8);
+   \draw[gedge,opacity=1,color=black] (v2) -- (v7);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v6);
+  \draw[gedge,opacity=1,color=black] (v5) -- (v7);
+    \draw[gedge,opacity=1,color=black] (v5) -- (v8);
+    \draw[gedge,opacity=1,color=black] (v5) -- (v6);
+      \draw[gedge,opacity=1,color=black] (v8) -- (v6);
+\end{scope}
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+Also this graph representation of graphs is not unique, as the following example 
+shows:
+
+\begin{example}
+The 2-section of the following hypergraph $\hgrafeen'$ is drawn on top and is the same as the previous example:
+
+      \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+\tikzstyle{gedge} = [<->,>=stealth',shorten >=1pt, auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{gedge30} = [<->,>=stealth',shorten >=1pt,bend right=30, auto,node distance=3cm,
+                    thick]
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above left:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above right:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=below:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=below:\(v_8\)] (v8) {};
+
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=purple] (v5) -- (v6);
+\fill[edge,opacity=1,color=purple] (v5.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+
+\draw[edge,opacity=1,color=orange] (v8) -- (v6);
+\fill[edge,opacity=1,color=orange] (v8.center) -- (v6.center);
+
+\end{scope}
+\begin{scope}[transparency group,opacity=1]
+  \draw[gedge,opacity=1,color=black] (v3) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v4);
+   \draw[gedge,opacity=1,color=black] (v5) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v8) -- (v4);
+  \draw[gedge,opacity=1,color=black] (v7) -- (v4);
+   \draw[gedge,opacity=1,color=black] (v1) -- (v2);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v5);
+  \draw[gedge,opacity=1,color=black] (v1) -- (v8);
+   \draw[gedge30, bend right=100, opacity=1,color=black] (v1) -- (v7);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v5);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v8);
+   \draw[gedge,opacity=1,color=black] (v2) -- (v7);
+  \draw[gedge,opacity=1,color=black] (v2) -- (v6);
+  \draw[gedge,opacity=1,color=black] (v5) -- (v7);
+    \draw[gedge,opacity=1,color=black] (v5) -- (v8);
+    \draw[gedge,opacity=1,color=black] (v5) -- (v6);
+      \draw[gedge,opacity=1,color=black] (v8) -- (v6);
+\end{scope}
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e3,color=red,label=right:\(E_4\)]  (e4) {};
+\node[elabel,below of=e4,color=orange,label=right:\(E_5\)]  (e5) {};
+\end{tikzpicture}
+\end{center}
+\end{example}
+  We now discuss the possibilities to introduce similarity on hypergraphs by 
+  using their $2$-section. First, we introduce Algorithm \ref{2sectionalg} that 
+  takes a hypergraph as input and returns the adjacency matrix of the 
+  corresponding $2$-section of the hypergraph. A Matlab implementation can be 
+  found in Listing \ref{2sectionalgmatlab} in Appenix \ref{appendixa}.
+  
+  
+  \begin{algorithm}[H]\label{2sectionalg}
+ \KwData{\\
+ $n$:  the number of vertices of hypergraph $\hgrafeen$\\
+ $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
+ \KwResult{\\
+ $A$: the adjacency matrix of the corresponding line-graph}
+ \blankline
+\SetKwFunction{powermethod}{hypergraph\_to\_2section}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$n$, $E$}}{
+$A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
+
+\For{$i: 1$ to $m$ }{
+  \For{$j: 1$ to $m$ }{
+     \eIf{$v_i, v_j \in E_k for some k and i \not = j$ }{
+         $(A)_{ij} = 1$
+     }{$(A)_{ij} = 0$}
+  }}}
+\KwRet $A$\;}{}
+  \caption{Algorithm to calculate the adjacency matrix of the 2-section of a hypergraph.\\}
+\end{algorithm}
+We now use the same examples as in the previous subsection and look at what the 
+similarity of two hypergraphs becomes by using their $2$-section.
+\begin{example}
+  Take the same $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex1line}, 
+  Intuitively, we still expect high similarity scores for the vertices of the edges
+   $(E'_1, E_1), (E'_2,E_2)$
+  and $(E'_3,E_3)$, because these edges all contain the same amount of vertices and have exactly the same structure. 
+   The fact that $E'_1,E'_2,E'_3$ are not adjacent to each other may not play a major role as both 
+   $\hgrafeen_1$ and $\hgrafeen_2$ are connected hypergraphs. By applying Algorithm \ref{2sectionalg} we get the adjacency matrices 
+   and we can apply Algorithm \ref{algsimilarity}  which returns the similarity 
+   matrix:
+   $$ S = \begin{pmatrix}
+0.1347&0.1479&0.0261&0.1388&0.1479&0.0833&0.1347&0.1479\\
+0.1347&0.1479&0.0261&0.1388&0.1479&0.0833&0.1347&0.1479\\
+0.0263&0.0288&0.0051&0.0271&0.0288&0.0162&0.0263&0.0288\\
+0.0147&0.0161&0.0028&0.0151&0.0161&0.0091&0.0147&0.0161\\
+0.0790&0.0867&0.0153&0.0814&0.0867&0.0489&0.0790&0.0867\\
+0.1610&0.1768&0.0312&0.1659&0.1768&0.0996&0.1610&0.1768\\
+0.1610&0.1768&0.0312&0.1659&0.1768&0.0996&0.1610&0.1768\\
+0.0890&0.0977&0.0172&0.0917&0.0977&0.0551&0.0890&0.0977\\
+0.0263&0.0288&0.0051&0.0271&0.0288&0.0162&0.0263&0.0288\\
+0.1347&0.1479&0.0261&0.1388&0.1479&0.0833&0.1347&0.1479\\
+0.1347&0.1479&0.0261&0.1388&0.1479&0.0833&0.1347&0.1479\\
+0.0263&0.0288&0.0051&0.0271&0.0288&0.0162&0.0263&0.0288
+\end{pmatrix} $$
+
+The first things to notice is the symmetry of some elements: $v_4$ of $\hgrafeen_2$ 
+has the same similarity score for $v_1$, $v_7$ of $\hgrafeen_1$ and for $v_2, 
+v_5, v_8$ of $\hgrafeen_1$. This is logic as these vertices play exactly the 
+same role in $\hgrafeen_1$, when we would swap them, the structure of $\hgrafeen_1$ 
+would not change. 
+
+But there is also bad news covered in this example: 
+intuitively, $v_4$ of $\hgrafeen_2$ must have a high similarity score with $v_3$ of $\hgrafeen_1$ 
+but this method assigns the lowest similarity score to both vertices! Remember 
+that the node similarity method assigns high similarity scores to two vertices 
+when their adjacent vertices have high similarity scores and this returns a 
+problem here: the adjacent vertex of $v_4$ of $\hgrafeen_2$ is $v_5$, but $v_5$ in $\hgrafeen_2$ is part of edge $E'_4$, and so the adjacency 
+structure of the $2$-section of $\hgrafeen_2$ will be completely different for $v_5$ 
+in $\hgrafeen_2$ compard to $v_4$ in $\hgrafeen_1$,  the adjacent vertex of $v_3$ 
+in $\hgrafeen_1$. 
+
+More generally, the problem with this method is that the introduction of only one edge 
+that connects vertices that otherwise wouldn't be connected in the hypergraph can have an enormous impact on the adjacency structure of the 
+2-section of the hypergraph and thus on the similarity scores. But on the other 
+hand, introducing an edge in the hypergraph that connects vertices who were already connected, 
+doesn't change anything to the 2-section of the hypergraph (by definition), for 
+example if we take $\hgrafeen_1$ as follows:
+   \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge2,opacity=0.7,color=purple] (v1) -- (v4)--(v7);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e4,color=blue,label=right:\(E_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+then the introduced edge $E_4$ will not influence the similarity scores at all 
+as $v_1, v_4, v_7$ were already adjacent to each other in the 2-section of 
+$\hgrafeen_1$. This is not intuitive, because introducing an additional edge 
+between vertices expresses an additional union between this vertices that in 
+this method is not reflected in the similarity scores at all.
+
+ \end{example}
+
+ \begin{example}
+   Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex2line}, 
+   the similarity matrix using the 2-section of the hypergraphs becomes:
+   $$S = \begin{pmatrix}
+   0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0
+   \end{pmatrix}$$
+   We note again the symmetries in this similarity matrix: $v_1, v_2, v_6, v_7, v_{10}, v_{11}$ in $\hgrafeen_2$ 
+   are all contained in $E'_2$ and are the only nodes with positive similarity 
+   scores. The he same holds for $v_1, v_7$ and $v_2, v_5, v_8$ in $\hgrafeen_1$.
+    The non-zero similarity scores itself are the same for all this groups of vertices and 
+   this not surprising because all these vertice can be swaped without 
+   changing the structure of $\hgrafeen_2$ or $\hgrafeen_1$. The positive similarity scores itself are also 
+   logic: for instance $v_1$ in $\hgrafeen_2$ is least similar to $v_3$ in $\hgrafeen_1$  
+   and this is acceptable as $v_3$ in $\hgrafeen_2$ belongs to an edge with a 
+   totally different structure. 
+   
+   However, all these zeros are not acceptable: in 
+   fact, this are not `real' zeros but they are caused by rounding errors. Look, for example, at the adjacency matrix
+   of the $2$-section of $\hgrafeen_2$:
+   $$A_2 = \begin{pmatrix}
+ 0&1&0&0&0&1&1&0&0&1&1&0\\
+1&0&0&0&0&1&1&0&0&1&1&0\\
+0&0&0&0&0&0&0&1&1&0&0&1\\
+0&0&0&0&1&0&0&0&0&0&0&0\\
+0&0&0&1&0&0&0&0&0&0&0&0\\
+1&1&0&0&0&0&1&0&0&1&1&0\\
+1&1&0&0&0&1&0&0&0&1&1&0\\
+0&0&1&0&0&0&0&0&1&0&0&1\\
+0&0&1&0&0&0&0&1&0&0&0&1\\
+1&1&0&0&0&1&1&0&0&0&1&0\\
+1&1&0&0&0&1&1&0&0&1&0&0\\
+0&0&1&0&0&0&0&1&1&0&0&0\\
+  \end{pmatrix},$$
+  notice that row 5 and column 5 consist of only 1 non-zero entry. The zeros 
+  will play a dominant role in each iteration step when applying Algorithm \ref{algsimilarity}, making the rounding error in 
+  each iteration step bigger and bigger.
+   
+ \end{example}
+ 
+\begin{example}
+     Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex2line}, 
+   the similarity matrix using the 2-section of the hypergraphs becomes:
+   $$S = \begin{pmatrix}
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.1623&0.1782&0.0314&0.1673&0.1782&0.1004&0.1623&0.1782\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0
+   \end{pmatrix}$$
+   This result can be explained in the same way as the previous example: the 
+   connected components have non-negative similarity scores and  exchangeable 
+   vertices in both $\hgrafeen_1$ and $\hgrafeen_2$ have the same similarity 
+   scores. Again the zeros are caused by a rounding error.
+\end{example}
+Conclusion? Although the $2$-section of a hypergraph is a rich structure that 
+saves a lot more information compared to the the line-graph representation, the 
+resulting method to calculate similarity of two hypegraphs using their 
+$2$-section is disappointing, the most important reasons are:
+\begin{itemize}
+  \item Adding an edge to a hypergraph can have an enormous impact on the 
+  similarity scores or have no effect at all. There is an impact when the edge 
+  connects vertices that otherwise wouldn't be connected in the hypergraph and 
+  there is no impact at all when the edge connects vertices which were connected 
+  already. This is bad, because adding an edge always should have an impact on 
+  the similarity scores as it expresses a union between vertices.
+  \item When an hypergraph is not connected, the iterative process causes rounding errors resulting in a similarity
+      matrix with unexpected zero elements.
+  \end{itemize}
+  Both reasons let us conclude that this method is not reliable and can only be used to detect some similar symmetries in
+  two hypergraphs. 
+
+\section{Similarity by using the incidence matrix}
+The two graph representations return disappointing results when used to 
+calculate the similarity of two hypergraphs. We search for another method and 
+one very natural generalization is the following: the node-edge similarity 
+method described in Section 2.3 uses a source-edge matrix and a terminus-edge 
+matrix. When we would use this method (see Theorem \ref{edgegrootbewijs}) with undirected graphs $\graf$ and $\grafeen$, the source-edge matrix and terminus-edge
+matrix are the same and are equal to the \textit{incidence matrices} of $\graf$ and 
+$\grafeen$. The question is now: is there any problem if we enter not the incidence matrices of two graphs, but of 
+two hypergraphs (see Definition \ref{incidencematrixhypergraph})? The only difference is that each
+column can have more than 2 entries equal to 1. The answer is 
+no, as shown by the following theorem:
+
+\subsection{Compact form}
+ \begin{theorem}\label{incidencegrootbewijs}
+   Let $\hgraf=(V,E)$ and $\hgrafeen=(V',E')$ be two hypergraphs, $\hgraf$ has $n_\hgraf$ 
+   vertices and $m_\hgraf$ eges and $\hgrafeen$ has $n_\hgrafeen$ vertices and $m_\hgrafeen$ 
+   edges. Let $A$ and $B$ be the incidence matrices of $\hgraf$ and $\hgrafeen$ 
+   and define:
+ \begin{eqnarray}
+  Y^{(k+1)} &=& \frac{B^TX^{(k)}A}{\|B^TX^{(k)}A\|_F}\\
+   X^{(k+1)} &=& \frac{BY^{(k)}A^T}{\|BY^{(k)}A^T\|_F}
+ \end{eqnarray}
+  for  $k =  0,1,\ldots$.
+  
+  Then the matrix subsequences $X^{(2k)}$, $Y^{(2k)}$ and $X^{(k+1)}$, $Y^{(k+1)}$ 
+  converge to $X_{\text{even}}$, $Y_{\text{even}}$ and $X_{\text{odd}}$, 
+  $Y_{\text{odd}}$. If we take:
+  \begin{eqnarray*}  X^{(0)} = J \in \R^{n_\grafeen \times n_\graf}\\
+    Y^{(0)} = J \in \R^{m_\grafeen \times m_\graf}
+  \end{eqnarray*}
+ as initial matrices, then $X_{\text{even}}(\mathbf{1})=X_{\text{odd}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})= Y_{\text{odd}}(\mathbf{1})$ 
+ are the unique matrices of largest 1-norm among all possible limits with positive 
+ initial matices and the matrix sequence $X^{(k)}$, $Y^{(k)}$ converges has a 
+ whole.
   \end{theorem}
   \begin{proof}
-First, assume that $\graf$ is connected. Construct the 
-  hypergraph $\hgrafeen=(V',E')$ in the following way:
-  \begin{itemize}
-    \item Let $V' = \to$, this is possible since $\graf$ is simple so their is at most one edge that connects two vertices.
-    \item The collection of edges $E'$ is the family $e'_i$ where $e'_i$ is the 
-    set of all edges of $\graf$ that connect vertex $v_i$ so:
-    $$\hgrafeen = (V',E') = (\to, \{e'_1, \ldots e'_n\}),$$
-    with:
-    $$e'_i = \{e \in \to | v_i \text{ is a node connected by } e \}$$
-  \end{itemize}
-  If $\graf$ has only one edge ($m = 1$) $e_1$ then
-  $$V = {v_1, v_2} \quad \text{and} \quad e'_1 = e'_2,$$
-  so $\hgrafeen = (\{e_1\}, \{e'_1, e'_2\})$, this is the only case where $\hgrafeen$ will have a repeated edge. Notice
-  that $\hgrafeen = (\{e_1\}, \{e'_1, e'_2\})$ is a lineair hypergraph as $e'_1 \cap e'_2 = \{e_1\}$.
-   If $m > 1$, i \not = j and $e'_i \cap e'_j \not = \emptyset$, then there is 
-   exactly one $e \in \to$ such that $e \in (e'_i \cap e'_j)$ with $e = \{v_i, v_j\}$ 
-   because $\graf$ is a simple graph.
-   
-  If $\graf$ is not connected, treat the connected components of $\graf$ one by one. A special
-  case occurs when a component is an isolated vertex,  
-  The resulting hypergraphs $\hgrafeen_1 = (V'_1, E'_1), \ldots, \hgrafeen_k (V'_k, E'_k)$ of these components can be merged into
-   one hypergraph by taking the 
-  unions of the vertices and the edges, resulting in the hypergraph:
-  $$\hgrafeen = (V', E') = (V'_1 \cup \ldots \cup V'_k, E'_1 \cup \ldots \cup 
-  E'_k)$$. Note that $\hgrafeen$ is also a linear hypergraph in this case: the 
-  intersection of an edge in $E'_i$ with an edge in $E'_j$ with $i \not j$ will be 
-  empty.
-    
+ The only thing we have to prove is that we can construct a matrix $M$ that is 
+ nonnegative and symmetric, the rest of the proof is completely analogous to the proof of Theorem 
+ \ref{edgegrootbewijs}.
+ 
+ So, by Theorem \ref{tensor} we can rewrite (\ref{edgematrix1}) as follows:
+ \begin{eqnarray*}
+         Y'^{(k+1)} &=& B^TX^{(k)}A\\
+  \Leftrightarrow  \vect(Y'^{(k+1)}) &=& \vect(B^TX'^{(k)}A)\\
+  \Leftrightarrow  \vect(Y'^{(k+1)}) &=& (A^T \otimes B^T)\vect(X'^{(k)})
+   \end{eqnarray*}
+ Completely analogous we can also rewrite (\ref{edgematrix2}):
+ $$\vect(X'^{(k+1)}) &=& (A \otimes B)\vect(Y'^{k}),$$
+ define $\mathbf{y}^{(k)}=\vect(Y'^{(k+1)})$ and $\mathbf{x}^{(k)}= \vect(X'^{(k+1)})$, we get:
+ \begin{eqnarray*}
+   \mathbf{y}^{(k+1)} &=& (A^T \otimes B^T)\mathbf{x}^{(k)}\\
+   \mathbf{x}^{(k+1)} &=& (A \otimes B)\mathbf{y}^{(k)}
+ \end{eqnarray*} 
+ If we define $G = A^T \otimes B^T$, then with Lemma \ref{hulptensor}:
+  \begin{eqnarray*}
+   G^T &=& (A^T \otimes B^T)^T\\
+   &=& A \otimes B \end{eqnarray*}
+ So we get:
+  \begin{eqnarray}
+     \mathbf{y}^{(k+1)} &=& G\mathbf{x}^{(k)}\label{uitgeschrevenvectoren1}\\
+     \mathbf{x}^{(k+1)} &=& G^T\mathbf{y}^{(k)}\label{uitgeschrevenvectoren2},
+ \end{eqnarray}
+$G$ is a $m_\graf m_\grafeen \times n_\graf n_\grafeen$-matrix, the previous expressions  can be concatenated to a single matrix update equation (we define matrix $M$ and $\mathbf{z}^{(k+1)}$):
+ $$\mathbf{z}^{(k+1)} =\begin{pmatrix}
+ \mathbf{x}\\
+ \mathbf{y}
+ \end{pmatrix}^{(k+1)} = \begin{pmatrix}
+ \mathbf{0}_{m_\graf m_\grafeen} & G^T\\
+ G & \mathbf{0}_{n_\graf n_\grafeen} \\
+ \end{pmatrix}
+ \begin{pmatrix}
+ \mathbf{x}\\
+ \mathbf{y}
+ \end{pmatrix}^{(k)}
+ = M\mathbf{z}^{(k)},$$
+  M is clearly nonnegative because $G$ and $G^T$ are nonnegative and $M$ is also
+ clearly symmetric, so the result follows immediately from Theorem \ref{grootbewijs}. 
+The rest of the proof is now completely analogous to the proof of Theorem 
+\ref{edgegrootbewijs}.
+
+ \end{proof}
+ We define now $X_{\text{even}}(\mathbf{1})$ as the node similarity matrix and $Y_{\text{even}}(\mathbf{1})$ as the edge similarity 
+ matrix.
+ 
+ Note that the equations in compact form in the node-edge similarity method 
+ where defined as:
+  \begin{eqnarray*}
+  Y^{(k+1)} &=& \frac{B_S^TX^{(k)}A_S + B_T^TX^{(k)}A_T}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+   X^{(k+1)} &=& \frac{B_SY^{(k)}A_S^T + B_TY^{(k)}A^T_T}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F}
+ \end{eqnarray*}
+ 
+ But since $A_S = A_T = A$ and $B_S = B_T = B$ in this case, the second term of the sum is redundant 
+and would be eliminated by the normalization in each step. This shows that the 
+compact form as presented in the previous theorem is not different from the 
+compact form of Theorem \ref{edgegrootbewijs}.
+
+\subsection{The algorithm}
+The algorithm is completely analogous to Algorithm 6. A Matlab implementation 
+can be found in Listing \ref{edgealgorithmhypergraphmatlab} in Appendix 
+\ref{appendixa}. We also present Algorithm \ref{incidencealg}, an algorithm that 
+takes an hypergraph as input and returns the incidence matrix of the hypergraph.
+
+
+\begin{algorithm}[H]\label{edgealgorithmhypergraph}
+ \KwData{\\
+ $A$:  the $n_\hgraf \times m_\hgraf$ incidence matrix of a hypergraph $\hgraf$\\
+ $B$: the $n_\hgrafeen \times m_\hgrafeen$ incidence matrix of a hypergraph $\hgraf$\\
+ $\tol$: tolerance for the estimation error.\\
+ \KwResult{\\
+ $X$: the node similarity matrix between $\graf$ and $\grafeen$\\
+ $Y$: the edge similarity matrix between $\graf$ and $\grafeen$}
+ \blankline
+\SetKwFunction{powermethod}{node\_edge\_similarity\_matrix\_hypergraphs}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$A$,$B$,$\tol$}}{
+$k = 1$ \;
+$X^{(0)} = \mathbf{1}$ ($n_\grafeen\times n_\graf$-matrix with all entries equal to $1$)\;
+$Y^{(0)} = \mathbf{1}$ ($m_\grafeen\times m_\graf$-matrix with all entries equal to $1$)\;
+$\mu_X =  n_\grafeen\times n_\graf$-matrix with all entries equal to $\tol$\;
+$\mu_Y =  m_\grafeen\times m_\graf$-matrix with all entries equal to $\tol$\;
+
+\Repeat{$|X^{(k)} - X^{(k-1)}| < \mu_X$ and $|Y^{(k)} - Y^{(k-1)}| < \mu_Y$ }{
+$Y^{(k)}=& \frac{B^TX^{(k-1)}A}{\|B^TX^{(k-1)}A\|_F}$\;
+$X^{(k)} = \frac{BY^{(k)}A^T}{\|BY^{(k)}A^T\|_F}$\;
+$k = k + 1$\;
+}}
+ 
+\KwRet $X^{(k)}, Y^{(k)} $\;}{}
+  \caption{Algorithm for calculating the node and edge similarity matrix $X$ and $Y$ between $\hgraf$ and $\hgrafeen$.\\}
+  \end{algorithm}
   
-  \end{proof}
-  
-  
-\end{proof}
+  \begin{algorithm}[H]\label{incidencealg}
+ \KwData{\\
+ $n$:  the number of vertices of hypergraph $\hgrafeen$\\
+ $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
+ \KwResult{\\
+ $A$: the incidence matrix of the hypergraph}
+ \blankline
+\SetKwFunction{powermethod}{hypergraph\_to\_incidencematrix}
+\SetKwFunction{hits}{hits}
 
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$n$, $E$}}{
+$m = |E|$\;
+$A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
 
+\For{$E_j \in E }{
+  \For{$v_i \in E_j$}{
+    $(A)_{ij} = 1$\;
+  }}}
+\KwRet $A$\;}{}
+  \caption{Algorithm to calculate the adjacency matrix of the 2-section of a hypergraph.\\}
+\end{algorithm}
+\subsection{Examples}
+We now calculate the same examples as in the previous section:
 
+\begin{example}
+  Let $\hgrafeen_1$, $\hgrafeen_2$ be the same hypergraphs as in Example 
+  \ref{ex1line}}, we get as incidence matrix $A$ of $\hgrafeen_1$ and $B$ of $\hgrafeen_twee$:
+  $$A = \begin{pmatrix}
+  0&1&0\\
+0&1&1\\
+1&0&0\\
+1&1&0\\
+0&1&1\\
+0&0&1\\
+0&1&0\\
+0&1&1\\
+\end{pmatrix} \quad \text{and} \quad
+B = \begin{pmatrix}
+  0&1&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+1&0&0&0\\
+1&0&0&1\\
+0&1&0&1\\
+0&1&0&1\\
+0&0&1&1\\
+0&0&1&0\\
+0&1&0&0\\
+0&1&0&0\\
+0&0&1&0
+\end{pmatrix}$$
+which can be used to apply Alogirthm \ref{edgealgorithmhypergraph} which results in the node similarity matrix $X$ and the edge similarity matrix 
+$Y$:
+$$ X = \begin{pmatrix}
+0.0838&0.1428&0.0134&0.0972&0.1428&0.0589&0.0838&0.1428\\
+0.0838&0.1428&0.0134&0.0972&0.1428&0.0589&0.0838&0.1428\\
+0.0171&0.0291&0.0027&0.0198&0.0291&0.0120&0.0171&0.0291\\
+0.0108&0.0183&0.0017&0.0125&0.0183&0.0076&0.0108&0.0183\\
+0.0686&0.1168&0.0109&0.0796&0.1168&0.0482&0.0686&0.1168\\
+0.1417&0.2413&0.0226&0.1643&0.2413&0.0996&0.1417&0.2413\\
+0.1417&0.2413&0.0226&0.1643&0.2413&0.0996&0.1417&0.2413\\
+0.0750&0.1277&0.0120&0.0869&0.1277&0.0527&0.0750&0.1277\\
+0.0171&0.0291&0.0027&0.0198&0.0291&0.0120&0.0171&0.0291\\
+0.0838&0.1428&0.0134&0.0972&0.1428&0.0589&0.0838&0.1428\\
+0.0838&0.1428&0.0134&0.0972&0.1428&0.0589&0.0838&0.1428\\
+0.0171&0.0291&0.0027&0.0198&0.0291&0.0120&0.0171&0.0291
+\end{pmatrix}$$
+$$Y = \begin{pmatrix}
+0.0134&0.0840&0.0590\\
+0.1045&0.6549&0.4603\\
+0.0213&0.1337&0.0940\\
+0.0721&0.4519&0.3177
+\end{pmatrix}$$
+\end{example}
 
-
-\section{Node similarity}
-\section{Node-edge similarity}
-\section{Similarity on colored hypergraphs}
-\texttt{hypergraph.tex}
-
-\section{Final reflection}
-\subsection{Why hypermatrices are the best representation of a hypergraph}\label{promohypermatrices}
-\subsection{The curse of dimensionality}
-
-\section{Applications}
+ 
 \begin{appendices}
   \chapter{Listings} \label{appendixa}% appeared as appendix A
 \lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
 
 \lstinputlisting[caption={The MatLab code for algorithm \ref{algsimilarity}.},label={lstsim}]{similarity_matrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithm}.}, label={edgematlab}]{node_edge_similarity_matrix.m}
-\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a source-edge matrix (edges are numbered left-to-right based on the adjacency matrix).}, label={sourceedgematlab}]{source_edge_matrix.m}
-\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a terminal-edge matrix (edges are numbered left-to-right based on the adjacency matrix).}, label={terminaledgematlab}]{terminal_edge_matrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithm} but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm 6.},label={edgematlab}]{node_edge_similarity_matrix.m}
+\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a source-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={sourceedgematlab}]{source_edge_matrix.m}
+\lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a terminal-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={terminaledgematlab}]{terminal_edge_matrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm 6 but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{linealg} to calculate the adjacency matrix of the representing line-graph of a hypergraph.}, label={linealgmatlab}]{hypergraph_to_linegraph.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{2sectionalg} to calculate the adjacency matrix of the $2$-section of a hypergraph.}, label={2sectionalgmatlab}]{hypergraph_to_2section.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{incidencealg} to calculate the incidence matrix of a hypergraph.}, label={incidencealgmatlab}]{hypergraph_to_incidencematrix.m}
+\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithmhypergraph} to calculate the node-edge similarity scores of a hypergraph.}, label={edgealgorithmhypergraphmatlab}]{hypergraph_to_2section.m}
+
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
