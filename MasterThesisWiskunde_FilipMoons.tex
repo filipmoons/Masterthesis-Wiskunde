@@ -1337,6 +1337,17 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
 
 \begin{definition}\label{simplegraph} A \textbf{simple graph} is an undirected graph $\graf=(V,\to)$ containing no loops and for all vertices $v_i, v_j \in V$, their is at most one edge.\end{definition}
  
+ \begin{definition}\label{clique}
+   A \textbf{clique} in a graph $\graf = (V, \to)$ is a subset $C$ of $V$, such 
+   that every two distinct vertices in $C$ are adjacent. 
+ \end{definition}
+ 
+  \begin{definition}\label{bipartite}
+   A \textbf{bipartite graph} is a graph $\graf = (V, \to)$ whose vertices can 
+   be divided into two disijount sets $U$ and $T$ such that every edge connects 
+   a vertex in $U$ and a vertex $V$. There are no edges between vertices in $U$ 
+   or between vertices in $V$.
+ \end{definition}
  \subsubsection{Product graphs}
  \begin{definition}\label{productgraph}
    Take two graphs $\graf=(U,\to), \grafeen=(V,\to')$, the \textbf{product graph} $\graf \times \grafeen$ 
@@ -4358,7 +4369,7 @@ S_{11} & 0 & \ldots & 0\\
  Then the the matrix subsequences $Z^{(2k)}_j$ for every $j \in \{1, \ldots, |C|\}$ 
  and $(S_{11}, S_{22},\ldots, S_{|C| |C|} )^{(2k)}$ converge to $Z^{\text{even}}_j$ and  $(S_{11}, S_{22},\ldots, S_{|C| |C|} 
  )^{\text{even}}$. Also the odd subsequences converge. If we take:
- $$S^{(0)}_{jj} = \mathbf{1} \in \R^{c_\grafeen(U,j)\times c_\graf(V,j)}$$
+ $$S^{(0)}_{jj} = J\in \R^{c_\grafeen(U,j)\times c_\graf(V,j)}$$
  as initial matrices, then the resulting $S^{\text{even}}_{jj}(\mathbf{1})$ are 
  the unique matrices of largest 1-norm among all possible limits with positive 
  start vector.
@@ -4523,6 +4534,8 @@ entries in the last column of $M$ are the transpose of the entries in the last
 row. It follows that $M$ is again symmetric.
 
 \end{proof}
+
+
 
 \subsection{Colored edges}
 We now extend the node-edge similarity method from Section 2.3 to edge colored 
@@ -4767,7 +4780,16 @@ edge similarity on colored edges:
    \right)\right\|_F}
  \end{eqnarray*}
    for $k = 0, 1, \ldots$
-   
+    Then the the matrix subsequences $(X,Y_{11},\ldots,Y_{|C||C|})^{(2k)}$ converge to $(X,Y_{11},\ldots,Y_{|C||C|})^{\text{even}}$ 
+  Also the odd subsequences converge. If we take:
+ \begin{eqnarray*}
+   X^{(0)}  &=& J \in \R^{n_grafeen \times n_graf}\\
+   Y^{(0)}_{jj} &=& J \in \R^{c_\graf(\to, i) \times c_\grafeen(\to', 
+   i)}
+ \end{eqnarray*}
+ as initial matrices, then the resulting $S^{\text{even}}_{jj}(\mathbf{1})$ are 
+ the unique matrices of largest 1-norm among all possible limits with positive 
+ start vector.
 \end{theorem}
 \begin{proof}
   By induction on $|C|$. Remember from Defintion \ref{edgecolored} that the 
@@ -4852,7 +4874,7 @@ A_{S_1} \otimes  B_{S_1} + A_{T_1} \otimes B_{T_1} &
 A_{S_2} \otimes  B_{S_2} + A_{T_2} \otimes B_{T_2}
 \end{pmatrix}$$
 
-$G$ is a n_\graf n_\grafeen \times (c_\graf(\to,1)c_\grafeen(\to',1)+c_\graf(\to,1)c_\grafeen(\to',2))-matrix, so:
+$G$ is a $n_\graf n_\grafeen \times (c_\graf(\to,1)c_\grafeen(\to',1)+c_\graf(\to,1)c_\grafeen(\to',2))$-matrix, so:
 $$ M = \begin{pmatrix}
 0_{c_\graf(\to,1)c_\grafeen(\to',1)+c_\graf(\to,1)c_\grafeen(\to',2)}& G^T\\
 G & 0_{n_\graf n_\grafeen}
@@ -4865,7 +4887,7 @@ as:
 $$G = \begin{pmatrix}
 A^T_{S_1} \otimes  B^T_{S_1} + A^T_{T_1} \otimes B^T_{T_1}\\
 A^T_{S_2} \otimes  B^T_{S_2} + A^T_{T_2} \otimes B^T_{T_2}\\
-\vdtos
+\vdtos\\
 A^T_{S_|C|} \otimes  B^T_{S_|C|} + A^T_{T_|C|} \otimes B^T_{T_|C|}
 \end{pmatrix}$$
 and you can rewrite $M$ with $G$ and $G^T$.
@@ -4875,110 +4897,99 @@ and you can rewrite $M$ with $G$ and $G^T$.
 \end{proof}
 \chapter{Similarity on hypergraphs}
 \section{Introduction}
-In this section, we explore similarity on hypergraphs: an undiscovered field as 
-no papers can be found in journals about this subject. In this section, we try to formulate an answer to the question whether
-we can generalize the results of the previous section to the domain of 
-hypergraphs.
+In this section, we explore similarity on hypergraphs. This is exploration is new as no papers can be found on the subject. In order to generalize
+this concept of similarity successfully and give it a correct meaning, we need to formulate 
+some conditions that a possible method for similarity on hypergraphs has to fulfill. 
+Intuitively, all methods from the previous chapter work in the same way: in the 
+first iteration step only the adjacency relations of vertices (or edges) in two graphs are 
+used and in each following iteration step, the relationships between these 
+adjaceny relations are calculated, which will result in high similarity scores (compared to the others in the similarity matrix)
+for a vertex when the adjacent vertices have a high similarity score. When calculating an edge similarity matrix,
+an edge will have a high similarity score (compared to others) if the vertices that an edge connect have a high similarity score.
+ In fact, from the second iteration step the method is the same as the power method. 
+Based on this, we now present our conditions. These conditions must ensure that 
+a similarity method for hypergraphs has the same behaviour as the similarity 
+methods for graphs:
+\begin{itemize}
+  \item[(C1)] When the method is applied on two undirected graphs, it must return the same 
+  similarity scores as the methods from Section 2.
+  \item[(C2)] Adding a non-isolated node to one of the hypergraphs must influence 
+  the similarity scores.
+  \item[(C3)] Adding an edge that is not a hyperloop 
+  must influence the similarity scores.
+  \item[(C4)] The similarity score of a vertex in an hypergraph is large (compared to others) when the similarity score 
+  of the adjacent vertices in the hypergraph is large.
+  \item[(C5)] The similarity score of an edge is large (compared to others) when it connects vertices 
+  with large similarity scores.
+  \item[(C6)] When two vertices are contained in exactly the same edges, we say 
+  that these vertices are \emph{interchangeable}. Interchangeable vertices must have 
+  the same similarity scores because they play the same role. When calculating 
+  an edge similarity matrix, interchangeable edges must have the same similarity 
+  scores. Interchangeable edges are edges that contain exactly the same 
+  vertices.
+  \item[(C7)] Also the other direction must hold: when two adjacent vertices have the same similarity score, they must 
+  be interchangeable. 
+  \item[(C8)] The cardinality of an edge E in a hypergraph ($|E|$) must 
+  influence the edge similarity scores: two edges with the same cardinality must have a higher similarity score than two edges with a different 
+  cardinality.
+      \item[(C9)] A vertex can only have a similarity score equal to zero when the hypergraph is not connected. In that case, it can occur that a group
+  of adjacent vertices dominates all vertices that are not adjacent to this group. 
+  Also edge can only have a similarity score equal to zero when the hypergraph is not connected. 
+  An isolated vertex will always have a similarity score equal 
+  to zero. This is no different from isolated vertices in graphs (see Thereom NOG TE 
+  BEWIJZEN).
+  \end{itemize}  
+In the first section, we explore representations of hypergraphs as (classical) graphs and use 
+them to calculate the similarity between two hypergraphs by simply using the 
+methods of the previous chapter. Intuively, we want a characteristic graph
+representation of a hypergraph that is faithful (meaning that a graph represents
+only 1 hypergraph), because only a faithful
+characteristic graph will preserve all the information that the structure of a hypergraph
+contains. When the characteristic graph of a hypergraph is not faithful,
+the resulting similarity methods 
+can do a fair job under certain circumstances, but we will see that we can not fulfill
+all the conditions at the same time because some information of the original hypergraph is lost.
 
-One of the most obvious ways to apply the concept of similarity to hypergraphs 
-is looking to the corresponding graph representations of a hypergraph and apply 
-the algorithms of the previous section. This is explained in the first section of 
-this chapter. Although it the most logic way to introduce similarity on hypergraphs, it's also the least significant
-solution because most graph representations throw away a lot of information that 
-the structure of a hypergraph contains.
 
-A slightly smarter, more meaningful way to introduce similarity on hypergraphs 
-is to work with the hypergraph variant of an adjacency matrix. As with graphs, 
-also hypergraphs can be represented by a kind of matrix representation. The only 
-difference with graphs is that there is no consensus at all in the literature 
-about which matrix representation is the standard for hypergraphs (see \cite{berge}).  
-
-The most common representation is a (two-dimensional) normal matrix representation, where the rows 
-represent the nodes and the columns the edges and the entries $(A)_{ij}$ are equal to $1$ if vertex $i$ is contained in edge $j$ and
-$0$ otherwise.
-Although it's an easy representation that is applicable to hypergraphs with edges containing different numbers of nodes, 
-the biggest drawbacks are that all edges must be undirected (there is no way to express
-which is the start node, the second node,..., terminal node) and that this 
-representation is completely different to the structure of an adjacency matrix 
-we are so used with graphs. The main reason why it's so popular is probably that 
-the hypergraph can be represented by just a normal matrix, no other 
-datastructure must be studied.
-
-Another way to represent a hypergraph is through a multi-dimensional adjacency matrix. Also referred 
-to as an hypermatrix or an adjacency tensor. 
-Take, for example, a $3$-hypergraph (see Definition \ref{unfiromgraph}), then the adjacency tensor $\mathcal{A}$ 
-is $n \times n \times n$-tensor, with $n$ the number of vertices. The element $(\mathcal{A})_{ijk} $ is 
-equal to the number of 3-edges between vertices $v_i, v_j$ and $v_k$. Besides that it is the natural generalization of adjacency matrices we 
-know from graphs, it's also a richer structure, this is explained in the final 
-reflection in subsection \ref{promohypermatrices}. 
-
-For now, we consider only 
-$k$-uniform hypergraphs with undirected edges. Meaning that symmetry elements 
-given by permutations of the index set in the hypermatrix have the same value, so 
-in our $3$-uniform hypergraph this means that 
-$$(\mathcal{A})_{ijk} = (\mathcal{A})_{ikj} = (\mathcal{A})_{jik} = (\mathcal{A})_{jki} = (\mathcal{A})_{kij} = (\mathcal{A})_{kji}.$
-
-How do we generalize similarity by working with adjacency tensor representations of 
-hypergraphs? Intuitively, it's not so hard to understand: all the algorithms 
-described in section 2 consist of a matrix sequences of which the convergence is 
-proved by Theorem \ref{grootbewijs}. All this proofs have one thing in common: 
-they use a vectorization of the matrix sequence, so the sequence can be 
-rewritten in the form:
-$$\mathbf{z}^{(k)} = M\mathbf{z}^{(k-1)}$$
-when $M$ meets certain conditions (being nonnegative and symmetric), our 
-convergence theorem can be applied and we're done. Now, we can apply the same 
-trick with hypermatrices, instead of a vectorization we can apply a \textit{matricization} on an adjacency tensor
- turning the tensor into a `normal', two-dimensional matrix. If 
-this returns the matrix sequences of section 2, we know that the generalized 
-methods will converge. A beautiful visualization of this idea can be found in 
-Figure \ref{visualizatie}: think of a 3-uniform hypergraph with $n$ nodes. The 
-corresponding tensor will be of dimension $n \times n \times n$, which can 
-be visually represented as a cube. Just as a cube can be decomposed into a square and next into a straight line, 
-we can decompose the hypermatrix into a matrix and next into a vector.
-
-There is only one difficult aspect when we bring similarity to hypergraphs and 
-use their hypermatrix representation: the result will be a similarity 
-hypermatrix. This means that by calculating the similarity hypergraph of two  $k$-uniform hypergraphs, we don't get similarity scores to compare nodes (or edges) two-by-two
-but we get similarity scores to compare two groups of $k$ nodes at the same time. 
-We will propose some solutions to transform the resulting similarity hypermatrices 
-in such way we can compare nodes two-by-two.
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.05]{cube.jpg}\caption{Just as a cube can be decomposed in to a square and even to a straight line,
-  a hypermatrix can be decomposed into a matrix and next into a vector. (Source: \emph{istockphoto.com})}\label{visualizatie}
-\end{figure}
- 
 \section{Similarity through corresponding graph representations}
-One way to look at similarity on hypergraphs is to represent a hypergraph as a 
-graph and use the similarity algorithms from the previous section. Almost
-every generalization with hypergraphs starts by looking at corresponding 
-graph representations (\cite{berge}), and therefore it's interesting to do this for the notion of similarity too.
- We describe two representations of 
-hypergraphs as a graph: the line-graphs and the 2-sections of hypergraphs. 
-For each representation we use the same examples to see the differences on the similarity scores between the graph representations. 
 \subsection{Line-graphs}
-In this subsection, we describe the representation of a hypergraph as a 
-line-graph. We then show some relevant properties and examples and we conclude 
-by looking at similarity between hypergraphs through this representation.
+\subsubsection{General definitions and properties}
 \begin{definition}
   Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{E_1, \ldots E_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
   often denoted by $\ell(\hgrafeen) = (V', \to)$ 
 with:
   \begin{enumerate}
     \item $V' = E$,
-    \item $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ ($E_i$ and $E_j$ must be adjacent)
-  \end{enumerate}
+    \item $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$.
+      \end{enumerate}
 \end{definition}
 
 It's immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). 
-The following example shows that representation of a hypergraph by a line-graph 
-is not unique:
+An important property of a hypergraphs can be seen on a line-graph:
 
+\begin{property}\label{linegrafconnected}
+The line-graph $\ell(\hgrafeen)$ is connected if  $\hgrafeen = (V, E)$ is connected.
+\end{property}
+\begin{proof}
+By contraposition, if $\ell(\hgrafeen)$ is not connected, take $E_p, E_q$,  two vertices of $\ell(\hgrafeen)$ 
+ that doesn't have a path between each other. This means that there is no 
+ sequence
+ $$E_p = E_{k_0}, E_{k_1}, \ldots, E_{k_{l-1}}, E_q = E_{k_l}$$
+such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$ for $i \in \{0,\ldots, l\}$, if $v_p \in E_p$ and $v_q \in E_q$ 
+ with $v_p,v_q$ vertices of $\hgrafeen$, this means that no path exists between $v_p$ 
+ and $v_q$ and therefore $\hgrafeen$ is not connected.
+ $\Rightarrow$ If $\hgrafeen = (V,E)$ is not connected, then take $v_a, v_b \in 
+ V$, two vertices of $\hgrafeen$ that are not connected, meaning that 
+ \end{proof}
+
+
+
+The following example shows that characteristic line-graph of a hypergraph is 
+not faithful:
 
 
 \begin{example}
-  Let $\hgrafeen_1$ be the following hypergraph:
+  Let $\hgraf_1$ be the following hypergraph:
   \begin{center}
    \begin{tikzpicture}
     \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
@@ -5120,7 +5131,7 @@ is not unique:
 \node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
 \end{tikzpicture}
 \end{center}
-Both $\hgrafeen_1, \hgrafeen_2$ and $\hgrafeen_3$ lead to the same line-graph 
+All off $\hgrafeen_1, \hgrafeen_2$ and $\hgrafeen_3$ lead to the same line-graph 
 $\graf$:
 \begin{center}
 \begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -5141,46 +5152,16 @@ $\graf$:
 \end{tikzpicture}
 \end{center}
 \end{example}
-From the previous example, we already suspect that using the line-graph 
-representation of a hypergraph to compute similarity will not give satisfactory 
-results. It will only produce similarity scores between the edges of the hypergraph,
-because the vertices are not represented in the line-graph representation. Also
-the fact that the representation is not unique is alarming: if we calculate, for instance, the similarity scores of $\hgrafeen_1$ and $\hgrafeen_3$ 
-of the previous example by using the line-graph representation, we are just 
-calculating the self-similarity score of the line-graph $\graph$ although those 
-hypergraphs are not that similar at all. 
+\subsubsection{Algorithm for similarity}
+We want to apply Algorithm \ref{algsimilarity} to produce a similarity matrix
+between two hypergraphs. This will produces an edge similarity matrix, because the vertices are not represented in the line-graph representation. 
 
-To use Algorithm \ref{algsimilarity} from section 2.2, we introduce Algorithm \ref{linealg}.
-This algorithm takes a hypergraph as input and returns the adjacency matrix of 
-the corresponding line-graph. The Matlab implementation can be found in Appendix \ref{appendixa} in Listing \ref{linealgmatlab}. By applying this algorithm to two hypergraphs, we 
-can use Algorithm \ref{algsimilarity}. Remember that the returning similarity 
-matrix will allow us to compare the edges of the two hypergraphs.
 
-\begin{algorithm}[H]\label{linealg}
- \KwData{\\
- $n$:  the number of vertices of hypergraph $\hgrafeen$\\
- $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
- \KwResult{\\
- $A$: the adjacency matrix of the corresponding line-graph}
- \blankline
-\SetKwFunction{powermethod}{hypergraph\_to\_linegraph}
-\SetKwFunction{hits}{hits}
+To use Algorithm \ref{algsimilarity} from section 2.2, we first take a hypergraph as input and calculate the adjacency matrix of 
+the corresponding line-graph. The Matlab implementation of this step can be found in Appendix \ref{appendixa} in Listing \ref{linealgmatlab}. By applying this algorithm to two hypergraphs, we 
+can use Algorithm \ref{algsimilarity}. 
 
-\SetKwProg{myalg}{begin}{}{end}
-\myalg{\powermethod{$n$, $E$}}{
-$m = |E|$\;
-$A$ = initialize a $m \times m$-matrix with all entries equal to 0\;
-
-\For{$i: 1$ to $m$ }{
-  \For{$j: 1$ to $m$ }{
-     \eIf{$E_i \cap E_j \not = \emptyset$ and $i \not = j$ }{
-         $(A)_{ij} = 1$
-     }{$(A)_{ij} = 0$}
-  }}}
- 
-\KwRet $A$\;}{}
-  \caption{Algorithm to calculate the adjacency matrix of the representing line-graph of a hypergraph.\\}\label{linealg}
-\end{algorithm}
+\subsubsection{Examples}
 We now give some examples of the similarity of two hypergraphs by using 
 line-graphs:
 \begin{example}\label{ex1line}
@@ -5318,10 +5299,7 @@ line-graphs:
 \end{tikzpicture}
 \end{center}
 
- Intuitively, we expect high similarity scores for the edges $(E'_1, E_1), (E'_2,E_2)$
-  and $(E'_3,E_3)$, because they all contain the same amount of vertices and have exactly the same structure. The fact that
- $E'_1$, $E'_2$, $E'_3$ are not adjacent to each other may not play a major role as both $\hgrafeen_1$ and $\hgrafeen_2$  are
- connected hypergraphs. By applying algorithm \ref{linealg} we get the adjacency matrices $A_1$ for 
+By applying algorithm \ref{linealg} we get the adjacency matrices $A_1$ for 
  $\hgrafeen_1$ and $A_2$ for $\hgrafeen_2$:
  $$A_1 = \begin{pmatrix}
   0 & 1 & 0\\
@@ -5344,15 +5322,7 @@ line-graphs:
     0.2887  &  0.2887  & 0.2887
     \end{pmatrix}$$
     
-    This is completely against our intuition but is not surprising: the representing line-graph of a hypergraph is 
-    connected if also the hypergraph itself is connected. As we know from 
-    section 2.2, the node similarity method looks at adjacent vertices. Because the 
-    vertices are here the edges of the matrix and the line-graph doesn't save 
-    any information about the vertices of the hypergraph, this result here is based
-    only on the fact that edges are adjacent to other edges in both hypergraphs. When this is the case, the edges that are equally similar for the node similarity method. 
-\end{example}
-
-We now give two other examples to investigate a little more in the connectivity :
+   \end{example}
 
 \begin{example}\label{ex2line}
   $\hgrafeen_1$ is the same as in the previous example, but now, $\hgrafeen_2$ 
@@ -5432,13 +5402,8 @@ We now give two other examples to investigate a little more in the connectivity 
   0 & 0 & 0\\
   0 & 0 & 0
   \end{pmatrix}$$
-  The same reasoning applies here: normally $(E'_1, E_1), (E'_2,E_2)$
-  and $(E'_3,E_3)$  must be similar but this method returns an all zero matrix as similarity 
-  matrix for the edges because the only criterium for this method is the 
-  adjacency of the edges to other edges. As $\hgrafeen_1$ is connected with all edges adjacent to each other but $\hgrafeen_2$ has only isolated edges, the similarity 
-  matrix is full of zeros.
+
 \end{example}
-We now show a last example where the hypergraph has some edges that are adjacent to each other:
 
 \begin{example}\label{ex3line}
   $\hgrafeen_1$ is the same as in the previous example, but now, $\hgrafeen_2$ 
@@ -5518,23 +5483,176 @@ We now show a last example where the hypergraph has some edges that are adjacent
     0.4082 &    0.4082  &   0.4082\\
          0      &   0   &      0
   \end{pmatrix}$$
-  After the previous examples, this does not surprise us: as being adjacent to other edges is the only criterium for this method, $E'_3$ is not similar to neither 
-  $E_1$, $E_2$, $E_3$ as $E'_3$ is an isolated edge (remember from Algorithm \ref{algsimilarity} that the 
-  rows of the similarity matrix represent the nodes from the second graph, the 
-  colums represent the nodes of the nodes of the first graph).
-  
+
   \end{example}
-Conclusion? The line-graph representation only tells us something about the 
-isolated edges in two hypergraphs when calculating similarity scores with it. When the similarity 
-score of two edges $E_i$ and $E'_i$ is not zero, it just means that they are both 
-not an isolated edge (an edge is isolated when it is adjacent to no other edge). 
-It's clear that this is a very limited interpretation of similarity between two 
-hypergraphs.
+  
+  \begin{example}\label{ex4line}
+  $\hgrafeen_1$ is the same as in the previous example, but now, $\hgrafeen_2$ 
+  is the following hypergraph:
+     \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=30pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge2,opacity=1,color=purple] (v3) -- (v4);
+\fill[edge2,opacity=1,color=purple] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E'_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E'_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E'_3\)]  (e3) {};
+\node[elabel,below of=e3,color=purple,label=right:\(E'_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+  The similarity score of these two hypergraphs by using their line-graph representation becomes:
+  $$S = \begin{pmatrix}
+    0.4082 &    0.4082  & 0 & 0.4082 \\
+    0.4082 &    0.4082  &  0&  0.4082 \\
+         0      &   0   &      0 & 0
+  \end{pmatrix}$$
+
+  \end{example}
+  
+  \subsubsection{Interpretation}
+  We now discuss the conditions from the introduction:
+  \begin{itemize}
+    \item[(C1)] Not fulfilled: first, the method will only result an edge 
+    similarity matrix and second, the line-graph of an undirected graph is not 
+    necessary the undirected graph itself:
+    \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+  \node[main node] (3) [label=above:$v_3$][right of=2] {};;
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {$e_1$} (2)
+      (2) edge node [above] {$e_2$} (3)
+    
+\end{tikzpicture}
+\end{center}
+Has as line-graph:
+
+        \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$e_1$] {};
+  \node[main node] (2) [label=above:$e_2$][right of=1] {};
+
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {} (2)
+    
+\end{tikzpicture}
+\end{center}
+which will clearly not result in the same edge similarity scores as no 
+information about the vertex adjacency is saved.
+    
+    
+ 
+ 
+   \item[(C2)] Not fulfilled: the vertices of the hypergraph doesn't play a role 
+   in the line-graph. No information about them is saved in the line-graph 
+   representation.
+  \item[(C3)] Fulfilled: Adding an edge to one of the two hypergraphs will 
+  result in an extra vertex in the line-graph. Adding this vertex will take the 
+  edge into account when calculating the similarity scores and therefore we 
+  conclude that this condition is fulfilled.
+  \item[(C4)] Not fulfilled: in Examples \ref{ex1line}, \ref{ex2line}, \ref{ex3line}  
+  and \ref{ex4line}
+  all positive similarity scores are the same, regardless of the adjacency 
+  structure of the hypergraph.
+  \item[(C5)] Not fulfilled: there is no information about the vertices saved in 
+  the line-graph representation of a hypergraph.
+  \item[(C6)] Fulfilled: from Example \ref{ex4line} we see that the $E_1$ and 
+ $E_4$ are interchangeable and have indeed the same similarity scores.
+  \item[(C7)] Not fulfilled: from Example \ref{ex1line} we see that alle edges 
+  have exactly the same similarity scores but none of them is interchangeable.
+   \item[(C8)] Not fulfilled: no information on the number of vertices an edge 
+contains is preserverd by the line-graph representation.
+  \item[(C9)] Fulfilled: but it is also the only thing this representation tells us 
+  when used for the calculation of similarity: two edges of the two line-graphs
+  have a positive similarity score when these edges are connected to other edges, meaning that for any $E_p, E_q$ there is a sequence 
+  $$E_p = E_{k_0}, E_{k_1}, \ldots, E_{k_{l-1}}, E_q = E_{k_l}$$
+  such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$. From Property 
+  \ref{linegrafconnected}, this is not surprising.
+
+  \end{itemize}  
+  \subsubsection{Conclusion}
+  The line-graph fails to satisfy lots of the conditions and is therefore 
+  not a good representation to calculate similarity between two hypergraphs. 
+  Similarity between hypergraphs through line-graphs only allows us to discover 
+  groups of connected edges in both hypergraphs. The fact that the line-graph 
+  representation is a bit disappointing, was also predictable as a lot of 
+  hypegraphs share the same line-graph representation. 
+
 
 \subsection{$2$-section of a hypergraph}
+\subsubsection{General definitions and properties}
 We now look at another graph representation of a hypergraph. In contrast to the 
 line-graph representation, the $2$-section saves information about the vertices 
-which will introduce a much more sophisticated way to say something about 
+which will introduce a more sophisticated way to say something about 
 similarity between two hypergraphs by using their $2$-section.
 
 \begin{defintion}
@@ -5542,11 +5660,11 @@ similarity between two hypergraphs by using their $2$-section.
   with:
   \begin{itemize}
     \item The same vertex set as the hypergraph,
-    \item $v_i \to v_j$ if and only if $v_i, v_j \in E_k$ for some $E_k \in E$ and $i \not = j$ ($v_i$ and $v_j$ must be adjacent).
+    \item $v_i \to v_j$ if and only if $v_i, v_j \in E_k$ for some $E_k \in E$ and $i \not = j$.
   \end{itemize}
   \end{defintion}
   
-\begin{example}
+\begin{example}\label{uniciteitsvoorbeeld}
 The 2-section of the following hypergraph $\hgrafeen$ is drawn on top:
     \begin{center}
    \begin{tikzpicture}
@@ -5622,6 +5740,10 @@ The 2-section of the following hypergraph $\hgrafeen$ is drawn on top:
     \draw[gedge,opacity=1,color=black] (v5) -- (v8);
     \draw[gedge,opacity=1,color=black] (v5) -- (v6);
       \draw[gedge,opacity=1,color=black] (v8) -- (v6);
+      \end{scope}
+      \begin{scope}[transparency group,opacity=1]
+
+      \draw[gedge30, opacity=1, bend left] (v1) -- (v7);
 \end{scope}
 
 \end{pgfonlayer}
@@ -5633,7 +5755,7 @@ The 2-section of the following hypergraph $\hgrafeen$ is drawn on top:
 \end{center}
 \end{example}
 
-Also this graph representation of graphs is not unique, as the following example 
+Also the 2-section of a hypergraph is not a faithful graph characteristic of a hypergraph, as the following example 
 shows:
 
 \begin{example}\label{2sectievoorbeeld}
@@ -5730,41 +5852,22 @@ The 2-section of the following hypergraph $\hgrafeen'$ is drawn on top and is th
 \end{tikzpicture}
 \end{center}
 \end{example}
-  We now discuss the possibilities to introduce similarity on hypergraphs by 
-  using their $2$-section. First, we introduce Algorithm \ref{2sectionalg} that 
+\subsubsection{Algorithm for similarity}
+  In Listing \ref{2sectionalgmatlab} in Appenix \ref{appendixa}, we introduce 
+  an algorithm that 
   takes a hypergraph as input and returns the adjacency matrix of the 
-  corresponding $2$-section of the hypergraph. A Matlab implementation can be 
-  found in Listing \ref{2sectionalgmatlab} in Appenix \ref{appendixa}.
+  corresponding $2$-section of the hypergraph. The 
+  resulting adjacency matrix can then be used in the node similarity method from 
+  Algorithm \ref{algsimilarity}.
   
   
-  \begin{algorithm}[H]\label{2sectionalg}
- \KwData{\\
- $n$:  the number of vertices of hypergraph $\hgrafeen$\\
- $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
- \KwResult{\\
- $A$: the adjacency matrix of the corresponding line-graph}
- \blankline
-\SetKwFunction{powermethod}{hypergraph\_to\_2section}
-\SetKwFunction{hits}{hits}
-
-\SetKwProg{myalg}{begin}{}{end}
-\myalg{\powermethod{$n$, $E$}}{
-$A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
-
-\For{$i: 1$ to $m$ }{
-  \For{$j: 1$ to $m$ }{
-     \eIf{$v_i, v_j \in E_k$ for some $k$ and $i \not = j$ }{
-         $(A)_{ij} = 1$
-     }{$(A)_{ij} = 0$}
-  }}}
-\KwRet $A$\;}{}
-  \caption{Algorithm to calculate the adjacency matrix of the 2-section of a hypergraph.\\}
-\end{algorithm}
+  
+\subsubsection{Examples}
 We now use the same examples as in the previous subsection and look at what the 
 similarity of two hypergraphs becomes by using their $2$-section.
-\begin{example}
+\begin{example}\label{ex2sec1}
   Take the same $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex1line}, 
-by applying Algorithm \ref{2sectionalg} we get the adjacency matrices 
+by calculating the adjacency matrices of the 2-section,
    and we can apply Algorithm \ref{algsimilarity}  which returns the similarity 
    matrix:
    $$ S = \begin{pmatrix}
@@ -5782,20 +5885,96 @@ by applying Algorithm \ref{2sectionalg} we get the adjacency matrices
 0.0263&0.0288&0.0051&0.0271&0.0288&0.0162&0.0263&0.0288
 \end{pmatrix} $$
 
-The first things to notice is the symmetry of some elements: $v_4$ of $\hgrafeen_2$ 
-has the same similarity score for $v_1$, $v_7$ of $\hgrafeen_1$ and for $v_2, 
-v_5, v_8$ of $\hgrafeen_1$. This is logic as these vertices play exactly the 
-same role in $\hgrafeen_1$, when we would swap them, the structure of $\hgrafeen_1$ 
-would not change. 
+
+ \end{example}
+
+ \begin{example}\label{ex2sec2}
+   Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex2line}, 
+   the similarity matrix using the 2-section of the hypergraphs becomes:
+   $$S = \begin{pmatrix}
+   0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
+0&0&0&0&0&0&0&0
+   \end{pmatrix}$$
+   \end{example}
+ 
+\begin{example}\label{ex2sec3}
+     Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex3line}, 
+   the similarity matrix using the 2-section of the hypergraphs becomes:
+   $$S = \begin{pmatrix}
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.1623&0.1782&0.0314&0.1673&0.1782&0.1004&0.1623&0.1782\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0
+   \end{pmatrix}$$
+   
+\end{example}
+\subsubsection{Interpretation}
+
+\begin{itemize}
+  \item[(C1)] Not fulfilled: an undirected graph with multiple edges between two vertices $v_p, v_q$ will `lose' this
+  edges in its 2-section. Also loops are not taken into consideration. Take for example the following graph $\graf$:
+   \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
 
 
-Their is only one problem with this method: the introduction of only one edge 
-that connects vertices that otherwise wouldn't be connected in the hypergraph can have an enormous impact on the adjacency structure of the 
-2-section of the hypergraph and thus on the similarity scores. This is logic because the node similarity method takes the adjacent
-vertices into account. But on the other 
-hand, introducing an edge in the hypergraph that connects vertices who were already connected, 
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {$e_1$} (2)
+      (1) edge[bend left=30] node [above] {$e_2$} (2)
+           (1) edge [loop below] node {$e_3$} (1)
+
+    
+\end{tikzpicture}
+
+\end{center} 
+$\graf$ will have as 2-section:
+ \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {$e_1$} (2)
+      
+    
+\end{tikzpicture}
+
+\end{center}
+  \item[(C2)] Fulfilled: the number of vertices is preserved in the 2-section of 
+  a hypergraph.
+  \item[(C3)] Not fulfilled: introducing an edge in a hypergraph that connects vertices who are already connected, 
 doesn't change anything to the 2-section of the hypergraph (by definition), for 
-example if we take $\hgrafeen_1$ as follows:
+instance if we take $\hgrafeen_1$ in Example \ref{ex2sec1} as follows:
    \begin{center}
    \begin{tikzpicture}
     \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
@@ -5845,7 +6024,7 @@ example if we take $\hgrafeen_1$ as follows:
 \fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
 \draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
 \fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
-\draw[edge2,opacity=0.7,color=purple] (v1) -- (v4)--(v7);
+\draw[edge2,opacity=0.7,color=purple] (v1) -- (v4);
 \end{scope}
 
 
@@ -5858,87 +6037,528 @@ example if we take $\hgrafeen_1$ as follows:
 
 \end{tikzpicture}
 \end{center}
-then the introduced edge $E_4$ will not influence the similarity scores at all 
-as $v_1, v_4, v_7$ were already adjacent to each other in the 2-section of 
-$\hgrafeen_1$. This is not intuitive, because introducing an additional edge 
-between vertices expresses an additional union between this vertices that in 
-this method is not reflected in the similarity scores at all.
+then we will get the same similarity matrix as the introduced edge $E_4$ will not influence the similarity scores at all 
+because $v_1, v_4, v_7$ were already adjacent to each other in the 2-section of 
+$\hgrafeen_1$. 
 
- \end{example}
+  \item[(C4)] Fulfilled: take for Example \ref{ex2sec1}, we see that the largest similarity scores
+  occurs between vertices $v_6, v_7$ 
+  in $\hgrafeen_2$ and vertices $v_2, v_5$ and $v_8$ from $\hgrafeen_1$. This can 
+  be explained by the fact that indeed $v_6,v_7$ are all adjacent to the vertices in $E_2$. And that $E_2$ is the 
+  most central set of vertices in the whole hypergraph. 
+  
+  This can be explained 
+  generally by the fact that the 2-section preserves the adjacency relations between 
+  vertices of the hypergraph by definition. Therefore, this is a consequence 
+  from Algorithm \ref{algsimilarity} that returns a high similarity score of a 
+  vertex in a graph (in this case the 2-section of the hypergraph) when the similarity score of the adjacent vertices is large.
+    \item[(C5)] This condition does not apply on this method because we don't calculate edge similarity scores.
+   \item[(C6)] Fulfilled: all interchangeable vertices have the same similarity 
+   scores in the Examples \ref{ex2sec1}, \ref{ex2sec2}, \ref{ex2sec3}. This is can be explained
+   by the fact that the interchangeable vertices of a hypergraph are also 
+   interchangeable vertices in the 2-section graph.
+   
+   
+     \item[(C7)] Not fulfilled: we know from (C3) that edges that connect 
+     vertices that where already connected by other edges have no effect on
+   the 2-section. This means that $\hgrafeen$ in the example in (C3) would 
+     return the same similarity scores for $v_1$ and $v_7$ although they are not 
+     interchangeable.
+     \item [(C8)] Not fulfilled: the $2$-section doesn't save any information 
+     about the number of vertices in each edge. 
+  \item[(C9)] Fulfilled by the fact that isolated vertices in a hypergraph will 
+  also be isolated in the 2-section.
+  \end{itemize}  
 
- \begin{example}
-   Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex2line}, 
-   the similarity matrix using the 2-section of the hypergraphs becomes:
-   $$S = \begin{pmatrix}
-   0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0&0&0&0&0&0&0&0\\
-0&0&0&0&0&0&0&0\\
-0&0&0&0&0&0&0&0\\
-0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0&0&0&0&0&0&0&0\\
-0&0&0&0&0&0&0&0\\
-0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0.1532&0.1682&0.0297&0.1579&0.1682&0.0948&0.1532&0.1682\\
-0&0&0&0&0&0&0&0
-   \end{pmatrix}$$
-   We note again the symmetries in this similarity matrix: $v_1, v_2, v_6, v_7, v_{10}, v_{11}$ in $\hgrafeen_2$ 
-   are all contained in $E'_2$ and are the only nodes with positive similarity 
-   scores. The he same holds for $v_1, v_7$ and $v_2, v_5, v_8$ in $\hgrafeen_1$.
-    The non-zero similarity scores itself are the same for all this groups of vertices and 
-   this not surprising because all these vertice can be swaped without 
-   changing the structure of $\hgrafeen_2$ or $\hgrafeen_1$. The positive similarity scores itself are also 
-   logic: for instance $v_1$ in $\hgrafeen_2$ is least similar to $v_3$ in $\hgrafeen_1$  
-   and this is acceptable as $v_3$ in $\hgrafeen_2$ belongs to an edge with a 
-   totally different structure.    
- \end{example}
- 
+\subsubsection{Conclusion}
+The $2$-section of a hypergraph is a rich structure that 
+saves a lot more information compared to the the line-graph representation. The biggest drawback for this method is that 
+adding an edge to a hypergraph can sometimes have no effect at all. This happens when 
+the added edge connects vertices which were already connected. This is bad, because adding an edge always should have an impact on 
+  the similarity scores as it expresses a union between vertices. As a consequence, adjacent vertices that aren't interchangeable
+  can still have the same similarity scores. We saw in Example \ref{2sectievoorbeeld} that
+  the 2-section of a hypergraph is not unique, meaning that we are loosing certain
+  information on the hypergraph. In this case, we can lose information about 
+  the edges as some edges will not be represented in the 2 section and we also lose 
+  all information about 
+  the number of vertices contained in each edge. Meaning that the number of vertices
+  contained in an edge doesn't play any role when calculating the similarity scores. 
+  
+ We can resolve the problems in conditions (C1), (C3) and (C7) by allowing multiple edges
+  between vertices and loops: every edge in the hypergraph is then also represented in this \emph{extended 2-section}.
+  
+  \subsection{Extended $2$-section of a hypergraph}
+ \subsubsection{General definitions and properties}
+\begin{defintion}
+  The \textbf{extended $2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]'_2 = (V,\to)$ 
+  with:
+  \begin{itemize}
+    \item The same vertex set as the hypergraph,
+    \item for every $E_i \in E$ with $|E_i| > 1$: $v_k \to v_l$ for every $v_k, v_l \in E_i and k \not 
+    = l$,
+    \item for every $E_i \in E$ with $|E_i| =1$ : $v_k \to v_k$ for $v_k \in 
+    E_i$.
+    \end{itemize}
+      \end{defintion}
+\subsubsection{Algorithm for similarity}
+We introduce Algorithm \ref{extended2sectionalg} that 
+  takes a hypergraph as input and returns the adjacency matrix of the 
+  corresponding  extended $2$-section of the hypergraph. A Matlab implementation can be 
+  found in Listing \ref{extended2sectionalgmatlab} in Appenix \ref{appendixa}.
+  
+  
+  \begin{algorithm}[H]\label{extended2sectionalg}
+ \KwData{\\
+ $n$:  the number of vertices of hypergraph $\hgrafeen$\\
+ $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
+ \KwResult{\\
+ $A$: the adjacency matrix of the corresponding extended 2-section}
+ \blankline
+\SetKwFunction{powermethod}{hypergraph\_to\_extended2section}
+\SetKwFunction{hits}{hits}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$n$, $E$}}{
+$A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
+$m$ = number of edges\;
+\For{$i: 1$ to $m$ }{
+      \eIf{$|E_m|$ = 1}{
+         $k =$ vertex in $E_m$\;
+         $(A)_{kk} = A_{kk} + 1$\;
+     }{
+     \For{$j: 1$ to $|E_m|$}{
+     $C = $ all possible combinations of elements in $E_m \backslash j$\;
+       \For{$l: 1$ to $|C|$}{
+       $A_{jl} = A_{jl} + 1$
+       } 
+     }
+     
+          }
+  }}
+\KwRet $A$\;}{}
+  \caption{Algorithm to calculate the adjacency matrix of the extended 2-section of a hypergraph.\\}
+\end{algorithm}
+
+
+\subsubsection{Example}
+We take an example that really shows the power of 
+extended 2-sections:
 \begin{example}
-     Let $\hgrafeen_1$ and $\hgrafeen_2$ be the same as in Example \ref{ex2line}, 
-   the similarity matrix using the 2-section of the hypergraphs becomes:
-   $$S = \begin{pmatrix}
-0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
-0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
-0&0&0&0&0&0&0&0\\
-0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
-0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
-0.1623&0.1782&0.0314&0.1673&0.1782&0.1004&0.1623&0.1782\\
-0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
-0&0&0&0&0&0&0&0\\
-0&0&0&0&0&0&0&0\\
-0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
-0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
-0&0&0&0&0&0&0&0
-   \end{pmatrix}$$
-   This result can be explained in the same way as the previous example: the 
-   connected components have non-negative similarity scores and  exchangeable 
-   vertices in both $\hgrafeen_1$ and $\hgrafeen_2$ have the same similarity 
-   scores. .
-\end{example}
-Conclusion? Although the $2$-section of a hypergraph is a rich structure that 
-saves a lot more information compared to the the line-graph representation, and 
-is a far more better representation to say something about similarity between 
-hypergraphs. Their is only one drawback for this method: adding an edge to a hypergraph can have an enormous impact on the 
-  similarity scores or have no effect at all. There is an impact when the edge 
-  connects vertices that otherwise wouldn't be connected in the hypergraph and 
-  there is no impact at all when the edge connects vertices which were connected 
-  already. This is bad, because adding an edge always should have an impact on 
-  the similarity scores as it expresses a union between vertices.
- 
- Let's find out if we can do better in the next section!
+  Take $\hgrafeen_1$ as in Example \ref{ex1line} and $\hgrafeen_2$:
+  \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
 
-\section{Similarity by using the incidence matrix}
-The two graph representations return disappointing results when used to 
-calculate the similarity of two hypergraphs. We search for another method and 
-one very natural generalization is the following: the node-edge similarity 
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
+
+\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
+\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
+\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=1]
+\draw[edge3,color=yellow] (v1) -- (v2);
+\draw[edge3,color=yellow] (v2) -- (v4);
+
+\draw[edge3,color=yellow] (v1) -- (v4);
+\draw[edge3,color=yellow] (v4) -- (v7);
+\draw[edge3,color=yellow] (v2) -- (v5);
+\draw[edge3,color=yellow] (v5) -- (v8);
+\draw[edge3,color=yellow] (v5) -- (v7);
+
+\draw[edge3,color=yellow] (v4) -- (v5);
+\draw[edge3,color=yellow] (v7) -- (v8);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v3) -- (v4);
+\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v5) -- (v6);
+\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v8) -- (v6);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
+\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
+\draw[edge2,opacity=0.7,color=purple] (v1) -- (v4);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e4,color=purple,label=right:\(E_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+The extended 2-section has as adjacency matrices for $\hgrafeen_1$ and $\hgrafeen_2$:
+$$A = \begin{pmatrix}
+0&1&0&1&1&0&1&1\\
+1&0&0&1&2&1&1&2\\
+0&0&0&1&0&0&0&0\\
+1&1&1&0&1&0&1&1\\
+1&2&0&1&0&1&1&2\\
+0&1&0&0&1&0&0&1\\
+1&1&0&1&1&0&0&1\\
+1&2&0&1&2&1&1&0
+\end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+ 0& 1& 0& 2& 1& 0& 1& 1\\
+ 1& 0& 0& 1& 2& 1& 1& 2\\
+ 0& 0& 0& 1& 0& 0& 0& 0\\
+ 2& 1& 1& 0& 1& 0& 1& 1\\
+ 1& 2& 0& 1& 0& 1& 1& 2\\
+ 0& 1& 0& 0& 1& 0& 0& 1\\
+ 1& 1& 0& 1& 1& 0& 0& 1\\
+ 1& 2& 0& 1& 2& 1& 1& 0
+\end{pmatrix}$$
+Remember that the `normal' 2-section for $\hgrafeen_1$ and $\hgrafeen_2$ would return the following
+adjacency matrices: 
+$$
+A' = \begin{pmatrix}
+0&1&0&1&1&0&1&1\\
+1&0&0&1&1&1&1&1\\
+0&0&0&1&0&0&0&0\\
+1&1&1&0&1&0&1&1\\
+1&1&0&1&0&1&1&1\\
+0&1&0&0&1&0&0&1\\
+1&1&0&1&1&0&0&1\\
+1&1&0&1&1&1&1&0
+\end{pmatrix} \quad \text{and} \quad
+B' = \begin{pmatrix}
+ 0& 1& 0& 1& 1& 0& 1& 1\\
+ 1& 0& 0& 1& 1& 1& 1& 1\\
+ 0& 0& 0& 1& 0& 0& 0& 0\\
+ 1& 1& 1& 0& 1& 0& 1& 1\\
+ 1& 1& 0& 1& 0& 1& 1& 1\\
+ 0& 1& 0& 0& 1& 0& 0& 1\\
+ 1& 1& 0& 1& 1& 0& 0& 1\\
+1& 1& 0& 1& 1& 1& 1& 0
+\end{pmatrix}$$
+The node similarity matrix with the extended 2-section is:
+$$S = \begin{pmatrix}
+\mathbf{0.1108}&\mathbf{0.1651}&\mathbf{0.0174}&\mathbf{0.1132}&\mathbf{0.1651}&\mathbf{0.0763}&\mathbf{0.1108}&\mathbf{0.1651}\\
+0.1409&0.2099&0.0222&0.1438&0.2099&0.0970&0.1409&0.2099\\
+0.0168&0.0250&0.0026&0.0171&0.0250&0.0116&0.0168&0.0250\\
+0.1128&0.1680&0.0177&0.1151&0.1680&0.0776&0.1128&0.1680\\
+0.1409&0.2099&0.0222&0.1438&0.2099&0.0970&0.1409&0.2099\\
+0.0629&0.0937&0.0099&0.0643&0.0937&0.0433&0.0629&0.0937\\
+\mathbf{0.0962}&\mathbf{0.1433}&\mathbf{0.0151}&\mathbf{0.0982}&\mathbf{0.1433}&\mathbf{0.0663}&\mathbf{0.0962}&\mathbf{0.1433}\\
+0.1409&0.2099&0.0222&0.1438&0.2099&0.0970&0.1409&0.2099
+\end{pmatrix}$$
+Conversely, the node similarity matrix with the `normal' 2-section would return:
+$$S' = \begin{pmatrix}
+\mathbf{0.1409}&\mathbf{0.1547}&\mathbf{0.0273}&\mathbf{0.1452}&\mathbf{0.1547}&\mathbf{0.0872}&\mathbf{0.1409}&\mathbf{0.1547}\\
+0.1547&0.1698&0.0299&0.1594&0.1698&0.0957&0.1547&0.1698\\
+0.0273&0.0299&0.0053&0.0281&0.0299&0.0169&0.0273&0.0299\\
+0.1452&0.1594&0.0281&0.1496&0.1594&0.0898&0.1452&0.1594\\
+0.1547&0.1698&0.0299&0.1594&0.1698&0.0957&0.1547&0.1698\\
+0.0872&0.0957&0.0169&0.0898&0.0957&0.0539&0.0872&0.0957\\
+\mathbf{0.1409}&\mathbf{0.1547}&\mathbf{0.0273}&\mathbf{0.1452}&\mathbf{0.1547}&\mathbf{0.0872}&\mathbf{0.1409}&\mathbf{0.1547}\\
+0.1547&0.1698&0.0299&0.1594&0.1698&0.0957&0.1547&0.1698
+\end{pmatrix}$$
+The most important thing to notice here is the difference in similarity scores 
+of vertices $v_1, v_7$ of $\hgrafeen_2$: in the extended 2-section these 
+vertices have different similarity scores which is correct as $v_1$ is also contained in edge 
+$E_4$ and therefore, $v_1$ and $v_7$ are not interchangeable. Conversely, in the `normal'
+2-section, the representation doesn't take $E_4$ into account, leading 
+to the same similarity scores for $v_1, v_7$.
+\end{example}
+
+\subsubsection{Interpretation}
+
+\begin{itemize}
+  \item[(C1)] Fulfilled by definition of the extended 2-section. An undirected 
+  graph will have exactly the same vertices and exactly the same edges in his 
+  extended 2-section.
+    \item[(C2)] Fulfilled (see `normal' 2-section). 
+    \item[(C3)] Fulfilled: all edges are represented in the extended 2-section of 
+  a hypergraph by definition.
+  \item[(C4)] Fulfilled (see `normal' 2-section).
+  \item[(C5)] This condition does not apply on this method.
+  \item[(C6)] Fulfilled (see `normal' 2-section).
+  \item[(C7)] Fulfilled: because all the edges are represented in the extended 
+  2-section of a hypergraph, the interchangeable vertices in the extended 2-section are 
+  also the interchangeable vertices in the hypergraph.
+  \item[(C8)] Not fulfilled: the extended 2-section doesn't save any information 
+  about the number of vertices contained in an edge.
+    \item[(C9)] Fulfilled (see `normal' 2-section).
+  \end{itemize}  
+\subsubsection{Conclusion}
+The extended $2$-section solves all the issues with (C1), (C3) and (C7) as it preserves all the information about the connectivity 
+and the adjacency of the vertices. Still, this representation is not unique as no information 
+about the cardinality of the edges is saved, therefore, the method fails to fulfill (C8). Therefore, the method
+works well when using $k$-hypergraphs (in this case, all edges have the same size anyway) 
+or when one is only interested in calculating similarity scores where only the 
+adjancency  and connectivity of the vertices must be taken into account, regardless of the number
+of vertices in each edge.
+
+Also note that it is impossible to calculate edge similarity scores with the extended $2$-section: 
+an edge of a 
+hypergraph is translated into multiple vertices in the $2$-section so it would 
+be impossible to satisfy (C5) and (C8). 
+
+
+\subsection{The incidence graph of a hypergraph}
+
+ \subsubsection{General definitions and properties}
+\begin{definition}
+  Let $\hgrafeen = (V,E)$ be a hypergraph, then the \textbf{incidence graph} $\graf_i$ 
+  of $\hgrafeen$ is the undirected graph with:
+   
+  \begin{enumerate}
+    \item $V' = V \cup E$,
+    \item $\forall v_i \in V, \forall E_j \in E: v_i \to E_j$ if $v_i \in E_j$.
+      \end{enumerate}
+
+\end{definition}
+  Because all edges in $\graf_i$ are between an element of $V$ and $E$, $\grafi_i$ 
+  is a bipartite graph and we write $\grafi_i = ((V,E),\to)$.
+
+\begin{example}
+Take the same hypergraph $\hgrafeen$ as in Example \ref{uniciteitsvoorbeeld}, 
+then the incidence graph $\graf_i$ equals:
+\begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+  \node[main node] (3) [label=above:$v_3$][right of=2] {};
+  \node[main node] (4) [label=above:$v_4$][right of=3] {};
+  \node[main node] (5) [label=above:$v_5$][right of=4] {};
+  \node[main node] (6) [label=above:$v_6$][right of=5] {};
+  \node[main node] (7) [label=above:$v_7$][right of=6] {};
+  \node[main node] (8) [label=above:$v_8$][right of=7] {};
+    \node[main node] (9) [label=below:$E_1$][below of=4] {};
+    \node[main node] (10) [label=below:$E_2$][below of=5] {};
+    \node[main node] (11) [label=below:$E_2$][below of=6] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (3) edge node [above] {} (9)
+    (4) edge node [above] {} (9)
+    (4) edge node [above] {} (10)
+    (1) edge node [above] {} (10)
+    (2) edge node [above] {} (10)
+    (5) edge node [above] {} (10)
+    (7) edge node [above] {} (10)
+    (8) edge node [above] {} (10)
+    (2) edge node [above] {} (11)
+    (5) edge node [above] {} (11)
+    (6) edge node [above] {} (11)
+    (8) edge node [above] {} (11)
+
+\end{tikzpicture}
+\end{example}
+We can prove that the incidence graph $\graf_i = ((V,E),\to)$ of a hypergraph is a faitfhul 
+characteristic graph representation.
+
+\begin{theorem}\label{iguniek}
+ The incidence graph  $\graf_i = ((V,E),\to)$ of a hypergraph is a faithul representation: the incidence 
+ graph represents only one hypergraph.
+\end{theorem}
+\begin{proof}
+  Suppose that $\hgraf$ and $\hgrafeen$ are two hypergraphs that share the same 
+  incidence graph $\graf_i = ((V,E),\to)$. Then $\hgraf$ and $\hgrafeen$ have the same 
+  set of vertices $V$ and the same set of edges $E$. Also the adjacency 
+  relations in $\hgraf$ and $\hgrafeen$ are the same by the edge set $\to$ of 
+  $\graf_i$. We conclude that $\hgraf = \hgrafeen$.
+\end{proof}
+\end{center} 
+\subsubsection{Algorithm for similarity}
+  In Listing \ref{igmatlab} in Appenix \ref{appendixa}, we introduce 
+ an algorithm that 
+  takes a hypergraph as input and returns the adjacency matrix of the 
+  corresponding incidence graph. The 
+  resulting adjacency matrix can then be used in the node similarity method from 
+  Algorithm \ref{algsimilarity}.
+  
+  An important note has to be made here: this algorithm will return both the 
+  node and edge similarity scores in the same matrix. Also similarity scores 
+  will be available to compare an edge to a node and vice versa. Since we can not give a correct meaning
+  to such similarity scores, we regard them as redundant, intermediate results. In the examples, we will always draw lines
+  in order to clearly separate the node similarity submatrix and the edge 
+  similarity submatrix.
+\subsubsection{Examples}
+\begin{example}\label{igex1}
+Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex1line}, the similarity 
+matrix with the incidence graph representation becomes:
+$$\left(\begin{array}{llllllll|lll}
+ 0.0631&0.1075&0.0101&0.0732&0.1075&0.0444&0.0631&0.1075&0.0170&0.1065&0.0748\\
+0.0631&0.1075&0.0101&0.0732&0.1075&0.0444&0.0631&0.1075&0.0170&0.1065&0.0748\\
+0.0129&0.0220&0.0021&0.0150&0.0220&0.0091&0.0129&0.0220&0.0035&0.0217&0.0153\\
+0.0081&0.0138&0.0013&0.0094&0.0138&0.0057&0.0081&0.0138&0.0022&0.0137&0.0096\\
+0.0517&0.0880&0.0082&0.0599&0.0880&0.0363&0.0517&0.0880&0.0139&0.0871&0.0612\\
+0.1067&0.1817&0.0170&0.1237&0.1817&0.0750&0.1067&0.1817&0.0287&0.1799&0.1265\\
+0.1067&0.1817&0.0170&0.1237&0.1817&0.0750&0.1067&0.1817&0.0287&0.1799&0.1265\\
+0.0565&0.0961&0.0090&0.0655&0.0961&0.0397&0.0565&0.0961&0.0152&0.0952&0.0669\\
+0.0129&0.0220&0.0021&0.0150&0.0220&0.0091&0.0129&0.0220&0.0035&0.0217&0.0153\\
+0.0631&0.1075&0.0101&0.0732&0.1075&0.0444&0.0631&0.1075&0.0170&0.1065&0.0748\\
+0.0631&0.1075&0.0101&0.0732&0.1075&0.0444&0.0631&0.1075&0.0170&0.1065&0.0748\\
+0.0129&0.0220&0.0021&0.0150&0.0220&0.0091&0.0129&0.0220&0.0035&0.0217&0.0153\\ 
+\hline
+0.0123&0.0209&0.0020&0.0143&0.0209&0.0086&0.0123&0.0209&0.0033&0.0207&0.0146\\
+0.0958&0.1632&0.0153&0.1111&0.1632&0.0674&0.0958&0.1632&0.0258&0.1616&0.1136\\
+0.0196&0.0333&0.0031&0.0227&0.0333&0.0138&0.0196&0.0333&0.0053&0.0330&0.0232\\
+0.0661&0.1126&0.0106&0.0767&0.1126&0.0465&0.0661&0.1126&0.0178&0.1115&0.0784
+\end{array}\right)$$
+\end{example}
+
+\begin{example}\label{igex2}
+Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex2line}, the similarity 
+matrix with the incidence graph representation becomes:
+$$\left(\begin{array}{llllllll|lll}
+  0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+\hline
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0920&0.1566&0.0147&0.1067&0.1566&0.0647&0.0920&0.1566&0.0247&0.1551&0.1090\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000
+\end{array}\right)$$
+
+\end{example}
+
+\begin{example}\label{igex3}
+Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex3line}, the similarity 
+matrix with the incidence graph representation becomes:
+$$\left(\begin{array}{llllllll|lll}
+0.0839&0.1428&0.0134&0.0972&0.1428&0.0589&0.0839&0.1428&0.0226&0.1414&0.0994\\
+0.0839&0.1428&0.0134&0.0972&0.1428&0.0589&0.0839&0.1428&0.0226&0.1414&0.0994\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0254&0.0432&0.0041&0.0294&0.0432&0.0178&0.0254&0.0432&0.0068&0.0428&0.0301\\
+0.0254&0.0432&0.0041&0.0294&0.0432&0.0178&0.0254&0.0432&0.0068&0.0428&0.0301\\
+0.1092&0.1860&0.0174&0.1267&0.1860&0.0768&0.1092&0.1860&0.0294&0.1842&0.1295\\
+0.0839&0.1428&0.0134&0.0972&0.1428&0.0589&0.0839&0.1428&0.0226&0.1414&0.0994\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0839&0.1428&0.0134&0.0972&0.1428&0.0589&0.0839&0.1428&0.0226&0.1414&0.0994\\
+0.0839&0.1428&0.0134&0.0972&0.1428&0.0589&0.0839&0.1428&0.0226&0.1414&0.0994\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+\hline
+0.0302&0.0514&0.0048&0.0350&0.0514&0.0212&0.0302&0.0514&0.0081&0.0509&0.0358\\
+0.0997&0.1697&0.0159&0.1156&0.1697&0.0701&0.0997&0.1697&0.0268&0.1681&0.1181\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000
+\end{array}\right)$$
+
+\end{example}
+\begin{example}\label{igex4}
+Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex4line}, the similarity 
+matrix with the incidence graph representation becomes:
+$$\left(\begin{array}{llllllll|lll}
+0.0565&0.0961&0.0090&0.0655&0.0961&0.0397&0.0565&0.0961&0.0152&0.0952&0.0669\\
+0.0944&0.1608&0.0151&0.1095&0.1608&0.0664&0.0944&0.1608&0.0254&0.1592&0.1119\\
+0.0253&0.0431&0.0040&0.0293&0.0431&0.0178&0.0253&0.0431&0.0068&0.0427&0.0300\\
+0.0818&0.1392&0.0130&0.0948&0.1392&0.0575&0.0818&0.1392&0.0220&0.1379&0.0969\\
+0.0944&0.1608&0.0151&0.1095&0.1608&0.0664&0.0944&0.1608&0.0254&0.1592&0.1119\\
+0.0379&0.0646&0.0061&0.0440&0.0646&0.0267&0.0379&0.0646&0.0102&0.0640&0.0450\\
+0.0565&0.0961&0.0090&0.0655&0.0961&0.0397&0.0565&0.0961&0.0152&0.0952&0.0669\\
+0.0944&0.1608&0.0151&0.1095&0.1608&0.0664&0.0944&0.1608&0.0254&0.1592&0.1119\\
+\hline
+0.0237&0.0403&0.0038&0.0275&0.0403&0.0166&0.0237&0.0403&0.0064&0.0399&0.0281\\
+0.1057&0.1800&0.0169&0.1226&0.1800&0.0743&0.1057&0.1800&0.0284&0.1783&0.1253\\
+0.0710&0.1210&0.0113&0.0824&0.1210&0.0499&0.0710&0.1210&0.0191&0.1198&0.0842\\
+0.0237&0.0403&0.0038&0.0275&0.0403&0.0166&0.0237&0.0403&0.0064&0.0399&0.0281
+\end{array}\right)$$
+
+\end{example}
+\subsubsection{Interpretation}
+
+\begin{itemize}
+  \item[(C1)] Fulfilled: if we would take two undirected graphs and apply them to the node-edge similarity method
+  we would get results who are equal in ratio.  
+    \item[(C2)] Fulfilled by the fact that an isolated vertex is also 
+    represented in the incidence graph of the hypergraph.
+    \item[(C3)] Fulfilled by the fact that all edges are 
+    represented in the incidence graph of the hypergraph.
+  \item[(C4)] Fulfilled by the fact that the adjacency relations of the original hypergraph are represented in it's 
+  incidence graph and that we use Algorithm \ref{algsimilarity}, for which this 
+  statement already holds.
+  
+  An example can be found in Example \ref{igex1} where $v_2, v_5, v_8$ of $\hgrafeen_1$ 
+  have the largest similarity score with $v_6, v_7$ of $\hgrafeen_2$. This is 
+  not surprising as $v_6, v_7$ are contained in all possible edges.
+  \item[(C5)] Fulfilled by the fact that the adjacency relations of the original hypergraph are represented in it's 
+  incidence graph, that the edges are considered as normal vertices and that we use Algorithm \ref{algsimilarity}, for which this 
+  statement already holds.
+  
+  
+  An example can be found in Example \ref{igex1} where $E_2$ of $\hgrafeen_1$ 
+  has the largest similarity score with $E'_2$ of $\hgrafeen_2$. This is 
+  not surprising as these edges are almost equal.
+
+
+  \item[(C6)] Fulfilled by the fact that interchangeable vertices are also 
+  interchangeable in the incidence graph. As edges are just seen as normal 
+  vertices, the same holds for them. 
+  
+  An example of interchangeable edges can be found in Example \ref{igex4}, where 
+  $E'_1$ and $E'_4$ of $\hgrafeen_2$ have the same similarity scores. In the same 
+  example, the vertices $v_1, v_7$ of $\hgrafeen_2$ as well as $v_2, v_5, v_8$.
+  \item[(C7)] Fulfilled: because the interchangeable vertices in the incidence graph are also interchangable in the hypergraph.
+  \item[(C8)] Fulfilled: the adjancy relations in the incidence graph are determined by the number of vertices
+  contained in an edge in the hypergraph.
+    \item[(C9)] Fulfilled. An example is Example \ref{ex3line} where the 
+    vertices $v_3, v_8, v_9$ and $v_12$ have all similarity scores equal to zero 
+    as they form a clique that is not connected to the other vertices.
+  \end{itemize}  
+  \subsubsection{Conclusion}
+  We conclude that using the incidence graph returns similarity scores that 
+  satisfy all the conditions and can be seen as a very good way to calculate the 
+  similarity scores of a hypergraph. By Theorem \ref{iguniek} this is not so 
+  surprising: the incidence graph is a faithful representation. Intuitively, 
+  this means that this representation saves all information of the represented 
+  hypergraph, meaning that it is possible to reconstruct the hypergraph based on 
+  its incidece graph. As a result, no information of the hypergraph is lost when using Algorithm \ref{algsimilarity},
+  so it is possible to satisfy all the conditions. 
+  \section{Similarity by using the incidence matrix}
+We already showed that using the incidence graph representation of a hypergraph
+is a very good way to caculate similarity between hypergraphs. It would be somehow logic to stop searching for similarity methods
+for hypergraphs now, but there is one very natural generalization that is worth mentioning: the node-edge similarity 
 method described in Section 2.3 uses a source-edge matrix and a terminus-edge 
 matrix. When we would use this method (see Theorem \ref{edgegrootbewijs}) with undirected graphs $\graf$ and $\grafeen$, the source-edge matrix and terminus-edge
 matrix are the same and are equal to the \textit{incidence matrices} of $\graf$ and 
 $\grafeen$. The question is now: is there any problem if we enter not the incidence matrices of two graphs, but of 
 two hypergraphs (see Definition \ref{incidencematrixhypergraph})? The only difference is that each
 column can have more than 2 entries equal to 1. The answer is 
-no, as shown by the following theorem:
+no. 
+
+Even better, also this method will satisfy all the conditions we imposed at the introduction of this chapter. 
+So both this method as the method with the incidence graph representation 
+are good ways to calculate the similarity between hypergraphs. Because of that, 
+their output must be somehow related. This is the case: we will prove that this method 
+returns similarity scores that are equal in ratio to the method with the 
+incidence graph representation.
+
+We first prove the compact form of the method:
 
 \subsection{Compact form}
  \begin{theorem}\label{incidencegrootbewijs}
@@ -6085,7 +6705,7 @@ $A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
 \KwRet $A$\;}{}
   \caption{Algorithm to calculate the adjacency matrix of the 2-section of a hypergraph.\\}
 \end{algorithm}
-\subsection{Example}
+\subsection{Examples}
 We now calculate the same example as in the previous section:
 
 \begin{example}
@@ -6137,100 +6757,86 @@ $$Y = \begin{pmatrix}
 0.0213&0.1337&0.0940\\
 0.0721&0.4519&0.3177
 \end{pmatrix}$$
-This is more or less the same result for $X$ as in Example \ref{2sectievoorbeeld} 
-with the 2-section representation. Now take $\hgrafeen_1$ as follows:
-   \begin{center}
-   \begin{tikzpicture}
-    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
-\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
-\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
-\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
-
-\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
-
-\pgfdeclarelayer{background}
-\pgfsetlayers{background,main}
-
-\node[vertex,label=above:\(v_3\)] (v3) {};
-\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
-\node[vertex,above of=v4,label=above:\(v_1\)] (v1) {};
-\node[vertex,right of=v4,label=above:\(v_5\)] (v5) {};
-\node[vertex,above of=v5,label=above:\(v_2\)] (v2) {};
-
-\node[vertex,right of=v5,label=above:\(v_6\)] (v6) {};
-\node[vertex,below of=v4,label=above:\(v_7\)] (v7) {};
-\node[vertex,right of=v7,label=above:\(v_8\)] (v8) {};
-
-\begin{pgfonlayer}{background}
-\begin{scope}[transparency group,opacity=1]
-\draw[edge3,color=yellow] (v1) -- (v2);
-\draw[edge3,color=yellow] (v2) -- (v4);
-
-\draw[edge3,color=yellow] (v1) -- (v4);
-\draw[edge3,color=yellow] (v4) -- (v7);
-\draw[edge3,color=yellow] (v2) -- (v5);
-\draw[edge3,color=yellow] (v5) -- (v8);
-\draw[edge3,color=yellow] (v5) -- (v7);
-
-\draw[edge3,color=yellow] (v4) -- (v5);
-\draw[edge3,color=yellow] (v7) -- (v8);
-\end{scope}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=green] (v3) -- (v4);
-\fill[edge,opacity=1,color=green] (v3.center) -- (v4.center);
-\end{scope}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=blue] (v5) -- (v6);
-\fill[edge,opacity=1,color=blue] (v5.center) -- (v6.center);
-\draw[edge,opacity=1,color=blue] (v2) -- (v6);
-\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
-\draw[edge,opacity=1,color=blue] (v8) -- (v6);
-\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
-\draw[edge,opacity=1,color=blue] (v2) -- (v5)--(v8);
-\fill[edge,opacity=1,color=blue] (v8.center) -- (v6.center);
-\draw[edge2,opacity=0.7,color=purple] (v1) -- (v4)--(v7);
-\end{scope}
 
 
-
-\end{pgfonlayer}
-
-\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-3,3) {};
-\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
-\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
-\node[elabel,below of=e4,color=purple,label=right:\(E_4\)]  (e4) {};
-
-\end{tikzpicture}
-\end{center}
-with this $\hgrafeen_1$, the $2$-section would give the same results. Let's see 
-what this method returns:
-$$X = \begin{pmatrix}
-0.1151&0.1193&0.0156&0.1306&0.1193&0.0427&0.1151&0.1193\\
-0.1151&0.1193&0.0156&0.1306&0.1193&0.0427&0.1151&0.1193\\
-0.0235&0.0244&0.0032&0.0267&0.0244&0.0087&0.0235&0.0244\\
-0.0148&0.0153&0.0020&0.0168&0.0153&0.0055&0.0148&0.0153\\
-0.0942&0.0976&0.0128&0.1069&0.0976&0.0349&0.0942&0.0976\\
-0.1945&0.2016&0.0263&0.2208&0.2016&0.0722&0.1945&0.2016\\
-0.1945&0.2016&0.0263&0.2208&0.2016&0.0722&0.1945&0.2016\\
-0.1029&0.1067&0.0139&0.1168&0.1067&0.0382&0.1029&0.1067\\
-0.0235&0.0244&0.0032&0.0267&0.0244&0.0087&0.0235&0.0244\\
-0.1151&0.1193&0.0156&0.1306&0.1193&0.0427&0.1151&0.1193\\
-0.1151&0.1193&0.0156&0.1306&0.1193&0.0427&0.1151&0.1193\\
-0.0235&0.0244&0.0032&0.0267&0.0244&0.0087&0.0235&0.0244
-\end{pmatrix}$$
-
-$$ Y = \begin{pmatrix}
-0.0166&0.0818&0.0456&0.0410\\
-0.1297&0.6374&0.3553&0.3200\\
-0.0265&0.1301&0.0725&0.0653\\
-0.0895&0.4399&0.2452&0.2208
-\end{pmatrix}$$
-It's clear that this method took the extra edge into account: the similarity 
-scores of $v_1, v_4, v_7$ of $\hgrafeen_1$ became higher when a vertex of $\hgrafeen_2$ 
-had a high similarity score with $v_1$, $v_4$ or $v_7$ of $\hgrafeen_1$. Also in 
-the edge similarity matrix an extra colum appeared.
+\begin{example}
+  Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex2line}, the node 
+  similarity matrix $X$ and the edge similarity matrix $Y$ become:
+  $$X=\begin{pmatrix}
+    0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.1152&0.1961&0.0184&0.1336&0.1961&0.0810&0.1152&0.1961\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000
+  \end{pmatrix}$$
+  
+    $$Y=\begin{pmatrix}
+    0.0000&0.0000&0.0000\\
+0.1294&0.8112&0.5702\\
+0.0000&0.0000&0.0000
+  \end{pmatrix}$$
+  
 
 \end{example}
+
+\begin{example}
+  Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex3line}, the node 
+  similarity matrix $X$ and the edge similarity matrix $Y$ become:
+  $$X=\begin{pmatrix}
+    0.1076&0.1832&0.0172&0.1247&0.1832&0.0756&0.1076&0.1832\\
+0.1076&0.1832&0.0172&0.1247&0.1832&0.0756&0.1076&0.1832\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0326&0.0555&0.0052&0.0378&0.0555&0.0229&0.0326&0.0555\\
+0.0326&0.0555&0.0052&0.0378&0.0555&0.0229&0.0326&0.0555\\
+0.1401&0.2386&0.0224&0.1625&0.2386&0.0985&0.1401&0.2386\\
+0.1076&0.1832&0.0172&0.1247&0.1832&0.0756&0.1076&0.1832\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000\\
+0.1076&0.1832&0.0172&0.1247&0.1832&0.0756&0.1076&0.1832\\
+0.1076&0.1832&0.0172&0.1247&0.1832&0.0756&0.1076&0.1832\\
+0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000
+  \end{pmatrix}$$
+  
+    $$Y=\begin{pmatrix}
+    0.0375&0.2351&0.1652\\
+0.1239&0.7764&0.5457\\
+0.0000&0.0000&0.0000
+  \end{pmatrix}$$
+  
+
+\end{example}
+\begin{example}
+  Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex4line}, the node 
+  similarity matrix $X$ and the edge similarity matrix $Y$ become:
+  $$X=\begin{pmatrix}
+  0.0778&0.1326&0.0124&0.0903&0.1326&0.0547&0.0778&0.1326\\
+0.1302&0.2216&0.0208&0.1509&0.2216&0.0915&0.1302&0.2216\\
+0.0349&0.0594&0.0056&0.0404&0.0594&0.0245&0.0349&0.0594\\
+0.1127&0.1919&0.0180&0.1307&0.1919&0.0792&0.1127&0.1919\\
+0.1302&0.2216&0.0208&0.1509&0.2216&0.0915&0.1302&0.2216\\
+0.0523&0.0891&0.0083&0.0607&0.0891&0.0368&0.0523&0.0891\\
+0.0778&0.1326&0.0124&0.0903&0.1326&0.0547&0.0778&0.1326\\
+0.1302&0.2216&0.0208&0.1509&0.2216&0.0915&0.1302&0.2216
+  \end{pmatrix}$$
+  
+    $$Y=\begin{pmatrix}
+0.0233&0.1459&0.1025\\
+0.1039&0.6512&0.4577\\
+0.0698&0.4376&0.3076\\
+0.0233&0.1459&0.1025
+  \end{pmatrix}$$
+  
+
+\end{example}
+
+
 
  
 \begin{appendices}
@@ -6238,14 +6844,20 @@ the edge similarity matrix an extra colum appeared.
 \lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
 
 \lstinputlisting[caption={The MatLab code for algorithm \ref{algsimilarity}.},label={lstsim}]{similarity_matrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm 6.},label={edgematlab}]{node_edge_similarity_matrix.m}
+\lstinputlisting[caption={The MatLab code for Algorithm 6.},label={edgematlab}]{node_edge_similarity_matrix.m}
 \lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a source-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={sourceedgematlab}]{source_edge_matrix.m}
 \lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a terminal-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={terminaledgematlab}]{terminal_edge_matrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm 6 but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{linealg} to calculate the adjacency matrix of the representing line-graph of a hypergraph.}, label={linealgmatlab}]{hypergraph_to_linegraph.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{2sectionalg} to calculate the adjacency matrix of the $2$-section of a hypergraph.}, label={2sectionalgmatlab}]{hypergraph_to_2section.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{incidencealg} to calculate the incidence matrix of a hypergraph.}, label={incidencealgmatlab}]{hypergraph_to_incidencematrix.m}
-\lstinputlisting[caption={The MatLab code for algorithm \ref{edgealgorithmhypergraph} to calculate the node-edge similarity scores of a hypergraph.}, label={edgealgorithmhypergraphmatlab}]{hypergraph_to_2section.m}
+\lstinputlisting[caption={The MatLab code for Algorithm 6 but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
+\lstinputlisting[caption={The MatLab code for Algorithm \ref{colorpartition1} that takes an ordered list with the number of vertices and a normal adjacency matrix as input and returns a partitioned adjacency matrix.}, label={colorpartition1matlab}]{colored_node_adjacency_matrix_partitioning.m}
+\lstinputlisting[breaklines=true,caption={The MatLab code for Algorithm \ref{colornodesimilarity} that calculates the node similarity matirx for colored nodes.}, label={colornodesimilaritymatlab}]{colored_node_similarity_matrix.m}
+
+\lstinputlisting[caption={The MatLab code for to calculate the adjacency matrix of the representing line-graph of a hypergraph.}, label={linealgmatlab}]{hypergraph_to_linegraph.m}
+\lstinputlisting[caption={The MatLab code for to calculate the adjacency matrix of the $2$-section of a hypergraph.}, label={2sectionalgmatlab}]{hypergraph_to_2section.m}
+\lstinputlisting[caption={The MatLab code for Algorithm  to calculate the adjacency matrix of the extended $2$-section of a hypergraph.}, label={extended2sectionalgmatlab}]{hypergraph_to_extended2section.m}
+\lstinputlisting[caption={The MatLab code for Algorithm  to calculate the adjacency matrix of the incidence graph of a hypergraph.}, label={igmatlab}]{hypergraph_to_incidencegraph.m}
+
+\lstinputlisting[caption={The MatLab code for Algorithm \ref{incidencealg} to calculate the incidence matrix of a hypergraph.}, label={incidencealgmatlab}]{hypergraph_to_incidencematrix.m}
+\lstinputlisting[caption={The MatLab code for Algorithm \ref{edgealgorithmhypergraph} to calculate the node-edge similarity scores of a hypergraph.}, label={edgealgorithmhypergraphmatlab}]{hypergraph_to_2section.m}
 
 
 % Please add the following required packages to your document preamble:
