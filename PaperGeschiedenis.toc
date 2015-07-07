@@ -1,0 +1,30 @@
+\select@language {dutch}
+\contentsline {section}{\numberline {1}Inleiding}{2}
+\contentsline {section}{\numberline {2}De moderne wiskunde}{4}
+\contentsline {subsection}{\numberline {2.1}Situering in de geschiedenis}{4}
+\contentsline {subsection}{\numberline {2.2}Uitgangspunten}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}Oorsprong}{4}
+\contentsline {subsubsection}{\numberline {2.2.2}Voorbeelden}{5}
+\contentsline {subsubsection}{\numberline {2.2.3}Didactische visie}{6}
+\contentsline {subsection}{\numberline {2.3}Invoering van de moderne wiskunde}{6}
+\contentsline {subsubsection}{\numberline {2.3.1}Westerse wereld}{6}
+\contentsline {subsubsection}{\numberline {2.3.2}Belgi\IeC {\"e}}{7}
+\contentsline {subsection}{\numberline {2.4}Structuralisme}{9}
+\contentsline {subsubsection}{\numberline {2.4.1}Beknopte uitleg}{9}
+\contentsline {subsubsection}{\numberline {2.4.2}Link met de moderne wiskunde}{9}
+\contentsline {subsubsection}{\numberline {2.4.3}Jean Piaget}{10}
+\contentsline {section}{\numberline {3}Het sociaal-constructivisme}{11}
+\contentsline {subsection}{\numberline {3.1}Korte samenvatting}{11}
+\contentsline {subsection}{\numberline {3.2}Vygotsky en de zone van naaste ontwikkeling}{11}
+\contentsline {subsection}{\numberline {3.3}Het belang van voorkennis}{12}
+\contentsline {subsection}{\numberline {3.4}Leren in interactie}{12}
+\contentsline {subsection}{\numberline {3.5}Concrete werkvormen in de klaspraktijk}{12}
+\contentsline {subsection}{\numberline {3.6}Sociaal-constructivisme \& wiskundedidactiek}{13}
+\contentsline {subsubsection}{\numberline {3.6.1}Hans Freudenthal}{13}
+\contentsline {subsubsection}{\numberline {3.6.2}Realistisch rekenonderwijs}{13}
+\contentsline {section}{\numberline {4}Synthese: moderne wiskunde versus het sociaal-constructivisme}{14}
+\contentsline {section}{\numberline {5}Teloorgang van de moderne wiskunde}{16}
+\contentsline {subsection}{\numberline {5.1}Critici van in de begindagen}{16}
+\contentsline {subsection}{\numberline {5.2}Belgi\IeC {\"e} \& Vlaanderen}{16}
+\contentsline {subsection}{\numberline {5.3}Westerse wereld}{17}
+\contentsline {section}{\numberline {6}Referenties}{18}

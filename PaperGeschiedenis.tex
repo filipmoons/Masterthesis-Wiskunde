@@ -1,0 +1,758 @@
+% $Id: $
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+% The following makes latex use nicer postscript fonts.
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage[dutch]{babel}
+%\usepackage[colorlinks,urlcolor=blue,linkcolor=blue]{hyperref}
+\pagestyle{headings}
+\usepackage{vubtitlepage}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[geometry]{ifsym}
+%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\author{Filip Moons}
+\title{De moderne wiskunde van Bourbaki \\vanuit een sociaal-constructivistisch \\perspectief}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{notation}[theorem]{Notation}
+\setcounter{tocdepth}{5}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\HQ}{{\mathbb H}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\cost}{\text{cost}}
+\newcommand{\Nash}{\text{Nash}}
+\newcommand{\nash}{\text{nash}}
+\newcommand{\opt}{\text{opt}}
+\newcommand{\copt}{\cost(a_{\opt})}
+
+%\newenvironment{proof}{\noindent{\bf Bewijs.}}{{\hfill $ \Box $}\vskip 4mm}
+
+%\promotortitle{Promotor/Promotors}
+\promotor{Professor L. Le Bruyn}
+\advisors{}
+\advisortitle{}
+\addto\captionsenglish{\renewcommand*\abstractname{Abstract for non-mathematicians}}
+\date{MEI 2006}
+\faculty{Faculteit Wetenschappen}
+\advisortitle{}
+\department{Vakgroep Wiskunde}
+\reason{Paper in het kader van het opleidingsonderdeel `Geschiedenis van de Wiskunde'}
+
+\date{Juni 2015}
+\usepackage[nottoc,numbib]{tocbibind}
+
+\begin{document}
+% Then english TitlePage
+\maketitlepage
+
+
+\tableofcontents
+\newpage
+\section{Inleiding}
+De moderne wiskunde was een stroming binnen het wiskundeonderwijs dat vooral 
+vanaf de jaren `60 voet aan de grond kreeg in de Westerse wereld. Aan de basis lag 
+Nicolas Bourbaki, een pseudoniem voor een groep wiskundigen die de wiskunde 
+definitief in een nieuwe richting hebben gestuurd waardoor ook het secundair onderwijs niet kon achterblijven. In de moderne
+wiskunde werd vooral de aandacht gevestigd op abstracte structuren en de hiërarchische opbouw ervan via de deductieve methode.
+Rekenwerk, meetkunde of concrete vraagstukken kregen in dit curriculum slechts een tweederangsrol toebedeeld, wat een radicale verandeirng was. 
+De invoering van het curriculum van de moderne wiskunde was dus vooral een inhoudelijke omslag, die ook vakdidactisch een enorme impact had.
+Sommige plaatsen de evolutie naar de moderne wiskunde en de meer algemene vernieuwingsoperatie die Bourbaki op het getouw had gezet binnen de wiskunde
+in het kader van het structuralisme. Het structuralisme is een filosofisch/wetenschappelijke stroming waarbij de eigenschappen van een onderzoekssubject 
+minder belangrijk worden geacht als de plaats van dit object in het groter geheel: het onderzoeksobject in relatie met andere objecten staat centraal.  \\
+
+\noindent Opvallend is dat de opkomst van
+de moderne wiskunde samenvalt met de stijgende populariteit van het 
+sociaal-constructivisme\footnote{Het sociaal-constructivisme wordt in de literatuur ook soms het gewoon het constructivisme of het constructionisme genoemd. Er zijn echter
+subtiele verschillen tussen deze stromingen (zo vestigt het constructivisme minder aandacht op het sociale aspect: leren in samenwerking met andere speelt er een kleine rol). We gaan echter niet in op deze detaillistische verschillen en beschouwen deze
+drie stromingen als gelijkwaardig.} binnen de pedagogische wetenschappen. Het 
+sociaal-constructivisme is een kennistheorie die stelt dat mensen kennis en 
+betekenis opdoen door interactie met hun ervaringen, hun ideeën (voorkennis) en in 
+samenwerking met anderen. Leren, stelt de theorie, vindt plaats als een leerling een discrepantie ervaart tussen zijn 
+eigen wereldbeeld en de echte wereld. Deze theorie leidt tot een totaal andere pedagogische 
+praktijk: van de traditionele lesmethodes met leraar-gerichte instructie stappen we over naar
+leerling- en groepsgerichte instructie. De leraar neemt in deze visie meer een rol als coach op. De 
+belangrijkste voortrekkers van deze stroming waren filosoof John Dewey, schooloprichtster Maria 
+Montessori en ontwikkelingspsychologen Jean Piaget en Lev Vygotsky. Het sociaal-constructivisme heeft het vandaag de dag 
+geschopt tot de dominantste stroming binnen de pedagogie en de onderwijskunde.\\
+
+\noindent In deze paper gaan we opzoek naar de raakpunten tussen beide ontwikkelingen die 
+zich op hetzelfde moment in geschiedenis hebben afgespeeld. Eerst bespreken we de 
+kenmerken van de moderne wiskunde: we bekijken de achtergrond, de inhoudelijke verschuivingen
+en de invloed daarvan op de didactiek. We kijken hoe de moderne wiskunde weerklank vond in het Westerse onderwijs en meer specifiek bekijken we de Belgische situatie. We plaatsen ook de moderne wiskunde binnen het breder kader van
+het structuralisme. \\
+
+\noindent Nadien bespreken we uitvoerig het sociaal-constructivisme: de ontwikkeling, de uitgangspunten en de resulterende
+kijk op leerprocessen en de didactische praktijk. Daarna maken we een synthese 
+van beide stromingen. \\
+
+\noindent Opvallend is dat enkele pioneers van het 
+sociaal-constructivisme aanvankelijk het idee van de moderne wiskunde erg 
+genegen waren. Zo zag Jean Piaget, de Zwisterse ontwikkelingspsycholoog, het 
+nieuwe wiskundecurriculum als een ultiem voorbeeld van zijn eertheorie (later meer). Toch 
+zal de geschiedenis deze visie inhalen: zoals ook uit onze synthese zal blijken, 
+zal het naïeve enthousiasme van de constructivisten voor het nieuwe wiskundecurriculum in de beginperiode snel 
+plaatsmaken voor aversie en opstand. Dat is niet onlogisch, gezien het 
+structuralisme en het sociaal-constructivisme op veel punten diametraal 
+tegenover elkaar staan. Vooral de theorie over leerprocessen van Vygotski en het belang van relevante contexten  zal onverzoenbaar blijken met de moderne wiskunde. 
+Onder meer door deze verschillen zal de moderne wiskunde uiteindelijk het 
+onderspit moeten delven: vanaf de jaren `70 beginnen de meeste scholen zich af te 
+keren van het curriculum en herwinnen rekenvaardigheid en meetkunde terug aan 
+belang. Over de afbraak van de moderne wiskunde handelt dan ook het laatste 
+hoofdstuk.
+
+\newpage
+\section{De moderne wiskunde}
+\subsection{Situering in de geschiedenis}
+De `New Math' movement of de stroming van de moderne wiskunde duidt op een 
+korte, maar zeer invloedrijke stroming die het wiskundeonderwijs in het Westen 
+voor enige tijd omgooide. \\
+
+\noindent Eind jaren '50 kwamen de 
+ideeën van deze beweging plots in een stroomversnelling terecht toen de Russen 
+nog voor de Amerikanen een satelliet (de `Sputnik') het heelal instuurden, 
+waardoor de perceptie gecreëerd werd dat de Sovjets veel verder stonden in hun 
+technologische en wetenschappelijke ontwikkeling dan het Westen. De Koude oorlog 
+was volop aan de gang, een periode van gewapende vrede tussen de communistische (het `Oostblok') 
+en de kapitalistische wereld (het `Westen') waarin de intimidaties en provocaties heen en weer vlogen.
+Beide machtsblokken streefden immers naar werelddominantie en strijdden om de ideologische superioriteit.\\
+
+\noindent In het Westen heerste er een ongebreideld geloof in de economische vooruitgang 
+en de rol die de exacte wetenschappen daarin te spelen had. Om de 
+wetenschappelijke pionieersrol in het voordeel van de kapitalistische wereld te beslechtten, waren zowel beleidsmakers als 
+wiskundeleerkrachten enthousiast over de uitgangspunten van deze nieuwe, wiskundige beweging.
+
+\subsection{Uitgangspunten}
+\subsubsection{Oorsprong}
+De moderne wiskunde wou eenvoudig gesteld de vernieuwingen die een groep van voornamelijk
+Franse wiskundigen onder de 
+naam `Nicolas Bourbaki' had in gang gezet in de wiskundewetenschap, overbrengen 
+naar het basis- en secundair onderwijs en zelfs het kleuteronderwijs. De Bourbakigroep wou eind jaren 1930 de hele
+wiskundewetenschap omvormen tot een coherent, hiërarchisch systeem volgens de 
+deductieve methode, vertrekkend vanuit een beperkt aantal fundamentele, logische 
+structuren. Georges Papy, een wiskundeprof aan de ULB, stelt: `\textit{De Elementen van 
+Euclides zijn het betoog van de basiswiskunde van zijn tijd, ongeveer 300 v.C. 
+Het monumentaal werk van Nicolas Bourbaki, brengt ons, op het hoogste vlak, naar de 
+basiswiskunde van vandaag. Nicolas Bourbaki kan zonder meer de opvolger van Euclides genoemd worden. De Mathématique Moderne wil deze nieuwe basiswiskunde toegankelijk maken voor de adolescenten en voor personen van welke 
+leeftijd en vorming ook, die zich willen inwijden in de wiskunde van onze tijd}.' \\
+
+\noindent Van Bourbaki's \textit{Eléments de mathématique: description de la mathématique formelle} 
+zouden er uiteindelijk 24 volumes verschijnen. De verzamelingenleer geldt als 
+rode draad doorheen al deze volumes. Er is geen voorkennis vereist voor het lezen 
+van deze werken, vermits alle stellingen strikt bewezen worden uit voorgaande 
+stellingen, definities en axioma's. In theorie zou de lezer dus genoeg moeten hebben aan 
+een vermogen om logisch te kunnen redeneren en abstract denken. Soms bevatten de
+werken eens een voorbeeld, vaak een sterk mathematisch exemplaar gebaseerd op 
+reeds vooraf ingevoerde concepten. Deze voorbeelden kunnen perfect overgeslagen 
+worden daar ze geen deel uitmaken van de logische opbouw van de theorie.\\
+
+\noindent Belangrijk is hier dat dit werk door Bourbaki werd gezien als een 
+logisch model om de wiskunde mee op te bouwen en te funderen. Het werd niet echt 
+gezien als een model om onderwijs mee te verschaffen. In een soort 
+gebruikshandleiding voor de werken, laten ze dan ook optekenen: `\textit{Dit werk is 
+voornamelijk bedoeld voor lezers die op zijn minst een goede kennis hebben van 
+de onderwezen materies uit het algemene wiskundeonderwijs in Frankrijk (in het buitenland 
+lijkt ons één of twee jaren wiskundeonderricht aan de universiteit 
+noodzakelijk). Indien mogelijk is ook een basiskennis gewenst van een cursus 
+differentiaal- \& integraalrekening}'.\\
+
+\noindent Getuige de quote van Georges Papy, maakten de werken van Bourbaki een bijzonder
+diepe indruk op de wiskundige gemeenschap en werd het universitair 
+wiskundeonderwijs langzaam maar zeker gestoeld op de deductieve, logische opbouw van Bourbaki.
+De kruitlijnen van een hedendaagse universitaire wiskundeopleiding zijn nog 
+steeds grotendeels uitgezet door de Bourbakigroep. Deze revolutie binnen 
+de wiskunde die haar ordende, fundeerde en naar een nieuw tijdperk 
+bracht, dacht men dan ook te moeten gebruiken als basis van het onderwijs in het 
+secundair, basis en soms zelfs in het kleuteronderwijs. Wil men het onderwijs 
+actueler, inzichtelijker en aantrekkelijker maken, stelde men, dan dient er voor 
+gezorgd te worden dat alle leerlingen in contact komen met deze basisstructuren 
+van Bourbaki.\\
+
+\noindent De moderne wiskunde behelsde dus in eerste instantie een inhoudelijke 
+vernieuwing met een curriculum waarbij nieuwe concepten uit de formele logica, de verzamelingenleer en 
+structuren uit de algebra en topologie centraal stonden. Deze nieuwe en abstracte onderwerpen 
+kwamen niet naast de traditionele leerinhouden zoals getallenleer en meetkunde te staan, 
+maar moesten - integendeel - er het fundament voor vormen. Er werd dus gestart met 
+abstracte, `lege' begrippen om daaruit langzaam aan meer concrete, `gevulde' 
+begrippen af te leiden. Naast dit nieuwe uitgangspunt kwam er een karrevracht 
+aan nieuwe begrippen, symbolen en notaties in het onderwijs terecht. 
+Toepassingen van wiskunde in het dagelijks leven of uit andere disciplines (Fysica, Economie,...)
+werden als oninteressant beschouwd en werden nog nauwelijks behandeld. Alle 
+aandacht ging naar de logische opbouw van de wiskundeconcepten en hun plaats in 
+het theoretische raamwerk met definities, stellingen en bewijzen. Hierdoor werd de leerstof zodanig logisch opgebouwd, 
+dat men ervan uitgang dat leerlingen de wiskunde zo beter zouden kunnen 
+begrijpen en beter zouden appreciëren.
+
+\subsubsection{Voorbeelden}
+Nu we de uitgangspunten hebben uitgelicht, willen we u enkele concrete 
+voorbeelden uit dit curriculum niet onthouden:
+
+\begin{itemize}
+  \item Het beroemde parallelenpostulaat van Euclides: `Gegeven een rechte 
+  en een punt dat niet op deze rechte gelegen is, dan is er een unieke rechte 
+  door dit punt evenwijdig aan de gegeven rechte' werd in \textit{'Mathematique Moderne I'} van 
+  G. Papy: `\textit{Elke richting is een partitie van het vlak}'.
+  \item De lengte van een lijnstuk werd in datzelfde boek gedefinieerd als 
+  `\textit{een klasse van congruente lijnstukken}'.
+  \item In de meeste handboeken werden de reële getallen $\R$ ingevoerd als 
+  equivalentieklassen van Cauchyrijen.
+  \item Een (gesloten) interval werd gedefinieerd als \textit{Een deelverzameling $I$ van 
+  een geordende verzameling $S$ is gesloten intervals als:
+  $$\forall x, y \in I: x \leq z \leq y \Leftrightarrow z \in I$$}
+  \item Men gebruikte vaak getallenstelsels met een andere basis, het 
+  traditionele tiendelig talstelsel was hier dan een eenvoudig voorbeeld van.
+  \item De synthetische meetkunde van Euclidisch moest plaats ruimen voor 
+  een algebraïsche, meer analytische aanpak.
+  \item Calculus werd opgebouwd vanuit de topologische begrippen continuïteit
+  en limieten.
+  \item ...
+  
+  \end{itemize}
+
+\subsubsection{Didactische visie}\label{did}
+Met de invoering van de moderne wiskunde was ook een vernieuwde didactische 
+aanpak opportuun. De leerkracht moet de leerlingen laten zien wat wiskunde echt 
+is door hen een goede wiskundige attitude te laten verwerven, hen veel wiskunde te 
+laten doen, hen de wiskundige taal te leren spreken en (abstracte) wiskundige problemen te 
+laten oplossen. Een actieve inbreng van de leerling is gewenst: met 
+zelfexploratie en discussies tussen de leraar en leerlingen en leerlingen 
+onderling. Deze exploraties en discussies waren erop gericht de wiskundige 
+modellen en structuren te ontdekken en te leren verwoorden. De leraar had de taak om 
+bij zulke discussies erop toe te zien dat een correcte wiskundetaal wordt aangewend en een 
+correcte, deductieve redeneerwijze wordt opgebouwd. Motivatie moesten de 
+leerlingen halen uit het plezier van de wiskundige leeractiviteiten, de 
+ontdekkingen die ze daarbij deden en het esthetisch genot dat ze hierbij ervaren. 
+Dit alles moest leidden tot het beter begrijpen van de aangeboden wiskunde, maar 
+ook op een verhoogde intrinsieke motivatie.
+
+\subsection{Invoering van de moderne wiskunde}
+\subsubsection{Westerse wereld}
+We willen er in eerste instantie op wijzen dat de invoering van de moderne 
+wiskunde in het Westen niet overal op dezelfde manier verliep: de moderne 
+wiskunde had over het algemeen een gemeenschappelijk basiscurriculum, maar er 
+waren veel nationale en lokale verschillen door onder meer verschillen in 
+cultuur en onderwijssystemen. In Franrijk, België, (West- \& Oost-) 
+Duitsland, Zwitserland, Spanje, Italië, Polen en Hongarije werd de moderne 
+wiskunde ingevoerd in de middelbare school met als grootste gelijkenis een 
+verschuiving van de focus op synthetische, Euclidische meetkunde naar een meer 
+algebraïsche aanpak en het invoeren van de verzamelingenleer als basis van alles. 
+De redenen om dit nieuwe curriculum in te voeren waren ook verschillend: in 
+sommige landen wou men effectief de wiskunde dichterbij de toenmalige 
+wetenschappelijke benadering van de wiskunde brengen, in andere landen zag men 
+zijn kans schoon om verouderde lesmethodes eens een grondige opfrisbeurt te 
+geven. In sommige landen werd de invoering beperkt tot een aantal experimentele 
+klassen, met enkele gemotiveerde leerkrachten aan de basis, in andere landen 
+werd het nieuwe curriculum centraal opgelegd zonder veel inbreng van de leraren. 
+\\
+
+\noindent Hoewel de concrete implementatie van de moderne wiskunde zeer divers was,  
+waren er wel enkele internationale organisaties die de invoering ervan centraal 
+wouden orchestreren. Zo hield de in 1908 opgerichte \textit{The International Commission on Mathematical 
+Instruction} (ICMI) een tiendaags seminarie in Royamont (nabij Parijs) in 1959. Deze conferentie was helemaal
+gewijd aan de vernieuwing van de inhouden en methoden van het wiskundeonderwijs voor `intellectueel begaafde leerlingen van 12 tot 19 jaar' en legde de 
+basis voor de internationale moderne wiskunde beweging. De Franse wiskundige Jean Dieudonné lanceerde er 
+zijn strijdkreet `A bas Euclide!', waarmee hij de dominantie van de Euclidische meetkunde in het toenmalige, traditionele
+wiskundeonderwijs aan de kaak wou stellen.\\
+
+\noindent Dat deze conferentie 
+het zover kon schoppen, heeft veel te maken met het feit dat de \textit{Organisatie voor Europese Economische Samenwerking (OEES)}
+de conferentie ondersteunde en de verslagen ervan mee verspreidde. De \textit{OEES} was 
+een organisatie die in 1947 werd opgericht als onderdeel van het Marshallplan 
+voor de wederopbouw van Europa na de erg destructieve Tweede Wereldoorlog. Het spreekt
+voor zich dat de \textit{OEES} een van de overlegplatformen was tijdens de Koude Oorlog
+van de kapitalistische wereld. De \textit{OEES} 
+kennen we vandaag nog als de \textit{OESO}. De \textit{OESO} is nog altijd een bijzonder 
+invloedrijk samenwerkingsverband van 34 landen om sociaal en economisch beleid 
+te bespreken en te coördineren. Zo worden de wereldbekende PISA-onderzoeken, 
+onderzoeken naar de onderwijskwaliteit in de verschillende deelnemende landen, 
+georganiseerd door de \textit{OESO}. De \textit{OESO} doet aan de aangesloten landen ook aanbevelingen over
+onderwijs en economisch beleid.\\
+
+\noindent De erg invloedrijke Rayoumont conferentie was eigenlijk het resultaat
+van een voorbereiding die al veel vroeger startte, in 1952. Op initiatief van 
+Caleb Gattegno werd \textit{Le Commission internationale pour l'Etude et l'Amélioration 
+de l'Enseignement des Mathématiques (CIEAEM)} opgericht. Caleb Gattegno was een 
+allround didacticus met een sterke visie op wiskunde-, taal- en leesonderwijs. 
+Caleb Gattegno schreef enorm veel artikels over de didactiek van deze 
+disciplines. Zijn \textit{CIEAEM} was een beperkt groepje van wiskundigen, logici, 
+psychologen en leraren wiskunde die jaarlijks reflecteerden over een 
+modernisering van het wiskunde-onderwijs. In de uiteindelijke notulen van de 
+Royaumont-conferentie is duidelijk de hand van deze groep te herkennen. Nog een 
+aardig weetje: één van de \textit{CIEAEM}-congressen werd destijds georganiseerd in 
+het Brabantse Keerbergen. Dat had alles te maken met de Belg Willy Servais, die 
+secretaris was van deze groep van 1956 tot 1979.\\
+
+\noindent Na de Rayoumant conferentie richtte de \textit{OEES} de \textit{Lichnerowicz commissie} op 
+bestaande uit
+een achttiental internationale experten, waaronder opnieuw de Belgische Willy Servais en uiteraard de Franse wiskundige André Lichnerowciz. Deze commissie 
+zou uiteindelijk in 1969 in Dubrovnik (Kroatië) samenkomen om er een soort manifest 
+voor een wiskundeonderwijs van de 20ste eeuw te schrijven. Het `programma van Dubrovnik' zou 
+het basisdocument vormen van de moderne wiskunde in het hele Westen.
+\subsubsection{België}
+Vermits de bespreking van de moderne wiskunde in al de verschillende landen ons te 
+ver zou leiden, pikken we er nu even België uit als voorbeeld van hoe de moderne 
+wiskunde zich in ons land ontwikkelde.\\
+
+\noindent Ten eerste is het belangrijk om de organisatorische en politieke structuur van ons onderwijs 
+op dat moment, begin jaren 70, te schetsen. België was nog een unitaire staat waarbij 
+zowel de persoons- als gebiedsgebonden materies onder de bevoegdheid van de 
+Kamer en Senaat vielen. Van een federalisering met gemeenschaps- en 
+gewestbevoegdheden was er op dat moment nog absoluut geen sprake. Er waren wel al taalwetten: sinds 1963 werd er in Vlaanderen basis- en 
+secundair onderwijs verschaft in het Nederlands, in Wallonië in het  
+Frans en in Brussel bestonden de twee onderwijstalen naast elkaar. Het officiële 
+en katholieke onderwijsnet waren de twee dominante netten die voortdurend strijd 
+voerden tegen elkaar. Het grootste verschil met vandaag is de grote vrijheid die scholen kregen:
+er waren nog geen algemene eindtermen, waardoor scholen veelal naar eigen smaak 
+hun onderwijs konden inrichten. Op enkele uitzonderingen na, was er nauwelijks regelgeving over het te volgen curriculum. De meeste scholen waren nog strikt gescheiden 
+tussen meisjes en jongens, van gemengd onderwijs was nauwelijks sprake.\\
+
+\noindent Bij het nalezen van literatuur over de moderne wiskunde in België
+valt de rol op van drie spilfiguren: Willy Servais, Fréderique Lenger en bovenal Georges 
+Papy. Willy Servais en Fréderique Lenger waren allebei wiskundeleerkrachten op 
+athenea in Wallonië (Fréderique is een vrouw), zij namen samen het initiatief om 
+een experimenteel leerplan te ontwikkelen rond moderne wiskunde. Om hun 
+geloofwaardigheid een boost te geven, werd al snel Georges Papy van de 
+Université Libre de Bruxelles (ULB) betrokken. Georges Papy zou het experimentele 
+programma uitproberen in de toenmalige normaalschool Berkendal voor kleuterleidsters 
+te Vorst. Hij stelde ook de pedagogische aanpak op punt: 
+Venndiagrammen, pijlenvoorstellingen (`Pappygramen') en de rood-groen 
+conventie voor open en gesloten verzamelingen zijn allemaal van zijn hand en worden vandaag de dag nog gebruikt. Papy 
+mag zonder meer de bekendste Belgische voortrekker van de moderne wiskunde genoemd worden. 
+Fréderique Lenger en Georges Papy vonden elkaar trouwens ook buiten hun adoratie voor de moderne wiskunde, 
+want na enkele jaren zijn zij getrouwd..\\
+
+\noindent Dat het triumviraat Servais-Lenger-Papy zo invloedrijk was, had natuurlijk veel 
+te maken met de erg vrije organisatie van het toenmalige Belgische onderwijs: 
+door gebrek aan eindtermen en inspectie, konden zij vrijuit hun experimentele 
+leerplan uitproberen in hun eigen klaspraktijk. Op de invloedrijke 
+Royaumont conferentie heeft Willy Servais dan ook dit `Belgische experiment' 
+uiteengezet en kreeg hij er ruime aandacht voor. Het moge dus duidelijk zijn dat 
+België zonder meer één van de voortrekkers was voor de internationale beweging van de moderne 
+wiskunde.\\
+ 
+\noindent Hoe zorge het trio nu voor de verspreiding van de moderne wiskunde binnen 
+België? Dat kwam in eerste instantie door het door Papy opgerichte `\textit{Belgisch 
+Centrum voor Methodiek van de Wiskunde' (BCMW)} in 1961. Het \textit{BCMW} bracht allerlei spilfiguren uit de 
+verschillende onderwijsnetten en de beide taalgroepen samen en had tot doel de 
+verspreiding van de moderne wiskunde in België in gang te zetten. Zo publiceerde het \textit{BCMW} onder 
+meer het tijdschrift \textit{ Niko}, verwijzend naar Nicolas Bourbaki. Van 1959 
+tot 1968 organiseerde het \textit{BCMW} ook jaarlijks de `Samenkomsten van 
+Arlon' waarop leraren via workshops werden voorbereid op de moderne wiskunde in 
+de klaspraktijk. In 1960 werden deze samenkomsten ook officieel erkend door het 
+`Ministerie van Nationale Opvoeding'. Dit betekende enorme vlucht vooruit, want 
+sindsdien namen er jaarlijks meer dan 600 Belgische wiskundeleraren uit alle 
+onderwijsnetten aan deze dagen deel. Papy lanceerde ook in 1964 zijn 
+handboekenreeks voor het secundair onderwijs `\textit{Mathématique Moderne}'. 
+Een Nederlandse vertaling volgde snel.\\
+
+\noindent Voor 1968 waren scholen volledig vrij in het al dan niet invoeren van 
+de moderne wiskunde in hun klaspraktijk. In 1968 werd er echter een wet gestemd 
+die de moderne wiskunde verplicht en algemeen invoerde in alle Belgische 
+scholen. Deze invoering bracht een rits nieuwe handboeken en nascholingen met 
+zich mee. Ongeveer tien jaar later werd ook het moderne wiskundecurriculum voor 
+de basisschool verplicht. De traditionele wiskunde was zo volledig van het 
+Belgische schooltoneel verdwenen en had plaatsgemaakt voor een moderne wiskunde 
+die vanaf de lagere school logisch opgebouwd werd vanuit de verzamelingenleer.
+
+\subsection{Structuralisme}
+\subsubsection{Beknopte uitleg}
+De beweging van de moderne wiskunde kan op wetenschappelijk en filosofisch vlak 
+ook gekaderd worden in de intellectuele stroming van het structuralisme, een stroming die aan 
+belang won begin jaren '60. Zeer beknopt komt structuralisme neer op:
+\begin{enumerate}
+  \item Individuele objecten moeten bestudeerd worden in een groter systeem of 
+  een algemene structuur,
+  \item Individuele objecten moeten vooral begrepen worden in relatie tot dit systeem, 
+  minder door hun individuele eigenschappen.
+\end{enumerate}
+Het structuralisme bevat dus een soort holisme, en acht het geheel belangrijker dan de delen.
+Ze ziet het geheel van intern samenhangende fenomenen als een algemene structuur. 
+\\
+
+\noindent Het structuralisme werd vooral populair binnen de antropologie met 
+Claude Lévi-Strauss, de linguïstiek,  de sociologie, de geschiedenis en de 
+filosofie met Michel Foucault als bekendste voorbeeld. Van Michel Foucault komt 
+de bekende uitspraak `\textit{L'homme est fini}': Foucault stelt dat met de 
+opkomst van de menswetenschappen, iets ernstig aan het licht is gekomen: doordat 
+de mens zowel subject als object van menswetenschappelijk onderzoek is, kan de 
+mens niet de oorsprong en het fundament van alle kennis zijn. De mens is vanuit een structuralistisch oogpunt waarschijnlijk niet 
+vrij in zijn doen en laten in een samenleving, want het is niet de mens zelf die alles kiest wat er in een maatschappij gebeurt, maar er zijn bepaalde
+structuren die deze beslisssingsprocedures beïnvloeden. Voor hem is 
+structuralisme dan ook een tijdperk waarin de mens inziet dat hij niet het 
+laatste woord heeft, want het structuralisme laat de mens als subject weer 
+helemaal verdwijnen. Daarom dat hij de mens dood verklaart in deze beroemde 
+uitspraak.
+
+\subsubsection{Link met de moderne wiskunde}
+De Bourbakigroep wordt soms gekaderd binnen het structuralisme vermits zij met 
+hun axiomatische en rigoureuze opbouw van de wiskunde ook de aandacht op 
+objecten in relatie tot het algemeen raamwerk beschouwen, net zoals de 
+structuralisten doen in andere domeinen. Bovendien werden een aantal initiatieven geïnspireerd op de 
+werkwijze van Bourbaki die men zonder meer binnen het structuralisme plaatst, 
+zoals Oulipo, een groep die teksten maakte volgens de principes van Bourbaki.\\
+
+\noindent Toch is die link niet super duidelijk: men heeft binnen de wetenschapsfilosofie nogal snel de neiging om 
+algemene patronen te ontrafelen waarmee men verschillende wetenschappelijke tendensen uit 
+verschillende disciplines onder één stroming wil plaatsen, om wetenschappers `als 
+kind van hun tijd te beschouwen.' Toch lijken deze verbanden niet altijd even overtuigend en zijn ze soms zelfs wat vergezocht. Zo weten we dat een aantal structuralisten sommige leden van Bourbaki kenden, maar
+het is hoogst onduidelijk hoe sterk die invloed was op hun manier van 
+werken en denken binnen hun wetenschapsdomein. Het is in elk geval erg 
+onwaarschijnlijk dat er in de andere richting invloed is geweest: Bourbaki heeft zich allicht nooit
+laten inspireren door structuralistische ontwikkelingen in de sociale wetenschappen of de 
+linguïstiek. De grote overeenkomsten lijken eerder op toeval gebaseerd.\\
+
+\subsubsection{Jean Piaget}\label{piaget}
+Eén verband is wel enorm duidelijk. Van de Zwitser Jean Piaget, een van de meest bekende 
+psychologen die vooral bekend werd voor zijn leertheorie, is effectief geweten 
+dat hij zijn leertheorie in analogie met de logische organisatie van de wiskunde 
+door Bourbaki heeft opgebouwd. \\
+
+\noindent Zijn leertheorie gaat ervan uit dat leren uit 2 mechanismen bestaat: assimilatie en accommodatie. 
+Kennis bestaat volgens Piaget uit mentale structuren in het brein en 
+zo'n structuur kan een andere structuur assimileren: de oorspronkelijke structuur
+neemt de geassimileerde structuur in zich op (bv. ik interpreteer een een willekeurige
+rechthoekige driehoek door de meer algemene structuur van driehoeken). Accommodatie 
+duidt op de verandering van zo'n mentale structuur als gevolg van assimilatie (bv. we leren
+dat de structuur van driehoeken ook rechthoekige driehoeken omvat). \\
+
+\noindent Jean Piaget heeft dan ook een sleutelrol vervuld bij de invoering van 
+de moderne wiskunde: de leerinhouden van de moderne wiskunde gaan immers vooral 
+over structuren die steeds uitgebreid worden, wat - volgens hem! - naadloos leek aan te sluiten bij de 
+zijn leertheorie. Het feit dat een toen al populaire psycholoog zich 
+uitsprak voor de moderne wiskunde, zal zeker hebben bijgedragen tot de 
+wijdverspreide invoering van het nieuwe curriculum. Later zal blijken dat hij te 
+voortvarend is geweest en dat zijn leertheorie eigenlijk een argument tegen de 
+moderne wiskunde is. 
+
+\newpage
+\section{Het sociaal-constructivisme}
+Ten tijde van de opkomst van de moderne wiskunde, werd een stroming binnen de 
+pedagogische wetenschap dominant: het sociaal-constructivisme. In dit 
+hoofdstukje bespreken we de belangrijkste krachtlijnen en figuren die mee 
+vormgaven aan deze nog steeds dominante stroming binnen de onderwijswetenschap. 
+Een goed begrip van het sociaal-constructivisme kan immers voor een deel de 
+uiteindelijke ondergang van de moderne wiskunde in het onderwijs verklaren.
+
+\subsection{Korte samenvatting}
+Het sociaal-constructivisme is een erg belangrijke stroming in de onderwijspsychologie. Het
+sociaal-constructivisme berust op het inzicht dat mensen zelf betekenis verlenen aan hun
+omgeving en dat sociale processen hierbij een belangrijke rol spelen. Ieder mens heeft zijn
+eigen manier om informatie te verwerken, construeert zijn eigen kennis, waarbij hij/zij sterk
+wordt beïnvloed door de reacties en opvattingen in zijn sociale omgeving. Het constructivisme
+vindt zijn wortels in het werk van Piaget, de Gestalt-psychologen Bartlett en Bruner en in
+de onderwijsfilosofie van John Dewey. Er is geen eenduidige constructivistische leertheorie.
+Sommige constructivisten leggen vooral nadruk op de sociale constructie van kennis, het
+sociaal-constructivisme, andere vinden het sociale aspect minder belangrijk.
+
+\subsection{Vygotsky en de zone van naaste ontwikkeling}
+Een van de belangrijkste namen die hoort bij het sociaal-constructivisme is die van Lev 
+Vygotsky (1896 - 1934). Vygotsky zelf werd beïnvloed door de vroege werken van
+de reeds besproken Jean Piaget (zie sectie \ref{piaget}). De kern van Vygotsky’s theorie is de integratie van interne en externe 
+aspecten van
+het leren en de nadruk op de sociale leeromgeving. \\
+
+\noindent Het mogelijk meest invloedrijke concept
+van de theorie van Vygotsky is de \textit{zone van naaste ontwikkeling}. Deze kan worden gedefinieerd
+als het verschil in moeilijkheidsgraad dat de leerling zelf aankan en het niveau dat de leerling
+aankan met behulp van een docent. Cognitieve verandering, het leren, vindt plaats in de zone
+van naaste ontwikkeling of de constructiezone. De constructiezone is met andere woorden. ‘de werkplaats
+van het leren’. Hier ontmoeten de leerling, met zijn ontwikkelingsgeschiedenis, en de docent,
+met zijn ondersteuningsstructuur, elkaar om samen te werken aan de cognitieve groei van de
+leerling. In deze ‘cognitieve werkplaats’ draagt de docent er zorg voor dat de leerling niet
+meer hulp krijgt dan strikt noodzakelijk.\\
+
+\noindent De zone van naaste ontwikkeling inspireerde Vygotski om
+\textit{scaffolding} te promoten: leren is een bouwwerk en het is aan de leraar 
+om op het juiste moment net die fundering/steiger aan te reiken die de leerling via een 
+actief leerproces niet zelf zou kunnen vinden. De leerkracht moet zich bij het 
+aanreiken van hulp beperken tot het strikt noodzakelijke: alles wat de leerling 
+zelf zou kunnen vinden, moet de leerling ook zelf vinden. Op die manier zie je 
+het leerproces als steigers nodig om te stijgen (nodig om het leerproces in de juiste richting te 
+sturen).
+\subsection{Het belang van voorkennis}
+Leren krijgt betekenis als een leerling een beperking of discrepantie ervaart tussen zijn eigen kennis of leefwereld (\textit{voorkennis})
+en de echte wereld. Vanuit die voorkennis, kan nieuwe kennis aan de reeds 
+geassimileerde kennis aangeknoopt worden.
+Merk op dat de structuralistische theorie van Jean Piaget over assimilatie en accomodatie 
+eigenlijk ook een pleidooi is voor het activeren van voorkennis. De reeds 
+geassimileerde structuren kunnen in Piagets leertheorie als voorkennis beschouwd worden. Piaget 
+wordt dan ook vaak naast een structuralist, als één van de grondleggers van het 
+sociaal-constructivisme gezien.
+
+\subsection{Leren in interactie}
+Het constructivisme gaat ervan uit dat veel van wat leerlingen leren door henzelf wordt geconstrueerd.
+Sommige leerlingen gaan bij het leren stap voor stap te werk, anderen zoeken de
+grote lijn, en weer anderen hebben het vermogen hun aanpak aan te passen aan de taak. Ook
+is elke leerling in meer of mindere mate in staat zijn eigen leerproces te sturen, dat wil zeggen
+de informatieverwerking te coördineren en te controleren. Niet alleen leren leerlingen van hun
+interactie met docenten, maar ze leren ook van de onderlinge interactie. Veel constructivisten
+benadrukken deze rol van sociale interacties, ze hebben grote invloed op wat er wordt geleerd.
+Volgens het constructivisme verlenen wij dus zelf betekenis aan de wereld om ons heen.
+
+\subsection{Concrete werkvormen in de klaspraktijk}
+Sociaal-constructivistisch lesgeven bestaat onder meer uit:
+\begin{itemize}
+\item \textbf{Afwisselen in werkvormen}: Leerlingen construeren zelf hun eigen kennis. Dat doen
+ze elk op hun eigen manier. De leerkracht heeft de plicht rekening te houden met deze
+verschillende leerstijlen en door te wisselen in werkvormen iedereen een bevredigende
+leerervaring aan te bieden.
+\item \textbf{Voorkennis}: Leerlingen zijn, hoe jong en onwetend ook, geen tabula rasa. Lesgeven
+vanuit sociaal-constructivistisch oogpunt betekent dat men zich steeds bewust is van de
+voorkennis en deze voorkennis ook doelgericht activeert. \item Het \textbf{relevant maken van de leerstof}, waarbij rekening wordt gehouden met de
+achtergrond en de ervaring van leerlingen. De nieuwe leerstof wordt verankerd in betekenisvolle,
+levensechte situaties.
+\item Leerkracht als \textbf{coach}: De leerkracht is meer een coach die zinvolle leeromgevingen
+aan zijn leerlingen aanrijkt. Zeer sterk docent-gecentreerde werkvormen zoals doceren
+worden tot een minimum beperkt, wegens weinig leerrendement.
+\item \textbf{Sociale dimensie van het leren}: Studenten leren meer wanneer ze hun eigen leerervaring
+construeren. Leerlingen moeten samen (coöperatief) bezig zijn met het verwerven
+en verwerken van kennis en het ontwikkelen van vaardigheden. Leren is een sociaal proces.
+Elkaar uitleg geven blijkt de resultaten te verbeteren (studenten onthouden 10\%
+van wat ze lezen, 20\% van wat ze horen, 30\% van wat hen gedemonstreerd wordt, 50\!%
+van wat ze bediscussiëren en 75\% van wat ze oefenen. Als studenten lesgeven aan hun
+peer groep, onthouden ze daarvan 90\%).
+\end{itemize}
+\subsection{Sociaal-constructivisme \& wiskundedidactiek}
+Er is erg veel onderzoek gedaan naar de implementatie van het 
+sociaal-constructivisme in de klaspraktijk wiskunde. Een volledig overzicht zou 
+ons erg ver leiden, maar één man willen we u niet onthouden: de Nederlander Hans 
+Freudenthal met zijn radicaal nieuwe inzichten in de wiskundedidactiek. In het 
+volgende hoofdstuk zullen we zien dat Freudenthal mee de afbraak van de moderne 
+wiskunde in gang heeft gezet.
+\subsubsection{Hans Freudenthal}
+Hans Freudenthal was een bekende wiskundige uit Utrecht (Nederland), die later 
+een van de pioneers zou worden van het sociaal-constructivisme in de 
+wiskundedidactiek. Freudenthal was grote voorstander van van de \textit{guided reinvention} 
+van klaspraktijk wiskunde: leerling moesten in een actief leerproces zelf op 
+ontdekkingsreis en moesten zo principes leren herontdekken. Studenten werden 
+hierbij niet onderworpen aan abstracte, `ontoepasbare' wiskunde, maar er werd 
+geopteerd voor zorgvuldig uitgekozen, alledaagse problemen. Zo bouwden studenten 
+geleidelijk wiskundig inzicht op. Bovendien was Freudenthal van mening dat de 
+herkenbaarheid van problemen uit de wiskundeles omdat de problemen uit hun leefwereld komen, de motivatie van studenten zou 
+verhogen.\\
+
+\noindent De uitgangspunten van Freudenthal passen helemaal bij de 
+sociaal-constructivistische leertheorie: door te vertrekken van problemen uit 
+het dagdagelijks leven, kan men immers een leerproces opbouwen via de \textit{scaffolding} 
+van Vygotski, ook de guided invention is eigenlijk een vertaling van scaffolding 
+naar de wiskundeles. Zijn afkeur voor abstracte, ontoepasbare wiskunde als 
+leerstof in het (middelbaar) onderwijs, heeft ook alles te maken met grote rol 
+die voorkennis speelt in het sociaal-constructivisme: enkel op basis van 
+voorkennis kan nieuwe informatie geconstrueerd worden en betekenis krijgen.
+
+\subsubsection{Realistisch rekenonderwijs}
+Later zou Hans Freudenthal zijn naam geven aan het Freudenthalinstituut, dat in 
+Nederland de afgelopen twintig jaar een het realistisch rekenonderwijs invoerde in 
+de basisschool. Realistisch rekenonderwijs verschilt van ons traditioneel rekenonderwijs en van de moderne wiskunde in die zin dat al het
+rekenwerk in realistische situaties wordt gegeven, en dat algoritmes enkel worden onderwezen
+als leerlingen ook effectief snappen waarom het algoritme werkt. Zo wordt het Euclidisch
+delingsalgoritme in Nederland niet meer onderwezen, maar wordt er steeds vanuit erg realistische
+situaties gedeeld (bijvoorbeeld hoe verdeel je gelijk 100 stoelen over 3 lokalen, hoeveel
+stoelen heb je over?). Er is veel minder tot geen aandacht meer voor het bijna autmatisch
+oplossen van rekensommen. Hoewel realistisch rekenonderwijs een nobel streven is, vallen de resultaten objectief gezien
+nogal tegen. Internationale onderzoeken (o.a. PISA) tonen een markante daling aan van
+de wiskundekennis in landen die een realistisch curriculum invoerden. Men kan zich terecht
+afvragen of de cognitieve ontwikkeling van een kind wel toelaat om zuiver inzichtelijk te werk
+te gaan in het basisonderwijs en of een zekere ‘dril’ in rekenvaardigheid toch niet noodzakelijk
+is. Het inzicht in bepaalde cijferalgoritmes is nog altijd later te verwerken.
+
+\newpage
+\section{Synthese: moderne wiskunde versus het sociaal-constructivisme}
+Als we de uitgangspunten van het sociaal-constructivisme naast de didactische 
+visie van de moderne wiskunde leggen (zie sectie \ref{did}), dan valt het op hoe 
+gelijklopend de initiële basisvisies waren. Toch zal de moderne wiskunde meteen 
+kritiek krijgen van de constructivisten. We lijsten de belangrijkste 
+kritiekpunten op:
+
+\begin{itemize}
+  \item De grootste moeilijkheid zit hem in het \textit{relevant maken van 
+  leerstof}: door uitsluitend met abstracte contexten te werken, is 
+  het erg moeilijk om leerstof relevant te maken en te laten aansluiten bij het 
+  dagelijks leven en de leefwereld van leerlingen. Een axiomatische context 
+  vertrekt immers niet van een probleemstellende, betekenisvolle context. De 
+  leerling weet ook niet waarom en hoe deze `spelregels' ontstaan zijn en waartoe ze
+  zullen leiden.
+  \item Het basisidee van het 
+  sociaal-constructivisme, namelijk \textit{een leerling leert als hij een discrepantie 
+  tussen zijn eigen leefwereld en de echte wereld ervaart}, kan bijna niet 
+  uitgeput worden: de leerling zal de abstractie van de moderne wiskunde niet 
+  als een discrepantie met zijn eigen leefwereld ervaren, omdat er te weinig 
+  aanknopingspunten met zijn eigen leefwereld zijn.
+  \item Dat gebrek aanknopingspunten door de abstractie van de moderne wiskunde 
+ \textit{ bemoeilijkt ook het activeren van voorkennis}.
+  \item De \textit{guided reinvention} waar Hans Freudenthal zo voorstander van is, is 
+  erg moeilijk te realiseren met het curriculum van de moderne wiskunde. Het is 
+  onmogelijk om te verwachten van leerlingen dat zij definities en bewijzen 
+  zelf kunnen herontdekken waar wiskundigen soms eeuwen naar hebben gezocht. Dit 
+  bemoeilijk dus een \textit{actief leerproces} op basis van \textit{scaffolding}.
+  \item De moderne wiskunde houdt te weinig rekening met de concrete begrippen 
+  en alle verschillende, informele strategieën waarover leerlingen in het begin van een 
+  onderwijsleerproces beschikken.
+  \item De gebruikte abstracte structuren zoals groepen zijn in vele 
+  verschillende situaties inzetbaar. Leerlingen kennen echter al deze situaties 
+  nog niet. Voor leerlingen ontstaan er zo lege, nietzeggende structuren wat 
+  leidt tot `inerte kennis'. Dit is een aanfluiting van de leertheorie van 
+  Piaget (zie sectie \ref{piaget}).
+   \item De drang om alles vroegtijdig te formaliseren maakt zaken nodeloos 
+  ingewikkeld en komt niet altijd op een moment dat leerlingen het juiste 
+  cognitief ontwikkelingsniveau bereikt hebben om zo'n formalisatie aan te 
+  kunnen. Dit is opnieuw in strijd met de leertheorie van Piaget.
+\end{itemize}
+
+\noindent Het blijkt dus dat de moderne wiskunde als instrument voor actieve 
+kennisconstructie vanuit sociaal-constructivistisch oogpunt gedoemd was om te 
+mislukken, daar er heel veel basisprincipes van het sociaal-constructivisme met 
+de voeten getreden worden. Als het hele systeem vooraf vastgelegd is en het vocabularium en de syntaxis van de wiskundetaal 
+rigoureus voorgeschreven, dan heeft de leerling helemaal geen inbreng meer en wordt het denkwerk hoogstens gereduceerd
+ tot het slaafs (proberen) volgen van zuiver logische afleidingen die anderen toch al hebben gemaakt. 
+Noch bij het proces, noch bij de resultaten van al dat `denkwerk' voelt de leerling zich uiteindelijk nog erg betrokken. 
+\\
+
+\noindent Het hoeft geen betoog dat didactici zoals Hans Freudenthal al in een vroeg stadium deze scherpe kritiek 
+hebben geuit over de moderne wiskunde. In 1984 zei hij ooit: `Wiskundige structuren in het onderwijs? Ja! 
+Structuur van de wiskunde als didactisch principe? Neen!'. Een grotere afwijzing 
+van de moderne wiskunde is nauwelijks denkbaar. Ook de constructivist Morris Kline stelde in 1973 dat
+de wiskunde cumulatief leerproces nodig heeft en dat het praktisch onmogelijk is om nieuwe creaties te leren als men de oudere nog niet kent.
+Abstractie is dus niet de eerste stap in het leerproces, maar de laatste. \\
+
+\noindent Merk trouwens op dat het gedachtengoed van Hans Freudenthal 
+uiteindelijk geleid heeft tot het ontwerpen van het realistisch rekenonderwijs. 
+Hans Freudenthal kwam dus (onrechtstreeks) tot de conclusie dat 
+wiskundeonderwijs dat op een sociaal-constructivistische leest geschoeid wordt, 
+leidt naar een realistisch curriculum. Het moge duidelijke zijn dat realistisch 
+wiskundeonderwijs en moderne wiskunde diametraal tegenover elkaar staan. Bijna 
+op alle punten verschillen ze qua aanpak en inhoud.\\
+
+\noindent Hoewel we hier niet in detail op ingaan, 
+moeten we wel opmerken dat niet alle constructivisten aanhangers zijn van een realistische wiskundecurriculum. 
+De meesten pleiten voor een soort kruising van realistisch wiskundeonderwijs en moderne wiskunde, waarbij 
+concrete voorbeelden worden gegeven om een leerstofonderdeel te laten aanknopen met de leefwereld van de leerling, om 
+nadien abstracte structuren in te voeren. Deze abstracte structuren kunnen eens geassimileerd dan dienen als nieuwe
+voorkennis. Deze visie kiest dus geen van beide partijen.
+
+\newpage
+\section{Teloorgang van de moderne wiskunde}
+\subsection{Critici van in de begindagen}
+Van in het begin kreeg de moderne wiskunde scherpe kritiek te verduren. De stem 
+van pedagogen klonk het luidst: hun sociaal-constructivisme is immers 
+onverzoenbaar met het curriculum van de moderne wiskunde zoals uitvoerig 
+besproken in de vorige sectie. Hans Freudenthal heeft zelf een kruistoch tegen 
+de verspreiding van de moderne wiskunde georganiseerd: op international fora 
+heeft hij altijd zijn meer `realistisch' wiskundeonderwijs verdedigd en hij is 
+er zelfs in geslaagd om Nederland te behoeden voor het invoeren van de moderne 
+wiskunde. Als een van de enige Westerse landen bleef Nederland van deze 
+ontwikkeling grotendeels (op enkele scholen na) gespaard.\\
+
+\noindent Ook was er veel kritiek op de moderne wiskunde vanuit de toegepaste 
+wetenschappen: ingenieurs, fysici en economen in de hele wereld waren
+van in het begin erg sceptisch voor het nieuwe curriculum. Ze betoogden dat de 
+moderne wiskunde `leeg en absoluut onbruikbaar is' en dat veel instromende 
+studenten nauwelijks nog iets praktisch kunnen uitrekenen. \\
+
+\noindent In de hele Westerse wereld ervaart men snel dat de waarschuwingen aan het
+adres van de moderne wiskunde niet uit de lucht gegrepen waren. De moderne 
+wiskunde leek enkel een succesverhaal voor de allersterkste leerlingen. 
+\subsection{België \& Vlaanderen}
+Langzaam 
+aan zien we in België dat de verplichte invoering van 1968 van het curriculum 
+van de moderne wiskunde correcties krijgt: de uitgangspunten van de moderne 
+wiskunde stonden in het begin nog niet ter discussie voor de wetgever, maak er 
+werd weer meer aandacht voor getallenleer en (Euclidische) meetkunde gevraagd. 
+Vanaf 1985 wordt er echter ook getornd aan de uitgangspunten: in de nieuwe wet 
+wordt er meer naar een realistische visie op wiskundeonderwijs gegrepen en is 
+het definitief afgelopen in België met de moderne wiskunde. \\
+
+\noindent In 1997, België was toen al gefederaliseerde staat waarbij de gemeenschappen bevoegd 
+werden voor onderwijs, werden voor het eerste algemene eindtermen opgelegd voor 
+het basisonderwijs en de eerste graad van het secundair onderwijs. In deze 
+eindtermen is duidelijk een voorkeur voor een meer realistisch georiënteerd 
+curriculum te zien, zij het helemaal niet zo extreem als het realistisch 
+rekenonderwijs in Nederland. Men zocht meer een goede balans tussen beide visies 
+(de moderne wiskunde verus de realistische aanpak), waarbij het eindresultaat licht 
+overhelde naar een gematigd realistisch curriculum. Als voorbeeld nemen we 
+bijvoorbeeld functies: die werden ten tijde van de moderne wiskunde ingevoerd 
+met een abstracte en technische definitie, nu wordt dat opgebouwd door aan de 
+slag te gaan met grafieken, tabellen en formules om een betekenisvolle context 
+aan de leerlingen aan te bieden. De abstracte definitie van een functie komt nu 
+pas in de derde graad van het secundair onderwijs aan bod.\\
+
+\noindent Belangrijk op te merken is dat de de afbraak van de moderne wiskunde geenszins 
+een restauratie van het traditionele wiskundeonderwijs van voor 1968 inhield. 
+Het curriculum is nu gewoon meer realistisch geïnspireerd dan toen en een aantal 
+didactische principes van voor 1968 werden in ere hersteld.
+
+\subsection{Westerse wereld}
+In de rest van de wereld kende de afbraak van de moderne wiskunde een 
+gelijkaardig verloop. In sommige landen hadden scholen een enorme vrijheid en 
+konden leerkrachten individueel beslissen om langzaam maar zeker de moderne 
+wiskunde links te laten liggen. In de meeste landen werden getallenleer en 
+Euclidische meetkunde terug in ere hersteld en kwam de moderne wiskunde zo 
+spontaan meer op de achtergrond terecht. Bovendien hadden in sommige landen 
+leerkrachten onvoldoende vorming gekregen rond de moderne wiskunde, waardoor zij 
+een hekel aan de hervorming hadden.\\
+
+\noindent In de Verenigde Staten, tot slot, kwam de moderne wiskunde het snelst 
+tot bloei (al vanaf eind jaren '50, begin jaren '60) om al even snel weer te verdwijnen: 
+in 1967 plaatste de allereerste vergelijkende internationale studie over 
+wiskundeonderwijs uitgevoerd in 12 landen, de States op de allerlaatste plaats \cite{20}. 
+Deze test was een voorloper van de latere TIMMS testen die nu nog afgenomen 
+worden.
+Gezien de historische omstandigheden was dit een grote klap voor de Amerikanen:
+De `New Math' movement moest de Amerikanen juist naar een periode van 
+wetenschappelijke ontwikkeling brengen zodat de competitie met de Russen 
+definitief kon beslecht worden. Toen bleek dat de revolutie van de moderne 
+wiskunde hier op geen enkele manier een constructieve bijdrage aan had geleverd had, 
+werden in bijna alle Amerikaanse scholen simultaan de moderne wiskunde 
+opgegeven. Er werden ook nieuwe handboeken gedrukt die deze leermethode 
+definitief de rug toekeerde. \\
+
+\noindent Merk op dat in de tijd dat `New Math' in de Verenigde Staten al ten 
+grave gedragen werd, wij hier in België net de moderne wiskunde wettelijk 
+verplicht hadden. In de internationale vergelijkende studie over het 
+wiskundeonderwijs deden we trouwens zelf ook mee en presteerden we merkelijk 
+beter, allicht dankzij het feit dat de moderne wiskunde hier nog geen algemene 
+regel was.
+
+\newpage
+\begin{thebibliography}{99}
+\bibitem{1} M. Mashaal, \emph{Bourbaki: A Secret Society of Mathematicians}, American Mathematical Society, 2006.
+\bibitem{2} M. D'Hoker, M. Depaepe, \emph{Op eigen vleugels: liber amicorum prof. dr. An Hermans},  
+Garant, 2004.
+\bibitem{10} G. Vanpaemel, D. De Bock, L. Verschaffel, \emph{Defining modern mathematics: Willy Servais (1913-1979) and mathematical curriculum reform in Belgium}, KU Leuven, 2011.
+\bibitem{13} E. Buckworth, \emph{Piaget's Structuralism/ Genetic Epistemology: Jean Piaget}, Columbia University Press, 1970.
+
+\bibitem{14} C. J. Philips, \emph{The New Math: A Political History}, University  of Chicago Press, 2015.
+
+ \bibitem{9} P. Drijvers, A. van Streun, B. Zwaneveld, \emph{Handboek 
+ wiskundedidactiek}, Epsilon Uitgaven Utrecht, 2013.
+ \bibitem{8} F. De Backer, \emph{Algemene onderwijskunde}, Hogeschool-Universiteit 
+ Brussel, 2009.
+\bibitem{16} D. Gania, \emph{The Joy Of Set: Who's responsible for the new 
+math?}, The Mirror, 22 June 1998.
+\bibitem{19} M. Kline, \emph{Why Johnny Can't Add: the Failure of the New Math}, 
+Random House, 1974.
+\bibitem{20} T. Husen, \emph{International Study of Achievement in Mathematics, a Comparison of Twelve 
+Countries}, Wiley Publishing New York, 1967.
+     \end{thebibliography}
+\end{document}
+

@@ -41,7 +41,8 @@
 \contentsline {subsection}{\numberline {6.1}Observaties}{25}
 \contentsline {subsection}{\numberline {6.2}Testweek}{26}
 \contentsline {section}{\numberline {7}Kritische beschouwingen}{28}
-\contentsline {subsection}{\numberline {7.1}Ethische kwesties: De Eugenetica}{28}
+\contentsline {subsection}{\numberline {7.1}Ethische kwesties: Pre-natale geboortes }{28}
+\contentsline {subsection}{\numberline {7.2}Ethische kwesties: Premature zwangerschappen \& De Eugenetica}{28}
 \contentsline {section}{\numberline {8}Bibliografie}{29}
 \contentsline {section}{\numberline {9}Bijlagen}{30}
 \contentsline {subsection}{1.\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em}\tmspace +\thickmuskip {.2777em} Kopie van de stageovereenkomst}{A}

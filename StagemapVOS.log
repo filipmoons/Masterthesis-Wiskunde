@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.2)  5 MAR 2015 04:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.2)  10 JUN 2015 19:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1159,72 +1159,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--230
  []
 
 [7]
-
-./StagemapVOS.tex:265: LaTeX Error: \begin{itemize} on input line 243 ended by 
-\end{description}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.265  \end{description}
-                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-./StagemapVOS.tex:272: LaTeX Error: \begin{itemize} on input line 233 ended by 
-\end{description}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.272 \end{description}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--280
+Underfull \hbox (badness 10000) in paragraph at lines 276--282
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 311--322
+Underfull \hbox (badness 10000) in paragraph at lines 313--324
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 379--386
+Underfull \hbox (badness 10000) in paragraph at lines 381--388
 
  []
 
 [10] <century.png, id=55, 433.62pt x 275.0275pt>
 File: century.png Graphic file (type png)
  <use century.png>
-Package pdftex.def Info: century.png used on input line 402.
+Package pdftex.def Info: century.png used on input line 403.
 (pdftex.def)             Requested size: 173.44492pt x 110.00905pt.
  [11 <./century.png>] [12] [13] <oproep.jpg, id=67, 1591.9475pt x 819.06pt>
 File: oproep.jpg Graphic file (type jpg)
 
 <use oproep.jpg>
-Package pdftex.def Info: oproep.jpg used on input line 477.
+Package pdftex.def Info: oproep.jpg used on input line 478.
 (pdftex.def)             Requested size: 429.83157pt x 221.14915pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--480
+Underfull \hbox (badness 10000) in paragraph at lines 473--481
 
  []
 
 [14 <./oproep.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 493--501
+Underfull \hbox (badness 10000) in paragraph at lines 494--502
 
  []
 
-./StagemapVOS.tex:510: Undefined control sequence.
-l.510 oefenen op tellen tot 10 (o.a. op \textt
+./StagemapVOS.tex:511: Undefined control sequence.
+l.511 oefenen op tellen tot 10 (o.a. op \textt
                                               {http://www.hethofderspelen.nl...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1235,37 +1206,37 @@ and I'll forget about whatever was undefined.
 <20_1.jpg, id=71, 1385.175pt x 953.5625pt>
 File: 20_1.jpg Graphic file (type jpg)
  <use 20_1.jpg>
-Package pdftex.def Info: 20_1.jpg used on input line 518.
+Package pdftex.def Info: 20_1.jpg used on input line 519.
 (pdftex.def)             Requested size: 207.76729pt x 143.0282pt.
 
 <20_2.jpg, id=72, 1385.175pt x 953.5625pt>
 File: 20_2.jpg Graphic file (type jpg)
  <use 20_2.jpg>
-Package pdftex.def Info: 20_2.jpg used on input line 524.
+Package pdftex.def Info: 20_2.jpg used on input line 525.
 (pdftex.def)             Requested size: 207.76729pt x 143.0282pt.
 
 <20_3.jpg, id=73, 1385.175pt x 953.5625pt>
 File: 20_3.jpg Graphic file (type jpg)
  <use 20_3.jpg>
-Package pdftex.def Info: 20_3.jpg used on input line 531.
+Package pdftex.def Info: 20_3.jpg used on input line 532.
 (pdftex.def)             Requested size: 207.76729pt x 143.0282pt.
 
 <20_4.jpg, id=74, 1385.175pt x 511.9125pt>
 File: 20_4.jpg Graphic file (type jpg)
  <use 20_4.jpg>
-Package pdftex.def Info: 20_4.jpg used on input line 537.
+Package pdftex.def Info: 20_4.jpg used on input line 538.
 (pdftex.def)             Requested size: 207.76729pt x 76.78355pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 557--563
+Underfull \hbox (badness 10000) in paragraph at lines 558--564
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 573--577
+Underfull \hbox (badness 10000) in paragraph at lines 574--578
 
  []
 
@@ -1273,46 +1244,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 573--577
 <klok1.jpg, id=81, 975.645pt x 1365.1pt>
 File: klok1.jpg Graphic file (type jpg)
  <use klok1.jpg>
-Package pdftex.def Info: klok1.jpg used on input line 598.
+Package pdftex.def Info: klok1.jpg used on input line 599.
 (pdftex.def)             Requested size: 146.34042pt x 204.75616pt.
 
 <klok2.jpg, id=82, 975.645pt x 1365.1pt>
 File: klok2.jpg Graphic file (type jpg)
  <use klok2.jpg>
-Package pdftex.def Info: klok2.jpg used on input line 604.
+Package pdftex.def Info: klok2.jpg used on input line 605.
 (pdftex.def)             Requested size: 146.34042pt x 204.75616pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--622
+Underfull \hbox (badness 10000) in paragraph at lines 612--623
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 630
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 631
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [17 <./klok1.jpg> <./klok2.jpg>] <geld.jpg, id=86, 1712.3975pt x 1363.0925pt>
 File: geld.jpg Graphic file (type jpg)
  <use geld.jpg>
-Package pdftex.def Info: geld.jpg used on input line 646.
+Package pdftex.def Info: geld.jpg used on input line 647.
 (pdftex.def)             Requested size: 256.84854pt x 204.45505pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--653
+Underfull \hbox (badness 10000) in paragraph at lines 650--654
 
  []
 
 [18 <./geld.jpg>] <aap1.jpg, id=92, 1298.8525pt x 1194.4625pt>
 File: aap1.jpg Graphic file (type jpg)
  <use aap1.jpg>
-Package pdftex.def Info: aap1.jpg used on input line 682.
+Package pdftex.def Info: aap1.jpg used on input line 683.
 (pdftex.def)             Requested size: 194.81946pt x 179.16164pt.
 
 <aap2.jpg, id=93, 1212.53pt x 1521.685pt>
 File: aap2.jpg Graphic file (type jpg)
  <use aap2.jpg>
-Package pdftex.def Info: aap2.jpg used on input line 688.
+Package pdftex.def Info: aap2.jpg used on input line 689.
 (pdftex.def)             Requested size: 181.87164pt x 228.2429pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 694--699
+Underfull \hbox (badness 10000) in paragraph at lines 695--700
 
  []
 
@@ -1320,60 +1291,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 694--699
 File: ferre.jpg Graphic file (type jpg)
 
 <use ferre.jpg>
-Package pdftex.def Info: ferre.jpg used on input line 718.
+Package pdftex.def Info: ferre.jpg used on input line 719.
 (pdftex.def)             Requested size: 316.9204pt x 218.53204pt.
  <bumba.jpg, id=98, 2453.165pt x 1407.2575pt>
 File: bumba.jpg Graphic file (type jpg)
  <use bumba.jpg>
-Package pdftex.def Info: bumba.jpg used on input line 744.
+Package pdftex.def Info: bumba.jpg used on input line 745.
 (pdftex.def)             Requested size: 208.53497pt x 119.62604pt.
 
 <mpuzzel.jpg, id=99, 2453.165pt x 1407.2575pt>
 File: mpuzzel.jpg Graphic file (type jpg)
  <use mpuzzel.jpg>
-Package pdftex.def Info: mpuzzel.jpg used on input line 750.
+Package pdftex.def Info: mpuzzel.jpg used on input line 751.
 (pdftex.def)             Requested size: 208.53497pt x 119.62604pt.
 
 <dieren.jpg, id=100, 1788.6825pt x 1250.6725pt>
 File: dieren.jpg Graphic file (type jpg)
  <use dieren.jpg>
-Package pdftex.def Info: dieren.jpg used on input line 756.
+Package pdftex.def Info: dieren.jpg used on input line 757.
 (pdftex.def)             Requested size: 268.2908pt x 187.59277pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--769
+Underfull \hbox (badness 10000) in paragraph at lines 763--770
 
  []
 
 [20 <./ferre.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 770--777
+Underfull \hbox (badness 10000) in paragraph at lines 771--778
 
  []
 
 <joy.jpg, id=104, 803.0pt x 517.935pt>
 File: joy.jpg Graphic file (type jpg)
  <use joy.jpg>
-Package pdftex.def Info: joy.jpg used on input line 793.
+Package pdftex.def Info: joy.jpg used on input line 794.
 (pdftex.def)             Requested size: 200.74951pt x 129.48343pt.
  [21 <./bumba.jpg> <./mpuzzel.jpg> <./dieren.jpg>] <eindoproep.jpg, id=108, 147
 7.52pt x 685.56125pt>
 File: eindoproep.jpg Graphic file (type jpg)
 
 <use eindoproep.jpg>
-Package pdftex.def Info: eindoproep.jpg used on input line 805.
+Package pdftex.def Info: eindoproep.jpg used on input line 806.
 (pdftex.def)             Requested size: 398.93573pt x 185.104pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 809--813
+Underfull \hbox (badness 10000) in paragraph at lines 810--814
 
  []
 
 <website.jpg, id=109, 1401.235pt x 684.5575pt>
 File: website.jpg Graphic file (type jpg)
  <use website.jpg>
-Package pdftex.def Info: website.jpg used on input line 820.
+Package pdftex.def Info: website.jpg used on input line 821.
 (pdftex.def)             Requested size: 350.30789pt x 171.13895pt.
 
 
@@ -1383,13 +1354,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: installatie.png Graphic file (type png)
 
 <use installatie.png>
-Package pdftex.def Info: installatie.png used on input line 837.
+Package pdftex.def Info: installatie.png used on input line 841.
 (pdftex.def)             Requested size: 251.94063pt x 195.73076pt.
  <normaalprogramma.png, id=114, 1445.4pt x 903.375pt>
 File: normaalprogramma.png Graphic file (type png)
 
 <use normaalprogramma.png>
-Package pdftex.def Info: normaalprogramma.png used on input line 846.
+Package pdftex.def Info: normaalprogramma.png used on input line 850.
 (pdftex.def)             Requested size: 433.62335pt x 271.01459pt.
 
 
@@ -1397,27 +1368,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [23 <./eindoproep.jpg> <./website.jpg>] [24 <./installatie.png> <./normaalprogr
 amma.png>]
-Overfull \hbox (4.53082pt too wide) in paragraph at lines 872--875
+Overfull \hbox (4.53082pt too wide) in paragraph at lines 876--879
 []\OT1/lmr/bx/n/10.95 Avond\OT1/lmr/m/n/10.95 : Op-roep ge-lan-ceerd op Smart-s
 chool voor alle leer-krach-ten om ICT-materiaal
  []
 
 
-./StagemapVOS.tex:886: LaTeX Error: Lonely \item--perhaps a missing list enviro
+./StagemapVOS.tex:890: LaTeX Error: Lonely \item--perhaps a missing list enviro
 nment.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.886   \item \textbf
+l.890   \item \textbf
                      {Woensdag 11 februari 2014} Halve schooldag geobserveer...
 
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) detected at line 886
+Underfull \hbox (badness 10000) detected at line 890
 [][]
  []
 
@@ -1425,67 +1396,67 @@ Underfull \hbox (badness 10000) detected at line 886
 
 ]
 
-./StagemapVOS.tex:895: LaTeX Error: Lonely \item--perhaps a missing list enviro
+./StagemapVOS.tex:899: LaTeX Error: Lonely \item--perhaps a missing list enviro
 nment.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.895    \item \textbf
+l.899    \item \textbf
                       {Donderdag 12 februari 2014} Hele schooldag (09.00u-15...
 
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) detected at line 895
+Underfull \hbox (badness 10000) detected at line 899
 [][]
  []
 
 
-./StagemapVOS.tex:911: LaTeX Error: \begin{document} ended by \end{itemize}.
+./StagemapVOS.tex:915: LaTeX Error: \begin{document} ended by \end{itemize}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.911 \end{itemize}
+l.915 \end{itemize}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./StagemapVOS.tex:911: Extra \endgroup.
+./StagemapVOS.tex:915: Extra \endgroup.
 <recently read> \endgroup 
                           
-l.911 \end{itemize}
+l.915 \end{itemize}
                    
 Things are pretty mixed up, but I think the worst is over.
 
 [26]
 
-./StagemapVOS.tex:966: LaTeX Error: \begin{document} ended by \end{itemize}.
+./StagemapVOS.tex:970: LaTeX Error: \begin{document} ended by \end{itemize}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.966 \end{itemize}
+l.970 \end{itemize}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./StagemapVOS.tex:966: Extra \endgroup.
+./StagemapVOS.tex:970: Extra \endgroup.
 <recently read> \endgroup 
                           
-l.966 \end{itemize}
+l.970 \end{itemize}
                    
 Things are pretty mixed up, but I think the worst is over.
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 974--987
+Underfull \hbox (badness 10000) in paragraph at lines 980--993
 
  []
 
@@ -1493,7 +1464,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 974--987
 Here is how much of TeX's memory you used:
  17342 strings out of 493117
  315017 string characters out of 6135434
- 396957 words of memory out of 5000000
+ 396958 words of memory out of 5000000
  20356 multiletter control sequences out of 15000+600000
  53201 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1510,7 +1481,7 @@ type1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
 fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/l
 ocal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texli
 ve/2014/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on ./StagemapVOS.pdf (31 pages, 9412475 bytes).
+Output written on ./StagemapVOS.pdf (31 pages, 9413223 bytes).
 PDF statistics:
  178 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams

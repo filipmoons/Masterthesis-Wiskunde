@@ -27,6 +27,7 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{makeidx}
+\makeindex
 \usepackage[geometry]{ifsym}
 %\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 \renewcommand{\thefigure}{\thesection.\arabic{figure}}
@@ -86,7 +87,7 @@
 \reason{Graduation thesis submitted in partial fulfillment of the requirements
 for\\ the degree of Master of Science in Mathematics - specialization: Education}
 
-\date{June 2015}
+\date{August 2015}
 
 
 \begin{document}
@@ -99,16 +100,17 @@ hard. He also showed me the way to this beautiful topic for a Master thesis. Bes
 promotor, I will never forget him as professor of the Linear Algebra course in 
 the very first term of the BSc in Mathematics, that without any doubt was the 
 most memorable course during my college years: the hard study and the stress I 
-had before entering the exam room are memories that I still will be telling in my old age.
+had before entering the exam room are memories that I still will be telling in my 
+old days.
 
 Secondly, I would like to thank Roger Van Nieuwenhuyze, my math lecturer during 
-the teacher training I followed for one year at the Hogeschool-Universiteit Brussel. Without his encouragements, I had never dared to leave
+the teacher training I followed for one year at the Hogeschool-Universiteit Brussel. Without his encouragements, I would never dared to leave
 and study Mathematics at university level. 
 
-I also want to thank all professors and teaching assistant who have learned me a 
+I also thank all professors and teaching assistant who have learned me a 
 lot during the past five years. A special thanks goes to Reen Tallon, who 
 always managed to overcome any administrative burden caused by the combination 
-of programs.
+of study programs.
 
 Last but not least, I want to thank my parents for their angry looks when they 
 felt I did not study enough, it certainly kept me on track. Also my partner Sacha and my friends from university and the Classical Liberal Student  
@@ -117,21 +119,86 @@ Union made my college years unforgettable for the rest of my life.
 
  
 \chapter*{Abstract}
+This thesis is about similarity on graphs and hypergraphs. In the first chapter, 
+we give an overview of all the preliminary knowledge needed to understand 
+everything in the following chapters. All the methods of similarity we will 
+discuss, are eventually solving an eigenvalue problem. So it's no surprise we 
+prove the Perron-Frobenius theorem and introduce the power method in the first 
+chapter, the powered method is a numerical algorithm to calculate eigenvectors.
+
+In chapter 2, we give a complete overview of the research done on similarity of 
+graphs. The notion of similarity originated from the HITS-algorithm: this 
+algorithm was discovered in the late nineties to sort results of a search 
+engine in a meaningful way. The algorithm uses the hyperlink structure of a set 
+of webpages to assign to each webpage in the set a score in how well they are in referring to other pages
+in the set (the \emph{hub}-score)  and it assigns to each webpage a score in how 
+authoritative they are compared to the other sites in the set (the 
+\emph{authority}-score). So you get two groups in the set of webpages: some pages are good hubs, others are good
+authoirities. Obviously, this dichotomy is strongly related: pages that are good 
+hubs will contain a lot of links to authoritative pages, and, conversely, pages 
+are good authoirites when they have a lot of incoming links of good hubs. This 
+algorithm was very innovative at the time, because search engine results where 
+then sorted based only on the number of incoming links or on the number 
+occurencies of the search query.
+
+The HITS-algorithm is generalized in 2005 to a notion of similarity between 
+graph. A set containing hyperlinked web pages, can indeed be seen as a graph. 
+This generalization wil lead to a method where we can compare two graphs by putting a similarity score
+between every node of the first graph and every node of the second graph. This similarity score 
+indicates how similar these nodes are: two nodes will have a high similarity 
+score when their adjacent nodes will also have a high similarity score. 
+
+Once this node similarity is introduced on graphs, we extend this notion to a 
+similarity method that also returns a similarity score between the edges of two 
+graphs. We will also discuss a similarity method that deals with coloured 
+graphs. With all these methods, we have a complete overview of the most recent 
+studies about similiarity on graphs. It's is remarkable that the convergence of 
+the resulting algorithm of all these methods can be proved with the same 
+convergence theorem. Every solution is in fact also just an eigenvalueproblem: 
+every extension is a variant of the power method to calculate eigenvectors.
+
+An important remark is that all the methods return slightly different results. 
+At the moment, `the' similarity score between two vertices of a graph doesn't 
+exists, simply because it depends on the method you are using: in some cases the 
+results are equal (op een constante na), in other cases the results are 
+different because sligtlhy different criteria are used in the calculation. In 
+that case, we can explicitely derive the difference.
+Still, it is not that worse: it's important to remember that the similarity 
+scores are mainly interesting when compared to other similarity scores within a graph. From that point of view,
+every method give the same rank. This is also justified by the applications: all 
+of them are using similarity scores in comparison to other similarity scores. 
+
+In the last chapter, we discover a new field: we try to transfer the concept of similarity to the more
+general structure of hyprgraphs. At first, we take a look at the graph 
+representations of hypergraphs and we try to get a good method of similarity by 
+using these graph representions. It will be clear that the incidence graph of a 
+hypergraph returns the best results when used for similarity. After that, we 
+also try to develop a method based on the incidence matrix. We conclude the 
+thesis by proving that both methods are equal up to a constant.
+
 
 
 \chapter*{Samenvatting}
-Deze thesis bespreekt similariteit op graffen \& hypergraffen. De notie van 
-similariteit op graffen vindt zijn oorsprong in het HITS-algoritme: dit algoritme 
+Deze thesis bespreekt similariteit op graffen en hypergraffen. In het eerste 
+hoofdstuk geven we een overzicht van alle voorkennis die nodig is om deze thesis 
+te doorgronden. Bijna alle methodes die in deze thesis besproken worden, komen 
+uiteindelijk neer op het oplossen van een eigenwaardeprobleem: het is dan ook 
+niet verwonderlijk dat we de Perron-Frobeniusstelling bewijzen en de methode van 
+de machten invoeren om eigenvectoren numeriek te berekenen.
+
+
+De notie van 
+similariteit op graffen, ingevoerd in hoofdstuk 2, vindt zijn oorsprong in het HITS-algoritme: dit algoritme 
 werd eind jaren negentig ontdekt om zoekresultaten van een internetzoekmachine op een betekenisvolle manier 
 te sorteren. Het algoritme onderzoekt de relaties tussen de hyperlinks van een verzameling webpagina's: sommige webpagina's worden 
 bestempeld als goede doorverwijzers, andere webpagina's worden dan weer als een gezaghebbende bron beschouwd voor de zoekterm. 
 Uiteraard is deze tweedeling sterk verwant: pagina's die goede doorverwijzers 
 zijn zullen veel links naar pagina's bevatten die als een gezaghebbende bron 
-gezien worden en omgekeerd, zullen pagina's als gezaghebbende bron worden 
+gezien worden en, omgekeerd, zullen pagina's als gezaghebbende bron worden 
 beschouwd als ze veel inkomende links krijgen van goede doorverwijzers. Dit 
 algoritme was erg vernieuwend in die tijd, vermits tot dan toe zoekresultaten 
 enkel gesorteerd werden op het aantal inkomende links (zonder daarbij de bronpagina na te gaan) 
-of het aantal keren dat een zoekterm voorkwam.
+of het aantal keren dat de zoekterm erin voorkwam.
 
 Deze methode werd rond 2005 veralgemeend naar een notie van similariteit tussen 
 graffen. Een verzameling webpagina's die onderling gelinkt zijn zoals die in het HITS-algoritme gebruikt worden,
@@ -143,23 +210,35 @@ ook gelijkaardig zijn.
 Eens we similariteit op de toppen van graffen hebben ingevoerd, gaan we deze 
 methode verder uitbreiden tot similariteit op toppen en bogen van graffen en tot 
 similariteit tussen gekleurde graffen. We hebben zo een compleet overzicht van 
-de meest recente studies over het onderwerp. Opvallend is dat de convergentie van de resulterende algoritmes van al deze uitbreidingen met 
-dezelfde convergentiestelling kunnen bewezen worden.
+de meest recente studies over het onderwerp. Opvallend is dat de convergentie van de resulterende algoritmes van al deze uitbreidingen via 
+dezelfde convergentiestelling kunnen bewezen worden. Elke uitbreiding komt ook 
+neer op het oplossen van een eigenwaardeprobleem: uiteindelijk is elke 
+uitbreiding een variant op de methode van de machten om eigenvectoren te 
+berekenen.
 
 Een belangrijke opmerking is hier wel dat deze verschillende uitbreidingen lichtjes 
 andere resultaten opleveren. Er bestaat niet zoiets als `de' similariteitsscore tussen twee 
-toppen van twee graffen, eenvoudigweg omdat elke uitbreiding een licht verschillend resultaat zal opleveren.
-Daarom zijn deze similariteitscores vooral in verhouding tot de andere scores interessant: we kunnen 
+toppen van twee graffen, eenvoudigweg omdat elke uitbreiding een licht verschillend resultaat zal 
+opleveren: in sommige gevallen zijn de resultaten op een constante na gelijk aan 
+elkaar, in andere gevallen gebruiken de variaties iets andere criteria om 
+similariteit te bepalen (bv. de methode van similariteit op de toppen van graffen en similariteit op de toppen en de bogen), waardoor
+de resultaten sowieso verschillend zijn. We kunnen in dat geval wel expliciet het verschil tussen de methodes uitschrijven. Belangrijk is te onthouden 
+dat similariteitscores vooral in verhouding tot de andere scores interessant zijn: we kunnen 
 bv. gemakkelijk bepalen welke top van de ene graf, het meest lijkt op de top van een andere 
 graf simpelweg door de grootste similariteitsscore te bekijken.    Dit zal ook blijken uit het korte overzicht van toepassingen dat op 
-het einde van deze masterproef is toegevoegd, ook daar wordt een
+het einde van hoofdstuk 2 toegevoegd, ook daar wordt een
 similariteitsscore enkel in verhouding tot de andere similareitsscores bekeken.
 
-In het voorlaatste hoofdstuk ontdekken we tot slot nieuw terrein: we proberen 
-via tensoren het concept van similariteit over te brengen op de meer algemene 
-structuur van hypergraffen. Een generalizatie die wonderwel slaagt door de tensoren zo om te vormen dat we opnieuw dezelfde convergentiestelling als bij graffen toe te 
-passen. Toch is er ook een grote maar, want net zoals bij de meeste andere
-uitbreidingen via tensoren, is ook hier de vloek van de dimensionaliteit nooit ver weg. 
+In het laatste hoofdstuk ontdekken we tot slot nieuw terrein: we proberen 
+het concept van similariteit over te brengen op de meer algemene 
+structuur van hypergraffen. Hypergraffen kunnen door verschillende 
+grafrepresentaties worden voorgesteld en we proberen eerst om via deze 
+verschillende grafrepresentaties tot een goede methode te komen. Het zal blijken dat de incidentiegrafrepresentatie van een hypergraf de beste
+resultaten oplevert. Nadien proberen 
+we ook een methode te ontwikkelen aan de hand van de incidentiematrix, ook deze 
+methode voldoet aan alle voorwaarden. Welnu: we kunnen bewijzen dat de methode 
+met de incidentiegraf en de methode met de incidentiematrix op een constante na 
+dezelfde resultaten oplevert.
 
 
  
@@ -182,7 +261,7 @@ unless otherwise stated. We start with permutation matrices and their uses.
 With permutation matrices, we can introduce irreducible matrices. Also nonnegative and primitive square matrices are presented. After defining 
 those, we look at the Perron-Frobenius theorem. 
 \subsection{Permutation matrices}
-\begin{definition}\label{petmruation}
+\begin{definition}\label{petmruation}\index{Permutation}
   Given a permutation $\pi$ of $n$ elements:
   $$\pi: \{1,\ldots,n\} \to \{1,\ldots,n\},$$
   with:
@@ -1485,7 +1564,7 @@ will be discussing. The definitions presented are mainly from \cite{berge} and
 \cite{hypper}.
 
 \subsection{General definitions}
-\begin{definition}
+\begin{definition}\label{defhypergraph}
   A \textbf{hypergraph} is an ordered pair (V, E) with $V$ a finite set of 
 and $E \subseteq 2^V$, the power set of $V$. The elements of $V$ are called
 the \textbf{vertices} and the elements of $E$ are called the \textbf{edges}.
@@ -4907,12 +4986,13 @@ adjaceny relations are calculated, which will result in high similarity scores (
 for a vertex when the adjacent vertices have a high similarity score. When calculating an edge similarity matrix,
 an edge will have a high similarity score (compared to others) if the vertices that an edge connect have a high similarity score.
  In fact, from the second iteration step the method is the same as the power method. 
+ 
 Based on this, we now present our conditions. These conditions must ensure that 
 a similarity method for hypergraphs has the same behaviour as the similarity 
 methods for graphs:
 \begin{itemize}
   \item[(C1)] When the method is applied on two undirected graphs, it must return the same 
-  similarity scores as the methods from Section 2.
+  similarity scores (up to a constant) as the methods from Section 2.
   \item[(C2)] Adding a non-isolated node to one of the hypergraphs must influence 
   the similarity scores.
   \item[(C3)] Adding an edge that is not a hyperloop 
@@ -4923,38 +5003,261 @@ methods for graphs:
   with large similarity scores.
   \item[(C6)] When two vertices are contained in exactly the same edges, we say 
   that these vertices are \emph{interchangeable}. Interchangeable vertices must have 
-  the same similarity scores because they play the same role. When calculating 
+  the same similarity scores because, intuitively, they play the same role. 
+  Actually, we can give a more general definition of interchangeability in 
+  hypergraphs:
+  \begin{definition}
+    Two vertices $v_i, v_j$ of a hypergraph $\hgraf$ are \textbf{interchangeable 
+    vertices}
+  if for each edge of size $k+1$ that connect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_k$, there is an edge of size $k+1$ (possibly the same) that connects
+  $v_j$ to $v_p_1, v_p_2,\ldots, v_p_k$. 
+  \end{definition}
+  We see that being `vertices being contained in exactly the same edges' is just 
+  a special case of this definition.
+  
+ When calculating 
   an edge similarity matrix, interchangeable edges must have the same similarity 
   scores. Interchangeable edges are edges that contain exactly the same 
   vertices.
-  \item[(C7)] Also the other direction must hold: when two adjacent vertices have the same similarity score, they must 
+  \item[(C7)] Also the other direction must hold: when two adjacent vertices have the same similarity scores compared
+  to any other vertex of the other graph, they must 
   be interchangeable. 
   \item[(C8)] The cardinality of an edge E in a hypergraph ($|E|$) must 
-  influence the edge similarity scores: two edges with the same cardinality must have a higher similarity score than two edges with a different 
-  cardinality.
+  influence the edge similarity scores: edges with a high cardinality must have a higher similarity score than two edges with a lower cardinality.
       \item[(C9)] A vertex can only have a similarity score equal to zero when the hypergraph is not connected. In that case, it can occur that a group
   of adjacent vertices dominates all vertices that are not adjacent to this group. 
   Also edge can only have a similarity score equal to zero when the hypergraph is not connected. 
   An isolated vertex will always have a similarity score equal 
-  to zero. This is no different from isolated vertices in graphs (see Thereom NOG TE 
-  BEWIJZEN).
+  to zero.   \end{itemize}  
+ 
+The attentive reader may ask himself how we collected this set of conditions. 
+These conditions are established in a heuristic way, based on observations from 
+various tryouts on the methods of similarity on graphs. To give these conditions 
+a better foundation, we now give an explanation on how the methods of similarity on graphs of
+section 2 meet each condition for undirected graphs. Although most conditions are also met for
+directed graphs,  we only have to consider undirected graphs
+because hypergraphs itself are undirected. The explanation can either be a proof of a simple 
+theorem or a more heuristic explanation. The explanations are numbered (E1,.., E9) 
+in the same way as the conditions because we will often refer to this 
+explanations in the rest of this chapter. 
+
+\begin{itemize}
+  \item[(E1)] Undirected graphs are equal to $2$-hypergraphs. It is evident that 
+  in the case of a $2$-hypergraph the results obtained by a similarity method 
+  for hypergraphs must return the same results (up to a constant).
+   \item[(E2)] It's easy to see that (C2) holds for every (node) similarity method on 
+   graphs as adding a extra node to a graph generates an additional row and 
+   column in the adjacency matrix. This row and column are thus included in the 
+   calculation of the similarity matrix $S$ and after the calculation, similarity 
+   scores for the added node compared to all the other nodes from the other graph are 
+   obtained.
+  \item[(E3)] This holds with the same reasoning as (E2) but now applied to the (edge) similarity method.
+  \item[(E4)] We can explain this in a heuristic way: for example, in the method 
+  of Blondel, the compact form equals ($A$ is the adjacency matrix of $\graf_A$ and $B$ is the adjacency
+  matrix of $\graf_B$):
+  $$S^{(k+1)} = \frac{BS^{(k)}A^T + B^TS^{(k)}A}{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F},\quad 
+  k=0,1,\ldots,$$,
+first note that $BS^{(k)}A^T + B^TS^{(k)}A$ is in fact the sum of the 
+similarities of the children and parents of node $v_i$ of $\graf_B$ and vertex $v_j$ 
+of $\graf_A$. We see that $s_{i,j}$, the similarity score between $v_i$ of $B$ and $v_j$ of $A$, is in fact
+ equal to a scalar times the element $(i,j)$ of $BS^{(k)}A^T + B^TS^{(k)}A$. The same can be said about the even iterates and hence about
+ the complete similarity matrix $S$. So we see that this implicit relation means that the similarity scores
+ of a vertex in an graph is large (compared to others) when the similarity score 
+  of the adjacent vertices in the hypergraph is large.
+  \item[(E5)] This holds with the same reasoning as (E4) but now applied to the (edge) similarity method. 
+  
+
+  \item[(E6)]  To see that (C6) also holds in graphs, we define interchangeable vertices in graphs 
+  as follows:
+  \begin{definition} In an undirected graph $\graf$, two vertices $v_i, v_j$ are \textbf{interchangeable} if they have exactly the same 
+  adjacency structure. Meaning that for each edge that connects $v_i$ to a vertex $v_q$, there must also 
+  be an edge that connect $v_j$ to $v_q$.  In a directed graph, the same holds 
+  in the sense that for each edge $v_i \to v_q$ there must exist an edge $v_j \to v_q$ 
+  and for each edge $v_p \to v_i$ there must exist an edge $v_p \to v_j$.
+  \end{definition}
+  We will show that this holds for the method of Blondel on graphs by proving the 
+  following an easy theorem. Altough we would be fine to prove it just for undirected graphs as hypergraphs
+  will always have undirected graph representations, we also consider the 
+  directed case.
+ \begin{theorem}
+    Let $\graf_A$ be a graph with interchangeable vertices and $\graf_B$ another 
+    graph, then by calculating the similarity matrix between $\graf_A$ and 
+    $\graf_B$ the interchangeable vertices of $\graf_A$ will have the same similarity scores for every vertex of $\graf_B$. 
+  \end{theorem}
+  \begin{proof}
+    Let $\graf_A = (V,\to), \graf_B = (W,\to')$ with $|V|=n, |W|=m$. First, it's easy to see that the interchangeable vertices form an equivalence relation $\sim$ on 
+    $V$ with $v_p \sim v_q$ if and only if $v_p$ and $v_q$ are interchangeable. 
+    Take $\overline{v_p}$, an equivalency class with more than one vertex (this exists as $\graf_A$ has interchangeable 
+    vertices).  
+    
+    Now, from the definition of interchangeable vertices in graphs, we conclude 
+    that two vertices $v_p$ and $v_q$ are interchangeable if and only if for all $i \in \{1,\ldots,n\}$ 
+    holds that $a_{ip} = a_{iq}$ and 
+    that $a_{pi} = a_{qi}$. This holds also for directed graphs, in the 
+    undirected case we even have that $a_{ip} = a_{pi} = a_{qi} = a_{iq}$. So 
+    all vertices in $\overline{v_p}$ have the same entries in the adjacency matrix $A$ of $\graf_A$. 
+    
+    
+   The similarity scores of $v_p$ and any other vertex $w_j$  of 
+    $\graf_B$ at iteration step $k+1$ can be calculated as ($A = (a_{ij}), B=(b_{ij}), S=(s_{ij})$) :
+    \begin{eqnarray}
+      s^{(k+1)}_{jp} &=& \frac{\sum^m_{f=1}\sum^n_{g=1} b_{jf}s^{(k)}_{fg}a^T_{gp} + 
+    b^T_{jf}s^{(k)}_{fg}a_{gp} }{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F}\\
+    &=& \frac{\sum^m_{f=1}\sum^n_{g=1} b_{jf}s^{(k)}_{fg}a_{pg} + 
+    b_{fj}^{(k)}s^{(k)}_{fg}a_{gp} }{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F}\label{uitgeschrevenblondel2}
+    \end{eqnarray}
+   
+   So, if we consider this iteratively we get that the similarity scores (at iteration step $k$) between a vertex in $\overline{v_p}$ and 
+   a vertex $w_j$ of $\graf_B$ are equal 
+   to $s^{(k)}_{jp}$ because for all $g \in 
+   \{1,\ldots,n\}$, $a_{pg}$ is the same for all vertices in $\overline{v_p}$ and the same holds for the $a_{gp}$'s. 
+   So all the vertices in $\bar{v_p}$ undergo the same calculations with the entries $b_{jf}$, $b_{fj}$ ($f \in \{1,\ldots,m\}$). 
+   Note that we start with $s^{(0)}_{jp}$ equal to $1$. 
+   
+   Because we proved that for any equivalence class in $\sim$ (with more than one element) the similarity scores are equal at each iteration 
+   step $k$, the theorem follows. 
+\end{proof}
+ 
+
+  \item[(E7)] The other direction of (C6), namely that two adjacent vertices in a graph $\graf_A$ that share the same similarity scores for all vertices of another graph$\graf_B$ must
+  also be interchangeable, is not generally true in the case of directed graphs, because the directness of $\graf_B$ could possibly
+ result in equal similarity scores.  So we prove (C7) only in the case of 
+ undirected graphs.
+ 
+     \begin{theorem}
+  Let $\graf_A$ and $\graf_B$ be two graphs. When two or more vertices of $\graph_A$ 
+ share the same similarity scores for every vertex in $\graph_B$, these vertices 
+  are interchangeable.
+ \end{theorem}
+ \begin{proof}
+   Let $v_{p_1},\ldots,v_{p_l}$ share the same similarity scores, meaning that for some even $k$, 
+   for all $p \in \{p_1,\ldots, p_l\}$, the $s^{(k)}_{jp}$ are equal for each $j \in \{1,\ldots,m\}$ under the condition
+   that $s^{(k+2)}_{jp} - s^{(k)}_{jp} \leq \text{TOL}.$. Now $A$ and $B$, the 
+   adjacency matrices of $\graf_A$ and $\graf_B$ are symmetric since $\graf_A$ 
+   and $\graf_B$ are undirected. So we can rewrite (\ref{uitgeschrevenblondel2})) 
+   as:
+   $$s^{(k+1)}_{jp} = \frac{\sum^m_{f=1}\sum^n_{g=1} 2 b_{jf}s^{(k)}_{fg}a_{pg} }{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F}$$
+  Now let  $v_{p_1} = v_u$ and $v_p_l = v_t$ (this is just to ease the notation), we get for some $j \in \{1,\ldots,m\} $:
+\allowdisplaybreaks  
+\begin{eqnarray*}
+    s^{(k+1)}_{ju} &=& s^{(k+1)}_{jt}\\
+  \Leftrightarrow \frac{\sum^m_{f=1}\sum^n_{g=1} 2 b_{jf}s^{(k)}_{fg}a_{ug} }{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F} 
+      &=& \frac{\sum^m_{f=1}\sum^n_{g=1} 2 b_{jf}s^{(k)}_{fg}a_{tg} }{\|BS^{(k)}A^T + 
+    B^TS^{(k)}A\|_F}\\
+    \Leftrightarrow \sum^n_{g=1} a_{ug} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fg} \right) &=& 
+    \sum^n_{g=1} a_{tg} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fg} \right) 
+    \\
+      \Leftrightarrow \sum^n_{g=1} a_{ug} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fg} \right) &=& 
+    \sum^n_{g=1} a_{tg} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fg} \right)\\
+    \Leftrightarrow a_{u1} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{f1} \right) + \cdots +  a_{un} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fn} \right)
+     &=&  a_{t1} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{f1} \right) \\
+     && \quad + \cdots +  a_{tn} \left(\sum^m_{f=1}b_{jf}s^{(k)}_{fn} \right) 
+     \\
+            \Leftrightarrow (a_{u1}-a_{t1})\left(\sum^m_{f=1}b_{jf}s^{(k)}_{f1} \right) + \cdots +  &&(a_{un}-a_{tn})\left(\sum^m_{f=1}b_{jf}s^{(k)}_{fn} \right) 
+       =0
+  \end{eqnarray*}
+
+    Because all entries of $B$ and $S^{(k)}$ are positive, it's only possible
+    that:
+    $$a_{ui}=a_{ti} \quad \forall i \in \{1,\ldots,n\},$$
+    and because $A$ is symmetric we also have:
+   $$a_{iu} = a_{ui}=a_{ti} = a_{it} \quad \forall i \in \{1,\ldots,n\},$$
+
+    so $v_u$ has the same entries in the adjacency matrix as $v_t$, which is an alternative way to say that
+    $v_u$ is interchangeable with $v_t$. The theorem now follows. 
+    
+\end{proof}     
+ 
+  \item[(E8)] This condition arose based on intuition. A hypergraph that is not a $k$-hypergraph,
+  has at least one edge that has a different size. Now, intuitively, when an edge 
+   $E_i$ in a hypergraph $\hgrapheen$ is compared to an edge $E'_i$ in a hypergraph 
+  $\hgraphtwee$, it is somehow clear that they must have a higher (edge) similarity score 
+  when they connect more vertices. Of course,
+  this only holds in connected hypergraphs (see Condition 9).  
+  
+One may wonder whether graphs too meet this condition, but having a different edge size only 
+arises in the pathetic case the graph contains a loop. We can show that comparing two loops will normally result
+in a lower edge similarity score than comparing two edges that aren't loops. We say `normally', because of course, (C4) or (C9) can always
+interfere in some graphs. Now, to show this, look at the 
+node-edge similarity method, the edge similarity matrix $Y$ and the node 
+similarity matrix $X$ are calculated as:
+\begin{eqnarray}
+  Y^{(k+1)} &=& \frac{B_S^TX^{(k)}A_S + B_T^TX^{(k)}A_T}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+   X^{(k+1)} &=& \frac{B_SY^{(k)}A_S^T + B_TY^{(k)}A^T_T}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F} \end{eqnarray}
+  for  $k =  0,1,\ldots$.
+  
+ Element-wise, we get:
+  \begin{eqnarray*}
+  y^{(k+1)}_{ji} &=& \frac{\sum^{n_\grafeen}_{f=1}\sum^{n_\graf}_{g=1} b_{s_{jf}}^Tx_{fg}^{(k)}a_{s_{gi}} + b_{t_{jf}}^Tx_{fg}^{(k)}a_{t_{gi}}}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+   x^{(k+1)}_{ji} &=& \frac{\sum^{m_\grafeen}_{f=1}\sum^{m_\graf}_{g=1} b_{s_{jf}}y_{fg}^{(k)}a_{s_{gi}}^T + b_{t_{jf}}y_{fg}^{(k)}a_{st_{gi}}^T}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F}
+ \end{eqnarray*}
+ which is equal to:
+  \begin{eqnarray*}
+  y^{(k+1)}_{ij} &=& \frac{\sum^{n_\grafeen}_{f=1}\sum^{n_\graf}_{g=1} b_{s_{fi}}x_{fg}^{(k)}a_{s_{gj}} + b_{t_{fi}}x_{fg}^{(k)}a_{t_{gj}}}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+   x^{(k+1)}_{ij} &=& \frac{\sum^{m_\grafeen}_{f=1}\sum^{m_\graf}_{g=1} b_{s_{if}}y_{fg}^{(k)}a_{s_{jg}} + b_{t_{if}}y_{fg}^{(k)}a_{st_{gj}}}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F}
+ \end{eqnarray*}
+  
+ Now let $e_j$ of $\graf$ be a loop on vertex $v_p$ and $e'_i$ of $\grafeen$ a loop of vertex $v'_q$, 
+ the edge similarity score between $e_j$ and $e'_i$ equals:
+   \begin{eqnarray}
+ y^{(k+1)}_{ji} &=& \frac{b_{s_{qi}}x_{qp}^{(k)}a_{s_{pi}} + b_{t_{qi}}x_{qp}^{(k)}a_{t_{pj}}}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\\
+ \Leftrightarrow  y^{(k+1)}_{ji} &=& \frac{2x_{qp}^{(k)}}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}\label{ditmoetgroeer}\\
+   x^{(k+1)}_{qp} &=& \frac{\sum^{m_\grafeen}_{f=1}\sum^{m_\graf}_{g=1} 
+   b_{s_{qf}}y_{fg}^{(k)}a_{s_{pg}} + b_{t_{qf}}y_{fg}^{(k)}a_{st_{gp}}}{\|B_SY^{(k)}A_S^T + 
+   B'_TY^{(k)}A^T_T\|_F}
+ \end{eqnarray}
+
+  where we indeed see that the result of $y_{ji}$ is only based on $x_{qp}$ which will 
+  be high if both $v_p$ and $v'_q$ are heavy connected to other vertices (see C4). 
+  In the case of $e_m$ of $\graf_A$ connecting the vertices $v_p$ and $v_o$ and $e'_n$
+of $\graf_B$ connecting the vertices $v'_q, v'_r$ we get the following edge similarity score 
+$y_{nm}$ ($\graf_A$ and $\graf_B$ are undirected):
+ $$ y^{(k+1)}_{nm} &=& \frac{2(x_{qp}^{(k)}+x_{q_o}^{(k)}+x_{rp}^{(k)}+x_{ro}^{(k)})}{\|B_S^TX^{(k)}A_S + 
+  B_T^TX^{(k)}A_T\|_F}$$,
+  which will normally be higher then (\ref{ditmoetgroeer}) (keep in mind that condition (C4) 
+  and (C9) can occur).
+  \item[(C9)] A vertex can only have a similarity score equal to zero when the hypergraph is not connected. In that case, it can occur that a group
+  of adjacent vertices dominates all vertices that are not adjacent to this group. 
+  Also edge can only have a similarity score equal to zero when the hypergraph is not connected. 
+  An isolated vertex will always have a similarity score equal 
+  to zero. This is no different from isolated vertices in graphs.  
+  To see this on graphs, look at the method of Blondel ($A$ is the adjacency matrix of $\graf_A$ and $B$ is the adjacency
+  matrix of $\graf_B$):
+  $$S^{(k+1)} = \frac{BS^{(k)}A^T + B^TS^{(k)}A}{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F},\quad 
+  k=0,1,\ldots,$$,
   \end{itemize}  
-In the first section, we explore representations of hypergraphs as (classical) graphs and use 
+
+   
+
+
+\section{Similarity through corresponding graph representations}
+In the section, we explore representations of hypergraphs as (classical) graphs and use 
 them to calculate the similarity between two hypergraphs by simply using the 
-methods of the previous chapter. Intuively, we want a characteristic graph
+methods of the previous chapter. Intuitively, we want a characteristic graph
 representation of a hypergraph that is faithful (meaning that a graph represents
 only 1 hypergraph), because only a faithful
 characteristic graph will preserve all the information that the structure of a hypergraph
 contains. When the characteristic graph of a hypergraph is not faithful,
 the resulting similarity methods 
 can do a fair job under certain circumstances, but we will see that we can not fulfill
-all the conditions at the same time because some information of the original hypergraph is lost.
+all the conditions at the same time because some information of the original hypergraph is lost. 
+To prove that several graph representations of hypergraphs meet certain 
+conditions, we will often refer to the explanations (E$_i$) in the following 
+way: we explain or prove that the graph representation preserves a certain 
+characteristic of the hypergraph and then we just use the explanations for 
+graphs. 
 
-
-\section{Similarity through corresponding graph representations}
 \subsection{Line-graphs}
 \subsubsection{General definitions and properties}
-\begin{definition}
+\begin{definition}\label{linegraphdef}
   Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{E_1, \ldots E_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
   often denoted by $\ell(\hgrafeen) = (V', \to)$ 
 with:
@@ -4968,7 +5271,8 @@ It's immediately clear that line-graphs are simple graphs (see Definition \ref{s
 An important property of a hypergraphs can be seen on a line-graph:
 
 \begin{property}\label{linegrafconnected}
-The line-graph $\ell(\hgrafeen)$ is connected if  $\hgrafeen = (V, E)$ is connected.
+If $\hgrafeen = (V, E)$ is connected, then the line-graph $\ell(\hgrafeen)$ is 
+also connected.
 \end{property}
 \begin{proof}
 By contraposition, if $\ell(\hgrafeen)$ is not connected, take $E_p, E_q$,  two vertices of $\ell(\hgrafeen)$ 
@@ -4978,8 +5282,6 @@ By contraposition, if $\ell(\hgrafeen)$ is not connected, take $E_p, E_q$,  two 
 such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$ for $i \in \{0,\ldots, l\}$, if $v_p \in E_p$ and $v_q \in E_q$ 
  with $v_p,v_q$ vertices of $\hgrafeen$, this means that no path exists between $v_p$ 
  and $v_q$ and therefore $\hgrafeen$ is not connected.
- $\Rightarrow$ If $\hgrafeen = (V,E)$ is not connected, then take $v_a, v_b \in 
- V$, two vertices of $\hgrafeen$ that are not connected, meaning that 
  \end{proof}
 
 
@@ -4989,7 +5291,7 @@ not faithful:
 
 
 \begin{example}
-  Let $\hgraf_1$ be the following hypergraph:
+  Let $\hgrafeen_1$ be the following hypergraph:
   \begin{center}
    \begin{tikzpicture}
     \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
@@ -5618,15 +5920,33 @@ information about the vertex adjacency is saved.
   \item[(C3)] Fulfilled: Adding an edge to one of the two hypergraphs will 
   result in an extra vertex in the line-graph. Adding this vertex will take the 
   edge into account when calculating the similarity scores and therefore we 
-  conclude that this condition is fulfilled.
+  conclude on a heuristic base that this condition is fulfilled.
   \item[(C4)] Not fulfilled: in Examples \ref{ex1line}, \ref{ex2line}, \ref{ex3line}  
   and \ref{ex4line}
   all positive similarity scores are the same, regardless of the adjacency 
   structure of the hypergraph.
   \item[(C5)] Not fulfilled: there is no information about the vertices saved in 
   the line-graph representation of a hypergraph.
-  \item[(C6)] Fulfilled: from Example \ref{ex4line} we see that the $E_1$ and 
- $E_4$ are interchangeable and have indeed the same similarity scores.
+  \item[(C6)] Fulfilled: from Example \ref{ex4line} we see that the $E'_1$ and 
+ $E'_4$ are interchangeable and have indeed the same similarity scores. We will 
+ prove this.
+ 
+ \begin{theorem}
+   The line-graph representation of a hypergraph preserves interchangeable 
+   edges.
+ \end{theorem}
+ \begin{proof}
+   Two interchangeable edge in a hypergraph if they contain exactly the same 
+   vertices. They form an equivalence class on $E$ where $E_i \sim E_j$ if they 
+   are interchangeable. Let $\overline{E_i}$ be the class of interchangeable 
+   edges with $E_i$, we assume that this class contains at least 2 edges. Now from Defintion \ref{linegraphdef} we see that
+   $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ 
+   in the linegraph represenation, thus all the edges in $\overline{E_i}$ will 
+   have exactly the same adjacency structure, making them interchangeable as vertices in the 
+   line-graph represenation too.
+ \end{proof}
+ Because the line-graph representation preserves interchangeable edges and we use the method of Blondel for which we already proved
+ in (E6) that this condition holds, the result follows.
   \item[(C7)] Not fulfilled: from Example \ref{ex1line} we see that alle edges 
   have exactly the same similarity scores but none of them is interchangeable.
    \item[(C8)] Not fulfilled: no information on the number of vertices an edge 
@@ -5635,8 +5955,13 @@ contains is preserverd by the line-graph representation.
   when used for the calculation of similarity: two edges of the two line-graphs
   have a positive similarity score when these edges are connected to other edges, meaning that for any $E_p, E_q$ there is a sequence 
   $$E_p = E_{k_0}, E_{k_1}, \ldots, E_{k_{l-1}}, E_q = E_{k_l}$$
-  such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$. From Property 
-  \ref{linegrafconnected}, this is not surprising.
+  such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$. 
+  
+  
+ To see heuristically that this 
+  condition holds, just check Property \ref{linegrafconnected}. The connectivity 
+  of edges is indeed represented in the line-graph representation by definition. 
+  
 
   \end{itemize}  
   \subsubsection{Conclusion}
@@ -5971,7 +6296,8 @@ $\graf$ will have as 2-section:
 
 \end{center}
   \item[(C2)] Fulfilled: the number of vertices is preserved in the 2-section of 
-  a hypergraph.
+  a hypergraph, so each vertex is taken into account when calculating the 
+  similarity matrix.
   \item[(C3)] Not fulfilled: introducing an edge in a hypergraph that connects vertices who are already connected, 
 doesn't change anything to the 2-section of the hypergraph (by definition), for 
 instance if we take $\hgrafeen_1$ in Example \ref{ex2sec1} as follows:
@@ -7290,4 +7616,6 @@ tensor}, Journal on Graphs and Combinatorics, Springer, 2014.
 \bibitem[GALLO]{gallo} G. Gallo, G. Longo, S. Nguyen, S. Pallottino, \emph{Directed hypergraphs and 
 appplications}, Journal of Discrete Applied Mathematics, Elsevier, 1997.
 \end{thebibliography}
+\printindex
+
 \end{document}
