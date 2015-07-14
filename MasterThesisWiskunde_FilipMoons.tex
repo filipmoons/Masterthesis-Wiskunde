@@ -255,13 +255,13 @@ Perron (1880-1975) in 1907 for strictly positive entries and extended by
 Ferdinand Georg Frobenius (1849-1917) to irreducible matrices with nonnegative 
 entries. 
 
-\section{Some families of matrices}
+\section{Some families of matrices}\index{Matrix}
 In this section, we first introduce different kinds of matrices. Note that all matrices in this master thesis have real entries,
 unless otherwise stated. We start with permutation matrices and their uses. 
 With permutation matrices, we can introduce irreducible matrices. Also nonnegative and primitive square matrices are presented. After defining 
 those, we look at the Perron-Frobenius theorem. 
 \subsection{Permutation matrices}
-\begin{definition}\label{petmruation}\index{Permutation}
+\begin{definition}\label{petmruation}\index{Permutation matrix}\index{Matrix!Permutation matrix}
   Given a permutation $\pi$ of $n$ elements:
   $$\pi: \{1,\ldots,n\} \to \{1,\ldots,n\},$$
   with:
@@ -269,23 +269,23 @@ those, we look at the Perron-Frobenius theorem.
   the associated \textbf{permutation matrix} $P_\pi$ is the $n\times n$-matrix 
   obtained by permuting the rows of the identity matrix $I_n$ according to $\pi$. 
   So:
- $$P_\pi = \begin{bmatrix} 
+ $$P_\pi = \begin{pmatrix} 
 e^T_{\pi(1)}  \\
 e^T_{\pi(2)}  \\
 \vdots  \\
 e^T_{\pi(n)}  
-\end{bmatrix}.$$
+\end{pmatrix}.$$
  where $e_{j}$ is the $j$-th column of $I_n$.
  \end{definition}
 \begin{example}
   The permutation matrix $P_\pi$ corresponding to the permutation  $$\pi = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 4 & 2 & 3 \end{pmatrix} $$
   is:
-  $$P_\pi = \begin{bmatrix} 
+  $$P_\pi = \begin{pmatrix} 
 1 & 0 & 0 & 0  \\
 0 & 0 & 0 & 1  \\
 0 & 1 & 0 & 0  \\
 0 & 0 & 1 & 0  
-\end{bmatrix}.$$
+\end{pmatrix}.$$
 Note that $p_{ij} = 1$ if and only if $\pi(i) = j$. 
 \end{example}
 
@@ -324,9 +324,9 @@ this is exactly the formula for the entries of the identity matrix.
   (respectively $a_{ij}>b_{ij}$) for all $1 \leq i \leq n, 1 \leq j\leq r$. 
 \end{definition}
 \begin{definition}  A real $n\times r$-matrix $A$ is \textbf{nonnegative} if $A \geq 0$, with $0$ the $n\times r$-null matrix.
-\end{definition}
+\end{definition}\index{Nonnegative matrix}\index{Matrix!Nonnegative matrix}
 \begin{definition}  A real $n\times r$-matrix $A$ is \textbf{positive} if $A > 0$, with $0$ the $n\times r$-null matrix.
-\end{definition}
+\end{definition}\index{Positive matrix}\index{Matrix!Positive matrix}
 
 Since row vectors are $1 \times n$-matrices, we shall use the terms 
 nonnegative and positive vector throughout. 
@@ -335,10 +335,10 @@ nonnegative and positive vector throughout.
   Let $B$ be an arbitrary complex $n\times r$-matrix, then $|B|$ denotes the 
   matrix with entries $|b_{ij}|$. This is not to be confused with the 
   determinant of a square matrix $B$, which we denote by $\det(B)$.
-\end{notation}
+\end{notation}\index{Modulus of a matrix}\index{Matrix!Modulus}
 
 \begin{definition}  A nonnegative square matrix $A$ is called \textbf{primitive} if there is a $k \in \N_0$ such that all entries of $A^k$ are positive.
- \end{definition}
+ \end{definition}\index{Primitive matrix}\index{Matrix!Primitive matrix}
 
 \subsection{Irreducible nonnegative matrices}
 In developing the Perron-Frobenius theory, we shall first establish a series of 
@@ -349,7 +349,8 @@ theorems and lemmas on nonnegative irredicuble square matrices.
 \end{pmatrix} $$
 where $B,$ and $D$ are square matrices, each of size at least one and $0$ is a zero matrix.
 A square matrix $A$ is called \textbf{irreducible} if it is not reducible.
- \end{definition}
+ \end{definition}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}}\index{Reducible matrix|see {Irreducible matrix}}\index{Matrix!Reducible matrix}
+
 It follows immediately that a $1\times1$-matrix is always irreducible by 
 definition. We now show a useful property to identify a reducible matrix.
 \begin{property}\label{propertyreducible}
@@ -385,7 +386,7 @@ the proof.
 \end{proof}
 We know prove some equivalent definitions for a nonnegative, irreducible square 
 matrix.
-\begin{theorem}\label{irredubieleegenschappen}
+\begin{theorem}\label{irredubieleegenschappen}}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}
   Let $A\geq 0$ be a nonnegative $n\times n$-matrix. Then the following conditions are 
   equivalent:
   \begin{enumerate}
@@ -423,7 +424,7 @@ $$PAP^T = \begin{pmatrix}  B_1  & 0\\
 \end{pmatrix} $$
 where $B_1$ and $D_1$ are square matrices. Furthermore, we know from Property \ref{permutatie} that 
 $PAP^TPAP^T = PA^2P^T$,
-whence for some square matrices $B_2, C_2$ we have:
+hence for some square matrices $B_2, C_2$ we have:
 $$PA^2P^T = \begin{pmatrix}  B_2  & 0\\
  C_2  & D_2\\
 \end{pmatrix} $$
@@ -434,19 +435,21 @@ $$PA^tP^T = \begin{pmatrix}  B_t  & 0\\
 Thus $(PA^tP^T)_{rs} = 0$ for $t = 1, 2,\ldots$ and for any $r,s$ 
 corresponding to an entry of the zero submatrix in $PAP^T$.
 Now, for $t = 1,\ldots,n:$
-$$0 = (PA^tP^T)_{rs} = \sum_k\sum_l p_{r k}a_{kl}^{(t)}p_{s t}$$
-By using the same reasoning as in \ref{redenering1}, choose $k,l$ so that $p_{r k}$ = $p_{s t} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
+$$0 = (PA^tP^T)_{rs} = \sum_k\sum_l p_{r k}a_{kl}^{(t)}p_{l t}$$
+By using the same reasoning as in \ref{redenering1}, choose $r,s$ so that $p_{r k}$ = $p_{s t} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
 contradicting the hypothesis. This completes the proof. 
  \end{proof}
  
  
- \begin{corollary}
+ \begin{corollary}\index{Primitive matrix}\index{Matrix!Primitive matrix}
+
    If $A$ is irreducible then $I+A$ is primitive. 
  \end{corollary}
- \begin{corollary}
+ \begin{corollary}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}
    $A^T$ is irreducible whenever $A$ is irreducible.
  \end{corollary}
- \begin{property}\label{geenzerorij}
+ \begin{property}\label{geenzerorij}\index{Vanishing}
+
   No row or column of an irreducible matrix $A$ can vanish. This means that $A$ cannot have a row or a column of zeros.
    \end{property}
  \begin{proof}
@@ -479,7 +482,7 @@ c_n\\
  
  \subsection{Spectral radii of nonnegative matrices}
  
- \begin{definition}
+ \begin{definition}\index{Spectral radius}\index{Matrix!Spectral radius}
   Let A be an $n\times n$-matrix with complex entries and eigenvalues $\lambda_i$,
   $1 \leq i \leq n$. Then:
   $$\rho(A) = \max_{1 \leq i \leq n} |\lambda_i|$$
@@ -645,8 +648,8 @@ to $r|\mathbf{y}|$ we have
  spectral radius $\rho(A)$ is positive, and the intersection in the complex 
  plane of the circle $|z| = \rho(A)$ with the positive real axis is an 
  eigenvalue of $A$.
- \begin{definition}
-   A \textbf{principal square submatrix} of an $n\times n$-matrix A is any 
+ \begin{definition}\index{Principal square submatrix}
+ A \textbf{principal square submatrix} of an $n\times n$-matrix A is any 
    matrix obtained by crossing out any $j$ rows and the corresponding $j$
  columns of $A$, with $1 \leq j \leq n.$ \end{definition}
  \begin{lemma}\label{froblemma4}
@@ -696,38 +699,39 @@ Corollary \ref{lemma2frobcorollary}.
 \begin{proof}
   The proof is immediately done by direct computation:
   
-  $$\phi(A, \lambda) = \det\begin{bmatrix} 
+  $$\phi(A, \lambda) = \det\begin{pmatrix} 
 \lambda -a_{1,1} & -a_{1,2}  & \ldots & -a_{1,n}   \\
 -a_{2,1}  & \lambda - a_{2,2} & \ldots & -a_{2,n}   \\
 \vdots & \vdots & \ddots & \vdots  \\
 - a_{n,1}  & -a_{n,2} & \ldots & \lambda - a_{n,n}  
-\end{bmatrix}.$$
+\end{pmatrix}.$$
 Using the extension of the product rule of derivation for multilinear functions
 \begin{eqnarray*}
-  \phi'(A, \lambda) = \det\begin{bmatrix} 
+  \phi'(A, \lambda) = \det\begin{pmatrix} 
 1 & 0  & \ldots & 0    \\
 -a_{2,1}  & \lambda - a_{2,2} & \ldots & -a_{2,n}   \\
 \vdots & \vdots & \ddots & \vdots  \\
 - a_{n,1}  & -a_{n,2} & \ldots & \lambda - a_{n,n}  
-\end{bmatrix} + 
-\det\begin{bmatrix} 
+\end{pmatrix} + 
+\det\begin{pmatrix} 
 \lambda -a_{1,1} & -a_{1,2}  & \ldots & -a_{1,n}   \\
 0  & 1 & \ldots &  0   \\
 \vdots & \vdots & \ddots & \vdots  \\
 - a_{n,1}  & -a_{n,2} & \ldots & \lambda - a_{n,n}  
-\end{bmatrix} + \ldots \\
-+ \det\begin{bmatrix} 
+\end{pmatrix} + \ldots \\
++ \det\begin{pmatrix} 
 \lambda -a_{1,1} & -a_{1,2}  & \ldots & -a_{1,n}   \\
 -a_{2,1}  & \lambda - a_{2,2} & \ldots & -a_{2,n}   \\
 \vdots & \vdots & \ddots & \vdots  \\
 0  & 0 & \ldots & 1
-\end{bmatrix} = \sum_i \phi(B_i, \lambda).
+\end{pmatrix} = \sum_i \phi(B_i, \lambda).
 \end{eqnarray*}
 \end{proof}
 \subsection{Proof}
 We now collect the above results into the following main theorem: we finally 
 arrived at the Perron-Frobenius Theorem:
-\begin{theorem}(\textbf{Perron-Frobenius theorem})\label{frobtheorem}
+\begin{theorem}(\textbf{Perron-Frobenius theorem})\label{frobtheorem}\index{Perron-Frobenius}
+
   Let $A \geq 0$ be an irreducible $n\times n$-matrix. Then,
   \begin{enumerate}
     \item $A$ has a positive real eigenvalue equal to its spectral radius.
@@ -824,12 +828,12 @@ them respectively \emph{vector norms} (norms on $\R^n$) and \emph{matrix norms} 
 m}$). This section is mainly based on chapter 2 from \cite{golub} and chapter 5 
 form \cite{horn}.
 
-\subsection{Vector norms}
-\begin{definition}
+\subsection{Vector norms}}
+\begin{definition}\index{Vector norm}
   A \textbf{vector norm} on $\R^n$ is a function $\|\cdot\|: \R^n \to \R$ with 
   the following properties:
   \begin{enumerate}
- \item $\|\mathbf{x}\| \leq 0$, for all $\mathbf{x} \in \R^n$ with equality if 
+ \item $\|\mathbf{x}\| \geq 0$, for all $\mathbf{x} \in \R^n$ with equality if 
  and only if $\mathbf{x} = \mathbf{0}$.
  \item $\|\mathbf{x} + \mathbf{y}\| \leq \|\mathbf{x}\| + \|\mathbf{y}\|$ for 
  all $\mathbf{x},\mathbf{y} \in \R^n$.
@@ -841,23 +845,24 @@ form \cite{horn}.
 
 
 We now give some well known vector norms:
-\subsubsection{$p$-norms}
+\subsubsection{$p$-norms}\index{$p$-norm}\index{Vector norm!$p$-norm}\inde{H\"{older} norm|see{$p$-norm}}
 \begin{definition}
   The \textit{H\"{o}lder} or  \emph{p-norms} are defined by:
-  $$\|\mathbf{x}\|_p = (\|x_1\|^p+\cdots + \|x_n\|^p)^{\frac{1}{p}} = \left(\sum_{i=1}^n |\mathbf{x}_i|^p\right)^{\frac{1}{p}},$$
+  $$\|\mathbf{x}\|_p = (|x_1|^p+\cdots + |x_n|^p)^{\frac{1}{p}} = \left(\sum_{i=1}^n |x_i|^p\right)^{\frac{1}{p}},$$
   for $\mathbf{x} \in \R^n.$
 \end{definition}
-The $1$-norm is also known as the \emph{Manhatten} norm:
+The $1$-norm is also known as the \emph{Manhattan} norm:\index{Manhattan norm}\index{Vector 
+norm!Manhattan norm}
 $$\|\mathbf{x}\|_1 = |x_1|+  \cdots + |x_n|$$
 
-The $2$-norm is also known as the standard \emph{Euclidean norm}:
+The $2$-norm is also known as the standard \emph{Euclidean norm}\index{Euclidean norm}\index{Vector norm!Euclidean norm}:
 $$\|\mathbf{x}\|_2 = (|x_1|^2+  \cdots + |x_n|^2)^{\frac{1}{2}} = (\text{trace}(\mathbf{x}^T \mathbf{x}))^{\frac{1}{2}}$$
 Notice that the $2$-norm is invariant under orthogonal transformation, for if 
-$Q^TQ = I$ with $Q \in \R^{n\times n}$ and $\mathbf{x} \in \R^n$:
-$$\|Q\mathbf{x}\|^2_2 = \text{trace}(\mathbf{x}^TQ^TQ\mathbf{x}) = \text{trace}(\mathbf{x}^T\mathbf{x}) = 
+$QQ^T = I$ with $Q \in \R^{n\times n}$ and $\mathbf{x} \in \R^n$:
+$$\|Q\mathbf{x}\|^2_2 = \text{trace}(\mathbf{x}QQ^T\mathbf{x}^T) = \text{trace}(\mathbf{x}^T\mathbf{x}) = 
 \|\mathbf{x}\|^2_2$$
 
-\subsubsection{Maximum norm}
+\subsubsection{Maximum norm}\index{Maximum norm}\index{Vector norm!Maximum norm}
 Finally, when $p \to \infty$ we get the \emph{maximum norm}:
 $$\|\mathbf{x}\|_\infty = \max(|x_1|, \ldots, |x_n|)$$ 
 We will prove this:
@@ -876,7 +881,8 @@ We will prove this:
   $$\lim_{p\to\infty} \|\mathbf{x}\|_p = \|\mathbf{x}\|_\infty.$$
 \end{proof}
 
-\subsubsection{Norm equivalence}
+\subsubsection{Norm equivalence}\index{Norm equivalence}\index{Vector 
+norm!Equivalence}
 
 One very import property of all the norms of $\R^n$ is that they are all 
 \emph{equivalent}, meaning that when two vectors have about the same size according to one vector norm, they also
@@ -891,50 +897,33 @@ will have more or less the same size according to another vector norm.
   
   \end{theorem}
 \begin{proof}
-  We demonstrate that any norm $\|\cdot\|_\alpha$ on $\R^n$ is equivalent to the 
-  Euclidean norm. Let $\{\mathbf{e}_1,\ldots,\mathbf{e}_n\}$ be the canonical 
-  basis for $\R^n$, so any $\mathbf{x} \in \R^n$ can be written as $x = \sum_{i=1}^n x_i 
-  e_i$. For all pairs of vectors $\mathbf{x}, \mathbf{y} \in \R^n$ we check that $\|\cdots\|$ is continuous
-  with respect to the Euclidean norm and we get using the Cauchy-Schwarz inequality:
-  \begin{eqnarray*}
-    \|\mathbf{x} - \mathbf{y}\|_\alpha &=& \left\|\sum_{i=1}^n (x_i - y_i)e_i 
-    \right\|_\alpha\\
-   &\leq& \sum_{i=1}^n (x_i - y_i)\|e_i\|_\alpha\\
-   &\leq& \max_{1\leq i \leq  n}(\|e_i\|_\alpha)   \sum_{i=1}^n (x_i - y_i)\\
-   &\leq& M \left( \sum_{i=1}^n (x_i - y_i)^2\right)^{\frac{1}{2}}\\
-   &=& M \|x-y\|_2,
-  \end{eqnarray*}
-  with $M = \max_{1\leq i \leq n}(\|e_i\|_\alpha)$. This means that when two vectors
-  are nearby with respect to the Euclidean norm, they are also nearby with respect
-  to any other norm. Now consider the unit sphere with respect
-  to the Euclidean norm $S= \{\mathbf{x} \in \R^n: \|\mathbf{x}\|_2 = 1 \}$. 
-  This set is closed and bounded in the Euclidean topology, so the theorem of 
-  Heine-Borel (see Theorem 3.5.2 in \cite{caenepeel}) shows that it is compact. Therefore, the continuous function $\|\cdot\|$ 
-  attains it's maximum and minimum values on $S$, say $c'_1$ and $c'_2$. That is,
-  $$c'_1\|\mathbf{x}\|_2 \leq \|\mathbf{x}\|_\alpha \leq c'_2\|\mathbf{x}\|_2$$
-  for any $x$ with on the 
-  Euclidean unit sphere. But every vector $\mathbf{y} \in \R^n$ can be 
-  expressed as $\mathbf{y} = \alpha \mathbf{x}$ for some $\mathbf{x}$ on the 
-  Euclidean unit sphere. If we multiply the foregoing inequality by $|\alpha|$ 
-  and draw the scalar into the norms, we get:
-  $$c'_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\alpha \leq c'_2\|\mathbf{y}\|_2$$
-  for any vector $\mathbf{y}$.
-  We must check that the constants $c'_1$ and $c'_2$ are positive. They are 
-  clearly nonnegative since $\|\cdot\|$ is nonnegative and $c'_1\leq c'_2$ by 
-  definition. Assume that $c'_1 = 0$, which implies the existence of a point $\mathbf{x}$
-  on the Euclidean unit sphere for which $\|\mathbf{x}\| = 0$, but then $x = 0$, 
-  a contradiction.
-  So, we have proved that we can find $c'_1, c'_2, c''_1, c''_2$ such that:
-  \begin{eqnarray*}
-    c'_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\alpha \leq c'_2\|\mathbf{y}\|_2\\
-    c''_1\|\mathbf{y}\|_2 \leq \|\mathbf{y}\|_\beta \leq c''_2\|\mathbf{y}\|_2\\
-  \end{eqnarray*}
-  so we get:
-  $$\frac{1}{c'_2}\|\mathbf{y}\|_\alpha \leq \|\mathbf{y}\|_2 \leq \frac{1}{c''_1}\|\mathbf{y}\|_\beta$$
-and:
-$$\frac{1}{c''_2}\|\mathbf{y}\|_\beta \leq \|\mathbf{y}\|_2 \leq \frac{1}{c'_1}\|\mathbf{y}\|_\alpha$$
+ We will prove for the norm $\|\cdot\|_2$ that there are $c_1>0, c_2>0$ such that 
+ for all $\mathbf{x}>0$ it holds:
+ $$c_1\|\mathbf{x}\|_\alpha \leq \|\mathbf{x}\|_2 \leq c_2 \|\mathbf{x}\|_\alpha.$$
+ From this, the theorem easily follows (notice that for $\mathbf{x} = \mathbf{0}$ this inequality evidently holds by definition of a norm). First let
+  $$\mathbf{x} = x_1\mathbf{e}_1 +x_2\mathbf{e}_2 + \cdots + x_n\mathbf{e}_n,$$
+  where ${\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n}$ is a basis for 
+  $\R^n$. By the triangle inequality:
+  $$\|\mathbf{x}\|_\alpha \leq \sum^n_{j=1} |x_j|\|\mathbf{e}_j\|_\alpha.$$
+  By Cauchy's inequality, for the inner product $\sum^n_{j=1} 
+  |x_j|\|\mathbf{e}_j\|_\alpha$,
+$$\sum^n_{j=1} |x_j|\|\mathbf{e}_j\|_\alpha \leq \left(\sum^n_{j=1} x^2_j\right)^{1/2}\left(\sum^n_{j=1} \|\mathbf{e}_j\|_\alpha^2\right)^{1/2},$$
+  so:
+  $$c_1\|\mathbf{x}\|_\alpha \leq \|\mathbf{x}\|_2, \text {where } c_1 = \frac{1}{\left(\sum^n_{j=1} \|\mathbf{e}_j\|_\alpha^2\right)^{1/2}}.$$
+   
+   Now consider the function $\mathbf{x} \to \|\mathbf{x}\|_\alpha$ on the set 
+   $\|\mathbf{x}\|_2=1$. The set $K = \{\mathbf{x} \mid \|\mathbf{x}\|_2 = 1\}$ 
+   is closed and bounded, so the theorem of Heine-Borel (see Theorem 3.5.2 in \cite{caenepeel}) 
+   shows that it is compact. Now, we actually proved that the function $\mathbf{x} \to \|\mathbf{x}\|$ 
+   is continuous on $\R^n$, meaning that if $\|x_j\|_2 \to 0$ then $\|x_j\|_\alpha \to 0$ 
+   $(j \in \{1,\ldots,n\})$, so this function attains it's minimum $m$ on $K$, $m$ is strictly greater than $0$ 
+   because a norm is always greater or equal to zero and $\mathbf{0} \not\in K$. 
+   Now let $\mathbf{x} \not = \mathbf{0}$ be any vector on $\R^n$ and let $\mathbf{u} = 
+   \frac{\mathbf{x}}{\|\mathbf{x}\|_2} \in \R^n$. Then $\|\mathbf{u}\|_2 = 1$ so 
+   $\|\mathbf{u}\|_\alpha \geq m$. Hence:
+   $$\mathbf{x} \geq m\|\mathbf{x}\|_2, \text{ or } \|\mathbf{x}\|_2 \leq c_2 
+   \|\mathbf{x}\|, \text{ where } b=\frac{1}{m}.$$
 
-  Take $c_1 = \frac{c''_1}{c'_2}$ and $c_2=\frac{c''_2}{c'_1}$.
 \end{proof}
 For example, for any $\mathbf{x} \in \R^n$ we have:
 \begin{eqnarray*}
@@ -942,219 +931,231 @@ For example, for any $\mathbf{x} \in \R^n$ we have:
    \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_2 \leq& \sqrt{n}\|\mathbf{x}\|_\infty\\
      \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_1 \leq& n\|\mathbf{x}\|_\infty
   \end{eqnarray*}
-\subsection{Matrix norms}
+\subsection{Matrix norms}\index{Matrix norm}
 The analysis of matrix algorithms requires that we be able to assess the size of 
 matrices. We introduce therefore \textit{matrix norms}, off course, this 
-definition is completely analogous:
+definition is completely analogous but with an extra condition: for square matrices, the matrix norm must 
+be submultiplicative:
 \begin{definition}
   A \textbf{matrix norm} on $\R^{n\times m}$ is a function $\|\cdot\|: \R^{n\times m} \to \R$ with 
   the following properties:
   \begin{enumerate}
- \item $\|A\| \leq 0$, for all $A \in \R^{n\times m}$ with equality if 
+ \item $\|A\| \geq 0$, for all $A \in \R^{n\times m}$ with equality if 
  and only if $A$ is a matrix with only zero entries.
  \item $\|A + B\| \leq \|A| + \|B\|$ for 
  all $A, B \in \R^{n\times m}$.
  \item $\|\alpha A\| = |\alpha|\|A\|$ for all $\alpha \in \R$, $A \in 
  \R^{n\times m}$.
+ \item For $A, B \in \R^{n\times n}: \|AB\|\leq \|A\|\|B\|.$
   \end{enumerate}
 \end{definition}
-\subsubsection{Frobenius norm}
+\subsubsection{Frobenius norm}\index{Frobenius norm}\index{Matrix norm!Frobenius norm}
 One of the most frequently used matrix norms is the so called \textit{Frobenius norm}:
 $$\|A\|_F = \left(\sum_{i=1}^n \sum_{j=1}^m |a_{ij}|^2\right)^{\frac{1}{2}} = \text{trace}(A^TA)^{\frac{1}{2}} ,$$
 If $A \in \R^{1\times m}$, then the Frobenius norm equals the 2-norm.
 
-\subsubsection{$p$-norms}
+\subsubsection{$p$-norms}\index{$p$-norm}\index{Matrix norm!$p$-norm}
 We can also define $p$-norms on matrices:
-$$\|A\|_p = \sup_{x\not = 0} \frac{\|Ax\|_p}{\|x\|_p}$$
+$$\|A\|_p = \sup_{\mathbf{x}\not = 0} \frac{\|A\mathbf{x}\|_p}{\|\mathbf{x}\|_p}$$
+
+\subsubsection{Maximum norm}
+First notice that the norm defined for $A \in \R^{n\timesn}$ as:
+$$\|A\| = \max_{1\leq i, j \leq n} |a_{ij}|$$
+is a norm on the vector space $\R^{n\timesn}$, but is not a matrix norm. Consider the
+matrix $J = \begin{psmallmatrix}1 & 1\\ 1 & 1\end{psmallmatrix}$ and compute $J^2 = 2J$. So:
+$\|J\| = 1$, $\|J^2\| = \|2J\| = 2\|J\| = 2$. So it is not the case that $\|J^2\| \leq \|J\|^2$, and hence
+$\|\cdot\|$ is not a submultiplicative norm. To solve this, define:
+$$\|A\|_\infty = n \|A\|$$
+then we have ($A,B \in \R^n$):
+\begin{eqnarray*}
+  \|AB\|_\infty &=& n \max_{1 \leq i, j \leq n} \left| \sum^n_{k=1} a_{ik}b_{kj}\right| \\ 
+  &\leq& n \max_{1 \leq i, j \leq n} \sum^n_{k=1} |a_{ik}b_{kj}|\\
+  &\leq& n \max_{1 \leq i, j \leq n} \sum^n_{k=1} \|A\|\|B\|\\
+  &=& n \|A\|n\|B\|\\
+  &=& \|A\|_\infty\|B\|_\infty
+ \end{eqnarray*}
+ Thus, a minor modifcation of the vector norm $\|\cdot\|$ is required to make it 
+ a matrix norm, which we will call the \textit{maximum norm}. Again, when $p \to \infty$ we get the \emph{maximum norm}:
+\begin{eqnarray*}
+  \|A\|_\infty &=& \sup_{\mathbf{x}\not = 0} 
+  \frac{\|A\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty}\\
+  &=& \max_{\mathbf{x}\not = 0} \frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}\\
+  &=& \max_{\|\mathbf{x}\|_\alpha = 1} \frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}
+\end{eqnarray*}
+where $\|\cdot\|_\alpha$ is any vector norm. To see that this is true, just notice that
+we iterated over $\mathbf{x}\not = 0$ and that we divide \|A\mathbf{x}\| To give an example of 
+how to prove that the norms we defined in this section do indeed meet the 
+definition of a norm, we will prove 
 
 Again, we can show that all matrix norms are equivalent with the same reasoning 
-as in Theorem \ref{equivalencenorms}.
+as in Theorem \ref{equivalencenorms}.\index{Norm equivalence}\index{Matrix norm!Equivalence}
 
-\section{Numerical analysis}
-\subsection{Bachmann-Landau notations}
+\section{Numerical analysis}\index{Bachmann-Landau}
+\subsection{Bachmann-Landau notations}\index{Bachmann-Landau}
 For comparing the computational cost of algorithms, 
 it's important to know the \emph{Bachmann-Landau notations}. These notations are used to describe the limiting behavior of a function in terms of simpler functions. 
 These notations are used a lot in computer science to classify algorithms by how their number of steps depends on changes in input size. 
 We are only interested in the effects on the number of steps for really large input sizes, so constants don't play any role in the classification.
 
-\subsubsection{Bigh Oh}
-\begin{definition}\textbf{(Big Oh)}\\
-Big Oh is the set of all functions $f$ that are bounded above by $g$ asymptotically (up to constant factor).
-$$O(g(n)) = \{f|\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq cg(n)\}$$
+\subsubsection{Big O}\index{Big O}\index{Bachmann-Landau!Big O}\begin{definition}\textbf{(Big O)}\\
+The Big O of a function $g$ is the set of all functions $f$ that are bounded above by $g$ asymptotically (up to constant factor).
+$$O(g(n)) = \{f\mid\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq cg(n)\}$$
 \end{definition}
-We now proof a very simple lemma to show that indeed constant factors doesn't matter for Big Oh:
+We now proof a very simple lemma to show that indeed constant factors doesn't matter for Big O:
 \begin{lemma}\label{constanten}
 $\forall k > 0: O(k.g(n)) = O(g(n))$
 \end{lemma}
 
 \begin{proof}
 \begin{eqnarray*}
-O(k.g(n)) &=& \{f|\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq k.c.g(n)\}\\
-&=& \{f|\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq (k.c).g(n)\}\\
+O(k.g(n)) &=& \{f\mid\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq k.c.g(n)\}\\
+&=& \{f\mid\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq (k.c).g(n)\}\\
 \text{\small{let c' = k.c}}\\
-&=& \{f|\exists c', n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq c'.g(n)\}\\
+&=& \{f\mid\exists c', n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq c'.g(n)\}\\
 &=& O(g(n))
 \end{eqnarray*}
 \end{proof}
 
 
 
-\subsubsection{Small Oh}
-\begin{definition}\textbf{(Small Oh)}\\
-Small Oh is the set of all functions $f$ that are dominated by $g$ asymptotically.
+\subsubsection{Small O}\index{Small O}\index{Bachmann-Landau!Small O}
+\begin{definition}\textbf{(Small O)}\\
+Small O of a function $g$ is the set of all functions $f$ that are dominated by $g$ asymptotically.
 $$o(g(n)) = \{f|\forall \varepsilon > 0, \exists n_0 \forall n \geq n_0: f(n) \leq \varepsilon.g(n)\}$$
 \end{definition}
 Note that the small oh-notation is a much stronger statement than the corresponding big oh-notation: every function that is in the small oh of $g$ is also in big oh, but the inverse isn't necessarily true. Intuitively, $f(x) \in o(g(x))$ means that $g(x)$ grows much faster than $f(x)$.
 
-\subsubsection{Asymptotical Equality}
+\subsubsection{Asymptotical Equality}\index{Asymptotical Equality}\index{Bachmann-Landau!Asymptotical Equality}
 \begin{definition}\textbf{(Asymptotically Equal)}\\
-Let $f$ and $g$ real functions, then $f$ is asymptotically equal to $g$ $\Leftrightarrow \displaystyle\lim_{x\rightarrow +\infty} \frac{f(x)}{g(x)}=1$. Notation: $f \sim g$.
+Let $f$ and $g$ real functions, then $f$ is asymptotically equal to $g$, we write $\Leftrightarrow \displaystyle\lim_{x\rightarrow +\infty} \frac{f(x)}{g(x)}=1$. Notation: $f \sim g$.
 \end{definition}
-In fact asymptotical equality, can also be defined as an equivalency relation: $f\sim g \Leftrightarrow (f-g) \in o(g)$. It's trivially clear that as $f\sim g \Rightarrow f \in O(g)$.
+In fact asymptotical equality, can also be defined equivalently as an equivalency relation: $f\sim g \Leftrightarrow (f-g) \in o(g)$. It's trivially clear that as $f\sim g \Rightarrow f \in O(g)$.
 
-\subsection{The Power Method}\label{powersection}
-We now introduce the \textit{classical power method}, also called the \textit{Von Mises iteration} (\cite{golub}) because adaptions of 
-this iterative method will appear in the following chapters of this master thesis. 
+\subsection{The Power Method}\index{Power method}\label{powersection}
+We now introduce the \textit{classical power method}, also called the \textit{Von Mises iteration} (\cite{golub}). This
+numerical algorithm is the core of the whole thesis, because we will see in the next chapters a lot of different
+algorithms that are in fact just  adaptations of this iterative method.
+ 
 The power method is an eigenvalue algorithm that, given a diagonalizable matrix $A$, finds the eigenvalue $\lambda$ with the 
 greatest magnitude and a corresponding eigenvector $\mathbf{v}$ such that:
 $$A\mathbf{v} = \lambda\mathbf{v}.$$
 The power method is special because it doesn't use any matrix decomposition 
-technique for obtaining results, making it suitable for very large matrices. At 
+technique for obtaining results, making it suitable for very large matrices. On
 the other hand, it only finds one eigenvalue with a corresponding eigenvector and the 
 the iterative process might converge very slowly. 
 
 There are plenty of variations of the 
-power method available that overcome all these difficulties (finding only 1 eigenvalue/eigenvector, slow convergence, $A$ must be diagonalizable, \ldots) but we limit our discussion
+power method available that overcome all these difficulties, but we limit our discussion
 here to the very basic method, therefore we call it the \textit{classical} power method.
 
 We first introduce some needed definitions, theorems and notations.
-\begin{definition}
+\begin{definition}\index{Dominant eigenvalue}
   Consider a  real $n\times n$-matrix $A$ with (not necessarily different) 
   eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$. When
-  $$|\lambda_1| > |\lambda_2| \leq |\lambda_3| \leq \ldots \leq |\lambda_n|,$$
-  $\lambda_1$ is called the \textbf{dominant eigenvector}.
+  $$|\lambda_1| > |\lambda_2| \geq |\lambda_3| \geq \cdots \geq |\lambda_n|,$$
+  $\lambda_1$ is called the \textbf{dominant eigenvalue}.
 \end{definition}
 
-\begin{corollary}
-  The dominant eigenvector $\lambda_1$ of a $n\times n$-matrix $A$ is real.
+\begin{corollary}\label{reallambda1}
+  If a real, $n\times n$-matrix $A$ has a dominant eigenvalue $\lambda_1$, then $\lambda_1$ is real.
 \end{corollary}
 \begin{proof}
-  This is trivial, if $\lambda_1$ would be complex, the complex conjugate of $\lambda_1$ 
+  Recall that the eigenvalues of a real matrix $A$ are in general complex, and occur in conjugate pairs. So if $\lambda_1$ would be
+   complex, the complex conjugate of $\lambda_1$ 
   would also be an eigenvalue with the same modulus.
   \end{proof}
 
-\begin{theorem}\label{eigenbasis}
-  A $n \times n$ matrix $A$ is diagonalizable if and only if it has an eigenbasis (a basis containing only lineair independent eigenvectors).
-\end{theorem}
-\begin{proof}
-  $\Leftarrow$ Consider $A \in \R^{n \times n}$ with (not necessarily different) 
-  eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ and the eigenbasis $\{\mathbf{v_1}, \mathbf{v_2}, \ldots, 
-  \mathbf{v_n}\}$. Let:
-  $$X = [\mathbf{v_1},\mathbf{v_2},\ldots,\mathbf{v_n}]$$
-  Because the columns of $X$ are linearly independent, $X$ is invertible. 
-Since:
-$$AX_i = \lambda_iX_i$$
-we also have:
-$$AX = X\Lambda$$
-with $\Lambda = \diag(\lambda_1, \lambda_2, \ldots, \lambda_n)$, thus: 
-$$X^{-1}AX= \Lambda.$$
 
-$\Rightarrow$ When $A \in \R^{n\times n}$ is diagonalizable, then there exist an invertible matrix $T$ so:
-$$TAT^{-1}=D$$
-with $D$ diagonal. Let $Y = T^{-1}$, then:
-$$AY = YD.$$
-This means that the columns of $Y$ are eigenvectors where the corresponding 
-eigenvalues are noted in the diagonal matrix $D$. Because $T$ and $Y$ are 
-invertible, the columns of $Y$ are lineair independent. This means that $A$ has $n$ 
-lineair independent eigenvectors, forming an eigenbasis.
-\end{proof}
-\begin{notation}\label{numeriekenotatie}
+
+\begin{notation}\label{numeriekenotatie}\index{Iteration step}
   Let $\mathbf{x}^{(i)}$ denote vector $\mathbf{x}$ at iteration step $i$.
 \end{notation}
 \subsubsection{The algorithm}
-Let $A \in \R^{n\times n}$ be a diagonalizable matrix with dominant eigenvalue $\lambda_1$ 
-. We know that $A$ has eigenbasis $V=\{\mathbf{v_1}, \mathbf{v_2},\ldots,\mathbf{v_n}\}$. Every vector
-$\mathbf{\mathbf{x}^{(0)}} \in \R^n$ can be written as a lineair combination of elements in 
-$X$, because $X$ spans the space $\R^n$. So:
-$$\mathbf{x}^{(0)} = \sum_{i=1}^n \xi_i \mathbf{v_i}.$$
-Now construct the sequence of vectors $\mathbf{x^{(k)}}$:
-$$\mathbf{x^{(k)}} = A\mathbf{x^{(k-1)}} = A^k\mathbf{x^{(0)}}$$
+Let $A \in \R^{n\times n}$ be a diagonalizable matrix with dominant eigenvalue $\lambda_1$.
+We know that $A$ has an eigenbasis $V=\{\mathbf{v}_1, \mathbf{v}_2,\ldots,\mathbf{v}_n\}$. Every vector
+$\mathbf{x}^{(0)} \in \R^n$ can be written as a linear combination of elements in 
+$V$, because $V$ spans the space $\R^n$. So:
+$$\mathbf{x}^{(0)} = \sum_{i=1}^n \xi_i \mathbf{v}_i.$$
+Now construct the sequence of vectors $\mathbf{x}^{(k)}$:
+$$\mathbf{x}^{(k)} = A\mathbf{x}^{(k-1)} = A^k\mathbf{x}^{(0)}$$
 Now:
 \begin{eqnarray*}
-  A^k\mathbf{x^{(0)}} &=& \sum^n_{i=1}\xi_i A^k \mathbf{v_i}\\
-  &=& \sum^n_{i=1}\xi_i \lambda_i^k \mathbf{v_i}\\
-  &=& \lambda_1^k \left\{\xi_1 \mathbf{v_1} + \xi_2\left(\frac{\lambda_2}{\lambda_1}\right)^k \mathbf{v_2} + \ldots +
-  \xi_n\left(\frac{\lambda_n}{\lambda_1}\right)^k \mathbf{v_n} \right\}
+  A^k\mathbf{x}^{(0)} &=& \sum^n_{i=1}\xi_i A^k \mathbf{v}_i\\
+  &=& \sum^n_{i=1}\xi_i \lambda_i^k \mathbf{v}_i\\
+  &=& \lambda_1^k \left\{\xi_1 \mathbf{v}_1 + \xi_2\left(\frac{\lambda_2}{\lambda_1}\right)^k \mathbf{v}_2 + \cdots +
+  \xi_n\left(\frac{\lambda_n}{\lambda_1}\right)^k \mathbf{v}_n \right\}
 \end{eqnarray*}
 Because $|\lambda_i| < |\lambda_1|$ for $i > 1 $, we have that 
 $$\left(\frac{\lambda_i}{\lambda_1}\right)^k \to 0 \text{ for } k \to \infty$$
 so:
 \begin{eqnarray}\label{tijdscomplexiteit}
-  \mathbf{x^{(k)}} = \lambda_1^k \xi_1\mathbf{v_1} + o(1) \text{ for } k \to \infty
+  \mathbf{x}^{(k)} = \lambda_1^k \xi_1\mathbf{v}_1 + o(1) \text{ for } k \to \infty
 \end{eqnarray}
-This means that for $k$ large enough $\mathbf{x^{(k+1)}}$ is equal to $\lambda_1$ times $\mathbf{x^{(k)}}$. So when, the ratio 
+This means that for $k$ large enough $\mathbf{x}^{(k+1)}$ is almost equal to $\lambda_1$ times $\mathbf{x}^{(k)}$. So when 
+the ratio 
 between the corresponding
-vector entries in $\mathbf{x^{(k+1)}}$ and $\mathbf{x^{(k)}}$ becomes constant 
+vector entries in $\mathbf{x}^{(k+1)}$ and $\mathbf{x}^{(k)}$ becomes constant 
 after $k$ iteration steps, then this ratio will be equal to the dominant eigenvalue 
-$\lambda_1$. $\mathbf{x^{(k)}}$ will be a corresponding eigenvector because it's is 
+$\lambda_1$. The vector $\mathbf{x}^{(k)}$ will be a corresponding eigenvector because it is is 
 proportional to $\mathbf{v_1}$. 
 
-The start value $\mathbf{x^{(0)}}$ must only satisfy the condition that $\xi_1 \not = 
-0$, in other words: $\mathbf{x^{(0)}}$ must have a non-zero component belonging to the 
-dominant eigenvector. In general, each randomly chosen option for  $\mathbf{x^{(0)}}$ 
-will normally fulfill this requirement. Even if we are so unlucky to pick a starting 
-vector which doesn't, subsequent $\mathbf{x^{(k)}}$ will again fulfill the 
+The start value $\mathbf{x}^{(0)}$ must only satisfy the condition that $\xi_1 \not = 
+0$, in other words: $\mathbf{x}^{(0)}$ must have a non-zero component belonging to the 
+dominant eigenvector. Each randomly chosen option for  $\mathbf{x^{(0)}}$ 
+will fulfill this requirement. Even if we are so unlucky to pick a starting 
+vector which doesn't, subsequent $\mathbf{x}^{(k)}$ will again fulfill the 
 requirement
 because rounding errors sustained during the iteration will have a component in 
 this direction.
 
-A practical problem arises now when one of the components of $\mathbf{x^{(k)}}$ 
+A practical problem arises now when one of the components of $\mathbf{x}^{(k)}$ 
 is equal to zero. If we want to take the ratio between the corresponding 
-components of $\mathbf{x^{(k)}}$ and $\mathbf{x^{(k+1)}}$ we get a division by 
+components of $\mathbf{x}^{(k+1)}$ and $\mathbf{x}^{(k)}$ we get a division by 
 zero. We can solve this by a property that any norm function has: 
-$$\|\lambda_1\mathbf{x^{(k)}}\| = |\lambda_1|\|\mathbf{x^{(k+1)}}\|.$$
-Because $\mathbf{x^{(k)}} \not = 0$ we have that $\|\mathbf{x^{(k+1)}}\| \approx \|\lambda_1\mathbf{x^{(k+1)}}\|$, so we calculate
+$$\|\lambda_1\mathbf{x}^{(k)}\| = |\lambda_1|\|\mathbf{x}^{(k)}\|.$$
+Because $\mathbf{x}^{(k)} \not = \mathbf{0}$ we have that $\|\mathbf{x}^{(k+1)}\| \approx \|\lambda_1\mathbf{x}^{(k)}\|$, 
+so we calculate
 $\lambda_1$ in the power method by:
-$$|\lambda_1| = \lim_{k\to\infty}\frac{\|\mathbf{x^{(k+1)}}\|}{\|\mathbf{x^{(k)}}\| }$$
-To decide on the sign of $\lambda_1$, just divide two non-zero components of f $\mathbf{x^{(k+1)}}$ and 
-$\mathbf{x^{(k)}}$.
+$$|\lambda_1| = \lim_{k\to\infty}\frac{\|\mathbf{x}^{(k+1)}\|}{\|\mathbf{x}^{(k)}\| }$$
+To decide on the sign of $\lambda_1$ (see Corollary \ref{reallambda1}), just divide two non-zero components of f $\mathbf{x}^{(k+1)}$ and 
+$\mathbf{x}^{(k)}$.
 
 Another issue to address is that the components of $\mathbf{x^{(k)}} = A^k\mathbf{x^{(0)}}$ 
-can become very high or very low, which can cause an overflow or onderflow in the 
+can become very high or very low, which can cause an overflow or underflow in the 
 real number representation of computers. To avoid this, we use 
-normed versions of the $\mathbf{x^{(k)}}$-vectors: we start with a vector $\mathbf{y^{(0)}}$ 
-with $\|\mathbf{y^{(0)}}\|=1$. Subsequently, we calculate for $k = 0, 1, 
+normed versions of the $\mathbf{x^{(k)}}$-vectors: we start with a vector $\mathbf{y}^{(0)}$ 
+with $\|\mathbf{y}^{(0)}\|=1$. Subsequently, we calculate for $k = 0, 1, 
 \ldots$:
-$$\mathbf{z^{(k+1)}} = A\mathbf{y^{(k)}}, \quad \mu_{k+1} = \|\mathbf{z^{(k+1)}}\|, \quad \mathbf{y^{(k+1)}}=
-\frac{\mathbf{z^{(k+1)}}}{\mu_{k+1}}.$$ 
-The vectors $\mathbf{y^{(k)}}$ have all magnitude $1$ and the components of $\mathbf{z^{(k)}}$ 
+$$\mathbf{z}^{(k+1)} = A\mathbf{y}^{(k)}, \quad \mu_{k+1} = \|\mathbf{z}^{(k+1)}\|, \quad \mathbf{y}^{(k+1)}=
+\frac{\mathbf{z}^{(k+1)}}{\mu_{k+1}}.$$ 
+The vectors $\mathbf{y}^{(k)}$ all have magnitude $1$ and the components of $\mathbf{z}^{(k)}$ 
 are restricted because:
-$$\|\mathbf{z^{(k)}}\| = \|A\mathbf{y^{(k-1)}}\| \leq \|A\| 
-\|\mathbf{y^{(k-1)}}\| = \|A\|$$
-and when $A$ is invertible we have $\|\mathbf{y^{(k-1)}}\| = 1 \leq \|A^{-1}\|\|\mathbf{z^{(k)}}\|.$ 
-Thus $\|\mathbf{z^{(k)}}\| \geq \frac{1}{\|A^{-1}\|}$.
+$$\|\mathbf{z}^{(k)}\| = \|A\mathbf{y}^{(k-1)}\| \leq \|A\| 
+\|\mathbf{y}^{(k-1)}\| = \|A\|$$
+and when $A$ is invertible we have $\|\mathbf{y}^{(k-1)}\| = 1 \leq \|A^{-1}\|\|\mathbf{z}^{(k)}\|.$ 
+Thus $\|\mathbf{z}^{(k)}\| \geq \frac{1}{\|A^{-1}\|}$.
 If we want to calculate the eigenvalue we can use:
 
 \begin{eqnarray*}
-  A^k\mathbf{y^{(0)}} &=& A^{k-1}A \mathbf{y^{(0)}} = A^{k-1}\mathbf{z^{(1)}} =  A^{k-1}\mu_1\mathbf{y^{(1)}}\\
-  &=&  A^{k-2}\mu_1A\mathbf{y^{(1)}} = A^{k-2}\mu_1\mathbf{z^{(2)}} = 
-  A^{k-2}\mu_1\mu_2\mathbf{y^{(2)}}\\
-  &=& \ldots \\
-  &=& \mu_1 \mu_2 \ldots \mu_k \mathbf{y^{(k)}}\\
+  A^k\mathbf{y}^{(0)} &=& A^{k-1}A \mathbf{y}^{(0)} = A^{k-1}\mathbf{z}^{(1)} =  A^{k-1}\mu_1\mathbf{y}^{(1)}\\
+  &=&  A^{k-2}\mu_1A\mathbf{y}^{(1)} = A^{k-2}\mu_1\mathbf{z}^{(2)} = 
+  A^{k-2}\mu_1\mu_2\mathbf{y}^{(2)}\\
+  &=& \cdots \\
+  &=& \mu_1 \mu_2 \ldots \mu_k \mathbf{y}^{(k)}\\
 \end{eqnarray*}
 So:
-$$|\lambda_1| = \lim_{k\to \infty} \frac{\|A^{k+1}\mathbf{y^{(0)}}\|}{\|A^k\mathbf{y^{(0)}}\|} 
-= \lim_{k\to \infty} \frac{\mu_1\mu_2\ldots \mu_{k+1}\|\mathbf{y^{(k+1)}}\|}{\mu_1 \mu_2 \ldots \mu_k\|\mathbf{y^{(k)}}\|} 
+$$|\lambda_1| = \lim_{k\to \infty} \frac{\|A^{k+1}\mathbf{y}^{(0)}\|}{\|A^k\mathbf{y}^{(0)}\|} 
+= \lim_{k\to \infty} \frac{\mu_1\mu_2\ldots \mu_{k+1}\|\mathbf{y}^{(k+1)}\|}{\mu_1 \mu_2 \ldots \mu_k\|\mathbf{y}^{(k)}\|} 
 = \lim_{k\to \infty} \mu_{k+1}$$ 
 
 Because $\mu_{k+1}$ converges, a good choice for a stop condition for our numerical algorithm could be 
-$$|\mu_k - \mu_{k-1}| < Tol,$$
-which guarantees an estimation error of at most $Tol$ (usually $Tol=10^{-5}$) for the approximation of the dominant eigenvalue. With all this information, we construct algorithm \ref{powermethod}. Just to give an understandable algorithm, we 
-used the Euclidean norm in this algorithm\footnote{$||.||_2$ is the Euclidean vector norm.}. 
+$$|\mu_k - \mu_{k-1}| \leq \text{TOL},$$
+which guarantees an estimation error of at most TOL (usually TOL=$10^{-5}$) for the approximation of the dominant eigenvalue. With all this information, we construct algorithm \ref{powermethod}. Just to give an understandable algorithm, we 
+used the Euclidean norm in this algorithm.
 
 
 \begin{algorithm}[H]
- \KwData{\\$\mathbf{y^{(0)}}$: a start vector with $\|\mathbf{y^{(0)}}\|_2 = 1,$ \\$Tol$: 
+ \KwData{\\$A$: a matrix\\$\mathbf{y^{(0)}}$: a start vector with $\|\mathbf{y^{(0)}}\|_2 = 1,$ \\$Tol$: 
  Tolerance for the estimation error.}
  \KwResult{\\$\mathbf{y^{(k)}}$: an estimation of a dominant eigenvector,\\ $\mu_{k}$: an estimation of the dominant eigenvalue.}
  \blankline
@@ -1164,7 +1165,7 @@ used the Euclidean norm in this algorithm\footnote{$||.||_2$ is the Euclidean ve
 \SetKwProg{myalg}{begin}{}{end}
 \myalg{\powermethod{$\mathbf{y^{(0)}}$, $k$}}{
 $k = 1$ \;
-\Repeat{$k > 2$ and $|\mu_k - \mu_{k-1}| < \text{\texit{Tol}},$}{
+\Repeat{$k > 2$ and $|\mu_k - \mu_{k-1}| <$ TOL}{
 $\mathbf{z^{(k)}} = A\mathbf{y^{(k-1)}}$\;
 $\mu_k = \|\mathbf{z^{(k)}}\|_2$\;
 $\mathbf{y^{(k)}} = \dfrac{\mathbf{z^{(k)}}}{\mu_k}$\;
@@ -1185,20 +1186,20 @@ $ \mu_k = -\mu_k$\;
 The computational cost of the algorithm is determined by the speed at which the 
 $o(1)$ terms in \ref{tijdscomplexiteit} go to zero. This is indicated by the slowest converging term $(\lambda_2/\lambda_1)^k$. This means
 that  the algorithm converges slowly when there is an eigenvalue close in magnitude to the dominant eigenvalue. We 
-get following expression for approximation $\mu_k$ of $\lambda_1$:
+get the following expression for approximation $\mu_k$ of $\lambda_1$:
 $$|\mu^k - \lambda_1| = O\left(\left|\frac{\lambda_2}{\lambda_1} \right|^k\right)$$
 In our algorithm we accepted an estimation error of $10^{-5}$, so the number of 
 steps $n$ can be computed as:
-$$\left|\frac{\lambda_2}{\lambda_1} \right|^n \approx Tol$$
-So, for example, for $Tol = 10^{-5}$ we get $n = -5/\log{\lambda_1/\lambda_2}$, we become:
-$$\text{\texttt{power\_method}} \in O\left(\frac{-1}{\log{\lambda_1 - \logt\lambda_2}}\right)$$
-Note that this O holds for any estimation error $Tol$ of the form $10^{-e}$ with $e \in \N$. 
+$$\left|\frac{\lambda_2}{\lambda_1} \right|^n \leq \text{TOL}$$
+So, for example, for TOL $= 10^{-5}$ we get $n = \frac{-5}{\log{\frac{\lambda_1}{\lambda_2}}}$, so:
+$$\text{\texttt{power\_method}} \in O\left(\frac{-1}{\log(\lambda_1) - \log(\lambda_2)}\right)$$
+Note that this $O$ holds for any estimation error TOL of the form $10^{-e}$ with $e \in \N$. 
 
-When $\lambda_2 \approx \lambda_1$ we see that the power method (almost) has infinitely 
+When $\lambda_2$ \approx $\lambda_1$ we see that the power method (almost) needs infinitely 
 many steps. Since we do not know the eigenvalues of $A$, this means 
 we cannot know in advance whether the power method will work or not. Recall that 
 the eigenvalues of a real matrix $A$ are in general complex, and occur in 
-conjugate pairs. This means, when the dominant eigenvalue of $A$ is not real, 
+conjugate pairs. This means, when $\lambda_1$ is not real, 
 the power method will certainly fail. Therefore, it is a good idea to apply the 
 power method only to matrix whose eigenvalues are known to be real. The only 
 thing that can go wrong with those matrices is that the dominant eigenvalue has 
@@ -1215,8 +1216,9 @@ $$A = \begin{pmatrix}  1 & -3 & 5\\
  -1 & -7 & 11\\
  -1 & -9 & 13
 \end{pmatrix}$$
-$A$ has a dominant eigenvalue $3$ and a double eigenvalue $2$. A corresponding dominant eigenvector is $(1,1,1)$. Now we use the 
-classical power method with start vector $\mathbf{y^{(0)}} = (1, 0, 0)$, $Tol = 10^{-5}$ and we 
+$A$ has a dominant eigenvalue $3$ and a double eigenvalue $2$. A corresponding dominant eigenvector is $(1,1,1)$. 
+Now we use the 
+classical power method with start vector $\mathbf{y^{(0)}} = (1, 0, 0)$, TOL$= 10^{-5}$ and we 
 become the values in Table \ref{tablepower}. 
 \begin{table}[h!]
 \centering
@@ -1242,7 +1244,7 @@ become the values in Table \ref{tablepower}.
 \caption{The iteration values $\mu_k$ of  Example \ref{voorbeeldpower}.} 
 \end{table}\label{tablepower}
 Because we know the eigenvalues of $A$, we can predict the number of steps 
-$n = -5/\log{\lambda_2/\lambda_2} = -5/(\log{2/3}) \approx 28$. Because $\lambda_2/\lambda_1 = 2/3$ 
+$n = \frac{-5}{\log(\frac{\lambda_2}{\lambda_2})} = \frac{-5}{\log(2/3)} \approx 28$. Because $\lambda_2/\lambda_1 = 2/3$ 
 is not that small, the convergence here is also not that fast.  We have for the 
 approximation of a corresponding eigenvector $$\mathbf{y^{(29)}} = (-0.577348, -0.577352, -0.577351)$$ 
 which is (more or less) in proportion with $(1,1,1)$.
@@ -1263,15 +1265,16 @@ The definitions and results in this section are mainly based on the course
 
 
 \subsection{General definitions}
-\begin{definition}\label{defgraf}
+\begin{definition}\label{defgraf}\index{Graph}\index{Loop}\index{Graph!Loop}\index{Edge}\index{Graph!Edges}\index{Adjacency relation}
+\index{Graph!Adjacency relation}\index{Arc}\index{Graph!Arc}\index{Vertex}\index{Graph!Vertex}\index{Node}\index{Graph!Nodes}
   A \textbf{graph} is a an ordered pair $(V,\rightarrow)$ where $V$ is a set and $\to$ is a relation. The elements of $V$ are called
- \textbf{vertices} and $\rightarrow$ is called the \textbf{adjacency relation}. Let $u, v \in V$, then the ordered pair 
+ \textbf{vertices} or \textbf{nodes} and $\rightarrow$ is called the \textbf{adjacency relation}. Let $u, v \in V$, then the ordered pair 
  $(u, v)$ belonging to $\to$ is called an \textbf{arc} or \textbf{edge} and we write $u \rightarrow v$. We also
  say that $u$ is \textbf{adjacent} to $v$.  When $v \to v$ (with $v \in V$) we say that the graph has a 
  \textbf{loop} at $v$. A graph $(V,\rightarrow)$ is 
   most of the time denoted by calligraphic letters $\mathscr{G}, 
-  \mathscr{H},..$.   \end{definition}
- When the relation $\rightarrow$ is symmetric, 
+  \mathscr{H},..$.   \end{definition}\index{Undirected graph}\index{Graph!Undirected}\index{Directed graph}\index{Graph!Directed}
+With this defintion, we defined directed graphs, when the relation $\rightarrow$ is symmetric, 
  we call the graph \textbf{undirected}, in this case we often write $E$ instead 
  of $\rightarrow$.  
  
@@ -1336,7 +1339,7 @@ Therefore we define multisets and make a remark that introduces the concept of
 multiplicity of an edge using these multisets. Multisets are a generalization of 
 the notion of a set in which elements are allowed to appear more than once.
 
-\begin{definition}\label{multiset}
+\begin{definition}\label{multiset}\index{Multiset}
   A \textbf{multiset} $A=(S,\mu)$ is an ordered pair with $S$ a set and $\mu: S \to 
   \N\minus{0}$ a function that gives the \textbf{multiplicity} of an element of $S$. A 
   multiset can be written as a set in the following way:
@@ -1351,7 +1354,7 @@ the notion of a set in which elements are allowed to appear more than once.
 \end{definition}
 
 We now introduce the following important remark using multisets:
-\begin{remark}
+\begin{remark}\index{Multigraph}\index{Graph!Multigraph}
   Although we will stay writing a graph as $\graf = (V,\to)$, this defintion doesn't allow
   for repeated edges. A graph that can have multiple edges between two vertices 
   is often called a \textbf{multigraph}, but in this master thesis we call a 
@@ -1361,7 +1364,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
 
 
 
- \begin{definition}
+ \begin{definition}\index{Neighbourhood}\index{Graph!Neigbourhood}
   The \textbf{neighbourhood} of a vertex $v$ of a graph $\graf=(V,\to)$ is the induced subgraph $\graf_v$ 
  with vertex set $V'$ consisting of all vertices adjacent to $v$ without $v$ itself and with the multiplicity function $\mu'$,
  which is the restriction of $\mu$ to the vertices in $V'$.
@@ -1370,7 +1373,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
 \end{definition}  
   
 
- \begin{definition}\label{terminal}
+ \begin{definition}\label{terminal}\index{Terminal node}\index{Graph!Terminal node}\index{Source node}\index{Graph!Source node}
   Let $\graf=(V,\to)$ be a graph with vertices $v_1, v_2, \ldots, v_n \in V$ 
   and edges (defined as ordered pairs) $e_1, \ldots e_m  \in \to$. Let $u \to v$ be an edge between $u, v \in V$. 
   We call $u$ the \textbf{source node} and $v$ the \textbf{terminal node} of the 
@@ -1378,56 +1381,57 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
   terminal node $w_i$ of edge $i$.
 \end{definition}
  
-\begin{definition}
+\begin{definition}\index{Order}\index{Graph!Order}
   The \textbf{order of a finite graph $\graf$} is the number of vertices of $\graf$ and is denoted by $|\graf|$.  
 \end{definition} 
   
-  \begin{definition}
+  \begin{definition}\index{Indegree}\index{Graph!Indegree}
     The \textbf{indegree of a vertex $v$} in a graph $\graf$ is the number of times $v$ is a terminal node of an edge. 
     
   \end{definition}
-    \begin{definition}
+    \begin{definition}\index{Outdegree}\index{Graph!Outdegree}
     The \textbf{outdegree of a vertex $v$} in a graph $\graf$ is the number of times $v$ is a source node of an edge. 
     
   \end{definition}
-      \begin{definition}
+      \begin{definition}\index{Degree}\index{Graph!Degree}
     The \textbf{degree of a vertex $v$} in a graph $\graf$ is the sum of the indegree and outdegree of vertex $v$. 
     
   \end{definition}
   
   
  
- \begin{definition}
-   A  \textbf{walk} or \textbf{path} in a graph $\graf$ is a sequence of vertices
+ \begin{definition}\index{Walk}\index{Graph!Walk}
+
+   A  \textbf{walk} in a graph $\graf$ is a sequence of vertices
    $$a_0,a_1,\ldots,a_k$$
    such that $a_{i-1} \to a_i$ for each $i \in \{1,\ldots,k\}$. The \textbf{length} of the walk is $k$, one less
    than the number of vertices. 
  \end{definition}
  
- \begin{definition}
+ \begin{definition}\index{Path}\index{Graph!Path}
    If all edges are distinct in a  walk in a graph $\graf$, we call the walk a \textbf{path}.
  \end{definition}
  
- \begin{definition}
+ \begin{definition}\index{Cycle}\index{Graph!Cycle}
    A \textbf{cycle} is a walk from $v_0$ to $v_0$ in which all vertices except $v_0$ are distinct. \end{definition}
   
   
 
 
-\begin{definition}\label{simplegraph} A \textbf{simple graph} is an undirected graph $\graf=(V,\to)$ containing no loops and for all vertices $v_i, v_j \in V$, their is at most one edge.\end{definition}
+\begin{definition}\label{simplegraph}\index{Simple graph}\index{Graph!Simple graph} A \textbf{simple graph} is an undirected graph $\graf=(V,\to)$ containing no loops and for all vertices $v_i, v_j \in V$, their is at most one edge.\end{definition}
  
- \begin{definition}\label{clique}
+ \begin{definition}\label{clique}\index{Clique}\index{Graph!Clique}
    A \textbf{clique} in a graph $\graf = (V, \to)$ is a subset $C$ of $V$, such 
    that every two distinct vertices in $C$ are adjacent. 
  \end{definition}
  
-  \begin{definition}\label{bipartite}
+  \begin{definition}\label{bipartite}\index{Bipartite graph}\index{Graph!Bipartite graph}
    A \textbf{bipartite graph} is a graph $\graf = (V, \to)$ whose vertices can 
    be divided into two disijount sets $U$ and $T$ such that every edge connects 
    a vertex in $U$ and a vertex $V$. There are no edges between vertices in $U$ 
    or between vertices in $V$.
  \end{definition}
- \subsubsection{Product graphs}
+ \subsubsection{Product graphs}\index{Product graph}\index{Graph!Product graph}
  \begin{definition}\label{productgraph}
    Take two graphs $\graf=(U,\to), \grafeen=(V,\to')$, the \textbf{product graph} $\graf \times \grafeen$ 
    is the graph with $|\graf|.|\grafeen|$ vertices and that has an edge between 
@@ -1435,8 +1439,8 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    edge between $v_j$ and $v_l$ in $\grafeen$. 
  \end{definition}
  
- \subsubsection{Colored graphs}\label{colored}
- \begin{definition}\label{defcolor}
+ \subsubsection{Colored graphs}\label{colored}\index{Coloured graph}\index{Graph!Coloured graph}
+ \begin{definition}\label{defcolor}\index{Node coloring}\index{Graph!Colored graph!Node colering}
    A \textbf{node colored graph} $\graf$ is quadruple  $(V, \to, C, a)$ with $V$ 
    a set of vertices, $\to$ an adjacency relation, $C$ a set of colors and $a$ 
    a surjective function $a: V \to C$ that assigns to each vertex one color.
@@ -1446,7 +1450,8 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    color $i$. So:
    $$c_\graf(V, i) = |\{(i, v_j) \in C \times V | a(v_j) = i\}|$$
  \end{definition}
- \begin{definition}\label{edgecolored}
+ \begin{definition}\label{edgecolored}\index{Edge coloring}\index{Graph!Colored graph!Edge colering}
+
    A \textbf{edge colored graph} $\graf$ is quadruple  $(V, \to, C, b)$ with $V$ 
    a set of vertices, $\to$ an adjacency relation, $C$ a set of colors and $b$ 
    a surjective function $b: (\to) \to C$ that assigns to each edge one color.
@@ -1456,7 +1461,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    color $i$. So:
    $$c_\graf(\to, i) = |\{(i, e_j) \in C \times E | b(e_j) = i\}|$$
  \end{definition}
-  \begin{definition}\label{fullcolored}
+  \begin{definition}\label{fullcolored}\index{Full coloring}\index{Graph!Colored graph!Full colering}
    A \textbf{node, edge colored graph} or a \textbf{full colored graph} $\graf$ is $5$-tuple  $(V, \to, C, a, b)$ with $V$ 
    a set of vertices, $\to$ an adjacency relation, $C$ a set of colors,  $a$ 
    a function $a: V \to C$ that assigns to each vertex one color and $b$ 
@@ -1464,7 +1469,9 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    condition that $a(V) \cup b(\to) = C$.
  \end{definition}
 
- \subsubsection{Adjacency matrices}
+ \subsubsection{Adjacency matrices}\index{Adjacency matrix}\index{Graph!Adjacency matrix}
+\index{Matrix!Adjacency matrix}
+
  We now represent a finite graph in the form of an adjacency matrix. This 
  matrix gives a lot of useful information about the graph and vice versa.
  
@@ -1516,7 +1523,8 @@ $$A = \begin{pmatrix}
 \end{example}
 
 
-\subsection{Strong connectivity}
+\subsection{Strong connectivity}\index{Connected graph}\index{Graph!Connected graph}
+
 In this section, we take a closer look at \emph{directed graphs} and introduce 
 the concept of connectivity.
 \begin{definition}
@@ -1545,33 +1553,22 @@ know this means that $A$ is irreducible and vice versa.
 \end{proof}
 
 \section{Hypergraphs}
-After introducing graphs, we now introduce hypergraphs. Intuitively, a 
-hypergraph is a generalization of a graph in which an edge can connect to any 
-number of vertices. 
-
-In contrast to the section about graphs, the representation of a hypergraph as a (multidimensional) adjacency matrix 
-is not yet introduced here. This representation is not trivial and needs an 
-introduction in basic tensor theory. It's not our goal to introduce this whole theory in this master thesis (in fact, this would
-be a master thesis on it's own), but it will only be clear to the reader after reading chapter 
-2 on similarity on graphs why certain topics are introduced and others are 
-left out. Therfore, the representation of a hypergraph as an adjacency tensor is 
-discussed in chapter 3 on similarity on hypergraphs.
-
-The reason why we separate both subjects is that hypergraphs are not as known as graphs, and so we think it's 
-intresting to the reader to discover the most important defintions about 
-hypergraphs already in this stage of the thesis, as it gives the reader an idea of all the mathematical objects we 
-will be discussing. The definitions presented are mainly from \cite{berge} and 
+After introducing graphs, we now look at hypergraphs. Intuitively, a 
+hypergraph is a generalization of a graph in which an edge can connect any 
+number of vertices. The definitions presented are mainly from \cite{berge} and 
 \cite{hypper}.
 
 \subsection{General definitions}
-\begin{definition}\label{defhypergraph}
+\begin{definition}\label{defhypergraph}\index{Hypergraph}\index{Edge}\index{Hypergraph!Edges}
+\index{Node}\index{Hypergraph!Nodes}\index{Vertex}\index{Hypergraph!Vertices}
   A \textbf{hypergraph} is an ordered pair (V, E) with $V$ a finite set of 
-and $E \subseteq 2^V$, the power set of $V$. The elements of $V$ are called
+and $E \subseteq 2^V$, the power set of $V$ with $E \not= \emptyset$. The elements of $V$ are called
 the \textbf{vertices} and the elements of $E$ are called the \textbf{edges}.
-An hypergraph (V, E) will be denoted by calligraphic letters $\mathcal{G}, \mathcal{H},\ldots$.  
+An hypergraph (V, E) will be denoted by script calligraphic letters $\mathcal{G}, \mathcal{H},\ldots$.  
   \end{definition}
 
-\begin{remark}
+\begin{remark}\index{Multi-hypergraph}\index{Hypergraph!Multi-hypergraph}\index{Hyperloops}\index{Hypergraph!Hyperloops}
+
   As in graphs, the classic definitions of a hypergraphs doesn't allow to have 
   multiple edges that cover the same vertices. Also repeated vertices within an edge, often called \textbf{hyperloops} are not allowed 
   by the above definition. A hypergraph that can have multiple edges connecting 
@@ -1580,11 +1577,11 @@ An hypergraph (V, E) will be denoted by calligraphic letters $\mathcal{G}, \math
   this in mathematical correct way, a hypergraph $\hgraf$ is an ordered
  pair $(V,E)$ where $V$ a finite set and $E$ is a multi-set consisting of 
 multi-subsets of $V$ (a multi-subset is just a subset of a set where the elements are 
-allowed to appeared more than once).
+allowed to appear more than once).
 \end{remark}
 
 \begin{example}\label{vb1hypergraph}
-The hypergraph $\hgraf = (V, E)$ consist of 7 vertices and 4 edges. The edges
+The hypergraph $\hgraf = (V, E)$ consists of 7 vertices and 4 edges. The edges
 are equal to the multiset $\{\{v_1, v_2, v_3\}, \{v_2, v_3\}, \{v_3, v_5, v_6\}, \{v_3, v_5, v_6\}, \{v_4\} 
 \}$. Note that the colors don't have any meaning to the hypergraph (the hypergraph
 is not an edge colored hypergraph), but only serve to clarify the drawing.
@@ -1635,38 +1632,37 @@ is not an edge colored hypergraph), but only serve to clarify the drawing.
   In a hypergraph $\hgraf=(V,E)$, two vertices $v_i, v_j \in V$ are called 
   \textbf{adjacent} if there is an edge $E_i \in E$ that contains both vertices. 
   Two edges $E_k, E_l$ are called adjacent if there intersection is not empty.
-\end{definition}
+\end{definition}\index{Adjacency relation}\index{Hypergraph!Adjacency relation}
 
-\begin{definition}
-  The \textbf{order of a finite graph \hgraf} is the number of vertices of $\hgraf$ 
+\begin{definition}\index{Order}\index{Hypergraph!Order}
+  The \textbf{order of a finite hypergraph \hgraf} is the number of vertices of $\hgraf$ 
   and is denoted by $|\hgraf|$.
 \end{definition}
-We define now the degree of a vertex in a hypergraph. Note that we don't define 
+We now define the degree of a vertex in a hypergraph. Note that we don't define 
 the indegree and outdegree of vertex as the hypergraphs we consider are 
 undirected.
-\begin{definition}
+\begin{definition}\index{Degree}\index{Hypergraph!Degree}
 The \textbf{degree of a vertex} $v$ in a hypergraph $\hgraf$ is the number of 
 times $v$ is contained in an edge.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\index{Path}\index{Hypergraph!Path}\index{Length}
 A \textbf{path} in an hypergraph $\hgraf = (V,E)$ is a sequence $p = (a_0, A_1, a_1, \ldots, A_k, a_k), k \geq 1$ where the
 $a_i$'s are pairwise distinct vertices, the $A_i$'s are pairwise distinct
 edges and ${a_{i-1}, a_i} \in A_i$ for $1 \leq i \leq k$. The path $p$ is said 
-to join $a_0$ and $a_k$. The length of the path is $k$.
+to join $a_0$ and $a_k$. The \textbf{length} of the path is $k$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\index{Connected hypergraph}\index{Hypergraph!Connected hypergraph}
 A hypergraph is \textbf{connected} if for each vertex there is a path to any 
 other vertex.
 
 \end{definition}
-\subsubsection{$k$-hypergraphs}
+\subsubsection{$k$-hypergraphs}\index{Uniform hypegraphs}\index{Hypergraph!Uniform hypergraphs}
 In most applications, the edges of an hypergraph connect a fixed number of 
-vertices. This is called a uniform hypergraph:
-
-\begin{definition}
-  A \textbf{$k$-uniform hypergraph} with $k \geq 2 \in \N$ if for all $E_i \in E$, 
+vertices. 
+\begin{definition}\index{$k$-uniform hypergraphs}\index{$k$-graphs}
+  An hypergraph is called a \textbf{$k$-uniform hypergraph} for $k \geq 2 \in \N$ if for all $E_i \in E$, 
   the cardinality $|E_i|$ is equal to $k$. The cardinality of multisets is defined in Definition \ref{multiset}.
   The term \textbf{$k$-graph} is often used 
   instead of a $k$-uniform hypergraph. The edges in a $k$-graph are sometimes 
@@ -1678,25 +1674,25 @@ section.
 
 
 
-\subsubsection{Directed hypergraphs}
+\subsubsection{Directed hypergraphs}\index{Directed hypegraphs}\index{Hypergraph!Directed hypergraphs}
 An important difference with the previous section is that all hypergraphs we 
-have defined are \textbf{undirected}: their is no specific order in which an 
+have defined are \textbf{undirected}: there is no specific order in which an 
 edge connect different vertices. In a graph, directed edges arise naturally as 
 some vertex can be the source node and some vertex can be the terminal node, no other nodes
 are connected by an edge of a graph. For edges of hypergraphs this concept is not straightforward to generalize: one option is to see 
 edges as paths connecting vertices in a specific order,
- another option is to split the vertices connected by an edge in a set of source 
+ another option is to partition the vertices connected by an edge in a set of source 
  nodes and a set of terminal nodes. This last notion is 
 studied in \cite{gallo}. We will not discuss this topic in detail, all the 
 hypergraphs in this master thesis are undirected.
 
 
-\subsection{Incidence matrix}
+\subsection{Incidence matrix}\index{Incidence matrix}\index{Hypergraph!Incidence 
+matrix}\index{Matrix!Incidence matrix}
 A hypergraph can be represented as an incidence matrix by numbering the vertices 
 and the edges. The resulting incidence matrix will be a boolean matrix with only 
 $1$ and $0$ entries. An alternative way to represent a hypergraph is by using
-adjacency tensors. As said in this introduction, these are discussed in chapter 
-3.
+adjacency tensors.
 
 \begin{definition}\label{incidencematrixhypergraph}
   The \textbf{incidence matrix} of a hypergraph $\hgraf = (V, E)$ with vertices
@@ -1714,9 +1710,9 @@ adjacency tensors. As said in this introduction, these are discussed in chapter
     1 & 0 & 0 & 0 & 0\\
     1 & 1 & 0 & 0 & 0\\
     1 & 1 & 1 & 1 & 0\\
-    0 & 0 & 1 & 1 & 1\\
+    0 & 0 & 0 & 0 & 1\\
     0 & 0 & 1 & 1 & 0\\
-    0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 1 & 1 & 0\\
     0 & 0 & 0 & 0 & 0\\
   \end{pmatrix}.$$
 \end{example}
@@ -1744,7 +1740,7 @@ there is a much wider scope of applications than just search algorithms. Next, w
 of Blondel only returns the concept of node similarity which is in fact a 
 measurement of how similar two nodes of two graphs are to each other.
 
-\section{The HITS algorithm of Kleinberg}
+\section{The HITS algorithm of Kleinberg}\index{HITS-algorithm}
 \subsection{History}
 Back in the nineties, internet became more and more popular by the public. The popular search 
 engines back then where Altavista and Yahoo, but they weren't as advanced as 
@@ -1753,15 +1749,15 @@ were purely based on the number of occurrences of a word in a webpage. This was
 a pitfall for many reasons. The first reason was the growing popularity of the 
 internet: as more and more webpages were put online, simply getting the relevant 
 pages to a search query in this text-based manner, was a process that could possibly return millions 
-of relevant pages. Also \emph{content similarity} was an issue: a website owner 
+of relevant pages. Also \emph{content similarity}\index{Content similarity} was an issue: a website owner 
 can easily cheat in a text-based search system by just adding and repeating some 
 very popular search words, making his website appear in the results of a large 
 number of search queries.
 Two possible solutions were simultaneously invented in 1997 and 1998. The first 
 one was the
-\textit{PageRank}-system developed by Larry Page and Sergey 
+\textit{PageRank}\index{PageRank}\index{Google Pagerank}-system developed by Larry Page and Sergey 
 Brin (\cite{page}). The PageRank system led to the foundation of the immensely popular Google 
-search engine. Meanwhile, also Jon Kleinberg came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search). At that time,
+search engine. Meanwhile, also Jon Kleinberg\index{Kleinberg}\index{Jon Kleinberg} came up with his own solution, the\textit{ HITS algorithm} (hyperlink-induced topic search). At that time,
 he was both a professor in the Computer Science Department at the Cornell University and researcher for IBM. The algorithm is 
 used inter alia today by the Ask search engine (www.ask.com).
 Both these algorithms use the hyperlinks between webpages to rank search 
@@ -1774,7 +1770,7 @@ HITS algorithm is extensively explained.
 \subsection{Motivation}\label{motivatiehits}
 Kleinberg's work originates in the problems that arise with text-based searching the WWW. Text-based searching just counts all the occurrences of a given search query on webpages and returns a set of webpages ordered by decreasing occurency.
 When a user 
-supplies a search query, we probably face an \textit{abundance problem} with this method: the number of pages that could reasonably be returned as relevant is
+supplies a search query, we probably face an \textit{abundance problem}\index{Abundance problem} with this method: the number of pages that could reasonably be returned as relevant is
 far too large for a human user to digest. To provide effective search results 
 under these conditions, we need to filter the `authoritative' ones. We face some complications when we
 want to filter the `authoritative' webpages in a text-based system. For example, if we search for `\texttt{job offers in Flanders} 
@@ -1790,13 +1786,13 @@ The HITS algorithm solves these difficulties by analyzing the hyperlink
 structure among webpages. The idea is that hyperlinks encode a sort of human 
 judgment and that this judgement is crucial to formulate a notion of authority. 
 Specifically, when a page $p$ includes a link to page $q$, it means 
-that $p$ gives a \textit{conferred authority} on $q$. Again we face difficulties, because this conferred authority doesn't 
+that $p$ gives a \textit{conferred authority}\index{Conferred authority} on $q$. Again we face difficulties, because this conferred authority doesn't 
 hold for every link. Links are created for a wide variety of reasons, for 
 example, a large number of links are created for navigation within a website (e.g. ``Return to homepage'') 
 and these have of course nothing to do with a notion of authority. 
 
-The HITS method is based on the relationship between the \textit{authorities} for a topic 
-and those pages that link to many related authorities, called \emph{hubs}. Page $p$ 
+The HITS method is based on the relationship between the \textit{authorities}\index{Authority} for a topic 
+and those pages that link to many related authorities, called \emph{hubs}\index{Hub}. Page $p$ 
 is called an \textit{authority} for the query ``\texttt{smartphone brand}'' if it 
 contains valuable information on the subject. In our example websites of 
 smartphone manufacturers such as ``\texttt{www.apple.com}'', 
@@ -1917,7 +1913,7 @@ Our graph still contains some meaningless links in the context of page
  Applying the two described heuristics above on $\graf[S_\sigma]$, we get a new 
  graph $\graf'_\sigma$ which is exactly what we need to preform our link analysis.
  
- \subsection{Hubs and Authorities}
+ \subsection{Hubs and Authorities}\index{Hub} \index{Authority}
  A very simple approach would now be to order the pages in $\graf'_\sigma$ by 
  their indegree. Although this approach can sometimes return good search results, this
  heuristic is often too simple because $S_\sigma$ will probably contain some 
@@ -1935,7 +1931,7 @@ Our graph still contains some meaningless links in the context of page
  query $\sigma$. Figure \ref{hubauth} shows what this means conceptually.
  \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.6]{hubauth.png}\caption{The concept of hubs and authorities (Source: \cite{kleinberg})}\label{hubauth}
+  \includegraphics[scale=1]{fig1hits.pdf}\caption{The concept of hubs and authorities}\label{hubauth}
 \end{figure}
  
  So, for each page $j$ we assign two scores, an \textit{authority score} 
@@ -1943,7 +1939,7 @@ Our graph still contains some meaningless links in the context of page
  score} which estimates the value of the outgoing links to other pages. We get now a\textit{ mutually reinforcing 
  relation}: a good hub is a page pointing to many good authorities, a good 
  authority is a page that is pointed to by many good hubs. This leads us to a 
- \textit{mutually reinforcing relation} resulting in an iterative method to 
+ \textit{mutually reinforcing relation} \index{Mutually reinforcing relation} resulting in an iterative method to 
  break this circularity.
  
 So let $\graf'_\sigma = (V,\to)$ and let $h_j$ and $a_j$ be the hub and authority 
@@ -1962,7 +1958,7 @@ depicted in Figure \ref{reinforcing}.
 \mathbf{deze tekening wordt nog herwerkt}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.6]{basic.png}\caption{The basic operations in the reinforcing relation between hubs and authorities (Source: \cite{kleinberg})}\label{reinforcing}
+  \includegraphics[scale=1]{fig2hits.pdf}\caption{The basic operations in the reinforcing relation between hubs and authorities}\label{reinforcing}
 \end{figure}
 
 Let $B$ be the adjacency matrix of $\graf'_\sigma$ and denote $\mathbf{a}$ as the authority vector with coordinates $(a_1,a_2,\ldots,a_n)$ (with $n = 
@@ -2064,7 +2060,7 @@ value for the number of iteration steps $k$ is appropriate and vice versa.
 Experiments in $\cite{kleinberg}$ showed that $k$ set to $20$ is sufficient to 
 become stable for finding the $5$ best hubs and authorities, thus for $c = 5$. 
 
-\subsection{Convergence of the algorithm}
+\subsection{Convergence of the algorithm}\index{Convergence}
 We now want to prove that for arbitrarily large values of $k$, the
 sequence $Z^{(k)}$ converge to a limit $(\mathbf{h'}, \mathbf{a'})$. Before 
   prove the convergence, note that  adjacency matrices are nonnegative by definition, and thus the matrix $M$ is 
@@ -2381,7 +2377,8 @@ a graph containing a lot more websites (it's very unlikely that you find a websi
 results we wanted intuitively.
 
 \end{example}
- \subsubsection{Predictors in the Eurovision Song Contest 2009-2014}
+ \subsubsection{Predictors in the Eurovision Song Contest 
+ 2009-2014}\index{Predictor}\index{Eurovision}
  The Eurovision Song Contest is an annual competition between countries whose 
  public broadcaster is part of the EBU-network. The contest is the biggest music 
  competition in the world, reaching about 200 million anually.
@@ -2643,13 +2640,13 @@ Armenia                                                    & 0.050899      & 0.1
 The HITS-algorithm is one of the few algorithms that has the ability to rank pages according to a specific search 
 query.
 Also the computational cost of the HITS-algorithm, which equals the cost of 
-the power method (see \ref{powersection}), is not excessive and feasible for most servers. 
+the power method\index{Power method} (see \ref{powersection}), is not excessive and feasible for most servers. 
 The result of the HITS-algorithm for popular queries will also be cached by most 
 search engines, which reduces the computational cost even more because the saved results can be served
 directly to the user without any new calculations. 
 
 The biggest 
-disadvantage of the HITS-algorithm is that it suffers from \emph{topic drift}: 
+disadvantage of the HITS-algorithm is that it suffers from \emph{topic drift}\index{Topic drift}: 
 the graph $\graf'_\sigma$ could contain nodes which have high authority scores 
 for the query but are completely irrelevant.  E.g. \texttt{Facebook} is nowadays a universally popular website, 
 almost every website 
@@ -2666,21 +2663,30 @@ combination with a lot of other procedures.
 \section{Node similarity}\label{sectionnodesim}
 This section provides a detailed overview of the paper `\emph{A Measure of Similarity between Graph Vertices: 
 Applications to Synonym Extraction and Web Searching}'\cite{blondel} of V. D. Blondel and others. 
-The paper generalizes the HITS-algorithm leading to the concept of similarity on 
-directed graphs. This concept is explained in detail and far more mathematically 
-rigorously than in the previous section. Recall our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
+The paper generalizes the HITS-algorithm leading to the concept of similarity on  graphs. This concept is explained in detail and far more mathematically 
+rigorously than in the previous section. Recall, for example, our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
 eigenvalue. Although this is satisfactory in practical examples, we want to 
-construct a concept that works for all types of directed graphs, also the ones leading to 
+construct a concept that works for all types of (directed) graphs, also the ones leading to 
 matrices with dominant eigenvalues with multiplicity greater than 1 and therefore 
 we will develop a method to work around this situation.  
 
-\subsubsection{From Hubs and Authorities to structure graphs}
-We start with an introduction on how we generalize the construction of the previous section. We don't present any proofs in this subsection,
-the results are shown in the next subsections.
+\subsubsection{Introduction}\index{Structure 
+graph}\index{Graph!Structure graph}
+In this introduction, we explain the main idea behind the method of Blondel (in the following chapters, we will always refer
+to this method as the method of Blondel). Because we are focussing on the intuitive ideas, 
+we don't prove any theorems in this section. The theoretical results are 
+presented in the following sections.
 
-Remember from the previous section
-we constructed a graph $\graf'_\sigma$ and calculated hub and authorities scores for each vertex.
-Now, for any directed graph $\graf$, the authority score of a vertex $v_j$ of $\graf$ can be thought of as a \emph{score} between $v_j$ of $\graf$ 
+The method of Blondel is a pure 
+generalization of the HITS-algorithm. Remember from the previous section that we 
+constructed a graph $\graf'_\sigma$ and calculated hub and authorities scores 
+for each vertex. Well, Blondel found a way to replace these hub and authority 
+scores by just another graph, allowing us to compare $\graf'_sigma$ to any other 
+graf $\grafeen$. We will call the graph that replaces the hub and authority 
+scores the \textit{structure graph}.
+
+
+How does this work? For $\graf'_\sigma$ , the authority score of vertex $v_j$ of $\graf'_\sigma$  can be thought of as a \emph{score} between $v_j$ of $\graf$ 
 and the vertex denoted as \emph{authority} of the graph:
 
 \begin{center}
@@ -2700,15 +2706,16 @@ and the vertex denoted as \emph{authority} of the graph:
     
 \end{tikzpicture}
 \end{center}
-and, conversely, the hub score of vertex $v_j$ of $\graf$ can be thought of as a 
-score between $v_j$ and the vertex denoted as \emph{hub}. We call the hub-authority graph a 
+and, conversely, the hub score of vertex $v_j$ of $\graf'_\sigma$  can be thought of as a 
+score between $v_j$ and the vertex denoted as \emph{hub}. We can replace $\graf'_\sigma$  with any other (directed) graph
+$\graf$. We call the hub-authority graph a 
 \emph{structure graph} and we already know the resulting iterative method from the previous section. 
 We will call this scores \emph{similarity scores}.
 
 The central question is now: which \emph{mutually reinforcing relation} (iterative method) do we get when using another structure graph, 
 different from the hub-authority structure graph? 
-We start with an example. In our example, we use as structure graph a path graph with three vertices $v_1$, $v_2$, $v_3$. 
-
+If we take, for example, as structure graph a path graph with three vertices $v_1$, $v_2$, 
+$v_3$:
 \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
                     thick]
@@ -2734,7 +2741,7 @@ relation:
 $$\begin{cases} x_{i1} := \hspace{75px} \sum_{j:(w_i,w_j)\in \to} x_{j2},\\ 
 x_{i2} := \sum_{j:(w_j,w_i)\in \to} x_{j1}\hspace{75px} + \sum_{j:(w_i,w_j)\in \to} x_{j3},\\
 x_{i3} := \hspace{75px}\sum_{j:(w_j,w_i)\in \to} x_{j2},
-\end{cases}$$or, in matrix form ($\mathbf{x_j}$ denotes the column vector with entries $x_{ij}$, $B$ is the adjacency matrix of graph $\graf$),
+\end{cases}$$or, in matrix form ($\mathbf{x}_j$ denotes the column vector with entries $x_{ij}$, $B$ is the adjacency matrix of graph $\graf$),
 
 $$\begin{pmatrix}
 x_1\\
@@ -2767,18 +2774,16 @@ that without this assumption, the sequence \ref{sequencealgemeen} does not
 always converge but oscillates between the limits:
 $$\mathbf{z}_\text{even}= \lim_{k\to\infty}\mathbf{z}^{(2k)}\quad\text{and}\quad \mathbf{z}_{\text{odd}}= \lim_{k\to\infty}\mathbf{z}^{(2k+1)}$$ 
 The limit vectors $\mathbf{z}_\text{even}$ and $\mathbf{z}_\text{odd}$ do in 
-general depend on the initial vector $\mathbf{z}^{(0)}$. The set of all limit vectors obtained when 
-starting from a positive initial vector is given by:
-$$ Z = \{\mathbf{z}_\text{even}(\mathbf{z}^{(0)}), \mathbf{z}_\text{odd}(\mathbf{z}^{(0)}): \mathbf{z}^{(0)} > 
-0\},$$
-and we would like to select a particular vector in that set. We will prove later on that the vector $\mathbf{z}^{(0)}=\mathbf{1}$
+general depend on the initial vector $\mathbf{z}^{(0)}$. We will prove later on that the vector $\mathbf{z}^{(0)}=\mathbf{1}$
 is a good choice because it's the unique 
-vector with the largest possible Manhattan\footnote{$\|\boldsymbol{x}\|_1 := \sum_{i=1}^{n} |x_i|$ for $\mathbf{x}\in\R^n$is the Manhattan norm.} (we will prove this in Theorem \ref{grootbewijs}) norm. We denote  
-$\mathbf{z}_{\text{even}}(\mathbf{1})$.
+vector with the largest possible Manhattan norm.
 
 The  
 extremal limit  $\mathbf{z}_{\text{even}}(\mathbf{1})$ will be defined as the \textit{similarity 
-matrix}.
+matrix}, so we write $S = \mathbf{z}_{\text{even}}(\mathbf{1})$. The element $s_{ij}$ is called the \textit{similarity score}
+between vertex $w_i$ of $\graph$ and vertex $v_j$ of the structre graph. 
+
+
 
 We now give a numerical example.
 \begin{example}\label{ergvoorbeeld}
@@ -2851,7 +2856,7 @@ The similarity score of $w_4$ with $v_2$ of the structure graph is equal to
 $0.1579$.
  \end{example}
 
- We now construct the general case. Take two directed graphs $\graf=(U, \to)$ and $\grafeen=(V, \to')$ 
+ We now construct the general case. Take two (directed) graphs $\graf=(U, \to)$ and $\grafeen=(V, \to')$ 
  with $n_\graf$ and $n_\grafeen$ the order of the graphs. We think of $\graf$ as the structure 
  graph (such as the graphs $\text{hub}\to \text{authority}$ and the graph $1\to 2\to 
  3$ in the previous paragraphs). We get the following mutually reinforcing updating iteration with as updating equations:
@@ -2939,7 +2944,7 @@ $$S = \begin{pmatrix}
  \end{pmatrix}$$
  We see for example, that vertex $v_2$ of $\graf_A$ is most similar to
  vertex $v'_3$ in $\graf_B$  because the similarity score $s_{32}$ 
- is the highest among the similarity scores in $s_{2}$.
+ is the highest among all the similarity scores of $v_{2}$.
  \end{example}
  
  \subsection{Convergence of the sequence $\mathbf{z}^{(k)}$}
@@ -2949,12 +2954,12 @@ arrive there, we first need some results on the eigenvectors and eigenvalues of 
 The Perron-Frobenius applies only to nonnegative, \emph{irreducible} matrices, 
 but we will prove in Theorem \ref{perronzonderperron} that also nonnegative 
 matrices $M$ have a Perron root (see Definition \ref{perronroot}) 
-that has an associated Perron vector. We will also investigate more specific 
+that has an associated Perron vector. We will also investigate in more specific 
 results in the case $M$ is not only nonnegative, but also symmetric. 
 
-The reason why we prove all this is clear: remember that in the previous chapter 
-we assumed that $M$ has a unique dominant eigenvalue and showed convergence by the Power Method. 
-This approach is far to naive when introducing 
+The reason why we prove all this is clear: remember that for the HITS-algorithm in the previous chapter 
+we assumed that $M$ has a unique dominant eigenvalue and showed convergence by the Power method. 
+This approach is far too naive when introducing 
 similarity on graph vertices, because graphs can lead to matrices where there is 
 no unique dominant eigenvalue. To solve this, a more profound 
 mathematical analysis of the concept is needed, which we present here.
@@ -2985,31 +2990,31 @@ Jordan canonical form of a square matrix $A$ (see Theorem in \cite{kieboom}).
   \end{theorem}
 
 \begin{lemma}\label{eigennorm}
-  Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matix norm $\|. \|$ 
+  Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matrix norm $\|. \|$ 
   such that:
   $$\|A\| \leq \rho(A) + \epsilon$$
 \end{lemma}
 \begin{proof}
   The Jordan canonical form of $A$ is:
-  $$A = S \begin{bmatrix}
+  $$A = S \begin{pmatrix}
   J_{n_1}(\lambda_1) & 0 & \ldots & 0 \\
   0 & J_{n_2}(\lambda_2) & \ddots & \vdots \\
   \vdots & \ddots & \ddots & 0\\
   0 & \ldots & 0 & J_{n_k}(\lambda_k)
-  \end{bmatrix}S^{-1},$$
+  \end{pmatrix}S^{-1},$$
   where $S \in \R^{n\times n}$ is an invertible matrix, $\lambda_1, \ldots, \lambda_k$ 
   are the eigenvalues of $A$ and $n_1 + \ldots + n_k = n$. Let:
-  $$D(\eta) = \begin{bmatrix}
+  $$D(\eta) = \begin{pmatrix}
   D_{n_1}(\eta) & 0 & \ldots & 0 \\
   0 & D_{n_2}(\eta) & \ddots & \vdots \\
   \vodts & \ddots & \ddots & 0\\
   0 & \ldots & 0 & D_{n_k}(\eta)
-  \end{bmatrix}\quad \text{with } D_m(\eta)= \begin{bmatrix}
+  \end{pmatrix}\quad \text{with } D_m(\eta)= \begin{pmatrix}
   \eta & 0 & \ldots & 0 \\
   0 & \eta^2 & \ddots & \vdots\\
   \vdots & \ddots & \ddots & 0 \\
   0 & \ldots & 0 & \eta^m
-  \end{bmatrix}$$
+  \end{pmatrix}$$
   Since the left multiplication by $D_m(1/\epsilon)$ multiplies the $i$th row by $1/\epsilon^i$ 
   and the right multiplication on the right by $D_m(\eta)$ multiplies the $j$th 
   colum by $\epsilon^j$, we calculate:
@@ -3033,7 +3038,7 @@ Jordan canonical form of a square matrix $A$ (see Theorem in \cite{kieboom}).
     &=& \max_{l \in [1:n]} \sum^n_{k=1} 
     |(D(1/\epsilon)S^{-1}MSD(\epsilon))_{k,l}|.
  \end{eqnarray}
- The conditions for being a matrix norm are trivially met because we know that $\max_{\|\mathbf{x}\|_1 = 1} \|A\mathbf{x}\|$ is a matrix norm for any $A$ in $\C^{n\times n}$.
+ The conditions for being a matrix norm are trivially met because $\max_{\|\mathbf{x}\|_1 = 1} \|A\mathbf{x}\|$ is a matrix norm.
 \end{proof}
 
 \begin{theorem}\label{spectraalformula}\textbf{Spectral radius formula}
@@ -5006,7 +5011,7 @@ methods for graphs:
   the same similarity scores because, intuitively, they play the same role. 
   Actually, we can give a more general definition of interchangeability in 
   hypergraphs:
-  \begin{definition}
+  \begin{definition}\label{definterhyp}
     Two vertices $v_i, v_j$ of a hypergraph $\hgraf$ are \textbf{interchangeable 
     vertices}
   if for each edge of size $k+1$ that connect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_k$, there is an edge of size $k+1$ (possibly the same) that connects
@@ -5078,7 +5083,8 @@ of $\graf_A$. We see that $s_{i,j}$, the similarity score between $v_i$ of $B$ a
   We will show that this holds for the method of Blondel on graphs by proving the 
   following an easy theorem. Altough we would be fine to prove it just for undirected graphs as hypergraphs
   will always have undirected graph representations, we also consider the 
-  directed case.
+  directed case. Notice that all isolated vertices in a graph are always 
+  interchangeable.
  \begin{theorem}
     Let $\graf_A$ be a graph with interchangeable vertices and $\graf_B$ another 
     graph, then by calculating the similarity matrix between $\graf_A$ and 
@@ -5258,12 +5264,12 @@ graphs.
 \subsection{Line-graphs}
 \subsubsection{General definitions and properties}
 \begin{definition}\label{linegraphdef}
-  Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{E_1, \ldots E_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the graph 
-  often denoted by $\ell(\hgrafeen) = (V', \to)$ 
+  Let $\hgrafeen = (V,E)$ be a hypergraph with $E \not = \emptyset$ and $E = \{E_1, \ldots E_m\}$. The \textbf{line-graph} of $\hgrafeen$ is the undirected graph 
+  often denoted by $\ell(\hgrafeen) = (V', \leftrightarrow)$ 
 with:
   \begin{enumerate}
     \item $V' = E$,
-    \item $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$.
+    \item $E_i \leftrightarrow E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$.
       \end{enumerate}
 \end{definition}
 
@@ -5936,18 +5942,18 @@ information about the vertex adjacency is saved.
    edges.
  \end{theorem}
  \begin{proof}
-   Two interchangeable edge in a hypergraph if they contain exactly the same 
+   Two edges are interchangeable in a hypergraph if they contain exactly the same 
    vertices. They form an equivalence class on $E$ where $E_i \sim E_j$ if they 
    are interchangeable. Let $\overline{E_i}$ be the class of interchangeable 
    edges with $E_i$, we assume that this class contains at least 2 edges. Now from Defintion \ref{linegraphdef} we see that
-   $E_i \to E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ 
-   in the linegraph represenation, thus all the edges in $\overline{E_i}$ will 
+   $E_i \leftrightarrow E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ 
+   in the linegraph representation, thus all the edges in $\overline{E_i}$ will 
    have exactly the same adjacency structure, making them interchangeable as vertices in the 
-   line-graph represenation too.
+   line-graph representation too.
  \end{proof}
  Because the line-graph representation preserves interchangeable edges and we use the method of Blondel for which we already proved
  in (E6) that this condition holds, the result follows.
-  \item[(C7)] Not fulfilled: from Example \ref{ex1line} we see that alle edges 
+  \item[(C7)] Not fulfilled: from Example \ref{ex1line} we see that all edges 
   have exactly the same similarity scores but none of them is interchangeable.
    \item[(C8)] Not fulfilled: no information on the number of vertices an edge 
 contains is preserverd by the line-graph representation.
@@ -5958,8 +5964,7 @@ contains is preserverd by the line-graph representation.
   such that $E_{k_{i-1}} \cap E_{k_i} \not = \emptyset$. 
   
   
- To see heuristically that this 
-  condition holds, just check Property \ref{linegrafconnected}. The connectivity 
+ This follows immediately from  Property \ref{linegrafconnected}. The connectivity 
   of edges is indeed represented in the line-graph representation by definition. 
   
 
@@ -5981,11 +5986,11 @@ which will introduce a more sophisticated way to say something about
 similarity between two hypergraphs by using their $2$-section.
 
 \begin{defintion}
-  The \textbf{$2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]_2 = (V,\to)$ 
+  The \textbf{$2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]_2 = (V,\leftrightarrow)$ 
   with:
   \begin{itemize}
     \item The same vertex set as the hypergraph,
-    \item $v_i \to v_j$ if and only if $v_i, v_j \in E_k$ for some $E_k \in E$ and $i \not = j$.
+    \item $v_i \leftrightarrow v_j$ if and only if $v_i, v_j \in E_k$ for some $E_k \in E$ and $i \not = j$.
   \end{itemize}
   \end{defintion}
   
@@ -6251,57 +6256,11 @@ by calculating the adjacency matrices of the 2-section,
    \end{pmatrix}$$
    
 \end{example}
-\subsubsection{Interpretation}
 
-\begin{itemize}
-  \item[(C1)] Not fulfilled: an undirected graph with multiple edges between two vertices $v_p, v_q$ will `lose' this
-  edges in its 2-section. Also loops are not taken into consideration. Take for example the following graph $\graf$:
-   \begin{center}
-\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-                    thick]
-                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
-                            inner sep=0pt]
-
-
-  \node[main node] (1) [label=above:$v_1$] {};
-  \node[main node] (2) [label=above:$v_2$][right of=1] {};
-
-  \path[every node/.style={font=\sffamily\small}]
-   
-    (1) edge node [above] {$e_1$} (2)
-      (1) edge[bend left=30] node [above] {$e_2$} (2)
-           (1) edge [loop below] node {$e_3$} (1)
-
-    
-\end{tikzpicture}
-
-\end{center} 
-$\graf$ will have as 2-section:
- \begin{center}
-\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-                    thick]
-                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
-                            inner sep=0pt]
-
-
-  \node[main node] (1) [label=above:$v_1$] {};
-  \node[main node] (2) [label=above:$v_2$][right of=1] {};
-
-  \path[every node/.style={font=\sffamily\small}]
-   
-    (1) edge node [above] {$e_1$} (2)
-      
-    
-\end{tikzpicture}
-
-\end{center}
-  \item[(C2)] Fulfilled: the number of vertices is preserved in the 2-section of 
-  a hypergraph, so each vertex is taken into account when calculating the 
-  similarity matrix.
-  \item[(C3)] Not fulfilled: introducing an edge in a hypergraph that connects vertices who are already connected, 
-doesn't change anything to the 2-section of the hypergraph (by definition), for 
-instance if we take $\hgrafeen_1$ in Example \ref{ex2sec1} as follows:
-   \begin{center}
+\begin{example}\label{ex2sec4}
+       Let $\hgrafeen_2$ be the same as in the previous example (Example \ref{ex2sec3}), but take for 
+       $\hgrafeen_1$ the following hypergraph:
+     \begin{center}
    \begin{tikzpicture}
     \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
 \tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
@@ -6363,7 +6322,75 @@ instance if we take $\hgrafeen_1$ in Example \ref{ex2sec1} as follows:
 
 \end{tikzpicture}
 \end{center}
-then we will get the same similarity matrix as the introduced edge $E_4$ will not influence the similarity scores at all 
+The similarity matrix using the $2$-section of the hypergraph becomes the same as in the previous example:
+ $$S = \begin{pmatrix}
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.0397&0.0436&0.0077&0.0409&0.0436&0.0246&0.0397&0.0436\\
+0.1623&0.1782&0.0314&0.1673&0.1782&0.1004&0.1623&0.1782\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0.1493&0.1639&0.0289&0.1538&0.1639&0.0923&0.1493&0.1639\\
+0&0&0&0&0&0&0&0
+   \end{pmatrix}$$
+
+\end{example}
+\subsubsection{Interpretation}
+
+\begin{itemize}
+  \item[(C1)] Not fulfilled: an undirected graph with multiple edges between two vertices $v_p, v_q$ will `lose' this
+  edges in its 2-section. Also loops are not taken into consideration. Take for example the following graph $\graf$:
+   \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {$e_1$} (2)
+      (1) edge[bend left=30] node [above] {$e_2$} (2)
+           (1) edge [loop below] node {$e_3$} (1)
+
+    
+\end{tikzpicture}
+
+\end{center} 
+$\graf$ will have as 2-section:
+ \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {$e_1$} (2)
+      
+    
+\end{tikzpicture}
+
+\end{center}
+  \item[(C2)] Fulfilled: the number of vertices is preserved in the 2-section of 
+  a hypergraph, so each vertex is taken into account when calculating the 
+  similarity matrix. We conclude with the same reasoning as (E2) that the 
+  condition is fulfilled.
+  \item[(C3)] Not fulfilled: introducing an edge in a hypergraph that connects vertices who are already connected, 
+doesn't change anything to the 2-section of the hypergraph (by definition), for 
+instance, we see in Example \ref{ex2sec4} that get the same similarity matrix as in Example \ref{ex2sec3} as introducing edge 
+$E_4$ doesn't influence the similarity scores at all 
 because $v_1, v_4, v_7$ were already adjacent to each other in the 2-section of 
 $\hgrafeen_1$. 
 
@@ -6375,25 +6402,49 @@ $\hgrafeen_1$.
   
   This can be explained 
   generally by the fact that the 2-section preserves the adjacency relations between 
-  vertices of the hypergraph by definition. Therefore, this is a consequence 
-  from Algorithm \ref{algsimilarity} that returns a high similarity score of a 
-  vertex in a graph (in this case the 2-section of the hypergraph) when the similarity score of the adjacent vertices is large.
+  vertices of the hypergraph by definition (namely: a vertex that is adjacent to another vertex in the hypergraph, will also be adjacent in the $2$-section). By preserving this relations, we can 
+  use the information in (E4) to conclude that this condition is fulfilled.
     \item[(C5)] This condition does not apply on this method because we don't calculate edge similarity scores.
    \item[(C6)] Fulfilled: all interchangeable vertices have the same similarity 
    scores in the Examples \ref{ex2sec1}, \ref{ex2sec2}, \ref{ex2sec3}. This is can be explained
    by the fact that the interchangeable vertices of a hypergraph are also 
-   interchangeable vertices in the 2-section graph.
+   interchangeable vertices in the 2-section graph. We will prove this:
    
+    \begin{theorem}
+   The $2$-section of a hypergraph preserves interchangeable vertices.
+   vertices. \end{theorem}
+ \begin{proof}
+   The interchangeable vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
+   $V$, take an equivalence $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two interchangeable vertices),
+   this means that all vertices in $\overline{v_i}$ have exactly the same adjacency structure in the hypegraph $\hgraf$.  
+   So, when a vertex in $\overline{v_i}$ is adjacent to a vertex $v_p$, all 
+   vertices in $\overline{v_i}$ are adjacent to $v_p$ in the hypergraph 
+   $\hgraf$. By the definition of the $2$-section, this means that all vertices 
+   in $\overline{v_i}$ will also have an edge connecting them to $v_p$ in the 
+   $2$-section. So in the $2$-section, all vertices in $\overline{v_i}$ will be adjacent to 
+  the same vertices, making them also interchangeable by the definition of interchangeable vertices in graphs.   
+   
+ \end{proof}
+ Because the $2$-section preserves interchangeable vertices and we use the method of Blondel for which we already proved
+ in (E6) that this condition holds, the result follows.
    
      \item[(C7)] Not fulfilled: we know from (C3) that edges that connect 
      vertices that where already connected by other edges have no effect on
-   the 2-section. This means that $\hgrafeen$ in the example in (C3) would 
-     return the same similarity scores for $v_1$ and $v_7$ although they are not 
-     interchangeable.
+   the 2-section. This means that $\hgrafeen_1$ in Example \ref{ex2sec4}
+     returns the same similarity scores for $v_1$ and $v_7$ although they are not 
+     interchangeable in the hypergraph. The reason why this condition goes 
+     completely wrong is easy to see by this example: two vertices are adjacent in the 
+     $2$-section of the hypergraph if there is just one edge connecting them, 
+     meaning that all the other information on the connecting edges between those two vertices is lost in the $2$-section (size of the connecting edges,
+     number of connecting edges,...), which can result in a $2$-section that contains a lot more interchangeable vertices than the
+     represented hypergraph.   
+     
      \item [(C8)] Not fulfilled: the $2$-section doesn't save any information 
      about the number of vertices in each edge. 
   \item[(C9)] Fulfilled by the fact that isolated vertices in a hypergraph will 
-  also be isolated in the 2-section.
+  also be isolated in the $2$-section by definition. Because we already know from (E9) that this condition
+  holds for the method of Blondel, we conclude that 
+  this condition is fulfilled.
   \end{itemize}  
 
 \subsubsection{Conclusion}
@@ -6416,13 +6467,13 @@ the added edge connects vertices which were already connected. This is bad, beca
   \subsection{Extended $2$-section of a hypergraph}
  \subsubsection{General definitions and properties}
 \begin{defintion}
-  The \textbf{extended $2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]'_2 = (V,\to)$ 
+  The \textbf{extended $2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]'_2 = (V,\leftrightarrow)$ 
   with:
   \begin{itemize}
     \item The same vertex set as the hypergraph,
-    \item for every $E_i \in E$ with $|E_i| > 1$: $v_k \to v_l$ for every $v_k, v_l \in E_i and k \not 
+    \item for every $E_i \in E$ with $|E_i| > 1$: $v_k \leftrightarrow v_l$ for every $v_k, v_l \in E_i and k \not 
     = l$,
-    \item for every $E_i \in E$ with $|E_i| =1$ : $v_k \to v_k$ for $v_k \in 
+    \item for every $E_i \in E$ with $|E_i| =1$ : $v_k \leftrightarrow v_k$ for $v_k \in 
     E_i$.
     \end{itemize}
       \end{defintion}
@@ -6606,34 +6657,265 @@ $E_4$ and therefore, $v_1$ and $v_7$ are not interchangeable. Conversely, in the
 to the same similarity scores for $v_1, v_7$.
 \end{example}
 
+\begin{example}\label{ex2extended}
+  Take $\hgrafeen_1$ as in Example \ref{ex1line} and $\hgrafeen_2$ as:
+       \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,left of=v3,label=above:\(v_2\)] (v2) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v3,label=above:\(v_1\)] (v1) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v2) -- (v3)--(v4);
+\fill[edge,opacity=1,color=green] (v2.center)--(v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=yellow] (v1) -- (v2);
+\fill[edge,opacity=1,color=yellow] (v1.center) -- (v2.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v1) -- (v3);
+\fill[edge,opacity=1,color=blue] (v1.center) -- (v3.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=purple] (v1) -- (v4);
+\fill[edge,opacity=1,color=purple] (v1.center) -- (v4.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-5,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e3,color=purple,label=right:\(E_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+The similarity matrix becomes:
+$$S = \begin{pmatrix}
+0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
+0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
+0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
+0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
+\end{pmatrix}$$
+Based on this results, we could conclude that all vertices in $\hgraf_2$ are 
+interchangeable (C7), which is not the case: following Definition \ref{definterhyp}, 
+only $v_2, v_3, v_4$ are interchangeable.
+\end{example}
+
+
 \subsubsection{Interpretation}
 
 \begin{itemize}
-  \item[(C1)] Fulfilled by definition of the extended 2-section. An undirected 
-  graph will have exactly the same vertices and exactly the same edges in his 
+  \item[(C1)] Fulfilled: it's trivial to see that by definition of the extended 2-section, an undirected 
+  graph will have exactly the same vertices and exactly the same edges in it's
   extended 2-section.
-    \item[(C2)] Fulfilled (see `normal' 2-section). 
-    \item[(C3)] Fulfilled: all edges are represented in the extended 2-section of 
-  a hypergraph by definition.
-  \item[(C4)] Fulfilled (see `normal' 2-section).
-  \item[(C5)] This condition does not apply on this method.
-  \item[(C6)] Fulfilled (see `normal' 2-section).
-  \item[(C7)] Fulfilled: because all the edges are represented in the extended 
-  2-section of a hypergraph, the interchangeable vertices in the extended 2-section are 
-  also the interchangeable vertices in the hypergraph.
+    \item[(C2)] Fulfilled: the number of vertices is preserved in the extended 2-section of 
+  a hypergraph, so each vertex is taken into account when calculating the 
+  similarity matrix. We conclude with the same reasoning as (E2) that the 
+  condition is fulfilled \textit{(equal to`normal' 2-section)}.    
+  \item[(C3)]  Fulfilled: the number of edges is preserved in the extended 2-section of 
+  a hypergraph, so each edge is taken into account when calculating the 
+  similarity matrix. We conclude with the same reasoning as (E3) that the 
+  condition is fulfilled.
+  \item[(C4)] Fulfilled: the extended 2-section preserves the adjacency relations between 
+  vertices of the hypergraph by definition (namely: a vertex that is adjacent to another vertex in the hypergraph, will also be adjacent in the extended $2$-section). By preserving this relations, we can 
+  use the information in (E4) to conclude that this condition is fulfilled.\textit{(equal to`normal' 2-section)}
+  \item[(C5)]   This condition does not apply on this method because we don't calculate edge similarity scores.
+
+  \item[(C6)] Fulfilled. \begin{theorem}
+   The extended $2$-section of a hypergraph preserves interchangeable vertices.
+  \end{theorem}
+ \begin{proof}
+   The interchangeable vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
+   $V$, take an equivalence class $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two interchangeable vertices),
+   this means that all vertices in $\overline{v_i}$ have exactly the same adjacency structure in the hypegraph $\hgraf$.  
+   So, when a vertex in $\overline{v_i}$ is adjacent to a vertex $v_p$ with $k$ edges that connect both vertices (the size of these
+   edges doesn't matter), all 
+   vertices in $\overline{v_i}$ are adjacent with $k$ edges to $v_p$ in the hypergraph 
+   $\hgraf$. By the definition of the extended $2$-section, this means that all vertices 
+   in $\overline{v_i}$ will also have $k$ edges connecting them to $v_p$ in the 
+   $2$-section. So in the extended $2$-section, all vertices in $\overline{v_i}$ will be adjacent to 
+  the same vertices, and connecting each vertex $\overline{v_i}$ with the same amount of edges to these vertices, making them also
+   interchangeable in the extended $2$-section by the definition of interchangeable vertices in graphs.   
+   
+ \end{proof}
+ Because the $2$-section preserves interchangeable vertices and we use the method of Blondel for which we already proved
+ in (E6) that this condition holds, the result follows.
+ \textit{(equal to`normal' 2-section)}   
+ \item[(C7)] Not fulfilled:  Example \ref{ex2extended} is a good example 
+ that shows that (C7) is not fulfilled. The reason why it goes wrong in this 
+ example, is because the extended $2$-section doesn't save any information 
+ about the number of vertices an edge connects, so the extended $2$-section fails to 
+ see the difference between $E_1$ and the other edges, leading to the following extended $2$-section where all 
+ vertices are indeed interchangeable:
+      \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+\node[main node,label=below:\(v_3\)] (3) {};
+\node[main node,left of=3,label=below:\(v_2\)] (2) {};
+\node[main node,right of=3,label=below:\(v_4\)] (4) {};
+\node[main node,above of=3,label=above:\(v_1\)] (1) {};
+ 
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {} (2)
+      (1) edge node [above] {} (3)
+      (1) edge node [above] {} (4)
+        (2) edge node [above] {} (3)
+          (4) edge node [above] {} (3)
+          (2) edge[bend left=30] node [above] {} (4)
+\end{tikzpicture}
+\end{center}
+  
+ so from (E7) we know  that this condition is met for graphs with the method of
+ Blondel, so when vertices become interchangeable in a graph representation in a 
+ hypergraph when they are not interchangeable in the hypergraph, it goes wrong.
+ 
+  One may wonder if we can do better when considering $k$-uniform hypergraphs, 
+  because all edges are the same in this case and we know that no information about the 
+  number of vertices an edge is saved in the extended $2$-section but this is 
+  obviously not so terrible if every edge shares the same size. Unfortnately, 
+  also in the case of $k$-uniform hypergraphs we can construct examples where 
+  vertices would be recognised as interchangeable in the extended $2$-section 
+  but arent't interchangeable in the hypergraph itself:
+  \begin{example}
+  Consider following hypergraph:
+         \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_1\)] (v1) {};
+\node[vertex,right of=v1,label=above:\(v_4\)] (v4) {};
+\node[vertex,right of=v4,label=above:\(v_2\)] (v2) {};
+\node[vertex,above of=v4,label=above:\(v_3\)] (v3) {};
+\node[vertex,below of=v4,label=above:\(v_5\)] (v5) {};
+\node[vertex,below of=v5,label=above:\(v_6\)] (v6) {};
+
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v1) -- (v3)--(v4);
+\fill[edge,opacity=1,color=green] (v1.center)--(v3.center) -- (v4.center);
+\draw[edge,opacity=1,color=green] (v1) --(v4);
+\fill[edge,opacity=1,color=green] (v1.center)--(v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=yellow] (v1) -- (v5)--(v6);
+\fill[edge,opacity=1,color=yellow] (v1.center) -- (v5.center) -- (v6.center);
+\draw[edge,opacity=1,color=yellow] (v1) --(v6);
+\fill[edge,opacity=1,color=yellow] (v1.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v2) -- (v3);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v3.center);
+\draw[edge,opacity=1,color=blue] (v2) -- (v6);
+\fill[edge,opacity=1,color=blue] (v2.center) -- (v6.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=purple] (v2) -- (v4) -- (v5);
+\fill[edge,opacity=1,color=purple] (v2.center) -- (v4.center)--(v5.center);
+\draw[edge,opacity=1,color=purple] (v2) -- (v5) ;
+\fill[edge,opacity=1,color=purple] (v2.center) -- (v5.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-5,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e3,color=purple,label=right:\(E_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+  No vertex is interchangeable with another vertex is in this hypergraph, but 
+  when looking at the extended $2$-section:
+        \begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+\node[main node,label=left:\(v_1\)] (1) {};
+\node[main node,right of=1,label=below left:\(v_4\)] (4) {};
+\node[main node,right of=4,label=right:\(v_2\)] (2) {};
+\node[main node,below of=4,label=below left:\(v_5\)] (5) {};
+\node[main node,above of=4,label=above:\(v_3\)] (3) {}; 
+\node[main node,below of=5,label=below:\(v_6\)] (6) {};
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {} (3)
+      (1) edge node [above] {} (4)
+      (1) edge node [above] {} (5)
+      (1) edge node [above] {} (6)
+       (2) edge node [above] {} (3)
+      (2) edge node [above] {} (4)
+      (2) edge node [above] {} (5)
+      (2) edge node [above] {} (6)
+       (3) edge node [above] {} (4)
+     (4) edge node [above] {} (5)
+      (5) edge node [above] {} (6)
+       (3) edge[bend left=120] node [above] {} (6)
+      
+      
+      
+      
+      \end{tikzpicture}
+\end{center}
+  In this extended $2$-section, we get that $\{v_1, v_2\}$ are interchangeable, although none of 
+  the vertices in the hypergraph is interchangeable. The reason why it goes 
+  wrong in this case is that the $3$-edges of the hypergraph $\hgraf$ are 
+  distributed as `normal' edges of size $2$ in the extended $2$-section, so the information
+  about which vertices belong to each hyperegdge is lost, making 
+  it impossible to reconstruct the hyperedges if we only consider the extended 
+  $2$-section.
+
+ 
   \item[(C8)] Not fulfilled: the extended 2-section doesn't save any information 
   about the number of vertices contained in an edge.
-    \item[(C9)] Fulfilled (see `normal' 2-section).
-  \end{itemize}  
+    \item[(C9)] 
+     Fulfilled by the fact that isolated vertices in a hypergraph will 
+  also be isolated in the extended $2$-section by definition. Because we already know from (E9) that this condition
+  holds for the method of Blondel, we conclude that 
+  this condition is fulfilled. \textit{(equal to`normal' 2-section)}
+ \end{itemize}  
 \subsubsection{Conclusion}
-The extended $2$-section solves all the issues with (C1), (C3) and (C7) as it preserves all the information about the connectivity 
+The extended $2$-section solves all the issues with (C1) and (C3) as it preserves all the information about the number of edges connecting
+vertices 
 and the adjacency of the vertices. Still, this representation is not unique as no information 
-about the cardinality of the edges is saved, therefore, the method fails to fulfill (C8). Therefore, the method
-works well when using $k$-hypergraphs (in this case, all edges have the same size anyway) 
-or when one is only interested in calculating similarity scores where only the 
-adjancency  and connectivity of the vertices must be taken into account, regardless of the number
-of vertices in each edge.
-
+about the cardinality of the edges is saved, therefore, the method fails to fulfill (C7) and (C8). Therefore, the method preforms 
+much
+better than the normal $2$-section, but is unreliable in detecting interchangeable 
+vertices which gives equal similarity scores in cases that it is inappropriate. 
+Still, if one is willing to accept this limitation, by example in the case of an application that 
+is not focussed on detecting interchangeable vertices, but has enough with 
+results based on the adjacency of vertices and the number edges connecting the 
+vertices, the extended $2$-section can be an option.
 Also note that it is impossible to calculate edge similarity scores with the extended $2$-section: 
 an edge of a 
 hypergraph is translated into multiple vertices in the $2$-section so it would 
@@ -6649,12 +6931,12 @@ be impossible to satisfy (C5) and (C8).
    
   \begin{enumerate}
     \item $V' = V \cup E$,
-    \item $\forall v_i \in V, \forall E_j \in E: v_i \to E_j$ if $v_i \in E_j$.
+    \item $\forall v_i \in V, \forall E_j \in E: v_i \leftrightarrow E_j$ if $v_i \in E_j$.
       \end{enumerate}
 
 \end{definition}
   Because all edges in $\graf_i$ are between an element of $V$ and $E$, $\grafi_i$ 
-  is a bipartite graph and we write $\grafi_i = ((V,E),\to)$.
+  is a bipartite graph and we write $\grafi_i = ((V,E),\leftrightarrow)$.
 
 \begin{example}
 Take the same hypergraph $\hgrafeen$ as in Example \ref{uniciteitsvoorbeeld}, 
@@ -6694,13 +6976,16 @@ then the incidence graph $\graf_i$ equals:
     (8) edge node [above] {} (11)
 
 \end{tikzpicture}
+\end{center}
 \end{example}
-We can prove that the incidence graph $\graf_i = ((V,E),\to)$ of a hypergraph is a faitfhul 
-characteristic graph representation.
+We can prove that the incidence graph $\graf_i = (W=(V,E),\leftrightarrow)$ of a hypergraph is a faitfhul 
+characteristic graph representation if we know it's bipartite structure.
 
 \begin{theorem}\label{iguniek}
- The incidence graph  $\graf_i = ((V,E),\to)$ of a hypergraph is a faithul representation: the incidence 
- graph represents only one hypergraph.
+ The incidence graph  $\graf_i = (W=(V,E),\to)$ of a hypergraph is a faithful representation: the incidence 
+ graph represents only one hypergraph under the condition that we know the 
+ bipartite structure, which means that for the vertex set $W$, we know which 
+ disjoint subset represents the vertices $V$ of the hypergraph, respectively the edges $E$ of the hypergraph.
 \end{theorem}
 \begin{proof}
   Suppose that $\hgraf$ and $\hgrafeen$ are two hypergraphs that share the same 
@@ -6793,13 +7078,15 @@ $$\left(\begin{array}{llllllll|lll}
 0.0302&0.0514&0.0048&0.0350&0.0514&0.0212&0.0302&0.0514&0.0081&0.0509&0.0358\\
 0.0997&0.1697&0.0159&0.1156&0.1697&0.0701&0.0997&0.1697&0.0268&0.1681&0.1181\\
 0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000&0.0000
-\end{array}\right)$$
+\end{array}\right)
+\end{eqnarray*}
 
 \end{example}
 \begin{example}\label{igex4}
 Take $\hgrafeen_1$ and $\hgrafeen_2$ as in Example \ref{ex4line}, the similarity 
 matrix with the incidence graph representation becomes:
-$$\left(\begin{array}{llllllll|lll}
+\begin{eqnarray*}
+  \left(\begin{array}{llllllll|lll}
 0.0565&0.0961&0.0090&0.0655&0.0961&0.0397&0.0565&0.0961&0.0152&0.0952&0.0669\\
 0.0944&0.1608&0.0151&0.1095&0.1608&0.0664&0.0944&0.1608&0.0254&0.1592&0.1119\\
 0.0253&0.0431&0.0040&0.0293&0.0431&0.0178&0.0253&0.0431&0.0068&0.0427&0.0300\\
@@ -6816,25 +7103,41 @@ $$\left(\begin{array}{llllllll|lll}
 \end{array}\right)$$
 
 \end{example}
+\begin{example}\label{igex5}
+  Take $\hgraf_1$ and $\hgraf_2$ as in Example \ref{ex2extended}, the similarity 
+  matrix becomes:
+$$\left(\begin{array}{llllllll|lll}
+  0.1034&0.1761&0.0165&0.1199&0.1761&0.0727&0.1034&0.1761&0.0278&0.1744&0.1226\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941\\
+\hline
+0.1034&0.1761&0.0165&0.1199&0.1761&0.0727&0.1034&0.1761&0.0278&0.1744&0.1226\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941\\
+0.0794&0.1352&0.0127&0.0921&0.1352&0.0558&0.0794&0.1352&0.0214&0.1339&0.0941
+\end{array}\right)$$
+\end{example}
+
 \subsubsection{Interpretation}
 
 \begin{itemize}
-  \item[(C1)] Fulfilled: if we would take two undirected graphs and apply them to the node-edge similarity method
+  \item[(C1)] Fulfilled: we will prove later in thsif we would take two undirected graphs and apply them to the node-edge similarity method
   we would get results who are equal in ratio.  
-    \item[(C2)] Fulfilled by the fact that an isolated vertex is also 
-    represented in the incidence graph of the hypergraph.
+    \item[(C2)] Fulfilled: the number of vertices is preserved in the incidence graph a hypergraph, so each vertex is taken into account when calculating the similarity matrix. We conclude with the same reasoning as (E2) that the condition is fulfilled.
     \item[(C3)] Fulfilled by the fact that all edges are 
-    represented in the incidence graph of the hypergraph.
+    represented in the incidence graph of the hypergraph, so each edge is taken into account when calculating the similarity matrix. We conclude with the same reasoning as (E3) that the condition is fulfilled.
+
   \item[(C4)] Fulfilled by the fact that the adjacency relations of the original hypergraph are represented in it's 
   incidence graph and that we use Algorithm \ref{algsimilarity}, for which this 
-  statement already holds.
+  statement already holds by (E4).
   
   An example can be found in Example \ref{igex1} where $v_2, v_5, v_8$ of $\hgrafeen_1$ 
   have the largest similarity score with $v_6, v_7$ of $\hgrafeen_2$. This is 
   not surprising as $v_6, v_7$ are contained in all possible edges.
   \item[(C5)] Fulfilled by the fact that the adjacency relations of the original hypergraph are represented in it's 
   incidence graph, that the edges are considered as normal vertices and that we use Algorithm \ref{algsimilarity}, for which this 
-  statement already holds.
+  statement already holds by (E4).
   
   
   An example can be found in Example \ref{igex1} where $E_2$ of $\hgrafeen_1$ 
@@ -6842,7 +7145,89 @@ $$\left(\begin{array}{llllllll|lll}
   not surprising as these edges are almost equal.
 
 
-  \item[(C6)] Fulfilled by the fact that interchangeable vertices are also 
+  \item[(C6)] Partly fulfilled. Consider $\hgraf_2$ from Example \ref{ex2extended}:
+
+       \begin{center}
+   \begin{tikzpicture}
+    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
+\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
+
+\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\node[vertex,label=above:\(v_3\)] (v3) {};
+\node[vertex,left of=v3,label=above:\(v_2\)] (v2) {};
+\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
+\node[vertex,above of=v3,label=above:\(v_1\)] (v1) {};
+
+\begin{pgfonlayer}{background}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (v2) -- (v3)--(v4);
+\fill[edge,opacity=1,color=green] (v2.center)--(v3.center) -- (v4.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=yellow] (v1) -- (v2);
+\fill[edge,opacity=1,color=yellow] (v1.center) -- (v2.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=blue] (v1) -- (v3);
+\fill[edge,opacity=1,color=blue] (v1.center) -- (v3.center);
+\end{scope}
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=purple] (v1) -- (v4);
+\fill[edge,opacity=1,color=purple] (v1.center) -- (v4.center);
+\end{scope}
+
+
+\end{pgfonlayer}
+
+\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-5,3) {};
+\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
+\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
+\node[elabel,below of=e3,color=purple,label=right:\(E_4\)]  (e4) {};
+
+\end{tikzpicture}
+\end{center}
+
+The incidence graph becomes:
+\begin{center}
+\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:$v_1$] {};
+  \node[main node] (2) [label=above:$v_2$][right of=1] {};
+  \node[main node] (3) [label=above:$v_3$][right of=2] {};
+  \node[main node] (4) [label=above:$v_4$][right of=3] {};
+    \node[main node] (9) [label=below:$E_1$][below of=1] {};
+    \node[main node] (10) [label=below:$E_2$][below of=2] {};
+    \node[main node] (11) [label=below:$E_3$][below of=3] {};
+    \node[main node] (12) [label=below:$E_4$][below of=4] {};
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [above] {} (10)
+    (2) edge node [above] {} (10)
+    (1) edge node [above] {} (11)
+    (3) edge node [above] {} (11)
+    (1) edge node [above] {} (12)
+    (4) edge node [above] {} (12)
+    (2) edge node [above] {} (9)
+    (3) edge node [above] {} (9)
+    (4) edge node [above] {} (9)
+
+    
+
+
+
+\end{tikzpicture}
+\end{center}
+ by the fact that interchangeable vertices are also 
   interchangeable in the incidence graph. As edges are just seen as normal 
   vertices, the same holds for them. 
   
@@ -7576,6 +7961,8 @@ Technology, 2005.
 Press, 1991
 \bibitem[LANCASTER] P. Lancaster, M. Tismenetsky, \emph{The Theory of Matrices: With 
 Applications}, Academic Press, 1985
+\bibitem[MORROW] J. Morrow, \emph{Advanced Calculus}, University of Washington, 
+2013.
 \bibitem[MEU2011]{11} W. De Meuter, \emph{Algoritmen en Datastructuren I}, Vrije Universiteit Brussel, 2011.
 \bibitem[KIEBOOM2011]{kieboom} R. Kieboom, \emph{Aanvulling Lineaire Algebra}, Vrije Universiteit Brussel, 2011.
 \bibitem[ADHEMAR]{numeriekwiskunde} A. Bultheel, \emph{Inleiding tot de numerieke wiskunde}, Acco, 
