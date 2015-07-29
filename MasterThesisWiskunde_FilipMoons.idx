@@ -20,148 +20,178 @@
 \indexentry{Irreducible matrix}{13}
 \indexentry{Matrix!Irreducible matrix}{13}
 \indexentry{Vanishing}{13}
-\indexentry{Spectral radius}{13}
-\indexentry{Matrix!Spectral radius}{13}
+\indexentry{Spectral radius}{14}
+\indexentry{Matrix!Spectral radius}{14}
 \indexentry{Principal square submatrix}{16}
 \indexentry{Perron-Frobenius}{17}
-\indexentry{Vector norm}{18}
-\indexentry{$p$-norm}{19}
-\indexentry{Vector norm!$p$-norm}{19}
-\indexentry{Manhattan norm}{19}
-\indexentry{Vector norm!Manhattan norm}{19}
-\indexentry{Euclidean norm}{19}
-\indexentry{Vector norm!Euclidean norm}{19}
-\indexentry{Maximum norm}{19}
-\indexentry{Vector norm!Maximum norm}{19}
-\indexentry{Norm equivalence}{20}
-\indexentry{Vector norm!Equivalence}{20}
-\indexentry{Matrix norm}{21}
-\indexentry{Frobenius norm}{21}
-\indexentry{Matrix norm!Frobenius norm}{21}
-\indexentry{$p$-norm}{21}
-\indexentry{Matrix norm!$p$-norm}{21}
-\indexentry{Norm equivalence}{22}
-\indexentry{Matrix norm!Equivalence}{22}
-\indexentry{Bachmann-Landau}{22}
-\indexentry{Bachmann-Landau}{22}
-\indexentry{Big O}{22}
-\indexentry{Bachmann-Landau!Big O}{22}
-\indexentry{Small O}{23}
-\indexentry{Bachmann-Landau!Small O}{23}
-\indexentry{Asymptotical Equality}{23}
-\indexentry{Bachmann-Landau!Asymptotical Equality}{23}
-\indexentry{Power method}{23}
-\indexentry{Dominant eigenvalue}{24}
-\indexentry{Iteration step}{24}
-\indexentry{Graph}{28}
-\indexentry{Loop}{28}
-\indexentry{Graph!Loop}{28}
-\indexentry{Edge}{28}
-\indexentry{Graph!Edges}{28}
-\indexentry{Adjacency relation}{28}
-\indexentry{Graph!Adjacency relation}{28}
-\indexentry{Arc}{28}
-\indexentry{Graph!Arc}{28}
-\indexentry{Vertex}{28}
-\indexentry{Graph!Vertex}{28}
-\indexentry{Node}{28}
-\indexentry{Graph!Nodes}{28}
-\indexentry{Undirected graph}{28}
-\indexentry{Graph!Undirected}{28}
-\indexentry{Directed graph}{28}
-\indexentry{Graph!Directed}{28}
-\indexentry{Multiset}{28}
-\indexentry{Multigraph}{29}
-\indexentry{Graph!Multigraph}{29}
-\indexentry{Neighbourhood}{29}
-\indexentry{Graph!Neigbourhood}{29}
-\indexentry{Terminal node}{29}
-\indexentry{Graph!Terminal node}{29}
-\indexentry{Source node}{29}
-\indexentry{Graph!Source node}{29}
-\indexentry{Order}{29}
-\indexentry{Graph!Order}{29}
-\indexentry{Indegree}{29}
-\indexentry{Graph!Indegree}{29}
-\indexentry{Outdegree}{29}
-\indexentry{Graph!Outdegree}{29}
-\indexentry{Degree}{29}
-\indexentry{Graph!Degree}{29}
-\indexentry{Walk}{29}
-\indexentry{Graph!Walk}{29}
-\indexentry{Path}{29}
-\indexentry{Graph!Path}{29}
-\indexentry{Cycle}{29}
-\indexentry{Graph!Cycle}{29}
-\indexentry{Simple graph}{29}
-\indexentry{Graph!Simple graph}{29}
-\indexentry{Clique}{29}
-\indexentry{Graph!Clique}{29}
-\indexentry{Bipartite graph}{29}
-\indexentry{Graph!Bipartite graph}{29}
-\indexentry{Product graph}{30}
-\indexentry{Graph!Product graph}{30}
-\indexentry{Coloured graph}{30}
-\indexentry{Graph!Coloured graph}{30}
-\indexentry{Node coloring}{30}
-\indexentry{Graph!Colored graph!Node colering}{30}
-\indexentry{Edge coloring}{30}
-\indexentry{Graph!Colored graph!Edge colering}{30}
-\indexentry{Full coloring}{30}
-\indexentry{Graph!Colored graph!Full colering}{30}
-\indexentry{Adjacency matrix}{30}
-\indexentry{Graph!Adjacency matrix}{30}
-\indexentry{Matrix!Adjacency matrix}{30}
-\indexentry{Connected graph}{31}
-\indexentry{Graph!Connected graph}{31}
-\indexentry{Hypergraph}{32}
-\indexentry{Edge}{32}
-\indexentry{Hypergraph!Edges}{32}
-\indexentry{Node}{32}
-\indexentry{Hypergraph!Nodes}{32}
-\indexentry{Vertex}{32}
-\indexentry{Hypergraph!Vertices}{32}
-\indexentry{Multi-hypergraph}{32}
-\indexentry{Hypergraph!Multi-hypergraph}{32}
-\indexentry{Hyperloops}{32}
-\indexentry{Hypergraph!Hyperloops}{32}
-\indexentry{Adjacency relation}{32}
-\indexentry{Hypergraph!Adjacency relation}{32}
-\indexentry{Order}{32}
-\indexentry{Hypergraph!Order}{32}
-\indexentry{Degree}{32}
-\indexentry{Hypergraph!Degree}{32}
-\indexentry{Path}{33}
-\indexentry{Hypergraph!Path}{33}
-\indexentry{Length}{33}
-\indexentry{Connected hypergraph}{33}
-\indexentry{Hypergraph!Connected hypergraph}{33}
-\indexentry{Uniform hypegraphs}{33}
-\indexentry{Hypergraph!Uniform hypergraphs}{33}
-\indexentry{$k$-uniform hypergraphs}{33}
-\indexentry{$k$-graphs}{33}
-\indexentry{Directed hypegraphs}{33}
-\indexentry{Hypergraph!Directed hypergraphs}{33}
-\indexentry{Incidence matrix}{33}
-\indexentry{Hypergraph!Incidence matrix}{33}
-\indexentry{Matrix!Incidence matrix}{33}
-\indexentry{HITS-algorithm}{35}
-\indexentry{Content similarity}{35}
-\indexentry{PageRank}{35}
-\indexentry{Google Pagerank}{35}
-\indexentry{Kleinberg}{35}
-\indexentry{Jon Kleinberg}{35}
-\indexentry{Abundance problem}{36}
-\indexentry{Conferred authority}{36}
-\indexentry{Authority}{36}
-\indexentry{Hub}{36}
-\indexentry{Hub}{38}
-\indexentry{Authority}{38}
-\indexentry{Mutually reinforcing relation}{39}
-\indexentry{Convergence}{41}
-\indexentry{Predictor}{47}
-\indexentry{Eurovision}{47}
-\indexentry{Power method}{51}
-\indexentry{Topic drift}{51}
-\indexentry{Structure graph}{51}
-\indexentry{Graph!Structure graph}{51}
+\indexentry{Perron root}{18}
+\indexentry{Perron vector}{18}
+\indexentry{Vector norm}{20}
+\indexentry{$p$-norm}{20}
+\indexentry{Vector norm!$p$-norm}{20}
+\indexentry{H\"{o}lder norm|see{$p$-norm}}{20}
+\indexentry{Manhattan norm}{20}
+\indexentry{Vector norm!Manhattan norm}{20}
+\indexentry{Euclidean norm}{20}
+\indexentry{Vector norm!Euclidean norm}{20}
+\indexentry{Maximum norm}{20}
+\indexentry{Vector norm!Maximum norm}{20}
+\indexentry{Norm equivalence}{21}
+\indexentry{Vector norm!Equivalence}{21}
+\indexentry{Matrix norm}{22}
+\indexentry{Submultiplicative norm}{22}
+\indexentry{Frobenius norm}{22}
+\indexentry{Matrix norm!Frobenius norm}{22}
+\indexentry{$p$-norm}{23}
+\indexentry{Matrix norm!$p$-norm}{23}
+\indexentry{Maximum norm}{23}
+\indexentry{Matrix norm!Maximum norm}{23}
+\indexentry{Norm equivalence}{24}
+\indexentry{Matrix norm!Equivalence}{24}
+\indexentry{Spectral radius formula}{24}
+\indexentry{Gelfand's formula}{24}
+\indexentry{Bachmann-Landau}{28}
+\indexentry{Bachmann-Landau}{28}
+\indexentry{Big O}{28}
+\indexentry{Bachmann-Landau!Big O}{28}
+\indexentry{Small O}{28}
+\indexentry{Bachmann-Landau!Small O}{28}
+\indexentry{Asymptotical Equality}{28}
+\indexentry{Bachmann-Landau!Asymptotical Equality}{28}
+\indexentry{Power method}{29}
+\indexentry{Dominant eigenvalue}{29}
+\indexentry{Iteration step}{29}
+\indexentry{Graph}{33}
+\indexentry{Loop}{33}
+\indexentry{Graph!Loop}{33}
+\indexentry{Edge}{33}
+\indexentry{Graph!Edges}{33}
+\indexentry{Adjacency relation}{33}
+\indexentry{Graph!Adjacency relation}{33}
+\indexentry{Arc}{33}
+\indexentry{Graph!Arc}{33}
+\indexentry{Vertex}{33}
+\indexentry{Graph!Vertex}{33}
+\indexentry{Node}{33}
+\indexentry{Graph!Nodes}{33}
+\indexentry{Undirected graph}{33}
+\indexentry{Graph!Undirected}{33}
+\indexentry{Directed graph}{33}
+\indexentry{Graph!Directed}{33}
+\indexentry{Multiset}{34}
+\indexentry{Multigraph}{34}
+\indexentry{Graph!Multigraph}{34}
+\indexentry{Neighbourhood}{34}
+\indexentry{Graph!Neigbourhood}{34}
+\indexentry{Terminal node}{34}
+\indexentry{Graph!Terminal node}{34}
+\indexentry{Source node}{34}
+\indexentry{Graph!Source node}{34}
+\indexentry{Order}{34}
+\indexentry{Graph!Order}{34}
+\indexentry{Indegree}{35}
+\indexentry{Graph!Indegree}{35}
+\indexentry{Outdegree}{35}
+\indexentry{Graph!Outdegree}{35}
+\indexentry{Degree}{35}
+\indexentry{Graph!Degree}{35}
+\indexentry{Walk}{35}
+\indexentry{Graph!Walk}{35}
+\indexentry{Path}{35}
+\indexentry{Graph!Path}{35}
+\indexentry{Cycle}{35}
+\indexentry{Graph!Cycle}{35}
+\indexentry{Simple graph}{35}
+\indexentry{Graph!Simple graph}{35}
+\indexentry{Clique}{35}
+\indexentry{Graph!Clique}{35}
+\indexentry{Bipartite graph}{35}
+\indexentry{Graph!Bipartite graph}{35}
+\indexentry{Product graph}{35}
+\indexentry{Graph!Product graph}{35}
+\indexentry{Coloured graph}{35}
+\indexentry{Graph!Coloured graph}{35}
+\indexentry{Node coloring}{35}
+\indexentry{Graph!Colored graph!Node colering}{35}
+\indexentry{Edge coloring}{35}
+\indexentry{Graph!Colored graph!Edge colering}{35}
+\indexentry{Full coloring}{36}
+\indexentry{Graph!Colored graph!Full colering}{36}
+\indexentry{Adjacency matrix}{36}
+\indexentry{Graph!Adjacency matrix}{36}
+\indexentry{Matrix!Adjacency matrix}{36}
+\indexentry{Matrix!Incidence matrix}{36}
+\indexentry{Incidence matrix}{36}
+\indexentry{Connected graph}{37}
+\indexentry{Graph!Connected graph}{37}
+\indexentry{Hypergraph}{38}
+\indexentry{Edge}{38}
+\indexentry{Hypergraph!Edges}{38}
+\indexentry{Node}{38}
+\indexentry{Hypergraph!Nodes}{38}
+\indexentry{Vertex}{38}
+\indexentry{Hypergraph!Vertices}{38}
+\indexentry{Multi-hypergraph}{38}
+\indexentry{Hypergraph!Multi-hypergraph}{38}
+\indexentry{Hyperloops}{38}
+\indexentry{Hypergraph!Hyperloops}{38}
+\indexentry{Adjacency relation}{38}
+\indexentry{Hypergraph!Adjacency relation}{38}
+\indexentry{Order}{38}
+\indexentry{Hypergraph!Order}{38}
+\indexentry{Degree}{39}
+\indexentry{Hypergraph!Degree}{39}
+\indexentry{Path}{39}
+\indexentry{Hypergraph!Path}{39}
+\indexentry{Length}{39}
+\indexentry{Connected hypergraph}{39}
+\indexentry{Hypergraph!Connected hypergraph}{39}
+\indexentry{Uniform hypegraphs}{39}
+\indexentry{Hypergraph!Uniform hypergraphs}{39}
+\indexentry{$k$-uniform hypergraphs}{39}
+\indexentry{$k$-graphs}{39}
+\indexentry{Directed hypegraphs}{39}
+\indexentry{Hypergraph!Directed hypergraphs}{39}
+\indexentry{Incidence matrix}{39}
+\indexentry{Hypergraph!Incidence matrix}{39}
+\indexentry{Matrix!Incidence matrix}{39}
+\indexentry{HITS-algorithm}{41}
+\indexentry{Content similarity}{41}
+\indexentry{PageRank}{41}
+\indexentry{Google Pagerank}{41}
+\indexentry{Kleinberg}{41}
+\indexentry{Jon Kleinberg}{41}
+\indexentry{Abundance problem}{42}
+\indexentry{Conferred authority}{42}
+\indexentry{Authority}{42}
+\indexentry{Hub}{42}
+\indexentry{Hub}{44}
+\indexentry{Authority}{44}
+\indexentry{Mutually reinforcing relation}{45}
+\indexentry{Convergence}{47}
+\indexentry{Schur Decomposition}{49}
+\indexentry{Predictor}{53}
+\indexentry{Eurovision}{53}
+\indexentry{Power method}{60}
+\indexentry{Topic drift}{60}
+\indexentry{Method of Blondel}{61}
+\indexentry{Structure graph}{61}
+\indexentry{Graph!Structure graph}{61}
+\indexentry{Convergence theorem}{65}
+\indexentry{Orthogonal projection}{66}
+\indexentry{Projection}{66}
+\indexentry{Eigendecomposition}{69}
+\indexentry{Matrix!Similarity matrix}{71}
+\indexentry{Similarity matrix}{71}
+\indexentry{Compact form}{71}
+\indexentry{Vectorization}{71}
+\indexentry{Kronecker product}{71}
+\indexentry{Tensor product}{71}
+\indexentry{Singular value decomposition}{76}
+\indexentry{Singular value}{76}
+\indexentry{Left singular vector}{76}
+\indexentry{Right singular vector}{76}
+\indexentry{Center}{80}
+\indexentry{Self-similarity}{80}
+\indexentry{Positive semidefinite matrix}{80}
+\indexentry{submatrix}{135}

@@ -4,97 +4,105 @@
 \contentsline {subsection}{\numberline {1.1.1}Permutation matrices}{9}
 \contentsline {subsection}{\numberline {1.1.2}Nonnegative and primitive matrices}{10}
 \contentsline {subsection}{\numberline {1.1.3}Irreducible nonnegative matrices}{11}
-\contentsline {section}{\numberline {1.2}Perron-Frobenius Theorem}{13}
-\contentsline {subsection}{\numberline {1.2.1}Spectral radii of nonnegative matrices}{13}
+\contentsline {section}{\numberline {1.2}Perron-Frobenius Theorem}{14}
+\contentsline {subsection}{\numberline {1.2.1}Spectral radii of nonnegative matrices}{14}
 \contentsline {subsection}{\numberline {1.2.2}Proof}{17}
 \contentsline {subsection}{\numberline {1.2.3}Example}{18}
-\contentsline {section}{\numberline {1.3}Norms}{18}
-\contentsline {subsection}{\numberline {1.3.1}Vector norms}{18}
-\contentsline {subsubsection}{$p$-norms}{19}
-\contentsline {subsubsection}{Maximum norm}{19}
-\contentsline {subsubsection}{Norm equivalence}{20}
-\contentsline {subsection}{\numberline {1.3.2}Matrix norms}{21}
-\contentsline {subsubsection}{Frobenius norm}{21}
-\contentsline {subsubsection}{$p$-norms}{21}
-\contentsline {subsubsection}{Maximum norm}{21}
-\contentsline {section}{\numberline {1.4}Numerical analysis}{22}
-\contentsline {subsection}{\numberline {1.4.1}Bachmann-Landau notations}{22}
-\contentsline {subsubsection}{Big O}{22}
-\contentsline {subsubsection}{Small O}{23}
-\contentsline {subsubsection}{Asymptotical Equality}{23}
-\contentsline {subsection}{\numberline {1.4.2}The Power Method}{23}
-\contentsline {subsubsection}{The algorithm}{24}
-\contentsline {subsubsection}{Computational cost \& Usage}{26}
-\contentsline {subsubsection}{Example}{27}
-\contentsline {section}{\numberline {1.5}Graphs}{27}
-\contentsline {subsection}{\numberline {1.5.1}General definitions}{28}
-\contentsline {subsubsection}{Product graphs}{30}
-\contentsline {subsubsection}{Colored graphs}{30}
-\contentsline {subsubsection}{Adjacency matrices}{30}
-\contentsline {subsection}{\numberline {1.5.2}Strong connectivity}{31}
-\contentsline {section}{\numberline {1.6}Hypergraphs}{31}
-\contentsline {subsection}{\numberline {1.6.1}General definitions}{32}
-\contentsline {subsubsection}{$k$-hypergraphs}{33}
-\contentsline {subsubsection}{Directed hypergraphs}{33}
-\contentsline {subsection}{\numberline {1.6.2}Incidence matrix}{33}
-\contentsline {chapter}{\numberline {2}Similarity on graphs}{35}
-\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{35}
-\contentsline {subsection}{\numberline {2.1.1}History}{35}
-\contentsline {subsection}{\numberline {2.1.2}Motivation}{36}
-\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{37}
-\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{38}
-\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{41}
-\contentsline {subsection}{\numberline {2.1.6}Examples}{45}
-\contentsline {subsubsection}{Searching for math professors at the VUB}{45}
-\contentsline {subsubsection}{Predictors in the Eurovision Song Contest 2009-2014}{47}
-\contentsline {subsection}{\numberline {2.1.7}Final reflection}{51}
-\contentsline {section}{\numberline {2.2}Node similarity}{51}
-\contentsline {subsubsection}{Introduction}{51}
-\contentsline {subsection}{\numberline {2.2.1}Convergence of the sequence $\mathbf {z}^{(k)}$}{56}
-\contentsline {subsection}{\numberline {2.2.2}Compact form \& Similarity matrices}{63}
-\contentsline {subsection}{\numberline {2.2.3}Algorithm \& Computational cost}{66}
-\contentsline {subsection}{\numberline {2.2.4}Special cases}{67}
-\contentsline {subsubsection}{HITS-algorithm}{67}
-\contentsline {subsubsection}{Central scores}{68}
-\contentsline {subsubsection}{Self-similarity of a graph}{70}
-\contentsline {section}{\numberline {2.3}Node-edge similarity}{71}
-\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{72}
-\contentsline {subsection}{\numberline {2.3.2}The algorithm}{76}
-\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{77}
-\contentsline {subsection}{\numberline {2.3.4}Example}{78}
-\contentsline {section}{\numberline {2.4}Colored graphs}{79}
-\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{80}
-\contentsline {subsection}{\numberline {2.4.2}Colored edges}{84}
-\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{89}
-\contentsline {section}{\numberline {3.1}Introduction}{89}
-\contentsline {section}{\numberline {3.2}Similarity through corresponding graph representations}{94}
-\contentsline {subsection}{\numberline {3.2.1}Line-graphs}{95}
-\contentsline {subsubsection}{General definitions and properties}{95}
-\contentsline {subsubsection}{Algorithm for similarity}{96}
-\contentsline {subsubsection}{Examples}{96}
-\contentsline {subsubsection}{Interpretation}{99}
-\contentsline {subsubsection}{Conclusion}{100}
-\contentsline {subsection}{\numberline {3.2.2}$2$-section of a hypergraph}{100}
-\contentsline {subsubsection}{General definitions and properties}{100}
-\contentsline {subsubsection}{Algorithm for similarity}{101}
-\contentsline {subsubsection}{Examples}{102}
-\contentsline {subsubsection}{Interpretation}{104}
-\contentsline {subsubsection}{Conclusion}{105}
-\contentsline {subsection}{\numberline {3.2.3}Extended $2$-section of a hypergraph}{106}
-\contentsline {subsubsection}{General definitions and properties}{106}
-\contentsline {subsubsection}{Algorithm for similarity}{106}
-\contentsline {subsubsection}{Example}{106}
-\contentsline {subsubsection}{Interpretation}{108}
-\contentsline {subsubsection}{Conclusion}{111}
-\contentsline {subsection}{\numberline {3.2.4}The incidence graph of a hypergraph}{112}
-\contentsline {subsubsection}{General definitions and properties}{112}
-\contentsline {subsubsection}{Algorithm for similarity}{113}
-\contentsline {subsubsection}{Examples}{113}
-\contentsline {subsubsection}{Interpretation}{115}
-\contentsline {subsubsection}{Conclusion}{116}
-\contentsline {section}{\numberline {3.3}Similarity by using the incidence matrix}{117}
-\contentsline {subsection}{\numberline {3.3.1}Compact form}{117}
-\contentsline {subsection}{\numberline {3.3.2}The algorithm}{119}
-\contentsline {subsection}{\numberline {3.3.3}Examples}{120}
-\contentsline {chapter}{Appendix \numberline {A}Listings}{123}
-\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2014}{130}
+\contentsline {section}{\numberline {1.3}Norms}{20}
+\contentsline {subsection}{\numberline {1.3.1}Vector norms}{20}
+\contentsline {subsubsection}{$p$-norms}{20}
+\contentsline {subsubsection}{Maximum norm}{20}
+\contentsline {subsubsection}{Norm equivalence}{21}
+\contentsline {subsection}{\numberline {1.3.2}Matrix norms}{22}
+\contentsline {subsubsection}{Frobenius norm}{22}
+\contentsline {subsubsection}{$p$-norms}{23}
+\contentsline {subsubsection}{Maximum norm}{23}
+\contentsline {subsection}{\numberline {1.3.3}Spectral radius formula}{24}
+\contentsline {section}{\numberline {1.4}Numerical analysis}{28}
+\contentsline {subsection}{\numberline {1.4.1}Bachmann-Landau notations}{28}
+\contentsline {subsubsection}{Big O}{28}
+\contentsline {subsubsection}{Small O}{28}
+\contentsline {subsubsection}{Asymptotical Equality}{28}
+\contentsline {subsection}{\numberline {1.4.2}The Power Method}{29}
+\contentsline {subsubsection}{The algorithm}{29}
+\contentsline {subsubsection}{Computational cost and usage}{32}
+\contentsline {subsubsection}{Example}{32}
+\contentsline {section}{\numberline {1.5}Graphs}{33}
+\contentsline {subsection}{\numberline {1.5.1}General definitions}{33}
+\contentsline {subsubsection}{Product graphs}{35}
+\contentsline {subsubsection}{Colored graphs}{35}
+\contentsline {subsubsection}{Adjacency matrix}{36}
+\contentsline {subsubsection}{Incidence matrix}{36}
+\contentsline {subsection}{\numberline {1.5.2}Strong connectivity}{37}
+\contentsline {section}{\numberline {1.6}Hypergraphs}{38}
+\contentsline {subsection}{\numberline {1.6.1}General definitions}{38}
+\contentsline {subsubsection}{$k$-hypergraphs}{39}
+\contentsline {subsubsection}{Directed hypergraphs}{39}
+\contentsline {subsection}{\numberline {1.6.2}Incidence matrix}{39}
+\contentsline {chapter}{\numberline {2}Similarity on graphs}{41}
+\contentsline {section}{\numberline {2.1}The HITS algorithm of Kleinberg}{41}
+\contentsline {subsection}{\numberline {2.1.1}History}{41}
+\contentsline {subsection}{\numberline {2.1.2}Motivation}{42}
+\contentsline {subsection}{\numberline {2.1.3}Constructing relevant graphs of webpages}{43}
+\contentsline {subsection}{\numberline {2.1.4}Hubs and Authorities}{44}
+\contentsline {subsection}{\numberline {2.1.5}Convergence of the algorithm}{47}
+\contentsline {subsection}{\numberline {2.1.6}Examples}{51}
+\contentsline {subsubsection}{Searching for math professors at the VUB}{51}
+\contentsline {subsubsection}{Predictors in the Eurovision Song Contest 2009-2015}{53}
+\contentsline {subsection}{\numberline {2.1.7}Final reflection}{60}
+\contentsline {section}{\numberline {2.2}Node similarity}{61}
+\contentsline {subsubsection}{Introduction}{61}
+\contentsline {subsection}{\numberline {2.2.1}Convergence theorem}{65}
+\contentsline {subsection}{\numberline {2.2.2}Similarity matrices}{71}
+\contentsline {subsection}{\numberline {2.2.3}Algorithm}{74}
+\contentsline {subsubsection}{Equivalence with the Power Method}{74}
+\contentsline {subsubsection}{Computational cost}{75}
+\contentsline {subsection}{\numberline {2.2.4}Special cases}{75}
+\contentsline {subsubsection}{HITS-algorithm}{75}
+\contentsline {subsubsection}{Central scores}{78}
+\contentsline {subsubsection}{Self-similarity of a graph}{80}
+\contentsline {section}{\numberline {2.3}Node-edge similarity}{83}
+\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{83}
+\contentsline {subsection}{\numberline {2.3.2}The algorithm}{87}
+\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{88}
+\contentsline {subsection}{\numberline {2.3.4}Example}{90}
+\contentsline {section}{\numberline {2.4}Colored graphs}{90}
+\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{91}
+\contentsline {subsubsection}{Method}{91}
+\contentsline {subsubsection}{Algorithm}{95}
+\contentsline {subsubsection}{Example}{95}
+\contentsline {subsection}{\numberline {2.4.2}Colored edges}{95}
+\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{102}
+\contentsline {section}{\numberline {3.1}Introduction}{102}
+\contentsline {section}{\numberline {3.2}Similarity through corresponding graph representations}{107}
+\contentsline {subsection}{\numberline {3.2.1}Line-graphs}{108}
+\contentsline {subsubsection}{General definitions and properties}{108}
+\contentsline {subsubsection}{Algorithm for similarity}{109}
+\contentsline {subsubsection}{Examples}{109}
+\contentsline {subsubsection}{Interpretation}{112}
+\contentsline {subsubsection}{Conclusion}{113}
+\contentsline {subsection}{\numberline {3.2.2}$2$-section of a hypergraph}{113}
+\contentsline {subsubsection}{General definitions and properties}{113}
+\contentsline {subsubsection}{Algorithm for similarity}{114}
+\contentsline {subsubsection}{Examples}{115}
+\contentsline {subsubsection}{Interpretation}{117}
+\contentsline {subsubsection}{Conclusion}{118}
+\contentsline {subsection}{\numberline {3.2.3}Extended $2$-section of a hypergraph}{119}
+\contentsline {subsubsection}{General definitions and properties}{119}
+\contentsline {subsubsection}{Algorithm for similarity}{119}
+\contentsline {subsubsection}{Example}{119}
+\contentsline {subsubsection}{Interpretation}{121}
+\contentsline {subsubsection}{Conclusion}{124}
+\contentsline {subsection}{\numberline {3.2.4}The incidence graph of a hypergraph}{125}
+\contentsline {subsubsection}{General definitions and properties}{125}
+\contentsline {subsubsection}{Algorithm for similarity}{126}
+\contentsline {subsubsection}{Examples}{126}
+\contentsline {subsubsection}{Interpretation}{128}
+\contentsline {subsubsection}{Conclusion}{129}
+\contentsline {section}{\numberline {3.3}Similarity by using the incidence matrix}{130}
+\contentsline {subsection}{\numberline {3.3.1}Compact form}{130}
+\contentsline {subsection}{\numberline {3.3.2}The algorithm}{132}
+\contentsline {subsection}{\numberline {3.3.3}Examples}{133}
+\contentsline {subsection}{\numberline {3.3.4}Concluding theorem}{135}
+\contentsline {chapter}{Appendix \numberline {A}Listings}{137}
+\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2015}{144}

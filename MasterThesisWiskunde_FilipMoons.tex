@@ -50,6 +50,8 @@
 \newtheorem{notation}[theorem]{Notation}
 
 \setcounter{tocdepth}{5}
+\newcommand{\maxnorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\Z}{{\mathbb Z}}
 \newcommand{\Q}{{\mathbb Q}}
@@ -124,7 +126,8 @@ we give an overview of all the preliminary knowledge needed to understand
 everything in the following chapters. All the methods of similarity we will 
 discuss, are eventually solving an eigenvalue problem. So it's no surprise we 
 prove the Perron-Frobenius theorem and introduce the power method in the first 
-chapter, the powered method is a numerical algorithm to calculate eigenvectors.
+chapter, the powered method is a numerical algorithm to calculate the largest 
+eigenvalue and a corresponding eigenvector.
 
 In chapter 2, we give a complete overview of the research done on similarity of 
 graphs. The notion of similarity originated from the HITS-algorithm: this 
@@ -160,7 +163,7 @@ every extension is a variant of the power method to calculate eigenvectors.
 An important remark is that all the methods return slightly different results. 
 At the moment, `the' similarity score between two vertices of a graph doesn't 
 exists, simply because it depends on the method you are using: in some cases the 
-results are equal (op een constante na), in other cases the results are 
+results are equal (up to a constant), in other cases the results are 
 different because sligtlhy different criteria are used in the calculation. In 
 that case, we can explicitely derive the difference.
 Still, it is not that worse: it's important to remember that the similarity 
@@ -169,7 +172,9 @@ every method give the same rank. This is also justified by the applications: all
 of them are using similarity scores in comparison to other similarity scores. 
 
 In the last chapter, we discover a new field: we try to transfer the concept of similarity to the more
-general structure of hyprgraphs. At first, we take a look at the graph 
+general structure of hyprgraphs. We this chapter with a reflection of the results of the previous chapter:
+when we invent a method for similarity on hypergraphs, which conditions must be fulfilled? Are these conditions
+also met by the graph similarity methods of the first chapter? At first, we take a look at the graph 
 representations of hypergraphs and we try to get a good method of similarity by 
 using these graph representions. It will be clear that the incidence graph of a 
 hypergraph returns the best results when used for similarity. After that, we 
@@ -231,9 +236,11 @@ similariteitsscore enkel in verhouding tot de andere similareitsscores bekeken.
 
 In het laatste hoofdstuk ontdekken we tot slot nieuw terrein: we proberen 
 het concept van similariteit over te brengen op de meer algemene 
-structuur van hypergraffen. Hypergraffen kunnen door verschillende 
+structuur van hypergraffen. Dat start met een uitgebreide reflectie op de resultaten van het vorige hoofdstuk:
+aan welke criteria moet zo'n similariteitsmethode voor hypergraffen allemaal voldoen? Voldoen de grafmethodes van het vorige
+hoofdstuk hier ook aan? Hypergraffen kunnen door verschillende 
 grafrepresentaties worden voorgesteld en we proberen eerst om via deze 
-verschillende grafrepresentaties tot een goede methode te komen. Het zal blijken dat de incidentiegrafrepresentatie van een hypergraf de beste
+weg tot een goede methode te komen. Het zal blijken dat de incidentiegrafrepresentatie van een hypergraf de beste
 resultaten oplevert. Nadien proberen 
 we ook een methode te ontwikkelen aan de hand van de incidentiematrix, ook deze 
 methode voldoet aan alle voorwaarden. Welnu: we kunnen bewijzen dat de methode 
@@ -295,15 +302,15 @@ A permutation matrix $P$ satisfies:
   where $P^T$ is the transpose and $I_n$ is the identity matrix.
 \end{property}
 \begin{proof}
-By direct computation, we get:
-$$(PP^T)_{ij} = \sum^n_{k=1}P_{ik}P^T_{kj} = \sum^n_{k=1}P_{ik}P_{jk}$$
-Assume $i \not = j$. Then for each $k$, $P_{ik}P_{jk} = 0$ since there is only
-one nonzero entry in the $k$-th row and $i \not = j$, $P_{ik}$ and $P_{jk}$ 
+By direct computation, we get with $P = (p_{ij})$:
+$$(PP^T)_{ij} = \sum^n_{k=1}p_{ik}p^T_{kj} = \sum^n_{k=1}p_{ik}p_{jk}$$
+Assume $i \not = j$. Then for each $k$, $p_{ik}p_{jk} = 0$ since there is only
+one nonzero entry in the $k$-th row and $i \not = j$, $p_{ik}$ and $p_{jk}$ 
 can't be both the nonzero entry. So, $(PP^T)_{ij} = 0$ when $i \not = j$.
 
-When $i=j$, then there exists a $k' \in \{1,\ldots,n\}$ with $P_{ik'}P_{jk'} = 1$, 
+When $i=j$, then there exists a $k' \in \{1,\ldots,n\}$ with $p_{ik'}p_{jk'} = 1$, 
 since there is only one nonzero entry in the $k$-th row, this $k'$ is unique, 
-which results in $\sum^n_{k=1}P_{ik}P_{jk} = (PP^T)_{ij} = 1$.
+which results in $\sum^n_{k=1}p_{ik}p_{jk} = (PP^T)_{ij} = 1$.
 
 In other words,
 $$(PP^T)_{ij} = \begin{cases} 1 &\mbox{if } i = j \\ 
@@ -328,7 +335,7 @@ this is exactly the formula for the entries of the identity matrix.
 \begin{definition}  A real $n\times r$-matrix $A$ is \textbf{positive} if $A > 0$, with $0$ the $n\times r$-null matrix.
 \end{definition}\index{Positive matrix}\index{Matrix!Positive matrix}
 
-Since row vectors are $1 \times n$-matrices, we shall use the terms 
+Since column vectors are $n \times 1$-matrices, we shall use the terms 
 nonnegative and positive vector throughout. 
 
 \begin{notation}\label{modulusmatrix}
@@ -349,7 +356,7 @@ theorems and lemmas on nonnegative irredicuble square matrices.
 \end{pmatrix} $$
 where $B,$ and $D$ are square matrices, each of size at least one and $0$ is a zero matrix.
 A square matrix $A$ is called \textbf{irreducible} if it is not reducible.
- \end{definition}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}}\index{Reducible matrix|see {Irreducible matrix}}\index{Matrix!Reducible matrix}
+ \end{definition}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}\index{Reducible matrix|see {Irreducible matrix}}\index{Matrix!Reducible matrix}
 
 It follows immediately that a $1\times1$-matrix is always irreducible by 
 definition. We now show a useful property to identify a reducible matrix.
@@ -386,7 +393,7 @@ the proof.
 \end{proof}
 We know prove some equivalent definitions for a nonnegative, irreducible square 
 matrix.
-\begin{theorem}\label{irredubieleegenschappen}}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}
+\begin{theorem}\label{irredubieleegenschappen}\index{Irreducible matrix}\index{Matrix!Irreducible matrix}
   Let $A\geq 0$ be a nonnegative $n\times n$-matrix. Then the following conditions are 
   equivalent:
   \begin{enumerate}
@@ -435,8 +442,8 @@ $$PA^tP^T = \begin{pmatrix}  B_t  & 0\\
 Thus $(PA^tP^T)_{rs} = 0$ for $t = 1, 2,\ldots$ and for any $r,s$ 
 corresponding to an entry of the zero submatrix in $PAP^T$.
 Now, for $t = 1,\ldots,n:$
-$$0 = (PA^tP^T)_{rs} = \sum_k\sum_l p_{r k}a_{kl}^{(t)}p_{l t}$$
-By using the same reasoning as in \ref{redenering1}, choose $r,s$ so that $p_{r k}$ = $p_{s t} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
+$$0 = (PA^tP^T)_{rs} = \sum_k\sum_l p_{r k}a_{kl}^{(t)}p_{l s}$$
+By using the same reasoning as in \ref{redenering1}, choose $r,s$ so that $p_{r k}$ = $p_{l s} = 1$. Then $a^{(t)}_{kl} = 0$ for all $t$,
 contradicting the hypothesis. This completes the proof. 
  \end{proof}
  
@@ -454,36 +461,38 @@ contradicting the hypothesis. This completes the proof.
    \end{property}
  \begin{proof}
    Suppose that $A$ has a zero row, then it could be permuted to
-     $$PAP^T = \begin{pmatrix}  0 & 0 \ldots 0\\
+     $$PAP^T = \left(\begin{array}{c|c}  0 & 0 \ldots 0\\
+     \hline
 \begin{tabular}{l}
 c_1  \\
 \vdots \\
 c_n\\   
 \end{tabular}
  & D\\
- \end{pmatrix} $$
+ \end{array}\right) $$
  by some permutation matrix $P$. It follows from Definition \ref{defreduciebel} 
  that $A$ is reducible. Similarly, if $A$ has zero column, it can be permuted 
  to
-   $$PAP^T = \begin{pmatrix} B & \begin{tabular}{l}
+   $$PAP^T = \left(\begin{array}{c|c} B & \begin{tabular}{l}
 0 \\
 \vdots \\
 0\\   
 \end{tabular}\\
+\hline
     c_1  \ldots c_n   & 0\\
-    \end{pmatrix} $$
+ \end{array}\right), $$
     again from Definition \ref{defreduciebel} we conclude that $A$ is reducible.
 
  \end{proof}
  
  
-
+\newpage
  \section{Perron-Frobenius Theorem}
  
  \subsection{Spectral radii of nonnegative matrices}
  
  \begin{definition}\index{Spectral radius}\index{Matrix!Spectral radius}
-  Let A be an $n\times n$-matrix with complex entries and eigenvalues $\lambda_i$,
+  Let A be an $n\times n$-matrix with real entries and eigenvalues $\lambda_i$,
   $1 \leq i \leq n$. Then:
   $$\rho(A) = \max_{1 \leq i \leq n} |\lambda_i|$$
   is called the \textbf{spectral radius} of the matrix $A$.
@@ -774,50 +783,54 @@ arrived at the Perron-Frobenius Theorem:
    
    With the previous proof in mind, the following definition comes not unexpected:
    
-   \begin{definition}\label{perronroot}
+   \begin{definition}\label{perronroot}\index{Perron root}\index{Perron vector}
      If a matrix $A$ has an eigenvalue equal to the spectral radius $\rho(A)$, this eigenvalue
      is called the \textbf{Perron root}, the corresponding eigenvector $\mathbf{x}$ such that:
-     $$A\mathbf{x} = \rho(A)\mathbf{x} \quad \text{and} \quad \|\mathbf{x}\|_1 = 1$$s called 
+     $$A\mathbf{x} = \rho(A)\mathbf{x} \quad \text{and} \quad \|\mathbf{x}\|_1 = 1$$ is called 
      the \textbf{Perron vector}.
    \end{definition}
 
-  
+\begin{corollary}
+  Being a strictly positve square matrix ($A >0$) is a sufficient condition to apply the Perron-Frobenius Theorem.
+\end{corollary}
+\begin{proof}
+  This follows immediately from Theorem \ref{irredubieleegenschappen}: a 
+  positive square matrix is always irreducible.
+\end{proof}  
 
 \subsection{Example}
 To check wether a matrix with nonnegative entries is primitive, irreducible or 
 neither, we just have to replace all nonzero entries by 1 since this does not 
 affect the classification. The matrix
-$$\left(\begin{array}{cc}
-1 & 1\\
+$$\begin{pmatrix}1 & 1\\
 1 & 1 \\
-\end{array}\right)$$
+\end{pmatrix}$$
 is strictly positive and thus primitive. The matrices
-$$\left(\begin{array}{cc}
-1 & 0\\
+$$\begin{pmatrix}1 & 0\\
 1 & 1 \\
-\end{array}\right) \text{\;\;\; and \;\;\,} 
-\left(\begin{array}{cc}
+\end{pmatrix}\text{\;\;\; and \;\;\,} 
+\begin{pmatrix}
 1 & 1\\
 0 & 1 \\
-\end{array}\right)$$
+\end{pmatrix}$$
 both have 1 as a double eigenvalue hence can not be irreducible.
-The matrix $\left(\begin{array}{cc}
+The matrix $\begin{pmatrix}
 1 & 1\\
 1 & 0 \\
-\end{array}\right)$ satisfies:
-$$\left(\begin{array}{cc}
+\end{pmatrix}$ satisfies:
+$$\begin{pmatrix}
 1 & 1\\
 1 & 0 \\
-\end{array}\right)^2 = \left(\begin{array}{cc}
+\end{pmatrix}^2 = \begin{pmatrix}
 2 & 1\\
 1 & 1 \\
-\end{array}\right)$$
-and hence is primitive. The same goes for $$\left(\begin{array}{cc}
+\end{pmatrix}$$
+and hence is primitive. The same goes for $$\begin{pmatrix}
 0 & 1\\
 1 & 1 \\
-\end{array}\right),$$ this matrix is irreducible but not primitive. Its 
+\end{pmatrix},$$ this matrix is irreducible but not primitive. Its 
 eigenvalues are $1$ and $-1$.
-
+\newpage
 \section{Norms}
 If one has several vectors in $\R^n$ or several matrices in $\R^{n\times m}$, 
 how do we measure that some of them are `large' and some of them are `small'? 
@@ -829,7 +842,7 @@ m}$). This section is mainly based on chapter 2 from \cite{golub} and chapter 5
 form \cite{horn}.
 
 \subsection{Vector norms}}
-\begin{definition}\index{Vector norm}
+\begin{definition}\label{vectornorms}\index{Vector norm}
   A \textbf{vector norm} on $\R^n$ is a function $\|\cdot\|: \R^n \to \R$ with 
   the following properties:
   \begin{enumerate}
@@ -845,8 +858,8 @@ form \cite{horn}.
 
 
 We now give some well known vector norms:
-\subsubsection{$p$-norms}\index{$p$-norm}\index{Vector norm!$p$-norm}\inde{H\"{older} norm|see{$p$-norm}}
-\begin{definition}
+\subsubsection{$p$-norms}\index{$p$-norm}\index{Vector norm!$p$-norm}\index{H\"{o}lder norm|see{$p$-norm}}
+\begin{definition}\label{holderdebolder}
   The \textit{H\"{o}lder} or  \emph{p-norms} are defined by:
   $$\|\mathbf{x}\|_p = (|x_1|^p+\cdots + |x_n|^p)^{\frac{1}{p}} = \left(\sum_{i=1}^n |x_i|^p\right)^{\frac{1}{p}},$$
   for $\mathbf{x} \in \R^n.$
@@ -871,7 +884,7 @@ We will prove this:
   $$\lim_{p\to \infty}\|\mathbf{x}\|_p = \|\mathbf{x}\|_\infty =\max(|x_1|, \ldots, |x_n|)$$
 \end{theorem}
 \begin{proof}
-  Rewrite $\|\mathbf{x}\|_p$ as:
+  Rewrite $\|\mathbf{x}\|_p$ as: 
   $$\|\mathbf{x}\|_p = \left(\sum^n_{i=1} |x_i|^p \right)^{\frac{1}{p}} = \|\mathbf{x}\|_\infty 
   \left(\sum^n_{i=1} \left(\frac{|x_i|}{\|\mathbf{x}\|_\infty} \right)^p \right)^{\frac{1}{p}}$$
   Note that $\left(\frac{|x_i|}{\|\mathbf{x}\|_\infty}\right) \leq 1$ for every $i$, with equality at least once and
@@ -932,10 +945,10 @@ For example, for any $\mathbf{x} \in \R^n$ we have:
      \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_1 \leq& n\|\mathbf{x}\|_\infty
   \end{eqnarray*}
 \subsection{Matrix norms}\index{Matrix norm}
-The analysis of matrix algorithms requires that we be able to assess the size of 
+The analysis of algorithms where matrices are involed requires that we are able to assess the size of 
 matrices. We introduce therefore \textit{matrix norms}, off course, this 
 definition is completely analogous but with an extra condition: for square matrices, the matrix norm must 
-be submultiplicative:
+be submultiplicative \index{Submultiplicative norm}:
 \begin{definition}
   A \textbf{matrix norm} on $\R^{n\times m}$ is a function $\|\cdot\|: \R^{n\times m} \to \R$ with 
   the following properties:
@@ -950,7 +963,7 @@ be submultiplicative:
   \end{enumerate}
 \end{definition}
 \subsubsection{Frobenius norm}\index{Frobenius norm}\index{Matrix norm!Frobenius norm}
-One of the most frequently used matrix norms is the so called \textit{Frobenius norm}:
+One of the most frequently used matrix norms for a matrix $A \in \R^{n\times m}$ is the so called \textit{Frobenius norm}:
 $$\|A\|_F = \left(\sum_{i=1}^n \sum_{j=1}^m |a_{ij}|^2\right)^{\frac{1}{2}} = \text{trace}(A^TA)^{\frac{1}{2}} ,$$
 If $A \in \R^{1\times m}$, then the Frobenius norm equals the 2-norm.
 
@@ -958,38 +971,200 @@ If $A \in \R^{1\times m}$, then the Frobenius norm equals the 2-norm.
 We can also define $p$-norms on matrices:
 $$\|A\|_p = \sup_{\mathbf{x}\not = 0} \frac{\|A\mathbf{x}\|_p}{\|\mathbf{x}\|_p}$$
 
-\subsubsection{Maximum norm}
-First notice that the norm defined for $A \in \R^{n\timesn}$ as:
-$$\|A\| = \max_{1\leq i, j \leq n} |a_{ij}|$$
+\subsubsection{Maximum norm}\index{Maximum norm}\index{Matrix norm!Maximum norm}
+First notice that the norm defined for $A \in \R^{n\times n}$ as:
+$$\|A\|_{\max} = \max_{1\leq i, j \leq n} |a_{ij}|$$
 is a norm on the vector space $\R^{n\timesn}$, but is not a matrix norm. Consider the
 matrix $J = \begin{psmallmatrix}1 & 1\\ 1 & 1\end{psmallmatrix}$ and compute $J^2 = 2J$. So:
-$\|J\| = 1$, $\|J^2\| = \|2J\| = 2\|J\| = 2$. So it is not the case that $\|J^2\| \leq \|J\|^2$, and hence
-$\|\cdot\|$ is not a submultiplicative norm. To solve this, define:
-$$\|A\|_\infty = n \|A\|$$
-then we have ($A,B \in \R^n$):
+$\|J\|_{\max} = 1$, $\|J^2\|_{\max} = \|2J\|_{\max} = 2\|J\|_{\max} = 2$. So it is not the case that $\|J^2\|_{\max} \leq \|J\|_{\max}^2$, and hence
+$\|\cdot\|_{\max}$ is not a submultiplicative norm. Therefore we define the 
+maximum norm as follows:
+\begin{definition}
+  Let $\|\cdot\|$ be a vector norm on $\R^n$. Define the \textbf{maximum norm} $\maxnorm{\cdot}$ on 
+  $\R^{n\times n}$ by:
+  $$\maxnorm{A} = \max_{\|\mathbf{x}\| = 1} \|A\mathbf{x}\|$$
+  \end{definition}
+It's easy to see these equivalences:
 \begin{eqnarray*}
-  \|AB\|_\infty &=& n \max_{1 \leq i, j \leq n} \left| \sum^n_{k=1} a_{ik}b_{kj}\right| \\ 
-  &\leq& n \max_{1 \leq i, j \leq n} \sum^n_{k=1} |a_{ik}b_{kj}|\\
-  &\leq& n \max_{1 \leq i, j \leq n} \sum^n_{k=1} \|A\|\|B\|\\
-  &=& n \|A\|n\|B\|\\
-  &=& \|A\|_\infty\|B\|_\infty
- \end{eqnarray*}
- Thus, a minor modifcation of the vector norm $\|\cdot\|$ is required to make it 
- a matrix norm, which we will call the \textit{maximum norm}. Again, when $p \to \infty$ we get the \emph{maximum norm}:
-\begin{eqnarray*}
-  \|A\|_\infty &=& \sup_{\mathbf{x}\not = 0} 
-  \frac{\|A\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty}\\
+\maxnorm{A} &=& \max_{\|\mathbf{x}\|= 1} \|A\mathbf{x}\|\\
+&=& \max_{\|\mathbf{x}\| \leq 1} \|A\mathbf{x}\|\\
   &=& \max_{\mathbf{x}\not = 0} \frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}\\
-  &=& \max_{\|\mathbf{x}\|_\alpha = 1} \frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}
 \end{eqnarray*}
-where $\|\cdot\|_\alpha$ is any vector norm. To see that this is true, just notice that
-we iterated over $\mathbf{x}\not = 0$ and that we divide \|A\mathbf{x}\| To give an example of 
-how to prove that the norms we defined in this section do indeed meet the 
-definition of a norm, we will prove 
+Because we need in the next paragraph the fact that the maximum norm is indeed a 
+matrix norm, we prove this:
+
+\begin{theorem}\label{maxnormtheo}
+  The function $\maxnorm{\cdot}$, also called the maximum norm, is a matrix norm 
+  on $\R^{n\times n}$.
+\end{theorem}
+\begin{proof}
+Let $A$ be a $n \times n$-matrix.  Property (1) of matrix norms follows from the fact that $\maxnorm{A}$ is 
+  the maximum of a nonnegative valued function. That this maximum exists follows from the extreme value theorem of Bolzano (see Theorem 5.5.1 in \cite{caenepeel})
+    because $\|A\mathbf{x}\|$ is a continuous function of $\mathbf{x}$ on the unit ball with $\|x\|=1$, which is a compact 
+    set. That $\maxnorm{A} = 0$ occurs only when $A$ is a matrix with only zero entries 
+    follows from the fact that $A\mathbf{x} = \mathbf{0}_{n\times 1}$ for all $\mathbf{x}$ is only possible when $A = \mathbf{0}_{n\times n}$.
+    
+    
+To see (2),  we notice that the triangle inequality is inherited from the vector 
+norm $\|\cdot\|$, since:
+\begin{eqnarray*}
+  \maxnorm{A+B} &=& \max_{\|\mathbf{x}\| = 1} \|(A+B) 
+  \mathbf{x}\|\\
+  &=& \max_{\|\mathbf{x}\| = 1} \|A\mathbf{x} + B\mathbf{x}\|\\
+&\leq& \max_{\|\mathbf{x}\| = 1} \left(\|A\mathbf{x}\| + 
+\|B\mathbf{x}\|\right)\\
+&\leq& \max_{\|\mathbf{x}\| = 1} \|A\mathbf{x}\| + \max_{\|\mathbf{x}\| = 1} \|B\mathbf{x}\|
+\\
+&=& \maxnorm{A} + \maxnorm{B}\\
+\end{eqnarray*}
+
+Property (3) follows from the calculation :
+$$\maxnorm{\alpha A} = \max_{\|\mathbf{x}\| = 1} \|\alpha A\mathbf{x}\| = \max_{\|\mathbf{x}\| = 1} |\alpha|\|A\mathbf{x}\| = |\alpha|\max_{\|\mathbf{x}\| = 1} \|A\mathbf{x}\| = |\alpha|\maxnorm{A}$$
+    
+The submultiplicative property (4) follows from the fact that:
+\begin{eqnarray*}
+  \maxnorm{AB} &=& \max_{\mathbf{x} \not = 0}\frac{\|AB\mathbf{x}\|}{\|\mathbf{x}\|}\\
+  &=& \max_{\mathbf{x} \not = 0}\frac{\|AB\mathbf{x}\|}{\|B\mathbf{x}\|}\frac{\|B\mathbf{x}\|}{\|\mathbf{x}\|}\\
+  &\leq& \max_{\mathbf{x}\not = 0}\frac{\|A\mathbf{y}\|}{\|\mathbf{y}\|}\max_{\mathbf{x}\not = 0}\frac{\|B\mathbf{x}\|}{\|\mathbf{x}\|}\\
+  &=& \maxnorm{A}.\maxnorm{B}
+\end{eqnarray*}   
+  \end{proof}
 
 Again, we can show that all matrix norms are equivalent with the same reasoning 
 as in Theorem \ref{equivalencenorms}.\index{Norm equivalence}\index{Matrix norm!Equivalence}
 
+\subsection{Spectral radius formula}\index{Spectral radius formula}
+In this section, we prove the spectral radius formula also known as the Gelfand's 
+formula\index{Gelfand's formula}. This formula is a way to calculate the spectral radius of a
+square matrix as a limit of matrix norms. The formula will play an important 
+role in Chapter 2, where it will be used to get some more advanced results of the 
+Perron-Frobenius when considering nonnegative, symmetric matrices.
+\begin{lemma}
+Let $A$ be a square matrix, then
+$$\rho(A)^k = \rho(A^k)$$
+\end{lemma}
+\begin{proof}
+  This follows immediately from the fact that if $A$ has eigenvalues
+  $\lambda_1, \lambda_2,\ldots, \lambda_n$, then $\lambda_1^k, \lambda_2^k, \ldots, \lambda_n^k$
+  are all the eigenvalues of $A^k$ (see 1.2 in \cite{kieboom}), so:
+  $$\rho(A)^k = \left(\max_{1 \leq i \leq n} |\lambda_i|\right)^k = 
+  |\max \lambda_i|^k = \rho(A^k).$$
+\end{proof}
+\begin{lemma}\label{ongelijkheidnorm}
+  Let $A$ be a square matrix and let $\|\cdot\|$ be a matrix norm then:
+  $$\rho(A) \leq \|A\|$$
+\end{lemma}
+\begin{proof}
+  Let $\lambda$ be an eigenvalue of $A$ and let $\mathbf{x}\not = \mathbf{0}$ be a 
+  corresponding eigenvector ($\mathbf{x}\in\R^n$). From $A\mathbf{x} = \lambda\mathbf{x}$, we get:
+  $$AX = \lambda X, \quad \text{where } X = (\mathbf{x} \ldots \mathbf{x}) \in 
+  \R^{n\times n}\setminus{\mathbf{0_{n\times n}}}$$
+It follows from property (3) and (4) of matrix norms that:
+$$|\lambda|\|X\| = \|\lambda X \| = \|A X\| \leq \|A\|\|X\|,$$
+and simplifying by $\|X\|$ ($\|X\| > 0$ by matrix norm property 1) gives:
+$$|\lambda| \leq \|A\|.$$
+This holds for all eigenvalues, so also for the maximum of all the eigenvalues of $A$. Hence the result follows. 
+\end{proof}
+Before we prove the following lemma, remember the well known theorem about the 
+Jordan canonical form of a square matrix $A$ (see Theorem 2.3.1 in \cite{kieboom}). 
+\begin{theorem}\label{jordanvrom}
+  A square matrix $A$ is similar to a block diagonal matrix 
+  $$ J' = \begin{pmatrix}
+  J_1 & & \\
+  & \ddots & \\
+  & & J_p
+  \end{pmatrix}$$
+  where each block $J_i$ is a square matrix of the form:
+  $$J_i = \begin{pmatrix}
+\lambda_i & 1       & 0       & \cdots  & 0 \\
+0       & \lambda_i & 1       & \cdots  & 0 \\
+\vdots  & \vdots  & \vdots& \ddots  & \vdots \\
+0       & 0       & 0        & \lambda_i & 1       \\
+0       & 0       & 0       & 0       & \lambda_i
+  \end{pmatrix},$$
+ with $\lambda_i$'s eigenvalues. So there exists an (invertible) matrix $P$ such that 
+  $$PAP^{-1} = J'$$
+  $J'$ is called the \textbf{Jordan normal form}  of $A$.
+  \end{theorem}
+
+\begin{lemma}\label{eigennorm}
+  Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matrix norm $\|. \|_\rho$ 
+  such that:
+  $$\|A\|_\rho \leq \rho(A) + \epsilon$$
+\end{lemma}
+\begin{proof}
+  The Jordan canonical form of $A$ is:
+  $$A = S \begin{pmatrix}
+  J_{n_1}(\lambda_1) & 0 & \ldots & 0 \\
+  0 & J_{n_2}(\lambda_2) & \ddots & \vdots \\
+  \vdots & \ddots & \ddots & 0\\
+  0 & \ldots & 0 & J_{n_k}(\lambda_k)
+  \end{pmatrix}S^{-1},$$
+  where $S \in \R^{n\times n}$ is an invertible matrix, $\lambda_1, \ldots, \lambda_k$ 
+  are the eigenvalues of $A$ and $n_1 + \ldots + n_k = n$. Let:
+  $$D(\eta) = \begin{pmatrix}
+  D_{n_1}(\eta) & 0 & \ldots & 0 \\
+  0 & D_{n_2}(\eta) & \ddots & \vdots \\
+  \vodts & \ddots & \ddots & 0\\
+  0 & \ldots & 0 & D_{n_k}(\eta)
+  \end{pmatrix}\quad \text{with } D_m(\eta)= \begin{pmatrix}
+  \eta & 0 & \ldots & 0 \\
+  0 & \eta^2 & \ddots & \vdots\\
+  \vdots & \ddots & \ddots & 0 \\
+  0 & \ldots & 0 & \eta^m
+  \end{pmatrix}$$
+  Since the left multiplication by $D_m(1/\epsilon)$ multiplies the $i$th row by $1/\epsilon^i$ 
+  and the right multiplication on the right by $D_m(\epsilon)$ multiplies the $j$th 
+  colum by $\epsilon^j$, we calculate:
+  $$D(1/\epsilon)S^{-1}ASD(\epsilon)=\begin{pmatrix}
+  B_{n_1}(\lambda_1, \epsilon) & 0 & \ldots & 0 \\
+  0 & B_{n_2}(\lambda_2, \epsilon) & \ddots & \vdots \\
+  \vdts & \ddots & \ddots & 0\\
+  0 & \ldots & 0 & B_{n_k}(\lambda_k, \epsilon)  \end{pmatrix}$$
+  with 
+  $$B_m(\lambda, \epsilon) = D_m(1/\epsilon)J_m(\lambda)D_m(\epsilon)=
+  \begin{pmatrix}
+   \lambda & \epsilon &  0 & \ldots & 0 \\
+  0 & \lambda & \epsilon &  0 & \vdots \\
+  0 & \ddots & \ddots & \ddots & 0\\
+  \vdots & \ddots & \ddots & \lambda & \epsilon\\
+  0 & \ldots & 0 & 0 & \lambda  \end{pmatrix}$$
+  We now define the matrix norm for $M \in \R^{n\times n}$ by:
+  \begin{eqnarray}
+    \|M\|_\rho &=& \max_{\|\mathbf{x}\|_1 = 1} \| 
+    D(1/\epsilon)S^{-1}MSD(\epsilon)\mathbf{x}\|_1\\
+    &=& \max_{l \in [1:n]} \sum^n_{k=1} 
+    |(D(1/\epsilon)S^{-1}MSD(\epsilon))_{k,l}|.
+ \end{eqnarray}
+ The conditions for being a matrix norm are trivially met because $\max_{\|\mathbf{x}\|_1 = 1} \|A\mathbf{x}\|$ is a matrix norm by Theorem \ref{maxnormtheo}.
+\end{proof}
+
+\begin{theorem}\label{spectraalformula}\textbf{Spectral radius formula}
+ Let a be an $n\times n$  matrix and  let $\|\cdot\|$ be a matrix norm then:
+  $$\rho(A) = \lim_{k\to \infty} \|A^k\|^{1/k}$$
+\end{theorem}
+\begin{proof}
+  Given $k \geq 0$, we use Lemma \ref{ongelijkheidnorm} to write:
+  $$\rho(A)^k = \rho(A^k) \leq \|A^k\|,$$
+  so:
+  $$\rho(A) \leq \|A^k\|^{1/k}.$$
+  Taking the limit as $k \to \infty$ gives $\rho(A) \leq \lim_{k\to 
+  \infty}\|A^k\|^{1/k}$. To establish the reverse inequality, we need to prove 
+  that, for any $\epsilon > 0$, there exists a $K \geq 0$ such that 
+  $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ for all $k \geq K$. From Lemma \ref{eigennorm}, we know that
+  there exists a matrix norm $\|.\|_\rho$ so $\|A\|_\rho \leq \rho(A) + \epsilon$. Moreover, by the equivalence of 
+  the norms (see Theorem \ref{equivalencenorms}) on $\R^{n\times n},$ we know that there exists some constant $C  > 0$ such that 
+  $\|M\| \leq C \|M\|_\rho$ for all $M \in \R^{n \times n}$. Then, for any $k \geq 0,$
+    $$\|A^k\| &\leq& C\|A^k\|_\rho \leq C\|A\|_\rho^k \leq C(\rho(A)+\epsilon)^k$$
+   So:
+   $$ \|A^k\|^{1/k} &\leq& C^{1/k}(\rho(A)+\epsilon), $$
+and thus:
+$$\lim_{k\to \infty} \|A^k\|^{1/k} \leq \rho(A) + \epsilon$$
+  This implies the existence of $K \geq 0$ such that $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ 
+  for $k \geq K$, as desired.
+ \end{proof}
+
+\newpage
 \section{Numerical analysis}\index{Bachmann-Landau}
 \subsection{Bachmann-Landau notations}\index{Bachmann-Landau}
 For comparing the computational cost of algorithms, 
@@ -1045,7 +1220,7 @@ the other hand, it only finds one eigenvalue with a corresponding eigenvector an
 the iterative process might converge very slowly. 
 
 There are plenty of variations of the 
-power method available that overcome all these difficulties, but we limit our discussion
+power method available that overcome all these limitations, but we limit our discussion
 here to the very basic method, therefore we call it the \textit{classical} power method.
 
 We first introduce some needed definitions, theorems and notations.
@@ -1062,7 +1237,9 @@ We first introduce some needed definitions, theorems and notations.
 \begin{proof}
   Recall that the eigenvalues of a real matrix $A$ are in general complex, and occur in conjugate pairs. So if $\lambda_1$ would be
    complex, the complex conjugate of $\lambda_1$ 
-  would also be an eigenvalue with the same modulus.
+  would also be an eigenvalue with the same modulus. Because $\lambda_1$ must be 
+  the only eigenvalue that is strictly greater than all the other eigenvalues, 
+  this is impossible.
   \end{proof}
 
 
@@ -1111,17 +1288,17 @@ this direction.
 A practical problem arises now when one of the components of $\mathbf{x}^{(k)}$ 
 is equal to zero. If we want to take the ratio between the corresponding 
 components of $\mathbf{x}^{(k+1)}$ and $\mathbf{x}^{(k)}$ we get a division by 
-zero. We can solve this by a property that any norm function has: 
+zero. We can solve this by property (3) of vector norms (see Defintion \ref{vectornorms}): 
 $$\|\lambda_1\mathbf{x}^{(k)}\| = |\lambda_1|\|\mathbf{x}^{(k)}\|.$$
 Because $\mathbf{x}^{(k)} \not = \mathbf{0}$ we have that $\|\mathbf{x}^{(k+1)}\| \approx \|\lambda_1\mathbf{x}^{(k)}\|$, 
 so we calculate
 $\lambda_1$ in the power method by:
 $$|\lambda_1| = \lim_{k\to\infty}\frac{\|\mathbf{x}^{(k+1)}\|}{\|\mathbf{x}^{(k)}\| }$$
-To decide on the sign of $\lambda_1$ (see Corollary \ref{reallambda1}), just divide two non-zero components of f $\mathbf{x}^{(k+1)}$ and 
+To decide on the sign of $\lambda_1$ ($\lambda_1$ is always real, see Corollary \ref{reallambda1}), just divide two non-zero components of $\mathbf{x}^{(k+1)}$ and 
 $\mathbf{x}^{(k)}$.
 
 Another issue to address is that the components of $\mathbf{x^{(k)}} = A^k\mathbf{x^{(0)}}$ 
-can become very high or very low, which can cause an overflow or underflow in the 
+can become too large or too low, which can cause an overflow or underflow in the 
 real number representation of computers. To avoid this, we use 
 normed versions of the $\mathbf{x^{(k)}}$-vectors: we start with a vector $\mathbf{y}^{(0)}$ 
 with $\|\mathbf{y}^{(0)}\|=1$. Subsequently, we calculate for $k = 0, 1, 
@@ -1144,9 +1321,12 @@ If we want to calculate the eigenvalue we can use:
   &=& \mu_1 \mu_2 \ldots \mu_k \mathbf{y}^{(k)}\\
 \end{eqnarray*}
 So:
-$$|\lambda_1| = \lim_{k\to \infty} \frac{\|A^{k+1}\mathbf{y}^{(0)}\|}{\|A^k\mathbf{y}^{(0)}\|} 
-= \lim_{k\to \infty} \frac{\mu_1\mu_2\ldots \mu_{k+1}\|\mathbf{y}^{(k+1)}\|}{\mu_1 \mu_2 \ldots \mu_k\|\mathbf{y}^{(k)}\|} 
-= \lim_{k\to \infty} \mu_{k+1}$$ 
+\begin{eqnarray}
+  |\lambda_1| &=& \lim_{k\to \infty} \frac{\|A^{k+1}\mathbf{y}^{(0)}\|}{\|A^k\mathbf{y}^{(0)}\|_2} \label{powertripke}
+\\
+&=& \lim_{k\to \infty} \frac{\mu_1\mu_2\ldots \mu_{k+1}\|\mathbf{y}^{(k+1)}\|}{\mu_1 \mu_2 \ldots \mu_k\|\mathbf{y}^{(k)}\|_2}\nonumber\\ 
+&=& \lim_{k\to \infty} \mu_{k+1}\nonumber
+\end{eqnarray}
 
 Because $\mu_{k+1}$ converges, a good choice for a stop condition for our numerical algorithm could be 
 $$|\mu_k - \mu_{k-1}| \leq \text{TOL},$$
@@ -1182,9 +1362,9 @@ $ \mu_k = -\mu_k$\;
  \caption{The Power method}\label{powermethod}
 \end{algorithm}
 
-\subsubsection{Computational cost \& Usage}
+\subsubsection{Computational cost and usage}
 The computational cost of the algorithm is determined by the speed at which the 
-$o(1)$ terms in \ref{tijdscomplexiteit} go to zero. This is indicated by the slowest converging term $(\lambda_2/\lambda_1)^k$. This means
+$o(1)$ terms in (\ref{tijdscomplexiteit}) go to zero. This is indicated by the slowest converging term $(\lambda_2/\lambda_1)^k$. This means
 that  the algorithm converges slowly when there is an eigenvalue close in magnitude to the dominant eigenvalue. We 
 get the following expression for approximation $\mu_k$ of $\lambda_1$:
 $$|\mu^k - \lambda_1| = O\left(\left|\frac{\lambda_2}{\lambda_1} \right|^k\right)$$
@@ -1201,7 +1381,7 @@ we cannot know in advance whether the power method will work or not. Recall that
 the eigenvalues of a real matrix $A$ are in general complex, and occur in 
 conjugate pairs. This means, when $\lambda_1$ is not real, 
 the power method will certainly fail. Therefore, it is a good idea to apply the 
-power method only to matrix whose eigenvalues are known to be real. The only 
+power method only to matrices whose eigenvalues are known to be real. The only 
 thing that can go wrong with those matrices is that the dominant eigenvalue has 
 an algebraic multiplicity larger than 1. 
 
@@ -1252,7 +1432,7 @@ which is (more or less) in proportion with $(1,1,1)$.
 \end{example}
 
 
-
+\newpage
 \section{Graphs}
 After introducing different kinds of matrices and proving the Perron-Frobenius 
 theorem, we now take a closer look at graphs. Here too, we'll look at different 
@@ -1275,7 +1455,7 @@ The definitions and results in this section are mainly based on the course
   most of the time denoted by calligraphic letters $\mathscr{G}, 
   \mathscr{H},..$.   \end{definition}\index{Undirected graph}\index{Graph!Undirected}\index{Directed graph}\index{Graph!Directed}
 With this defintion, we defined directed graphs, when the relation $\rightarrow$ is symmetric, 
- we call the graph \textbf{undirected}, in this case we often write $E$ instead 
+ we call the graph \textbf{undirected}, in this case we often write $\leftrightarrow$ instead 
  of $\rightarrow$.  
  
  
@@ -1301,7 +1481,7 @@ With this defintion, we defined directed graphs, when the relation $\rightarrow$
 
 \end{center}
 is an undirected graph with vertices $v_1, v_2, v_3$. The adjacency 
-relation $\to$ equals \\$\{(v_1,v_2), (v_2,v_1), (v_2, v_3), (v_3,v_2), (v_3, v_1), 
+relation $\leftrightarrow$ equals \\$\{(v_1,v_2), (v_2,v_1), (v_2, v_3), (v_3,v_2), (v_3, v_1), 
 (v_1,v_3)\}$.
 \end{example}
 
@@ -1341,7 +1521,7 @@ the notion of a set in which elements are allowed to appear more than once.
 
 \begin{definition}\label{multiset}\index{Multiset}
   A \textbf{multiset} $A=(S,\mu)$ is an ordered pair with $S$ a set and $\mu: S \to 
-  \N\minus{0}$ a function that gives the \textbf{multiplicity} of an element of $S$. A 
+  \N_{0}$ a function that gives the \textbf{multiplicity} of an element of $S$. A 
   multiset can be written as a set in the following way:
   $$A = (S, \mu) = \{(s,\mu(s)): s \in S\}$$
   
@@ -1462,14 +1642,14 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    $$c_\graf(\to, i) = |\{(i, e_j) \in C \times E | b(e_j) = i\}|$$
  \end{definition}
   \begin{definition}\label{fullcolored}\index{Full coloring}\index{Graph!Colored graph!Full colering}
-   A \textbf{node, edge colored graph} or a \textbf{full colored graph} $\graf$ is $5$-tuple  $(V, \to, C, a, b)$ with $V$ 
+   A \textbf{node-edge colored graph} or a \textbf{full colored graph} $\graf$ is $5$-tuple  $(V, \to, C, a, b)$ with $V$ 
    a set of vertices, $\to$ an adjacency relation, $C$ a set of colors,  $a$ 
    a function $a: V \to C$ that assigns to each vertex one color and $b$ 
    a function $b: (\to) \to C$ that assigns to each edge one color with as 
    condition that $a(V) \cup b(\to) = C$.
  \end{definition}
 
- \subsubsection{Adjacency matrices}\index{Adjacency matrix}\index{Graph!Adjacency matrix}
+ \subsubsection{Adjacency matrix}\index{Adjacency matrix}\index{Graph!Adjacency matrix}
 \index{Matrix!Adjacency matrix}
 
  We now represent a finite graph in the form of an adjacency matrix. This 
@@ -1477,7 +1657,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
  
  
  \begin{definition}
- Let $\graf=(V, \mu)$ be a graph of order $n$ and define a numbering on the 
+ Let $\graf=(V, \to)$ be a graph of order $n$ and define a numbering on the 
  vertices $v_1,\ldots, v_n$. Then the \textbf{adjacency matrix} $A_\graf$ of $\graf$ is the real
  $n\times n$-matrix with $a_{ij}$ equal to $\mu(v_i, v_j)$.
  \end{definition}
@@ -1522,13 +1702,39 @@ $$A = \begin{pmatrix}
 
 \end{example}
 
+\subsubsection{Incidence matrix}\index{Matrix!Incidence matrix}\index{Incidence 
+matrix}
+A graph can also be represented as an incidence matrix by numbering the vertices 
+and the edges. The resulting incidence matrix will be a with only 
+$1$, $-1$ and $0$ entries. 
+
+\begin{definition}\label{incidencematrixgraph}
+  The \textbf{incidence matrix} of directed graph $\graf = (V, \to)$ with vertices
+  $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$ is a $n\times m$-matrix $A$ 
+  where rows represent the vertices and the columns represent the 
+  edges, such that:
+  
+ $$(A)_{ij} = \begin{cases} 1 &\mbox{if }$v_i$ is the source node of $e_j$    \\ 
+  -1 &\mbox{if }$v_i$ is the terminal of $e_j$    \\ 
+0 & \mbox{otherwise} \end{cases}$$
+
+In the case of an undirected graph  $\graf = (V, \leftrightarrow)$ with vertices
+  $v_1, \ldots, v_n \in V$ and edges $e_1, \ldots, e_m \in E$ we define:
+   $$(A)_{ij} = \begin{cases} 1 &\mbox{if }$v_i$ is a node of $e_j$    \\ 
+0 & \mbox{otherwise} \end{cases}$$
+
+
+\end{definition}
+
+
+
 
 \subsection{Strong connectivity}\index{Connected graph}\index{Graph!Connected graph}
 
 In this section, we take a closer look at \emph{directed graphs} and introduce 
 the concept of connectivity.
 \begin{definition}
-  An undirected graph $\graf$ is \textbf{connected} if it possible to establish a path from any 
+  An undirected graph $\graf=(V,\leftrightarrow)$ is \textbf{connected} if it possible to establish a path from any 
    vertex to any other vertex.
     \end{definition}
 \begin{definition}
@@ -1551,7 +1757,7 @@ there is an integer $k$ such that $(A^k)_{ij} > 0$, from Theorem \ref{irredubiel
 know this means that $A$ is irreducible and vice versa.
 
 \end{proof}
-
+\newpage
 \section{Hypergraphs}
 After introducing graphs, we now look at hypergraphs. Intuitively, a 
 hypergraph is a generalization of a graph in which an edge can connect any 
@@ -1569,7 +1775,7 @@ An hypergraph (V, E) will be denoted by script calligraphic letters $\mathcal{G}
 
 \begin{remark}\index{Multi-hypergraph}\index{Hypergraph!Multi-hypergraph}\index{Hyperloops}\index{Hypergraph!Hyperloops}
 
-  As in graphs, the classic definitions of a hypergraphs doesn't allow to have 
+  As in graphs, the classic definitions of a hypergraph doesn't allow to have 
   multiple edges that cover the same vertices. Also repeated vertices within an edge, often called \textbf{hyperloops} are not allowed 
   by the above definition. A hypergraph that can have multiple edges connecting 
   the same vertices, and hyperloops is called a \textbf{multi-hypergraph}, but 
@@ -2129,7 +2335,7 @@ the evolution of the ideas in the successive papers.
     proving that also the corresponding eigenvector is real.
     
   \end{proof}
-\begin{theorem}\label{diagonaal}\textbf{(Symmetric Schur Decomposition)}
+\begin{theorem}\label{diagonaal}\index{Schur Decomposition}\textbf{(Symmetric Schur Decomposition)}
   Let $A$ be a real symmetric matrix, then there exist an orthogonal 
   matrix $P$ such that:
   \begin{enumerate}
@@ -2218,7 +2424,9 @@ D &=& \left(
 \lambda_1 & \mathbf{0} \\ \hline
 \mathbf{0}^t & D'\end{array}\right),
 \end{eqnarray*}
-we have proved (1). From the definition of diagonalizable matrices and Theorem \ref{eigenbasis} 
+we have proved (1). From the definition of diagonalizable matrices and the fact 
+that a square matrix is diagonalizable if and only if it has an eigenbasis (a basis containing only lineair independent 
+eigenvectors),
 (ii) and (iii) immediately follow.
 \end{proof}
  \begin{theorem}
@@ -2378,10 +2586,10 @@ results we wanted intuitively.
 
 \end{example}
  \subsubsection{Predictors in the Eurovision Song Contest 
- 2009-2014}\index{Predictor}\index{Eurovision}
+ 2009-2015}\index{Predictor}\index{Eurovision}
  The Eurovision Song Contest is an annual competition between countries whose 
  public broadcaster is part of the EBU-network. The contest is the biggest music 
- competition in the world, reaching about 200 million anually.
+ competition in the world, reaching about 200 million annually.
   
  The contest consists of three shows: 2 semi-finals and 1 grand final. From each 
  semi-final, 10 countries proceed the the grand final. Italy, Germany, Spain, United Kingdom and France are 
@@ -2547,14 +2755,23 @@ Armenia         & 0.050899422
 
 Notice that ordering the countries by their authority scores indeed returns the final ranking of the contest. The countries who have an
 authority score equal to 0 are the countries that didn't make it to the final and couldn't therefore 
-receive any points. When looking at the hub scores, it appears that Portugal `predicted' the 
+receive any points. Also the complete losers receiving the famous `nul points' will have an authority score
+equal to 0, but that didn't occur during the final of 2014. When looking at the hub scores, it appears that Portugal `predicted' the 
 final ranking the best. When we look at the points awarded by Portugal during 
 the final, this is indeed true:
 \begin{itemize}
   \itemsep0em
 
-  \item \textbf{12 points}: Austria\item \textbf{10 points}: The Netherlands
-\item \textbf{8 points}: Sweden\item \textbf{7 points}: Switzerland	\item \textbf{6 points}: Hungary\item \textbf{5 points}: Denmark\item \textbf{4 points}: Armenia	\item \textbf{3 points}: Norway\item \textbf{2 points}: Russia\item \textbf{1 point}: Romania
+  \item \textbf{12 points}: Austria
+\item \textbf{10 points}: The Netherlands
+\item \textbf{8 points}: Sweden
+\item \textbf{7 points}: Switzerland	
+\item \textbf{6 points}: Hungary
+\item \textbf{5 points}: Denmark
+\item \textbf{4 points}: Armenia	
+\item \textbf{3 points}: Norway
+\item \textbf{2 points}: Russia
+\item \textbf{1 point}: Romania
 \end{itemize}
 No less than 7 countries in the points of Portugal have achieved the final top 
 10, the top 3 results of Portugal are even equal to the final top 3! Russia, Romania and
@@ -2573,69 +2790,108 @@ therefore limited to only 10 countries, while the voting produces a complete fin
 countries.
 
 Of course, it's tempting to research the predictive value of countries during a 
-couple of years. We opted for the period 2009-2014 because during the last five 
-years the voting procedure remained unchanged: the points awarded by each country are based on 50$\%$ televoting and
-$50\%$ jury vote. So we take the average of the hub scores of the last five 
-years of each country. We only put one condition on these countries: they should 
-have participated at 4 out of 5 times, more than 1 absence would possibly make the average misleading.
-The result is presented in Table \ref{thub}. The complete results of each year can be found in Appendix B. 
+couple of years. We opted for the period 2009-2015 because during the last seven 
+editions the voting procedure remained unchanged: the points awarded by each country are based on 50$\%$ televoting and
+$50\%$ jury vote. So we take the average of the hub scores of the last seven
+years of each country. The result is presented in Table \ref{thub}. The complete results of each year can be found in Appendix B. 
 
-We see that Hungary, Cyprus and Belgium are the best predictors during the last 
-five years. The bottom is also not very surprising: in 2010, 2012 and 2013 Albania did not 
+We have to put a  condition on the results in Table \ref{thub}: countries should 
+have participated 6 out of 7 times, more than 1 absence would possibly make the average misleading. 
+In that case, the best predictors are:
+
+\begin{enumerate}
+  \item Hungary
+  \item Cyprus
+  \item The Netherlands
+  \item Belgium
+  \item Spain
+\end{enumerate}
+
+And the worst predictors are:
+\begin{enumerate}
+  \item Armenia
+  \item Azerbaijan
+  \item FYR Macedonia
+  \item Georgia
+  \item Albania
+\end{enumerate}
+
+We see that the best predictors are indeed not the most succesfull countries at the contest itself:
+Hungary and Cyprus never reached the top 10 in the last seven years, The Netherlands only reached the final twice, Belgium qualified three times. Spain is as a main funder directly qualified for the grand final,
+but was 5 out of 7 times placed lower than the 20th place. The bottom is also not very surprising: in 2010, 2012 and 2013 Albania did not 
 receive enough televotes so the jury decided their points (see \cite{eurovision} for more information), making their judging process vary from one year to another.
 Azerbaijan and Armenia scored very high in the last five years, (e.g. Azerbaijan reached the top 5
-every year except 2014, won in 2011 and became second in 2013) 
-but due to their dispute about the Nagorno-Karabakh region, they never exchanged a 
+every year except 2014 and 2015, won in 2011 and became second in 2013) 
+and due to their dispute about the Nagorno-Karabakh region, they never exchanged a 
 single
 point during the last five years. Also cultural differences are probably an 
 explanation: Georgia, Azerbaijan and Armenia are located in the Caucasus, a remote corner of Europe, with 
 many Asian influences (the region is sometimes refered to as Eurasia). 
 
-\begin{table}[h!]
-\begin{tabular}{|l|r|r|r|r|r|r|r|r|}
-\hline
-\textbf{Participant}                                       & \textbf{2014} & \textbf{2013} & \textbf{2012} & \textbf{2011} & \textbf{2010} & \textbf{2009} & \textbf{Average}  \\ \hline
-Hungary                                                    & 0.165700      & 0.150320      & 0.151291      & 0.130650      & -             & 0.158260      & \textbf{0.151244} \\ \hline
-Cyprus                                                     & -             & 0.161413      & 0.140385      & 0.145691      & 0.144175      & 0.146567      & \textbf{0.147646} \\ \hline
-Belgium                                                    & 0.169585      & 0.159189      & 0.153462      & 0.118487      & 0.147362      & 0.122234      & \textbf{0.145053} \\ \hline
-Lithuania                                                  & 0.159920      & 0.141552      & 0.144121      & 0.127425      & 0.144634      & 0.152601      & \textbf{0.145042} \\ \hline
-\begin{tabular}[c]{@{}l@{}}The \\ Netherlands\end{tabular} & 0.145211      & 0.133926      & 0.147638      & 0.137637      & 0.139085      & 0.163395      & \textbf{0.144482} \\ \hline
-Israel                                                     & 0.153059      & 0.157744      & 0.139948      & 0.131677      & 0.118970      & 0.157031      & \textbf{0.143072} \\ \hline
-Spain                                                      & 0.165765      & 0.153609      & 0.133174      & 0.114255      & 0.162626      & 0.122739      & \textbf{0.142028} \\ \hline
-Latvia                                                     & 0.166295      & 0.134627      & 0.138436      & 0.121329      & 0.142837      & 0.143788      & \textbf{0.141219} \\ \hline
-Estonia                                                    & 0.162056      & 0.141096      & 0.131495      & 0.143254      & 0.136098      & 0.131401      & \textbf{0.140900} \\ \hline
-Slovenia                                                   & 0.156534      & 0.141375      & 0.148665      & 0.118682      & 0.137277      & 0.133178      & \textbf{0.139285} \\ \hline
-Malta                                                      & 0.119064      & 0.146482      & 0.122804      & 0.162192      & 0.138073      & 0.139682      & \textbf{0.138049} \\ \hline
-Iceland                                                    & 0.165062      & 0.149906      & 0.129060      & 0.130358      & 0.137492      & 0.113493      & \textbf{0.137562} \\ \hline
-Denmark                                                    & 0.160550      & 0.112496      & 0.139704      & 0.104782      & 0.144174      & 0.156365      & \textbf{0.136345} \\ \hline
-Greece                                                     & 0.159278      & 0.144943      & 0.124054      & 0.145912      & 0.095629      & 0.148054      & \textbf{0.136312} \\ \hline
-Austria                                                    & 0.137956      & 0.127058      & 0.153796      & 0.129429      & -             & 0.132217      & \textbf{0.136091} \\ \hline
-Croatia                                                    & -             & 0.169310      & 0.132023      & 0.129980      & 0.114014      & 0.134540      & \textbf{0.135974} \\ \hline
-France                                                     & 0.153994      & 0.135187      & 0.151435      & 0.137268      & 0.118194      & 0.109034      & \textbf{0.134185} \\ \hline
-Russia                                                     & 0.102149      & 0.130277      & 0.129907      & 0.143360      & 0.141861      & 0.152992      & \textbf{0.133424} \\ \hline
-Sweden                                                     & 0.155725      & 0.122816      & 0.099063      & 0.106864      & 0.153858      & 0.160329      & \textbf{0.133109} \\ \hline
-Ireland                                                    & 0.147585      & 0.137790      & 0.132864      & 0.103704      & 0.147411      & 0.128126      & \textbf{0.132913} \\ \hline
-Romania                                                    & 0.155212      & 0.141742      & 0.119829      & 0.131675      & 0.128084      & 0.119466      & \textbf{0.132668} \\ \hline
-Germany                                                    & 0.136869      & 0.126650      & 0.157167      & 0.103942      & 0.115909      & 0.155134      & \textbf{0.132612} \\ \hline
-Finland                                                    & 0.172574      & 0.108008      & 0.141472      & 0.101891      & 0.133330      & 0.132773      & \textbf{0.131675} \\ \hline
-Bulgaria                                                   & -             & 0.136342      & 0.150772      & 0.110776      & 0.136208      & 0.122794      & \textbf{0.131378} \\ \hline
-Norway                                                     & 0.156676      & 0.098933      & 0.154850      & 0.099012      & 0.155455      & 0.107546      & \textbf{0.128745} \\ \hline
-\begin{tabular}[c]{@{}l@{}}United \\ Kingdom\end{tabular}  & 0.144343      & 0.143615      & 0.121922      & 0.096917      & 0.136172      & 0.133630      & \textbf{0.128594} \\ \hline
-Portugal                                                   & 0.173611      & -             & 0.116836      & 0.130723      & 0.107674      & 0.105899      & \textbf{0.126949} \\ \hline
-Serbia                                                     & -             & 0.165969      & 0.113907      & 0.095025      & 0.132455      & 0.123080      & \textbf{0.126087} \\ \hline
-Ukraine                                                    & 0.135769      & 0.106438      & 0.123998      & 0.120992      & 0.139278      & 0.142826      & \textbf{0.125295} \\ \hline
-\begin{tabular}[c]{@{}l@{}}FYR \\Macedonia\end{tabular}                                           & 0.107531      & 0.138521      & 0.132612      & 0.116197      & 0.127626      & 0.124228      & \textbf{0.124453} \\ \hline
-Belarus                                                    & 0.089227      & 0.143351      & 0.120914      & 0.138934      & 0.104108      & 0.149588      & \textbf{0.124354} \\ \hline
-Moldova                                                    & 0.115875      & 0.139519      & 0.119439      & 0.126125      & 0.119696      & 0.119161      & \textbf{0.123302} \\ \hline
-Switzerland                                                & 0.153864      & 0.117585      & 0.125128      & 0.092621      & 0.127077      & 0.117733      & \textbf{0.122335} \\ \hline
-Georgia                                                    & 0.117423      & 0.147386      & 0.123067      & 0.132744      & 0.086281      & -             & \textbf{0.121380} \\ \hline
-Albania                                                    & 0.091898      & 0.102282      & 0.098185      & 0.142108      & 0.140538      & 0.141493      & \textbf{0.119417} \\ \hline
-Azerbaijan                                                 & 0.068005      & 0.109553      & 0.113396      & 0.119173      & 0.120818      & 0.109357      & \textbf{0.106717} \\ \hline
-Armenia                                                    & 0.050899      & 0.125792      & -             & 0.128531      & 0.101509      & 0.109782      & \textbf{0.103303} \\ \hline
-\end{tabular}
-\caption{The average of the hub scores between 2009-2014. Countries must have participated at least 4 times.}
-\end{table}\label{thub}
+\begin{landscape}
+\begin{longtable}{r l | r | r | r | r | r | r | r | r}
 
+
+\caption{The average of the hub scores between 2009-2015}
+&\#&\textbf{Participant}&\textbf{2015}&\textbf{2014}&\textbf{2013}&\textbf{2012}&\textbf{2011}&\textbf{2010}&\textbf{2009}&\textbf{Average}\\
+\hline \hline
+\endfirsthead
+ 
+
+\caption{The average of the hub scores between 2009-2015 (continued)}
+&\#&\textbf{Participant}&\textbf{2015}&\textbf{2014}&\textbf{2013}&\textbf{2012}&\textbf{2011}&\textbf{2010}&\textbf{2009}&\textbf{Average}\\
+\hline \hline
+
+\endhead
+
+
+1.&\textbf{Australia}&0.157516&-&-&-&-&-&-&\textbf{0.157516}\\
+2.&\textbf{Hungary}&0.146121&0.165700&0.150320&0.151291&0.130650&-&0.158260&\textbf{0.150390}\\
+3.&\textbf{Cyprus}&0.145637&-&0.161413&0.140385&0.145691&0.144175&0.146567&\textbf{0.147311}\\
+4.&\textbf{The Netherlands}&0.155502&0.145211&0.133926&0.147638&0.137637&0.139085&0.163395&\textbf{0.146056}\\
+5.&\textbf{Belgium}&0.145478&0.169585&0.159189&0.153462&0.118487&0.147362&0.122234&\textbf{0.145114}\\
+6.&\textbf{Spain}&0.158995&0.165765&0.153609&0.133174&0.114255&0.162626&0.122739&\textbf{0.144452}\\
+7.&\textbf{Israel}&0.146691&0.153059&0.157744&0.139948&0.131677&0.118970&0.157031&\textbf{0.143589}\\
+8.&\textbf{Latvia}&0.149527&0.166295&0.134627&0.138436&0.121329&0.142837&0.143788&\textbf{0.142406}\\
+9.&\textbf{Slovakia}&-&-&-&0.138399&0.141130&0.145328&0.142350&\textbf{0.141802}\\
+10&\textbf{Estonia}&0.145329&0.162056&0.141096&0.131495&0.143254&0.136098&0.131401&\textbf{0.141533}\\
+11.&\textbf{Lithuania}&0.118747&0.159920&0.141552&0.144121&0.127425&0.144634&0.152601&\textbf{0.141286}\\
+12.&\textbf{Denmark}&0.160507&0.160550&0.112496&0.139704&0.104782&0.144174&0.156365&\textbf{0.139797}\\
+13.&\textbf{Malta}&0.145890&0.119064&0.146482&0.122804&0.162192&0.138073&0.139682&\textbf{0.139170}\\
+14.&\textbf{Poland}&0.159925&0.112297&-&-&0.127825&0.159433&0.135973&\textbf{0.139090}\\
+15.&\textbf{Slovenia}&0.135649&0.156534&0.141375&0.148665&0.118682&0.137277&0.133178&\textbf{0.138766}\\
+16.&\textbf{Iceland}&0.145817&0.165062&0.149906&0.129060&0.130358&0.137492&0.113493&\textbf{0.138741}\\
+17.&\textbf{Austria}&0.150454&0.137956&0.127058&0.153796&0.129429&-&0.132217&\textbf{0.138485}\\
+18.&\textbf{Germany}&0.157865&0.136869&0.126650&0.157167&0.103942&0.115909&0.155134&\textbf{0.136220}\\
+19.&\textbf{Croatia}&-&-&0.169310&0.132023&0.129980&0.114014&0.134540&\textbf{0.135974}\\
+20.&\textbf{Romania}&0.153499&0.155212&0.141742&0.119829&0.131675&0.128084&0.119466&\textbf{0.135644}\\
+21.&\textbf{France}&0.142272&0.153994&0.135187&0.151435&0.137268&0.118194&0.109034&\textbf{0.135341}\\
+22.&\textbf{Greece}&0.125544&0.159278&0.144943&0.124054&0.145912&0.095629&0.148054&\textbf{0.134774}\\
+23.&\textbf{Finland}&0.149564&0.172574&0.108008&0.141472&0.101891&0.133330&0.132773&\textbf{0.134231}\\
+24.&\textbf{Ireland}&0.141492&0.147585&0.137790&0.132864&0.103704&0.147411&0.128126&\textbf{0.134139}\\
+25.&\textbf{United Kingdom}&0.153125&0.144343&0.143615&0.121922&0.096917&0.136172&0.133630&\textbf{0.132818}\\
+26.&\textbf{Russia}&0.128412&0.102149&0.130277&0.129907&0.143360&0.141861&0.152992&\textbf{0.132708}\\
+27.&\textbf{Sweden}&0.130248&0.155725&0.122816&0.099063&0.106864&0.153858&0.160329&\textbf{0.132701}\\
+28.&\textbf{Bulgaria}&-&-&0.136342&0.150772&0.110776&0.136208&0.122794&\textbf{0.131378}\\
+29.&\textbf{Norway}&0.144331&0.156676&0.098933&0.154850&0.099012&0.155455&0.107546&\textbf{0.130972}\\
+30.&\textbf{Bosnia \& Herzegovina}&-&-&-&0.135192&0.127186&0.139054&0.119158&\textbf{0.130147}\\
+31.&\textbf{Portugal}&0.144985&0.173611&-&0.116836&0.130723&0.107674&0.105899&\textbf{0.129955}\\
+32.&\textbf{Ukraine}&-&0.135769&0.106438&0.123998&0.120992&0.139278&0.142826&\textbf{0.128217}\\
+33.&\textbf{Belarus}&0.147342&0.089227&0.143351&0.120914&0.138934&0.104108&0.149588&\textbf{0.127638}\\
+34.&\textbf{Serbia}&0.128584&-&0.165969&0.113907&0.095025&0.132455&0.123080&\textbf{0.126503}\\
+35.&\textbf{Switzerland}&0.146739&0.153864&0.117585&0.125128&0.092621&0.127077&0.117733&\textbf{0.125821}\\
+36.&\textbf{Moldova}&0.130904&0.115875&0.139519&0.119439&0.126125&0.119696&0.119161&\textbf{0.124388}\\
+37.&\textbf{Turkey}&-&-&-&0.113535&0.145608&0.137704&0.094715&\textbf{0.122890}\\
+38.&\textbf{San Marino}&0.131533&0.098204&0.092521&0.130841&0.158559&-&-&\textbf{0.122332}\\
+39.&\textbf{Italy}&0.146217&0.121639&0.134389&0.109725&0.098845&-&-&\textbf{0.122163}\\
+40.&\textbf{Montenegro}&0.085579&0.097193&0.156165&0.137301&-&-&0.126144&\textbf{0.120476}\\
+41.&\textbf{Albania}&0.124384&0.091898&0.102282&0.098185&0.142108&0.140538&0.141493&\textbf{0.120127}\\
+42.&\textbf{Georgia}&0.111867&0.117423&0.147386&0.123067&0.132744&0.086281&-&\textbf{0.119795}\\
+43.&\textbf{FYR Macedonia}&0.085414&0.107531&0.138521&0.132612&0.116197&0.127626&0.124228&\textbf{0.118876}\\
+44.&\textbf{Czech Republic}&0.130862&-&-&-&-&-&0.103917&\textbf{0.117390}\\
+45.&\textbf{Azerbaijan}&0.125808&0.068005&0.109553&0.113396&0.119173&0.120818&0.109357&\textbf{0.109444}\\
+46.&\textbf{Armenia}&0.119244&0.050899&0.125792&-&0.128531&0.101509&0.109782&\textbf{0.105960}\end{longtable}\label{thub}
+\end{landscape}
 \subsection{Final reflection}
 The HITS-algorithm is one of the few algorithms that has the ability to rank pages according to a specific search 
 query.
@@ -2659,29 +2915,36 @@ Nowadays, we know that \texttt{Ask.com} uses this algorithm. In fact, most searc
 very secretive about their search algorithm (e.g. \texttt{Google}) to make profit and avoid cheating by webmasters. Still, the chances 
 are that other search engines use some variant of the algorithm as well, in 
 combination with a lot of other procedures. 
-
+\newpage
 \section{Node similarity}\label{sectionnodesim}
 This section provides a detailed overview of the paper `\emph{A Measure of Similarity between Graph Vertices: 
-Applications to Synonym Extraction and Web Searching}'\cite{blondel} of V. D. Blondel and others. 
-The paper generalizes the HITS-algorithm leading to the concept of similarity on  graphs. This concept is explained in detail and far more mathematically 
-rigorously than in the previous section. Recall, for example, our assumption in the previous section stating that the matrix $M$ has to have a unique dominant
-eigenvalue. Although this is satisfactory in practical examples, we want to 
-construct a concept that works for all types of (directed) graphs, also the ones leading to 
-matrices with dominant eigenvalues with multiplicity greater than 1 and therefore 
-we will develop a method to work around this situation.  
+Applications to Synonym Extraction and Web Searching}' \cite{blondel} of V. D. Blondel and others. 
+The paper generalizes the HITS-algorithm leading to the concept of (node) similarity on  
+graphs. In the following chapters, we will call this method often the `method of Blondel' \index{Method of Blondel}. This method is explained in detail and will serve as a framework for the following sections and chapters. The method allows
+a mathematical rigorous approach, leading to a very important convergence theorem. Thanks to it's generality, this convergence theorem is extremely powerful
+and will be used
+to prove convergence for all the presented algorithms in the next sections and chapters.  This theorem also solves 
+the issue from the previous section where the matrix $M$ has to have a unique dominant
+eigenvalue. Once we constructed the algorithm, proved the convergence of it and 
+introduced the compact form, we also look at some special cases of node similarity 
+between graphs.
 
 \subsubsection{Introduction}\index{Structure 
 graph}\index{Graph!Structure graph}
-In this introduction, we explain the main idea behind the method of Blondel (in the following chapters, we will always refer
-to this method as the method of Blondel). Because we are focussing on the intuitive ideas, 
-we don't prove any theorems in this section. The theoretical results are 
-presented in the following sections.
+In this introduction, we explain the main idea behind the method of Blondel. Because we are focussing on the intuitive ideas here, 
+we don't prove any theorems in this paragraph yet. The theoretical results are 
+presented in the following paragraphs. Notice that all the graphs in this 
+section are directed graphs, although this is not always explicitely stated. 
+However, the method works for undirected graphs too, often leading to much 
+easier formulas since the graphs have symmetric adjacency matrices 
+in that case. We will give explicit attention to undirected graphs in the 
+section about `Special cases' (see \ref{specialcases}).
 
 The method of Blondel is a pure 
 generalization of the HITS-algorithm. Remember from the previous section that we 
 constructed a graph $\graf'_\sigma$ and calculated hub and authorities scores 
-for each vertex. Well, Blondel found a way to replace these hub and authority 
-scores by just another graph, allowing us to compare $\graf'_sigma$ to any other 
+for each vertex. Well, the authors of \cite{blondel} found a way to replace these hub and authority 
+scores by just any other graph, allowing us to compare $\graf'_\sigma$ to any other 
 graf $\grafeen$. We will call the graph that replaces the hub and authority 
 scores the \textit{structure graph}.
 
@@ -2707,7 +2970,7 @@ and the vertex denoted as \emph{authority} of the graph:
 \end{tikzpicture}
 \end{center}
 and, conversely, the hub score of vertex $v_j$ of $\graf'_\sigma$  can be thought of as a 
-score between $v_j$ and the vertex denoted as \emph{hub}. We can replace $\graf'_\sigma$  with any other (directed) graph
+score between $v_j$ and the vertex denoted as \emph{hub}. We can replace $\graf'_\sigma$  with any other graph
 $\graf$. We call the hub-authority graph a 
 \emph{structure graph} and we already know the resulting iterative method from the previous section. 
 We will call this scores \emph{similarity scores}.
@@ -2734,37 +2997,37 @@ $v_3$:
     
 \end{tikzpicture}
 \end{center}
-Let $\graf(W,\to)$ be a graph. With each vertex $w_i$ of $\graf$ we now associate three scores $x_{i1}, x_{i2}$ and 
-$x_{i3}$, one for each vertex of the structure graph. We initialize these scores 
+Let $\graf(W,\to)$ be a graph. With each vertex $w_i$ of $\graf$ we now associate three scores $z_{i1}, z_{i2}$ and 
+$z_{i3}$, one for each vertex of the structure graph. We initialize these scores 
 with a positive value and then update them according to the mutually reinforcing 
 relation:
-$$\begin{cases} x_{i1} := \hspace{75px} \sum_{j:(w_i,w_j)\in \to} x_{j2},\\ 
-x_{i2} := \sum_{j:(w_j,w_i)\in \to} x_{j1}\hspace{75px} + \sum_{j:(w_i,w_j)\in \to} x_{j3},\\
-x_{i3} := \hspace{75px}\sum_{j:(w_j,w_i)\in \to} x_{j2},
-\end{cases}$$or, in matrix form ($\mathbf{x}_j$ denotes the column vector with entries $x_{ij}$, $B$ is the adjacency matrix of graph $\graf$),
+$$\begin{cases} z_{i1} := \hspace{75px} \sum_{j:(w_i,w_j)\in \to} z_{j2},\\ 
+z_{i2} := \sum_{j:(w_j,w_i)\in \to} z_{j1}\hspace{75px} + \sum_{j:(w_i,w_j)\in \to} z_{j3},\\
+z_{i3} := \hspace{75px}\sum_{j:(w_j,w_i)\in \to} z_{j2},
+\end{cases}$$or, in matrix form ($\mathbf{z}_j$ denotes the column vector with entries $z_{ij}$, $B$ is the adjacency matrix of graph $\graf$),
 
 $$\begin{pmatrix}
-x_1\\
-x_2\\
-x_3
+z_1\\
+z_2\\
+z_3
 \end{pmatrix}^{(k+1)} = \begin{pmatrix}
 0 & B & 0\\
 B^T & 0 & B\\
 0 & B^T & 0
 \end{pmatrix}\begin{pmatrix}
-x_1\\
-x_2\\
-x_3
+z_1\\
+z_2\\
+z_3
 \end{pmatrix}^{(k)}   $$ 
 which we, again, can denote by 
 \begin{eqnarray}\label{kleinecompact}
- \mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)}.
+ \mathbf{z}^{(k+1)} = M\mathbf{z}^{(k)}.
   \end{eqnarray}
  The principle is now exactly the 
 same as the previous example with hubs and authorities. The matrix $M$ is 
 symmetric and nonnegative, and again the result is the limit of the normalized vector sequence:
 \begin{eqnarray}\label{sequencealgemeen}
-  \mathbf{z}^{(0)} = \mathbf{x}^{(0)} > 0, \mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, \quad k = 
+  \mathbf{s}^{(0)} = \mathbf{z}^{(0)} > 0, \mathbf{s}^{(k+1)} = \frac{M\mathbf{s}^{(k)}}{||M\mathbf{s}^{(k)}||_2}, \quad k = 
   0,1,\ldots,
 \end{eqnarray}
 Remember that the HITS-algorithm assumed that $M$ has a unique dominant 
@@ -2772,15 +3035,15 @@ eigenvalue but we don't want to make this assumption in this section because we
 want a concept that can be applied to all kinds of directed graphs. We will see 
 that without this assumption, the sequence \ref{sequencealgemeen} does not 
 always converge but oscillates between the limits:
-$$\mathbf{z}_\text{even}= \lim_{k\to\infty}\mathbf{z}^{(2k)}\quad\text{and}\quad \mathbf{z}_{\text{odd}}= \lim_{k\to\infty}\mathbf{z}^{(2k+1)}$$ 
-The limit vectors $\mathbf{z}_\text{even}$ and $\mathbf{z}_\text{odd}$ do in 
-general depend on the initial vector $\mathbf{z}^{(0)}$. We will prove later on that the vector $\mathbf{z}^{(0)}=\mathbf{1}$
-is a good choice because it's the unique 
-vector with the largest possible Manhattan norm.
+$$\mathbf{s}_\text{even}= \lim_{k\to\infty}\mathbf{s}^{(2k)}\quad\text{and}\quad \mathbf{s}_{\text{odd}}= \lim_{k\to\infty}\mathbf{s}^{(2k+1)}$$ 
+The limit vectors $\mathbf{s}_\text{even}$ and $\mathbf{s}_\text{odd}$ do in 
+general depend on the initial vector $\mathbf{z}^{(0)}$. We will prove later on that the vector 
+$\mathbf{z}^{(0)}=J$, with $J$ a matrix of ones,
+is a good choice.
 
 The  
-extremal limit  $\mathbf{z}_{\text{even}}(\mathbf{1})$ will be defined as the \textit{similarity 
-matrix}, so we write $S = \mathbf{z}_{\text{even}}(\mathbf{1})$. The element $s_{ij}$ is called the \textit{similarity score}
+extremal limit  $\mathbf{s}_{\text{even}}(J)$ will be defined as the \textit{similarity 
+matrix}. The element $s_{ij}$ is called the \textit{similarity score}
 between vertex $w_i$ of $\graph$ and vertex $v_j$ of the structre graph. 
 
 
@@ -2861,27 +3124,26 @@ $0.1579$.
  graph (such as the graphs $\text{hub}\to \text{authority}$ and the graph $1\to 2\to 
  3$ in the previous paragraphs). We get the following mutually reinforcing updating iteration with as updating equations:
  \begin{eqnarray}\label{vergblondel}
- x^{(k+1)}_{ij} := \sum_{r:(v_r,v_i)\in \to', s:(u_s,u_j) \in \to} x^{(k)}_{rs} +  \sum_{r:(v_i,v_r)\in \to', s:(u_j,u_s) \in \to} x^{(k)}_{rs} 
+ z^{(k+1)}_{ij} := \sum_{p:(v_p,v_i)\in \to', q:(u_q,u_j) \in \to} x^{(k)}_{pq} +  \sum_{p:(v_i,v_p)\in \to', q:(u_j,u_q) \in \to} z^{(k)}_{pq} 
  \end{eqnarray}
  Consider the product graph $\graf \times \grafeen$ (see Definition \ref{productgraph}). The above updating equation is equivalent to replacing
  the scores of all vertices of the product graph by the sum of the scores of the vertices linked by an incoming
  or outgoing edge. 
  
- Equation (\ref{sequencealgemeen}) can be rewritten in a more compact matrix form. Let $X_k$
- be the $n_\grafeen \times n_\graf$ matrix of entries $x_{ij}$ at iteration $k$, and $A$ and $B$ are the adjacency matrices
+ Equation (\ref{sequencealgemeen}) can be rewritten in a more compact matrix form. Let $Z_k$
+ be the $n_\grafeen \times n_\graf$ matrix of entries $z_{ij}$ at iteration $k$, and $A$ and $B$ are the adjacency matrices
  of $\graf$ and $\grafeen$. Then the 
  updating equations can be written as:
  \begin{eqnarray}\label{compacteforms}
-X^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
+Z^{(k+1)} = BZ^{(k)}A^T + B^TZ^{(k)}A,\quad k=0,1,\ldots,
   \end{eqnarray}
 We'll prove that the normalized even and odd iterates of 
- this updating equation converge and that the limit $\mathbf{z}_{\text{even}}(\mathbf{1})$ 
- is the limit with the largest Manhattan norm. This limit is the definition of 
- the similarity matrix. The following example shows a calculated similarity 
+ this updating equation converge when using as start matrix $J$, the matrix of ones. This normalized
+result will be denoted by $S$,  the similarity matrix. The following example shows a calculated similarity 
  matrix of two directed graphs.
  
  \begin{example}\label{eenvoudigvoorbeeldjes}
-   Let $\graf_A(V,\to)$ be the following graph:
+   Let $\grafeen(V,\to)$ be the following graph:
  \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
                     thick]
@@ -2906,7 +3168,7 @@ We'll prove that the normalized even and odd iterates of
 (2) edge node [left] {} (1)
 \end{tikzpicture}
 \end{center}
- Let $\graf_B(V',\to')$ be the following graph:
+ Let $\graf(V',\to')$ be the following graph:
  \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
                     thick]
@@ -2932,7 +3194,7 @@ We'll prove that the normalized even and odd iterates of
       (6) edge node [left] {} (1)
 \end{tikzpicture}
 \end{center}
-We get the following similarity matrix (a numerical algorithm to calculate this matrix is introduced later
+This results in the following similarity matrix (a numerical algorithm to calculate this matrix is introduced later
 in this section):
 $$S = \begin{pmatrix}
 0.2636 & 0.2786 & 0.2723 & 0.1289 \\
@@ -2942,144 +3204,33 @@ $$S = \begin{pmatrix}
 0.0634 & 0.0759 & 0.1018 & 0 \\
 0.3038 & 0.3011 & 0.2532 & 0.1999\\
  \end{pmatrix}$$
- We see for example, that vertex $v_2$ of $\graf_A$ is most similar to
- vertex $v'_3$ in $\graf_B$  because the similarity score $s_{32}$ 
+ We see for example, that vertex $v_2$ of $\grafeen$ is most similar to
+ vertex $v'_3$ in $\graf$  because the similarity score $s_{32}$ 
  is the highest among all the similarity scores of $v_{2}$.
  \end{example}
  
- \subsection{Convergence of the sequence $\mathbf{z}^{(k)}$}
+ \subsection{Convergence theorem}\index{Convergence theorem}
 In the introduction, we mentioned already that the sequence in Equation (\ref{sequencealgemeen})
 converges for even and odd iterates. We will prove this at the end of this subsection. But before we 
 arrive there, we first need some results on the eigenvectors and eigenvalues of nonnegative matrices. 
 The Perron-Frobenius applies only to nonnegative, \emph{irreducible} matrices, 
-but we will prove in Theorem \ref{perronzonderperron} that also nonnegative 
-matrices $M$ have a Perron root (see Definition \ref{perronroot}) 
-that has an associated Perron vector. We will also investigate in more specific 
+but  since one is confronted in practice 
+with nonnegative matrices that are not necessary irreducible,  we extend the Perron-Frobenius and see what remains without this assumption. We 
+first start with a lemma and next we proof that the spectral radius $\rho(M)$ of a nonnegative matrix 
+$M$ is an eigenvalue of $M$, the Perron root (see Definition \ref{perronroot}). Moreover, there exists an 
+associated nonnegative eigenvector $\mathbf{x} \geq 0 (\mathbf{x} \not = 0)$, the Perron vector, such 
+that $M\mathbf{x} = \rho\mathbf{x}$.  We will also investigate in more specific 
 results in the case $M$ is not only nonnegative, but also symmetric. 
 
-The reason why we prove all this is clear: remember that for the HITS-algorithm in the previous chapter 
-we assumed that $M$ has a unique dominant eigenvalue and showed convergence by the Power method. 
-This approach is far too naive when introducing 
-similarity on graph vertices, because graphs can lead to matrices where there is 
-no unique dominant eigenvalue. To solve this, a more profound 
-mathematical analysis of the concept is needed, which we present here.
 
-We first want to prove the spectral radius formula. Next, two lemmas are presented which will 
-also contribute to the proof of the spectral radius formula. 
-
-
-Before we prove the following lemma, remember the well known theorem about the 
-Jordan canonical form of a square matrix $A$ (see Theorem in \cite{kieboom}). 
-\begin{theorem}
-  A square complex matrix $A$ is similar to a block diagonal matrix 
-  $$ J = \begin{pmatrix}
-  J_1 & & \\
-  & \ddots & \\
-  & & J_p
-  \end{pmatrix}$$
-  where each block $J_i$ is a square matrix of the form:
-  $$J_i = \begin{pmatrix}
-  \lambda_i & 1 & &\\
-  & \lambda_1 & \ddots &\\
-  & & \ddots & 1\\
-  & & & \lambda_1.
-  \end{pmatrix}$$
-  So there exists an (invertible) matrix $P$ such that 
-  $$P^{-1}AP = J$$
-  J is called the \textbf{Jordan normal form}  of $A$.
-  \end{theorem}
-
-\begin{lemma}\label{eigennorm}
-  Let A be an $n \times n$ matrix and $\epsilon > 0$, there exist a matrix norm $\|. \|$ 
-  such that:
-  $$\|A\| \leq \rho(A) + \epsilon$$
-\end{lemma}
-\begin{proof}
-  The Jordan canonical form of $A$ is:
-  $$A = S \begin{pmatrix}
-  J_{n_1}(\lambda_1) & 0 & \ldots & 0 \\
-  0 & J_{n_2}(\lambda_2) & \ddots & \vdots \\
-  \vdots & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & J_{n_k}(\lambda_k)
-  \end{pmatrix}S^{-1},$$
-  where $S \in \R^{n\times n}$ is an invertible matrix, $\lambda_1, \ldots, \lambda_k$ 
-  are the eigenvalues of $A$ and $n_1 + \ldots + n_k = n$. Let:
-  $$D(\eta) = \begin{pmatrix}
-  D_{n_1}(\eta) & 0 & \ldots & 0 \\
-  0 & D_{n_2}(\eta) & \ddots & \vdots \\
-  \vodts & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & D_{n_k}(\eta)
-  \end{pmatrix}\quad \text{with } D_m(\eta)= \begin{pmatrix}
-  \eta & 0 & \ldots & 0 \\
-  0 & \eta^2 & \ddots & \vdots\\
-  \vdots & \ddots & \ddots & 0 \\
-  0 & \ldots & 0 & \eta^m
-  \end{pmatrix}$$
-  Since the left multiplication by $D_m(1/\epsilon)$ multiplies the $i$th row by $1/\epsilon^i$ 
-  and the right multiplication on the right by $D_m(\eta)$ multiplies the $j$th 
-  colum by $\epsilon^j$, we calculate:
-  $$D(1/\epsilon)S^{-1}ASD(\epsilon)=\begin{bmatrix}
-  B_{n_1}(\lambda_1, \epsilon) & 0 & \ldots & 0 \\
-  0 & B_{n_2}(\lambda_2, \epsilon) & \ddots & \vdots \\
-  \vdts & \ddots & \ddots & 0\\
-  0 & \ldots & 0 & B_{n_k}(\lambda_k, \epsilon)  \end{bmatrix}$$
-  with 
-  $$B_m(\lambda, \epsilon) = D_m(1/\epsilon)J_m(\lambda)D_m(\epsilon)=
-  \begin{bmatrix}
-   \lambda & \epsilon &  0 & \ldots & 0 \\
-  0 & \lambda & \epsilon &  0 & \vdots \\
-  0 & \ddots & \ddots & \ddots & 0\\
-  \vdots & \ddots & \ddots & \lambda & \epsilon\\
-  0 & \ldots & 0 & 0 & \lambda  \end{bmatrix}$$
-  We now define the matrix norm for $M \in \R^{n\times n}$ by:
-  \begin{eqnarray}
-    \|M\| &=& \max_{\|\mathbf{x}\|_1 = 1} \| 
-    D(1/\epsilon)S^{-1}MSD(\epsilon)\mathbf{x}\|_1\\
-    &=& \max_{l \in [1:n]} \sum^n_{k=1} 
-    |(D(1/\epsilon)S^{-1}MSD(\epsilon))_{k,l}|.
- \end{eqnarray}
- The conditions for being a matrix norm are trivially met because $\max_{\|\mathbf{x}\|_1 = 1} \|A\mathbf{x}\|$ is a matrix norm.
-\end{proof}
-
-\begin{theorem}\label{spectraalformula}\textbf{Spectral radius formula}
- Let a be an $n\times n$  matrix and  let $\|.\|$ be a matrix norm then:
-  $$\rho(A) = \lim_{k\to \infty} \|A^k\|^{1/k}$$
-\end{theorem}
-\begin{proof}
-  Given $k \geq 0$, we use Lemma \ref{ongelijkheidnorm} to write:
-  $$\rho(A)^k = \rho(A^k) \leq \|A^k\|,$$
-  so:
-  $$\rho(A) \leq \|A^k\|^{1/k}.$$
-  Taking the limit as $k \to \infty$ gives $\rho(A) \leq \lim_{k\to 
-  \infty}\|A^k\|^{1/k}$. To establish the reverse inequality, we need to prove 
-  that, for any $\epsilon > 0$, there exists a $K \geq 0$ such that 
-  $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ for all $k \geq K$. From Lemma \ref{eigennorm}, we know that
-  there exists a matrix norm $\|.\|$ so $\|A| \leq \rho(A) + \epsilon/2$. Moreover, by the equivalence of 
-  the norms on $\R^{n\times n},$ we know that there exists some constant $C  > 0$ such that 
-  $\|M\| \leq C \|M\|$ for all $M \in \R^{n \times n}$. Then, for any $k \geq 0,$
-  \begin{eqnarray*}
-    \|A^k\| &\leq& C\|A^k\| \leq C\|A\|^k \leq C(\rho(A)+\epsilon/2)^k,\\
-    \|A^k\|^{1/k} &\leq& C^{1/k}(\rho(A)+\epsilon/2) \rightarrow_{k\to \infty} 
-    \rho(A) + \epsilon/2
-  \end{eqnarray*}
-  This implies the existence of $K \geq 0$ such that $\|A^k\|^{1/k} \leq \rho(A) + \epsilon$ 
-  for $k \geq K$, as desired.
- \end{proof}
-Now we are ready for are first big result: since one is confronted in practice 
-with nonnegative matrices that are not necessary irreducible, 
-we extend the Perron-Frobenius and see what remains without this assumption. We 
-first start with a lemma and next we proof that the spectral radius $\rho(M)$ of a nonnegative matrix 
-$M$ is an eigenvalue of $M$, the Perron root. Moreover, there exists an 
-associated nonnegative eigenvector $\mathbf{x} \geq 0 (\mathbf{x} \not = 0)$, the Perron vector, such 
-that $M\mathbf{x} = \rho\mathbf{x}$.
 \begin{lemma}\label{voriglemmaspeer}
   Let $A, B$ be $n \times n$-matrices, if $|A| \leq B$, then $\rho(A) \leq \rho(|A|) \leq
-  \rho(B)$. (See Definition \ref{modulusmatrix} for the definition of $|.|$).
+  \rho(B)$. (See Definition \ref{modulusmatrix} for the definition of $|\cdot|$).
 \end{lemma}
 \begin{proof}
   For every $m=1,2,\ldots$ we have
   $$|A^m| \leq |A|^m \leq B^m$$
-  by using some trivial properties of the absolute value function. Let $||.||_2$ be the matrix 
+  by using some trivial properties of the absolute value function. Let $||\cdot||_2$ be the matrix 
   2-norm induced by the Euclidean vector norm: for any matrix $M$, we have $\|M\|_2 =
   \max_{\|\mathbf{x}\|_2 = 1}\|M\mathbf{x}\|_2$. For this matrix norm it is 
   trivial to see that if $|M| \leq |M'|$ (see Definition \ref{groterkleiner}) it follows that $\|M\|_2 \leq \|M'\|_2$ and also $\|M\|_2 = \|\;|M|\;\|_2$, we get:
@@ -3093,20 +3244,20 @@ that $M\mathbf{x} = \rho\mathbf{x}$.
 
 \begin{theorem}\label{perronzonderperron}
   If $A \geq 0$ is an $n \times n$-matrix, then $\rho(A)$ is an eigenvalue of $A$ 
-  and there is a nonnegative vector $\mathbf{x} \geq 0, \mathbf{x} \not = 0,$ 
+  and there is a nonnegative vector $\mathbf{x} \geq \mathbf{0}, \mathbf{x} \not = \mathbf{0},$ 
   such that $A\mathbf{x}=\rho(A)\mathbf{x}.$
 \end{theorem}
 \begin{proof}
-  For any $\epsilon > 0$ define $A(\epsilon)=[a_{ij}+\epsilon] > 0$. Denote by $\mathbf{x}(\epsilon)$ 
-  the Perron vector of $A(\epsilon)$, so $\mathbf{x}(\epsilon) > 0$ and 
-  $\sum^n_{i = 1} \mathbf{x}(\epsilon)_i = 1$. Since the set of vectors $\{\mathbf{x}(\epsilon): \epsilon > 0\}$ 
-  is contained in the compact set $\{x: x\in \C^n, \|\mathbf{x}\|_1 \leq 1\}$, 
-  there is a monotone decreasing sequence $\epsilon_1 > \epsilon_2 > \ldots$ with $\lim_{k\to\infty}\epsilon_k = 0$
+  For any $\epsilon > 0$ define $A(\epsilon)=(a_{ij}+\epsilon) > 0$, so in $A(\epsilon)$ we add $\epsilon$ to each entry of $A$. Denote by $\mathbf{x}(\epsilon)$ 
+  the Perron vector of $A(\epsilon)$, this exists by the Perron-Frobenius as $A(\epsilon)$ is a strictly positive matrix (see Theorem \ref{frobtheorem}), so $\mathbf{x}(\epsilon) > 0$ and 
+  $\sum^n_{i = 1} x(\epsilon)_i = 1$. Since the set of vectors $\{\mathbf{x}(\epsilon): \epsilon > \mathbf{0}\}$ 
+  is contained in the compact set $\{\mathbf{x}: \mathbf{x}\in \R^n, \|\mathbf{x}\|_1 \leq 1\}$, 
+  we know from the Bolzano-Weierstrass theorem (see Theorem 2.1 in \cite{colebunders}) that there is a monotone decreasing sequence $\epsilon_1 > \epsilon_2 > \ldots$ with $\lim_{k\to\infty}\epsilon_k = 0$
   such that $\lim_{k \to \infty}\mathbf{x}(\epsilon_k) = \mathbf{x}$ exists. 
-  Since $\mathbf{x}(\epsilon_k) > 0$ for all $k=1,2,\ldots,$ it must be that $\mathbf{x} = \lim_{k \to \infty} \mathbf{x}(\epsilon_k) \geq 
-  0$; $\mathbf{x} = 0$ is impossible because:
-  $$\sum^n_{i = 1}\mathbf{x}_i = \lim_{k\to 
-  \infty}\sum^n_{i=1}\mathbf{x}(\epsilon_k)_i = 1$$
+  Since $\mathbf{x}(\epsilon_k) >  \mathbf{0}$ for all $k=1,2,\ldots,$ it must be that $\mathbf{x} = \lim_{k \to \infty} \mathbf{x}(\epsilon_k) \geq 
+   \mathbf{0}$; $\mathbf{x} =  \mathbf{0}$ is impossible because:
+  $$\sum^n_{i = 1}x_i = \lim_{k\to 
+  \infty}\sum^n_{i=1}x(\epsilon_k)_i = 1$$
   By Lemma \ref{voriglemmaspeer}, $\rho(A(\epsilon_k)) \geq \rho(A(\epsilon_{k+1}) \geq \cdots \geq \rho(A)$ 
   for all $k = 1, 2, \ldots, $ so the sequence $\{\rho(A(\epsilon_k))\}_{k=1,2,\ldots}$ 
   is a monotone decreasing sequence. Thus, $\rho = \lim_{k \to \infty} \rho(A(\epsilon_k))$ 
@@ -3117,37 +3268,26 @@ that $M\mathbf{x} = \rho\mathbf{x}$.
     &=& \lim_{k\to \infty} \rho(A(\epsilon_k)) \lim_{k\to \infty} \mathbf{x}(\epsilon_k) \\
     &=& \rho \mathbf{x},
   \end{eqnarray*}
-  and the fact that $\mathbf{x}\not = 0$ we conclude that $\rho$ is an 
+  and the fact that $\mathbf{x}\not =  \mathbf{0}$ we conclude that $\rho$ is an 
   eigenvalue of $A$. But then $\rho \leq \rho(A)$ so it must be that $\rho = 
   \rho(A)$.
 \end{proof}
 
-Now that we know that any nonnegative matrix $M$ has it's spectral radius as an 
+Now that we know that any nonnegative matrix $M$ has his spectral radius as an 
 eigenvalue and there exists an associated nonnegative eigenvector, we will see 
 if we can get more specific results when handling nonnegative, symmetric 
-matrices.
-\begin{theorem}
-  Let $M$ be a symmetric nonnegative matrix with spectral radius $\rho$. Then 
-  the algebraic and geometric multiplicity of the Perron root $\rho$ are equal; 
-  there is a nonnegative matrix $X$ whose columns span the invariant subspace 
-  associated with the Perron root; and the elements of the orthogonal projector 
-  $\Pi$ on the vector space associated with the Perron root of $M$ are all 
-  nonnegative.
-\end{theorem}
-\begin{proof}
-  We know that any symmetric nonnegative matrix $M$ can be permuted to a Jordan cononical form
-  with irreducible blocks $M_i$ on the diagonal. We also know from the 
-  Perron-Frobenius theorem (see \ref{frobtheorem}) that the algebraic 
-  multiplicity of the Perron root of an irreducible nonnegative matrix is equal 
-  to 1. It follows from both facts that the algebraic multiplicities and the geometric
-  multiplicities  of the Perron root $\rho$ of $M$ are equal. The corresponding 
-  eigenspace of $M$ is obtained from the normalized Perron vectors of the $M_i$ 
-  blocks padded with zeros. This normalized Perron vectors form a basis $X$ which is nonnegative and 
-  orthonormal.
-  \end{proof}
-  
-  We are almost ready for the theorem about the convergence of $\mathbf{z}^{(k)}$, 
-  but we first need an easy result about the orthogonal projection.
+matrices. First we introduce the orthogonal projection. \index{Orthogonal 
+projection}. 
+\begin{definition}\index{Projection}
+  A \textbf{projection of a vector} $\mathbf{x}$ on a vector $\mathbf{y}$ is defined as\footnote{$\langle \mathbf{x}, \mathbf{y}\rangle = \sum_{i=1}^n x_i y_i$ with $\mathbf{x},\mathbf{y}\in \R^n$ is the standard inner product of  two vectors in $\R^n$.}:
+  $$\text{proj}_\mathbf{y}\mathbf{x} = \frac{ \langle\mathbf{y},\mathbf{x} \rangle}{\|\mathbf{y}\|}\mathbf{y},$$
+  the projection of $\mathbf{x}$ on a subspace $Y = \{\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m\}$ 
+  is defined as the sum of projections:
+  $$\text{proj}_Y\mathbf{x} &=& \sum_{i=1}^{m} \frac{ \langle\mathbf{y}_i,\mathbf{x} \rangle}{\|\mathbf{y}_i\|}\mathbf{y}_i\\
+
+\end{definition}
+We now combine the above results to get a new result of the Perron-Frobenius 
+when handling nonnegative, symmetric matrices.
 \begin{theorem}
   Let $\mathcal{V}$ be a linear subspace of $\R^n$ with orthonormal basis $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m\}$.
   Arrange the column vectors $\mathbf{v}_i$ in a matrix $V$ and let $\mathbf{x} \in \R^n$. The 
@@ -3156,12 +3296,12 @@ matrices.
   the matrix $\Pi = VV^T$ is the \textbf{orthogonal projector}. Projectors have 
   the property that $\Pi^2 = \Pi$
 \end{theorem}
-\begin{proof}\footnote{$\langle \mathbf{x}, \mathbf{y}\rangle = \sum_{i=1}^n x_i y_i$ with $\mathbf{x},\mathbf{y}\in \R^n$ is the standard inner product of  two vectors in $\R^n$.}
-We use the connection between transposes and the standard inner product to find the matrix 
+\begin{proof}
+We use the connection between transposes and the standard inner product to find the matrix of the 
     orthogonal projection on the subspace $\mathcal{V}$:
   \begin{eqnarray*}
     \text{proj}_\mathcal{V}\mathbf{x} &=& \sum_{i=1}^{m} \frac{ \langle\mathbf{v}_i,\mathbf{x} \rangle}{\|\mathbf{v}_i\|}\mathbf{v}_i\\
-  &=& \sum_{i=1}^{m} \langle\mathbf{v}_i,\mathbf{x}\rangle\mathbf{v}_1\\
+  &=& \sum_{i=1}^{m} \langle\mathbf{v}_i,\mathbf{x}\rangle\mathbf{v}_i\\
   &=& \sum_{i=1}^{m} \mathbf{v}_i\langle\mathbf{v}_i,\mathbf{x}\rangle\\
   \end{eqnarray*}
   Remember that $\langle \mathbf{x}, \mathbf{y} \rangle = \mathbf{x}^T\mathbf{y}$ 
@@ -3182,121 +3322,233 @@ Proving that $\Pi^2 =\Pi$ is also trivial, remember that for an orthogonal matri
   \end{eqnarray*}
 \end{proof}
 
+We already introduced the Jordan normal form in Theorem \ref{jordanvrom}, but we 
+also need the following theorem. The proof of this theorem is highly technical 
+and falls behind the scope of this master thesis. The seperate results can be 
+found in Theorems 1.3.15, 1.3.16, 1.3.17 in \cite{kieboom}.
+
+\begin{theorem}\label{geschenkuitdehemel}
+  Let $A$ be a $n\times n$-matrix with $s$ distinct eigenvalues $\lambda_1, \ldots, 
+  \lambda_s$. Let each $\lambda_i$ have algebraic multiplicity $m_i$ and 
+  geometric multiplicity $\mu_i$. The matrix $A$ is similar to a Jordan matrix
+  $$J = \begin{pmatrix}
+  J_1 & & \\
+  & \ddots &\\
+  && J_\mu
+  \end{pmatrix}$$
+  where
+  \begin{enumerate}
+    \item $\mu = \mu_1 + \mu_2 + \cdots + \mu_s$,
+        \item For each $\lambda_i$, the number of Jordan blocks in J with value $\lambda_i$ 
+    is equal to $\mu_i$,
+    \item $\lambda_i$ appears on the diagonal of $J$ exactly $m_i$ times.
+  \end{enumerate}
+  Further, the matrix $J$ is unique, up to re-ordering the Jordan blocks on the 
+  diagonal.
+\end{theorem}
+
+We are now ready for genealizing the Perron-Frobenius to nonnegative, symmetric 
+matrices.
+\begin{theorem}\label{ultiemvoorspel}
+  Let $M$ be a symmetric nonnegative matrix with spectral radius $\rho$. Then 
+  the algebraic and geometric multiplicity of the Perron root $\rho$ are equal; 
+  there is a nonnegative matrix $X$ whose columns span the eigenspace  associated with the Perron root; and the elements of the orthogonal projector 
+  $\Pi$ on the vector space associated with the Perron root of $M$ are all 
+  nonnegative.
+\end{theorem}
+\begin{proof}
+  We know that any symmetric nonnegative matrix $M$ can be permuted to a Jordan canonical form 
+  $J$. So from the previous Theorem \ref{geschenkuitdehemel},
+  we know that $\rho$ will appear exactly $m_\rho$ (= the algebraic multiplicity of $\rho$) times on the diagonal 
+  and we also know that there will be exactly $\mu_\rho$ (= the geometric multiplicity of $\rho$) Jordan blocks with value $\rho$ on their diagonal. But from
+  Theorem \ref{diagonaal} we already know that $J$ is in fact a diagonal matrix (all Jordan blocks have size $1\times 1$) with all
+  eigenvalues on the diagonal, so
+  $m_\rho = \mu_\rho$.  To construct the nonnegative matrix $X$, we use again Theorem \ref{diagonaal}:
+  $P^{-1}MP = D$ and we know from the theorem that the column vectors of $P$ are the eigenvectors 
+  corresponding to the eigenvalues of $M$. Looking at the proof of Theorem \ref{diagonaal} we know 
+  that the eigenvector $\mathbf{x}_i$ corresponding to the eigenvalue $d_{ii}$ (the $i$'th diagonal element of $D$), 
+  can be found at the $i$'th column of $P$. We know that these eigenvectors are linear 
+  independent because of the definition of diagonalizable matrices (A $n \times n$ matrix $A$ is diagonalizable if and only if it has an eigenbasis). 
+  So if we select all the columns of $P$ corresponding to 
+  $\rho$, we found the eigenspace of the Perron root. 
+  
+  To see that the resulting 
+  matrix $X$ is nonnegative, notice that the eigenspace of $\rho$ can also be 
+  found by taking the Perron vectors of the ($1 \times 1$) Jordan blocks $J_i$ that have $\rho$ on the diagonal appropriately padded 
+  with zeros. All these blocks $J_i$ are irreducible and nonnegative and it 
+  follows from the Perron-Frobenius that the corresponding eigenvectors are
+  nonnegative. 
+  
+  To see that the orthogonal projector $\Pi$ associated with the eigenspace of $\rho$ 
+  is nonnegative, notice that normalizing the vectors in $X$ gives an 
+  orthonormal basis because by Theorem \ref{diagonaal} we know that $P$ is orthogonal and we 
+  picked some columns of $P$ to form our eigenbasis of $\rho$. Normalizing doesn't affect the sign of the vectors, so the 
+  normalized $X'$ is also nonnegative, so $\Pi = X'X'^T$ will also be nonnegative.
+  \end{proof}
+  
+  
+
  \begin{theorem}\label{grootbewijs}
-   Let $M$ be a  symmetric nonnegative, real matrix of spectral radius $\rho$. Let $Z^{(0)} > 0$ 
+   Let $M$ be a $n \times n$-symmetric, nonnegative matrix of spectral radius $\rho$. Let $\mathbf{s}^{(0)} > 0$ 
    and consider the sequence
-   $$\mathbf{z}^{(k+1)} = \frac{M\mathbf{z}^{(k)}}{||M\mathbf{z}^{(k)}||_2}, k = 0,1,\ldots$$
+   $$\mathbf{s}^{(k+1)} = \frac{M\mathbf{s}^{(k)}}{||M\mathbf{s}^{(k)}||_2}, k = 0,1,\ldots$$
    Two convergence cases can occur depending on whether or not $-\rho$ is an 
    eigenvalue of $M$. When $-\rho$ is not an eigenvalue of $M$, then the 
-   sequence of $Z^{(k)}$ simply converges to 
-   $\frac{\Pi \mathbf{z}^{(0)}}{||\Pi \mathbf{z}^{(0)}||_2}$, where $\Pi$ is the orthogonal projector on the 
+   sequence of $\mathbf{s}^{(k)}$ simply converges to 
+   $\frac{\Pi \mathbf{s}^{(0)}}{||\Pi \mathbf{s}^{(0)}||_2}$, where $\Pi$ is the orthogonal projector on the 
   eigenspace associated with the Perron root $\rho$. When $-\rho$ is an 
-   eigenvalue of $M$, then the subsequences $\mathbf{z}^{(2k)}$ and $\mathbf{z}^{(2k+1)}$ converge to 
+   eigenvalue of $M$, then the subsequences $\mathbf{s}^{(2k)}$ and $\mathbf{s}^{(2k+1)}$ converge to 
    the limits
-   $$\mathbf{z}_{\text{even}}(Z^{(0)}) = \lim_{k \to \infty} \mathbf{z}^{(2k)}  = \frac{\Pi \mathbf{z}^{(0)}}{||\Pi \mathbf{z}^{(0)}||_2} \quad \text{and}\quad \mathbf{z}_{\text{odd}}(\mathbf{z}^{(0)}) = \lim_{k \to \infty} \mathbf{z}^{(2k+1)} = \frac{\Pi M \mathbf{z}^{(0)}}{||\Pi M \mathbf{z}^{(0)}||_2}.$$
+   $$\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)}) = \lim_{k \to \infty} \mathbf{s}^{(2k)}  = \frac{\Pi \mathbf{s}^{(0)}}{||\Pi \mathbf{s}^{(0)}||_2} \quad \text{and}\quad \mathbf{s}_{\text{odd}}(\mathbf{s}^{(0)}) = \lim_{k \to \infty} \mathbf{s}^{(2k+1)} = \frac{\Pi M \mathbf{s}^{(0)}}{||\Pi M \mathbf{s}^{(0)}||_2}.$$
 where $\Pi$ is the orthogonal projector on the sums of the invariant subspaces associated with $\rho$
 and $-\rho$. In both cases the set of all possible limits is given by:
-$$\{\mathbf{z}_{\text{even}}(Z^{(0)}), \mathbf{z}_{\text{odd}}(Z^{(0)}): \mathbf{z}^{(0)} > 0\} = \left\{ \frac{\Pi \mathbf{z}}{||\Pi \mathbf{z}||_2}: \mathbf{z} > 0 \right\}$$
-and the vector $\mathbf{z}_{\text{even}}(\mathbf{1})$ is the unique vector of largest 
-possible Manhattan norm in that set. \end{theorem}
+$$\left\{\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)}), \mathbf{s}_{\text{odd}}(\mathbf{s}^{(0)}): \mathbf{s}^{(0)} > 0\right\} = \left\{ \frac{\Pi \mathbf{s}}{||\Pi \mathbf{s}||_2}: \mathbf{s} > 0 \right\}$$
+and the vector $\mathbf{s}_{\text{even}}(\mathbf{1})$ is the unique vector of largest 
+possible Manhattan norm in this set. \end{theorem}
 \begin{proof}
   We prove only the case where $-\rho$ is an eigenvalue, the other case is an 
   easy adaption. Denote the invariant subspaces of $M$ corresponding to $\rho$, 
   $-\rho$ and to the rest of the spectrum, respectively by $\mathcal{V}_\rho, \mathcal{V}_{-\rho}$ 
   and $\mathcal{V}_\mu$. From the previous theorem, we know that $\mathcal{V}_\rho, \mathcal{V}_{-\rho}$  
-  are certainly nontrivial ($\rho$ and $-\rho$ have at least multiplicity $1$, so the eigenspace contains also at least
-  1 vector), also assume that $\mathcal{V}_\mu$ is nontrivial (if $\mathcal{V}_\mu$ would be trivial, the rest of the proof
-  gets only easier). We have:
-  $$MV_\rho = \rho V_\rho, \quad MV_{-\rho} = -\rho V_{-\rho}, \quad MV_\mu = V_\mu M_\mu,$$
-  where $M_\mu$ is a square matrix (diagonal if $V_\mu$ is a basis of eigenvectors of the rest of the spectrum, see Theorem
-  \ref{diagonaal}) with spectral radius $\mu$ strictly less than $\rho$. 
+  are certainly nontrivial because $\rho$ and $-\rho$ have at least multiplicity $1$, so the eigenspace contains also at least
+  1 vector. We also suppose that $\mathcal{V}_\mu$ is nontrivial (if $\mathcal{V}_\mu$ were trivial, the proof
+  becomes would get only easier). Let $V_\rho$ be the $n \times u$-matrix whose columns span $\mathcal{V}_\rho$,
+  $V_{-\rho}$ the $n \times v$ matrix spanning $\mathcal{V}_{-\rho}$, $V_{\mu}$ the $n \times w$- matrix spanning $\mathcal{V}_{\mu}$. We now have:
+  $$MV_\rho = \rho V_\rho, \quad MV_{-\rho} = -\rho V_{-\rho},$
+  for $M$ we can write:
+  $$MV_\mu = V_\mu M_\mu,$$
+  where $M_\mu$ is a $w \times w$-matrix with spectral radius $\mu$ strictly less than $\rho$ because 
+  $\mathcal{V}_\mu$ is nontrivial by assumption. 
   
 Remember from Theorem \ref{diagonaal} that $P^{-1}MP = D$, with $D$ a diagonal 
 matrix, this can be rewritten as $M = PDP^{-1}$ or $M = PDP^T$ ($P$ is an orthogonal 
-matrix), we can rewrite this in this case as (this is the so called \textit{eigendecomposition} for symmetric matrices):
+matrix), we can rewrite this in this case as (this is the so called \textit{eigendecomposition}\index{Eigendecomposition} for symmetric matrices):
 \begin{eqnarray*}
-M &=& \begin{bmatrix} 
-V_\rho & V_{-\rho} & V_\mu \\ \end{bmatrix}
-\begin{bmatrix}
+M &=& \begin{pmatrix} 
+V_\rho & V_{-\rho} & V_\mu \\ \end{pmatrix}
+\begin{pmatrix}
 \rho I & \; & \; \\
 \; & -\rho I & \;\\
 \; & \; & M_\mu \\
-\end{bmatrix}\begin{bmatrix}
-V_\rho & V_{-\rho} & V_\mu \\ \end{bmatrix}^T\\
+\end{pmatrix}\begin{pmatrix}
+V_\rho & V_{-\rho} & V_\mu \\ \end{pmatrix}^T\\
 &=&  \rho V_\rho V^T_\rho - \rho V_{-\rho}V^T_{-\rho} + V_{\mu}M_{\mu}V_{\mu}^T
 \end{eqnarray*}
-It then follows that:
-$$M^2 = \rho^2 \Pi + V_\mu M^2_\mu V_\mu^T,$$
+Let $A = \begin{psmallmatrix}V_\rho & V_{-\rho} & V_\mu \\\end{psmallmatrix}$, it follows that (remember that $A$ is orthogonal from Theorem \ref{diagonaal}):
+\begin{eqnarray*}
+  M^2 &=& A\begin{pmatrix}
+\rho I & \; & \; \\
+\; & -\rho I & \;\\
+\; & \; & M_\mu \\
+\end{pmatrix}A^TA\begin{pmatrix}
+\rho I & \; & \; \\
+\; & -\rho I & \;\\
+\; & \; & M_\mu \\
+\end{pmatrix}A^T\\
+&=& A\begin{pmatrix}
+\rho I & \; & \; \\
+\; & -\rho I & \;\\
+\; & \; & M_\mu \\
+\end{pmatrix}A^{-1}A\begin{pmatrix}
+\rho I & \; & \; \\
+\; & -\rho I & \;\\
+\; & \; & M_\mu \\
+\end{pmatrix}A^T\\
+&=& A \begin{pmatrix}
+\rho^2 I & \; & \; \\
+\; & (-\rho)^2 I & \;\\
+\; & \; & M^2_\mu \\
+\end{pmatrix}A^T\\
+&=& \rho^2 V_\rho V^T_\rho + \rho^2 V_{-\rho}V^T_{-\rho} + V_{\mu}M^2_{\mu}V_{\mu}^T\\
+   &=& \rho^2 \Pi + V_\mu M^2_\mu V_\mu^T
+\end{eqnarray*}
+
 where
 $$\Pi = V_\rho V_\rho^T + V_{-\rho}V_{-\rho}^T$$
- is the orthogonal projector onto the invariant subspace $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ 
- of $M^2$ corresponding to $\rho^2$. We also have:
- $$M^{2k} = \rho^{2k}\Pi + V_\mu M^{2k}_\mu V_\mu^T,$$
- and since $\rho{M_\mu} = \mu < \rho$, it follows from multiplying this by $\mathbf{z}^{(0)}$ 
- and $M\mathbf{z}^{(0)}$ that:
- $$\mathbf{z}^{(2k)} = \frac{\Pi\mathbf{z}^{(0)}}{\|\Pi\mathbf{z}^{(0)}\|_2} + 
- O\left(\frac{\mu}{\rho}\right)^{2k}$$
- and
- $$\mathbf{z}^{(2k+1)} = \frac{\Pi M \mathbf{z}^{(0)}}{\|\Pi M \mathbf{z}^{(0)}\|_2} + 
- O\left(\frac{\mu}{\rho}\right)^{2k},$$
- provided $\Pi \mathbf{z}^{(0)}$ and $\Pi M \mathbf{z}^{(0)}$ are nonzero, so the 
- initial vectors $\mathbf{z}^{(0)}$ and $M\mathbf{z}^{(0)}$ must have a nonzero 
- component. This is no problem, because the Euclidean norms of these vectors 
- equal $\mathbf{z}^{(0)}^T \Pi \mathbf{z}^{(0)}$ and $\mathbf{z}^{(0)}^T M \Pi M \mathbf{z}^{(0)}$ 
- since $\Pi^2 = \Pi$. These norms are both nonzero since $\mathbf{z}^{(0)} > 0$ and 
- both $\Pi$ and $M\Pi$ are nonnegative and nonzero.
+ is the orthogonal projector on the invariant subspace $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$
+ of $M^2$ corresponding to $\rho^2$. Analogously, we also have:
+ \begin{eqnarray}\label{dithebenweok}
+  M^{2k} = \rho^{2k}\Pi + V_\mu M^{2k}_\mu V_\mu^T,
+\end{eqnarray}
+ and since $M_\mu$ has as spectral radius $\mu$, strictly below $\rho$, we multiply (\ref{dithebenweok}) by 
+ $\mathbf{s}^{(0)}$:
+ \allowdisplaybreaks
+ \begin{eqnarray}
+   M^{2k}\mathbf{s}^{(0)} &=& \rho^{2k}\Pi\mathbf{s}^{(0)} + V_\mu M^{2k}_\mu 
+   V_\mu^T\mathbf{s}^{(0)} \notag\\
+  \Leftrightarrow M^{2k}\mathbf{s}^{(0)}  &=&\rho^{2k}\Pi\mathbf{s}^{(0)} + V_\mu M^{2k}_\mu  V_\mu^T\mathbf{s}^{(0)}\notag\\
+  \Leftrightarrow M^{2k}\mathbf{s}^{(0)}  &=& \Pi\mathbf{s}^{(0)}  + O\left(\frac{\mu}{\rho}\right)^{2k} \label{vergeejkjfqk}\\
+\Leftrightarrow \lim_{k \to \infty} M^{2k}\mathbf{s}^{(0)}  &=& 
+\Pi\mathbf{s}^{(0)}\notag\\
+\Leftrightarrow \lim_{k \to \infty} \frac{M^{2k}\mathbf{s}^{(0)}}{\|M^{2k}\mathbf{s}^{(0)}\|_2}  &=& 
+\frac{\Pi\mathbf{s}^{(0)}}{\|\Pi\mathbf{s}^{(0)}\|_2}\notag\\
+\Leftrightarrow  \lim_{k \to \infty} \mathbf{s}^{(2k)}  &=& 
+\frac{\Pi\mathbf{s}^{(0)}}{\|\Pi\mathbf{s}^{(0)}\|_2}\label{gat1}
+\end{eqnarray}
+Analogously, when multiplying (\ref{dithebenweok}) by $M\mathbf{s}^{(0)}$ we 
+have:
+ \begin{eqnarray}
+ \lim_{k \to \infty} \mathbf{s}^{(2k+1)} = \frac{\Pi M \mathbf{s}^{(0)}}{\|\Pi M \mathbf{s}^{(0)}\|_2}\label{gat2}
+ \end{eqnarray}
+The expressions (\ref{gat1}) and (\ref{gat2}) bring up the question whether $\|\Pi \mathbf{s}^{(0)}\|_2$ and $\|\Pi M \mathbf{s}^{(0)}\|_2$ are 
+always 
+nonzero, from Definition \ref{holderdebolder} we know these norms can be 
+calculated as:
+$$(\Pi\mathbf{s}^{(0)})^T \Pi\mathbf{s}^{(0)} \quad \text{and} \quad (\Pi M \mathbf{s}^{(0)})^T (\Pi M \mathbf{s}^{(0)}),$$
+since $\Pi^2 = \Pi$ this equals:
+$$\mathbf{s}^{(0)}^T \Pi\mathbf{s}^{(0)} \quad \text{and} \quad \mathbf{s}^{(0)}^T M\Pi M \mathbf{s}^{(0)},$$
+these norms are both nonzero since $\mathbf{s}^{(0)} > 0$ and 
+ we know from the previous Theorem \ref{ultiemvoorspel} that both $\Pi$ and $M\Pi$ are nonnegative and nonzero.
  
- From the fact that $M$ is nonnegative and the formula for $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)})$ 
- and $\mathbf{z}_{\text{odd}}(\mathbf{z}^{(0)})$ we conclude that both limits lie in 
- $\{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$. We now show that every 
- element $\mathbf{\tilde{z}}^{(0)} \in \{\Pi\mathbf{z}/\|\Pi \mathbf{z}\|_2: \mathbf{z}> 0\}$ 
- can be obtained as $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)})$ for some $\mathbf{z}^{(0)}  
+ From the fact that $M$ is nonnegative and the formula for $\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)})$ 
+ and $\mathbf{s}_{\text{odd}}(\mathbf{s}^{(0)})$ we conclude that both limits lie in 
+ $\{\Pi\mathbf{s}/\|\Pi \mathbf{s}\|_2: \mathbf{s}> 0\}$. We now show that every 
+ element $\mathbf{\tilde{s}}^{(0)} \in \{\Pi\mathbf{s}/\|\Pi \mathbf{s}\|_2: \mathbf{s}> 0\}$ 
+ can be obtained as $\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)})$ for some $\mathbf{s}^{(0)}  
  > 0$. Since the entries of $\Pi$ are nonnegative, so are those of 
- $\mathbf{\tilde{z}}^{(0)}$. This vector may have some zero entries. From $\mathbf{\tilde{z}}^{(0)}$ 
- we construct $\mathbf{z}^{(0)}$ by adding $\epsilon > 0$ to all the zero entries of 
- $\mathbf{\tilde{z}}^{(0)}$. The vector $\mathbf{z}^{(0)} - \mathbf{\tilde{z}}^{(0)}$ is 
+ $\mathbf{\tilde{s}}^{(0)}$. This vector may have some zero entries. From $\mathbf{\tilde{s}}^{(0)}$ 
+ we construct $\mathbf{s}^{(0)}$ by adding $\epsilon > 0$ to all the zero entries of 
+ $\mathbf{\tilde{s}}^{(0)}$. For $\epsilon \to 0$, the vector $\mathbf{s}^{(0)} - \mathbf{\tilde{s}}^{(0)}$ is 
  clearly orthogonal to $\mathcal{V}_\rho \oplus \mathcal{V}_{-\rho}$ and will 
- vanish in the iteration of $M^2$. Thus we have $\mathbf{z}_{\text{even}}(\mathbf{z}^{(0)}) = \mathbf{\tilde{z}}^{(0)}$ 
- for $\mathbf{z}^{(0)} > 0$, proving our statement.
+ vanish in the iteration of $M^2$. Thus we have $\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)}) = \mathbf{\tilde{s}}^{(0)}$ 
+ for $\mathbf{s}^{(0)} > 0$, proving our statement.
  
- We now prove the last statement. The matrix $\Pi$ and all vectors are 
- nonnegative and $\Pi^2=\Pi$ and so:
- 
+ We now prove the last statement. Remember from Definition \ref{holderdebolder} 
+ that the Manhattan norm is the sum of the absolute values, so we have:
  $$\left\|\frac{\Pi\mathbf{1}}{\|\Pi\mathbf{1}\|_2} \right\|_1=\sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}$$
  and also:
- $$ \left\|\frac{\Pi\mathbf{z}^{(0)}}{\|\Pi\mathbf{z}^{(0)}\|_2} \right\|_1 = \frac{\mathbf{1}^T\Pi^2\mathbf{z}^{(0)}}{\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}}$$
-We apply the Cauchy-Schwarz inequality to $\Pi\mathbf{1}$ and $\Pi\mathbf{z}^{(0)}$, remember that $\Pi = WW^T$ for some
+ $$ \left\|\frac{\Pi\mathbf{s}^{(0)}}{\|\Pi\mathbf{s}^{(0)}\|_2} \right\|_1 = \frac{\mathbf{1}^T\Pi^2\mathbf{s}^{(0)}}{\sqrt{\mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}$$
+We apply the Cauchy-Schwarz inequality to $\Pi\mathbf{1}$ and $\Pi\mathbf{s}^{(0)}$, remember that $\Pi = WW^T$ for some
 $W$, so \Pi^T = (WW^T)^T = 
 (W^T)^T W^T= WW^T = \Pi$, that the matrix $\Pi$ and all vectors are nonnegative and $\Pi^2=\Pi$:
 \begin{eqnarray*}
-  |\langle \Pi\mathbf{1}, \Pi\mathbf{z}^{(0)} \rangle| &\leq& \|\Pi\mathbf{1} 
-  \|.\|\Pi\mathbf{z}^{(0)}\|\\
- \Leftrightarrow |(\Pi\mathbf{1})^T\Pi\mathbf{z}^{(0)}| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}\\
-\Leftrightarrow    |\mathbf{1}^T\Pi^T\Pi\mathbf{z}^{(0)}| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}}\\
-\Leftrightarrow   |\mathbf{1}^T\Pi^2\mathbf{z}^{(0)}| &\leq& 
-  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{z}^{(0)}^T\Pi^2\mathbf{z}^{(0)}},
+  |\langle \Pi\mathbf{1}, \Pi\mathbf{s}^{(0)} \rangle| &\leq& \|\Pi\mathbf{1} 
+  \|.\|\Pi\mathbf{s}^{(0)}\|\\
+ \Leftrightarrow |(\Pi\mathbf{1})^T\Pi\mathbf{s}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}\\
+\Leftrightarrow    |\mathbf{1}^T\Pi^T\Pi\mathbf{s}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}\\
+\Leftrightarrow   |\mathbf{1}^T\Pi^2\mathbf{s}^{(0)}| &\leq& 
+  \sqrt{\mathbf{1}^T\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}},
 \end{eqnarray*}
-equality arises only when $\Pi\mathbf{z}^{(0)} = \lambda\Pi\mathbf{1}$ for some $\lambda \in 
-\C$. But since $\Pi\mathbf{z}^{(0)}$ and $\Pi\mathbf{1}$ are both real nonnegative, 
+equality arises only when $\Pi\mathbf{s}^{(0)} = \lambda\Pi\mathbf{1}$ for some $\lambda \in 
+\C$. But since $\Pi\mathbf{s}^{(0)}$ and $\Pi\mathbf{1}$ are both real nonnegative, 
 the last statement is proved.
 
 \end{proof}
 
-\subsection{Compact form \& Similarity matrices}
-We now come to the formal definition of the similarity matrix of two directed 
-graphs $\graf(U,\to)$ and $\grafeen(V, \to')$, by proving that the mutually reinforcing relation
+\subsection{Similarity matrices}\index{Matrix!Similarity matrix}\index{Similarity matrix}\index{Compact form}
+We now come to the formal definition of the similarity matrix of two graphs $\graf(U,\to)$ and $\grafeen(V, \to')$, by proving that the mutually reinforcing relation
 is given by ($A$ and $B$ are the adjacency matrices of $\graf$ and $\grafeen$):
  \begin{eqnarray}\label{compactform2}
-X^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
+Z^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
   \end{eqnarray}
-which we already introduced in \ref{compacteforms}. To prove this relation, we take a 
+which we already introduced in (\ref{compacteforms}). To prove this relation, we take a 
 detour via a nice property of the Kronecker product and the $\vect$-operator. The $\vect$-operator
 is a convenient way of stacking columns of a matrix left to right. With this operator 
-we can rewrite \ref{compactform2} in $\mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)}$ with $M$ equal to a sum of Kronecker products. This will 
+we can rewrite (\ref{compactform2}) in $\mathbf{z}^{(k+1)} = M\mathbf{z}^{(k)}$ with $M$ equal to a sum of Kronecker products. This will 
 allow us the apply Theorem \ref{grootbewijs}.
-\begin{definition}
+\begin{definition}\index{Vectorization}\label{vectorization}
   With each $m\times n$-matrix $A = [a_{ij}]$ we can associate the vector $\vect(A) \in \R^{mn}$ 
   defined by:
   $$\vect(A) = \begin{pmatrix}
@@ -3304,7 +3556,7 @@ allow us the apply Theorem \ref{grootbewijs}.
   \end{pmatrix}^T$$
 \end{definition}
 
-\begin{definition}
+\begin{definition}\index{Kronecker product}\index{Tensor product}
   The  \textbf{Kronecker product} (or \textbf{tensor product}) of an $m \times 
   n$-matrix $A = (a_{ij})$ and a $p \times q$-matrix $B = (b_{ij})$ is denoted 
   by $A \otimes B$ and is defined by the matrix:
@@ -3322,6 +3574,7 @@ allow us the apply Theorem \ref{grootbewijs}.
 \end{lemma}
 \begin{proof}
   By direct computation, we get:
+  \allowdisplaybreaks
   \begin{eqnarray*}
     (A \otimes B)^T  &=& \begin{pmatrix}
   a_{11}\begin{pmatrix}
@@ -3392,7 +3645,7 @@ allow us the apply Theorem \ref{grootbewijs}.
     (AXB)_k &=& A(XB)_k\\
     &=& AXB_k\\
     &=& A \sum_{i=1}^p b_{ik}X_{i}\\
-    &=& Ab_{1k}X_1 + Ab_{2k}X_2 + \ldots + Ab_{pk}X_p\\
+    &=& Ab_{1k}X_1 + Ab_{2k}X_2 + \cdots + Ab_{pk}X_p\\
     &=& \begin{pmatrix}
     b_{1k}A & b_{2k}A & \ldots & b_{pk}A \end{pmatrix}\vect(X)\\
     &=& (B^T_k \otimes A)\vect(X)
@@ -3409,29 +3662,31 @@ allow us the apply Theorem \ref{grootbewijs}.
 \end{proof}
 
 \begin{theorem}\label{frobvorm}
-  Let $\graf$ and $\grafeen$ be two directed graphs with adjacency matrices $A = [a_{ij}] \in R^{n\times n}$ 
-  and $B = [b_{ij}] \in \R^{m\times m}$ and let $Z^{(0)} > 0$ be an initial positive matrix, and define\footnote{$\|A\|_F = \sqrt{\sum_{i=1}^m\sum_{j=1}^n(a_{ij})^2}$ is the \emph{Frobenius} norm for  a $m\times n$-matrix $A$.}:
-  $$Z^{(k+1)} = \frac{BZ^{(k)}A^T + B^TZ^{(k)}A}{\|BZ^{(k)}A^T + B^TZ^{(k)}A\|_F}, \quad k = 
+  Let $\graf$ and $\grafeen$ be two graphs with adjacency matrices $A = [a_{ij}] \in \R^{n\times n}$ 
+  and $B = [b_{ij}] \in \R^{m\times m}$ and let $S^{(0)} > 0$ be an initial positive matrix, and 
+  define:
+  $$S^{(k+1)} = \frac{BS^{(k)}A^T + B^TS^{(k)}A}{\|BS^{(k)}A^T + B^TS^{(k)}A\|_F}, \quad k = 
   0,1,\ldots.$$
-  Then the matrix subsequences $Z^{(2k)}$ and $Z^{(2k+1)}$ converge to $Z_\text{even}$ 
-  and $Z_\text{odd}$ and among all the matrices in the set of all possible 
+  Then the matrix subsequences $S^{(2k)}$ and $S^{(2k+1)}$ converge to $S_\text{even}$ 
+  and $S_\text{odd}$ and among all the matrices in the set of all possible 
   limits:
-  $$\{Z_\text{even}(Z^{(0)}), Z_\text{odd}(Z^{(0)}): Z^{(0)} > 0 \}$$
-  the matrix $Z_\text{even}(\mathbf{1})$ is the unique matrix of largest 1-norm\footnote{$\|A\|_{1,1} = \sum_{i=1}^m\sum_{j=1}^n|a_{ij}|$ is the $1$-norm for a $m\times n$-matrix $A$}.
+  $$\{S_\text{even}(S^{(0)}), S_\text{odd}(S^{(0)}): S^{(0)} > 0 \}$$
+  the matrix $S_\text{even}(\mathbf{1})$ is the unique matrix of largest 
+  1-norm.
   \end{theorem}
 
 \begin{proof}
   We first rewrite the compact form of \ref{compactform2}:
   \begin{eqnarray*}
-    X^{(k+1)} &=& BX^{(k)}A^T + B^TX^{(k)}A\\
- \Leftrightarrow   \vect(X^{(k+1)}) &=& \vect(BX^{(k)}A^T + B^TX^{(k)}A)\\
- \Leftrightarrow   \vect(X^{(k+1)}) &=& \vect(BX^{(k)}A^T) + \vect(B^TX^{(k)}A)\\
- \Leftrightarrow   \vect(X^{(k+1)}) &=& \left( (A^T)^T \otimes B\right)\vect(X^{(k)}) + \left( A^T \otimes B^T\right)\vect(X^{(k)})\\
-  \Leftrightarrow  \vect(X^{(k+1)}) &=& (A \otimes B + A^T \otimes B^T)\vect(X^{(k)})
+    Z^{(k+1)} &=& BZ^{(k)}A^T + B^TZ^{(k)}A\\
+ \Leftrightarrow   \vect(Z^{(k+1)}) &=& \vect(BZ^{(k)}A^T + B^TZ^{(k)}A)\\
+ \Leftrightarrow   \vect(Z^{(k+1)}) &=& \vect(BZ^{(k)}A^T) + \vect(B^TZ^{(k)}A)\\
+ \Leftrightarrow   \vect(Z^{(k+1)}) &=& \left( (A^T)^T \otimes B\right)\vect(Z^{(k)}) + \left( A^T \otimes B^T\right)\vect(Z^{(k)})\\
+  \Leftrightarrow  \vect(Z^{(k+1)}) &=& (A \otimes B + A^T \otimes B^T)\vect(Z^{(k)})
   \end{eqnarray*}
-If we define $\mathbf{x}_k = \vect(X^{(k)})$ and $M = A \otimes B + A^T \otimes 
+If we define $\mathbf{z}^{(k)} = \vect(Z^{(k)})$ and $M = A \otimes B + A^T \otimes 
 B^T$ we get:
-$$\mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)},$$
+$$\mathbf{z}^{(k+1)} = M\mathbf{z}^{(k)},$$
 exactly the same compact form as introduced in the beginning of this section in 
 \ref{kleinecompact}. If we can prove that $M$ is symmetric and nonnegative, then
 we can apply Theorem \ref{grootbewijs} and the result follows. $M$ is, of 
@@ -3443,29 +3698,29 @@ M = A \otimes B + (A \otimes  B)^T,
 \end{eqnarray}
 because $A \otimes B$ is a $nm \times nm$ square matrix, we know that $M$ is 
 symmetric because it's the sum of a square matrix and it's transpose. In order 
-to stay consistent with the vector norm appearing in Theorem \ref{grootbewijs}, the matrix norm 
-$\| .\|_F$ or the \emph{Frobenius} norm is the square root of the sum of all squared 
-entries and the $1$-norm $\|.\|_1$ is the sum of all magnitudes of the entries. 
+to stay consistent with the Eucledian norm appearing in Theorem \ref{grootbewijs}, we use as matrix norm
+the Frobenius norm. After all we know from section 1.3.2 that for $A \in \R^{1\times n}$ the frobenius norm equals the
+$2$-norm. 
 We can now apply Theorem \ref{grootbewijs} and the result follows.
 \end{proof}
 \begin{definition}
-  Let $\graf, \grafeen$ be two directed graphs, then the unique matrix
-   $$S = Z_\text{even}(\mathbf{1}) = \lim_{k\to +\infty} Z^{(2k)}$$ 
+  Let $\graf, \grafeen$ be two graphs, then the unique matrix
+   $$S = S_\text{even}(\mathbf{1}) = \lim_{k\to +\infty} S^{(2k)}$$ 
  (with the notations of the previous theorem) is the \textbf{similarity matrix} between $\graf$ and
    $\grafeen$.
 \end{definition}
 Notice that it follows from \ref{compactform2} that the similarity matrix 
 between $\grafeen$ and $\graf$ is the transpose of the similarity matrix between 
 $\graf$ and $\grafeen$.
-\subsection{Algorithm \& Computational cost}
+\subsection{Algorithm}
 
 
 
 \begin{algorithm}[H]\label{algsimilarity}
  \KwData{\\
  $A$:  the $n\times n$ adjacency matrix of a directed graph $\graf$\\
-$B$: the  $m \times m$adjacency matrix of a directed graph $\grafeen$.}\\
-$\tol$: tolerance for the estimation error.\\
+$B$: the  $m \times m$adjacency matrix of a directed graph $\grafeen$.\\
+$\tol$: tolerance for the estimation error.\\}
  \KwResult{\\$S$: the similarity matrix between $\graf$ and $\grafeen$.}
  \blankline
 \SetKwFunction{powermethod}{similarity\_matrix}
@@ -3476,41 +3731,77 @@ $\tol$: tolerance for the estimation error.\\
 $k = 1$ \;
 $Z^{(0)} = \mathbf{1}$ ($n \times m$-matrix with all entries equal to $1$)\;
 $\mu =  n\times m$-matrix with all entries equal to $\tol$\;
-\Repeat{$k$ is even and $|Z - Z^{(k-2)}| < \mu$}{
+\Repeat{$k$ is even and $|Z^{(k)} - Z^{(k-2)}| < \mu$}{
 $Z^{(k)} = \frac{BZ^{(k-1)}A^T + B^TZ^{(k-1)}A}{\|BZ^{(k-1)}A^T + B^TZ^{(k-1)}A\|_F}$\;
 $k = k + 1$\;
 }
  
 \KwRet $Z^{(k)} $\;}{}
  
- \caption{Algorithm for calculating the similarity matrix between $\graf$ and $\grafeen$}\label{powermethod}
-\end{algorithm}
+ \caption{Algorithm for calculating the similarity matrix between $\graf$ and $\grafeen$}
+ \end{algorithm}
 The compact form introduced in the previous section leads directly to the approximation 
 algorithm \ref{algsimilarity}. Note that the algorithm must iterate an even number 
 of times and to check if the tolerance limit is reached, only the even 
-iteration steps are considered. This is of course an obvious consequence of the 
-definition of the similarity matrix. A Matlab implementation of the algorithm 
+iteration steps are considered because the results will oscillate between the even and odd iterates. 
+This is of course an obvious consequence of the 
+definition of the similarity matrix and Theorem \ref{grootbewijs}. Remember that the absolute value that is mentioned is the same as in Notation 
+ \ref{modulusmatrix}. A Matlab implementation of the algorithm 
 can be found in Listing \ref{lstsim} in Appendix A.
+\subsubsection{Equivalence with the Power Method}
+Algorithm \ref{algsimilarity} is in fact completely equivalent to the Power 
+Method of section \ref{powersection}. To see this, remind that we are in fact 
+calculating the expression of Theorem \ref{grootbewijs}:
+$$\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)}) = \lim_{k \to \infty} \mathbf{s}^{(2k)}  = \frac{\Pi \mathbf{s}^{(0)}}{||\Pi \mathbf{s}^{(0)}||_2},$$
+when we compare 
+this with equation (\ref{powertripke}) from the Power method section, we see 
+that in both cases we are in fact calculating the largest eigenvector of a matrix, but with the difference 
+that in this $\Pi$ is constructed in such way that it oscillates and the even 
+iterates always converge. The attentive reader will note that $\Pi$ doesn't 
+appear directly in Algorithm \ref{algsimilarity}, but this is, of course, a 
+consequence of the vectorization defined in Definition \ref{vectorization}. With 
+this operation, we are able to work directly with matrices while proving 
+convergence through Theorem \ref{grootbewijs}. With this in mind, it's clear 
+that Algorithm 5 can be seen as a \textit{matrix analogue} of the Power method.
 
-To estimate the computational cost, we first notice that the algorithm is a 
-matrix analogue to the power method introduced in section \ref{powersection}. We 
+This brings to one of the main ideas of this master thesis: when we use the important Theorem \ref{grootbewijs} 
+to prove convergence of some algorithm (all the algorithms that will follow are using this 
+theorem for this purpose), we know for sure that the resulting algorithm will somehow be equivalent to the Power Method 
+because this theorem shows that the algorithm essentially comes down to 
+finding the largest eigenvalue of some orthogonal projector $\Pi$, altough this $\Pi$ might not appear
+directly in the algorithm thanks to vectorization . Depending on the possible characteristics of $\Pi$, this makes it 
+possible to derive the computational costs of the constructed algorithm. 
+
+Also 
+note that in this case, the equivalence is very clear when looking at the (pseudo)code for both algorithms, but as this master thesis 
+proceeds, the algorithms will get more complicated and the equivalence with the 
+Power Method will not be as clear.
+
+\subsubsection{Computational cost}
+ We 
 already showed in Theorem \ref{grootbewijs} that the convergence of the even 
-iterates in the above recurrence relation is linear with ratio $(\mu/\rho)^{2n}$. 
-With the accuracy level $\tol$, we become:
-\textbf{Ik weet dat ik $\approx$ nog moet definiëren, maar ik weet niet goed hoe.}
-$$\left|\frac{\mu}{\rho} \right|^{2n} \approx \tol$$
+iterates in the above recurrence relation is linear with ratio $(\mu/\rho)^{2n}$, where $\rho$ is the spectral radius
+of $M$ and $\mu$ is the spectral radius
+of the matrix $M_\mu$, a matrix where the columns span the subspaces of all 
+eigenvectors besides $\rho$ and also $-\rho$ when $-\rho$ is an eigenvalue of $M$.
+
+With the accuracy level $\tol$, we write:
+$$\left|\frac{\mu}{\rho} \right|^{2n} \leq \tol$$
 
 So, for example, for $\tol = 10^{-5}$ we get $n = -5/(2\log{\mu/\lambda})$, we become:
-$$\text{\texttt{similarity\_matrix}} \in O\left(\frac{-1}{\log{\mu- \log\rho}}\right)$$
-Note that this O holds for any estimation error $\tol$ of the form $10^{-e}$ with $e \in \N$. 
+$$\text{\texttt{similarity\_matrix}} \in O\left(\frac{1}{\log{\mu- \log\rho}}\right)$$
+Note that this $O$ holds for any estimation error $\tol$ of the form $10^{-e}$ with $e \in \N$. 
 Also note that this is completely analogous to the computational cost of the 
 power method, which comes as no surprise since the algorithms are similar, but remember 
 from Theorem \ref{perronzonderperron} that we cannot encounter a situation in 
-which $\mu = \rho$, since we know that $\rho$ is the unique dominant eigenvalue (in contrast to the power method, where
-we don't know in general whether a matrix has a unique dominant eigenvalue or 
-not).
-
-\subsection{Special cases}
+which $\mu = \rho$, as $\mu$ is the spectral radius
+of the spectrum without $\rho$ and $-\rho$ (if $-\rho$ is an eigenvalue). When $M_\mu$ 
+is trivial (meaning that $M$ has only eigenvalues $\rho$ and possibly $-\rho$), we conclude from 
+equation
+(\ref{vergeejkjfqk}) in Theorem \ref{grootbewijs} that in this case $\left|\frac{1}{\rho} \right|^{2n} \leq \tol$ so:
+$$\text{\texttt{similarity\_matrix}} \in O\left(\frac{1}{\log{1- \log\rho}}\right).$$
+The algorithm can always be calculated in a finite number of steps.
+\subsection{Special cases}\label{specialcases}
 We now consider some special cases of of similarity scores between two vertices 
 of graphs.
 \subsubsection{HITS-algorithm}
@@ -3523,12 +3814,87 @@ B^T & 0
 has a unique dominant eigenvalue to 
 calculate the hub and authority scores of nodes in a graph $\graf_\sigma$ with adjacency matrix
 $B$. This assumption is a direct result of the power method, because it's one 
-of the conditions to apply the algorithm. One of our goals of this section was to drop this 
-assumption, making the concept of similarity more robust. We finally arrived at 
-this result.
+of the conditions to apply the algorithm. One of our goals was to drop this 
+assumption. We finally arrived at 
+this result, that also returns a solution when the Perron root has a 
+multiplicity larger then 1. To prive this result, we need the singular value 
+decomposition of real matrices. A comprehensive overview of this decomposition 
+can be found in \cite{tomasi}, we restrict ourself to the main result of this 
+decomposition, without the intuitive explanations, otherwise we would eviate too 
+much from the main subject.
 
+\begin{theorem}\index{Singular value decomposition}\index{Singular value}\index{Left singular vector}\index{Right singular vector} \textbf{(Singular value decomposition)}
+If $A$ is a real $m \times n$-matrix, then there exist orthogonal matrices:
+\begin{eqnarray*}
+  U &=& [\mathbf{u}_1,\ldots, \mathbf{u}_m] \in \R^{m\times m}\\
+  V &=& [\mathbf{v}_1,\ldots, \mathbf{v}_n] \in \R^{n\times n},
+\end{eqnarray*}
+such that
+$$U^TAV = \Sigma = \diag(\sigma_1,\ldots,\sigma_p) \in \R^{m \times n},$$
+where $p = \min(m,n)$ and $\sigma_1 \geq \cdots \geq \sigma_p$. 
+Equivalently:
+$$A = U\Sigma V^T.$$
+The columns of $V$ are the \textbf{right singular vectors} of $A$, and those of $U$ 
+are the \textbf{left singular vectors}
+\end{theorem}
+\begin{proof}
+  Let $\mathbf{x}$ and $\mathbf{y}$ be unit vectors in $\R^n$ and $\R^m$, 
+  respectively, and consider the bilineair form:
+  $$z = \mathbf{y}^T A \mathbf{x}.$$
+  The set 
+  $$\mathcal{S} = \{\mathbf{x}, \mathbf{y} \mid \mathbf{x} \in \R^n, \mathbf{y} \in \R^m, \|\mathbf{x}\|_2 = \|\mathbf{y}\|_2 = 1\}$$
+  is compact, so that the scalar function $z(\mathbf{x},\mathbf{y})$ must 
+  achieve a maximum value on $S$ (possibly at more than one point). Let 
+  $\mathbf{u}_1$, $\mathbf{v}_1$ be two unit vectors in $\R^m$ and $\R^n$ 
+  respectively where this maximum is achieved, and let $\sigma_1$ be the 
+  corresponding value of $z$:
+  $$\max_{\|\mathbf{x}\|_2 = \|\mathbf{y}\|_2 = 1} \mathbf{y}^T A \mathbf{x} = 
+  \mathbf{u}_1^T A \mathbf{v}_1 = \sigma_1.$$
+  We want to show that $\mathbf{u}_1$ is parallel to the vector $A\mathbf{v}_1$: 
+  if this were not the case, the inner product  $\mathbf{u}_1^T A \mathbf{v}_1$ 
+  could be increased by rotating $\mathbf{u}_1$ towards the direction of 
+  $A\mathbf{v}_1$, thereby contradicting the fact that 
+  $\mathbf{u}_1^TA\mathbf{v}_1$ is a maximum. Similarly, notice that:
+  $$\mathbf{u}_1^T A \mathbf{v}_1 = \mathbf{v}_1^T A^T \mathbf{u}_1$$
+  and repeating the argument above, we see that $\mathbf{v}_1$ is parallel to 
+  $A^T\mathbf{u}_1$.
+  The vectors $\mathbf{u}_1$ and $\mathbf{v}_1$ can be extended into orthonormal 
+  bases for $\R^m$ and $\R^n$, respectively. Collect these orthonormal basis 
+  vectors into orthogonal matrices $U_1$ and $V_1$. Then:
+  $$U_1^T AV_1 = S_1 = \begin{pmatrix}\sigma_1 & \mathbf{0}^T\\\mathbf{0}& A_1 
+  \end{pmatrix}.$$
+  In fact, the first column of $AV_1$ is $A\mathbf{v}_1 = \sigma_1 \mathbf{u}_1$, so the first entry of $U_1^T A V_1$ is 
+  $\mathbf{u}_1^T \sigma_1 \mathbf{u}_1 = \sigma_1$, and its other entries are $\mathbf{u}_j^T A \mathbf{v}_1 = 0$ because
+  $A\mathbf{v}_1$ is parallel to $\mathbf{u}_1$ and therefore orthogonal, by 
+  construction, to $\mathbf{u}_2, \ldots, \mathbf{u}_m$. A similar argument 
+  shows that the entries after the first row of $S_1$ are zero: the row vector $\mathbf{u}_1^TA$ 
+  is parallel to $\mathbf{v}_1^T$ and therefore orthogonal to $\mathbf{v}_2, \ldots, 
+  \mathbf{v}_n$, so that $\mathbf{u}_1^T A \mathbf{v}_2 = \cdots = \mathbf{u}_1^TA\mathbf{v}_n = 
+  0$. The matrix $A_1$ has one fewer row and column than $A$. We can repeat the 
+  same construction on $A_1$ and write
+  $$U_2^T A_1 V_2 = S_2 = \begin{pmatrix}\sigma_2 & \mathbf{0}^T\\ \mathbf{0} & A_2\end{pmatrix}$$
+  so that 
+  $$\begin{pmatrix}1 & \mathbf{0}^T\\ \mathbf{0} & U_2^T\end{pmatrix} U_1^T A V_1  \begin{pmatrix}1 & \mathbf{0}^T\\ \mathbf{0} & V_2^T\end{pmatrix} 
+  = \begin{pmatrix}\sigma_1 & 0 &\mathbf{0}^T\\
+0 & \sigma_2 &  \mathbf{0}^T\\
+\mathbf{0} & \mathbf{0} & A_2
+\end{pmatrix}.$$
+this procedure can be repeated until $A_k$ vanishes to obtain:
+$$U^T A V = \Sigma,$$
+where $U^T$ and $V$ are orthogonal matrices obtained by multiplying together all 
+the orthogonal matrices used in the procedure, and:
+$$\Sigma = \diag(\sigma_1, \ldots, \simga_p).$$
+Since matrices $U$ and $V$ are orthogonal, we can multiply with $U$ and $V^T$ to 
+obtain:
+$$A = U \Sigma V^T,$$
+which is the desired result.
 
-\begin{theorem}
+It remains to show that the elements on the diagonal of $\Sigma$ arrange in decreasing order. To see that $\sigma_1 \geq \cdots \geq \sigma$ 
+where $p = \min(m,n)$ we can observe that the successive maximization problems 
+that yield $\sigma_1, \ldots, \sigma_p$ are performed on a sequence of sets each 
+of which contains the next. 
+ \end{proof}
+ \begin{theorem}
   Let $\graf$ be a graph with adjacency matrix $B$. The normalized hub and 
   authority scores of the vertices are given by the normalized dominant 
   eigenvectors of the matrices $BB^T$ and $B^TB$, provided the corresponding 
@@ -3548,9 +3914,9 @@ BB^T & 0\\
 \end{pmatrix},$$
 and the result follows from Theorem \ref{grootbewijs} under the condition that 
 the matrix $M^2$ has a dominant root $\rho^2$ . This can be seen as follows: let $V$ and $U$ be
-orthonormal bases for the dominant eigenspaces of $B$:
+the dominant right and left singular vectors of $B$, so:
 $$BV = \rho U, \quad B^TU = \rho V$$
-then clearly $V$ and $U$ are also bases for the dominant eigenspaces of $B^TB$ 
+then clearly $V$ and $U$ are also the dominant right and left singular vectors of $B^TB$ 
 and $BB^T$ so:
 $$B^TBV = \rho^2V, \quad BB^TU= \rho^2U.$$
 The projectors associated with the dominant eigenvalues of $BB^T$ and $B^TB$ 
@@ -3571,7 +3937,7 @@ similarity score with vertex $2$, which we will call the \emph{central score}.
   of the path graph $1 \to 2 \to 3$ with the vertices of graph $\graf$ are called the central 
   scores and are given by the normalized dominant eigenvector of the matrix 
   $B^TB+BB^T$, provided the corresponding Perron root is of multiplicity $1$. 
-  Otherwise, it is the normalized projection of the vector \mathbf{1} on the 
+  Otherwise, it is the normalized projection of the vector $\mathbf{1}$ on the 
   dominant invariant subspace.
   \end{theorem}
   
@@ -3600,7 +3966,9 @@ similarity score with vertex $2$, which we will call the \emph{central score}.
     B^T
     \end{pmatrix}
  
-  Now let $V$ and $U$ be orthonormal bases for the dominant eigenspaces of $E^TE$ 
+  Now let $V$ and $U$ be the dominant right and left singular vectors of $E$:
+  $$EV = \rho U, E^T U = \rho V,$$
+  then clearly $V$ and $U$ are also dominant right and left singular vectors  of $E^TE$ 
   and $EE^T$, since:
   $$E^TEV = \rho^2V, \quad EE^TU = \rho^2U.$$
   Moreover,
@@ -3610,8 +3978,8 @@ similarity score with vertex $2$, which we will call the \emph{central score}.
   \end{pmatrix},$$
 and let
 $$\Pi_v = VV^T \quad \text{and} \quad \Pi_u = UU^T$$
-be the projectors associated with the dominant eigenvalues of EE^T and E^TE. The 
-project $\Pi$ of $M^2$ is then equal to:
+be the projectors associated with the dominant eigenvalues of $EE^T$ and $E^TE$. The 
+projector $\Pi$ of $M^2$ is then equal to:
 $$\Pi = P^T\text{diag}(\Pi_v, \Pi_u)P,$$
 and it follows that the subvectors of $\Pi\mathbf{1}$ are te vectors $\Pi_v\mathbf{1}$ 
 and $\mathbf{\Pi_u\mathbf{1}}$, which can be computed from $E^TE$ or $EE^T$. 
@@ -3623,20 +3991,20 @@ vector of $\Pi\mathbf{1}$.
   matrix where the path graph $1 \to 2 \to 3$ is the structure graph, consider 
   the following directed bow-tie graph:
   \begin{center}
-   \includegraphics[scale=1]{bowtie2.png}
+   \includegraphics[scale=1]{bowtie.pdf}
    \end{center}
-   Label the center vertex first, then the $m$ left vertices and finally the $n$
- right vertices, then the adjacency matrix of the bow-tie graph becomes:
+   Label the center vertex first, then the $n$ right vertices and finally the $m$
+ left vertices, then the adjacency matrix of the bow-tie graph becomes:
  
  $$B =\(
 \left(
 \begin{array}{c|ccc|ccc}
 0       & 0 & \ldots & 0  & 1 & \ldots & 1\\\hline 
 1 &  &             &     &    &              & \\
-\vdots & & \mathbf{0}_n & && \mathbf{0}&\\
+\vdots & & 0_{n\times n} & && 0_{n \times m}&\\
 1 &  &             &     &    &              & \\ \hline
 0 &  &             &     &    &              & \\
-\vdots & & \mathbf{0} & && \mathbf{0}_m&\\
+\vdots & & 0_{m \times n} & && 0_{m \times m}&\\
 0 & & &     &    &              & \\
 
 
@@ -3646,8 +4014,8 @@ vector of $\Pi\mathbf{1}$.
  By direct computation, we get that the matrix $B^TB + BB^T$ is equal to:
  $$B^TB + BB^T = \begin{pmatrix}
  m + n & 0 & 0\\
- 0 & \mathbf{1}_n & 0\\
- 0 & 0 & \mathbf{1}_m
+ 0 & 1_{n \times n} & 0\\
+ 0 & 0 & 1_{m \times m}
  \end{pmatrix}$$
  By Theorem \ref{centralescore}, the Perron root of $M$ is equal to $\rho = \sqrt{n+m}$ 
  and the similarity matrix is the $(1+m+n)\times 3$-matrix:
@@ -3662,7 +4030,7 @@ vector of $\Pi\mathbf{1}$.
  0 & 0 & 1
  \end{array}\right)
 \) $$
- If we see vertex 2 of the path graph $1 \to 2 \to 3$ as the \emph{center}, 
+ If we see vertex 2 of the path graph $1 \to 2 \to 3$ as the \emph{center}\index{Center}, 
  which can be seen as a vertex through which much information is passed, 
  then it is not surprising that $S$ indicates that vertex $1$ of the directed 
  bow-tie graph is the only one that looks like a center. The left vertices of 
@@ -3674,6 +4042,7 @@ vector of $\Pi\mathbf{1}$.
 When we compute the similarity matrix of two equal graphs $\graf = \grafeen$, 
 the similarity matrix $S$ is  square matrix with as entries the similarity 
 scores between vertices of $\graf$, we call $S$ the \emph{self-similarity matrix of $\graf$} 
+\index{Self-similarity}
 in this case. 
 
 Intuitively, we expect that vertices have the highest similarity scores with 
@@ -3685,18 +4054,25 @@ that the diagonal elements are always larger than the other elements on the same
 row or column and we conclude this paragraph with some easy examples the show 
 this.
 
-\begin{theorem}
-  The self-similarity matrix of a graph $\graf$ is positive semidefinite\footnote{A $n\times n$-matrix $A$ is called positive-semidefinite if
+That the similarity matrix of a graph with itself is not always diagonally dominant is a serious limitation
+on the intuititve concept of similarity between graphs. It shows that the 
+algorithm is not capable to detect a one-on-one correspondence, which is one of 
+the reasons why the presented alogirthm of similarity is still not totally 
+satisfactory.
+\begin{definition}\index{Positive semidefinite matrix}\index{Matrix!Positive semidefinite matrix}
+  A $n\times n$-matrix $A$ is called \textbf{positive semidefinite} if
 $\mathbf{x}^{T} A \mathbf{x}\geq 0$
-for all $\mathbf{x}$ in $\R^n$.}. The largest entry of the matrix appears on the 
+for all $\mathbf{x}$ in $\R^n$.
+\end{definition}
+\begin{theorem}
+  The self-similarity matrix of a graph $\graf$ is positive semidefinite. The largest entry of the matrix appears on the 
 diagonal and if a diagonal entry is equal to zero,  all the entries of the corresponding row and 
 column are also equal to zero.
 \end{theorem}
-\textbf{Hier ga ik nog enkele relevante eigenschappen van positieve semidefinitie matrices toevoegen, dit bewijs toch net iets te kort door de bocht me dunkt.}
 \begin{proof}
   Since A = B, the compact form of Theorem \ref{frobvorm} becomes:
- $$Z^{(k+1)} = \frac{BZ^{(k)}A^T + B^TZ^{(k)}A}{\|BZ^{(k)}A^T + B^TZ^{(k)}A\|_F}, \quad Z^{(0)} = \mathbf{1},  $$
-  It is clear that all matrices $Z^{(k)}$ are positive semidefinite because the 
+ $$S^{(k+1)} = \frac{AS^{(k)}A^T + A^TS^{(k)}A}{\|AZ^{(k)}A^T + A^TS^{(k)}A\|_F}, \quad A^{(0)} = \mathbf{1},  $$
+  It is clear that all matrices $S^{(k)}$ are positive semidefinite because the 
   scaled sum of two positive semidefinite matrices is also positive 
   semidefinite. Since the positive semidefinite matrices form a closed set (in the usual 
   topology), the limit $S$ will also be positive semidefinite. The rest of the 
@@ -3798,6 +4174,7 @@ $$\begin{pmatrix}
 
 
 \end{example}
+\newpage
 \section{Node-edge similarity}
 The paper of Blondel et al. \cite{blondel} caused a flow of successive papers 
 which build upon the concept of similarity between two graphs. For instance, the paper
@@ -4280,6 +4657,7 @@ rewritten.
 
 
 \subsection{Colored nodes}
+\subsubsection{Method}
 We first extend the node similarity introduced in section \ref{sectionnodesim} to 
 node colored graphs. Take two node colored graphs $\graf=(V,\to, C, a)$ and $\grafeen=(U,\to', C, a')$ with $|C|$ (remember that $a$, $a'$ are surjective) different colors and assume that the nodes 
 in both graphs are renumbered such that those of color $1$ come first, then 
@@ -4618,7 +4996,91 @@ entries in the last column of $M$ are the transpose of the entries in the last
 row. It follows that $M$ is again symmetric.
 
 \end{proof}
+\subsubsection{Algorithm}
+  \begin{algorithm}[h!]\label{colorpartition1}
+ \KwData{\\
+ $C$:  a list with the number of vertices sharing the same colors in $\graf$ (both the vertices as the colors must be ordered  appropriately)\\
+ $A$:  the `normal' adjacence matrix of the graph $\graf$ (the vertices must be ordered approprately: the first vertices must belong to the first color)\\}
+ \KwResult{\\
+ $Z$: a $2$-dimensional list where the element on place $(i,j)$ represents the partition of adjancency matrix $A$, A_{ij}, between the vertices of color $i$ and the
+ vertices of color $j$\\}
+ \blankline
+\SetKwFunction{powermethod}{colored\_node\_adjacency\_matrix\_partitioning}
+\SetKwFunction{hits}{hits}
 
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$C$,$A$}}{
+$Z = \prod_{i,j} C(i).C(j) \times \prod_{i,j} C(i).C(j)$-matrix with all entries 
+equal to $0$\;
+\For{$i: 1$ to $|C|$ }{
+  \For{$j: 1$ to $|C|$ }{
+    $C_i$ = the number of vertices of color $i$ $(=C(i))$\;
+    $C_j$ = the number of vertices of color $j$ $(=C(j))$\;
+    $B$ = a $C_i \times C_j$-matrix with all entries equal to $0$\;
+    start\_vertex\_i = 0\;
+    start\_vertex\_j = 0\;
+      \For{$k: 1$ to $i-1$ }{
+         $C_k$ = the number of vertices of color $k$ $(=C(k))$\;
+         start\_vertex\_i = start\_vertex\_i + $C_k$\;
+  }
+        \For{$k: 1$ to $i-1$ }{
+         $C_k$ = the number of vertices of color $k$ $(=C(k))$\;
+         start\_vertex\_j = start\_vertex\_j + $C_k$\;
+  }
+  \For{$r: 1$ to $c_i$ }{
+    \For{$k: 1$ to $c_j$ }{
+B(r,k) = A(start\_vertex\_i + r, start\_vertex\_j + k)\;
+}}
+
+Z(i,j) = B\;
+  }}
+ 
+\KwRet $Z$\;}{}
+  \caption{Algorithm that takes an ordered list with the number of vertices and a normal adjacency matrix as input and returns a partitioned adjacency matrix.\\}\label{edgealgorithm}
+\end{algorithm}\label{colorpartition1}
+  \begin{algorithm}[h!]\label{colorpartition1}
+ \KwData{\\
+ $C_A$:  a list with the number of vertices sharing the same colors in $\graf$,\\
+ $A$:  the `normal' adjacence matrix of the graph $\graf$,\\
+ $C_B$:  a list with the number of vertices sharing the same colors in $\grafeen$,\\
+ $B$:  the `normal' adjacence matrix of the graph $\grafeen$.\\
+$\tol$: tolerance for the estimation error.\\}
+
+ \KwResult{\\
+ $S$: a $1$-dimensional list with on place $(i)$ the similarity matrix of the vertices with color $i$, $S_{ii}$.\\}
+ \blankline
+\SetKwFunction{powermethod}{colored\_node\_similarity\_matrix}
+\SetKwFunction{cnamp}{colored\_node\_adjacency\_matrix\_partitioning}
+\SetKwFunction{trace}{trace}
+
+\SetKwProg{myalg}{begin}{}{end}
+\myalg{\powermethod{$C_A$, $A$, $C_B$, $B$, $\tol$}}{
+$A_P =$ \cnamp($C_A$, A)\;
+$B_P =$  \cnamp($C_B$, B)\;
+$k = 1$\;
+\For{$i: 1$ to $|C|$ }{
+$S(i)$ = a $C_B(i) \times C_A(i)$-matrix with all entries equal to $1$\;
+$\mu(i)$ = a $C_B(i) \times C_A(i)$-matrix with all entries equal to $\tol$\;
+}
+\While{\text{True}}{
+norm = 0\;
+\For{$i: 1$ to $|C_A|$ }{
+Z(i) = $\sum_{j \in \{1,\ldots, |C_A|\}}B_P(1,j)S_{\text{previous}}(i)A^T_P(1,i) + B^T_P(i,1)S_{\text{previous}}A_P(i,1)$\;
+norm = norm + \trace($Z^T(i).Z(i)$)\;
+   }
+$S_{\text{previous}} = S$\;
+S = $\frac{Z}{\text{norm}}$\;
+\If{$k$ even}
+\If{$k$ even}{
+S_\text{previous\_even} = S
+}
+   }
+
+\KwRet $S$\;}{}
+  \caption{Algorithm that takes an ordered list with the number of vertices and a normal adjacency matrix as input and returns a partitioned adjacency matrix.\\}\label{edgealgorithm}
+\end{algorithm}\label{colorpartition1}
+
+\subsubsection{Example}
 
 
 \subsection{Colored edges}
@@ -4864,10 +5326,11 @@ edge similarity on colored edges:
    \right)\right\|_F}
  \end{eqnarray*}
    for $k = 0, 1, \ldots$
-    Then the the matrix subsequences $(X,Y_{11},\ldots,Y_{|C||C|})^{(2k)}$ converge to $(X,Y_{11},\ldots,Y_{|C||C|})^{\text{even}}$ 
+    Then the the matrix subsequences $(X,Y_{11},\ldots,Y_{|C||C|})^{(2k)}$ converge to\\
+     $(X,Y_{11},\ldots,Y_{|C||C|})^{\text{even}}$ 
   Also the odd subsequences converge. If we take:
  \begin{eqnarray*}
-   X^{(0)}  &=& J \in \R^{n_grafeen \times n_graf}\\
+   X^{(0)}  &=& J \in \R^{n_\grafeen \times n_\graf}\\
    Y^{(0)}_{jj} &=& J \in \R^{c_\graf(\to, i) \times c_\grafeen(\to', 
    i)}
  \end{eqnarray*}
@@ -5233,7 +5696,7 @@ $y_{nm}$ ($\graf_A$ and $\graf_B$ are undirected):
   \item[(C9)] A vertex can only have a similarity score equal to zero when the hypergraph is not connected. In that case, it can occur that a group
   of adjacent vertices dominates all vertices that are not adjacent to this group. 
   Also edge can only have a similarity score equal to zero when the hypergraph is not connected. 
-  An isolated vertex will always have a similarity score equal 
+  An isolated vertex (that is not a loop) will always have a similarity score equal 
   to zero. This is no different from isolated vertices in graphs.  
   To see this on graphs, look at the method of Blondel ($A$ is the adjacency matrix of $\graf_A$ and $B$ is the adjacency
   matrix of $\graf_B$):
@@ -7278,8 +7741,8 @@ We first prove the compact form of the method:
    edges. Let $A$ and $B$ be the incidence matrices of $\hgraf$ and $\hgrafeen$ 
    and define:
  \begin{eqnarray}
-  Y^{(k+1)} &=& \frac{B^TX^{(k)}A}{\|B^TX^{(k)}A\|_F}\\
-   X^{(k+1)} &=& \frac{BY^{(k)}A^T}{\|BY^{(k)}A^T\|_F}
+  Y^{(k+1)} &=& \frac{B^TX^{(k)}A}{\|B^TX^{(k)}A\|_F}\label{edgehypform}\\
+   X^{(k+1)} &=& \frac{BY^{(k)}A^T}{\|BY^{(k)}A^T\|_F}\label{nodehypform}
  \end{eqnarray}
   for  $k =  0,1,\ldots$.
   
@@ -7397,7 +7860,7 @@ $k = k + 1$\;
   \begin{algorithm}[H]\label{incidencealg}
  \KwData{\\
  $n$:  the number of vertices of hypergraph $\hgrafeen$\\
- $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\
+ $E$:  a set of subsets $E_i$ of $\{1, \ldots, n\}$ that represent the edges of hypergraph $\hgrafeen$\\}
  \KwResult{\\
  $A$: the incidence matrix of the hypergraph}
  \blankline
@@ -7409,7 +7872,7 @@ $k = k + 1$\;
 $m = |E|$\;
 $A$ = initialize a $n \times n$-matrix with all entries equal to 0\;
 
-\For{$E_j \in E }{
+\For{$E_j \in E$ }{
   \For{$v_i \in E_j$}{
     $(A)_{ij} = 1$\;
   }}}
@@ -7546,10 +8009,84 @@ $$Y = \begin{pmatrix}
   
 
 \end{example}
+ \subsection{Concluding theorem}
+\begin{theorem}
+  The similarity method using the incidence graphs of two hypergraphs $\hgraf, \hgrafeen$ returns the same results as the method with the 
+  incidence matrices of $\hgraf, \hgrafeen$, up to a constant, so:
+\begin{eqnarray*}
+  X^{(k)} &=& \alpha S^{(k)}[1,\ldots,n_\hgrafeen;1,\ldots,n_\hgraf]\\
+  Y^{(k)} &=& \beta S^{(k)}[n_\hgrafeen,\ldots, m_\hgrafeen;n_\hgraf,\ldots, m_\hgraf]
+\end{eqnarray*}
+with $X, Y$, the node and similarity matrices of the method with the incidence matrices of $\hgrafeen, \hgraf$, $S$ the 
+similarity matrix of method of Blondel used with the incidence graphs of $\hgrafeen, \hgraf$ 
+and $\alpha, \beta \in \R$ and $k$ even. $S[R,C]$ denotes the submatrix of $S$ with rows $R$
+ and columns $C$. \end{theorem}\index{submatrix}ddd
+ \begin{proof}
+To calculate the similarity matrix using the incidence graph representation with the method of Blondel, an element $s_{ij}$ at iteration step $k$ is calculated as follows
+(remember that $A, B$ are symmetric):
+\begin{eqnarray}\label{simisimi}
+s^{(k+1)}_{ij} = \frac{\sum^{n_\hgrafeen + m_\hgrafeen}_{f=1}\sum^{n_\hgraf + m_\hgraf}_{g=1} b_{if}s^{(k)}_{fg}a_{gj}}{\|BS^{(k)}A^T\|_F}
+\end{eqnarray}
+Now, remember that the incidence graph is a bipartite graph and thus, the 
+adjancecy matrices A and B have the following property (remember our convention to order the columns and rows in a way that the vertices come first, followed by the edges):
+\begin{eqnarray}\label{nulpoints}
+b_{if} = 0  &\text{when }& 0 \leq i,f \leq n_\hgrafeen \text{ or } n_\hgrafeen \leq i,f \leq n_\hgrafeen + 
+m_\hgrafeen\\
+a_{gj} = 0  &\text{when }& 0 \leq g,j \leq n_\hgraf \text{ or } n_\hgraf \leq g,j \leq n_\hgraf + m_\hgraf
+\end{eqnarray}
+We are only interested in the case where $s_{ij}$ is a calculation between nodes 
+and between edges, as the method with the incidence matrix also only calculates 
+this and it is rather hard to give a correct meaning to a comparision between an 
+edge and an a node. 
 
+For the rest of the proof, we only consider the calculating of node similarity, the calculation 
+of edge similarity is completely analogous. In this case, we have that $0 \leq i \leq n_\hgrafeen$
+ and $0 \leq j \leq n_\hgraf$, now (\ref{simisimi}) becomes with property 
+ (\ref{nulpoints}):
+\begin{eqnarray}s^{(k+1)}_{ij} = \frac{\sum^{n_\hgrafeen + m_\hgrafeen}_{f=n_\hgrafeen}\sum^{n_\hgraf + m_\hgraf}_{g=n_\hgraf} 
+b_{if}s^{(k)}_{fg}a_{gj}}{\|BS^{(k)}A^T\|_F}\label{nulnul}\end{eqnarray}
+So in the case of calculating similarities between nodes, only the $s_{ij}^{(k)}$ of 
+the edges play a role! Now, remember the compact form with the method using the incidence 
+matrices ($B'$ is the incidence matrix of $\hgrafeen$, $A'$ of $\hgraf$, the rows in the incidence graph
+represent the vertices, the columns the edges):
+ \begin{eqnarray}
+   X^{(k+1)} &=& \frac{B'Y^{(k)}A'^T}{\|B'Y^{(k)}A'^T\|_F}\\
+     Y^{(k+1)} &=& \frac{B'^TX^{(k)}A'}{\|B'^TX^{(k)}A'\|_F}
+ \end{eqnarray}
+ Elementwise, we write:
+ \begin{eqnarray}
+  x^{(k+1)}_{ij} &=& \frac{\sum^{m_\hgrafeen}_{p=1}\sum^{m_\hgraf}_{q=1} b'_{ip}y^{(k)}_{pq}a'_{jq}}{\|B'^TX^{(k)}A'\|_F}\label{ikmoetgelijkzijn}\\
+  y^{(k+1)}_{cd} &=& \frac{\sum^{n_\hgrafeen}_{h=1}\sum^{n_\hgraf}_{e=1} b'_{hc}x^{(k)}_{he}a'_{ed}}{\|B'Y^{(k)}A'^T\|_F}
+ \end{eqnarray}
+ Now every non-zero element of the adjacency matrices $A, B$, can be found in the 
+ incidence matrices $A', B'$ too (we assume that the vertices and edges have the same numbering in both 
+ matrices):
+ $$ a_{ij} = \begin{cases} a'_{i,j-n_\hgrafeen} &\text{if } 0\leq i \leq n_\hgrafeen  \text{ and } n_\hgrafeen < j \leq n_\hgrafeen + m_\hgrafeen\\ 
+a'_{j,i-n_\hgrafeen} & \text{if } n_\hgrafeen < i \leq n_\hgrafeen + m_\hgrafeen \text{ and } 0 \leq j \leq n_\hgrafeen\end{cases} $$
+So we rewrite \ref{nulnul} an we get (remember that $0 \leq i \leq n_\hgrafeen$
+ and $0 \leq j \leq n_\hgraf$):
+\begin{eqnarray}
+  s^{(k+1)}_{ij} &=& \frac{\sum^{n_\hgrafeen + m_\hgrafeen}_{f=n_\hgrafeen}\sum^{n_\hgraf + m_\hgraf}_{g=n_\hgraf} 
+b'_{i,f-n_\hgrafeen}s^{(k)}_{fg}a'_{j,g-n_\hgraf}}{\|BS^{(k)}A^T\|_F}\\
+ &=& \frac{\sum^{m_\hgrafeen}_{f=1}\sum^{m_\hgraf}_{g=1} 
+b'_{i,f}s^{(k)}_{f+n_\hgrafeen,g+n_\hgraf}a'_{j,g}}{\|BS^{(k)}A^T\|_F}\label{gelijkheidjeknallen}
+\end{eqnarray}
+The equivalence of (\ref{gelijkheidjeknallen}) and (\ref{ikmoetgelijkzijn}) is 
+now clear: (\ref{gelijkheidjeknallen}) depends on the edge similarity scores (to 
+calculate the node similarity scores) and every edge similarity score is 
+multiplied with exactly the same entries of the incidence graph. The result 
+follows by proving that also the edge similarity scores $y_{cd}$ are equal to 
+the $s_{ij}$ with $n_\hgrafeen < i \leq n_\hgrafeen + m_\hgrafeen$ and $n_\hgraf < j \leq n_\hgraf + 
+m_\hgraf$, this is possible with the exact same reasoning. The difference up to 
+a constant is caused by the normalization in each iteration. We conclude that 
+the theorem is true for each even $k$.
+ \end{proof}
 
+ \begin{corollary}
+   The node-edge similarity method (see 2.3) returns the same results for undirected graphs $\graf, \grafeen$ as
+   the node similarity method of Blondel (see 2.1) using incidence graphs of $\graf, \grafeen$, up to constant. 
+ \end{corollary}
 
- 
 \begin{appendices}
   \chapter{Listings} \label{appendixa}% appeared as appendix A
 \lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
@@ -7559,7 +8096,7 @@ $$Y = \begin{pmatrix}
 \lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a source-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={sourceedgematlab}]{source_edge_matrix.m}
 \lstinputlisting[caption={The MatLab code to converse an adjacency matrix to a terminal-edge matrix (edges are numbered left-to-right based on the adjacency matrix).},label={terminaledgematlab}]{terminal_edge_matrix.m}
 \lstinputlisting[caption={The MatLab code for Algorithm 6 but with adjacency matrices as input (edges are numbered left-to-right based on the adjacency matrices).}, label={zeeruitgebreid}]{node_edge_similarity_matrix_adjacency_matrix.m}
-\lstinputlisting[caption={The MatLab code for Algorithm \ref{colorpartition1} that takes an ordered list with the number of vertices and a normal adjacency matrix as input and returns a partitioned adjacency matrix.}, label={colorpartition1matlab}]{colored_node_adjacency_matrix_partitioning.m}
+\lstinputlisting[caption={The MatLab code for Algorithm \ref{colorpartition1} that takes an ordered list with the number of vertices of the same color and a normal adjacency matrix as input and returns a partitioned adjacency matrix.}, label={colorpartition1matlab}]{colored_node_adjacency_matrix_partitioning.m}
 \lstinputlisting[breaklines=true,caption={The MatLab code for Algorithm \ref{colornodesimilarity} that calculates the node similarity matirx for colored nodes.}, label={colornodesimilaritymatlab}]{colored_node_similarity_matrix.m}
 
 \lstinputlisting[caption={The MatLab code for to calculate the adjacency matrix of the representing line-graph of a hypergraph.}, label={linealgmatlab}]{hypergraph_to_linegraph.m}
@@ -7575,7 +8112,7 @@ $$Y = \begin{pmatrix}
 % \usepackage{graphicx}
 
 \begin{landscape}
-  \chapter{Results of the Eurovision Song Contest 2009-2014}
+  \chapter{Results of the Eurovision Song Contest 2009-2015}
   
 \bgroup
 \setlength{\tabcolsep}{0.5pt}
@@ -7938,6 +8475,63 @@ $$Y = \begin{pmatrix}
 \multicolumn{1}{|r|}{\textbf{Portugal}}        &                                       &                                       &                                       &                                          &                                       &                                       &                                       &                                       &                                                &                                       &                                      &                                       &                                       &                                      &                                       &                                       &                                       &                                      &                                     &                                      &                                         &                                     &                                       &                                          &                                      &                                      &                                        &                                       &                                      &                                          &                                        &                                     &                                      &                                           &                                               &                                       &                                              &                                      &                                     & 0                                             & 0.173610946                             \\ \hline
 \end{longtable}
 
+\footnotesize
+\begin{longtable}{r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|}
+\caption{Eurovision Song Contest 2015}\\
+\cline{2-45}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\rotatebox{90}{\textbf{Albania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Armenia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Australia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Austria}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Azerbaijan}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Belarus}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Belgium}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Cyprus}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Czech Republic}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Denmark}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Estonia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{F.Y.R. Macedonia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Finland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{France}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Georgia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Germany}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Greece}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Hungary}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Iceland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Ireland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Israel}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Italy}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Latvia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Lithuania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Malta}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Moldova}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Montenegro}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Norway}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Poland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Portugal}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Romania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Russia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{San Marino}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Serbia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Slovenia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Spain}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Sweden}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Switzerland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{The Netherlands}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{United Kingdom}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Points}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Place}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Authority Score}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Hub Score}}} \\ \hline
+
+ \endfirsthead
+ 
+ \caption{Eurovision Song Contest 2015 (continued)}\\
+\cline{2-45}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\rotatebox{90}{\textbf{Albania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Armenia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Australia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Austria}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Azerbaijan}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Belarus}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Belgium}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Cyprus}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Czech Republic}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Denmark}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Estonia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{F.Y.R. Macedonia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Finland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{France}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Georgia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Germany}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Greece}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Hungary}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Iceland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Ireland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Israel}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Italy}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Latvia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Lithuania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Malta}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Moldova}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Montenegro}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Norway}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Poland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Portugal}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Romania}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Russia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{San Marino}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Serbia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Slovenia}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Spain}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Sweden}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Switzerland}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{The Netherlands}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{United Kingdom}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Points}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Place}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Authority Score}}}&\multicolumn{1}{c|}{\rotatebox{90}{\textbf{Hub Score}}} \\ \hline
+
+ \endhead
+
+\multicolumn{1}{|r|}{\textbf{Sweden}}&7&7&12&7&6&10&12&10&10&12&10&5&12&8&7&10&4&10&12&10&10&12&12&10&10&8&5&12&12&8&8&8&7&8&12&8&&12&10&12&365&1&0.247602&0.130248\\ \hline
+\multicolumn{1}{|r|}{\textbf{Russia}}&8&12&10&8&12&12&10&5&8&10&12&6&8&10&5&12&8&6&3&8&8&10&10&&7&10&7&2&6&10&10&&&10&5&10&6&7&6&6&303&2&0.203561&0.128412\\ \hline
+\multicolumn{1}{|r|}{\textbf{Italy}}&12&6&8&10&8&1&8&12&7&5&3&7&2&6&8&3&12&2&6&6&12&&8&1&12&7&6&5&7&12&12&12&10&7&8&12&8&6&7&8&292&3&0.193495&0.146217\\ \hline
+\multicolumn{1}{|r|}{\textbf{Belgium}}&1&4&6&5&&8&&7&6&7&7&1&7&12&6&8&7&12&4&2&4&7&4&7&&6&&7&5&5&7&10&5&4&3&6&10&2&12&3&217&4&0.147482&0.145478\\ \hline
+\multicolumn{1}{|r|}{\textbf{Australia}}&3&1&&12&&6&4&4&&8&5&&5&2&&7&5&8&8&5&7&6&5&3&6&4&&10&8&&2&4&8&3&2&7&12&8&8&10&196&5&0.135929&0.157516\\ \hline
+\multicolumn{1}{|r|}{\textbf{Latvia}}&&2&7&1&5&5&7&3&5&4&6&&6&7&4&6&3&5&7&12&&4&&12&4&2&&8&10&2&5&2&12&1&7&4&5&4&2&7&186&6&0.126286&0.149527\\ \hline
+\multicolumn{1}{|r|}{\textbf{Estonia}}&4&&3&6&4&7&2&2&&6&&2&10&&2&2&&7&1&&3&2&6&8&3&&1&3&2&1&&7&&2&&3&3&&4&&106&7&0.071542&0.145329\\ \hline
+\multicolumn{1}{|r|}{\textbf{Norway}}&&&4&4&&&&&&3&4&&4&&&4&&4&10&4&&5&2&5&2&&&&3&6&6&&6&&4&2&7&10&3&&102&8&0.070783&0.144331\\ \hline
+\multicolumn{1}{|r|}{\textbf{Israel}}&5&&2&2&7&2&&6&&&&&3&&1&5&&&5&&&8&1&&5&&3&4&4&7&1&&2&6&&1&4&3&5&5&97&9&0.065718&0.146691\\ \hline
+\multicolumn{1}{|r|}{\textbf{Serbia}}&2&&5&3&&&&&3&&&10&&&&&&&&&2&3&&&&&12&&&&&&&&6&&&5&1&1&53&10&0.030338&0.128584\\ \hline
+\multicolumn{1}{|r|}{\textbf{Georgia}}&&10&1&&10&3&1&&4&&1&&&&&&2&3&&&&&&6&&5&&&&&&5&&&&&&&&&51&11&0.031356&0.111867\\ \hline
+\multicolumn{1}{|r|}{\textbf{Azerbaijan}}&&&&&&&&&12&&&&&&10&&&&&&&&&2&8&3&8&&&&3&3&&&&&&&&&49&12&0.028747&0.125808\\ \hline
+\multicolumn{1}{|r|}{\textbf{Montenegro}}&6&8&&&2&&&&&&&4&&&&&&&&&&&&&&&&&&&&&&12&10&&2&&&&44&13&0.026056&0.085579\\ \hline
+\multicolumn{1}{|r|}{\textbf{Slovenia}}&&&&&3&&&&&&&8&1&&&&&&2&&6&&3&4&&&4&1&1&&&&&5&&&1&&&&39&14&0.022577&0.135649\\ \hline
+\multicolumn{1}{|r|}{\textbf{Romania}}&&&&&&&5&1&&2&&&&&&&&1&&&5&&&&&12&&&&4&&&&&&5&&&&&35&15&0.023982&0.153499\\ \hline
+\multicolumn{1}{|r|}{\textbf{Armenia}}&&&&&&4&3&&2&&&3&&3&12&&1&&&&&&&&&&&&&&&6&&&&&&&&&34&16&0.020110&0.119244\\ \hline
+\multicolumn{1}{|r|}{\textbf{Albania}}&&&&&&&6&&&&&12&&&&&6&&&&&&&&&&10&&&&&&&&&&&&&&34&17&0.016755&0.124384\\ \hline
+\multicolumn{1}{|r|}{\textbf{Lithuania}}&&&&&&&&&&1&2&&&&3&&&&&7&&&7&&&&&6&&&&&&&&&&&&4&30&18&0.020556&0.118747\\ \hline
+\multicolumn{1}{|r|}{\textbf{Greece}}&10&5&&&&&&8&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&23&19&0.014358&0.125544\\ \hline
+\multicolumn{1}{|r|}{\textbf{Hungary}}&&&&&&&&&1&&8&&&1&&1&&&&&&&&&&&&&&&4&&4&&&&&&&&19&20&0.013061&0.146121\\ \hline
+\multicolumn{1}{|r|}{\textbf{Spain}}&&&&&1&&&&&&&&&5&&&&&&&1&&&&&1&2&&&3&&1&&&&&&1&&&15&21&0.009537&0.158995\\ \hline
+\multicolumn{1}{|r|}{\textbf{Cyprus}}&&&&&&&&&&&&&&&&&10&&&&&&&&&&&&&&&&&&1&&&&&&11&22&0.006646&0.145637\\ \hline
+\multicolumn{1}{|r|}{\textbf{Poland}}&&&&&&&&&&&&&&4&&&&&&3&&1&&&&&&&&&&&&&&&&&&2&10&23&0.006909&0.159925\\ \hline
+\multicolumn{1}{|r|}{\textbf{United Kingdom}}&&&&&&&&&&&&&&&&&&&&1&&&&&1&&&&&&&&3&&&&&&&&5&24&0.003258&0.153125\\ \hline
+\multicolumn{1}{|r|}{\textbf{France}}&&3&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&1&&&&&&&&4&25&0.002338&0.142272\\ \hline
+\multicolumn{1}{|r|}{\textbf{Austria}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&26&0&0.150454\\ \hline
+\multicolumn{1}{|r|}{\textbf{Germany}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&27&0&0.157865\\ \hline
+\multicolumn{1}{|r|}{\textbf{Belarus}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.147342\\ \hline
+\multicolumn{1}{|r|}{\textbf{Czech Republic}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.130862\\ \hline
+\multicolumn{1}{|r|}{\textbf{Denmark}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.160507\\ \hline
+\multicolumn{1}{|r|}{\textbf{FYR Macedonia}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.085414\\ \hline
+\multicolumn{1}{|r|}{\textbf{Finland}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.149564\\ \hline
+\multicolumn{1}{|r|}{\textbf{Iceland}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.145817\\ \hline
+\multicolumn{1}{|r|}{\textbf{Ireland}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.141492\\ \hline
+\multicolumn{1}{|r|}{\textbf{Malta}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.145890\\ \hline
+\multicolumn{1}{|r|}{\textbf{Moldova}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.130904\\ \hline
+\multicolumn{1}{|r|}{\textbf{Portugal}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.144985\\ \hline
+\multicolumn{1}{|r|}{\textbf{San Marino}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.131533\\ \hline
+\multicolumn{1}{|r|}{\textbf{Switzerland}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.146739\\ \hline
+\multicolumn{1}{|r|}{\textbf{The Netherlands}}&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&0&0.155502 
+\\ \hline
+\end{longtable}
+
 \egroup
 \end{landscape}
 \end{appendices}
@@ -7987,11 +8581,17 @@ Contest}, www.eurovision.tv, May, 2015.
 \bibitem[SAARI]{saari} D. G. Saari,  \emph{Mathematical Structure of Voting Paradoxes: II. Positional Voting}, Journal of Economic Theory, 2000.
 \bibitem[FOUC]{fouc} S. Foucart, \emph{Linear Algebra and Matrix Analysis}, 
 Drexel University, 2010.
+\bibitem[FRIEDL]{friedl} S. Friedl, \emph{Linear Algebra}, Rice University, 
+2004.
 \bibitem[HORN]{horn} R.A. Horn, C.R. Johnson, \emph{Matrix Analysis}, Cambridge University Press, 1985.
 \bibitem[HORN2]{horn2} R.A. Horn, C.R. Johnson, \emph{Topics in Matrix 
 Analysis}, Cambridge University Press, 1991.
+\bibitem[TOMAS]{tomasi} C. Tomasi, \emph{Orthogonal Matrices and the Singular Value 
+Decomposition}, Duke University, 2013.
 \bibitem[LAUB]{laub} Alan J. Laub, \emph{Matrix Analysis for Scientists and 
 Engineers}, Siam, 2004.
+\bibitem[COLEB]{colebunders} E. Colebunders, \emph{Topologie}, Vrije 
+Universiteit Brussel, 2012.
 \bibitem[ZAGER]{zager} L. A.Zager, George C. Verghese, \emph{Graph similarity scoring and matching}, Applied Mathematics Letters, January, 2007.i
 Analysis}, Cambridge University Press, 1991.
 \bibitem[VANDOREN]{vandoren} P. Van Doren, C. Fraikin, \emph{Similarity matrices for colored 
