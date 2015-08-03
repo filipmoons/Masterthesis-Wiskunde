@@ -53,56 +53,65 @@
 \contentsline {section}{\numberline {2.2}Node similarity}{61}
 \contentsline {subsubsection}{Introduction}{61}
 \contentsline {subsection}{\numberline {2.2.1}Convergence theorem}{65}
-\contentsline {subsection}{\numberline {2.2.2}Similarity matrices}{71}
-\contentsline {subsection}{\numberline {2.2.3}Algorithm}{74}
-\contentsline {subsubsection}{Equivalence with the Power Method}{74}
-\contentsline {subsubsection}{Computational cost}{75}
-\contentsline {subsection}{\numberline {2.2.4}Special cases}{75}
-\contentsline {subsubsection}{HITS-algorithm}{75}
-\contentsline {subsubsection}{Central scores}{78}
-\contentsline {subsubsection}{Self-similarity of a graph}{80}
-\contentsline {section}{\numberline {2.3}Node-edge similarity}{83}
-\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{83}
-\contentsline {subsection}{\numberline {2.3.2}The algorithm}{87}
-\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{88}
-\contentsline {subsection}{\numberline {2.3.4}Example}{90}
-\contentsline {section}{\numberline {2.4}Colored graphs}{90}
-\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{91}
-\contentsline {subsubsection}{Method}{91}
-\contentsline {subsubsection}{Algorithm}{95}
-\contentsline {subsubsection}{Example}{95}
-\contentsline {subsection}{\numberline {2.4.2}Colored edges}{95}
-\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{102}
-\contentsline {section}{\numberline {3.1}Introduction}{102}
-\contentsline {section}{\numberline {3.2}Similarity through corresponding graph representations}{107}
-\contentsline {subsection}{\numberline {3.2.1}Line-graphs}{108}
-\contentsline {subsubsection}{General definitions and properties}{108}
-\contentsline {subsubsection}{Algorithm for similarity}{109}
-\contentsline {subsubsection}{Examples}{109}
-\contentsline {subsubsection}{Interpretation}{112}
-\contentsline {subsubsection}{Conclusion}{113}
-\contentsline {subsection}{\numberline {3.2.2}$2$-section of a hypergraph}{113}
-\contentsline {subsubsection}{General definitions and properties}{113}
-\contentsline {subsubsection}{Algorithm for similarity}{114}
-\contentsline {subsubsection}{Examples}{115}
-\contentsline {subsubsection}{Interpretation}{117}
-\contentsline {subsubsection}{Conclusion}{118}
-\contentsline {subsection}{\numberline {3.2.3}Extended $2$-section of a hypergraph}{119}
-\contentsline {subsubsection}{General definitions and properties}{119}
-\contentsline {subsubsection}{Algorithm for similarity}{119}
-\contentsline {subsubsection}{Example}{119}
-\contentsline {subsubsection}{Interpretation}{121}
-\contentsline {subsubsection}{Conclusion}{124}
-\contentsline {subsection}{\numberline {3.2.4}The incidence graph of a hypergraph}{125}
+\contentsline {subsection}{\numberline {2.2.2}Similarity matrices}{72}
+\contentsline {subsection}{\numberline {2.2.3}Algorithm}{75}
+\contentsline {subsubsection}{Equivalence with the Power Method}{75}
+\contentsline {subsubsection}{Computational cost}{76}
+\contentsline {subsection}{\numberline {2.2.4}Special cases}{76}
+\contentsline {subsubsection}{HITS-algorithm}{76}
+\contentsline {subsubsection}{Central scores}{79}
+\contentsline {subsubsection}{Self-similarity of a graph}{81}
+\contentsline {subsubsection}{Undirected graphs}{84}
+\contentsline {section}{\numberline {2.3}Node-edge similarity}{86}
+\contentsline {subsection}{\numberline {2.3.1}Coupled node-edge similarity scores}{86}
+\contentsline {subsection}{\numberline {2.3.2}The algorithm}{90}
+\contentsline {subsection}{\numberline {2.3.3}Difference with node similarity}{91}
+\contentsline {subsection}{\numberline {2.3.4}Example}{93}
+\contentsline {section}{\numberline {2.4}Colored graphs}{94}
+\contentsline {subsection}{\numberline {2.4.1}Colored nodes}{94}
+\contentsline {subsubsection}{Method}{94}
+\contentsline {subsubsection}{Algorithm}{98}
+\contentsline {subsubsection}{Example}{100}
+\contentsline {subsection}{\numberline {2.4.2}Colored edges}{101}
+\contentsline {subsubsection}{Method}{101}
+\contentsline {subsubsection}{Algorithm}{106}
+\contentsline {subsubsection}{Example}{106}
+\contentsline {subsection}{\numberline {2.4.3}Full colored graphs}{107}
+\contentsline {section}{\numberline {2.5}Applications}{108}
+\contentsline {subsection}{\numberline {2.5.1}Synonym Extraction}{108}
+\contentsline {subsection}{\numberline {2.5.2}Graph matching}{108}
+\contentsline {chapter}{\numberline {3}Similarity on hypergraphs}{109}
+\contentsline {section}{\numberline {3.1}Introduction}{109}
+\contentsline {section}{\numberline {3.2}Similarity through corresponding graph representations}{115}
+\contentsline {subsection}{\numberline {3.2.1}Line-graphs}{115}
+\contentsline {subsubsection}{General definitions and properties}{115}
+\contentsline {subsubsection}{Algorithm for similarity}{116}
+\contentsline {subsubsection}{Examples}{117}
+\contentsline {subsubsection}{Interpretation}{119}
+\contentsline {subsubsection}{Conclusion}{120}
+\contentsline {subsection}{\numberline {3.2.2}$2$-section of a hypergraph}{120}
+\contentsline {subsubsection}{General definitions and properties}{120}
+\contentsline {subsubsection}{Algorithm for similarity}{122}
+\contentsline {subsubsection}{Examples}{122}
+\contentsline {subsubsection}{Interpretation}{124}
+\contentsline {subsubsection}{Conclusion}{125}
+\contentsline {subsection}{\numberline {3.2.3}Extended $2$-section of a hypergraph}{125}
 \contentsline {subsubsection}{General definitions and properties}{125}
 \contentsline {subsubsection}{Algorithm for similarity}{126}
-\contentsline {subsubsection}{Examples}{126}
+\contentsline {subsubsection}{Example}{126}
 \contentsline {subsubsection}{Interpretation}{128}
 \contentsline {subsubsection}{Conclusion}{129}
-\contentsline {section}{\numberline {3.3}Similarity by using the incidence matrix}{130}
-\contentsline {subsection}{\numberline {3.3.1}Compact form}{130}
-\contentsline {subsection}{\numberline {3.3.2}The algorithm}{132}
-\contentsline {subsection}{\numberline {3.3.3}Examples}{133}
-\contentsline {subsection}{\numberline {3.3.4}Concluding theorem}{135}
-\contentsline {chapter}{Appendix \numberline {A}Listings}{137}
-\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2015}{144}
+\contentsline {subsection}{\numberline {3.2.4}The incidence graph of a hypergraph}{130}
+\contentsline {subsubsection}{General definitions and properties}{130}
+\contentsline {subsubsection}{Algorithm for similarity}{130}
+\contentsline {subsubsection}{Examples}{131}
+\contentsline {subsubsection}{Interpretation}{132}
+\contentsline {subsubsection}{Conclusion}{134}
+\contentsline {section}{\numberline {3.3}Similarity by using the incidence matrix}{135}
+\contentsline {subsection}{\numberline {3.3.1}Compact form}{135}
+\contentsline {subsection}{\numberline {3.3.2}The algorithm}{137}
+\contentsline {subsection}{\numberline {3.3.3}Examples}{138}
+\contentsline {subsection}{\numberline {3.3.4}Concluding theorem}{140}
+\contentsline {subsection}{\numberline {3.3.5}Interpretation}{142}
+\contentsline {chapter}{Appendix \numberline {A}Listings}{143}
+\contentsline {chapter}{Appendix \numberline {B}Results of the Eurovision Song Contest 2009-2015}{151}

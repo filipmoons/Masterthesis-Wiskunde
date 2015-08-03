@@ -109,14 +109,14 @@
 \indexentry{Graph!Bipartite graph}{35}
 \indexentry{Product graph}{35}
 \indexentry{Graph!Product graph}{35}
-\indexentry{Coloured graph}{35}
-\indexentry{Graph!Coloured graph}{35}
+\indexentry{Colored graph}{35}
+\indexentry{Graph!Colored graph}{35}
 \indexentry{Node coloring}{35}
-\indexentry{Graph!Colored graph!Node colering}{35}
+\indexentry{Graph!Colored graph!Node coloring}{35}
 \indexentry{Edge coloring}{35}
-\indexentry{Graph!Colored graph!Edge colering}{35}
+\indexentry{Graph!Colored graph!Edge coloring}{35}
 \indexentry{Full coloring}{36}
-\indexentry{Graph!Colored graph!Full colering}{36}
+\indexentry{Graph!Colored graph!Full coloring}{36}
 \indexentry{Adjacency matrix}{36}
 \indexentry{Graph!Adjacency matrix}{36}
 \indexentry{Matrix!Adjacency matrix}{36}
@@ -181,17 +181,47 @@
 \indexentry{Orthogonal projection}{66}
 \indexentry{Projection}{66}
 \indexentry{Eigendecomposition}{69}
-\indexentry{Matrix!Similarity matrix}{71}
-\indexentry{Similarity matrix}{71}
-\indexentry{Compact form}{71}
-\indexentry{Vectorization}{71}
-\indexentry{Kronecker product}{71}
-\indexentry{Tensor product}{71}
-\indexentry{Singular value decomposition}{76}
-\indexentry{Singular value}{76}
-\indexentry{Left singular vector}{76}
-\indexentry{Right singular vector}{76}
-\indexentry{Center}{80}
-\indexentry{Self-similarity}{80}
-\indexentry{Positive semidefinite matrix}{80}
-\indexentry{submatrix}{135}
+\indexentry{Matrix!Similarity matrix}{72}
+\indexentry{Similarity matrix}{72}
+\indexentry{Compact form}{72}
+\indexentry{Vectorization}{72}
+\indexentry{Kronecker product}{72}
+\indexentry{Tensor product}{72}
+\indexentry{Singular value decomposition}{77}
+\indexentry{Singular value}{77}
+\indexentry{Left singular vector}{77}
+\indexentry{Right singular vector}{77}
+\indexentry{Pseudo-diagonal matrix}{77}
+\indexentry{Matrix!Pseudo-diagonal}{77}
+\indexentry{Center}{81}
+\indexentry{Self-similarity}{81}
+\indexentry{Minor}{82}
+\indexentry{Principal minor}{82}
+\indexentry{Positive semidefinite matrix}{82}
+\indexentry{Matrix!Positive semidefinite matrix}{82}
+\indexentry{Node-edge similarity}{86}
+\indexentry{Source-edge matrix}{86}
+\indexentry{Matrix!Source-edge matrix}{86}
+\indexentry{Terminal-edge matrix}{86}
+\indexentry{Matrix!Terminal-edge matrix}{86}
+\indexentry{Colored graph}{94}
+\indexentry{Graph!Colored graph}{94}
+\indexentry{Node coloring}{94}
+\indexentry{Partitioned adjacency matrix}{94}
+\indexentry{Edge coloring}{101}
+\indexentry{Full coloring}{107}
+\indexentry{Dictionary graph}{108}
+\indexentry{Matching}{108}
+\indexentry{Interchangeable vertex}{109}
+\indexentry{Structural equivalent}{109}
+\indexentry{Circular definition}{110}
+\indexentry{Interchangeable vertex}{111}
+\indexentry{Line-graph}{115}
+\indexentry{Hypegraph representation!Line-graph}{115}
+\indexentry{$2$-section}{120}
+\indexentry{Hypegraph representation!$2$-section}{120}
+\indexentry{Extended $2$-section}{125}
+\indexentry{Hypegraph representation!Extended $2$-section}{125}
+\indexentry{Incidence matrix}{135}
+\indexentry{Hypegraph representation!Incidence matrix}{135}
+\indexentry{submatrix}{140}
