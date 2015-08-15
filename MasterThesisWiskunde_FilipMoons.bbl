@@ -1,0 +1,192 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{BGH{\etalchar{+}}04}
+
+\bibitem[Ber85]{berge}
+C.~Berge.
+\newblock {\em Graphs and Hypergraphs}.
+\newblock Elsevier Science Ltd., Oxford, UK, UK, 1985.
+
+\bibitem[BGH{\etalchar{+}}04]{blondel}
+Vincent~D. Blondel, Anah\'{\i} Gajardo, Maureen Heymans, Pierre Senellart, and
+  Paul~Van Dooren.
+\newblock A measure of similarity between graph vertices: Applications to
+  synonym extraction and web searching.
+\newblock {\em SIAM Rev.}, 46(4):647--666, April 2004.
+
+\bibitem[Bin82]{12}
+K.G. Binmore.
+\newblock {\em Mathematical Analysis: A Straightforward Approach}.
+\newblock Cambridge University Press, 1982.
+
+\bibitem[BP98]{page}
+Sergey Brin and Lawrence Page.
+\newblock The anatomy of a large-scale hypertextual web search engine.
+\newblock In {\em Proceedings of the Seventh International Conference on World
+  Wide Web 7}, WWW7, pages 107--117, Amsterdam, The Netherlands, The
+  Netherlands, 1998. Elsevier Science Publishers B. V.
+
+\bibitem[BR91]{brualdi}
+R.A. Brualdi and H.J. Ryser.
+\newblock {\em Combinatorial Matrix Theory}.
+\newblock Encyclopedia of Mathematics and its Applications. Cambridge
+  University Press, 1991.
+
+\bibitem[BR97]{bapat1997nonnegative}
+R.B. Bapat and T.E.S. Raghavan.
+\newblock {\em Nonnegative Matrices and Applications}.
+\newblock Encyclopedia of Mathematics and its Applications. Cambridge
+  University Press, 1997.
+
+\bibitem[Bul06]{numeriekewiskunde}
+A.~Bultheel.
+\newblock {\em Inleiding tot de numerieke wiskunde}.
+\newblock Acco, 2006.
+
+\bibitem[Cae11]{caenepeel}
+S.~Caenepeel.
+\newblock {\em Analyse: afleiden, integreren, wiskundige software}.
+\newblock Vrije Universiteit Brussel, 2011.
+
+\bibitem[car11]{cara}
+{\em Discrete Wiskunde}.
+\newblock Vrije Universiteit Brussel, 2011.
+
+\bibitem[Col12]{colebunders}
+E.~Colebunders.
+\newblock {\em Topologie}.
+\newblock Vrije Universiteit Brussel, 2012.
+
+\bibitem[Dev09]{devos}
+M.~Devos.
+\newblock Semidefinite programming.
+\newblock {\em Simon Fraser University}, 2009.
+
+\bibitem[DG09]{random}
+P.~Deift and D.~Gioev.
+\newblock {\em Random Matrix Theory: Invariant Ensembles and Universality}.
+\newblock Courant Lecture Notes. American Mathematical Soc., 2009.
+
+\bibitem[DM11]{11}
+W.~De~Meuter.
+\newblock {\em Algoritmen en Datastructuren I}.
+\newblock Vrije Universiteit Brussel, 2011.
+
+\bibitem[(EB]{eurovision}
+Eurovision Broadcasting~Union (EBU/UER).
+\newblock Official website of the eurovision song contest.
+
+\bibitem[Eve80]{wngebruikt}
+H.W. Eves.
+\newblock {\em Elementary Matrix Theory}.
+\newblock Dover Books on Mathematics Series. Dover, 1980.
+
+\bibitem[Fou10]{fouc}
+S.~Foucart.
+\newblock {\em Linear Algebra and Matrix Analysis}.
+\newblock Drexel University, 2010.
+
+\bibitem[Fri04]{friedl}
+S.~Friedl.
+\newblock {\em Linear Algebra}.
+\newblock Rice University, 2004.
+
+\bibitem[GLPN93]{gallo}
+Giorgio Gallo, Giustino Longo, Stefano Pallottino, and Sang Nguyen.
+\newblock Directed hypergraphs and applications.
+\newblock {\em Discrete Appl. Math.}, 42(2-3):177--201, April 1993.
+
+\bibitem[GVL12]{golub}
+G.H. Golub and C.F. Van~Loan.
+\newblock {\em Matrix Computations}.
+\newblock Johns Hopkins Studies in the Mathematical Sciences. Johns Hopkins
+  University Press, 2012.
+
+\bibitem[HJ86]{horn}
+Roger~A. Horn and Charles~R. Johnson, editors.
+\newblock {\em Matrix Analysis}.
+\newblock Cambridge University Press, New York, NY, USA, 1986.
+
+\bibitem[Hor86]{horn2}
+Roger~A Horn.
+\newblock {\em Topics in Matrix Analysis}.
+\newblock Cambridge University Press, New York, NY, USA, 1986.
+
+\bibitem[Kle99]{kleinberg}
+Jon~M. Kleinberg.
+\newblock Authoritative sources in a hyperlinked environment.
+\newblock {\em J. ACM}, 46(5):604--632, September 1999.
+
+\bibitem[Lau04]{laub}
+Alan~J. Laub.
+\newblock {\em Matrix Analysis For Scientists And Engineers}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
+  USA, 2004.
+
+\bibitem[Lif07]{Lifshits}
+Y.~Lifshits.
+\newblock Four results of jon kleinberg: A talk for st. petersburg mathematical
+  society.
+\newblock {\em Steklov Insitute of Mathematics at St. Petersburg}, May 2007.
+
+\bibitem[LT85]{lancaster}
+P.~Lancaster and M.~Tismenetsky.
+\newblock {\em The Theory of Matrices: With Applications}.
+\newblock Computer Science and Scientific Computing Series. Academic Press,
+  1985.
+
+\bibitem[Mor13]{morrow}
+J.~Morrow.
+\newblock {\em Advanced Calculus}.
+\newblock University of Washington, 2013.
+
+\bibitem[Nou08]{2}
+D.~Noutsos.
+\newblock Perron-frobenius theory and some extensions.
+\newblock {\em Department of Mathematics, University of Ioannina}, May 2008.
+
+\bibitem[PZ14]{hypper}
+KellyJ. Pearson and Tan Zhang.
+\newblock On spectral hypergraph theory of the adjacency tensor.
+\newblock 30(5):1233--1248, 2014.
+
+\bibitem[Saa00]{saari}
+Donald~G. Saari.
+\newblock Mathematical structure of voting paradoxes.
+\newblock 15(1):1--53, 2000.
+
+\bibitem[Ste14]{1}
+S.~Sternberg.
+\newblock {\em Dynamical Systems}.
+\newblock Dover Publications, 2014.
+
+\bibitem[Tom13]{tomasi}
+C.~Tomasi.
+\newblock Orthogonal matrices and the singual value decomposition.
+\newblock {\em Duke Universisty}, 2013.
+
+\bibitem[Tro05]{tropp}
+J.A. Tropp.
+\newblock {\em Introduction to Numerical Methods}.
+\newblock California Institute of Technology, 2005.
+
+\bibitem[Var62]{varga1962matrix}
+R.S. Varga.
+\newblock {\em Matrix iterative analysis}.
+\newblock Prentice-Hall series in automatic computation. Prentice-Hall, 1962.
+
+\bibitem[VDF09]{vandoren}
+Paul Van~Dooren and Catherine Fraikin.
+\newblock Similarity matrices for colored graphs.
+\newblock {\em Bull. Belg. Math. Soc. Simon Stevin}, 16(4):705--722, 11 2009.
+
+\bibitem[Zag05]{thesisjek}
+L.~Zager.
+\newblock Graph similarity and matching.
+\newblock Master's thesis, Massachusetts Instiute of Technology, 2005.
+
+\bibitem[ZV08]{zager}
+Laura~A. Zager and George~C. Verghese.
+\newblock Graph similarity scoring and matching.
+\newblock {\em Applied Mathematics Letters}, 21(1):86 -- 94, 2008.
+
+\end{thebibliography}

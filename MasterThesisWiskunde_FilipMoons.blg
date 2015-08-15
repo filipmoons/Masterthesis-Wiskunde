@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: MasterThesisWiskunde_FilipMoons.aux
+The style file: alpha.bst
+Database file #1: bib.bib.bib
+Warning--entry type for "eurovision" isn't style-file defined
+--line 196 of file bib.bib.bib
+Warning--I didn't find a database entry for "kieboom"
+Warning--I didn't find a database entry for "numeriekwiskunde"
+Warning--to sort, need author, editor, or key in cara
+Warning--empty author and editor in cara
+Warning--empty journal in hypper
+Warning--empty journal in saari
+You've used 36 entries,
+            2543 wiz_defined-function locations,
+            747 strings with 8199 characters,
+and the built_in function-call counts, 11383 in all, are:
+= -- 1082
+> -- 442
+< -- 24
++ -- 134
+- -- 131
+* -- 700
+:= -- 1921
+add.period$ -- 114
+call.type$ -- 36
+change.case$ -- 174
+chr.to.int$ -- 36
+cite$ -- 41
+duplicate$ -- 552
+empty$ -- 930
+format.name$ -- 187
+if$ -- 2325
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 54
+newline$ -- 182
+num.names$ -- 106
+pop$ -- 246
+preamble$ -- 1
+purify$ -- 232
+quote$ -- 0
+skip$ -- 404
+stack$ -- 0
+substring$ -- 448
+swap$ -- 42
+text.length$ -- 24
+text.prefix$ -- 22
+top$ -- 0
+type$ -- 200
+warning$ -- 4
+while$ -- 96
+width$ -- 41
+write$ -- 451
+(There were 7 warnings)
