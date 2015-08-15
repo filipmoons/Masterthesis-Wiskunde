@@ -1,269 +1,271 @@
 \begin{theindex}
 
-  \item $2$-section, 120
-  \item $k$-graphs, 39
-  \item $k$-uniform hypergraphs, 39
-  \item $p$-norm, 20, 23
+  \item $2$-section, 118
+  \item $k$-graphs, 37
+  \item $k$-uniform hypergraphs, 37
+  \item $p$-norm, 18, 21
 
   \indexspace
 
-  \item Abundance problem, 42
-  \item Adjacency matrix, 36
-  \item Adjacency relation, 33, 38
-  \item Arc, 33
-  \item Asymptotical Equality, 28
-  \item Authority, 42, 44
+  \item Abundance problem, 40
+  \item Adjacency matrix, 34
+  \item Adjacency relation, 31, 36
+  \item Arc, 31
+  \item Asymptotical Equality, 26
+  \item Authority, 40, 42
 
   \indexspace
 
-  \item Bachmann-Landau, 28
-    \subitem Asymptotical Equality, 28
-    \subitem Big O, 28
-    \subitem Small O, 28
-  \item Big O, 28
-  \item Bipartite graph, 35
+  \item Bachmann-Landau, 26
+    \subitem Asymptotical Equality, 26
+    \subitem Big O, 26
+    \subitem Small O, 26
+  \item Big O, 26
+  \item Bipartite graph, 33
 
   \indexspace
 
-  \item Center, 81
-  \item Circular definition, 110
-  \item Clique, 35
-  \item Colored graph, 35, 94
-  \item Compact form, 72
-  \item Conferred authority, 42
-  \item Connected graph, 37
-  \item Connected hypergraph, 39
-  \item Content similarity, 41
-  \item Convergence, 47
-  \item Convergence theorem, 65
-  \item Cycle, 35
+  \item Center, 79
+  \item Circular definition, 108
+  \item Clique, 33
+  \item Colored graph, 33, 92
+  \item Compact form, 70
+  \item Conferred authority, 40
+  \item Connected graph, 35
+  \item Connected hypergraph, 37
+  \item Content similarity, 39
+  \item Convergence, 46
+  \item Convergence theorem, 63
+  \item Cycle, 33
 
   \indexspace
 
-  \item Degree, 35, 39
-  \item Dictionary graph, 108
-  \item Directed graph, 33
-  \item Directed hypegraphs, 39
-  \item Dominant eigenvalue, 29
+  \item Degree, 33, 37
+  \item Dictionary graph, 106
+  \item Directed graph, 31
+  \item Directed hypegraphs, 37
+  \item Dominant eigenvalue, 27
 
   \indexspace
 
-  \item Edge, 33, 38
-  \item Edge coloring, 35, 101
-  \item Eigendecomposition, 69
-  \item Euclidean norm, 20
-  \item Eurovision, 53
-  \item Extended $2$-section, 125
+  \item Edge, 31, 36
+  \item Edge coloring, 33, 99
+  \item Eigendecomposition, 67
+  \item Euclidean norm, 18
+  \item Eurovision, 51
+  \item Extended $2$-section, 123
 
   \indexspace
 
-  \item Frobenius norm, 22
-  \item Full coloring, 36, 107
+  \item Frobenius norm, 20
+  \item Full coloring, 34, 105
 
   \indexspace
 
-  \item Gelfand's formula, 24
-  \item Google Pagerank, 41
-  \item Graph, 33
-    \subitem Adjacency matrix, 36
-    \subitem Adjacency relation, 33
-    \subitem Arc, 33
-    \subitem Bipartite graph, 35
-    \subitem Clique, 35
-    \subitem Colored graph, 35, 94
-      \subsubitem Edge coloring, 35
-      \subsubitem Full coloring, 36
-      \subsubitem Node coloring, 35
-    \subitem Connected graph, 37
-    \subitem Cycle, 35
-    \subitem Degree, 35
-    \subitem Directed, 33
-    \subitem Edges, 33
-    \subitem Indegree, 35
-    \subitem Loop, 33
-    \subitem Multigraph, 34
-    \subitem Neigbourhood, 34
-    \subitem Nodes, 33
-    \subitem Order, 34
-    \subitem Outdegree, 35
-    \subitem Path, 35
-    \subitem Product graph, 35
-    \subitem Simple graph, 35
-    \subitem Source node, 34
-    \subitem Structure graph, 61
-    \subitem Terminal node, 34
-    \subitem Undirected, 33
-    \subitem Vertex, 33
-    \subitem Walk, 35
+  \item Gelfand's formula, 22
+  \item Google Pagerank, 39
+  \item Graph, 31
+    \subitem Adjacency matrix, 34
+    \subitem Adjacency relation, 31
+    \subitem Arc, 31
+    \subitem Bipartite graph, 33
+    \subitem Clique, 33
+    \subitem Colored graph, 33, 92
+      \subsubitem Edge coloring, 33
+      \subsubitem Full coloring, 34
+      \subsubitem Node coloring, 33
+    \subitem Connected graph, 35
+    \subitem Cycle, 33
+    \subitem Degree, 33
+    \subitem Directed, 31
+    \subitem Edges, 31
+    \subitem Indegree, 33
+    \subitem Loop, 31
+    \subitem Multigraph, 32
+    \subitem Neigbourhood, 32
+    \subitem Nodes, 31
+    \subitem Order, 32
+    \subitem Outdegree, 33
+    \subitem Path, 33
+    \subitem Product graph, 33
+    \subitem Simple graph, 33
+    \subitem Source node, 32
+    \subitem Structure graph, 59
+    \subitem Terminal node, 32
+    \subitem Undirected, 31
+    \subitem Vertex, 31
+    \subitem Walk, 33
 
   \indexspace
 
-  \item H\"{o}lder norm, \see{$p$-norm}{20}
-  \item HITS-algorithm, 41
-  \item Hub, 42, 44
+  \item H\"{o}lder norm, \see{$p$-norm}{18}
+  \item HITS-algorithm, 39
+  \item Hub, 40, 42
   \item Hypegraph representation
-    \subitem $2$-section, 120
-    \subitem Extended $2$-section, 125
-    \subitem Incidence matrix, 135
-    \subitem Line-graph, 115
-  \item Hypergraph, 38
-    \subitem Adjacency relation, 38
-    \subitem Connected hypergraph, 39
-    \subitem Degree, 39
-    \subitem Directed hypergraphs, 39
-    \subitem Edges, 38
-    \subitem Hyperloops, 38
-    \subitem Incidence matrix, 39
-    \subitem Multi-hypergraph, 38
-    \subitem Nodes, 38
-    \subitem Order, 38
-    \subitem Path, 39
-    \subitem Uniform hypergraphs, 39
-    \subitem Vertices, 38
-  \item Hyperloops, 38
+    \subitem $2$-section, 118
+    \subitem Extended $2$-section, 123
+    \subitem Incidence matrix, 133
+    \subitem Line-graph, 113
+  \item Hypergraph, 36
+    \subitem Adjacency relation, 36
+    \subitem Connected hypergraph, 37
+    \subitem Degree, 37
+    \subitem Directed hypergraphs, 37
+    \subitem Edges, 36
+    \subitem Hyperloops, 36
+    \subitem Incidence matrix, 37
+    \subitem Multi-hypergraph, 36
+    \subitem Nodes, 36
+    \subitem Order, 36
+    \subitem Path, 37
+    \subitem Uniform hypergraphs, 37
+    \subitem Vertices, 36
+  \item Hyperloops, 36
 
   \indexspace
 
-  \item Incidence matrix, 36, 39, 135
-  \item Indegree, 35
-  \item Interchangeable vertex, 109, 111
-  \item Irreducible matrix, 11--13
-  \item Iteration step, 29
+  \item Incidence matrix, 34, 37, 133
+  \item Indegree, 33
+  \item Interchangeable vertex, 107, 109
+  \item Irreducible matrix, 9--11
+  \item Iteration step, 27
 
   \indexspace
 
-  \item Jon Kleinberg, 41
+  \item join, 37
+  \item Jon Kleinberg, 39
+  \item Jordan normal form, 23
 
   \indexspace
 
-  \item Kleinberg, 41
-  \item Kronecker product, 72
+  \item Kleinberg, 39
+  \item Kronecker product, 70
 
   \indexspace
 
-  \item Left singular vector, 77
-  \item Length, 39
-  \item Line-graph, 115
-  \item Loop, 33
+  \item Left singular vector, 75
+  \item Length, 37
+  \item Line-graph, 113
+  \item Loop, 31
 
   \indexspace
 
-  \item Manhattan norm, 20
-  \item Matching, 108
-  \item Matrix, 9
-    \subitem Adjacency matrix, 36
-    \subitem Incidence matrix, 36, 39
-    \subitem Irreducible matrix, 11--13
-    \subitem Modulus, 11
-    \subitem Nonnegative matrix, 10
-    \subitem Permutation matrix, 9
-    \subitem Positive matrix, 11
-    \subitem Positive semidefinite matrix, 82
-    \subitem Primitive matrix, 11, 13
-    \subitem Pseudo-diagonal, 77
-    \subitem Reducible matrix, 11
-    \subitem Similarity matrix, 72
-    \subitem Source-edge matrix, 86
-    \subitem Spectral radius, 14
-    \subitem Terminal-edge matrix, 86
-  \item Matrix norm, 22
-    \subitem $p$-norm, 23
-    \subitem Equivalence, 24
-    \subitem Frobenius norm, 22
-    \subitem Maximum norm, 23
-  \item Maximum norm, 20, 23
-  \item Method of Blondel, 61
-  \item Minor, 82
-  \item Modulus of a matrix, 11
-  \item Multi-hypergraph, 38
-  \item Multigraph, 34
-  \item Multiset, 34
-  \item Mutually reinforcing relation, 45
+  \item Manhattan norm, 18
+  \item Matching, 106
+  \item Matrix, 7
+    \subitem Adjacency matrix, 34
+    \subitem Incidence matrix, 34, 37
+    \subitem Irreducible matrix, 9--11
+    \subitem Modulus, 9
+    \subitem Nonnegative matrix, 8
+    \subitem Permutation matrix, 7
+    \subitem Positive matrix, 8
+    \subitem Positive semidefinite matrix, 80
+    \subitem Primitive matrix, 9, 11
+    \subitem Pseudo-diagonal, 75
+    \subitem Reducible matrix, 9
+    \subitem Similarity matrix, 70
+    \subitem Source-edge matrix, 84
+    \subitem Spectral radius, 12
+    \subitem Terminal-edge matrix, 84
+  \item Matrix norm, 20
+    \subitem $p$-norm, 21
+    \subitem Equivalence, 22
+    \subitem Frobenius norm, 20
+    \subitem Maximum norm, 21
+  \item Maximum norm, 18, 21
+  \item Method of Blondel, 59
+  \item Minor, 80
+  \item Modulus of a matrix, 9
+  \item Multi-hypergraph, 36
+  \item Multigraph, 32
+  \item Multiset, 32
+  \item Mutually reinforcing relation, 43
 
   \indexspace
 
-  \item Neighbourhood, 34
-  \item Node, 33, 38
-  \item Node coloring, 35, 94
-  \item Node-edge similarity, 86
-  \item Nonnegative matrix, 10
-  \item Norm equivalence, 21, 24
+  \item Neighbourhood, 32
+  \item Node, 31, 36
+  \item Node coloring, 33, 92
+  \item Node-edge similarity, 84
+  \item Nonnegative matrix, 8
+  \item Norm equivalence, 19, 22
 
   \indexspace
 
-  \item Order, 34, 38
-  \item Orthogonal projection, 66
-  \item Outdegree, 35
+  \item Order, 32, 36
+  \item Orthogonal projection, 64
+  \item Outdegree, 33
 
   \indexspace
 
-  \item PageRank, 41
-  \item Partitioned adjacency matrix, 94
-  \item Path, 35, 39
-  \item Permutation matrix, 9
-  \item Perron root, 18
-  \item Perron vector, 18
-  \item Perron-Frobenius, 17
-  \item Positive matrix, 11
-  \item Positive semidefinite matrix, 82
-  \item Power method, 29, 60
-  \item Predictor, 53
-  \item Primitive matrix, 11, 13
-  \item Principal minor, 82
-  \item Principal square submatrix, 16
-  \item Product graph, 35
-  \item Projection, 66
-  \item Pseudo-diagonal matrix, 77
+  \item PageRank, 39
+  \item Partitioned adjacency matrix, 92
+  \item Path, 33, 37
+  \item Permutation matrix, 7
+  \item Perron root, 16
+  \item Perron vector, 16
+  \item Perron-Frobenius, 15
+  \item Positive matrix, 8
+  \item Positive semidefinite matrix, 80
+  \item Power method, 27, 58
+  \item Predictor, 51
+  \item Primitive matrix, 9, 11
+  \item Principal minor, 80
+  \item Principal square submatrix, 14
+  \item Product graph, 33
+  \item Projection, 64
+  \item Pseudo-diagonal matrix, 75
 
   \indexspace
 
-  \item Reducible matrix, \see {Irreducible matrix}{11}
-  \item Right singular vector, 77
+  \item Reducible matrix, \see {Irreducible matrix}{9}
+  \item Right singular vector, 75
 
   \indexspace
 
-  \item Schur Decomposition, 49
-  \item Self-similarity, 81
-  \item Similarity matrix, 72
-  \item Simple graph, 35
-  \item Singular value, 77
-  \item Singular value decomposition, 77
-  \item Small O, 28
-  \item Source node, 34
-  \item Source-edge matrix, 86
-  \item Spectral radius, 14
-  \item Spectral radius formula, 24
-  \item Structural equivalent, 109
-  \item Structure graph, 61
-  \item submatrix, 140
-  \item Submultiplicative norm, 22
+  \item Schur Decomposition, 47
+  \item Self-similarity, 79
+  \item Similarity matrix, 70
+  \item Simple graph, 33
+  \item Singular value, 75
+  \item Singular value decomposition, 75
+  \item Small O, 26
+  \item Source node, 32
+  \item Source-edge matrix, 84
+  \item Spectral radius, 12
+  \item Spectral radius formula, 22
+  \item Structural equivalent, 107
+  \item Structure graph, 59
+  \item submatrix, 139
+  \item Submultiplicative norm, 20
 
   \indexspace
 
-  \item Tensor product, 72
-  \item Terminal node, 34
-  \item Terminal-edge matrix, 86
-  \item Topic drift, 60
+  \item Tensor product, 70
+  \item Terminal node, 32
+  \item Terminal-edge matrix, 84
+  \item Topic drift, 58
 
   \indexspace
 
-  \item Undirected graph, 33
-  \item Uniform hypegraphs, 39
+  \item Undirected graph, 31
+  \item Uniform hypegraphs, 37
 
   \indexspace
 
-  \item Vanishing, 13
-  \item Vector norm, 20
-    \subitem $p$-norm, 20
-    \subitem Equivalence, 21
-    \subitem Euclidean norm, 20
-    \subitem Manhattan norm, 20
-    \subitem Maximum norm, 20
-  \item Vectorization, 72
-  \item Vertex, 33, 38
+  \item Vanishing, 11
+  \item Vector norm, 18
+    \subitem $p$-norm, 18
+    \subitem Equivalence, 19
+    \subitem Euclidean norm, 18
+    \subitem Manhattan norm, 18
+    \subitem Maximum norm, 18
+  \item Vectorization, 70
+  \item Vertex, 31, 36
 
   \indexspace
 
-  \item Walk, 35
+  \item Walk, 33
 
 \end{theindex}

@@ -44,7 +44,7 @@
 \newcommand{\opt}{\text{opt}}
 \newcommand{\copt}{\cost(a_{\opt})}
 \title{Similarity on Graphs \& Hypergraphs}
-\author{Filip Moons\\2$^{\text{th}}$ Master of Mathematics - Option: Eduction\\Promotor: Prof. Dr. P. Cara\\Presentation Master Thesis}
+\author{Filip Moons\\2$^{\text{th}}$ Master of Mathematics - Option: Education\\Promotor: Prof. Dr. P. Cara\\Presentation Master Thesis}
 \date{Friday 19 April, 2013}
 
 \begin{document}
@@ -79,42 +79,61 @@
 
 \begin{frame}{Content}
 \begin{itemize}
-  \item Order theory
+  \item Similarity on graphs
     \begin{itemize}
-        \item Directed sets
-        \item The ``Way Below''-relation
-        \item Domains
+        \item HITS-algorithm
+        \item Node similarity
+        \item Node-edge similarity
+        \item Colored graphs
     \end{itemize}
-  \item Scott Convergence
+  \item Similarity on hypergraphs
     \begin{itemize}
-        \item $\mathcal{S}$-limits
-        \item Introducing the Scott topology
+        \item Node similarity with the incidence graph
+        \item Node-edge similarity with the incidence matrix
     \end{itemize}
 
-  \item Scott-Continuous functions
-   \begin{itemize}
-        \item Definition
-        \item Kleene Fixed Point Theorem
-    \end{itemize}
-  \item A categorical conclusion: injective spaces
 \end{itemize}
 
 \end{frame}
 
 
-\section{Order theory}
-\subsection{Ordered sets}
-\begin{frame}{Preordered \& partially ordered sets}
-\begin{block}{Definition: Directed sets}
-Let $L$ be a preordered set. A subset $D$ of $L$ is directed provided it is nonempty and every finite subset of $D$ has an upper bound in $D$.
-\end{block}
-\begin{block}{Definition: Lower sets}
-$$\downarrow X = \{y \in L: y \leq x \text{ for some } x \in X \}$$
-X is an \emph{lower set} if $X = \downarrow X$.
+\section{Similarity on graphs}
+\subsection{HITS-algorithm}
+\begin{frame}{HITS-algorithm}
+\begin{block}{Idea}
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{hitsq.jpg}\\
+\end{figure}
 \end{block}
 
-\begin{block}{Definition: Dcpo}
-A poset is complete with respect to directed sets if every directed set has supremum. A \textbf{dcpo} is a \textbf{d}irected \textbf{c}omplete \textbf{po}set.
+\end{frame}
+
+
+\begin{frame}{HITS-algorithm}
+
+\begin{block}{Mutually reinforcing relation}
+$$\begin{cases} h_j := \sum_{i:(v_j,v_i)\in \to} a_i,\\ 
+a_j := \sum_{i:(v_i,v_j)\in \to} h_i.
+\end{cases}$$ 
+\end{block}
+
+\begin{block}{In matrix form}
+$$\begin{pmatrix} 
+\textbf{h}\\
+\textbf{a}
+\end{pmatrix}^{(k+1)} = \begin{pmatrix} 
+0 & B\\
+B^T & 0
+\end{pmatrix} \begin{pmatrix} 
+\textbf{h}\\
+\textbf{a}
+\end{pmatrix}^{(k)},\quad k = 0, 1,\ldots,$$
+In compact form, we denote
+\begin{eqnarray}\label{compactform}
+  \mathbf{x}^{(k+1)} = M\mathbf{x}^{(k)},\quad k = 0, 1,\ldots,
+\end{eqnarray}
+
 \end{block}
 \end{frame}
 %\begin{frame}
@@ -124,13 +143,28 @@ A poset is complete with respect to directed sets if every directed set has supr
 %\end{center}
 %\end{block}
 %\end{frame}
-\subsection{The ``Way Below''-relation}
+\subsection{Node similarity}
 
-\begin{frame}{The ``Way Below''-relation}
+\begin{frame}{Node similarity}
 
 
-\begin{block}{Definition}
-Let $L$ be a poset. $x$ is way below $y$, in symbols $x \ll y$, iff for all dircted subsets $D \subseteq L$, for which $\sup D$ exists, the relation $y \leq \sup D$ always implies the existence of a $d \in D$ with $x \leq d$.
+\begin{block}{Idea}
+\begin{center}
+\begin{tikzpicture}
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=left:\emph{hub}] {};
+  \node[main node] (3) [label=right:\emph{authority}][right of=1] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+   
+    (1) edge node [left] {} (3)
+  
+    
+\end{tikzpicture}
+\end{center}
 \end{block}
 
 \begin{block}{}
@@ -146,10 +180,7 @@ Let $L$ be a poset. $x$ is way below $y$, in symbols $x \ll y$, iff for all dirc
 \end{block}
 
 \begin{block}{Example}
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.5]{figuurway.jpg}\\
-\end{figure}
+
 \end{block}
 
 

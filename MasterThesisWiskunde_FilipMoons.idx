@@ -3,8 +3,8 @@
 \indexentry{Matrix!Permutation matrix}{9}
 \indexentry{Nonnegative matrix}{10}
 \indexentry{Matrix!Nonnegative matrix}{10}
-\indexentry{Positive matrix}{11}
-\indexentry{Matrix!Positive matrix}{11}
+\indexentry{Positive matrix}{10}
+\indexentry{Matrix!Positive matrix}{10}
 \indexentry{Modulus of a matrix}{11}
 \indexentry{Matrix!Modulus}{11}
 \indexentry{Primitive matrix}{11}
@@ -50,6 +50,7 @@
 \indexentry{Matrix norm!Equivalence}{24}
 \indexentry{Spectral radius formula}{24}
 \indexentry{Gelfand's formula}{24}
+\indexentry{Jordan normal form}{25}
 \indexentry{Bachmann-Landau}{28}
 \indexentry{Bachmann-Landau}{28}
 \indexentry{Big O}{28}
@@ -144,6 +145,7 @@
 \indexentry{Path}{39}
 \indexentry{Hypergraph!Path}{39}
 \indexentry{Length}{39}
+\indexentry{join}{39}
 \indexentry{Connected hypergraph}{39}
 \indexentry{Hypergraph!Connected hypergraph}{39}
 \indexentry{Uniform hypegraphs}{39}
@@ -224,4 +226,4 @@
 \indexentry{Hypegraph representation!Extended $2$-section}{125}
 \indexentry{Incidence matrix}{135}
 \indexentry{Hypegraph representation!Incidence matrix}{135}
-\indexentry{submatrix}{140}
+\indexentry{submatrix}{141}

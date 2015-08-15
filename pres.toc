@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Similarity on graphs}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{HITS-algorithm}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Node similarity}{5}{0}{1}
+\beamer@sectionintoc {2}{Bibliography}{6}{0}{2}

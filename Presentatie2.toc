@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.26pt}
+\beamer@endinputifotherversion {3.33pt}
 \beamer@sectionintoc {1}{Order theory}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Ordered sets}{3}{0}{1}
 \beamer@subsectionintoc {1}{2}{The ``Way Below''-relation}{4}{0}{1}

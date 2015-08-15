@@ -1,0 +1,17 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Similarity on graphs}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{HITS-algorithm}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{The ``Way Below''-relation}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Domains}{8}{0}{1}
+\beamer@sectionintoc {2}{Scott convergence}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{$\mathcal {S}$-limits}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Convergence \& Topology}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{The Scott topology on domains}{13}{0}{2}
+\beamer@sectionintoc {3}{Scott-continuous functions}{14}{0}{3}
+\beamer@subsectionintoc {3}{1}{Scott-continuous functions}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Kleene Fixed-Point theorem}{15}{0}{3}
+\beamer@sectionintoc {4}{Injective spaces}{17}{0}{4}
+\beamer@subsectionintoc {4}{1}{Category theory}{17}{0}{4}
+\beamer@subsectionintoc {4}{2}{Injective spaces}{19}{0}{4}
+\beamer@subsectionintoc {4}{3}{Conclusion}{20}{0}{4}
+\beamer@sectionintoc {5}{Bibliography}{21}{0}{5}
