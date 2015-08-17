@@ -14,7 +14,8 @@ function [S] = colored_edge_similarity_matrix(colored_edgesA, AS,AT, colored_edg
      for i=1:number_of_colors
          Z_temp = 0;
          for l = 1:number_of_colors
-             Z_temp = Z_temp + partitionedBS{l}*Z{l,l}*transpose(partitionedAS{l})+ partitionedBT{l}*Z{l,l}*transpose(partitionedAT{l,i});
+             Z_temp = Z_temp + partitionedBS{l}*Z{l,l}*transpose(partitionedAS{l})
+                       + partitionedBT{l}*Z{l,l}*transpose(partitionedAT{l,i});
          end
          Z{i,i} = Z_temp;
          norm2 = norm2 + trace(transpose(Z{i,i})*(Z{i,i}));

@@ -6,6 +6,7 @@
 \usepackage{tabularx}
 \usepackage{ltablex}
 \usetikzlibrary{arrows}
+\usepackage[nottoc]{tocbibind}
 \usepackage[titletoc]{appendix}
 \usepackage{mathrsfs}
 \usepackage{enumerate}
@@ -81,7 +82,7 @@
 \promotor{Prof. Dr. P. Cara}
 \advisors{}
 \author{Filip Moons}
-\title{Similarity on Graphs \& Hypergraphs}
+\title{Similarity on Graphs and Hypergraphs}
 \advisortitle{}
 \date{MEI 2006}
 \faculty{Faculty of Science}
@@ -110,13 +111,13 @@ Secondly, I would like to thank Roger Van Nieuwenhuyze, my math lecturer during
 the teacher training I followed for one year at the Hogeschool-Universiteit Brussel. Without his encouragements, I would never have dared to leave
 and study Mathematics at university level. 
 
-I also thank all professors and teaching assistant who have learned me a 
+I also thank all professors and teaching assistants who taught me a 
 lot during the past five years. A special thanks goes to Reen Tallon, who 
 always managed to overcome any administrative burden caused by the combination 
 of study programs.
 
 Last but not least, I want to thank my parents for their angry looks when they 
-felt I did not study enough, it certainly kept me on track. Also my partner Sacha and my friends from university and the Classical Liberal Student  
+felt I did not study enough, it certainly kept me on track. Also my partner Sacha, my classmates, my friends from university and the Classical Liberal Student  
 Union made my college years unforgettable for the rest of my life.
 
 
@@ -125,29 +126,29 @@ Union made my college years unforgettable for the rest of my life.
 This thesis is about similarity on graphs and hypergraphs. In the first chapter, 
 we give an overview of all the preliminary knowledge needed to understand 
 everything in the following chapters. All the methods of similarity we will 
-discuss, are eventually solving an eigenvalue problem. So it's no surprise we 
+discuss, are eventually solving an eigenvalue problem. So it is no surprise we 
 prove the Perron-Frobenius theorem and introduce the power method in the first 
 chapter, the power method is a numerical algorithm to calculate the largest 
 eigenvalue and a corresponding eigenvector.
 
 In chapter 2, we give a complete overview of the research done on similarity of 
-graphs. The notion of similarity originated from the HITS-algorithm: this 
+graphs. The notion of similarity originated from the HITS algorithm: this 
 algorithm was developed in the late nineties to sort results of a search 
 engine in a meaningful way. The algorithm uses the hyperlink structure of a set 
 of webpages to assign to each webpage in the set a score in how well they are in referring to other pages
 in the set (the \emph{hub}-score)  and it assigns to each webpage a score in how 
 authoritative they are compared to the other sites in the set (the 
 \emph{authority}-score). So you get two groups in the set of webpages: some pages are good hubs, others are good
-authoirities. Obviously, this dichotomy is strongly related: pages that are good 
+authorities. Obviously, this dichotomy is strongly related: pages that are good 
 hubs will contain a lot of links to authoritative pages, and, conversely, pages 
-are good authoirites when they have a lot of incoming links of good hubs. This 
-algorithm was very innovative at the time, because search engine results where 
-then sorted based only on the number of incoming links or on the number 
-occurencies of the search query.
+are good authorities when they have a lot of incoming links of good hubs. This 
+algorithm was very innovative at the time, because back then,  search engine results where 
+sorted based only on the number of incoming links or on the number 
+occurences of the search query.
 
-The HITS-algorithm is generalized in 2005 to a notion of similarity between 
-graph. A set containing hyperlinked web pages, can indeed be seen as a graph. 
-This generalization wil lead to a method where we can compare two graphs by putting a similarity score
+The HITS algorithm is generalized in 2004 to a notion of similarity between 
+graphs. A set containing hyperlinked web pages, can indeed be seen as a graph. 
+This generalization will lead to a method where we can compare two graphs by putting a similarity score
 between every node of the first graph and every node of the second graph. This similarity score 
 indicates how similar these nodes are: two nodes will have a high similarity 
 score when their adjacent nodes will also have a high similarity score. 
@@ -156,30 +157,30 @@ Once this node similarity is introduced on graphs, we extend this notion to a
 similarity method that also returns a similarity score between the edges of two 
 graphs. We will also discuss a similarity method that deals with colored 
 graphs. With all these methods, we have a complete overview of the most recent 
-studies about similiarity on graphs. It's is remarkable that the convergence of 
+studies about graph similarity. It is remarkable that the convergence of 
 the resulting algorithm of all these methods can be proved with the same 
-convergence theorem. Every solution is in fact also just an eigenvalue problem: 
+convergence theorem (Theorem 2.2.10.). Every solution is in fact also just an eigenvalue problem: 
 every extension is a variant of the power method to calculate eigenvectors.
 
 An important remark is that all the methods return slightly different results. 
 At the moment, `the' similarity score between two vertices of a graph doesn't 
 exists, simply because it depends on the method you are using: in some cases the 
 results are equal (up to a constant), in other cases the results are 
-different because sligtlhy different criteria are used in the calculation. In 
-that case, we can explicitely derive the difference.
-Still, it is not that worse: it's important to remember that the similarity 
+different because slightly different criteria are used in the calculation. In 
+that case, we can explicitly derive the difference.
+Still, it is not that worse: it is important to remember that the similarity 
 scores are mainly interesting when compared to other similarity scores within a graph and with one method. From that point of view,
 every method give the same ranking. This is also justified by the applications: all 
 of them are using similarity scores in comparison to other similarity scores. 
 
 In the last chapter, we discover a new field: we try to transfer the concept of similarity to the more
-general structure of hyprgraphs. We end this chapter with a reflection on the results of the previous chapter:
+general structure of hypergraphs. We end this chapter with a reflection on the results of the previous chapter:
 when we try to develop a method for similarity on hypergraphs, which conditions must be fulfilled? Are these conditions
 also met by the graph similarity methods of the first chapter? At first, we take a look at the graph 
 representations of hypergraphs and we try to get a good method of similarity by 
 using them. It will be clear that the incidence graph of a 
 hypergraph returns the best results when used for similarity. After that, we 
-also try to develop a method based on the incidence matrix. We conclude the 
+also try to develop a method based on the incidence matrix. This method also fulfills all conditions. We conclude the 
 thesis by proving that both methods are equal up to a constant.
 
 
@@ -206,7 +207,7 @@ algoritme was erg vernieuwend in die tijd, vermits tot dan toe zoekresultaten
 enkel gesorteerd werden op het aantal inkomende links (zonder daarbij de bronpagina na te gaan) 
 of het aantal keren dat de zoekterm op de pagina voorkwam.
 
-Deze methode werd rond 2005 veralgemeend naar een notie van similariteit tussen 
+Deze methode werd rond 2004 veralgemeend naar een notie van similariteit tussen 
 graffen. Een verzameling webpagina's die onderling gelinkt zijn zoals die in het HITS-algoritme gebruikt worden,
 kan immers beschouwd worden als een graf. Deze veralgemening leidt tot een 
 methode waarbij we een soort score kunnen kleven op hoe twee toppen van twee verschillende graffen op elkaar lijken. 
@@ -217,7 +218,7 @@ Eens we similariteit op de toppen van graffen hebben ingevoerd, gaan we deze
 methode verder uitbreiden tot similariteit op toppen en bogen van graffen en tot 
 similariteit tussen gekleurde graffen. We hebben zo een compleet overzicht van 
 de meest recente studies over het onderwerp. Opvallend is dat de convergentie van de resulterende algoritmes van al deze uitbreidingen via 
-dezelfde convergentiestelling kunnen bewezen worden. Elke uitbreiding komt ook 
+dezelfde convergentiestelling (Stelling 2.2.10.) kunnen bewezen worden. Elke uitbreiding komt ook 
 neer op het oplossen van een eigenwaardeprobleem: uiteindelijk is elke 
 uitbreiding een variant op de methode van de machten om eigenvectoren te 
 berekenen.
@@ -232,7 +233,7 @@ de resultaten sowieso verschillend zijn. We kunnen in dat geval wel expliciet he
 dat similariteitscores vooral in verhouding tot de andere scores interessant zijn: we kunnen 
 bv. gemakkelijk bepalen welke top van de ene graf, het meest lijkt op de top van een andere 
 graf simpelweg door de grootste similariteitsscore te bekijken.    Dit zal ook blijken uit het korte overzicht van toepassingen dat op 
-het einde van hoofdstuk 2 toegevoegd, ook daar wordt een
+het einde van hoofdstuk 2 is toegevoegd, ook daar wordt een
 similariteitsscore enkel in verhouding tot de andere similareitsscores bekeken.
 
 In het laatste hoofdstuk ontdekken we tot slot nieuw terrein: we proberen 
@@ -257,11 +258,16 @@ dezelfde resultaten oplevert.
 \chapter{Preliminaries and notations}
 
 
+In this chapter, we give an overview of all important prelimiary knowledge 
+needed to understand everything in the following chapters. We start with 
+introducing different matrices and next, we prove the Perron-Frobenius theorem. 
 The Perron-Frobenius theorem states that a real square matrix with nonnegative entries has a unique largest real eigenvalue (i.e. with algebraic multiplicity $1$) with an eigenvector 
 that has only positive entries. The theorem was proved by Oskar 
 Perron (1880-1975) in 1907 for strictly positive entries and extended by 
 Ferdinand Georg Frobenius (1849-1917) to irreducible matrices with nonnegative 
-entries. 
+entries. Next, we introduce vector and matrix norms and we prove the equivalence 
+of norms and the spectral radius formula. After that, we introduce the power 
+method. We conclude with the introduction of graphs and hypergraphs.
 
 \section{Some families of matrices}\index{matrix}
 In this section, we first introduce different kinds of matrices. Note that all matrices in this master thesis have real entries,
@@ -273,7 +279,7 @@ those, we look at the Perron-Frobenius theorem.
   Given a permutation $\pi$ of $n$ elements:
   $$\pi: \{1,\ldots,n\} \to \{1,\ldots,n\},$$
   with:
-    $$\pi = \begin{pmatrix} 1 & 2 & \cdots & n \\ \pi(1) & \pi(2) & \cdots & \pi(n) \end{pmatrix} $$
+    $$\pi = \begin{pmatrix} 1 & 2 & \cdots & n \\ \pi(1) & \pi(2) & \cdots & \pi(n) \end{pmatrix}, $$
   the associated \textbf{permutation matrix} $P_\pi$ is the $n\times n$-matrix 
   obtained by permuting the rows of the identity matrix $I_n$ according to $\pi$. 
   So:
@@ -490,6 +496,12 @@ c_n\\
  
 \newpage
  \section{Perron-Frobenius Theorem}
+ We know prove the Perron-Frobenius theorem. The results of this section are 
+ mainly based on the book `Elemetary Matrix Theory' of H.W. Eves 
+ \cite{wngebruikt}. Although the proof of the Perron-Frobenius is very straightforward in this work, it 
+ was sometimes necessary to extend the reasonings in some proofs, the books 
+ \cite{horn2} and \cite{horn} were very helpful in this case.
+ 
  
  \subsection{Spectral radii of nonnegative matrices}
  
@@ -815,7 +827,7 @@ $$\begin{pmatrix}1 & 0\\
 1 & 1\\
 0 & 1 \\
 \end{pmatrix}$$
-both have 1 as a double eigenvalue hence can not be irreducible.
+both have 1 as a double eigenvalue hence cannot be irreducible.
 The matrix $\begin{pmatrix}
 1 & 1\\
 1 & 0 \\
@@ -837,7 +849,7 @@ eigenvalues are $1$ and $-1$.
 If one has several vectors in $\R^n$ or several matrices in $\R^{n\times m}$, 
 how do we measure that some of them are `large' and some of them are `small'? 
 One way to answer this question is to study norms, which are basically functions 
-that a assign a positive `size' to a vector in a vector space. The norms that we define 
+that assign a positive `size' to a vector in a vector space. The norms that we define 
 in this master thesis are limited to $\R^n$ and $\R^{n\times m}$ and we call 
 them respectively \emph{vector norms} (norms on $\R^n$) and \emph{matrix norms} (norms on $\R^{n\times 
 m}$). This section is mainly based on chapter 2 from \cite{golub} and chapter 5 
@@ -899,8 +911,8 @@ We will prove this:
 \subsubsection{Norm equivalence}\index{norm equivalence}\index{vector norm!equivalence}
 
 One very important property of all the norms of $\R^n$ is that they are all 
-\emph{equivalent}, meaning that when two vectors have about the same size according to one vector norm, they also
-will have more or less the same size according to another vector norm. 
+\emph{equivalent}, meaning that when two vectors have about the same size according to one vector norm, they
+will also have more or less the same size (up to a constant) according to another vector norm. 
 
 \begin{theorem}\label{equivalencenorms}
   All norms on $\R^n$ are \emph{equivalent}, i.e., if $\|\cdot\|_\alpha$ and 
@@ -946,11 +958,11 @@ For example, for any $\mathbf{x} \in \R^n$ we have:
      \|\mathbf{x}\|_\infty &\leq \|\mathbf{x}\|_1 \leq& n\|\mathbf{x}\|_\infty
   \end{eqnarray*}
 \subsection{Matrix norms}\index{matrix norm}\index{matrix!norm}
-The analysis of algorithms where matrices are involved requires that we are able to assess the size of 
-matrices. We introduce therefore \textit{matrix norms}, off course, this 
+The analysis of algorithms where matrices are involved, requires that we are able to assess the size of 
+matrices. We introduce therefore \textit{matrix norms}, of course, this 
 definition is completely analogous but with an extra condition: for square matrices, the matrix norm must 
-be submultiplicative \index{submultiplicative norm}\index{matrix norm!submultiplicative}:
-\begin{definition}
+be \emph{submultiplicative}: \index{submultiplicative norm}\index{matrix norm!submultiplicative}
+\begin{definition}\label{defmatrixnorms}
   A \textbf{matrix norm} on $\R^{n\times m}$ is a function $\|\cdot\|: \R^{n\times m} \to \R$ with 
   the following properties:
   \begin{enumerate}
@@ -985,7 +997,7 @@ maximum norm as follows:
   $\R^{n\times n}$ by:
   $$\maxnorm{A} = \max_{\|\mathbf{x}\| = 1} \|A\mathbf{x}\|$$
   \end{definition}
-It's easy to see these equivalences:
+It is easy to see these equivalences:
 \begin{eqnarray*}
 \maxnorm{A} &=& \max_{\|\mathbf{x}\|= 1} \|A\mathbf{x}\|\\
 &=& \max_{\|\mathbf{x}\| \leq 1} \|A\mathbf{x}\|\\
@@ -999,14 +1011,14 @@ matrix norm, we prove this:
   on $\R^{n\times n}$.
 \end{theorem}
 \begin{proof}
-Let $A$ be a $n \times n$-matrix.  Property (1) of matrix norms follows from the fact that $\maxnorm{A}$ is 
+Let $A$ be a $n \times n$-matrix.  Axiom (1) of matrix norms (definition \ref{defmatrixnorms}) follows from the fact that $\maxnorm{A}$ is 
   the maximum of a nonnegative valued function. That this maximum exists follows from the extreme value theorem of Bolzano (see Theorem 5.5.1 in \cite{caenepeel})
     because $\|A\mathbf{x}\|$ is a continuous function of $\mathbf{x}$ on the unit ball with $\|\mathbf{x}\|=1$, which is a compact 
     set. That $\maxnorm{A} = 0$ occurs only when $A$ is a matrix with only zero entries 
     follows from the fact that $A\mathbf{x} = \mathbf{0}_{n\times 1}$ for all $\mathbf{x}$ is only possible when $A = \mathbf{0}_{n\times n}$.
     
     
-To see (2),  we notice that the triangle inequality is inherited from the vector 
+To see axiom (2),  we notice that the triangle inequality is inherited from the vector 
 norm $\|\cdot\|$, since:
 \begin{eqnarray*}
   \maxnorm{A+B} &=& \max_{\|\mathbf{x}\| = 1} \|(A+B) 
@@ -1019,10 +1031,10 @@ norm $\|\cdot\|$, since:
 &=& \maxnorm{A} + \maxnorm{B}\\
 \end{eqnarray*}
 
-Property (3) of matrix norms follows from the calculation :
+Axiom (3) of matrix norms follows from the calculation :
 $$\maxnorm{\alpha A} = \max_{\|\mathbf{x}\| = 1} \|\alpha A\mathbf{x}\| = \max_{\|\mathbf{x}\| = 1} |\alpha|\|A\mathbf{x}\| = |\alpha|\max_{\|\mathbf{x}\| = 1} \|A\mathbf{x}\| = |\alpha|\maxnorm{A}$$
     
-The submultiplicative property (4) follows from the fact that:
+The submultiplicative axiom (4) follows from the fact that:
 \begin{eqnarray*}
   \maxnorm{AB} &=& \max_{\mathbf{x} \not = 0}\frac{\|AB\mathbf{x}\|}{\|\mathbf{x}\|}\\
   &=& \max_{\mathbf{x} \not = 0}\frac{\|AB\mathbf{x}\|}{\|B\mathbf{x}\|}\frac{\|B\mathbf{x}\|}{\|\mathbf{x}\|}\\
@@ -1174,7 +1186,7 @@ it's important to know the \emph{Bachmann-Landau notations}. These notations are
 These notations are used a lot in computer science to classify algorithms by how their number of steps depends on changes in input size. 
 We are only interested in the effects on the number of steps for really large input sizes, so constants don't play any role in the classification.
 
-\subsubsection{Big O}\index{Big O}\index{Bachmann-Landau!Big O}\begin{definition}\textbf{(Big O)}\\
+\subsubsection{Big O}\index{big O}\index{Bachmann-Landau!big O}\begin{definition}\textbf{(Big O)}\\
 The Big O of a function $g$ is the set of all functions $f$ that are bounded above by $g$ asymptotically (up to constant factor).
 $$O(g(n)) = \{f\mid\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \leq cg(n)\}$$
 \end{definition}
@@ -1195,18 +1207,18 @@ O(k.g(n)) &=& \{f\mid\exists c, n_0 \geq 0: \forall n \geq n_0 : 0 \leq f(n) \le
 
 
 
-\subsubsection{Small O}\index{Small O}\index{Bachmann-Landau!Small O}
+\subsubsection{Small O}\index{small O}\index{Bachmann-Landau!small O}
 \begin{definition}\textbf{(Small O)}\\
 Small O of a function $g$ is the set of all functions $f$ that are dominated by $g$ asymptotically.
 $$o(g(n)) = \{f|\forall \varepsilon > 0, \exists n_0 \forall n \geq n_0: f(n) \leq \varepsilon.g(n)\}$$
 \end{definition}
 Note that the small-notation is a much stronger statement than the corresponding big o-notation: every function that is in the small o of $g$ is also in big o, but the inverse isn't necessarily true. Intuitively, $f(x) \in o(g(x))$ means that $g(x)$ grows much faster than $f(x)$.
 
-\subsubsection{Asymptotical Equality}\index{Asymptotical Equality}\index{Bachmann-Landau!Asymptotical Equality}
-\begin{definition}\textbf{(Asymptotically Equal)}\\
-Let $f$ and $g$ be real functions, then $f$ is asymptotically equal to $g$ iff $\displaystyle\lim_{x\rightarrow +\infty} \frac{f(x)}{g(x)}=1$. Notation: $f \sim g$.
+\subsubsection{Asymptotical Equality}\index{asymptotical equality}\index{Bachmann-Landau!asymptotical equality}
+\begin{definition}\label{asympt}\textbf{(Asymptotically Equal)}\\
+Let $f$ and $g$ be real functions, then $f$ is asymptotically equal to $g$ iff $\displaystyle\lim_{x\rightarrow +\infty} \frac{f(x)}{g(x)}=1$. Notation: $f \approx g$.
 \end{definition}
-In fact asymptotical equality, can also be defined equivalently as an equivalency relation: $f\sim g \Leftrightarrow (f-g) \in o(g)$. It's trivially clear that as $f\sim g \Rightarrow f \in O(g)$.
+In fact asymptotical equality, can also be defined equivalently as an equivalency relation: $f\approx g \Leftrightarrow (f-g) \in o(g)$. It is trivially clear that as $f\approx g \Rightarrow f \in O(g)$.
 
 \subsection{The Power Method}\index{power method}\label{powersection}
 We now introduce the \textit{classical power method}, also called the \textit{Von Mises iteration}\index{Von Mises iteration} (\cite{golub}). This
@@ -1249,7 +1261,7 @@ We first introduce some needed definitions, theorems and notations.
 \begin{notation}\label{numeriekenotatie}\index{iteration step}
   Let $\mathbf{x}^{(i)}$ denote vector $\mathbf{x}$ at iteration step $i$.
 \end{notation}
-\subsubsection{The algorithm}
+\subsubsection{Algorithm 1}
 Let $A \in \R^{n\times n}$ be a diagonalizable matrix with dominant eigenvalue $\lambda_1$.
 We know that $A$ has an eigenbasis $V=\{\mathbf{v}_1, \mathbf{v}_2,\ldots,\mathbf{v}_n\}$. Every vector
 $\mathbf{x}^{(0)} \in \R^n$ can be written as a linear combination of elements in 
@@ -1275,7 +1287,7 @@ the ratio
 between the corresponding
 vector entries in $\mathbf{x}^{(k+1)}$ and $\mathbf{x}^{(k)}$ becomes constant 
 after $k$ iteration steps, then this ratio will be equal to the dominant eigenvalue 
-$\lambda_1$. The vector $\mathbf{x}^{(k)}$ will be a corresponding eigenvector because it is is 
+$\lambda_1$. The vector $\mathbf{x}^{(k)}$ will be a corresponding eigenvector because it is 
 proportional to $\mathbf{v_1}$. 
 
 The start value $\mathbf{x}^{(0)}$ must only satisfy the condition that $\xi_1 \not = 
@@ -1290,7 +1302,7 @@ this direction.
 A practical problem arises now when one of the components of $\mathbf{x}^{(k)}$ 
 is equal to zero. If we want to take the ratio between the corresponding 
 components of $\mathbf{x}^{(k+1)}$ and $\mathbf{x}^{(k)}$ we get a division by 
-zero. We can solve this by property (3) of vector norms (see Defintion \ref{vectornorms}): 
+zero. We can solve this by axiom (3) of vector norms (see definition \ref{vectornorms}): 
 $$\|\lambda_1\mathbf{x}^{(k)}\| = |\lambda_1|\|\mathbf{x}^{(k)}\|.$$
 Because $\mathbf{x}^{(k)} \not = \mathbf{0}$ we have that $\|\mathbf{x}^{(k+1)}\| \approx \|\lambda_1\mathbf{x}^{(k)}\|$, 
 so we calculate
@@ -1330,8 +1342,9 @@ So:
 &=& \lim_{k\to \infty} \mu_{k+1}\nonumber
 \end{eqnarray}
 
-Because $\mu_{k+1}$ converges, a good choice for a stop condition for our numerical algorithm could be 
-$$|\mu_k - \mu_{k-1}| \leq \text{TOL},$$
+Because $\mu_{k+1}$ converges, a good choice for a stop condition for our numerical algorithm could be  
+($\approx$ is defined in definition \ref{asympt})
+$$|\mu_k - \mu_{k-1}| \approx \text{TOL},$$
 which guarantees an estimation error of at most TOL (usually TOL=$10^{-5}$) for the approximation of the dominant eigenvalue. With all this information, we construct algorithm \ref{powermethod}. Just to give an understandable algorithm, we 
 used the Euclidean norm in this algorithm.
 
@@ -1371,14 +1384,14 @@ get the following expression for approximation $\mu_k$ of $\lambda_1$:
 $$|\mu^k - \lambda_1| = O\left(\left|\frac{\lambda_2}{\lambda_1} \right|^k\right)$$
 In our algorithm we accepted an estimation error of $10^{-5}$, so the number of 
 steps $n$ can be computed as:
-$$\left|\frac{\lambda_2}{\lambda_1} \right|^n \leq \text{TOL}$$
+$$\left|\frac{\lambda_2}{\lambda_1} \right|^n \approx\text{TOL}$$
 So, for example, for TOL $= 10^{-5}$ we get $n = \frac{-5}{\log{\frac{\lambda_1}{\lambda_2}}}$, so:
 $$\text{\texttt{power\_method}} \in O\left(\frac{-1}{\log(\lambda_1) - \log(\lambda_2)}\right)$$
 Note that this $O$ holds for any estimation error TOL of the form $10^{-e}$ with $e \in \N$. 
 
 When $\lambda_2 \approx \lambda_1$ we see that the power method (almost) needs infinitely 
 many steps. Since we do not know the eigenvalues of $A$, this means 
-we cannot know in advance whether the power method will work or not. Recall that 
+we cannot know in advance whether the power method will converge or not. Recall that 
 the eigenvalues of a real matrix $A$ are in general complex, and occur in 
 conjugate pairs. This means, when $\lambda_1$ is not real, 
 the power method will certainly fail. Therefore, it is a good idea to apply the 
@@ -1448,14 +1461,14 @@ The definitions and results in this section are mainly based on the course
 \subsection{General definitions}
 \begin{definition}\label{defgraf}\index{graph}\index{loop}\index{graph!loop}\index{edge}\index{graph!edges}\index{adjacency relation}
 \index{graph!adjacency relation}\index{arc}\index{graph!arc}\index{vertex}\index{graph!vertex}\index{node}\index{graph!nodes}
-  A \textbf{graph} is a an ordered pair $(V,\rightarrow)$ where $V$ is a set and $\to$ is a relation. The elements of $V$ are called
+  A \textbf{graph} is an ordered pair $(V,\rightarrow)$ where $V$ is a set and $\to$ is a relation. The elements of $V$ are called
  \textbf{vertices} or \textbf{nodes} and $\rightarrow$ is called the \textbf{adjacency relation}. Let $u, v \in V$, then the ordered pair 
  $(u, v)$ belonging to $\to$ is called an \textbf{arc} or \textbf{edge} and we write $u \rightarrow v$. We also
  say that $u$ is \textbf{adjacent} to $v$.  When $v \to v$ (with $v \in V$) we say that the graph has a 
  \textbf{loop} at $v$. A graph $(V,\rightarrow)$ is 
   most of the time denoted by calligraphic letters $\mathscr{G}, 
   \mathscr{H},..$.   \end{definition}\index{undirected graph}\index{graph!undirected}\index{directed graph}\index{graph!directed}
-With this defintion, we defined directed graphs, when the relation $\rightarrow$ is symmetric, 
+With this definition, we defined directed graphs, when the relation $\rightarrow$ is symmetric, 
  we call the graph \textbf{undirected}, in this case we often write $\leftrightarrow$ instead 
  of $\rightarrow$.  
  
@@ -1488,7 +1501,7 @@ relation $\leftrightarrow$ equals \\$\{(v_1,v_2), (v_2,v_1), (v_2, v_3), (v_3,v_
 
 There is a small problem with our definition, because not all graphs are taken 
 into account, for example the  graph below is not a graph following our definition 
-because you can not define multiple edges between vertices in a relation. 
+because you cannot define multiple edges between vertices in a relation. 
 
   \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -1497,7 +1510,7 @@ because you can not define multiple edges between vertices in a relation.
                             inner sep=0pt]
 
 
-  \node (1) [label=above:$v_1$] {};
+  \node (1) [label=above:$v_1$] {};xf
   \node (3) [label=right:$v_3$][below right of=1] {};
     \node (2) [label=left:$v_2$][below left of=1] {};
 
@@ -1536,7 +1549,7 @@ the notion of a set in which elements are allowed to appear more than once.
 
 We now introduce the following important remark using multisets:
 \begin{remark}\index{multigraph}\index{graph!multigraph}
-  Although we will stay writing a graph as $\graf = (V,\to)$, this defintion doesn't allow
+  Although we will stay writing a graph as $\graf = (V,\to)$, this definition doesn't allow
   for repeated edges. A graph that can have multiple edges between two vertices 
   is often called a \textbf{multigraph}, but in this master thesis we call a 
   multigraph just a graph. To define this in a mathematical correct way, you define 
@@ -1643,7 +1656,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
    $$c_\graf(\to, i) = |\{(i, e_j) \in C \times E | b(e_j) = i\}|$$
  \end{definition}
   \begin{definition}\label{fullcolored}\index{full coloring}\index{graph!colored graph!full coloring}
-   A \textbf{node-edge colored graph} or a \textbf{full colored graph} $\graf$ is $5$-tuple  $(V, \to, C, a, b)$ with $V$ 
+   A \textbf{node-edge colored graph} or a \textbf{fully colored graph} $\graf$ is $5$-tuple  $(V, \to, C, a, b)$ with $V$ 
    a set of vertices, $\to$ an adjacency relation, $C$ a set of colors,  $a$ 
    a function $a: V \to C$ that assigns to each vertex one color and $b$ 
    a function $b: (\to) \to C$ that assigns to each edge one color with as 
@@ -1687,7 +1700,7 @@ $\graf$ as an ordered pair $(V, \to)$ where $V$ is a finite set and $\to$ is a m
   $v_l$. Therefore, the number of walks of length $k+1$ between $v_i$ and $v_j$ 
   is equal to:
   $$\sum_{l\in V} b_{il}a_{lj} =: c_{ij}.$$
-By the induction hypothesis we now that $b_{il}$ equals  the element on place $(i,l)$ 
+By the induction hypothesis we know that $b_{il}$ equals  the element on place $(i,l)$ 
 in $A^k_\graf$ so $c_{ij}$ is exactly the element on place $(i,j)$ in the matrix 
 product
 $$A^k_\graf A_\graf = A^{k+1}_\graf.$$
@@ -1705,8 +1718,7 @@ $$A = \begin{pmatrix}
 
 \subsubsection{Incidence matrix}\index{matrix!incidence matrix}\index{incidence matrix}
 A graph can also be represented as an incidence matrix by numbering the vertices 
-and the edges. The resulting incidence matrix will be a with only 
-$1$, $-1$ and $0$ entries. 
+and the edges. The resulting incidence matrix will have $-1$, $1$ or $0$ as entries.
 
 \begin{definition}\label{incidencematrixgraph}
   The \textbf{incidence matrix} of directed graph $\graf = (V, \to)$ with vertices
@@ -1767,7 +1779,7 @@ number of vertices. The definitions presented are mainly from \cite{berge} and
 \subsection{General definitions}
 \begin{definition}\label{defhypergraph}\index{hypergraph}\index{edge}\index{hypergraph!edges}
 \index{node}\index{hypergraph!nodes}\index{vertex}\index{hypergraph!vertices}
-  A \textbf{hypergraph} is an ordered pair (V, E) with $V$ a finite set of 
+  A \textbf{hypergraph} is an ordered pair (V, E) with $V$ a finite set 
 and $E \subseteq 2^V \setminus \emptyset$, the power set of $V$ with $E \not= \emptyset$. The elements of $V$ are called
 the \textbf{vertices} and the elements of $E$ are called the \textbf{edges}.
 An hypergraph (V, E) will be denoted by the calligraphic letters $\mathcal{G}, \mathcal{H},\ldots$.  
@@ -1775,7 +1787,7 @@ An hypergraph (V, E) will be denoted by the calligraphic letters $\mathcal{G}, \
 
 \begin{remark}\index{multi-hypergraph}\index{hypergraph!multi-hypergraph}\index{hyperloops}\index{hypergraph!hyperloops}
 
-  As in graphs, the classic definitions of a hypergraph doesn't allow to have 
+  As in graphs, the classic definition of a hypergraph doesn't allow to have 
   multiple edges that cover the same vertices. Also repeated vertices within an edge, often called \textbf{hyperloops} are not allowed 
   by the above definition. A hypergraph that can have multiple edges connecting 
   the same vertices, and hyperloops is called a \textbf{multi-hypergraph}, but 
@@ -1863,7 +1875,7 @@ A hypergraph is \textbf{connected} if for each vertex there is a path to any
 other vertex.
 
 \end{definition}
-\subsubsection{$k$-hypergraphs}\index{uniform hypegraphs}\index{hypergraph!uniform hypergraphs}
+\subsubsection{$k$-hypergraphs}\index{uniform hypergraphs}\index{hypergraph!uniform hypergraphs}
 In most applications, the edges of an hypergraph connect a fixed number of 
 vertices. 
 \begin{definition}\index{$k$-uniform hypergraphs}\index{$k$-graphs}
@@ -1879,7 +1891,7 @@ section.
 
 
 
-\subsubsection{Directed hypergraphs}\index{directed hypegraphs}\index{hypergraph!directed hypergraphs}
+\subsubsection{Directed hypergraphs}\index{directed hypergraphs}\index{hypergraph!directed hypergraphs}
 An important difference with the previous section is that all hypergraphs we 
 have defined are \textbf{undirected}: there is no specific order in which an 
 edge connect different vertices. In a graph, directed edges arise naturally as 
@@ -1929,8 +1941,8 @@ adjacency tensors.
 
 \chapter{Similarity on graphs}
 
-In the previous chapter all the basic terminology and results were introduced, 
-now we take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
+In the previous chapter all the basic terminology and results were introduced.
+Now we take an extensive look at the concept of similarity on graphs. Similarity on graphs is a fairly new
 concept to compare the nodes of two graphs. The concept arose from the research on algorithms for web searching engines (like \emph{Google}, \emph{Yahoo},\ldots) in the late nineties. 
 More specifically, Jon M. Kleinberg 
 introduced in his paper `Authoritative Sources in a Hyperlinked Environment' 
@@ -1940,13 +1952,16 @@ the
 whole idea and algorithm of Kleinberg is introduced in the first section of this chapter. In 
 2004, V.D. Blondel et al. \cite{blondel} generalized the algorithm of 
 Kleinberg, introducing the notion of similarity on directed graphs. This similarity is covered in the second section. With this similarity on directed graphs, 
-there is a much wider scope of applications than just search algorithms. Next, we extend the notion of similarity on directed graphs: the method
-of Blondel only returns the concept of node similarity which is in fact a 
-measurement of how similar two nodes of two graphs are to each other.
+there is a much wider scope of applications than just search algorithms. The method
+of Blondel only returns node similarity scores, which are in fact a 
+measurement of how similar two nodes of two graphs are to each other, and so in 
+the next section, we extend the method of Blondel to both node and edge 
+similarity scores. We conclude this chapter with a notion of similarity on 
+colored graphs. 
 
-\section{The HITS algorithm of Kleinberg}\index{HITS-algorithm}
+\section{The HITS algorithm of Kleinberg}\index{HITS algorithm}
 \subsection{History}
-Back in the nineties, internet became more and more popular by the public. The popular search 
+Back in the nineties, internet became more and more popular. The popular search 
 engines back then where Altavista and Yahoo, but they weren't as advanced as 
 search engines today. The main pitfall of the first search engines was that the search results 
 were purely based on the number of occurrences of a word in a webpage. This was 
@@ -1967,8 +1982,8 @@ used inter alia today by the Ask search engine (www.ask.com).
 Both these algorithms use the hyperlinks between webpages to rank search 
 results. 
 Because this master thesis is about similarity and this concept is 
-introduced on graphs as a generalization of the HITS algorithm, we don't go to into 
-further detail about the PageRank-algorithm. In the following paragraphs, the 
+introduced on graphs as a generalization of the HITS algorithm, we don't go into 
+further detail about the PageRank algorithm. In the following paragraphs, the 
 HITS algorithm is extensively explained.
 
 \subsection{Motivation}\label{motivatiehits}
@@ -1982,9 +1997,9 @@ want to filter the `authoritative' webpages in a text-based system. For example,
 Unfortunately, the query  `\texttt{job offers}' is used in over a 
 million pages on the internet and \texttt{www.vdab.be} is not the one using the 
 term most often. Therefore, there is no way to favor \texttt{www.vdab.be} in a 
-text-based ranking function. This a recurring phenomenon, as another example if 
+text-based ranking function. This a recurring phenomenon, e.g., if 
 you search for the query `\texttt{computer brands}', there is no reason at all to be sure that the 
-website of Apple or Toshiba even contain this search term.
+website of Apple or Toshiba even contains this search term.
 
 The HITS algorithm solves these difficulties by analyzing the hyperlink 
 structure among webpages. The idea is that hyperlinks encode a sort of human 
@@ -1996,12 +2011,12 @@ example, a large number of links are created for navigation within a website (e.
 and these have of course nothing to do with a notion of authority. 
 
 The HITS method is based on the relationship between the \textit{authorities}\index{authority} for a topic 
-and those pages that link to many related authorities, called \emph{hubs}\index{hub}. Page $p$ 
-is called an \textit{authority} for the query ``\texttt{smartphone brand}'' if it 
+and the pages that link to many related authorities, called \emph{hubs}\index{hub}. Page $p$ 
+is called an \textit{authority} for the query `\texttt{smartphone brand}' if it 
 contains valuable information on the subject. In our example websites of 
-smartphone manufacturers such as ``\texttt{www.apple.com}'', 
-``\texttt{www.samsung.com}'',... would be good authorities for this search 
-query and these are the results a user expect from a search engine. 
+smartphone manufacturers such as `\texttt{www.apple.com}', 
+`\texttt{www.samsung.com}',... would be good authorities for this search 
+query. These are also the results a user would expect from a search engine. 
 
 A hub is a second category of pages needed to find good authorities. Their role 
 is to advertise authoritative pages. Hubs contain useful links toward these 
@@ -2014,7 +2029,7 @@ friend that you think of buying a new smartphone, he might tell you his
 experiences with smartphones and he will probably share some opinions he got from other friends. 
 He might suggest you some good models and good brands. Now, you are more inclined to 
 buy a smartphone that your friend suggested. Well, this idea is used in the 
-HITS-method: your friend served as hub, the brands and models he suggested are good 
+HITS method: your friend served as a hub, the brands and models he suggested are good 
 authorities.
 
 \subsection{Constructing relevant graphs of webpages}
@@ -2092,7 +2107,7 @@ root set $R_\sigma$ to be added to $S_\sigma$.
 Denote the resulting graph of the page set $S_\sigma$ by $\graf[S_\sigma]$. Note that $\graf[S_\sigma]$ will 
 contain 
 a lot of links serving only navigational purposes within a website. As mentioned 
-before, these links have nothing to do with the the notion of authority and they must be 
+before, these links have nothing to do with the notion of authority and they must be 
 removed from our final graph if we want a good determination of  the authoritative pages by an analysis of
  the link structure.  A very simple heuristic can be used to derive a subgraph 
  of $\graf[S_\sigma]$ leaving out all the navigational links: we make a 
@@ -2111,7 +2126,7 @@ Our graph still contains some meaningless links in the context of page
  to only allow $m$ pages ($m$ is usually initiated to 6) from the same domain name to have a transverse link to the same page. 
  If $m$ is exceeded, all the transverse links must be deleted from the graph. Note, 
  however, that not all links to advertisements will be erased because on most 
- web pages, advertisements change on every page which avoids the exceedance of $m$.
+ web pages, advertisements change on every page which avoids the exceeding of $m$.
  
  Applying the two described heuristics above on $\graf[S_\sigma]$, we get a new 
  graph $\graf'_\sigma$ which is exactly what we need to preform our link analysis.
@@ -2139,8 +2154,7 @@ Our graph still contains some meaningless links in the context of page
  
  So, for each page $j$ we assign two scores, an \textit{authority score} 
  which estimates the value of the content of the page and a \textit{hub 
- score} which estimates the value of the outgoing links to other pages. We get now a\textit{ mutually reinforcing 
- relation}: a good hub is a page pointing to many good authorities, a good 
+ score} which estimates the value of the outgoing links to other pages. We now get a dichotomy: a good hub is a page pointing to many good authorities, a good 
  authority is a page that is pointed to by many good hubs. This leads us to a 
  \textit{mutually reinforcing relation} \index{mutually reinforcing relation} resulting in an iterative method to 
  break this circularity.
@@ -2208,7 +2222,7 @@ results in `definitive' hub and authority scores for each page in the graph $\gr
 
 To compute the iterative algorithm, we update the hub and authority scores in an alternating form (by each step we have to normalize the scores). 
 Because we will prove that the sequence converges, theoretically we can keep on iterating until a fixed point is approximated. But in most practical settings, 
-we choose a fixed number of steps $k$ to reduce the computational cost because we can not know beforehand how
+we choose a fixed number of steps $k$ to reduce the computational cost because we cannot know beforehand how
 large $k$ has to be to reach the limit. But of course, it is extremely important to know that method converges anyway. Let $\mathbf{x}^{(i)}$ denote vector $\mathbf{x}$ at iteration step $i$ as in Notation \ref{numeriekenotatie}, and we get Algorithm 
 \ref{hitsalgorithm}.
 
@@ -2232,7 +2246,7 @@ large $k$ has to be to reach the limit. But of course, it is extremely important
 
  \KwRet $(\mathbf{h}^{(k)},\mathbf{a}^{(k)} )$\;}{}
  
- \caption{The iterative HITS-algorithm.}\label{hitsalgorithm}
+ \caption{The iterative HITS algorithm.}\label{hitsalgorithm}
 \end{algorithm}
 
 To filter the top $c$ hubs and the top $c$ authorities, you can use the trivial 
@@ -2256,7 +2270,7 @@ a vector of nodes $(\mathcal{A}_1,\mathcal{A}_2,\ldots, \mathcal{A}_c)$\;
  \caption{Returning the top $c$ hubs and authorities}\label{filter}
 \end{algorithm}
 
-How do we decide on the values of $k$ and $c$? It's immediately clear that $c$ and $k$ must
+How do we decide on the values of $k$ and $c$? It is immediately clear that $c$ and $k$ must
 be proportional: for low $c$ values, a lower 
 value for the number of iteration steps $k$ is appropriate and vice versa. 
 Experiments in \cite{kleinberg} showed that $k$ set to $20$ is sufficient to 
@@ -2264,15 +2278,15 @@ become stable for finding the $5$ best hubs and authorities, thus for $c = 5$.
 
 \subsection{Convergence of the algorithm}\index{convergence}
 We now want to prove that for arbitrarily large values of $k$, the
-sequence $Z^{(k)}$ converge to a limit $(\mathbf{h'}, \mathbf{a'})$. Before 
-  prove the convergence, note that  adjacency matrices are nonnegative by definition, and thus the matrix $M$ is 
+sequence $Z^{(k)}$ converges to a limit $(\mathbf{h'}, \mathbf{a'})$. Before 
+  proving the convergence, note that  adjacency matrices are nonnegative by definition, and thus the matrix $M$ is 
 nonnegative too. $M$ is also clearly a symmetric $n' \times n'$-matrix with nonnegative, real entries. We prove that such matrices
 have  $n'$ (not necessarily different) real eigenvalues and that we can diagonalize $M$.   This is the first condition of the  
-power method iwe introduced in section \ref{powersection}.
+power method we introduced in section \ref{powersection}.
 If we can also prove the second condition (having a unique dominant eigenvalue), 
 convergence is immediately shown by the power method.
 
-However, there is a problem here: we can not prove that nonnegative symmetric matrices have a unique dominant 
+However, there is a problem here: we cannot prove that nonnegative symmetric matrices have a unique dominant 
 eigenvalue (a unique dominant eigenvalue means the largest eigenvalue with multiplicity 1), simply because this is not true in general.\footnote{The matrix $\begin{pmatrix} 
 1 & 0\\
 0 & 1
@@ -2297,10 +2311,9 @@ Now that this problem is solved, we present the relevant theorems below. We also
 impose on the matrix $M$ that it has a unique dominant eigenvalue with the preceding explanations in mind. 
 Remember that we will generalize the idea of the HITS algorithm to introduce 
 similarity on graphs. Therefore, we will reconsider the 
-convergence of the (generalized) algorithm again in the following section, and 
-there we prove that there exists also a limit even when the matrix $M$ has no unique 
-dominant eigenvalue. The reason why we don't present this result immediately, is 
-because we want to present the results as authentic possible and we want to show 
+convergence of the generalized algorithm in the following section. We will prove that there also exists a limit even when the matrix $M$ has no unique 
+dominant eigenvalue. We don't present this result immediately,  
+because we want to present the results as authentic as possible and we want to show 
 the evolution of the ideas in the successive papers.
 
 \begin{theorem}
@@ -2331,7 +2344,7 @@ the evolution of the ideas in the successive papers.
     proving that also the corresponding eigenvector is real.
     
   \end{proof}
-\begin{theorem}\label{diagonaal}\index{Schur Decomposition}\textbf{(Symmetric Schur Decomposition)}
+\begin{theorem}\label{diagonaal}\index{Schur decomposition}\textbf{(Symmetric Schur Decomposition)}
   Let $A$ be a real symmetric matrix, then there exist an orthogonal 
   matrix $P$ such that:
   \begin{enumerate}
@@ -2455,14 +2468,14 @@ dominant eigenvectors of $BB^T$ and $B^TB$.\end{corollary}
      also know that:
      $$\lim_{k\to\infty}\mathbf{h_k} = \mathbf{h} \quad \text{and} \quad \lim_{k\to\infty}\mathbf{a_k} = \mathbf{a},$$
      and also from the previous proof we know that $(\mathbf{h}, \mathbf{a})$ is 
-     the dominant eigenvector of $M$. It follows immediately that also 
-     $\mathbf{h}$ is the dominant eigenvector of $BB^T$ and $\mathbf{a}$ is the dominant eigenvector of 
+     the dominant eigenvector of $M$. It follows immediately that
+     $\mathbf{h}$ is also the dominant eigenvector of $BB^T$ and $\mathbf{a}$ is the dominant eigenvector of 
      $B^TB$.
  \end{proof}
  \subsection{Examples}
  \subsubsection{Searching for math professors at the VUB}
 \begin{example}
-  We conclude this section with a fictitious example of the HITS-algorithm. Suppose you 
+  We conclude this section with a fictitious example of the HITS algorithm. Suppose you 
   are looking for \texttt{math professors vub} with a text-based search engine 
   and you get the following results:
   \begin{itemize}
@@ -2496,8 +2509,8 @@ $\graf_\sigma$:
     \item  \textbf{Row 4, 5, 6}: websites of the professors with the 2 PhD students,
     \item  \textbf{Row 7, 8, 9, 10}: websites of the 4 PhD students of the professor on row 3,
     \item  \textbf{Row 11, 12}: websites of the 2 PhD students of the professor on row 4,
-    \item  \textbf{Row 12, 14}: websites of the 2 PhD students of the professor on row 5,
-    \item  \textbf{Row 14, 16}: websites of the 2 PhD students of the professor on row 6,
+    \item  \textbf{Row 13, 14}: websites of the 2 PhD students of the professor on row 5,
+    \item  \textbf{Row 15, 16}: websites of the 2 PhD students of the professor on row 6,
 
 
 \end{itemize}
@@ -2527,7 +2540,7 @@ student will have the largest authority score, immediately followed by the other
 The website of the mathematics department is clearly the best hub in this example and should get the largest hub score.
 Also the website of the faculty of science should get a high hub score.
 
-We now apply the HITS-method by
+We now apply the HITS method by
 calculating the dominant eigenvector of $BB^T$ (this returns the hub scores) 
 and the dominant eigenvector of $B^TB$ (this returns the authority scores) with 
 the power method (see \ref{powersection}). We get:
@@ -2577,7 +2590,7 @@ extremely good hub (this is very logic because it links to all the other relevan
 websites). The professor with his 4 PhD students would be ranked first in the 
 search results (he has the highest authority score), the other professors would 
 appear just underneath him. Obviously, a hub score of 0.8645 is so high that it would be quite exceptional in 
-a graph containing a lot more websites (it's very unlikely that you find a website containing links to all the other pages/nodes in the graph). Nevertheless, we conclude that the HITS-algorithm returns the 
+a graph containing a lot more websites (it is very unlikely that you find a website containing links to all the other pages/nodes in the graph). Nevertheless, we conclude that the HITS algorithm returns the 
 results we wanted intuitively.
 
 \end{example}
@@ -2593,9 +2606,9 @@ results we wanted intuitively.
  Also the winner of last year participates automatically in the final. Each country, also those 
  who dropped out during the semi-finals, gives points during the voting of the grand final. 
 The voting during the grand final takes place after all the countries have performed their song. 
-Each country is called and and awards 12 points to their 
+Each country is called and awards 12 points to their 
 favorite song, 10 points to their second favorite, and then points from 8 down 
-to 1 to eight other songs. Countries can not vote for themselves. 
+to 1 to eight other songs. Countries cannot vote for themselves. 
 
 The voting 
 system is in fact a positional voting system that is very similar to the Borda count 
@@ -2609,16 +2622,16 @@ represent the points between the countries (when country $a$ assigns 3 points to
 $b$).
 
 Let $A$ be the adjacency matrix of the voting during a song contest ($A$ will in fact be just a points table). If we 
-take $A$ as input for the HITS-algorithm, we expect that the country with the 
+take $A$ as input for the HITS algorithm, we expect that the country with the 
 highest authority score will be the winner of the competition. Actually we 
 expect a lot more: when we order the countries based on their authority score, 
 we expect that this ordering will be practically equal to the final ranking of the contest. 
 This is based on the simple fact that Borda count just sums up points, and we 
 only expect very small differences when the difference in points is low between 
-two countries. This small differences are then be caused by the algorithm: remember 
-that the HITS-algorithm does not simply give a high authority score to nodes 
-with a large indegree, but also takes the hub scores into account, but we will 
-see that the hub scores will be low so their influence will indeed be limited.
+two countries. These small differences are then caused by the algorithm. Remember 
+that the HITS algorithm does not simply give a high authority score to nodes 
+with a large indegree, but also takes the hub scores into account. We will 
+see that the hub scores will be low (compared to some authority scores) in this example, so their influence will be limited.
 
 But what is very interesting now, is the role that the hub scores are playing. 
 In fact these scores can be seen as a kind of `predictive value' of a country: a 
@@ -2778,14 +2791,14 @@ with the highest hub score.
 
 Note that countries who scored very well during 
 the final, usually have a moderate hub score: this is due to the fact that 
-countries can not vote for themselves. The average hub score is, in general, also 
+countries cannot vote for themselves. The average hub score is, in general, also 
 lower than the average authority score, this is because countries can award 
 points to only 10 countries, but (qualified) countries can receive points from 
 every country, except themselves. The `predictive value' of a country is 
 therefore limited to only 10 countries, while the voting produces a complete final ranking of 26 
 countries.
 
-Of course, it's tempting to research the predictive value of countries during a 
+Of course, it is tempting to research the predictive value of countries during a 
 couple of years. We opted for the period 2009-2015 because during the last seven 
 editions the voting procedure remained unchanged: the points awarded by each country are based on 50$\%$ televoting and
 $50\%$ jury vote. So we take the average of the hub scores of the last seven
@@ -2889,23 +2902,23 @@ many Asian influences (the region is sometimes refered to as Eurasia).
 46.&\textbf{Armenia}&0.119244&0.050899&0.125792&-&0.128531&0.101509&0.109782&\textbf{0.105960}\end{longtable}\label{thub}
 \end{landscape}
 \subsection{Final reflection}
-The HITS-algorithm is one of the few algorithms that has the ability to rank pages according to a specific search 
+The HITS algorithm is one of the few algorithms that has the ability to rank pages according to a specific search 
 query.
-Also the computational cost of the HITS-algorithm, which equals the cost of 
+Also the computational cost of the HITS algorithm, which equals the cost of 
 the power method\index{power method} (see \ref{powersection}), is not excessive and feasible for most servers. 
-The result of the HITS-algorithm for popular queries will also be cached by most 
+The result of the HITS algorithm for popular queries will also be cached by most 
 search engines, which reduces the computational cost even more because the saved results can be served
 directly to the user without any new calculations. 
 
 The biggest 
-disadvantage of the HITS-algorithm is that it suffers from \emph{topic drift}\index{topic drift}: 
+disadvantage of the HITS algorithm is that it suffers from \emph{topic drift}\index{topic drift}: 
 the graph $\graf'_\sigma$ could contain nodes which have high authority scores 
 for the query but are completely irrelevant.  E.g. \texttt{Facebook} is nowadays a universally popular website, 
 almost every website 
  contains a `like' or `share' button linking to Facebook, and Facebook itself contains tons of posts
  linking to other webpages. This means that Facebook has a great chance to appear in almost any
   $\graf'_\sigma$ and receive a high
- authority score because the original HITS-algorithm as presented here cannot detect such `universally popular' websites.  The same goes for other social media websites and some advertisements.
+ authority score because the original HITS algorithm as presented here cannot detect such `universally popular' websites.  The same goes for other social media websites and some advertisements.
 
 Nowadays, we know that \texttt{Ask.com} uses this algorithm. In fact, most search engines are 
 very secretive about their search algorithm (e.g. \texttt{Google}) to make profit and avoid cheating by webmasters. Still, the chances 
@@ -2915,9 +2928,9 @@ combination with a lot of other procedures.
 \section{Node similarity}\label{sectionnodesim}
 This section provides a detailed overview of the paper `\emph{A Measure of Similarity between Graph Vertices: 
 Applications to Synonym Extraction and Web Searching}' \cite{blondel} of V. D. Blondel and others. 
-The paper generalizes the HITS-algorithm leading to the concept of (node) similarity on  
+The paper generalizes the HITS algorithm leading to the concept of (node) similarity on  
 graphs. In the following chapters, we will call this method often the `method of Blondel' \index{method of Blondel}. This method is explained in detail and will serve as a framework for the following sections and chapters. The method allows
-a mathematical rigorous approach, leading to a very important convergence theorem. Thanks to it's generality, this convergence theorem is extremely powerful
+a mathematical rigorous approach, leading to a very important convergence theorem. Thanks to it is generality, this convergence theorem is extremely powerful
 and will be used
 to prove convergence for all the presented algorithms in the next sections and chapters.  This theorem also solves 
 the issue from the previous section where the matrix $M$ has to have a unique dominant
@@ -2936,7 +2949,7 @@ in that case. We will give explicit attention to undirected graphs in the
 section about `Special cases' (see \ref{specialcases}).
 
 The method of Blondel is a pure 
-generalization of the HITS-algorithm. Remember from the previous section that we 
+generalization of the HITS algorithm. Remember from the previous section that we 
 constructed a graph $\graf'_\sigma$ and calculated hub and authorities scores 
 for each vertex. Well, the authors of \cite{blondel} found a way to replace these hub and authority 
 scores by just any other graph, allowing us to compare $\graf'_\sigma$ to any other 
@@ -2968,7 +2981,7 @@ and, conversely, the hub score of vertex $v_j$ of $\graf'_\sigma$  can be though
 score between $v_j$ and the vertex denoted as \emph{hub}. We can replace $\graf'_\sigma$  with any other graph
 $\graf$. We call the hub-authority graph a 
 \emph{structure graph} and we already know the resulting iterative method from the previous section. 
-We will call this scores \emph{similarity scores}.
+We will call these scores \emph{similarity scores}.
 
 The central question is now: which \emph{mutually reinforcing relation} do we get when using another structure graph, 
 different from the hub-authority structure graph? 
@@ -3025,7 +3038,7 @@ symmetric and nonnegative, and again the result is the limit of the normalized v
   \mathbf{s}^{(0)} = \mathbf{z}^{(0)} > 0, \mathbf{s}^{(k+1)} = \frac{M\mathbf{s}^{(k)}}{||M\mathbf{s}^{(k)}||_2}, \quad k = 
   0,1,\ldots,
 \end{eqnarray}
-Remember that the HITS-algorithm assumed that $M$ has a unique dominant 
+Remember that the HITS algorithm assumed that $M$ has a unique dominant 
 eigenvalue but we don't want to make this assumption in this section because we 
 want a concept that can be applied to all kinds of directed graphs. We will see 
 that without this assumption, the sequence \ref{sequencealgemeen} does not 
@@ -3131,10 +3144,10 @@ $0.1579$.
  \begin{eqnarray}\label{compacteforms}
 Z^{(k+1)} = BZ^{(k)}A^T + B^TZ^{(k)}A,\quad k=0,1,\ldots,
   \end{eqnarray}
-We'll prove that the normalized even and odd iterates of 
+We will prove that the normalized even and odd iterates of 
  this updating equation converge when using as start matrix $J$, the matrix of ones. This normalized
 result will be denoted by $S$,  the similarity matrix. This compact form also shows the true meaning of similarity between nodes:
-two similarity score of a vertex in a graph is lare when the simialrity sore of the adjacencent vertices is large. We will dive deeper into
+the similarity score between two vertices is large when the similarity scores of the adjacent vertices are large. We will dive deeper into
 the meaning of the algorithm in Chapter 3. The following example shows a calculated similarity 
  matrix of two directed graphs.
  
@@ -3213,10 +3226,10 @@ The Perron-Frobenius applies only to nonnegative, \emph{irreducible} matrices,
 but  since one is confronted in practice 
 with nonnegative matrices that are not necessary irreducible,  we extend the Perron-Frobenius and see what remains without this assumption. 
 We will prove that the spectral radius $\rho(M)$ of a nonnegative matrix 
-$M$ is an eigenvalue of $M$, also called in this case the the Perron root (see Definition \ref{perronroot}). Moreover, there exists an 
+$M$ is an eigenvalue of $M$, also called in this case the Perron root (see Definition \ref{perronroot}). Moreover, there exists an 
 associated nonnegative eigenvector $\mathbf{x} \geq 0 (\mathbf{x} \not = 0)$, the Perron vector, such 
 that $M\mathbf{x} = \rho\mathbf{x}$.  We will also investigate in more specific 
-results in the case $M$ is not only nonnegative, but also symmetric. 
+results if $M$ is not only nonnegative, but also symmetric. 
 
 
 \begin{lemma}\label{voriglemmaspeer}
@@ -3351,7 +3364,7 @@ found in Theorems 1.3.15, 1.3.16, 1.3.17 in \cite{kieboom}.
   diagonal.
 \end{theorem}
 
-We are now ready for genealizing the Perron-Frobenius to nonnegative, symmetric 
+We are now ready for a generalization of the Perron-Frobenius theorem: we generalize the Perron-Frobenius to nonnegative, symmetric 
 matrices.
 \begin{theorem}\label{ultiemvoorspel}
   Let $M$ be a symmetric nonnegative matrix with spectral radius $\rho$. Then 
@@ -3565,7 +3578,7 @@ nonnegative.
 \end{proof}
 
 \subsection{Similarity matrices}\index{matrix!similarity matrix}\index{similarity matrix}\index{compact form}
-We now come to the formal definition of the similarity matrix of two graphs $\graf(U,\to)$ and $\grafeen(V, \to')$, by proving that the mutually reinforcing relation
+We now come to the formal definition of the similarity matrix of two graphs $\graf=(U,\to)$ and $\grafeen=(V, \to')$, by proving that the mutually reinforcing relation
 is given by ($A$ and $B$ are the adjacency matrices of $\graf$ and $\grafeen$):
  \begin{eqnarray}\label{compactform2}
 Z^{(k+1)} = BX^{(k)}A^T + B^TX^{(k)}A,\quad k=0,1,\ldots,
@@ -3724,22 +3737,22 @@ using Lemma \ref{hulptensor} to:
 M = A \otimes B + (A \otimes  B)^T,
 \end{eqnarray}
 because $A \otimes B$ is a $nm \times nm$ square matrix, we know that $M$ is 
-symmetric because it's the sum of a square matrix and it's transpose. In order 
+symmetric because it is the sum of a square matrix and its transpose. In order 
 to stay consistent with the Eucledian norm appearing in Theorem \ref{grootbewijs}, we use as matrix norm
-the Frobenius norm. After all we know from section 1.3.2 that for $A \in \R^{1\times n}$ the frobenius norm equals the
+the Frobenius norm: we know from section 1.3.2 that for $A \in \R^{1\times n}$ the Frobenius norm equals the
 $2$-norm. 
 We can now apply Theorem \ref{grootbewijs} and the result follows.
 \end{proof}
 \begin{definition}
   Let $\graf, \grafeen$ be two graphs, then the unique matrix
-   $$S = S_\text{even}(\mathbf{1}) = \lim_{k\to +\infty} S^{(2k)}$$ 
+   $$S = S_\text{even}(J) = \lim_{k\to +\infty} S^{(2k)}$$ 
  (with the notations of the previous theorem) is the \textbf{similarity matrix} between $\graf$ and
    $\grafeen$.
 \end{definition}
 Notice that it follows from \ref{compactform2} that the similarity matrix 
 between $\grafeen$ and $\graf$ is the transpose of the similarity matrix between 
 $\graf$ and $\grafeen$.
-\subsection{Algorithm}
+\subsection{Algorithm 5}
 
 
 
@@ -3756,7 +3769,7 @@ $\tol$: tolerance for the estimation error.\\}
 \SetKwProg{myalg}{begin}{}{end}
 \myalg{\powermethod{$A$,$B$,$\tol$}}{
 $k = 1$ \;
-$Z^{(0)} = \mathbf{1}$ ($n \times m$-matrix with all entries equal to $1$)\;
+$Z^{(0)} =  J$ ($n \times m$-matrix with all entries equal to $1$)\;
 $\mu =  n\times m$-matrix with all entries equal to $\tol$\;
 \Repeat{$k$ is even and $|Z^{(k)} - Z^{(k-2)}| < \mu$}{
 $Z^{(k)} = \frac{BZ^{(k-1)}A^T + B^TZ^{(k-1)}A}{\|BZ^{(k-1)}A^T + B^TZ^{(k-1)}A\|_F}$\;
@@ -3775,34 +3788,34 @@ This is of course an obvious consequence of the
 definition of the similarity matrix and Theorem \ref{grootbewijs}. Remember that the absolute value that is mentioned is the same as in Notation 
  \ref{modulusmatrix}. A Matlab implementation of the algorithm 
 can be found in Listing \ref{lstsim} in Appendix A.
-\subsubsection{Equivalence with the Power Method}
+\subsubsection{Equivalence with the power method}
 Algorithm \ref{algsimilarity} is in fact completely equivalent to the Power 
 Method of section \ref{powersection}. To see this, remind that we are in fact 
 calculating the expression of Theorem \ref{grootbewijs}:
 $$\mathbf{s}_{\text{even}}(\mathbf{s}^{(0)}) = \lim_{k \to \infty} \mathbf{s}^{(2k)}  = \frac{\Pi \mathbf{s}^{(0)}}{||\Pi \mathbf{s}^{(0)}||_2},$$
 when we compare 
-this with equation (\ref{powertripke}) from the Power method section, we see 
+this with equation (\ref{powertripke}) from the power method section, we see 
 that in both cases we are in fact calculating the largest eigenvector of a matrix, but with the difference 
 that in this $\Pi$ is constructed in such way that it oscillates and the even 
 iterates always converge. The attentive reader will note that $\Pi$ doesn't 
 appear directly in Algorithm \ref{algsimilarity}, but this is, of course, a 
 consequence of the vectorization defined in Definition \ref{vectorization}. With 
 this operation, we are able to work directly with matrices while proving 
-convergence through Theorem \ref{grootbewijs}. With this in mind, it's clear 
-that Algorithm 5 can be seen as a \textit{matrix analogue} of the Power method.
+convergence through Theorem \ref{grootbewijs}. With this in mind, it is clear 
+that Algorithm 5 can be seen as a \textit{matrix analogue} of the power method.
 
-This brings to one of the main ideas of this master thesis: when we use the important Theorem \ref{grootbewijs} 
+This brings us to one of the main ideas of this master thesis: when we use the important Theorem \ref{grootbewijs} 
 to prove convergence of some algorithm (all the algorithms that will follow are using this 
-theorem for this purpose), we know for sure that the resulting algorithm will somehow be equivalent to the Power Method 
-because this theorem shows that the algorithm essentially comes down to 
-finding the largest eigenvalue of some orthogonal projector $\Pi$, altough this $\Pi$ might not appear
+theorem for this purpose), we know for sure that the resulting algorithm will somehow be equivalent to the power method. 
+Indeed, this theorem shows that the algorithm essentially comes down to 
+finding the largest eigenvalue of some orthogonal projector $\Pi$ which might, however, not appear
 directly in the algorithm thanks to vectorization . Depending on the possible characteristics of $\Pi$, this makes it 
 possible to derive the computational costs of the constructed algorithm. 
 
 Also 
 note that in this case, the equivalence is very clear when looking at the (pseudo)code for both algorithms, but as this master thesis 
 proceeds, the algorithms will get more complicated and the equivalence with the 
-Power Method will not be as clear.
+power method will not be as clear.
 
 \subsubsection{Computational cost}
  We 
@@ -3827,12 +3840,12 @@ is trivial (meaning that $M$ has only eigenvalues $\rho$ and possibly $-\rho$), 
 equation
 (\ref{vergeejkjfqk}) in Theorem \ref{grootbewijs} that in this case $\left|\frac{1}{\rho} \right|^{2n} \approx \tol$ so:
 $$\text{\texttt{similarity\_matrix}} \in O\left(\frac{1}{\log{1- \log\rho}}\right).$$
-The algorithm can always be calculated in a finite number of steps.
+We conclude that the algorithm can always be calculated in a finite number of steps.
 \subsection{Special cases}\label{specialcases}
 We now consider some special cases of of similarity scores between two vertices 
 of graphs.
-\subsubsection{HITS-algorithm}
-Remember that the HITS-algorithm assumed that
+\subsubsection{HITS algorithm}
+Remember that the HITS algorithm assumed that
 $$M =  \begin{pmatrix} 
 0 & B\\
 B^T & 0
@@ -3840,7 +3853,7 @@ B^T & 0
 
 has a unique dominant eigenvalue to 
 calculate the hub and authority scores of nodes in a graph $\graf_\sigma$ with adjacency matrix
-$B$. This assumption is a direct result of the power method, because it's one 
+$B$. This assumption is a direct result of the power method, because it is one 
 of the conditions to apply the algorithm. One of our goals was to drop this 
 assumption. We finally arrived at 
 this result, that also returns a solution when the Perron root has a 
@@ -4016,12 +4029,12 @@ vector of $\Pi\mathbf{1}$.
 \begin{example}
   In order to illustrate the intuitive meaning of calculating a similarity 
   matrix where the path graph $1 \to 2 \to 3$ is the structure graph, consider 
-  the following directed bow-tie graph:
+  the following directed bow tie graph:
   \begin{center}
-   \includegraphics[scale=1]{bowtie.pdf}
+   \includegraphics[scale=1.2]{bowtie.pdf}
    \end{center}
-   Label the center vertex first, then the $n$ right vertices and finally the $m$
- left vertices, then the adjacency matrix of the bow-tie graph becomes:
+   Label the center vertex first, then the $m$ left vertices and finally the $n$
+ right vertices, then the adjacency matrix of the bow tie graph becomes:
  
  $$B =\(
 \left(
@@ -4048,18 +4061,18 @@ vector of $\Pi\mathbf{1}$.
  because the central matrix $B^TB + B B^T$ has a dominant root $\rho^2$ of 
  $M^2$ and we clearly see that if we would take the characteristic polynomial of 
  $B^TB + BB^T$, we would get $m+n$ as Perron root. The dominant eigenvector of $B^TB + BB^T$ is equal
- to the similarity score $\mathbf{s}_2$ by Theorem \ref{centralescore}. It's now easy to see that:
+ to the similarity score $\mathbf{s}_2$ by Theorem \ref{centralescore}. it is now easy to see that:
  $$\mathbf{s}_2 = \left(\begin{array}{c}
  1 \\ \hline
- 0_{n}\\ \hline
- 0_{m}
+ \mathbf{0}_{n}\\ \hline
+ \mathbf{0}_{m}
 \end{array}\right) $$
  If we see vertex 2 of the path graph $1 \to 2 \to 3$ as the \emph{center}\index{center}, 
  which can be seen as a vertex through which much information is passed, 
  then it is not surprising that $\mathbf{s}_2$ indicates that vertex $1$ of the directed 
- bow-tie graph is the only one that looks like a center. The left vertices of 
- the bow-tie graph look like vertex 1 of the path graph and the right vertices 
- of the bow-tie graph look like vertex $3$. This is a beautiful example because 
+ bow tie graph is the only one that looks like a center. The left vertices of 
+ the bow tie graph look like vertex 1 of the path graph and the right vertices 
+ of the bow tie graph look like vertex $3$. This is a beautiful example because 
  it confirms our intuition.
  \end{example}
  \subsubsection{Self-similarity of a graph}
@@ -4072,7 +4085,7 @@ in this case.
 Intuitively, we expect that vertices have the highest similarity scores with 
 themselves, which means that the largest entries are located on the diagonal of 
 $S$. We prove in the next theorem that the largest entry of a self-similarity 
-matrix appears always on the diagonal and that, except for some special cases, 
+matrix always appears on the diagonal and that, except for some special cases, 
 the diagonal elements of a self-similarity matrix are nonzero. This doesn't mean
 that the diagonal elements are always larger than the other elements on the same 
 row or column and we conclude this paragraph with some easy examples the show 
@@ -4084,7 +4097,7 @@ algorithm is sometimes not capable to detect the essential link between a vertex
 the reasons why the presented algorithm of similarity is still not totally 
 satisfactory.
 
-To prove this statements, we first need to dive a little bit in the world of the 
+To prove these statements, we first need to dive a little bit in the world of the 
 symmetric, positive semidifinite matrices with some definitions and some proofs.
 
 \begin{definition}\index{minor}\index{principal minor}\index{matrix!minor}\index{matrix!principal minor}
@@ -4322,16 +4335,14 @@ matching' of Laura Zager and George Verghese \cite{zager} expands the
 notion of node similarity presented in the previous section to similarity 
 between the edges of two graphs. The paper was presented in 2006. Intuitively an 
 edge of a graph $\graf$ is similar to an edge of graph $\grafeen$ if their 
-\emph{source} and \emph{terminal nodes} are similar. As a consequence, the notion of similarity between edges
+\emph{source} and \emph{terminal nodes} (Definition \ref{terminal}) are similar. As a consequence, the notion of similarity between edges
 introduces a coupling between edge and node similarity scores. The algorithm presented in 
 this paper is therefore an extension of the algorithm presented in the previous section.
 
 \subsection{Coupled node-edge similarity scores}
 We now present the extended algorithm allowing us to calculate not only a node 
 similarity scores, but also edge similarity scores. The algorithm will use a 
-new sort of matrices that represent a graph. Recall Definition \ref{terminal} of 
-source and terminal nodes.
-
+new sort of matrices that represent a graph.  
 
 \begin{definition}\index{source-edge matrix}\index{matrix!source-edge matrix}
   Let be $\graf=(V,\to)$ be a graph with adjacency matrix A, numbered vertices $v_1, v_2, \ldots, v_n \in V$ 
@@ -4431,11 +4442,11 @@ can be rewritten as:
   
   Then the matrix subsequences $X^{(2k)}$, $Y^{(2k)}$ and $X^{(k+1)}$, $Y^{(k+1)}$ 
   converge to $X_{\text{even}}$, $Y_{\text{even}}$ and $X_{\text{odd}}$, 
-  $Y_{\text{odd}}$. If we take\footnote{$J$ is a matrix of all ones}:
+  $Y_{\text{odd}}$. If we take:
   \begin{eqnarray*}  X^{(0)} = J \in \R^{n_\grafeen \times n_\graf}\\
     Y^{(0)} = J \in \R^{m_\grafeen \times m_\graf}
   \end{eqnarray*}
- as initial matrices, then $X_{\text{even}}(\mathbf{1})=X_{\text{odd}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})= Y_{\text{odd}}(\mathbf{1})$ 
+ as initial matrices, then $X_{\text{even}}(J)=X_{\text{odd}}(J)$, $Y_{\text{even}}(J)= Y_{\text{odd}}(J)$ 
  are the unique matrices of largest 1-norm among all possible limits with positive 
  initial matices and the matrix sequence $X^{(k)}$, $Y^{(k)}$ converges has a 
  whole.
@@ -4479,8 +4490,8 @@ $G$ is a $m_\graf m_\grafeen \times n_\graf n_\grafeen$-matrix, the previous exp
  \mathbf{x}\\
  \mathbf{y}
  \end{pmatrix}^{(k+1)} = \begin{pmatrix}
- \mathbf{0}_{m_\graf m_\grafeen} & G^T\\
- G & \mathbf{0}_{n_\graf n_\grafeen} \\
+ 0_{m_\graf \times m_\grafeen} & G^T\\
+ G & 0_{n_\graf \times n_\grafeen} \\
  \end{pmatrix}
  \begin{pmatrix}
  \mathbf{x}\\
@@ -4540,7 +4551,7 @@ will be eliminated by the normalization in each step. So in the limit as $k \to 
  
  
 
-  \subsection{The algorithm}
+  \subsection{Algorithm 6 and Algorithm 7}
   \begin{algorithm}[h!]
  \KwData{\\
  $A_S$:  the $n_\graf \times m_\graf$ source-edge matrix of a graph $\graf$\\
@@ -4584,10 +4595,10 @@ $k = k + 1$\;
  update: when $Y^{(k)}$ is calculated,the result is immediately used in 
  $X^{(k)}$. This is not according to Theorem \ref{edgegrootbewijs}, which 
  suggest \textit{simultaneous} updating equations: in that case $X^{(k)}$ uses $Y^{(k-1)}$ 
- in it's calculations. It is not difficult to see, by an analogous argument of 
+ in its calculations. It is not difficult to see, by an analogous argument of 
  Theorem \ref{edgegrootbewijs}, that both approaches yield the same set of 
  similarity scores. Numerical analysts, however, will always prefer the sequential
- update procedure because it performs slightly better (see section 3.2 in \cite{numeriekwiskunde}) as you directly use a more accurate 
+ update procedure because it performs slightly better (see section 3.2 in \cite{numeriekewiskunde}) as you directly use a more accurate 
  result for $Y^{(k)}$ in the calculation of $X^{(k)}$. 
  
  A Matlab implementation 
@@ -4776,7 +4787,7 @@ intuitively it is not surprising that edge $3$ of $\grafeen$ is most similar to 
 $\graf$ and edge $6$ of $\grafeen$ is most similar to edge $2$ of $\graf$ because they are both very
 central edges with source nodes and terminal nodes that are very similar (they both have high similarity scores). 
 Also note that $w_7$ is considered as the most `central node' (see subsection \ref{centralescooores}) as it has the 
-largest similarity score for $v_2$, also this can be logically explained because $w_3$ has 2 incoming edges and 2 outgoing
+largest similarity score for $v_2$, also this can be explained because $w_3$ has 2 incoming edges and 2 outgoing
 eges, no other edge has this in $\grafeen$. \end{example}
  
 
@@ -4789,8 +4800,8 @@ Louvain in 2009.
 
 Graph coloring is already introduced in paragraph \ref{colored} and we will 
 construct a method that returns similarity matrices for two graphs where the coloring is on the nodes or 
-on the edges of both graphs. If you would compare the orignal paper to 
-explanation in this section, you will see that there are lot of differences. 
+on the edges of both graphs. If you would compare the original paper to 
+explanation in this section, you will see that there are a lot of differences. 
 This has two reasons: first, with the previous sections we have already a broad overview of 
 similarity on graphs so we can achieve results in a more detailed way, second, to make 
 the notations uniform in the whole master thesis, this paper had to be 
@@ -5022,7 +5033,7 @@ We can write with Theorem \ref{tensor}:
 If we define $M$, $\mathbf{z}^{k+1}$ as follows, the previous expressions 
 concatenate to a single matrix update equation:
 \begin{eqnarray*}
-\mathbf{z}^{k+1} &=& \begin{pmatrix}
+\mathbf{z}^{(k+1)} &=& \begin{pmatrix}
 \vect(Z'_1)\\
 \vect(Z'_2)\\
 \end{pmatrix}^{(k+1)}\\
@@ -5039,9 +5050,9 @@ A_{21}\otimes B_{21} + A^T_{12}\otimes B^T_{12} & A_{22}\otimes B_{22} + A^T_{22
 Notice that the diagonal blocks in $M$ are related to links between the nodes with the same color, 
 while the off diagonal blocks refer to links between nodes of another color. As 
 always, we want to use Theorem \ref{grootbewijs} to get the result. $M$ is 
-clearly nonnegative, because every block $A_{ij}$ and $B_{ij}$ is nonnegative (it's derived from the nonnegative adjacency matrices $A$ and 
+clearly nonnegative, because every block $A_{ij}$ and $B_{ij}$ is nonnegative (it is derived from the nonnegative adjacency matrices $A$ and 
 $B$). Proving that $M$ is symmetric a bit trickier, but notice that $A_{11}\otimes B_{11} + (A_{11}\otimes B_{11})^T$
-is a symmetric $c_\graf(1)c_\grafeen(1)\times c_\graf(1)c_\grafeen(1)$ matrix (because it's the sum of a matrix with his transpose), and $A_{22}\otimes B_{22} + (A_{22}\otimes B_{22})^T$ is a symmetric 
+is a symmetric $c_\graf(1)c_\grafeen(1)\times c_\graf(1)c_\grafeen(1)$ matrix (because it is the sum of a matrix with his transpose), and $A_{22}\otimes B_{22} + (A_{22}\otimes B_{22})^T$ is a symmetric 
 $c_\graf(2)c_\grafeen(2)\times c_\graf(2)c_\grafeen(2)$. If we define $G = A_{21} \otimes B_{21} + A^T_{12}\otimes B^T_{12}$, $G$ is a $c_\graf(2)c_\grafeen(2) \times c_\graf(1)c_\grafeen(1)$-matrix. Now, notice the following relation between the off diagonal blocks:
 \begin{eqnarray*}
   G^T &=& (A_{21} \otimes B_{21} + A^T_{12}\otimes B^T_{12})^T \\
@@ -5073,7 +5084,7 @@ already in the proof of  Theorem \ref{frobvorm}. Notice that the normalization a
 `together' by dividing by $\|(Z^{(k+1)}_1, Z^{(k+1)}_2)\|_F$ , because this is in accordance to the conditions of Theorem \ref{grootbewijs}.
 Normalizing $Z^{(k+1)}_1, Z^{(k+1)}_2$ separately after the expressions are 
 calculated is a bad idea: it gives an iterative process that is different from the one described 
-in Theorem \ref{grootbewijs} and we can not prove convergence in this case.
+in Theorem \ref{grootbewijs} and we cannot prove convergence in this case.
 
 We now prove the induction step $|C|=n-1\Rightarrow |C|=n$. The only crucial thing to prove is that $M$ is 
 again symmetric, the rest of the steps consist of an easy expansion of the case 
@@ -5132,13 +5143,13 @@ A_{1n} \otimes B_{1n} \\ + A^T_{n1} \otimes B^T_{n1}
 A_{nn} \otimes B_{nn}\\ + A^T_{nn} \otimes B^T_{nn}
 \end{array}
 \end{array}\right)$$
-From the induction hypothesis we now that $M'$ is symmetric. It's clear that the 
+From the induction hypothesis we now that $M'$ is symmetric. It is clear that the 
 entries in the last column of $M$ are the transpose of the entries in the last 
 row. It follows that $M$ is again symmetric.
 
 \end{proof}
-\subsubsection{Algorithm}
-We present an algorithmic implemtation of the described method. First, we have 
+\subsubsection{Algorithm 8 and Algorithm 9}
+We present an algorithmic implementation of the described method. First, we have 
 to find a way to easily calculate a partitioned adjacency matrix. This is 
 presented in Algorithm \ref{colorpartition1}. This algorithm expects as input an 
 adjancency matrix where the vertices are arranged by color and an ordered list 
@@ -5296,7 +5307,7 @@ $$S = \begin{pmatrix}
 0&0&0&0.3764&0.3764\\
 0&0&0&0&0.5986
 \end{pmatrix}$$
-As one could expect, the highest similarity scores (0.59) are obtained for the nodes that are the transitions between two type of 
+As one would expect, the highest similarity scores (0.59) are obtained for the nodes that are the transitions between two type of 
 nodes: all the pairs $(v_1, w_1), (v_3, w_2), (v_4, w_3) (v_5, w_5)$ share this similarity 
 score.
 \end{example}
@@ -5557,7 +5568,7 @@ edge similarity on colored edges:
  start vector.
 \end{theorem}
 \begin{proof}
-  By induction on $|C|$. Remember from Defintion \ref{edgecolored} that the 
+  By induction on $|C|$. Remember from Definition \ref{edgecolored} that the 
   function $b$ is surjective, meaning that $C$ only consist of colors that are 
   actually used.
   
@@ -5565,8 +5576,8 @@ edge similarity on colored edges:
   be seen as an uncolored graph. This is just the normal case as proved in 
   Theorem \ref{edgegrootbewijs}.
   
-  Altough again redundant, it is instructuve to prove the case $|C|$ seprately, 
-  because the generalization in the indcution step is then immediately clear, so 
+  Although again redundant, it is instructive to prove the case $|C|$ seperately, 
+  because the generalization in the inducution step is then immediately clear, so 
   consider the partitioned source-edge and terminal-edge matrices:
   \begin{eqnarray*}
     A_S &=& \begin{pmatrix}
@@ -5625,8 +5636,8 @@ A_{S_1} \otimes  B_{S_1}\\ + A_{T_1} \otimes B_{T_1}\end{array}   & \begin{array
   \end{pmatrix}^{(k)}\\
   &=& M\mathbf{z}^{(k)}
 \end{eqnarray*}
-$M$ is cleary nonnegative as it exists of zero elements or sums of Kronecker 
-products of nonnegative matrices. To see that is symmetric, rewrite $M$ with $G$ 
+$M$ is clearly nonnegative as it exists of zero elements or sums of Kronecker 
+products of nonnegative matrices. To see that $M$ is symmetric, rewrite $M$ with $G$ 
 and $G^T$:
 $$G = \begin{pmatrix}
 A^T_{S_1} \otimes  B^T_{S_1} + A^T_{T_1} \otimes B^T_{T_1}\\
@@ -5661,7 +5672,7 @@ and you can rewrite $M$ with $G$ and $G^T$.
 
 \end{proof}
 \subsubsection{Algorithm}
-With the same reasoning as for colored nodes, we developed an algorithm that 
+With the same reasoning as for colored nodes, we programmed an algorithm that 
 takes a source-edge matrix or a terminal-edge matrix as input together with a 
 an ordered list with the number of edges belonging to each color. Under the 
 condition that the edges are arranged by color in the source-edge or 
@@ -5730,17 +5741,17 @@ $$Y = \begin{pmatrix}
 0.5893 & 0 & 0 & 0 \\
 0 & 0.5812 & 0.5812 & 0
 \end{pmatrix}$$
-In fact these two graphs are very similar in the sense that node $v_3$ is 
+In fact these two graphs are very similar in a way that node $v_3$ is 
 replaced by three nodes $w_3, w_4, w_5$. This is also detected by the node and 
 edge similarity matrices, giving equal similarity scores for $(e'_2, e_2)$ and $(e'_3, 
 e_2)$, $(e'_4, e_2)$ is equal to zero because $e'_4$ has a different color.
 \end{example}
-\subsection{Full colored graphs}\index{full coloring}
+\subsection{Fully colored graphs}\index{full coloring}
 We can also consider the combination of colored nodes and colored edges. This in 
-fact the same method as with the colored edges, buth the matrices $X$ and $Y$ 
+fact the same method as with the colored edges, both the matrices $X$ and $Y$ 
 will in this case both be block diagonal (possibly with a different number of 
 blocks). The iteration matrix for $Y$ will be completely equal to the iteration 
-matrix for colored edges and it's easy to adapt the iteration matrix for $X$ so it can handle with colored nodes. 
+matrix for colored edges and it is easy to adapt the iteration matrix for $X$ so it can handle colored nodes. 
 We will not discuss this case in detail, as it would 
 be an extensive repetition of the previous subsections.
 \newpage
@@ -5749,22 +5760,22 @@ Similarity on graphs is a fairly new concept, so there are not so many
 applications developed yet. In this small subsection we give a concise overview 
 of the already existing applications. We just give an intuitive idea to give the 
 reader a notion of which kind of applications are already possible. For the more 
-detailed, mathematical approach we refer to relevant papers.
+detailed, mathematical approach we refer to the relevant articles.
 \subsection{Synonym Extraction}\index{synonym extraction}
 In \cite{blondel}, they use the structure graph $1 \to 2 \to 3$ to substract 
-synonyms in graphs constructed from a dictionary. the method is based on the 
+synonyms in graphs constructed from a dictionary. The method is based on the 
 assumption that synonyms have many words in common in their definitions and 
-appear together in the defintion of many words. So to construct a \emph{dictionary 
+appear together in the definition of many words. So to construct a \emph{dictionary 
 graph}\index{dictionary graph}\index{graph!dictionary graph} $\graf$, each word of the dictionary is a vertex 
-and there is an edge from $v_i$ to $v_j$ if $v_i$ appears in the defintion of 
-$v_j$. Now, with a given word $w$, we constrcut a neighboorhood graph $\graf'$, 
+and there is an edge from $v_i$ to $v_j$ if $v_i$ appears in the definition of 
+$v_j$. Now, with a given word $w$, we construct a neighboorhood graph $\graf'$, 
 which is the subgraph of $\graf$ whose vertices are pointed to by $w$ or are 
 pointing to $w$. Finally, we rank the words by decreasing central score and the 
 words with the highest central scores will possibly be good synonyms.
 \subsection{Graph matching}\index{matching}\index{graph matching}\index{graph!matching}
 The mean usage of the current graph similarity algorithms as presented in this 
 section, is to find some kind of an optimal matching between the elements (vertices and edges) 
-between two graphs. Graph matching has received a lot of popularity because it's 
+between two graphs. Graph matching has received a lot of popularity because it is 
 useful for data mining. By example, in \cite{zager} they use brute-force 
 algorithm that calculates the similarity scores between a graph $\graf$ and any 
 possible subgraph of $\graf$. By putting some conditions about the desired 
@@ -5775,6 +5786,8 @@ original graph. Practical uses of graph matching are:
   \item Comparing two databases,
   \item Finding clusters in a set of data,
   \item Align sequences of DNA,
+  \item Comparing networks,
+  \item Comparing connections in social networks,
   \item ...
   
 \end{itemize}
@@ -5783,7 +5796,23 @@ original graph. Practical uses of graph matching are:
 
 \chapter{Similarity on hypergraphs}
 \section{Introduction}
-In this section, we explore similarity on hypergraphs. This is exploration is new as no papers can be found on the subject. In order to generalize
+\subsection{Motivation}
+In this section, we explore similarity on hypergraphs. This exploration is new. No papers can be found on the subject. 
+A motivation to generalize the concept of similarity to hypergraphs can be found 
+in the applications of hypergraphs in other sciences. A very clear application 
+can be found in chemistry: some of the graph models used for the representation of molecules are not 
+sufficient to grasp the whole complexity of the molecule structure (for example, molecules with delocalized polycentric bonds can
+not be represented as graphs without losing a lot of information about the structure). Representing these molecules as
+hypergraphs is often a good and more illustrative solution \cite{moleculen}. An 
+established similarity method for hypergraphs may potentially detect 
+equivalences in the structure of such molecules. Also in computer 
+science, some research is done about representing data structures as hypergraphs. 
+For example, to speed up algorithms in parallel databases, a representation with 
+hypergraphs can be used \cite{parallel}. Also in this case, a hypergraph 
+similarity method may lead to an algorithm that efficiently compares two parallel databases.
+
+\subsection{What would be a good hypergraph similarity method?}
+In order to generalize
 this concept of similarity successfully and give it a correct meaning, we need to formulate 
 some conditions that a possible method for similarity on hypergraphs has to fulfill. 
 Intuitively, all methods from the previous chapter work in the same way: in the 
@@ -5808,46 +5837,29 @@ methods for graphs:
   of the adjacent vertices in the hypergraph is large.
   \item[(C5)] The similarity score of an edge is large (compared to others) when it connects vertices 
   with large similarity scores.
-  \item[(C6)] When two vertices have the same relationships to all other vertices, we say 
-  that these vertices are \emph{interchangeable} \index{interchangeable vertex}, sometimes these nodes
-  are also called \emph{structural equivalent}\index{structural equivalent}. Interchangeable vertices must have 
-  the same similarity scores because, intuitively, they play the same role. 
-  Actually, we can give a more general definition of interchangeability in 
+  \item[(C6)] When two vertices (edges) have the same relationships to all other vertices (edges), we say 
+  that these vertices (edges) are \emph{structural equivalent}. \index{structural equivalence} Structural equivalent vertices and edges must have 
+  the same similarity scores because, intuitively, they play exactly the same role in the hypergraph structure. 
+  Actually, we can give a more general definition of structural equivalence in 
   hypergraphs:
-  \begin{definition}\label{definterhyp}
-    Two vertices $v_i, v_j$ of a hypergraph $\hgraf$ are \textbf{interchangeable 
-    vertices}
-  if for each edge of size $k+1$ that connect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_k$, there is an edge of size $k+1$ (possibly the same) that connects
-  $v_j$ to $v_p_1, v_p_2,\ldots, v_p_k$ or an edge of size $k+1$ that connects $v_j$ to $v'_p_1, v'_p_2, \ldots, v'_p_k$, a group
-  of interchangeable vertices of  $v_p_1, v_p_2,\ldots, v_p_k$ (in this case $v'_p_i$ can be equal to 
-  $v_p_i$).
-  \end{definition}\index{circular definition}
-   This definition is slightly problematic 
-as it is a circular definition. To keep things easy to understand and easy to 
-prove, we will always limit ourselves to the non-circular defintion:
-\begin{definition}\label{definterhyp}
-    Two vertices $v_i, v_j$ of a hypergraph $\hgraf$ are \textbf{interchangeable 
-    vertices}
-  if for each edge of size $k+1$ that connect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_k$, there is an edge of size $k+1$ (possibly the same) that connects
-  $v_j$ to $v_p_1, v_p_2,\ldots, v_p_k$.  \end{definition}
 
-It's easy to see that if the condition is met for the non-circular version, the 
-condition is also met for the circular version: in the non-circular version the 
-`first-grade' interchangeable vertices are spotted. They will have the same 
-similarity scores when the condition is met for the non-circular version. In the 
-second step, you can spot the higher grade interchangeable vertices where we 
-already know that the lower grade interchangeable vertices are ok.
-  
+\begin{definition}\label{definterhyp}
+    Two vertices $v_i, v_j$ of a hypergraph $\hgraf$ are \textbf{structural equivalent}
+  if for each edge of size $k+1$ that connect $v_i$ to $v_{p_1}, v_{p_2},\ldots, v_{p_k}$, there is an edge of size $k+1$ (possibly the same) that connects
+  $v_j$ to $v_{p_1}, v_{p_2},\ldots, v_{p_k}$.  \end{definition}
+
  When calculating 
-  an edge similarity matrix, interchangeable edges must also have the same similarity 
-  scores. Interchangeable edges are edges that contain exactly the same 
-  vertices.
+  an edge similarity matrix, structural equivalent edges (edges that have the same size and connect exactly the same vertices) 
+  must also have the same similarity 
+  scores.
+  
+
 
   \item[(C7)] The cardinality of an edge E in a hypergraph ($|E|$) must 
   influence the edge similarity scores: edges with a high cardinality must have a higher similarity score than two edges with a lower cardinality.
       \item[(C8)] A vertex can only have a similarity score equal to zero when the hypergraph is not connected. In that case, 
   it can occur that a group of connected vertices dominates all vertices that are not adjacent to this group. 
-  Also edge can only have a similarity score equal to zero when the hypergraph is not connected. 
+  Also an edge can only have a similarity score equal to zero when the hypergraph is not connected. 
   An isolated vertex (that is not a loop) will always have a similarity score equal 
   to zero. 
   \end{itemize}
@@ -5858,7 +5870,7 @@ a better foundation, we now give an explanation on how the methods of similarity
 section 2 meet each condition for undirected graphs. Although most conditions are also met for
 directed graphs,  we only have to consider undirected graphs
 because hypergraphs itself are undirected. The explanation can either be a proof of a simple 
-theorem or a more heuristic explanation. The explanations are numbered (E1,.., E8) 
+theorem or a more heuristic explanation. The explanations are numbered (E1,$\ldots$, E8) 
 in the same way as the conditions because we will often refer to this 
 explanations in the rest of this chapter. 
 
@@ -5866,7 +5878,7 @@ explanations in the rest of this chapter.
   \item[(E1)] Undirected graphs are equal to $2$-hypergraphs. It is evident that 
   in the case of a $2$-hypergraph the results obtained by a similarity method 
   for hypergraphs must return the same results (up to a constant).
-   \item[(E2)] It's easy to see that (C2) holds for every (node) similarity method on 
+   \item[(E2)] It is easy to see that (C2) holds for every (node) similarity method on 
    graphs as adding a extra node to a graph generates an additional row and 
    column in the adjacency matrix. This row and column are thus included in the 
    calculation of the similarity matrix $S$ and after the calculation, similarity 
@@ -5885,43 +5897,34 @@ of $\graf_A$. We see that $s_{i,j}$, the similarity score between $v_i$ of $B$ a
  the complete similarity matrix $S$. So we see that this implicit relation means that the similarity scores
  of a vertex in an graph is large (compared to others) when the similarity score 
   of the adjacent vertices in the graph is large.
-  \item[(E5)] This holds with the same reasoning as (E4) but now applied to the (edge) similarity method. 
+  \item[(E5)] This holds with the same reasoning as (E4) but now applied to the node-edge similarity method (section 2.3). 
   
 
-  \item[(E6)]  To see that (C6) also holds in graphs, we define interchangeable vertices in graphs 
-  as follows:\index{interchangeable vertex}
-  \begin{definition} In an undirected graph $\graf$, two vertices $v_i, v_j$ are \textbf{interchangeable} if they have exactly the same 
-  adjacency structure. Meaning that for each edge that connects $v_i$ to a vertex $v_q$, there must also 
-  be an edge that connects $v_j$ to $v_q$ or an edge that connects $v_j$ to an interchangeable vertex $v_q$.  In a directed graph, the same holds 
-  in the sense that for each edge $v_i \to v_q$ there must exist an edge $v_j \to v_q$  
- or an edge $v_j \to v'_q$ with $v_q, v'_q$ interchangeable vertices.
-  and for each edge $v_p \to v_i$ there must exist an edge $v_p \to v_j$ or an edge $v'_p \to v_j$ with $v_q, v'_q$ interchangeable vertices.
-  \end{definition}
-  The non-circular version is:
-    \begin{definition} In an undirected graph $\graf$, two vertices $v_i, v_j$ are \textbf{interchangeable} if they have exactly the same 
+  \item[(E6)]  To see that (C6) also holds in graphs, we define structural equivalent vertices in graphs 
+  as follows:\index{structural equivalence}
+
+    \begin{definition} In a graph $\graf$, two vertices $v_i, v_j$ are \textbf{structural equivalent} if they have exactly the same 
   adjacency structure. Meaning that for each edge that connects $v_i$ to a vertex $v_q$, there must also 
   be an edge that connects $v_j$ to $v_q$.  In a directed graph, the same holds 
   in the sense that for each edge $v_i \to v_q$ there must exist an edge $v_j \to v_q$ 
   and for each edge $v_p \to v_i$ there must exist an edge $v_p \to v_j$.
   \end{definition}
-  We will show that the non-circular version of this defintion  holds for the method of Blondel on graphs by proving the 
-  following theorem. Although we would be fine to prove it just for undirected graphs as hypergraphs
-  will always have undirected graph representations, we also consider the 
-  directed case. Notice that all isolated vertices in a graph are always 
-  interchangeable.
+ Notice that all isolated vertices in a graph are always 
+  structural equivalent. We will show that (C6) holds for the method of Blondel on graphs by proving the 
+  following theorem. 
  \begin{theorem}
-    Let $\graf_A$ be a graph with interchangeable vertices and $\graf_B$ another 
+    Let $\graf_A$ be a graph with structural equivalent vertices and $\graf_B$ another 
     graph, then by calculating the similarity matrix between $\graf_A$ and 
-    $\graf_B$ the interchangeable vertices of $\graf_A$ will have the same similarity scores for every vertex of $\graf_B$. 
+    $\graf_B$ the structural equivalent vertices of $\graf_A$ will have the same similarity scores for every vertex of $\graf_B$. 
   \end{theorem}
   \begin{proof}
-    Let $\graf_A = (V,\to), \graf_B = (W,\to')$ with $|V|=n, |W|=m$. First, it's easy to see that the interchangeable vertices form an equivalence relation $\sim$ on 
-    $V$ with $v_p \sim v_q$ if and only if $v_p$ and $v_q$ are interchangeable. 
-    Take $\overline{v_p}$, an equivalency class with more than one vertex (this exists as $\graf_A$ has interchangeable 
+    Let $\graf_A = (V,\to), \graf_B = (W,\to')$ with $|V|=n, |W|=m$. First, it is easy to see that the structural equivalent vertices form an equivalence relation $\sim$ on 
+    $V$ with $v_p \sim v_q$ if and only if $v_p$ and $v_q$ are structural equivalent. 
+    Take $\overline{v_p}$, an equivalency class with more than one vertex (this exists as $\graf_A$ has structural equivalent 
     vertices).  
     
-    Now, from the definition of interchangeable vertices in graphs, we conclude 
-    that two vertices $v_p$ and $v_q$ are interchangeable if and only if for all $i \in \{1,\ldots,n\}$ 
+    Now, from the definition of structural equivalent vertices in graphs, we conclude 
+    that two vertices $v_p$ and $v_q$ are structural equivalent if and only if for all $i \in \{1,\ldots,n\}$ 
     holds that $a_{ip} = a_{iq}$ and 
     that $a_{pi} = a_{qi}$. This holds also for directed graphs, in the 
     undirected case we even have that $a_{ip} = a_{pi} = a_{qi} = a_{iq}$. So 
@@ -5948,6 +5951,69 @@ of $\graf_A$. We see that $s_{i,j}$, the similarity score between $v_i$ of $B$ a
    step $k$, the theorem follows. 
 \end{proof}
  
+ \begin{remark}
+   The notion of structural equivalence was introduced on graphs into the network 
+   literature by Lorrain and White in 1971 \cite{network} using category theory. 
+   Later on, in 1988, also the notion of of automorphic equivalence \index{automorphic equivalence} was proposed by Chris 
+   Winship in \cite{winship}. An automorphism \index{automorphism} of a graph $\graf = (V,\to)$ is a permutation
+   $\pi$ of the vertex set $V$, such that for any two vertices $v_i, v_j$ it holds that $\pi(v_i) \to \pi(v_j)$ if and only if $v_i \to v_j$.
+   Now, two vertices $v_i, v_j$ of a graph $\graf$ are 
+   automorphic equivalent if and only if 
+ there exists an automorphism $\pi$ such that $\pi(v_i)=v_j$. Automorphic 
+ equivalence is a natural generalization of structural equivalence but it is 
+ easy to see that it is a weaker condition. Just as structural equivalence, also automophic equivalence can 
+ be easy generalized to nodes and edges of hypergraphs (see \cite{auto}). When we developed these conditions 
+ for a good hypergraph similarity method, we have long thought of imposing the 
+ condition that two automorphic equivalent nodes (or edges) of an hypegraph must 
+ have the same similarity score. Finally, we didn't impose this condition because our experiments showed that even the similarity methods for graphs 
+ fail to detect automorphic equivalence (in the sense that they should return the same similarity scores for automorphic equivalent vertices)
+ for large and complex graphs. The methods we propose for hypergraphs will in general also fail to detect
+ automorphic equivalent nodes or edges. Only when the considered hypergraphs are very easy, the methods might return equal scores for
+ automorphic equivalent nodes or edges. One may wonder of this is a drawback of the current graph similarity methods or not. This depends on the practical setting, but in general we argue that this is normal behaviour we would expect from a similarity method. We give
+an example to make our vision clear, consider the following graph:
+
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    thick]
+                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=6pt,
+                            inner sep=0pt]
+
+
+  \node[main node] (1) [label=above:A] {};
+\node[main node] (8) [label=left:C][below of=1] {};
+  \node[main node] (2) [label=below:B][left of=8] {};
+  \node[main node] (3) [label=below:D][ right of=8] {};;
+  
+  \node[main node] (4) [label=below:E][below left of=2] {};
+  \node[main node] (5) [label=below:G][below right of=2] {};;
+  \node[main node] (6) [label=below:H][below left of=3] {};
+  \node[main node] (7) [label=below:I][below right of=3] {};;
+  \node[main node] (9) [label=below:F][below of=8] {};
+  \path[every node/.style={font=\sffamily\small}]
+   
+(1) edge node [below] {} (2)
+    (1) edge node  [below] {}(2)
+    (1) edge node [below] {} (3)
+    (2) edge node [below] {} (4)
+    (2) edge node [below] {} (5)
+    (3) edge node [below] {} (6)
+    (3) edge node  [below] {} (7)
+  (1) edge node [below] {} (8)
+  (8) edge node [below] {} (9)
+\end{tikzpicture}
+
+\end{center}
+This graph describes the organizational structure of an organization, with $A$ the CEO, $B, C, D$ managers, $E, G$ are workers for manager $B$, $H, I$ are workers for manager $D$ and $F$ is the lone worker for
+manager $C$. It is easy to see that the structural equivalent pairs are $\{E, G\}$ and $\{H, I\}$. They have exactly
+the same working relations with the rest of the organization. Manager $B$ and manager $D$ are not structural
+equivalent (they do have the same CEO, but not the same workers), but they are automorphic equivalent (of course, also
+the $E, F, H$ and $I$ are automorphic equivalent) . This is also
+very intuitive: if we swapped them, together with their workers, the organizational structure would be the same. Still, when we would compare with a graph similarity method this organizational structure with another organizatinal structure, we would argue that it is justified to give $B$ and $D$ another similarity score as they are managers
+of different workers. Moreover, if one indeed needs a method to detect automorphic equivalence, plenty of algorithms
+are already available for this purpose (see \cite{regulareq}).
+
+ 
+  \end{remark}
 
  
   \item[(E7)] This condition arose based on intuition. A hypergraph that is not a $k$-hypergraph,
@@ -6038,7 +6104,7 @@ only 1 hypergraph), because only a faithful
 characteristic graph will preserve all the information that the structure of a hypergraph
 contains. When the characteristic graph of a hypergraph is not faithful,
 the resulting similarity methods 
-can do a fair job under certain circumstances, but we will see that we can not fulfill
+can do a fair job under certain circumstances, but we will see that we cannot fulfill
 all the conditions at the same time because some information of the original hypergraph is lost. 
 To prove that several graph representations of hypergraphs meet certain 
 conditions, we will often refer to the explanations (E$_i$) in the following 
@@ -6058,7 +6124,7 @@ with:
       \end{enumerate}
 \end{definition}
 
-It's immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). 
+It is immediately clear that line-graphs are simple graphs (see Definition \ref{simplegraph}). 
 An important property of a hypergraphs can be seen on a line-graph:
 
 \begin{property}\label{linegrafconnected}
@@ -6659,7 +6725,7 @@ By applying the algorithm we get the adjacency matrices $A_1$ for
   \subsubsection{Interpretation}
   We now discuss the conditions from the introduction:
   \begin{itemize}
-    \item[(C1)] Not fulfilled: first, the method will only result an edge 
+    \item[(C1)] Not fulfilled: first, the method will only return an edge 
     similarity matrix and second, the line-graph of an undirected graph is not 
     necessary the undirected graph itself:
     \begin{center}
@@ -6705,7 +6771,7 @@ information about the vertex adjacency is saved.
     
  
  
-   \item[(C2)] Not fulfilled: the vertices of the hypergraph doesn't play a role 
+   \item[(C2)] Not fulfilled: the vertices of the hypergraph don't play a role 
    in the line-graph. No information about them is saved in the line-graph 
    representation.
   \item[(C3)] Fulfilled: Adding an edge to one of the two hypergraphs will 
@@ -6719,24 +6785,24 @@ information about the vertex adjacency is saved.
   \item[(C5)] Not fulfilled: there is no information about the vertices saved in 
   the line-graph representation of a hypergraph.
   \item[(C6)] Fulfilled: from Example \ref{ex4line} we see that the $E'_1$ and 
- $E'_4$ are interchangeable and have indeed the same similarity scores. We will 
+ $E'_4$ are structural equivalent and have indeed the same similarity scores. We will 
  prove this.
  
  \begin{theorem}
-   The line-graph representation of a hypergraph preserves interchangeable 
+   The line-graph representation of a hypergraph preserves structural equivalent 
    edges.
  \end{theorem}
  \begin{proof}
-   Two edges are interchangeable in a hypergraph if they contain exactly the same 
+   Two edges are structural equivalent in a hypergraph if they contain exactly the same 
    vertices. They form an equivalence class on $E$ where $E_i \sim E_j$ if they 
-   are interchangeable. Let $\overline{E_i}$ be the class of interchangeable 
-   edges with $E_i$, we assume that this class contains at least 2 edges. Now from Defintion \ref{linegraphdef} we see that
+   are structural equivalent. Let $\overline{E_i}$ be the class of structural equivalent 
+   edges with $E_i$, we assume that this class contains at least 2 edges. Now from definition \ref{linegraphdef} we see that
    $E_i \leftrightarrow E_j$ if and only if $E_i \cap E_j \not = \emptyset$ and $i \not = j$ 
    in the linegraph representation, thus all the edges in $\overline{E_i}$ will 
-   have exactly the same adjacency structure, making them interchangeable as vertices in the 
+   have exactly the same adjacency structure, making them structural equivalent as vertices in the 
    line-graph representation too.
  \end{proof}
- Because the line-graph representation preserves interchangeable edges and we use the method of Blondel for which we already proved
+ Because the line-graph representation preserves structural equivalent edges and we use the method of Blondel for which we already proved
  in (E6) that this condition holds, the result follows.
      \item[(C7)] Not fulfilled: no information on the number of vertices an edge 
 contains is preserverd by the line-graph representation.
@@ -6758,7 +6824,7 @@ contains is preserverd by the line-graph representation.
   Similarity between hypergraphs through line-graphs only allows us to discover 
   groups of connected edges in both hypergraphs. The fact that the line-graph 
   representation is a bit disappointing, was also predictable as a lot of 
-  hypegraphs share the same line-graph representation. 
+  hypergraphs share the same line-graph representation. 
 
 
 \subsection{$2$-section of a hypergraph}\index{$2$-section}\index{hypergraph representation!$2$-section}
@@ -7186,29 +7252,29 @@ $\hgrafeen_1$.
   
   This can be explained 
   generally from the fact that the 2-section preserves the adjacency relations between 
-  vertices of the hypergraph by definition (namely: a vertex that is adjacent to another vertex in the hypergraph, will also be adjacent in the $2$-section). By preserving this relations, we can 
+  vertices of the hypergraph by definition (namely: a vertex that is adjacent to another vertex in the hypergraph, will also be adjacent in the $2$-section). By preserving these relations, we can 
   use the information in (E4) to conclude that this condition is fulfilled.
     \item[(C5)] This condition does not apply on this method because we don't calculate edge similarity scores.
-   \item[(C6)] Fulfilled: all interchangeable vertices have the same similarity 
-   scores in the Examples \ref{ex2sec1}, \ref{ex2sec2}, \ref{ex2sec3}. This is can be explained
-   from the fact that the interchangeable vertices of a hypergraph are also 
-   interchangeable vertices in the 2-section graph. We will prove this:
+   \item[(C6)] Fulfilled: all structural equivalent vertices have the same similarity 
+   scores in the Examples \ref{ex2sec1}, \ref{ex2sec2}, \ref{ex2sec3}. This can be explained
+   from the fact that the structural equivalent vertices of a hypergraph are also 
+   structural equivalent vertices in the 2-section graph. We will prove this:
    
     \begin{theorem}
-   The $2$-section of a hypergraph preserves interchangeable vertices. \end{theorem}
+   The $2$-section of a hypergraph preserves structural equivalent vertices. \end{theorem}
  \begin{proof}
-   The interchangeable vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
-   $V$, take an equivalence $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two interchangeable vertices),
+   The structural equivalent vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
+   $V$, take an equivalence $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two structural equivalent vertices),
    this means that all vertices in $\overline{v_i}$ have exactly the same adjacency structure in the hypegraph $\hgraf$.  
    So, when a vertex in $\overline{v_i}$ is adjacent to a vertex $v_p$, all 
    vertices in $\overline{v_i}$ are adjacent to $v_p$ in the hypergraph 
    $\hgraf$. By the definition of the $2$-section, this means that all vertices 
    in $\overline{v_i}$ will also have an edge connecting them to $v_p$ in the 
    $2$-section. So in the $2$-section, all vertices in $\overline{v_i}$ will be adjacent to 
-  the same vertices, making them also interchangeable by the definition of interchangeable vertices in graphs.   
+  the same vertices, making them also structural equivalent by the definition of structural equivalent vertices in graphs.   
    
  \end{proof}
- Because the $2$-section preserves interchangeable vertices and we use the method of Blondel for which we already proved
+ Because the $2$-section preserves structural equivalent vertices and we use the method of Blondel for which we already proved
  in (E6) that this condition holds, the result follows.
    
   
@@ -7218,7 +7284,7 @@ $\hgrafeen_1$.
   \item[(C8)] Fulfilled from the fact that isolated vertices in a hypergraph will 
   also be isolated in the $2$-section by definition. Because we already know from (E8) that this condition
   holds for the method of Blondel, we conclude that 
-  this condition is fulfilled because the $2$-section preserves connectivy by 
+  this condition is fulfilled because the $2$-section preserves connectivity by 
   definition.
   \end{itemize}  
 
@@ -7227,7 +7293,7 @@ The $2$-section of a hypergraph is a rich structure that
 saves a lot more information compared to the the line-graph representation. The biggest drawback for this method is that 
 adding an edge to a hypergraph can sometimes have no effect at all. This happens when 
 the added edge connects vertices which were already connected. This is bad, because adding an edge always should have an impact on 
-  the similarity scores as it expresses an additional union between vertices. As a consequence, adjacent vertices that aren't interchangeable
+  the similarity scores as it expresses an additional union between vertices. As a consequence, adjacent vertices that aren't structural equivalent
   can still have the same similarity scores. We saw in Example \ref{2sectievoorbeeld} that
   the 2-section of a hypergraph is not unique, meaning that we are loosing certain
   information on the hypergraph. In this case, we can lose information about 
@@ -7242,7 +7308,7 @@ the added edge connects vertices which were already connected. This is bad, beca
   \subsection{Extended $2$-section of a hypergraph}\index{extended $2$-section}\index{hypergraph representation!extended $2$-section}
 
  \subsubsection{General definitions and properties}
-\begin{defintion}
+\begin{definition}
   The \textbf{extended $2$-section} of a hypergraph $\hgrafeen = (V,E)$ is the (undirected) graph denoted by $\[\hgrafeen\]'_2 = (V,\leftrightarrow)$ 
   with:
   \begin{itemize}
@@ -7252,7 +7318,7 @@ the added edge connects vertices which were already connected. This is bad, beca
     \item for every $E_i \in E$ with $|E_i| =1$ : $v_k \leftrightarrow v_k$ for $v_k \in 
     E_i$.
     \end{itemize}
-      \end{defintion}
+      \end{definition}
 \subsubsection{Algorithm for similarity}
 We introduce Algorithm \ref{extended2sectionalg} that 
   takes a hypergraph as input and returns the adjacency matrix of the 
@@ -7428,7 +7494,7 @@ $$S' = \begin{pmatrix}
 The most important thing to notice here is the difference in similarity scores 
 of vertices $v_1, v_7$ of $\hgrafeen_2$: in the extended 2-section these 
 vertices have different similarity scores which is correct as $v_1$ is also contained in edge 
-$E_4$ and therefore, $v_1$ and $v_7$ are not interchangeable. Conversely, in the `normal'
+$E_4$ and therefore, $v_1$ and $v_7$ are not structural equivalent. Conversely, in the `normal'
 2-section, the representation doesn't take $E_4$ into account, leading 
 to the same similarity scores for $v_1, v_7$.
 \end{example}
@@ -7487,17 +7553,16 @@ $$S = \begin{pmatrix}
 0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
 0.1566&0.2332&0.0246&0.1599&0.2332&0.1078&0.1566&0.2332\\
 \end{pmatrix}$$
-Based on this results, we could conclude that all vertices in $\hgraf_2$ are 
-interchangeable (C7), which is not the case: following Definition \ref{definterhyp}, 
-only $v_2, v_3, v_4$ are interchangeable.
+This is a beautiful example to show that sometimes (when considering easy hypergraphs), automorphic 
+equivalent vertices can share the same similarity scores (see Remark 3.1.4).
 \end{example}
 
 
 \subsubsection{Interpretation}
 
 \begin{itemize}
-  \item[(C1)] Fulfilled: it's trivial to see that by definition of the extended 2-section, an undirected 
-  graph will have exactly the same vertices and exactly the same edges in it's
+  \item[(C1)] Fulfilled: it is trivial to see that by definition of the extended 2-section, an undirected 
+  graph will have exactly the same vertices and exactly the same edges in its
   extended 2-section.
     \item[(C2)] Fulfilled: the number of vertices is preserved in the extended 2-section of 
   a hypergraph, so each vertex is taken into account when calculating the 
@@ -7512,12 +7577,12 @@ only $v_2, v_3, v_4$ are interchangeable.
   use the information in (E4) to conclude that this condition is fulfilled.\textit{(equal to the `normal' 2-section)}
   \item[(C5)]   This condition does not apply on this method because we don't calculate edge similarity scores.
 
-  \item[(C6)] Fulfilled. \begin{theorem}
-   The extended $2$-section of a hypergraph preserves interchangeable vertices.
+  \item[(C6)] Fulfilled, because:\begin{theorem}
+   The extended $2$-section of a hypergraph preserves structural equivalent vertices.
   \end{theorem}
  \begin{proof}
-   The interchangeable vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
-   $V$, take an equivalence class $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two interchangeable vertices),
+   The structural equivalent vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
+   $V$. Take an equivalence class $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two structural equivalent vertices),
    this means that all vertices in $\overline{v_i}$ have exactly the same adjacency structure in the hypegraph $\hgraf$.  
    So, when a vertex in $\overline{v_i}$ is adjacent to a vertex $v_p$ with $k$ edges that connect both vertices (the size of these
    edges doesn't matter), all 
@@ -7526,10 +7591,10 @@ only $v_2, v_3, v_4$ are interchangeable.
    in $\overline{v_i}$ will also have $k$ edges connecting them to $v_p$ in the 
    $2$-section. So in the extended $2$-section, all vertices in $\overline{v_i}$ will be adjacent to 
   the same vertices, and connecting each vertex $\overline{v_i}$ with the same amount of edges to these vertices, making them also
-   interchangeable in the extended $2$-section by the definition of interchangeable vertices in graphs.   
+   structural equivalent in the extended $2$-section by the definition of structural equivalent vertices in graphs.   
    
  \end{proof}
- Because the $2$-section preserves interchangeable vertices and we use the method of Blondel for which we already proved
+ Because the $2$-section preserves structural equivalent vertices and we use the method of Blondel for which we already proved
  in (E6) that this condition holds, the result follows.
  \textit{(equal equal to the `normal' 2-section)}   
  
@@ -7539,7 +7604,7 @@ only $v_2, v_3, v_4$ are interchangeable.
      Fulfilled from the fact that isolated vertices in a hypergraph will 
   also be isolated in the extended $2$-section by definition. Because we already know from (E9) that this condition
   holds for the method of Blondel, we conclude that 
-  this condition is fulfilled because the extended $2$-section preserves connectivity by defintion. \textit{(equal to the `normal' 2-section)}
+  this condition is fulfilled because the extended $2$-section preserves connectivity by definition. \textit{(equal to the `normal' 2-section)}
  \end{itemize}  
 \subsubsection{Conclusion}
 The extended $2$-section solves all the issues with (C1) and (C3) as it preserves all the information about the number of edges connecting
@@ -7614,7 +7679,7 @@ then the incidence graph $\graf_i$ equals:
 \end{center}
 \end{example}
 We can prove that the incidence graph $\graf_i = (W=(V,E),\leftrightarrow)$ of a hypergraph is a faitfhul 
-characteristic graph representation if we know it's bipartite structure.
+characteristic graph representation if we know its bipartite structure.
 
 \begin{theorem}\label{iguniek}
  The incidence graph  $\graf_i = (W=(V,E),\to)$ of a hypergraph is a faithful representation: the incidence 
@@ -7640,7 +7705,7 @@ characteristic graph representation if we know it's bipartite structure.
   
   An important note has to be made here: this algorithm will return both the 
   node and edge similarity scores in the same matrix. Also similarity scores 
-  will be available to compare an edge to a node and vice versa. Since we can not give a correct meaning
+  will be available to compare an edge to a node and vice versa. Since we cannot give a correct meaning
   to such similarity scores, we regard them as redundant, intermediate results. In the examples, we will always draw lines
   in order to clearly separate the node similarity submatrix and the edge 
   similarity submatrix.
@@ -7764,14 +7829,14 @@ $$\left(\begin{array}{llllllll|lll}
     \item[(C3)] Fulfilled from the fact that all edges are 
     represented in the incidence graph of the hypergraph, so each edge is taken into account when calculating the similarity matrix. We conclude with the same reasoning as (E3) that the condition is fulfilled.
 
-  \item[(C4)] Fulfilled from the fact that the adjacency relations of the original hypergraph are represented in it's 
+  \item[(C4)] Fulfilled from the fact that the adjacency relations of the original hypergraph are represented in its 
   incidence graph and that we use Algorithm \ref{algsimilarity}, for which this 
   statement already holds by (E4).
   
   An example can be found in Example \ref{igex1} where $v_2, v_5, v_8$ of $\hgrafeen_1$ 
   have the largest similarity score with $v_6, v_7$ of $\hgrafeen_2$. This is 
   not surprising as $v_6, v_7$ are contained in all possible edges.
-  \item[(C5)] Fulfilled from the fact that the adjacency relations of the original hypergraph are represented in it's 
+  \item[(C5)] Fulfilled from the fact that the adjacency relations of the original hypergraph are represented in its 
   incidence graph, that the edges are considered as normal vertices and that we use Algorithm \ref{algsimilarity}, for which this 
   statement already holds by (E4).
   
@@ -7781,111 +7846,25 @@ $$\left(\begin{array}{llllllll|lll}
   not surprising as these edges are almost equal.
 
 
-  \item[(C6)] Fulfilled. Consider $\hgraf_2$ from Example \ref{ex2extended}:
-
-       \begin{center}
-   \begin{tikzpicture}
-    \tikzstyle{vertex} = [fill,shape=circle,node distance=80pt]
-\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
-\tikzstyle{edge2} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=40pt]
-\tikzstyle{edge3} = [fill,opacity=1,fill opacity=1,line cap=round, line join=round, line width=50pt]
-
-\tikzstyle{elabel} =  [fill,shape=circle,node distance=30pt]
-
-\pgfdeclarelayer{background}
-\pgfsetlayers{background,main}
-
-\node[vertex,label=above:\(v_3\)] (v3) {};
-\node[vertex,left of=v3,label=above:\(v_2\)] (v2) {};
-\node[vertex,right of=v3,label=above:\(v_4\)] (v4) {};
-\node[vertex,above of=v3,label=above:\(v_1\)] (v1) {};
-
-\begin{pgfonlayer}{background}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=green] (v2) -- (v3)--(v4);
-\fill[edge,opacity=1,color=green] (v2.center)--(v3.center) -- (v4.center);
-\end{scope}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=yellow] (v1) -- (v2);
-\fill[edge,opacity=1,color=yellow] (v1.center) -- (v2.center);
-\end{scope}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=blue] (v1) -- (v3);
-\fill[edge,opacity=1,color=blue] (v1.center) -- (v3.center);
-\end{scope}
-\begin{scope}[transparency group,opacity=.5]
-\draw[edge,opacity=1,color=purple] (v1) -- (v4);
-\fill[edge,opacity=1,color=purple] (v1.center) -- (v4.center);
-\end{scope}
-
-
-\end{pgfonlayer}
-
-\node[elabel,color=green,label=right:\(E_1\)]  (e1) at (-5,3) {};
-\node[elabel,below of=e1,color=yellow,label=right:\(E_2\)]  (e2) {};
-\node[elabel,below of=e2,color=blue,label=right:\(E_3\)]  (e3) {};
-\node[elabel,below of=e3,color=purple,label=right:\(E_4\)]  (e4) {};
-
-\end{tikzpicture}
-\end{center}
-
-The incidence graph becomes:
-\begin{center}
-\begin{tikzpicture}[<->,>=stealth',shorten >=1pt,auto,node distance=2cm,
-                    thick]
-                    \tikzstyle{every node}=[draw,circle,fill=black,minimum size=4pt,
-                            inner sep=0pt]
-
-
-  \node[main node] (1) [label=above:$v_1$] {};
-  \node[main node] (2) [label=above:$v_2$][right of=1] {};
-  \node[main node] (3) [label=above:$v_3$][right of=2] {};
-  \node[main node] (4) [label=above:$v_4$][right of=3] {};
-    \node[main node] (9) [label=below:$E_1$][below of=1] {};
-    \node[main node] (10) [label=below:$E_2$][below of=2] {};
-    \node[main node] (11) [label=below:$E_3$][below of=3] {};
-    \node[main node] (12) [label=below:$E_4$][below of=4] {};
-  \path[every node/.style={font=\sffamily\small}]
-   
-    (1) edge node [above] {} (10)
-    (2) edge node [above] {} (10)
-    (1) edge node [above] {} (11)
-    (3) edge node [above] {} (11)
-    (1) edge node [above] {} (12)
-    (4) edge node [above] {} (12)
-    (2) edge node [above] {} (9)
-    (3) edge node [above] {} (9)
-    (4) edge node [above] {} (9)
-
-    
-
-
-
-\end{tikzpicture}
-\end{center}
- we see that interchangeable vertices are also 
-  interchangeable in the incidence graph (using the circular definition) in the sense that $E2$, $E3$ and $E4$ are interchangeable edges and
-  $v_2$, $v_3$, $v_4$ are all connected to $E1$ and one of these interchangeable edges.
-  
-  An example of interchangeable edges can be found in Example \ref{igex4}, where 
+  \item[(C6)] Fulfilled, an example of structural equivalent edges can be found in Example \ref{igex4}, where 
   $E'_1$ and $E'_4$ of $\hgrafeen_2$ have the same similarity scores. In the same 
   example, the vertices $v_1, v_7$ of $\hgrafeen_2$ as well as $v_2, v_5, v_8$.
 
 We know prove that the incidence graph preserves the interchangeability of edges and 
 vertices:
 \begin{theorem}
-   The incidence graph of a hypergraph preserves interchangeable vertices. \end{theorem}
+   The incidence graph of a hypergraph preserves structural equivalent vertices. \end{theorem}
  \begin{proof}
-   The interchangeable vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
-   $V$, take an equivalence $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two interchangeable vertices),
+   The structural equivalent vertices of a hypergraph $\hgraf$ form an equivalence class on the set of vertices
+   $V$, take an equivalence $\overline{v_i}$ with $|\overline{v_i}| > 1$ (we assume that $\hgraf$ has at least two structural equivalent vertices),
    this means that all vertices in $\overline{v_i}$ have exactly the same adjacency structure in the hypegraph $\hgraf$.  
    So, when a vertex in $\overline{v_i}$ is adjacent to a vertex $v_p$, all 
    vertices in $\overline{v_i}$ are adjacent with the same edge $E_k$ to $v_p$ in the hypergraph 
    $\hgraf$. By the definition of the incidence graph, this means that all vertices in 
    in $\overline{v_i}$ will be connected to the edge $E_k$ connecting them to $v_p$ in the 
    incidence graph.  So in the incidence graph, all vertices in $\overline{v_i}$ will be adjacent to 
-  the same vertices and the same edges, making them also interchangeable by the definition of interchangeable vertices in graphs. With the same reasoning, we conlcude
-  that also the interchangeable edges are preserved.  
+  the same vertices and the same edges, making them also structural equivalent by the definition of structural equivalent vertices in graphs. With the same reasoning, we conlcude
+  that also the structural equivalent edges are preserved.  
    
  \end{proof}
 
@@ -7947,7 +7926,7 @@ We first prove the compact form of the method:
   \begin{eqnarray*}  X^{(0)} = J \in \R^{n_\grafeen \times n_\graf}\\
     Y^{(0)} = J \in \R^{m_\grafeen \times m_\graf}
   \end{eqnarray*}
- as initial matrices, then $X_{\text{even}}(\mathbf{1})=X_{\text{odd}}(\mathbf{1})$, $Y_{\text{even}}(\mathbf{1})= Y_{\text{odd}}(\mathbf{1})$ 
+ as initial matrices, then $X_{\text{even}}(J)=X_{\text{odd}}(J)$, $Y_{\text{even}}(J)= Y_{\text{odd}}(J)$ 
  are the unique matrices of largest 1-norm among all possible limits with positive 
  initial matices and the matrix sequence $X^{(k)}$, $Y^{(k)}$ converges has a 
  whole.
@@ -7984,8 +7963,8 @@ $G$ is a $m_\graf m_\grafeen \times n_\graf n_\grafeen$-matrix, the previous exp
  \mathbf{x}\\
  \mathbf{y}
  \end{pmatrix}^{(k+1)} = \begin{pmatrix}
- \mathbf{0}_{m_\graf m_\grafeen} & G^T\\
- G & \mathbf{0}_{n_\graf n_\grafeen} \\
+ 0_{m_\graf m_\grafeen} & G^T\\
+ G & 0_{n_\graf n_\grafeen} \\
  \end{pmatrix}
  \begin{pmatrix}
  \mathbf{x}\\
@@ -8019,8 +7998,8 @@ compact form of Theorem \ref{edgegrootbewijs}.
 The algorithm is completely analogous to Algorithm 6. A Matlab implementation 
 can be found in Listing \ref{edgealgorithmhypergraphmatlab} in Appendix 
 \ref{appendixa}. We also present Algorithm \ref{incidencealg}, an algorithm that 
-takes an hypergraph as input and returns the incidence matrix of the hypergraph, a Matlab implementation of this algorithm
-can be found in Listing A.17.
+takes a hypergraph as input and returns the incidence matrix of the hypergraph. A Matlab implementation of this algorithm
+can be found in Listing A.15.
 
 
 \begin{algorithm}[H]\label{edgealgorithmhypergraph}
@@ -8206,12 +8185,12 @@ $$Y = \begin{pmatrix}
 
 \end{example}
  \subsection{Concluding theorem}
- Before heading to an interpretation of the examples and the method, we know 
+ Before heading to an interpretation of the examples and the method, we now 
  present a `concluding theorem' that shows that the method of similarity using 
  the incidence matrix is completely equal to the method with the incidence graph 
  of the matrix. This gives us an immediate guarantee that all conditions of the 
- introduction are met.
-\begin{theorem}
+ introduction are met for the method with the incidence matrix.
+\begin{theorem}\label{concludingtheorem}
   The similarity method using the incidence graphs of two hypergraphs $\hgraf, \hgrafeen$ returns the same results as the method with the 
   incidence matrices of $\hgraf, \hgrafeen$, up to a constant, so:
 \begin{eqnarray*}
@@ -8298,12 +8277,8 @@ the theorem is true for each even $k$.
    One may wonder whether the node-edge similarity method of 2.3 also returns 
    the same results for directed graphs $\graf, \grafeen$ as the node similarity 
    method of Blondel using the incidence graphs of $\graf, \grafeen$. This is the case, but is a 
-   little harder to prove. First, the node-edge similarity method stays the 
-   same, it's impossible to somehow replace the soure-edge or terminal-edge 
-   matrices by the incidence matrix as it will contain negative entries (see Definition 
-   \ref{incidencematrixgraph}). The incidence graph of a directed graph is 
-   defined as:
-   \begin{definition}
+   little harder to prove. First, we use the following definition for the incidence graph of a directed graph:
+    \begin{definition}\index{incidence graph}\index{graph!incidence graph}
   Let $\graf = (V,\to)$ be a directed graph, then the \textbf{incidence graph} $\graf'_i =(V', \to')$ 
   of $\graf$ is the directed graph with:
    
@@ -8314,21 +8289,32 @@ the theorem is true for each even $k$.
  \end{enumerate}
 
 \end{definition}
-With this setting, it is possible to adapt our proof to see that the method of Blondel with 
-two incidence graphs of directed graphs is equal the the node-edge similarity 
-method. The proof will have exactly the same reasoning, but will be a little bit 
-more extensive as you have to consider both the equalities with the source-edge 
-matrix and the terminal edge matrix.
+  Starting from the node-edge similarity method described in section 2.3,
+   we notice that this method uses source-edge and terminal-edge matrices. In 
+   the undirected case, the source-edge and terminal-edge of a graph are both equal to the 
+   incidence matrix of the graph, but this is not true for the directed case. Indeed, both 
+   the source-edge and the terminal-edge matrix have nonnegative entries and therefore the node-edge similarity method returns nonnegative
+   (node or edge) similarity scores, while the incidence matrix for directed graphs also contains negative entries (see Definition 
+   \ref{incidencematrixgraph}).  Still, we can prove that using the method of 
+   Blondel with the adjancy matrices $A, B$ from the incidence graph of the 
+   directed graphs $\graf, \grafeen$ returns the same results (up to a constant) 
+   as using the node-edge similarity method that uses the source-edge and 
+   terminal-edge matrices of $\graf, \grafeen$. The proof of this theorem will 
+   have exactly the same reasoning as the proof of Theorem 
+   \ref{concludingtheorem}, but the proof will be more extensive as you have to 
+   consider both the equalities with the source-edge matrix and the 
+   terminal-edge matrix.
+
 
  \end{remark}
 \subsection{Interpretation}
 By the concluding theorem, we know that the similarity method for hypergraphs 
-using the incidence matrix is the same (up to constant) as the method with the 
+using the incidence matrix is the same (up to a constant) as the method with the 
 incidence graph representation of hypergraphs. Since the latter method meets all 
 the conditions, this method satisifies all the requirements too.
 \begin{appendices}
   \chapter{Listings} \label{appendixa}% appeared as appendix A
-\lstinputlisting[caption=The MatLab code for the Power Method described in algorithm 1]{power_method.m}
+\lstinputlisting[caption=The MatLab code for the power method described in algorithm 1]{power_method.m}
 
 \lstinputlisting[caption={The MatLab code for algorithm \ref{algsimilarity}.},label={lstsim}]{similarity_matrix.m}
 \lstinputlisting[caption={The MatLab code for Algorithm 6.},label={edgematlab}]{node_edge_similarity_matrix.m}
@@ -8788,6 +8774,7 @@ the conditions, this method satisifies all the requirements too.
 
 \bibliography{bib.bib}
 
+\newpage
 \printindex
 
 \end{document}

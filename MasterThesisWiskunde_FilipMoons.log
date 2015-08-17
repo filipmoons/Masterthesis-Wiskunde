@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.5)  11 AUG 2015 03:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.2)  17 AUG 2015 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -401,12 +401,21 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 code.tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.0 (rcs-revision 1.16)
 \arrowsize=\dimen159
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/appendix/appendix.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has chapter divisions on input line 50.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@pps=\count114
 \c@@ppsavesec=\count115
 \c@@ppsaveapp=\count116
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup4
 )
@@ -797,9 +806,6 @@ Package eufrak Warning: The eufrak package is redundant if the amsfonts package
 
 ) (./MasterThesisWiskunde_FilipMoons.aux
 
-LaTeX Warning: Label `definterhyp' multiply defined.
-
-
 LaTeX Warning: Label `uitgeschrevenvectoren1' multiply defined.
 
 
@@ -808,25 +814,25 @@ LaTeX Warning: Label `uitgeschrevenvectoren2' multiply defined.
 )
 \openout1 = `MasterThesisWiskunde_FilipMoons.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 97.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 96.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 97.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -900,42 +906,42 @@ Package caption Info: End \AtBeginDocument code.
 <VUB_logo.pdf, id=4, 758.835pt x 153.57375pt>
 File: VUB_logo.pdf Graphic file (type pdf)
  <use VUB_logo.pdf>
-Package pdftex.def Info: VUB_logo.pdf used on input line 98.
+Package pdftex.def Info: VUB_logo.pdf used on input line 99.
 (pdftex.def)             Requested size: 214.81128pt x 43.38934pt.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 98.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 99.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 98.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 99.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 98.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 99.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 98.
+(Font)              <10.95> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 98.
+(Font)              <8> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 98.
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 98.
+(Font)              <6> on input line 99.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 99.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 98.
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 98.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -943,15 +949,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <VUB_schild.pdf, id=5, 260.975pt x 259.97125pt>
 File: VUB_schild.pdf Graphic file (type pdf)
  <use VUB_schild.pdf>
-Package pdftex.def Info: VUB_schild.pdf used on input line 98.
+Package pdftex.def Info: VUB_schild.pdf used on input line 99.
 (pdftex.def)             Requested size: 122.34766pt x 122.34517pt.
 
-Overfull \hbox (59.22118pt too wide) in paragraph at lines 98--98
+Overfull \hbox (59.22118pt too wide) in paragraph at lines 99--99
 []|  []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
@@ -979,31 +985,21 @@ Chapter 1.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 424.
+(amsmath)                 on input line 430.
 
 [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 508--511
+Underfull \hbox (badness 10000) in paragraph at lines 520--523
 
  []
 
 [14] [15] [16]
-Overfull \hbox (29.70003pt too wide) in alignment at lines 720--739
+Overfull \hbox (29.70003pt too wide) in alignment at lines 732--751
  [][][] []
  []
 
-[17] [18] [19] [20] [21] [22] [23]
-
-Package natbib Warning: Citation `kieboom' on page 24 undefined on input line 1
-051.
-
-[24]
-
-Package natbib Warning: Citation `kieboom' on page 25 undefined on input line 1
-071.
-
-[25] [26] [27] [28] [29] [30]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 136
-2.
+[17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 137
+4.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1012,12 +1008,12 @@ File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1439--1444
+Underfull \hbox (badness 10000) in paragraph at lines 1451--1456
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 147
-6.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 148
+8.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1028,14 +1024,14 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1482 \end{tikzpicture}
+l.1494 \end{tikzpicture}
                         
 ? R
 OK, entering \nonstopmode...
 ! Undefined control sequence.
 <argument> \pgf@baseline 
                          
-l.1482 \end{tikzpicture}
+l.1494 \end{tikzpicture}
                         
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1044,6 +1040,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [33]
+Missing character: There is no x in font nullfont!
+Missing character: There is no f in font nullfont!
+
 
 ! Package tikz Error: Giving up on this path. Did you forget a semicolon?.
 
@@ -1051,7 +1050,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1514 \end{tikzpicture}
+l.1526 \end{tikzpicture}
                         
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -1061,7 +1060,7 @@ and deduce the truth by order and method.
 ! Undefined control sequence.
 <argument> \pgf@baseline 
                          
-l.1514 \end{tikzpicture}
+l.1526 \end{tikzpicture}
                         
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1073,7 +1072,7 @@ and I'll forget about whatever was undefined.
 \pgf@layerbox@background=\box54
 \pgf@layerboxsaved@background=\box55
  [38]
-Overfull \hbox (10.46553pt too wide) in paragraph at lines 1857--1861
+Overfull \hbox (10.46553pt too wide) in paragraph at lines 1867--1871
 []\OT1/lmr/bx/n/10.95 Definition 1.6.7. []\OT1/lmr/m/it/10.95 A \OT1/lmr/bx/it/
 10.95 path \OT1/lmr/m/it/10.95 in an hy-per-graph $\OMS/lmsy/m/n/10.95 G \OT1/l
 mr/m/n/10.95 = (\OML/lmm/m/it/10.95 V; E\OT1/lmr/m/n/10.95 )$ \OT1/lmr/m/it/10.
@@ -1082,7 +1081,7 @@ mr/m/n/10.95 = (\OML/lmm/m/it/10.95 V; E\OT1/lmr/m/n/10.95 )$ \OT1/lmr/m/it/10.
  []
 
 
-Overfull \hbox (13.87044pt too wide) in paragraph at lines 1905--1909
+Overfull \hbox (13.87044pt too wide) in paragraph at lines 1914--1918
 []\OT1/lmr/bx/n/10.95 Definition 1.6.10. []\OT1/lmr/m/it/10.95 The \OT1/lmr/bx/
 it/10.95 in-ci-dence ma-trix \OT1/lmr/m/it/10.95 of a hy-per-graph $\OMS/lmsy/m
 /n/10.95 G \OT1/lmr/m/n/10.95 = (\OML/lmm/m/it/10.95 V; E\OT1/lmr/m/n/10.95 )$ 
@@ -1098,13 +1097,13 @@ Chapter 2.
 File: fig1hits.pdf Graphic file (type pdf)
 
 <use fig1hits.pdf>
-Package pdftex.def Info: fig1hits.pdf used on input line 2140.
+Package pdftex.def Info: fig1hits.pdf used on input line 2152.
 (pdftex.def)             Requested size: 370.88472pt x 242.40501pt.
  <fig2hits.pdf, id=180, 240.9pt x 266.91017pt>
 File: fig2hits.pdf Graphic file (type pdf)
 
 <use fig2hits.pdf>
-Package pdftex.def Info: fig2hits.pdf used on input line 2167.
+Package pdftex.def Info: fig2hits.pdf used on input line 2178.
 (pdftex.def)             Requested size: 240.8994pt x 266.90952pt.
 
 
@@ -1112,11 +1111,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [45 <./fig1hits.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 2209.
+(Font)              <9> on input line 2220.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 2209.
+(Font)              <5> on input line 2220.
  [46 <./fig2hits.pdf>] [47] [48] [49] [50]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 2472
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 2482
 .
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ts1lmr.fd
@@ -1130,7 +1129,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ! Extra alignment tab has been changed to \cr.
 <template> \endtemplate 
                         
-l.2835 &
+l.2845 &
         \#&\textbf{Participant}&\textbf{2015}&\textbf{2014}&\textbf{2013}&\t...
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1139,7 +1138,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <template> \endtemplate 
                         
-l.2841 &
+l.2851 &
         \#&\textbf{Participant}&\textbf{2015}&\textbf{2014}&\textbf{2013}&\t...
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1159,7 +1158,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2997 \end{tikzpicture}
+l.3006 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1173,7 +1172,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3071 \end{tikzpicture}
+l.3080 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1184,7 +1183,7 @@ See the pgf package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3081 ...:$w_2$] [below left of =1; left of=3]{};
+l.3090 ...:$w_2$] [below left of =1; left of=3]{};
                                                   
 (That was another \errmessage.)
 
@@ -1195,7 +1194,7 @@ See the pgf package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3082 ...abel=right:$w_3$][below right of=1;] {};
+l.3091 ...abel=right:$w_3$][below right of=1;] {};
                                                   
 (That was another \errmessage.)
 
@@ -1206,7 +1205,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3095 \end{tikzpicture}
+l.3104 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1219,7 +1218,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3152   \node[main node]
+l.3161   \node[main node]
                           (2) [label=left:$v_2$] {};
 (That was another \errmessage.)
 
@@ -1231,7 +1230,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3156   \node[main node]
+l.3165   \node[main node]
                           (1) [label=above:$v_1$][above right of=2] {};
 (That was another \errmessage.)
 
@@ -1243,7 +1242,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3157       \node[main node]
+l.3166       \node[main node]
                               (3) [label=below:$v_3$][below right of = 2] {};
 (That was another \errmessage.)
 
@@ -1255,7 +1254,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3158     \node[main node]
+l.3167     \node[main node]
                             (4) [label=right:$v_4$][below right of=1] {};
 (That was another \errmessage.)
 
@@ -1266,7 +1265,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3169 \end{tikzpicture}
+l.3178 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1277,30 +1276,25 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3195 \end{tikzpicture}
+l.3204 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[64] [65] [66]
-
-Package natbib Warning: Citation `kieboom' on page 67 undefined on input line 3
-336.
-
-[67] [68] [69]
+[64] [65] [66] [67] [68] [69]
 ! Double superscript.
-l.3504 $$\mathbf{s}^{(0)}^
+l.3513 $$\mathbf{s}^{(0)}^
                           T \Pi\mathbf{s}^{(0)} \quad \text{and} \quad \math...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.3504 ...\quad \text{and} \quad \mathbf{s}^{(0)}^
+l.3513 ...\quad \text{and} \quad \mathbf{s}^{(0)}^
                                                   T M\Pi M \mathbf{s}^{(0)},$$
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Missing delimiter (. inserted).
 <to be read again> 
                    \mid 
-l.3528 ...\mathbf{1}\|_2} \right\|_1 &=& \left\mid
+l.3537 ...\mathbf{1}\|_2} \right\|_1 &=& \left\mid
                                                   \frac{1}{\|\Pi\mathbf{1}\|...
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
@@ -1312,7 +1306,7 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Missing delimiter (. inserted).
 <to be read again> 
                    \mid 
-l.3528 ...d\frac{1}{\|\Pi\mathbf{1}\|_2}\right\mid
+l.3537 ...d\frac{1}{\|\Pi\mathbf{1}\|_2}\right\mid
                                                   
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
@@ -1325,35 +1319,35 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3542 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3551 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                   \\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3544 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3553 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                   \\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3545 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3554 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                   \\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3546 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3555 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                   
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.3547 
+l.3556 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1361,7 +1355,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.3547 
+l.3556 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1372,7 +1366,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.3547 
+l.3556 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1383,7 +1377,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.3547 
+l.3556 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1394,14 +1388,14 @@ my insertion and my current dilemma will both disappear.
 ! Missing \cr inserted.
 <inserted text> 
                 \cr 
-l.3547 
+l.3556 
        
 I'm guessing that you meant to end an alignment here.
 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.3547 
+l.3556 
        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1410,7 +1404,7 @@ Try to go on, since this might almost work.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.3547 
+l.3556 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1418,7 +1412,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $$ inserted.
 <to be read again> 
                    \@@par 
-l.3547 
+l.3556 
        
 Displays can use special alignments (like \eqalignno)
 only if nothing but the alignment itself is between $$'s.
@@ -1426,7 +1420,7 @@ only if nothing but the alignment itself is between $$'s.
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.3547 
+l.3556 
        
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1437,7 +1431,7 @@ deleted material, e.g., by typing `I$}'.
 ! Misplaced alignment tab character &.
 \reserved@a ->&
                
-l.3549  \end{eqnarray*}
+l.3558  \end{eqnarray*}
                        
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1449,7 +1443,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \cr.
 \@@eqncr ...l \@eqnswtrue \global \@eqcnt \z@ \cr 
                                                   
-l.3549  \end{eqnarray*}
+l.3558  \end{eqnarray*}
                        
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -1460,7 +1454,7 @@ might try typing `S' now just to see what is salvageable.
 ! Extra }, or forgotten \endgroup.
 \endeqnarray ->\@@eqncr \egroup 
                                 \global \advance \c@equation \m@ne $$\@ignor...
-l.3549  \end{eqnarray*}
+l.3558  \end{eqnarray*}
                        
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1471,7 +1465,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.3549  \end{eqnarray*}
+l.3558  \end{eqnarray*}
                        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1482,7 +1476,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.3549  \end{eqnarray*}
+l.3558  \end{eqnarray*}
                        
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -1490,43 +1484,43 @@ So I shall assume that you typed `$$' both times.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.3551 $W$, so \Pi
+l.3560 $W$, so \Pi
                   ^T = (WW^T)^T =
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Double superscript.
-l.3557 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
+l.3566 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
                                                   T\Pi^2\mathbf{s}^{(0)}}\\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.3559 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
+l.3568 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
                                                   T\Pi^2\mathbf{s}^{(0)}}\\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.3561 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
+l.3570 ...\Pi^2\mathbf{1}}.\sqrt{\mathbf{s}^{(0)}^
                                                   T\Pi^2\mathbf{s}^{(0)}}\\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3562 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3571 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                    &\leq&
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
 <argument> \sqrt {\mathbf {s}^{(0)}^
                                     T\Pi ^2\mathbf {s}^{(0)}}
-l.3564 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
+l.3573 ...mathbf{s}^{(0)}^T\Pi^2\mathbf{s}^{(0)}}}
                                                    &\leq&
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 [71] [72] [73]
 ! Undefined control sequence.
-l.3756  \blankline
+l.3765  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1536,7 +1530,7 @@ and I'll forget about whatever was undefined.
 
 [74] [75] [76] [77]
 ! Undefined control sequence.
-l.3917 $$\Sigma = \diag
+l.3926 $$\Sigma = \diag
                        (\sigma_1, \ldots, \simga_p).$$
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1545,7 +1539,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.3917 $$\Sigma = \diag(\sigma_1, \ldots, \simga
+l.3926 $$\Sigma = \diag(\sigma_1, \ldots, \simga
                                                 _p).$$
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1557,7 +1551,7 @@ and I'll forget about whatever was undefined.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.3999 
+l.4008 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1565,7 +1559,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.3999 
+l.4008 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1576,7 +1570,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \@@par 
-l.3999 
+l.4008 
        
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -1584,7 +1578,7 @@ So I shall assume that you typed `$$' both times.
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.3999 
+l.4008 
        
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1592,11 +1586,11 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-[79] <bowtie.pdf, id=328, 129.88524pt x 274.42525pt>
+[79] <bowtie.pdf, id=328, 188.705pt x 295.45982pt>
 File: bowtie.pdf Graphic file (type pdf)
  <use bowtie.pdf>
-Package pdftex.def Info: bowtie.pdf used on input line 4025.
-(pdftex.def)             Requested size: 129.88492pt x 274.42456pt.
+Package pdftex.def Info: bowtie.pdf used on input line 4034.
+(pdftex.def)             Requested size: 226.44485pt x 354.55pt.
 
 
 ! LaTeX Error: Bad math environment delimiter.
@@ -1605,7 +1599,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4030  $$B =\(
+l.4039  $$B =\(
                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1618,7 +1612,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4044 \)
+l.4053 \)
           $$
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1633,7 +1627,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4202   \node[main node]
+l.4211   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -1645,7 +1639,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4203   \node[main node]
+l.4212   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -1657,7 +1651,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4204   \node[main node]
+l.4213   \node[main node]
                           (3) [label=above:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -1669,7 +1663,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4211 \end{tikzpicture}
+l.4220 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1681,7 +1675,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4230   \node[main node]
+l.4239   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -1693,7 +1687,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4231   \node[main node]
+l.4240   \node[main node]
                           (2) [label=left:$v_2$][below left of=1] {};
 (That was another \errmessage.)
 
@@ -1705,7 +1699,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4232     \node[main node]
+l.4241     \node[main node]
                             (4) [label=right:$v_4$][below right of=1] {};
 (That was another \errmessage.)
 
@@ -1717,7 +1711,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4234   \node[main node]
+l.4243   \node[main node]
                           (3) [label=below:$v_3$][below right of=2] {};;
 (That was another \errmessage.)
 
@@ -1729,7 +1723,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4243 \end{tikzpicture}
+l.4252 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1742,7 +1736,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4264   \node[main node]
+l.4273   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -1754,7 +1748,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4265   \node[main node]
+l.4274   \node[main node]
                           (2) [label=below:$v_2$][below of=1] {};
 (That was another \errmessage.)
 
@@ -1766,7 +1760,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4266     \node[main node]
+l.4275     \node[main node]
                             (4) [label=right:$v_4$][below right of=2] {};
 (That was another \errmessage.)
 
@@ -1778,7 +1772,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4268   \node[main node]
+l.4277   \node[main node]
                           (3) [label=left:$v_3$][below left of=2] {};;
 (That was another \errmessage.)
 
@@ -1790,7 +1784,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4276 \end{tikzpicture}
+l.4285 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1798,7 +1792,7 @@ l.4276 \end{tikzpicture}
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.4351 ...T)_{ij} = \begin{cases} 1 &\mbox{if }$t_
+l.4358 ...T)_{ij} = \begin{cases} 1 &\mbox{if }$t_
                                                   \graf(e_j) = v_i$   \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1806,14 +1800,14 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.4351 ...} 1 &\mbox{if }$t_\graf(e_j) = v_i$   \\
+l.4358 ...} 1 &\mbox{if }$t_\graf(e_j) = v_i$   \\
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 [86] [87]
 ! Misplaced alignment tab character &.
-l.4461  $$\vect(X'^{(k+1)}) &
+l.4468  $$\vect(X'^{(k+1)}) &
                              =& (A_S \otimes B_S + A_T \otimes B_T)\vect(Y^{...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1823,7 +1817,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.4461  $$\vect(X'^{(k+1)}) &=&
+l.4468  $$\vect(X'^{(k+1)}) &=&
                                 (A_S \otimes B_S + A_T \otimes B_T)\vect(Y^{...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1836,7 +1830,7 @@ might try typing `S' now just to see what is salvageable.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.4502 (G^TG)^{\frac{k}{2}}\mathbf{x}^{(0)  &
+l.4509 (G^TG)^{\frac{k}{2}}\mathbf{x}^{(0)  &
                                              \mbox{k even }\\
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1845,7 +1839,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.4504 (G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&
+l.4511 (G^TG)^{\frac{k-1}{2}}G^T\mathbf{y}^{(0)&
                                                 \mbox{k odd}
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1854,7 +1848,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.4507 (GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &
+l.4514 (GG^T)^{\frac{k}{2}}\mathbf{y}^{(0)  &
                                              \mbox{k even }\\
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1863,15 +1857,14 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.4509 (GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)&
+l.4516 (GG^T)^{\frac{k-1}{2}}G\mathbf{x}^{(0)&
                                               \mbox{k odd}
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
 Try to go on, since this might almost work.
 
-[89]
 ! Undefined control sequence.
-l.4558  \blankline
+l.4565  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1882,7 +1875,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 <argument>  $Y^{(k)}=&
                        \frac {B_S^TX^{(k-1)}A_S + B_T^TX^{(k-1)}A_T}{\|B_S^T...
-l.4576 \KwRet $X^{(k)}, Y^{(k)} $\;}
+l.4583 \KwRet $X^{(k)}, Y^{(k)} $\;}
                                     {}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1891,15 +1884,11 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-
-Package natbib Warning: Citation `numeriekwiskunde' on page 90 undefined on inp
-ut line 4594.
-
-[90]
+[89] [90]
 ! Undefined control sequence.
 <argument> ...atrix of graph $\graf $} \blankline 
                                                   \SetKwFunction {powermetho...
-l.4632 \KwRet $A_S$\;}
+l.4639 \KwRet $A_S$\;}
                       {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1910,7 +1899,7 @@ and I'll forget about whatever was undefined.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.4633 ...acency matrix $A$ of a graph $\graf$.\\}
+l.4640 ...acency matrix $A$ of a graph $\graf$.\\}
                                                   \label{sourceedge}
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -1925,18 +1914,18 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.4633 ...acency matrix $A$ of a graph $\graf$.\\}
+l.4640 ...acency matrix $A$ of a graph $\graf$.\\}
                                                   \label{sourceedge}
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4633--4633
+Underfull \hbox (badness 10000) in paragraph at lines 4640--4640
 
  []
 
-[91] [92]
+[91]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -1945,7 +1934,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4723   \node[main node]
+l.4730   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -1957,7 +1946,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4724   \node[main node]
+l.4731   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -1969,7 +1958,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4725   \node[main node]
+l.4732   \node[main node]
                           (3) [label=above:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -1981,7 +1970,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4732 \end{tikzpicture}
+l.4739 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -1993,7 +1982,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4741  \node[main node]
+l.4748  \node[main node]
                          (1) [label=above:$w_1$] {};
 (That was another \errmessage.)
 
@@ -2005,7 +1994,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4743   \node[main node]
+l.4750   \node[main node]
                           (2) [label=left:$w_2$] [below left of =1; left of=...
 (That was another \errmessage.)
 
@@ -2016,7 +2005,7 @@ See the pgf package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4743 ...:$w_2$] [below left of =1; left of=3]{};
+l.4750 ...:$w_2$] [below left of =1; left of=3]{};
                                                   
 (That was another \errmessage.)
 
@@ -2028,7 +2017,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4744   \node[main node]
+l.4751   \node[main node]
                           (3) [label=right:$w_3$][below right of=1;] {};
 (That was another \errmessage.)
 
@@ -2039,7 +2028,7 @@ See the pgf package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4744 ...abel=right:$w_3$][below right of=1;] {};
+l.4751 ...abel=right:$w_3$][below right of=1;] {};
                                                   
 (That was another \errmessage.)
 
@@ -2051,7 +2040,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4745     \node[main node]
+l.4752     \node[main node]
                             (4) [label=left:$w_4$][below of=2] {};
 (That was another \errmessage.)
 
@@ -2063,14 +2052,14 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4746   \node[main node]
+l.4753   \node[main node]
                           (5) [label=right:$w_5$][below of=3] {};
 (That was another \errmessage.)
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4748.
+(Font)              <10> on input line 4755.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4748.
+(Font)              <7> on input line 4755.
 
 ! Package tikz Error: Giving up on this path. Did you forget a semicolon?.
 
@@ -2078,11 +2067,11 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4757 \end{tikzpicture}
+l.4764 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[93]
+[92] [93]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -2091,7 +2080,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4842   \node[main node, fill=green]
+l.4849   \node[main node, fill=green]
                                       (1) [label=below:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2103,7 +2092,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4843   \node[main node, fill=blue]
+l.4850   \node[main node, fill=blue]
                                      (2) [label=below:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2115,7 +2104,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4844   \node[main node, fill=green]
+l.4851   \node[main node, fill=green]
                                       (3) [label=below:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2128,7 +2117,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4845   \node[main node, fill=yellow]
+l.4852   \node[main node, fill=yellow]
                                        (4) [label=below:$v_4$][right of=3] {};;
 (That was another \errmessage.)
 
@@ -2140,11 +2129,10 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4858 \end{tikzpicture}
+l.4865 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[94]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -2153,7 +2141,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4876   \node[main node, fill=green]
+l.4883   \node[main node, fill=green]
                                       (1) [label=below:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2165,7 +2153,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4877   \node[main node, fill=green]
+l.4884   \node[main node, fill=green]
                                       (2) [label=below:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2177,7 +2165,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4878   \node[main node, fill=blue]
+l.4885   \node[main node, fill=blue]
                                      (3) [label=below:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2190,7 +2178,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4879   \node[main node, fill=yellow]
+l.4886   \node[main node, fill=yellow]
                                        (4) [label=below:$v_4$][right of=3] {};;
 (That was another \errmessage.)
 
@@ -2202,12 +2190,12 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4892 \end{tikzpicture}
+l.4899 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-
-Overfull \hbox (16.43193pt too wide) in paragraph at lines 4976--4979
+[94]
+Overfull \hbox (16.43193pt too wide) in paragraph at lines 4983--4986
 []\OT1/lmr/m/it/10.95 Then the the ma-trix sub-se-quences $\OML/lmm/m/it/10.95 
 Z[]$ \OT1/lmr/m/it/10.95 for ev-ery $\OML/lmm/m/it/10.95 j \OMS/lmsy/m/n/10.95 
 2 f\OT1/lmr/m/n/10.95 1\OML/lmm/m/it/10.95 ; [] ; \OMS/lmsy/m/n/10.95 j\OML/lmm
@@ -2216,7 +2204,7 @@ Z[]$ \OT1/lmr/m/it/10.95 for ev-ery $\OML/lmm/m/it/10.95 j \OMS/lmsy/m/n/10.95
  []
 
 [95] [96]
-Overfull \hbox (2.54823pt too wide) detected at line 5114
+Overfull \hbox (2.54823pt too wide) detected at line 5121
 \OML/lmm/m/it/10.95 M \OT1/lmr/m/n/10.95 = []
  []
 
@@ -2224,7 +2212,7 @@ Overfull \hbox (2.54823pt too wide) detected at line 5114
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.5161  vertices of color $j$\\}
+l.5168  vertices of color $j$\\}
                                 
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -2232,13 +2220,13 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.5161  vertices of color $j$\\}
+l.5168  vertices of color $j$\\}
                                 
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Undefined control sequence.
-l.5162  \blankline
+l.5169  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2249,7 +2237,7 @@ and I'll forget about whatever was undefined.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.5194 ...turns a partitioned adjacency matrix.\\}
+l.5201 ...turns a partitioned adjacency matrix.\\}
                                                   \label{colorpartition1}
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -2264,20 +2252,20 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.5194 ...turns a partitioned adjacency matrix.\\}
+l.5201 ...turns a partitioned adjacency matrix.\\}
                                                   \label{colorpartition1}
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5194--5194
+Underfull \hbox (badness 10000) in paragraph at lines 5201--5201
 
  []
 
 [98]
 ! Undefined control sequence.
-l.5206  \blankline
+l.5213  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2288,7 +2276,7 @@ and I'll forget about whatever was undefined.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.5238 ...turns a partitioned adjacency matrix.\\}
+l.5245 ...turns a partitioned adjacency matrix.\\}
                                                   \label{colorpartition2}
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -2303,14 +2291,14 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.5238 ...turns a partitioned adjacency matrix.\\}
+l.5245 ...turns a partitioned adjacency matrix.\\}
                                                   \label{colorpartition2}
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5238--5238
+Underfull \hbox (badness 10000) in paragraph at lines 5245--5245
 
  []
 
@@ -2323,7 +2311,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5251   \node[main node, fill=blue]
+l.5258   \node[main node, fill=blue]
                                      (1) [label=below:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2335,7 +2323,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5252   \node[main node, fill=blue]
+l.5259   \node[main node, fill=blue]
                                      (2) [label=below:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2347,7 +2335,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5253   \node[main node, fill=blue]
+l.5260   \node[main node, fill=blue]
                                      (3) [label=below:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2360,7 +2348,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5254   \node[main node, fill=orange]
+l.5261   \node[main node, fill=orange]
                                        (4) [label=below:$v_4$][right of=3] {};;
 (That was another \errmessage.)
 
@@ -2373,7 +2361,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5255   \node[main node, fill=orange]
+l.5262   \node[main node, fill=orange]
                                        (5) [label=below:$v_5$][right of=4] {};;
 (That was another \errmessage.)
 
@@ -2385,7 +2373,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5266 \end{tikzpicture}
+l.5273 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -2398,7 +2386,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5278   \node[main node, fill=blue]
+l.5285   \node[main node, fill=blue]
                                      (1) [label=below:$w_1$] {};
 (That was another \errmessage.)
 
@@ -2410,7 +2398,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5279   \node[main node, fill=blue]
+l.5286   \node[main node, fill=blue]
                                      (2) [label=below:$w_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2422,7 +2410,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5280   \node[main node, fill=orange]
+l.5287   \node[main node, fill=orange]
                                        (3) [label=below:$w_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2435,7 +2423,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5281   \node[main node, fill=orange]
+l.5288   \node[main node, fill=orange]
                                        (4) [label=below:$w_4$][right of=3] {};;
 (That was another \errmessage.)
 
@@ -2448,7 +2436,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5282   \node[main node, fill=orange]
+l.5289   \node[main node, fill=orange]
                                        (5) [label=below:$w_5$][right of=4] {};;
 (That was another \errmessage.)
 
@@ -2460,7 +2448,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5293 \end{tikzpicture}
+l.5300 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -2472,7 +2460,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5344   \node[main node]
+l.5351   \node[main node]
                           (1) [label=below:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2484,7 +2472,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5345   \node[main node]
+l.5352   \node[main node]
                           (2) [label=below:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2496,7 +2484,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5346   \node[main node]
+l.5353   \node[main node]
                           (3) [label=below:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2509,7 +2497,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5347   \node[main node]
+l.5354   \node[main node]
                           (4) [label=below:$v_4$][right of=3] {};;
 (That was another \errmessage.)
 
@@ -2521,7 +2509,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5360 \end{tikzpicture}
+l.5367 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -2536,18 +2524,18 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5397 \end{tikzpicture}
+l.5404 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
 [102] [103]
-Overfull \hbox (9.81786pt too wide) in alignment at lines 5596--5602
+Overfull \hbox (9.81786pt too wide) in alignment at lines 5603--5609
  [][][] []
  []
 
 [104]
 ! Undefined control sequence.
-l.5659 \vdtos
+l.5666 \vdtos
              \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2563,7 +2551,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5703 \end{tikzpicture}
+l.5710 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -2575,7 +2563,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5714   \node[main node]
+l.5721   \node[main node]
                           (1) [label=below:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2587,7 +2575,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5715   \node[main node]
+l.5722   \node[main node]
                           (2) [label=below:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2599,7 +2587,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5716   \node[main node]
+l.5723   \node[main node]
                           (3) [label=below:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2611,120 +2599,148 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5724 \end{tikzpicture}
+l.5731 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
 [106] [107] [108]
 Chapter 3.
-! Double subscript.
-l.5824 ...f size $k+1$ that connect $v_i$ to $v_p_
-                                                  1, v_p_2,\ldots, v_p_k$, t...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5824 ...$k+1$ that connect $v_i$ to $v_p_1, v_p_
-                                                  2,\ldots, v_p_k$, there is...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5824 ...nect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_
-                                                  k$, there is an edge of si...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825   $v_j$ to $v_p_
-                       1, v_p_2,\ldots, v_p_k$ or an edge of size $k+1$ that...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825   $v_j$ to $v_p_1, v_p_
-                              2,\ldots, v_p_k$ or an edge of size $k+1$ that...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825   $v_j$ to $v_p_1, v_p_2,\ldots, v_p_
-                                            k$ or an edge of size $k+1$ that...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825 ...size $k+1$ that connects $v_j$ to $v'_p_
-                                                  1, v'_p_2, \ldots, v'_p_k$...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825 ...1$ that connects $v_j$ to $v'_p_1, v'_p_
-                                                  2, \ldots, v'_p_k$, a group
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5825 ... $v_j$ to $v'_p_1, v'_p_2, \ldots, v'_p_
-                                                  k$, a group
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5826   of interchangeable vertices of  $v_p_
-                                              1, v_p_2,\ldots, v_p_k$ (in th...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5826 ...nterchangeable vertices of  $v_p_1, v_p_
-                                                  2,\ldots, v_p_k$ (in this ...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5826 ... vertices of  $v_p_1, v_p_2,\ldots, v_p_
-                                                  k$ (in this case $v'_p_i$ ...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5826 ..._p_2,\ldots, v_p_k$ (in this case $v'_p_
-                                                  i$ can be equal to
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.5827   $v_p_
-              i$).
-I treat `x_1_2' essentially like `x_1{}_2'.
-
 [109
 
-]
-! Double subscript.
-l.5835 ...f size $k+1$ that connect $v_i$ to $v_p_
-                                                  1, v_p_2,\ldots, v_p_k$, t...
-I treat `x_1_2' essentially like `x_1{}_2'.
+] [110] [111]
 
-! Double subscript.
-l.5835 ...$k+1$ that connect $v_i$ to $v_p_1, v_p_
-                                                  2,\ldots, v_p_k$, there is...
-I treat `x_1_2' essentially like `x_1{}_2'.
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
 
-! Double subscript.
-l.5835 ...nect $v_i$ to $v_p_1, v_p_2,\ldots, v_p_
-                                                  k$, there is an edge of si...
-I treat `x_1_2' essentially like `x_1{}_2'.
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5982   \node[main node]
+                          (1) [label=above:A] {};
+(That was another \errmessage.)
 
-! Double subscript.
-l.5836   $v_j$ to $v_p_
-                       1, v_p_2,\ldots, v_p_k$.  \end{definition}
-I treat `x_1_2' essentially like `x_1{}_2'.
 
-! Double subscript.
-l.5836   $v_j$ to $v_p_1, v_p_
-                              2,\ldots, v_p_k$.  \end{definition}
-I treat `x_1_2' essentially like `x_1{}_2'.
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
 
-! Double subscript.
-l.5836   $v_j$ to $v_p_1, v_p_2,\ldots, v_p_
-                                            k$.  \end{definition}
-I treat `x_1_2' essentially like `x_1{}_2'.
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5983 \node[main node]
+                        (8) [label=left:C][below of=1] {};
+(That was another \errmessage.)
 
-[110] [111]
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5984   \node[main node]
+                          (2) [label=below:B][left of=8] {};
+(That was another \errmessage.)
+
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5985   \node[main node]
+                          (3) [label=below:D][ right of=8] {};;
+(That was another \errmessage.)
+
+Missing character: There is no ; in font nullfont!
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5987   \node[main node]
+                          (4) [label=below:E][below left of=2] {};
+(That was another \errmessage.)
+
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5988   \node[main node]
+                          (5) [label=below:G][below right of=2] {};;
+(That was another \errmessage.)
+
+Missing character: There is no ; in font nullfont!
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5989   \node[main node]
+                          (6) [label=below:H][below left of=3] {};
+(That was another \errmessage.)
+
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5990   \node[main node]
+                          (7) [label=below:I][below right of=3] {};;
+(That was another \errmessage.)
+
+Missing character: There is no ; in font nullfont!
+
+! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
+ to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5991   \node[main node]
+                          (9) [label=below:F][below of=8] {};
+(That was another \errmessage.)
+
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 5994
+.
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 5994
+.
+
+! Package tikz Error: Giving up on this path. Did you forget a semicolon?.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6003 \end{tikzpicture}
+                        
+(That was another \errmessage.)
+
+[112]
 ! Undefined control sequence.
 <recently read> \hgrapheen 
                            
-l.5959    $E_i$ in a hypergraph $\hgrapheen
+l.6021    $E_i$ in a hypergraph $\hgrapheen
                                            $ is compared to an edge $E'_i$ i...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2735,7 +2751,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \hgraphtwee 
                             
-l.5960   $\hgraphtwee
+l.6022   $\hgraphtwee
                      $, it is somehow clear that they must have a higher (ed...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2743,9 +2759,9 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[112]
+[113]
 ! Misplaced alignment tab character &.
-l.6009  $$ y^{(k+1)}_{nm} &
+l.6071  $$ y^{(k+1)}_{nm} &
                            =& \frac{2(x_{qp}^{(k)}+x_{q_o}^{(k)}+x_{rp}^{(k)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2755,7 +2771,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.6009  $$ y^{(k+1)}_{nm} &=&
+l.6071  $$ y^{(k+1)}_{nm} &=&
                               \frac{2(x_{qp}^{(k)}+x_{q_o}^{(k)}+x_{rp}^{(k)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2764,7 +2780,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[113] [114] [115]
+[114] [115] [116]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -2773,7 +2789,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6240   \node[main node]
+l.6302   \node[main node]
                           (1) [label=above:$E_1$] {};
 (That was another \errmessage.)
 
@@ -2785,7 +2801,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6241   \node[main node]
+l.6303   \node[main node]
                           (2) [label=above:$E_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2797,7 +2813,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6242   \node[main node]
+l.6304   \node[main node]
                           (3) [label=above:$E_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2809,15 +2825,15 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6249 \end{tikzpicture}
+l.6311 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[116]
+[117]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.6412 
+l.6474 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -2825,7 +2841,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.6412 
+l.6474 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2836,7 +2852,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \@@par 
-l.6412 
+l.6474 
        
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -2844,7 +2860,7 @@ So I shall assume that you typed `$$' both times.
 ! Extra }, or forgotten \endgroup.
 \@par ... \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.6412 
+l.6474 
        
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -2852,7 +2868,7 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-[117] [118]
+[118] [119]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -2861,7 +2877,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6676   \node[main node]
+l.6738   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -2873,7 +2889,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6677   \node[main node]
+l.6739   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2885,7 +2901,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6678   \node[main node]
+l.6740   \node[main node]
                           (3) [label=above:$v_3$][right of=2] {};;
 (That was another \errmessage.)
 
@@ -2897,7 +2913,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6685 \end{tikzpicture}
+l.6747 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -2909,7 +2925,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6696   \node[main node]
+l.6758   \node[main node]
                           (1) [label=above:$e_1$] {};
 (That was another \errmessage.)
 
@@ -2921,7 +2937,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6697   \node[main node]
+l.6759   \node[main node]
                           (2) [label=above:$e_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -2932,13 +2948,13 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6704 \end{tikzpicture}
+l.6766 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[119]
+[120]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 6768.
+(Font)              <12> on input line 6830.
 
 
 ! LaTeX Error: Bad math environment delimiter.
@@ -2947,7 +2963,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6777 ...is the (undirected) graph denoted by $\[
+l.6839 ...is the (undirected) graph denoted by $\[
                                                   \hgrafeen\]_2 = (V,\leftri...
 
 Your command was ignored.
@@ -2957,7 +2973,7 @@ or  <return>  to continue without it.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.6777 ...irected) graph denoted by $\[\hgrafeen\]
+l.6839 ...irected) graph denoted by $\[\hgrafeen\]
                                                   _2 = (V,\leftrightarrow)$
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2966,13 +2982,13 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-! LaTeX Error: \begin{definition} on input line 6776 ended by \end{equation*}.
+! LaTeX Error: \begin{definition} on input line 6838 ended by \end{equation*}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6777 ...irected) graph denoted by $\[\hgrafeen\]
+l.6839 ...irected) graph denoted by $\[\hgrafeen\]
                                                   _2 = (V,\leftrightarrow)$
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2981,7 +2997,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.6777 ...irected) graph denoted by $\[\hgrafeen\]
+l.6839 ...irected) graph denoted by $\[\hgrafeen\]
                                                   _2 = (V,\leftrightarrow)$
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2992,12 +3008,12 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.6777 ...rected) graph denoted by $\[\hgrafeen\]_
+l.6839 ...rected) graph denoted by $\[\hgrafeen\]_
                                                   2 = (V,\leftrightarrow)$
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[120]
+[121]
 
 ! LaTeX Error: \begin{document} ended by \end{definition}.
 
@@ -3005,7 +3021,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6783   \end{definition}
+l.6845   \end{definition}
                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3014,7 +3030,7 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.6783   \end{definition}
+l.6845   \end{definition}
                          
 Things are pretty mixed up, but I think the worst is over.
 
@@ -3026,11 +3042,11 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6852 ...0, bent left=100, opacity=1,color=black]
+l.6914 ...0, bent left=100, opacity=1,color=black]
                                                    (v1) -- (v7);
 (That was another \errmessage.)
 
-[121] [122] [123]
+[122] [123] [124]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
  to ignore it. Perhaps you misspelled it.
@@ -3039,7 +3055,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7142   \node[main node]
+l.7204   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -3051,7 +3067,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7143   \node[main node]
+l.7205   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -3062,7 +3078,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7152 \end{tikzpicture}
+l.7214 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -3074,7 +3090,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7163   \node[main node]
+l.7225   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -3086,7 +3102,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7164   \node[main node]
+l.7226   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -3097,24 +3113,11 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7171 \end{tikzpicture}
+l.7233 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
-[124]
-
-! LaTeX Error: Environment defintion undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7249 \begin{defintion}
-                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
+[125]
 
 ! LaTeX Error: Bad math environment delimiter.
 
@@ -3122,7 +3125,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7250 ...is the (undirected) graph denoted by $\[
+l.7312 ...is the (undirected) graph denoted by $\[
                                                   \hgrafeen\]'_2 = (V,\leftr...
 
 Your command was ignored.
@@ -3132,7 +3135,7 @@ or  <return>  to continue without it.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.7250 ...irected) graph denoted by $\[\hgrafeen\]
+l.7312 ...irected) graph denoted by $\[\hgrafeen\]
                                                   '_2 = (V,\leftrightarrow)$
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -3141,13 +3144,13 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-! LaTeX Error: \begin{document} ended by \end{equation*}.
+! LaTeX Error: \begin{definition} on input line 7311 ended by \end{equation*}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7250 ...irected) graph denoted by $\[\hgrafeen\]
+l.7312 ...irected) graph denoted by $\[\hgrafeen\]
                                                   '_2 = (V,\leftrightarrow)$
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3156,7 +3159,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.7250 ...irected) graph denoted by $\[\hgrafeen\]
+l.7312 ...irected) graph denoted by $\[\hgrafeen\]
                                                   '_2 = (V,\leftrightarrow)$
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -3167,20 +3170,20 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.7250 ...ected) graph denoted by $\[\hgrafeen\]'_
+l.7312 ...ected) graph denoted by $\[\hgrafeen\]'_
                                                   2 = (V,\leftrightarrow)$
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-! LaTeX Error: \begin{document} ended by \end{defintion}.
+! LaTeX Error: \begin{document} ended by \end{definition}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7259       \end{defintion}
-                            
+l.7321       \end{definition}
+                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -3188,15 +3191,15 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.7259       \end{defintion}
-                            
+l.7321       \end{definition}
+                             
 Things are pretty mixed up, but I think the worst is over.
 
-[125]
+[126]
 ! Undefined control sequence.
 <argument> ...ding extended 2-section} \blankline 
                                                   \SetKwFunction {powermetho...
-l.7295 \KwRet $A$\;}
+l.7357 \KwRet $A$\;}
                     {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3207,7 +3210,7 @@ and I'll forget about whatever was undefined.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.7296 ...e extended 2-section of a hypergraph.\\}
+l.7358 ...e extended 2-section of a hypergraph.\\}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -3222,22 +3225,22 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.7296 ...e extended 2-section of a hypergraph.\\}
+l.7358 ...e extended 2-section of a hypergraph.\\}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7296--7296
+Underfull \hbox (badness 10000) in paragraph at lines 7358--7358
 
  []
 
-[126] [127] [128] [129]
+[127] [128] [129] [130]
 ! Undefined control sequence.
 <recently read> \grafi 
                        
-l.7576 ...tween an element of $V$ and $E$, $\grafi
+l.7638 ...tween an element of $V$ and $E$, $\grafi
                                                   _i$
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3248,7 +3251,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \grafi 
                        
-l.7577   is a bipartite graph and we write $\grafi
+l.7639   is a bipartite graph and we write $\grafi
                                                   _i = ((V,E),\leftrightarro...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3264,7 +3267,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7589   \node[main node]
+l.7651   \node[main node]
                           (1) [label=above:$v_1$] {};
 (That was another \errmessage.)
 
@@ -3276,7 +3279,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7590   \node[main node]
+l.7652   \node[main node]
                           (2) [label=above:$v_2$][right of=1] {};
 (That was another \errmessage.)
 
@@ -3288,7 +3291,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7591   \node[main node]
+l.7653   \node[main node]
                           (3) [label=above:$v_3$][right of=2] {};
 (That was another \errmessage.)
 
@@ -3300,7 +3303,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7592   \node[main node]
+l.7654   \node[main node]
                           (4) [label=above:$v_4$][right of=3] {};
 (That was another \errmessage.)
 
@@ -3312,7 +3315,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7593   \node[main node]
+l.7655   \node[main node]
                           (5) [label=above:$v_5$][right of=4] {};
 (That was another \errmessage.)
 
@@ -3324,7 +3327,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7594   \node[main node]
+l.7656   \node[main node]
                           (6) [label=above:$v_6$][right of=5] {};
 (That was another \errmessage.)
 
@@ -3336,7 +3339,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7595   \node[main node]
+l.7657   \node[main node]
                           (7) [label=above:$v_7$][right of=6] {};
 (That was another \errmessage.)
 
@@ -3348,7 +3351,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7596   \node[main node]
+l.7658   \node[main node]
                           (8) [label=above:$v_8$][right of=7] {};
 (That was another \errmessage.)
 
@@ -3360,7 +3363,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7597     \node[main node]
+l.7659     \node[main node]
                             (9) [label=below:$E_1$][below of=4] {};
 (That was another \errmessage.)
 
@@ -3372,7 +3375,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7598     \node[main node]
+l.7660     \node[main node]
                             (10) [label=below:$E_2$][below of=5] {};
 (That was another \errmessage.)
 
@@ -3384,7 +3387,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7599     \node[main node]
+l.7661     \node[main node]
                             (11) [label=below:$E_2$][below of=6] {};
 (That was another \errmessage.)
 
@@ -3395,7 +3398,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7616 \end{tikzpicture}
+l.7678 \end{tikzpicture}
                         
 (That was another \errmessage.)
 
@@ -3406,7 +3409,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7635 \end{center}
+l.7697 \end{center}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3415,24 +3418,24 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.7635 \end{center}
+l.7697 \end{center}
                    
 Things are pretty mixed up, but I think the worst is over.
 
-[130]
-Overfull \hbox (19.82933pt too wide) detected at line 7672
+[131]
+Overfull \hbox (19.82933pt too wide) detected at line 7734
 []
  []
 
 
-Overfull \hbox (19.82933pt too wide) detected at line 7695
+Overfull \hbox (19.82933pt too wide) detected at line 7757
 []
  []
 
 ! Misplaced alignment tab character &.
 \reserved@a ->&
                 & &
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3444,7 +3447,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced alignment tab character &.
 \reserved@a ->& &
                   &
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3456,7 +3459,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced alignment tab character &.
 \reserved@a ->& & &
                    
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3468,7 +3471,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \cr.
 \@@eqncr ...l \@eqnswtrue \global \@eqcnt \z@ \cr 
                                                   
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -3479,7 +3482,7 @@ might try typing `S' now just to see what is salvageable.
 ! Extra }, or forgotten $.
 \endeqnarray ->\@@eqncr \egroup 
                                 \global \advance \c@equation \m@ne $$\@ignor...
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -3488,19 +3491,19 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-Overfull \hbox (19.82933pt too wide) detected at line 7720
+Overfull \hbox (19.82933pt too wide) detected at line 7782
 []
  []
 
-[131]
+[132]
 
-! LaTeX Error: \begin{example} on input line 7699 ended by \end{eqnarray*}.
+! LaTeX Error: \begin{example} on input line 7761 ended by \end{eqnarray*}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7720 \end{eqnarray*}
+l.7782 \end{eqnarray*}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3513,7 +3516,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7722 \end{example}
+l.7784 \end{example}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3522,14 +3525,14 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.7722 \end{example}
+l.7784 \end{example}
                     
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.7741 \end{array}\right)$
+l.7803 \end{array}\right)$
                           $
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -3540,7 +3543,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.7742 
+l.7804 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -3548,7 +3551,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.7742 
+l.7804 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -3559,7 +3562,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.7742 
+l.7804 
        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -3570,14 +3573,14 @@ my insertion and my current dilemma will both disappear.
 ! Missing \cr inserted.
 <inserted text> 
                 \cr 
-l.7742 
+l.7804 
        
 I'm guessing that you meant to end an alignment here.
 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.7742 
+l.7804 
        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -3586,20 +3589,20 @@ Try to go on, since this might almost work.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.7742 
+l.7804 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (19.82933pt too wide) in alignment at lines 7726--7742
+Overfull \hbox (19.82933pt too wide) in alignment at lines 7788--7804
  [][][][]
  []
 
 ! Missing $$ inserted.
 <to be read again> 
                    \@@par 
-l.7742 
+l.7804 
        
 Displays can use special alignments (like \eqalignno)
 only if nothing but the alignment itself is between $$'s.
@@ -3607,7 +3610,7 @@ only if nothing but the alignment itself is between $$'s.
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.7742 
+l.7804 
        
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -3616,134 +3619,26 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-! LaTeX Error: \begin{eqnarray*} on input line 7726 ended by \end{example}.
+! LaTeX Error: \begin{eqnarray*} on input line 7788 ended by \end{example}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7743 \end{example}
+l.7805 \end{example}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (19.82933pt too wide) detected at line 7757
+Overfull \hbox (19.82933pt too wide) detected at line 7819
 []
  []
 
-[132]
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7843   \node[main node]
-                          (1) [label=above:$v_1$] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7844   \node[main node]
-                          (2) [label=above:$v_2$][right of=1] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7845   \node[main node]
-                          (3) [label=above:$v_3$][right of=2] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7846   \node[main node]
-                          (4) [label=above:$v_4$][right of=3] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7847     \node[main node]
-                            (9) [label=below:$E_1$][below of=1] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7848     \node[main node]
-                            (10) [label=below:$E_2$][below of=2] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7849     \node[main node]
-                            (11) [label=below:$E_3$][below of=3] {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/main node' and I am going
- to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7850     \node[main node]
-                            (12) [label=below:$E_4$][below of=4] {};
-(That was another \errmessage.)
-
-
-! Package tikz Error: Giving up on this path. Did you forget a semicolon?.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7867 \end{tikzpicture}
-                        
-(That was another \errmessage.)
-
-[133] [134]
+[133] [134] [135]
 ! Misplaced alignment tab character &.
-l.7970  $$\vect(X'^{(k+1)}) &
+l.7946  $$\vect(X'^{(k+1)}) &
                              =& (A \otimes B)\vect(Y'^{k}),$$
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3753,7 +3648,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.7970  $$\vect(X'^{(k+1)}) &=&
+l.7946  $$\vect(X'^{(k+1)}) &=&
                                 (A \otimes B)\vect(Y'^{k}),$$
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3762,11 +3657,11 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[135]
+[136]
 ! Undefined control sequence.
 <argument> ...\graf $ and $\grafeen $} \blankline 
                                                   \SetKwFunction {powermetho...
-l.8055 \KwRet $X^{(k)}, Y^{(k)} $\;}
+l.8031 \KwRet $X^{(k)}, Y^{(k)} $\;}
                                     {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3777,7 +3672,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 <argument>  $Y^{(k)}=&
                        \frac {B^TX^{(k-1)}A}{\|B^TX^{(k-1)}A\|_F}$\; $X^{(k)...
-l.8055 \KwRet $X^{(k)}, Y^{(k)} $\;}
+l.8031 \KwRet $X^{(k)}, Y^{(k)} $\;}
                                     {}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -3789,7 +3684,7 @@ might try typing `S' now just to see what is salvageable.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.8056 ...$Y$ between $\hgraf$ and $\hgrafeen$.\\}
+l.8032 ...$Y$ between $\hgraf$ and $\hgrafeen$.\\}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -3804,20 +3699,20 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.8056 ...$Y$ between $\hgraf$ and $\hgrafeen$.\\}
+l.8032 ...$Y$ between $\hgraf$ and $\hgrafeen$.\\}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8056--8056
+Underfull \hbox (badness 10000) in paragraph at lines 8032--8032
 
  []
 
-[136]
+[137]
 ! Undefined control sequence.
-l.8065  \blankline
+l.8041  \blankline
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3828,7 +3723,7 @@ and I'll forget about whatever was undefined.
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.8079 ...rix of the 2-section of a hypergraph.\\}
+l.8055 ...rix of the 2-section of a hypergraph.\\}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -3843,20 +3738,20 @@ C.
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.8079 ...rix of the 2-section of a hypergraph.\\}
+l.8055 ...rix of the 2-section of a hypergraph.\\}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8079--8079
+Underfull \hbox (badness 10000) in paragraph at lines 8055--8055
 
  []
 
-[137] [138] [139] [140] [141] [142]
+[138] [139] [140] [141] [142] [143] [144]
 Appendix A.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 8334
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 8317
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -3875,17 +3770,17 @@ File: omlpcr.fd
 LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <9> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 11.
 )
-(./similarity_matrix.m [143
+(./similarity_matrix.m [145
 
 ]) (./node_edge_similarity_matrix.m)
-(./source_edge_matrix.m) [144] (./terminal_edge_matrix.m
+(./source_edge_matrix.m) [146] (./terminal_edge_matrix.m
 Overfull \hbox (0.15076pt too wide) in paragraph at lines 3--4
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][] 
  []
 
 ) (./node_edge_similarity_matrix_adjacency_matrix.m)
-(./colored_node_adjacency_matrix_partitioning.m [145]
+(./colored_node_adjacency_matrix_partitioning.m [147]
 LaTeX Font Info:    Try loading font information for OMS+pcr on input line 22.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omspcr.fd
@@ -3894,19 +3789,18 @@ File: omspcr.fd
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
 )
-(./colored_node_similarity_matrix.m) [146]
+(./colored_node_similarity_matrix.m) [148]
 (./colored_edge_matrix_partitioning.m) (./colored_edge_similarity_matrix.m
 Overfull \hbox (75.75153pt too wide) in paragraph at lines 1--2
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (302.55383pt too wide) in paragraph at lines 17--18
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
+Overfull \hbox (0.15076pt too wide) in paragraph at lines 17--18
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[147]) (./hypergraph_to_linegraph.m) (./hypergraph_to_2section.m [148]
+[149]) (./hypergraph_to_linegraph.m) (./hypergraph_to_2section.m [150]
 Overfull \hbox (59.55136pt too wide) in paragraph at lines 9--10
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -3917,122 +3811,117 @@ Overfull \hbox (10.95087pt too wide) in paragraph at lines 5--6
 ] 
  []
 
-) (./hypergraph_to_incidencegraph.m) [149] (./hypergraph_to_incidencematrix.m)
+) (./hypergraph_to_incidencegraph.m) [151] (./hypergraph_to_incidencematrix.m)
 (./hypergraph_to_2section.m
 Overfull \hbox (59.55136pt too wide) in paragraph at lines 9--10
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [150]
+) [152]
 Appendix B.
-[151
+[153
 
 
-] [152]
-Overfull \hbox (10.88268pt too wide) in alignment at lines 8422--8427
+] [154]
+Overfull \hbox (10.88268pt too wide) in alignment at lines 8405--8410
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (10.88268pt too wide) in alignment at lines 8427--8433
+Overfull \hbox (10.88268pt too wide) in alignment at lines 8410--8416
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (10.88268pt too wide) in alignment at lines 8433--8454
+Overfull \hbox (10.88268pt too wide) in alignment at lines 8416--8437
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (10.88268pt too wide) in alignment at lines 8454--8474
+Overfull \hbox (10.88268pt too wide) in alignment at lines 8437--8457
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[153] [154]
-Overfull \hbox (6.95439pt too wide) in alignment at lines 8478--8483
+[155] [156]
+Overfull \hbox (6.95439pt too wide) in alignment at lines 8461--8466
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (6.95439pt too wide) in alignment at lines 8483--8489
+Overfull \hbox (6.95439pt too wide) in alignment at lines 8466--8472
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (6.95439pt too wide) in alignment at lines 8489--8512
+Overfull \hbox (6.95439pt too wide) in alignment at lines 8472--8495
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (6.95439pt too wide) in alignment at lines 8512--8532
+Overfull \hbox (6.95439pt too wide) in alignment at lines 8495--8515
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[155]
-Overfull \hbox (6.95439pt too wide) in alignment at lines 8532--8536
- [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[156]
-Overfull \hbox (17.3387pt too wide) in alignment at lines 8538--8543
- [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (17.3387pt too wide) in alignment at lines 8543--8548
- [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (17.3387pt too wide) in alignment at lines 8548--8569
- [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [157]
-Overfull \hbox (17.3387pt too wide) in alignment at lines 8569--8589
+Overfull \hbox (6.95439pt too wide) in alignment at lines 8515--8519
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[158]
+Overfull \hbox (17.3387pt too wide) in alignment at lines 8521--8526
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (17.3387pt too wide) in alignment at lines 8589--8592
+Overfull \hbox (17.3387pt too wide) in alignment at lines 8526--8531
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[158] [159] [160] [161] [162] [163] [164]
-(./MasterThesisWiskunde_FilipMoons.bbl [165
+
+Overfull \hbox (17.3387pt too wide) in alignment at lines 8531--8552
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[159]
+Overfull \hbox (17.3387pt too wide) in alignment at lines 8552--8572
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
 
 
-] [166])
-(./MasterThesisWiskunde_FilipMoons.ind [167] [168
+Overfull \hbox (17.3387pt too wide) in alignment at lines 8572--8575
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
 
-] [169] [170
-
-])
-
-Package natbib Warning: There were undefined citations.
+[160] [161] [162] [163] [164] [165] [166]
+(./MasterThesisWiskunde_FilipMoons.bbl [167
 
 
-! LaTeX Error: \begin{example} on input line 7723 ended by \end{document}.
+] [168]) [169]
+(./MasterThesisWiskunde_FilipMoons.ind [170
+
+] [171] [172])
+
+! LaTeX Error: \begin{example} on input line 7785 ended by \end{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.8796 \end{document}
+l.8780 \end{document}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4045,14 +3934,14 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 7723 (\begingroup)
+### semi simple group (level 1) entered at line 7785 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 20072 strings out of 493117
- 369062 string characters out of 6135434
- 629092 words of memory out of 5000000
- 23030 multiletter control sequences out of 15000+600000
- 110036 words of font info for 96 fonts, out of 8000000 for 9000
+ 20170 strings out of 493117
+ 370546 string characters out of 6135434
+ 630374 words of memory out of 5000000
+ 23123 multiletter control sequences out of 15000+600000
+ 115550 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,27n,68p,2782b,1690s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc
@@ -4097,11 +3986,11 @@ fonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
 /rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/rsfs/rs
 fs5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
 
-Output written on MasterThesisWiskunde_FilipMoons.pdf (171 pages, 1206863 bytes
+Output written on MasterThesisWiskunde_FilipMoons.pdf (173 pages, 1212959 bytes
 ).
 PDF statistics:
- 853 PDF objects out of 1000 (max. 8388607)
- 572 compressed objects within 6 object streams
+ 857 PDF objects out of 1000 (max. 8388607)
+ 578 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
- 350 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 words of extra memory for PDF output out of 10000 (max. 10000000)
 

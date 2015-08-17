@@ -4,52 +4,48 @@ The top-level auxiliary file: MasterThesisWiskunde_FilipMoons.aux
 The style file: alpha.bst
 Database file #1: bib.bib.bib
 Warning--entry type for "eurovision" isn't style-file defined
---line 196 of file bib.bib.bib
-Warning--I didn't find a database entry for "kieboom"
-Warning--I didn't find a database entry for "numeriekwiskunde"
-Warning--to sort, need author, editor, or key in cara
-Warning--empty author and editor in cara
+--line 301 of file bib.bib.bib
 Warning--empty journal in hypper
 Warning--empty journal in saari
-You've used 36 entries,
+You've used 43 entries,
             2543 wiz_defined-function locations,
-            747 strings with 8199 characters,
-and the built_in function-call counts, 11383 in all, are:
-= -- 1082
-> -- 442
-< -- 24
-+ -- 134
-- -- 131
-* -- 700
-:= -- 1921
-add.period$ -- 114
-call.type$ -- 36
-change.case$ -- 174
-chr.to.int$ -- 36
-cite$ -- 41
-duplicate$ -- 552
-empty$ -- 930
-format.name$ -- 187
-if$ -- 2325
+            789 strings with 9221 characters,
+and the built_in function-call counts, 14176 in all, are:
+= -- 1366
+> -- 572
+< -- 28
++ -- 177
+- -- 173
+* -- 900
+:= -- 2391
+add.period$ -- 137
+call.type$ -- 43
+change.case$ -- 216
+chr.to.int$ -- 43
+cite$ -- 45
+duplicate$ -- 662
+empty$ -- 1129
+format.name$ -- 240
+if$ -- 2896
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 54
-newline$ -- 182
-num.names$ -- 106
-pop$ -- 246
+missing$ -- 63
+newline$ -- 218
+num.names$ -- 130
+pop$ -- 278
 preamble$ -- 1
-purify$ -- 232
+purify$ -- 282
 quote$ -- 0
-skip$ -- 404
+skip$ -- 499
 stack$ -- 0
-substring$ -- 448
-swap$ -- 42
-text.length$ -- 24
-text.prefix$ -- 22
+substring$ -- 603
+swap$ -- 56
+text.length$ -- 28
+text.prefix$ -- 25
 top$ -- 0
-type$ -- 200
-warning$ -- 4
-while$ -- 96
-width$ -- 41
-write$ -- 451
-(There were 7 warnings)
+type$ -- 252
+warning$ -- 2
+while$ -- 125
+width$ -- 48
+write$ -- 547
+(There were 3 warnings)

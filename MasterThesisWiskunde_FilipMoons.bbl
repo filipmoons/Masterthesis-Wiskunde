@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{BGH{\etalchar{+}}04}
+\begin{thebibliography}{RPBM12}
 
 \bibitem[Ber85]{berge}
 C.~Berge.
@@ -47,8 +47,9 @@ S.~Caenepeel.
 \newblock {\em Analyse: afleiden, integreren, wiskundige software}.
 \newblock Vrije Universiteit Brussel, 2011.
 
-\bibitem[car11]{cara}
-{\em Discrete Wiskunde}.
+\bibitem[Car11]{cara}
+P.~Cara.
+\newblock {\em Discrete Wiskunde}.
 \newblock Vrije Universiteit Brussel, 2011.
 
 \bibitem[Col12]{colebunders}
@@ -71,9 +72,20 @@ W.~De~Meuter.
 \newblock {\em Algoritmen en Datastructuren I}.
 \newblock Vrije Universiteit Brussel, 2011.
 
-\bibitem[(EB]{eurovision}
+\bibitem[EB94]{regulareq}
+M.G. Everett and S.P. Borgatti.
+\newblock Regular equivalence: General theory.
+\newblock {\em Journal of Mathematical Sociology}, 18(1):29--52, 1994.
+
+\bibitem[(EB15]{eurovision}
 Eurovision Broadcasting~Union (EBU/UER).
-\newblock Official website of the eurovision song contest.
+\newblock Official website of the eurovision song contest,
+  http://www.eurovision.tv, August 2015.
+
+\bibitem[ES11]{auto}
+M.~Ellingham and Justin Schroeder.
+\newblock Distinguishing partitions and asymmetric uniform hypergraphs.
+\newblock {\em ARS MATHEMATICA CONTEMPORANEA}, 4(1), 2011.
 
 \bibitem[Eve80]{wngebruikt}
 H.W. Eves.
@@ -111,6 +123,11 @@ Roger~A Horn.
 \newblock {\em Topics in Matrix Analysis}.
 \newblock Cambridge University Press, New York, NY, USA, 1986.
 
+\bibitem[Kie11]{kieboom}
+R.~Kieboom.
+\newblock {\em Aanvulligen van de Lineaire Algebra}.
+\newblock Vrije Universiteit Brussel, 2011.
+
 \bibitem[Kle99]{kleinberg}
 Jon~M. Kleinberg.
 \newblock Authoritative sources in a hyperlinked environment.
@@ -134,6 +151,16 @@ P.~Lancaster and M.~Tismenetsky.
 \newblock Computer Science and Scientific Computing Series. Academic Press,
   1985.
 
+\bibitem[LW71]{network}
+Fran{\c c}ois Lorrain and Harrison~C. White.
+\newblock Structural equivalence of individuals in social networks.
+\newblock {\em The Journal of Mathematical Sociology}, 1(1):49--80, 1971.
+
+\bibitem[LW01]{parallel}
+Duen-Ren Liu and Mei-Yu Wu.
+\newblock A hypergraph based approach to declustering problems.
+\newblock {\em Distributed and Parallel Databases}, 10(3):269--288, 2001.
+
 \bibitem[Mor13]{morrow}
 J.~Morrow.
 \newblock {\em Advanced Calculus}.
@@ -148,6 +175,13 @@ D.~Noutsos.
 KellyJ. Pearson and Tan Zhang.
 \newblock On spectral hypergraph theory of the adjacency tensor.
 \newblock 30(5):1233--1248, 2014.
+
+\bibitem[RPBM12]{moleculen}
+Ahsanur Rahman, Christopher~L. Poirel, David~J. Badger, and T.~M. Murali.
+\newblock Reverse engineering molecular hypergraphs.
+\newblock In {\em Proceedings of the ACM Conference on Bioinformatics,
+  Computational Biology and Biomedicine}, BCB '12, pages 68--75, New York, NY,
+  USA, 2012. ACM.
 
 \bibitem[Saa00]{saari}
 Donald~G. Saari.
@@ -178,6 +212,11 @@ R.S. Varga.
 Paul Van~Dooren and Catherine Fraikin.
 \newblock Similarity matrices for colored graphs.
 \newblock {\em Bull. Belg. Math. Soc. Simon Stevin}, 16(4):705--722, 11 2009.
+
+\bibitem[Win88]{winship}
+Christopher Winship.
+\newblock Thoughts about roles and relations: An old document revisited.
+\newblock {\em Social Networks}, 10(3):209 -- 231, 1988.
 
 \bibitem[Zag05]{thesisjek}
 L.~Zager.
